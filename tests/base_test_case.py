@@ -13,17 +13,23 @@ class BaseTestCase(TestCase):
     def create_app(self):
         config.TESTING = True
         config.SQLALCHEMY_DATABASE_URI = "sqlite://"
+        config.PRESERVE_CONTEXT_ON_EXCEPTION = False
         config.SECRET_KEY = "Testing Secret"
         app = create_app(config)
         return app
 
     def setUp(self):
-        print 'create all'
         db.create_all()
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+
+    def newUser(self, username, password):
+        self.postJson('/api/register', jsonObj={
+            'username': username,
+            'password': password
+        })
 
     def postJson(self, url, jsonObj):
         return self.client.post(

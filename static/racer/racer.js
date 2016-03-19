@@ -7,7 +7,7 @@ var Player = function() {
   this.vx = 0;
   this.vy = 0;
 };
-Player.ACCELERATION = 0.005;
+Player.ACCELERATION = 0.015;
 Player.FRICTION = 0.25;
 Player.TURN_SPEED = 0.05;
 
@@ -198,9 +198,6 @@ MainController.prototype.resize = function() {
 }
 
 MainController.prototype.render = function(time) {
-  this.controls.update(time);
-  this.camera.position.y = 2;
-
   this.move(this.keyControls.get());
 
   this.cube.position.x += this.vx;
@@ -215,6 +212,13 @@ MainController.prototype.render = function(time) {
   if (this.vz < 0.001 && this.vz > -0.001) {
     this.vz = 0;
   }
+
+  this.camera.position.x = this.cube.position.x
+      - Math.sin(this.cube.rotation.y) * 3;
+  this.camera.position.z = this.cube.position.z
+      - Math.cos(this.cube.rotation.y) * 3;
+  this.camera.position.y = 2;
+  this.controls.update(time);
 
   this.renderer.render(this.scene, this.camera);
 }

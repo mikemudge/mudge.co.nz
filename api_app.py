@@ -25,18 +25,18 @@ def register():
         db.session.commit()
         db.session.close()
         return login()
-    except IntegrityError as e:
+    except IntegrityError:
         db.session.close()
         return json.dumps({
-            'result': 'this user is already registered',
-            'message': e.message
+            'result': False,
+            'error': 'User is already registered',
         })
 
 @api_bp.route('/login', methods=['POST'])
 def login():
     data = request.json
 
-    user = db.session.query(models.User).filter_by(username=data['username']).one()
+    user = models.User.query.filter_by(username=data['username']).first()
     if user and bcrypt.hashpw(data['password'].encode('utf-8'), user.hash.encode('utf-8')) == user.hash:
         session['logged_in'] = user.id
         return json.dumps({

@@ -1,4 +1,3 @@
-import bcrypt
 import models
 
 from base_test_case import BaseTestCase, expect
@@ -34,28 +33,37 @@ class TestFirst(BaseTestCase):
         }])
 
     def test_register(self):
+        response = self.postJson('/api/register', {
+            'username': 'mike',
+            'password': 'mike'
+        })
+
+        self.assertEquals(response.json, {
+            'result': True,
+            'user': {
+                'username': 'mike',
+                'fullname': None,
+                'name': None,
+                'id': 1
+            }
+        })
+
+    def test_register_adds_user(self):
         self.postJson('/api/register', {
             'username': 'mike',
             'password': 'mike'
         })
 
+        # Make sure the DB was updated.
         user = models.User.query.one()
-        expected = {
+        self.assertEquals(models.simpleSerialize(user), {
             'username': u'mike',
             'hash': user.hash,
             'id': 1
-        }
-        self.assertEquals(models.simpleSerialize(user), expected)
-
-        response = self.client.get('/api/user')
-        self.assertEquals(response.json, [expected])
+        })
 
     def test_login(self):
-        # create user.
-        self.postJson('/api/register', jsonObj={
-            'username': 'mike',
-            'password': 'mike'
-        })
+        self.newUser('mike', 'mike')
 
         response = self.postJson('/api/login', {
             'username': 'mike',
@@ -70,4 +78,41 @@ class TestFirst(BaseTestCase):
                 'name': None,
                 'id': 1
             }
+        })
+
+    def test_wrong_password(self):
+        self.newUser('mike', 'mike')
+
+        response = self.postJson('/api/login', {
+            'username': 'mike',
+            'password': 'wrong'
+        })
+
+        expect(response.json).toEqual({
+            'result': False,
+        })
+
+    def test_unknown_user(self):
+        self.newUser('mike', 'mike')
+
+        response = self.postJson('/api/login', {
+            'username': 'whoisthis',
+            'password': 'doesntmatter'
+        })
+
+        expect(response.json).toEqual({
+            'result': False,
+        })
+
+    def test_user_already_exists(self):
+        self.newUser('mike', 'mike')
+
+        response = self.postJson('/api/register', {
+            'username': 'mike',
+            'password': 'doesntmatter'
+        })
+
+        expect(response.json).toEqual({
+            'message': '(sqlite3.IntegrityError) UNIQUE constraint failed: users.username',
+            'result': 'this user is already registered'
         })

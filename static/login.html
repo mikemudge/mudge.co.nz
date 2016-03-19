@@ -1,0 +1,16 @@
+<div ng-controller="LoginControl as login">
+  <label>
+    Username:
+    <input type="text" ng-model="user.username" name="username" />
+  </label>
+  <label>
+    Password:
+    <input type="password" ng-model="user.password" name="password" />
+  </label>
+  <div>
+    {{ login.result | json }}
+  </div>
+  <button ng-click="login.createUser(user)">Create</button>
+  <button ng-click="login.login(user)">Login</button>
+</div>
+

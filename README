@@ -1,0 +1,9 @@
+My first project
+Learning about python, flask, sqlalchemy etc.
+
+Uses the FirstProject virtualenv.
+https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-environments
+
+lsvirtualenv
+mkvirtualenv
+workon

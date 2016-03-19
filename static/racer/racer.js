@@ -122,11 +122,14 @@ var MainController = function() {
 
     // This model is big.
     mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.0001;
-    mesh.position.y = 1;
+    mesh.position.y = 0.1;
     mesh.rotation.y = Math.PI;
 
     this.cube = mesh;
     this.scene.add( mesh );
+
+    this.controls.target = this.cube.position;
+    this.controls.update();
   }));
 
   this.scene = new THREE.Scene();
@@ -157,14 +160,16 @@ var MainController = function() {
   this.vz = 0;
 
   var geometry = new THREE.PlaneGeometry(100, 100, 100, 100);
+  var texture = new THREE.TextureLoader().load( "static/img/Track.png" );
   var material = new THREE.MeshBasicMaterial({
-    color: 0xD43A65,
+    // color: 0xD43A65,
+    map: texture,
     side: THREE.DoubleSide,
-    wireframe: true
+    // wireframe: true
   });
   this.plane = new THREE.Mesh(geometry, material);
   this.plane.rotation.x = Math.PI * 0.50;
-  this.camera.position.y = 5;
+  this.camera.position.y = 2;
   this.scene.add(this.plane);
 
   this.keyControls = new KeyControls({
@@ -175,6 +180,7 @@ var MainController = function() {
     down: 83
   });
   this.controls = new THREE.OrbitControls(this.camera, canvas);
+  this.controls.maxDistance = 3;
 
   window.addEventListener('resize', angular.bind(this, this.resize));
 
@@ -191,7 +197,10 @@ MainController.prototype.resize = function() {
   this.renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-MainController.prototype.render = function() {
+MainController.prototype.render = function(time) {
+  this.controls.update(time);
+  this.camera.position.y = 2;
+
   this.move(this.keyControls.get());
 
   this.cube.position.x += this.vx;

@@ -30,7 +30,7 @@ def racer():
             'config': {}
         },
         'scripts': [
-            "https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js",
+            url_for('static', filename="js/three.min.js"),
             "http://threejs.org/examples/js/controls/OrbitControls.js",
             "http://threejs.org/examples/js/loaders/BinaryLoader.js",
             url_for('static', filename="racer/racer.js"),

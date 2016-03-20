@@ -13,6 +13,7 @@ def hello_world(path=None):
             'config': {}
         },
         'scripts': [
+            url_for('static', filename='common/user.js'),
             url_for('static', filename="main.js")
         ],
         'styles': [

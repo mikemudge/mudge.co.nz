@@ -1,4 +1,5 @@
 import bcrypt
+import datetime
 import json
 import models
 
@@ -35,12 +36,55 @@ def register():
 @api_bp.route('/login', methods=['POST'])
 def login():
     data = request.json
+    if not data:
+        # TODO bad request.
+        return json.dumps({
+            'result': False
+        })
 
+    # Login with token.
+    if data.get('auth'):
+        auth = models.UserAuth.query.filter_by(user_id=data['auth']['user_id'], auth_token=data['auth']['auth_token']).first()
+        print auth.expires
+        if datetime.datetime.now() > auth.expires:
+            # Expired.
+            return json.dumps({
+                'result': False,
+                'error': 'token expired'
+            })
+
+        return json.dumps({
+            'result': True,
+            'auth': {
+                'user_id': auth.user_id,
+                'auth_token': auth.auth_token
+            },
+            'user': {
+                'username': auth.user.username,
+                'name': auth.user.name,
+                'fullname': auth.user.fullname,
+                'id': auth.user.id,
+            }
+        })
+
+    # Log in with user/password
     user = models.User.query.filter_by(username=data['username']).first()
     if user and bcrypt.hashpw(data['password'].encode('utf-8'), user.hash.encode('utf-8')) == user.hash:
         session['logged_in'] = user.id
+        auth = models.UserAuth(
+            user=user,
+            auth_token=bcrypt.gensalt(),
+            expires=datetime.datetime.now() + datetime.timedelta(days=1)
+        )
+        print auth.expires
+        db.session.add(auth)
+        db.session.commit()
         return json.dumps({
             'result': True,
+            'auth': {
+                'user_id': auth.user_id,
+                'auth_token': auth.auth_token
+            },
             'user': {
                 'username': user.username,
                 'name': user.name,
@@ -52,7 +96,6 @@ def login():
         return json.dumps({
             'result': False
         })
-    db.session.close()
 
 @api_bp.route('/logout')
 def logout():

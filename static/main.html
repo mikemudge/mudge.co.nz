@@ -1,9 +1,17 @@
 <div ng-controller="MainController as mainCtrl">
+  <div ng-if="user">
+    Already logged in as {{ user.name }}
+  </div>
   <label>
     Acting as:
     <select ng-model="actingUser" ng-options="user.name for user in users track by user.id">
     </select>
   </label>
+  <ul>
+    <li ng-repeat="user in allUsers">
+      {{ user.name }}
+    </li>
+  </ul>
   <label>
     Befriend:
     <select ng-model="recipient" ng-options="user.name for user in users track by user.id">

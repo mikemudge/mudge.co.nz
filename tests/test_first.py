@@ -1,3 +1,4 @@
+import datetime
 import models
 
 from base_test_case import BaseTestCase, expect
@@ -38,27 +39,11 @@ class TestFirst(BaseTestCase):
             'password': 'mike'
         })
 
-        self.assertEquals(response.json, {
-            'result': True,
-            'user': {
-                'username': 'mike',
-                'fullname': None,
-                'name': None,
-                'id': 1
-            }
-        })
-
-    def test_register_adds_user(self):
-        self.postJson('/api/register', {
+        expect(response.json['result']).toEqual(True)
+        expect(response.json['user']).toEqual({
             'username': 'mike',
-            'password': 'mike'
-        })
-
-        # Make sure the DB was updated.
-        user = models.User.query.one()
-        self.assertEquals(models.simpleSerialize(user), {
-            'username': u'mike',
-            'hash': user.hash,
+            'fullname': None,
+            'name': None,
             'id': 1
         })
 
@@ -70,14 +55,50 @@ class TestFirst(BaseTestCase):
             'password': 'mike'
         })
 
+        expect(response.json['result']).toEqual(True)
+        expect(response.json['user']).toEqual({
+            'username': 'mike',
+            'fullname': None,
+            'name': None,
+            'id': 1
+        })
+
+    def test_login_authentication_token(self):
+        response = self.newUser('mike', 'mike')
+
+        auth = response.json['auth']
+        response = self.postJson('/api/login', {
+            'auth': auth,
+        })
+
         expect(response.json).toEqual({
             'result': True,
+            'auth': auth,
             'user': {
                 'username': 'mike',
                 'fullname': None,
                 'name': None,
                 'id': 1
             }
+        })
+
+    def test_expired_authentication_token(self):
+        self.newUser('mike', 'mike')
+
+        user_auth = models.UserAuth.query.one()
+        user_auth.expires = datetime.datetime.now()
+        db.session.commit()
+
+        response = self.postJson('/api/login', {
+            'auth': {
+                'user_id': user_auth.user_id,
+                'auth_token': user_auth.auth_token,
+            }
+        })
+
+        expect(response.json).toEqual({
+            'result': False,
+            'error': 'token expired'
         })
 
     def test_wrong_password(self):
@@ -113,6 +134,6 @@ class TestFirst(BaseTestCase):
         })
 
         expect(response.json).toEqual({
-            'message': '(sqlite3.IntegrityError) UNIQUE constraint failed: users.username',
-            'result': 'this user is already registered'
+            'result': False,
+            'error': 'User is already registered',
         })

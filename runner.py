@@ -23,6 +23,10 @@ def start():
     db.init_app(app)
     db.create_all()
 
+    if 'reset' in sys.argv:
+        import init_db
+        init_db.init_users()
+
     # from sqlalchemy.schema import MetaData
     # actual = MetaData()
     # actual.reflect(bind=engine)

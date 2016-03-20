@@ -1,4 +1,6 @@
 from sqlalchemy import select
+from sqlalchemy.types import TIMESTAMP
+from sqlalchemy.sql.expression import func
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 
@@ -9,6 +11,8 @@ class Friendship(db.Model):
 
     initiator_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    last_time = db.Column(TIMESTAMP, server_default=func.now())
+    # , onupdate=func.current_timestamp())
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -44,6 +48,14 @@ User.all_friends = relationship(
     primaryjoin=User.id == friendship_union.c.recipient_id,
     secondaryjoin=User.id == friendship_union.c.initiator_id,
     viewonly=True)
+
+class UserAuth(db.Model):
+    __tablename__ = 'user_auth'
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    user = relationship("User", backref="auths")
+
+    auth_token = db.Column(db.String, nullable=False, primary_key=True)
+    expires = db.Column(TIMESTAMP, nullable=False)
 
 class Address(db.Model):
     __tablename__ = 'addresses'

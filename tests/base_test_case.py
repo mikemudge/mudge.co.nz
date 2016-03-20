@@ -26,7 +26,7 @@ class BaseTestCase(TestCase):
         db.drop_all()
 
     def newUser(self, username, password):
-        self.postJson('/api/register', jsonObj={
+        return self.postJson('/api/register', jsonObj={
             'username': username,
             'password': password
         })

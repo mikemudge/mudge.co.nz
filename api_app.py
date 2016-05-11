@@ -45,7 +45,6 @@ def login():
     # Login with token.
     if data.get('auth'):
         auth = models.UserAuth.query.filter_by(user_id=data['auth']['user_id'], auth_token=data['auth']['auth_token']).first()
-        print auth.expires
         if datetime.datetime.now() > auth.expires:
             # Expired.
             return json.dumps({

@@ -21,6 +21,25 @@ def hello_world(path=None):
         ]
     })
 
+@main_bp.route('/a/<app>')
+def angular(app):
+    # TODO check what files exist in the /static/<app> folder.
+    return render_template('angular.tmpl', **{
+        'angular': {
+            'app': app,
+            'include': url_for('static', filename='%s/%s.html' % (app, app)),
+            'config': {}
+        },
+        'scripts': [
+            # TODO dependency lookups?
+            url_for('static', filename="js/three.min.js"),
+            url_for('static', filename='%s/%s.js' % (app, app))
+        ],
+        'styles': [
+            url_for('static', filename="%s/%s.css" % (app, app))
+        ]
+    })
+
 # Other random standalone pages.
 @main_bp.route('/racer')
 def racer():
@@ -34,6 +53,7 @@ def racer():
             url_for('static', filename="js/three.min.js"),
             "http://threejs.org/examples/js/controls/OrbitControls.js",
             "http://threejs.org/examples/js/loaders/BinaryLoader.js",
+            url_for('static', filename="racer/cars.js"),
             url_for('static', filename="racer/racer.js"),
         ],
         'styles': [

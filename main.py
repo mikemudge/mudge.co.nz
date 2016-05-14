@@ -30,11 +30,18 @@ def hello_world(path=None):
 @main_bp.route('/a/<app>')
 def angular(app):
     # TODO check what files exist in the /static/<app> folder.
+    include = 'static/%s/%s.html' % (app, app)
+    if os.path.isfile(include):
+        include = url_for('static', filename='%s/%s.html' % (app, app))
+    else:
+        include = None
     return render_template('angular.tmpl', **{
         'angular': {
             'app': app,
-            'include': url_for('static', filename='%s/%s.html' % (app, app)),
-            'config': {}
+            'include': include,
+            'config': {
+                'basePath': '/static/%s/' % app
+            }
         },
         'scripts': [
             # TODO dependency lookups?
@@ -43,6 +50,27 @@ def angular(app):
         ],
         'styles': [
             url_for('static', filename="%s/%s.css" % (app, app))
+        ]
+    })
+
+@main_bp.route('/jack')
+def jack():
+    # TODO check what files exist in the /static/<app> folder.
+    return render_template('angular.tmpl', **{
+        'angular': {
+            'app': 'jack',
+            'config': {
+                'basePath': '/static/jack/'
+            }
+        },
+        'scripts': [
+            "https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry",
+            "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
+            url_for('static', filename='jack/jack.js')
+        ],
+        'styles': [
+            url_for('static', filename="jack/jack.css")
         ]
     })
 

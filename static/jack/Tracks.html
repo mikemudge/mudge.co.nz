@@ -1,0 +1,28 @@
+<div>
+  <h4>Welcome</h4>
+  <div id="map-canvas">
+  </div>
+  <div id="data">
+    <p>
+      Name: <input type=text ng-model='track.trackName' 
+          ng-blur='ctrl.saveName()' ng-enter='ctrl.saveName()' />
+    </p>
+    <p>Data points {{ ctrl.values.length }}</p>
+    <p>Distance: {{ trackLength / 1000 | number : 2}} 
+        <span ng-show="trackLength">km</span></p>
+    <p>maxAccelIndex {{ maxAccelIndex }}</p>
+    <p>Start: {{ startTime | date : "short" }}</p>
+    <p>Last: {{ lastTime | date : "short" }}</p>
+    <input type="text" ng-model="color" ng-change="ctrl.updateColor()" />
+  </div>
+
+  <div class="graph">
+    <canvas id="myChart" height="400"></canvas>
+  </div>
+
+  <div class="speedGraph" ng-if="ctrl.speeds.length > 0">
+    <div ng-repeat="i in ctrl.listOfLength(ctrl.speeds.length) track by $index" class="plot" 
+        style="left: {{ $index }}px; height: {{ ctrl.speeds[$index] * 3.6 | number : 0 }}px">
+    </div>
+  </div>
+</div>

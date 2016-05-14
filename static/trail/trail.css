@@ -1,0 +1,53 @@
+  #map {
+    width: 100%;
+    height: 400px;
+  }
+  .column {
+    width:450px;
+    vertical-align: top;
+    display: inline-block;
+  }
+  .walks .tab {
+    display: inline-block;
+    border: 1px #000000 solid;
+    border-bottom: 0px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .walks .tab:hover {
+    background-color: #DDDDDD;
+  }
+  .walks .tab.selected {
+    background-color: #BBBBBB;
+  }
+  .walks .list {
+    border: 1px #000000 solid;
+    min-height: 50px;
+    padding: 8px;
+  }
+  .walks .delete {
+    margin-left: 8px;
+  }
+  .action {
+    color: #0000BB;
+    cursor: pointer;
+  }
+  .person {
+    box-shadow: 1px 1px 10px 2px;
+    padding: 8px;
+    margin: 8px;
+  }
+  .person .name {
+    display: inline-block;
+    font-weight: bold;
+    padding-bottom: 8px;
+  }
+  .person .trail {
+    display: inline-block;
+    float: right;
+  }
+  @media screen and (max-width: 950px) {
+    .column {
+      width: 100%;
+    }
+  }

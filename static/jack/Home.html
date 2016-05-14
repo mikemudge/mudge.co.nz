@@ -1,0 +1,11 @@
+<div>
+  <h4>Welcome</h4>
+  <div class="track" ng-repeat="track in ctrl.tracks">
+    <span class="id" ng-click='ctrl.showTrack(track.key)'>
+      Track: {{ track.trackName ? track.trackName : track.data_key }}
+    </span>
+    <span>By: {{ track.name }}</span>
+    <span>Device: {{ track.device_id }}</span>
+    <span class="delete" ng-click='ctrl.deleteTrack($index)'>X</span>
+  </div>
+</div>

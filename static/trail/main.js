@@ -1,0 +1,248 @@
+var MainController = function($resource, config, $scope) {
+
+  this.person = {};
+
+  this.people = {};
+
+  // default center and zoom shows all of nz.
+  this.map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -40.827947614929464, lng: 175.30749883440649},
+    zoom: 5
+  });
+
+  $scope.currentTime = Date.now();
+
+  this.Walker = $resource(config.baseUrl + 'api/walker');
+  this.Walk = $resource(config.baseUrl + 'api/walk');
+
+  this.Walker.query({}, angular.bind(this, function(response) {
+    angular.forEach(response, angular.bind(this, function(person, x) {
+      angular.forEach(person.walks, angular.bind(this, function(walk, i) {
+        var date = walk.date;
+        walk.date = new Date(date);
+        if (isNaN(walk.date.getTime())) {
+          // unset invalid dates like 0000-00-00
+          console.log("don't understand " + date);
+          walk.date = undefined;
+        }
+      }));
+
+      person.marker = new google.maps.Marker({
+        icon: new google.maps.MarkerImage(
+            "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + person.name.charAt(0) + "|" + person.color),
+        map: this.map,
+        title: person.name
+      });
+      person.infowindow = new google.maps.InfoWindow({
+        content: person.name
+      });
+      person.marker.addListener('click', angular.bind(this, function(person) {
+        person.infowindow.open(this.map, person.marker);
+      }, person));
+
+      this.people[person.name] = person;
+    }));
+
+    // This will move everyone's markers to the right location.
+    this.updateEveryone();
+  }));
+
+
+  this.addingWalk = {};
+
+  this.trail = $resource(config.basePath + 'trail.json')
+      .get({}, angular.bind(this, function(response) {
+        var totalLength = 0;
+        // Removes Cook Strait from the end of this trail as it is out of order.
+        response.gpx.trk.splice(-1, 1);
+        var lastPoint = null;
+        angular.forEach(response.gpx.trk, angular.bind(this, function(track) {
+          var trackLength = 0;
+          var flightPath = [];
+          angular.forEach(track.trkseg.trkpt, function(point) {
+            flightPath.push(new google.maps.LatLng(point['-lat'], point['-lon']));
+
+            if (flightPath.length > 1) {
+              // computeDistanceBetween should return the distance in meters.
+              trackLength += google.maps.geometry.spherical.computeDistanceBetween(
+                  flightPath[flightPath.length-1], flightPath[flightPath.length-2]);
+            }
+          });
+          track.length = trackLength;
+          totalLength += trackLength;
+
+          if (lastPoint) {
+            var point = track.trkseg.trkpt[0];
+            temp = new google.maps.Polyline({
+              path: [
+                new google.maps.LatLng(lastPoint['-lat'], lastPoint['-lon']),
+                new google.maps.LatLng(point['-lat'], point['-lon'])
+              ],
+              strokeColor: '#00FF00',
+              strokeOpacity: 1.0,
+              strokeWeight: 2,
+              map: this.map
+            });
+          }
+          lastPoint = track.trkseg.trkpt[track.trkseg.trkpt.length - 1]
+
+          track.polyLine = new google.maps.Polyline({
+            path: flightPath,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+          });
+        }));
+
+        // in meters
+        $scope.totalLength = totalLength;
+
+        this.updateEveryone();
+
+        angular.forEach(response.gpx.trk, angular.bind(this, function(track) {
+          if (track.polyLine) {
+            track.polyLine.setMap(this.map);
+          }
+        }));
+      }));
+}
+
+MainController.prototype.addWalk = function(person) {
+  if (!person) {
+    alert('You need to select a walker');
+    return;
+  }
+  this.addingWalk.name = person.name;
+  this.addingWalk.date = new Date();
+  if (!this.addingWalk.distance) {
+    alert('Distance walked doesn\'t appear to be a number');
+    return;
+  }
+  person.walks.push(this.addingWalk);
+  // clear the model which is used to create a new walk.
+  this.addingWalk = {};
+  // Will save the person and the new walk
+  this.savePerson(person, function() {}, function() {
+    console.log(error);
+    alert("something went wrong, updating person");
+  });
+  // Updates local UI.
+  this.updatePerson(person);
+}
+
+MainController.prototype.saveWalk = function(walk) {
+  // updates only the date of a walk.
+  this.Walk.save(walk, angular.bind(this, function(response) {
+    console.log(response);
+  }), angular.bind(this, function(error) {
+    console.log(error);
+    alert("something went wrong, your walk was not added");
+  }));
+}
+
+MainController.prototype.deleteWalk = function(person, walk) {
+  this.Walk.remove(walk, angular.bind(this, function(response) {
+    // local remove.
+    var idx = person.walks.indexOf(walk);
+    person.walks.splice(idx, 1);
+    // Update the person to no longer reference the walk.
+    // TODO it would be nice to have a transaction for this.
+    this.savePerson(person, function() {}, function() {
+      console.log('walk is deleted but person still references it', error);
+      alert("something went wrong, your walk may not be deleted correctly");
+    });
+    this.updatePerson(person);
+  }), angular.bind(this, function(error) {
+    console.log(error);
+    alert("something went wrong, your walk was not deleted");
+  }));
+}
+
+MainController.prototype.savePerson = function(person, success, failure) {
+  // TODO should have generated code for this?
+  // can't use person directly as it gets an error "Converting circular structure to JSON"
+  // That is due to the marker/maps stuff?
+  this.Walker.save({
+    name: person.name,
+    id: person.id,
+    walks: person.walks,
+    color: person.color
+  }, success, failure);
+};
+
+MainController.prototype.showPerson = function(person) {
+  this.map.setZoom(10);
+  // If close enough this will animate but other times it just jumps.
+  this.map.panTo(person.marker.getPosition());
+}
+
+MainController.prototype.updateEveryone = function() {
+  // Only update if the trial has loaded.
+  if (this.trail.$resolved) {
+    angular.forEach(this.people, angular.bind(this, this.updatePerson));
+  }
+}
+
+MainController.prototype.updatePerson = function(person) {
+  person.dis = 0;
+  angular.forEach(person.walks, angular.bind(this, function(walk) {
+    person.dis += parseFloat(walk.distance);
+  }));
+  person.walks.sort(function(a, b) {
+    return a.date - b.date;
+  });
+  // Pretty rounding, angulars number filter will use 15.100 for 15.09999999999 which is easy to
+  // get when summing floats.
+  person.dis = Math.round(person.dis * 1000) / 1000;
+
+  var walkedMeters = parseFloat(person.dis) * 1000;
+  // Figure out which track the person is on.
+  for (i = 0; i < this.trail.gpx.trk.length; i++) {
+    var track = this.trail.gpx.trk[i];
+    if (walkedMeters < track.length) {
+      break; // walking on this track.
+    }
+    walkedMeters -= track.length;
+  }
+
+  person.track = track;
+  person.trackWalkedMeters = walkedMeters;
+
+  var point = track.trkseg.trkpt[0];
+  var lastPoint = new google.maps.LatLng(point['-lat'], point['-lon']);
+  for (i = 1; i < track.trkseg.trkpt.length; i++) {
+    point = track.trkseg.trkpt[i];
+
+    var curPoint = new google.maps.LatLng(point['-lat'], point['-lon']);
+
+    // computeDistanceBetween should return the distance in meters.
+    var pointDiff = google.maps.geometry.spherical.computeDistanceBetween(curPoint, lastPoint);
+
+    if (walkedMeters < pointDiff) {
+      break;
+    }
+    walkedMeters -= pointDiff;
+    lastPoint = curPoint;
+  }
+  if (walkedMeters > pointDiff) {
+    throw new Error("distance is longer than the track length");
+  }
+  person.marker.setPosition(
+      google.maps.geometry.spherical.interpolate(lastPoint, curPoint, walkedMeters / pointDiff));
+}
+/**
+ * The angular module
+ */
+angular.module('trail', [
+  'config',
+  'ngResource',
+  'ngRoute',
+])
+.config(['$routeProvider', 'config',
+    function($routeProvider, config) {
+      $routeProvider.when('/', {
+        templateUrl: config.basePath + 'templates/Trail.html'
+      });
+    }
+])
+.controller('MainController', MainController)

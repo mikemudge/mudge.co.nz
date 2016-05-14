@@ -1,0 +1,72 @@
+<div ng-controller="MainController as ctrl">
+  <div id="map" ng-click="expand = false; ctrl.whosStats = null">
+    <!-- will be filled with a google map via javascript -->
+  </div>
+  <div class="overlay">
+    <div class="stats">
+      <div ng-if="ctrl.bikers.$resolved">
+        {{ ctrl.bikers.length }} Bikers<br>
+        Show more stats for:
+        <select ng-options="option.name for option in ctrl.bikers track by option.id" ng-model="ctrl.whosStats"
+            ng-change="ctrl.addBiker=ctrl.addRide=false">
+          <option selected></option>
+        </select>
+        <div ng-show="ctrl.whosStats">
+          <div ng-init="limit = ctrl.whosStats.rides.length > 5 ? -5 : Infinity">
+            <span ng-show = "limit != Infinity" ng-click="limit = Infinity">
+              Showing last 5 rides,
+              click here to show all {{ ctrl.whosStats.rides.length }} rides.
+            </span>
+            <div ng-repeat="ride in ctrl.whosStats.rides">
+              Rode {{ ride.distance }}km
+              <span ng-if="ride.date">on {{ ride.date | date:'mediumDate'}}</span>
+              <span class="button" ng-click="ctrl.deleteRide(ctrl.whosStats, ride)">
+                delete
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hamburger" ng-click="expand = !expand; ctrl.whosStats=null;">
+    <div class="pattie" />
+    <div class="pattie" />
+    <div class="pattie" />
+    <div class="options" ng-show="expand">
+      <ul>
+        <li ng-click="ctrl.addBiker = true; ctrl.addRide=false;">Add Biker</li>
+        <li ng-click="ctrl.addRide = true; ctrl.addBiker=false;">Add Ride</li>
+      </ul>
+    </div>
+  </div>
+  <div class="popup" ng-show="ctrl.addBiker || ctrl.addRide">
+    <div class="close_popup"
+        ng-click="ctrl.addBiker=ctrl.addRide=false">
+      X
+    </div>
+    <div ng-show="ctrl.addBiker">
+      <label>
+        <input ng-model="newBiker.name" placeholder="Name">
+      </label>
+      <button ng-click="ctrl.createBiker(newBiker); newBiker={}">Create</button>
+    </div>
+    <div ng-show="ctrl.addRide">
+      <label>
+        Who rode:
+        <select ng-options="option.name for option in ctrl.bikers track by option.id" ng-model="who">
+          <option selected disabled></option>
+        </select>
+      </label>
+      <div ng-show="who">
+        <p>Name: {{ who.name }}</p>
+        <label>
+          <input type="tel" step="0.1" ng-model="newRide.distance" placeholder="distance">
+        </label>
+        <button ng-click="ctrl.createRide(who, newRide); newRide={}">
+          Add ride
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

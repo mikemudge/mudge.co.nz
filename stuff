@@ -1,2 +1,12 @@
 Logs location on server.
 /var/log/upstart/webserver.log
+
+
+Mail Server
+config is at.
+sudo nano /etc/postfix/main.cf
+sudo service postfix restart
+
+aliases are in
+sudo nano /etc/postfix/virtual
+mudge@mudge-server:~/projects/pyauto$ sudo postmap /etc/postfix/virtual

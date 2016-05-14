@@ -1,0 +1,2 @@
+Logs location on server.
+/var/log/upstart/webserver.log

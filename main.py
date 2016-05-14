@@ -1,8 +1,14 @@
+import os
+
 from flask import Blueprint
-from flask import render_template, url_for
+from flask import render_template, send_from_directory, url_for
 
 main_bp = Blueprint('main', __name__)
 
+@main_bp.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(main_bp.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 @main_bp.route('/hello/')
 @main_bp.route('/hello/<path:path>')
 def hello_world(path=None):

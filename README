@@ -7,3 +7,21 @@ https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-en
 lsvirtualenv
 mkvirtualenv
 workon
+
+Logs location on server.
+/var/log/upstart/webserver.log
+
+Mail Server
+config is at.
+sudo nano /etc/postfix/main.cf
+sudo service postfix restart
+
+aliases are in
+sudo nano /etc/postfix/virtual
+sudo postmap /etc/postfix/virtual
+
+Postfix logs
+tail -f -n100 /var/log/maillog
+
+Could add spamassassin?
+/etc/init.d/spamassassin start

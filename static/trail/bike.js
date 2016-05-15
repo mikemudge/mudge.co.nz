@@ -85,6 +85,17 @@ MainController.prototype.convertBiker = function(biker) {
   if (!biker.color) {
     biker.color = this.colors[Math.floor((Math.random() * this.colors.length))];
   }
+
+  angular.forEach(biker.rides, angular.bind(this, function(ride) {
+    var date = ride.date;
+    ride.date = new Date(date);
+    // if (isNaN(walk.date.getTime())) {
+    //   // unset invalid dates like 0000-00-00
+    //   console.log("don't understand " + date);
+    //   walk.date = undefined;
+    // }
+  }));
+
   var marker = new google.maps.Marker({
     icon: new google.maps.MarkerImage(
         "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + biker.name.charAt(0) + "|" + biker.color),
@@ -119,7 +130,7 @@ MainController.prototype.deleteRide = function(who, ride) {
   }));
 }
 
-MainController.prototype.createRide = function(selectedBiker, ride) {
+MainController.prototype.createRide = function(selectedBiker, newride) {
   var biker = this.bikers.find(function(b) {
     return b.id == selectedBiker.id;
   });
@@ -127,21 +138,30 @@ MainController.prototype.createRide = function(selectedBiker, ride) {
     console.log('biker not found in bikers', biker, this.bikers);
     return;
   }
-  ride.date = new Date();
-  ride.name = biker.name;
-  biker.rides.push(ride);
-  this.Biker.save(
-      {
-        name: biker.name,
-        id: biker.id,
-        rides: biker.rides,
-        color: biker.color
-      },
-      angular.bind(this, function() {
-        this.updateBiker(biker);
-        console.log('Saved a ride for', biker.name);
-      }));
+  newride.date = new Date();
+  newride.name = biker.name;
+  newride.biker_id = biker.id;
+  this.Ride.save(newride, angular.bind(this, function(ride) {
+    var date = ride.date;
+    ride.date = new Date(date);
+    biker.rides.push(ride);
+    this.updateBiker(biker);
+    console.log('Saved a ride for', biker.name);
+  }), function(error) {
+    console.log(error);
+    alert("something went wrong while adding ride");
+  });
   this.addRide = false;
+}
+
+MainController.prototype.saveRide = function(ride) {
+  delete ride.editDate;
+  this.Ride.save(ride, function() {
+    // success
+  }, function(error) {
+    console.log(error);
+    alert("something went wrong while adding ride");
+  });
 }
 
 MainController.prototype.updateBiker = function(biker) {

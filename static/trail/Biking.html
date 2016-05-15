@@ -20,6 +20,13 @@
             <div ng-repeat="ride in ctrl.whosStats.rides">
               Rode {{ ride.distance }}km
               <span ng-if="ride.date">on {{ ride.date | date:'mediumDate'}}</span>
+              <span ng-show="!ride.editDate">
+                <button ng-click="ride.editDate = true">Edit</button>
+              </span>
+              <div ng-show="ride.editDate">
+                <input placeholder="yyyy-MM-dd" type="date" ng-model="ride.date" />
+                <button ng-click="ctrl.saveRide(ride);">Save</button>
+              </div>
               <span class="button" ng-click="ctrl.deleteRide(ctrl.whosStats, ride)">
                 delete
               </span>

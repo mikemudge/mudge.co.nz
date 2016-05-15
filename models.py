@@ -78,6 +78,19 @@ class Walk(db.Model):
     date = db.Column(db.String)
     distance = db.Column(db.String)
 
+class Biker(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    color = db.Column(db.String)
+
+class Ride(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    biker_id = db.Column(db.Integer, db.ForeignKey('biker.id'))
+    biker = relationship("Biker", backref="rides")
+    name = db.Column(db.String)
+    date = db.Column(db.String)
+    distance = db.Column(db.String)
+
 def simpleSerialize(value):
     result = {}
     for k, v in vars(value).iteritems():

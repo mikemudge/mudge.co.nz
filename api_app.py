@@ -2,7 +2,6 @@ import bcrypt
 import datetime
 import json
 import models
-import requests
 
 from flask import Blueprint, Response
 from flask import abort, make_response, request, session
@@ -121,6 +120,14 @@ def walker_api():
 @api_bp.route('/walk', methods=['POST', 'GET', 'DELETE'])
 def walk_api():
     return rest_response(models.Walk)
+
+@api_bp.route('/biker', methods=['POST', 'GET'])
+def biker_api():
+    return rest_response(models.Biker, extras=['rides'])
+
+@api_bp.route('/ride', methods=['POST', 'GET', 'DELETE'])
+def ride_api():
+    return rest_response(models.Ride)
 
 def rest_response(cls, extras=[]):
     id = request.args.get('id', request.form.get('id'))

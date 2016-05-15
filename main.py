@@ -64,7 +64,7 @@ def jack():
             }
         },
         'scripts': [
-            "https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry",
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
             "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
             "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
             url_for('static', filename='jack/jack.js')
@@ -114,7 +114,7 @@ def trail():
             }
         },
         'scripts': [
-            "https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry",
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
             url_for('static', filename='trail/main.js'),
         ],
         'styles': [
@@ -134,7 +134,7 @@ def bike():
             }
         },
         'scripts': [
-            "https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry",
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
             url_for('static', filename='trail/bike.js'),
         ],
         'styles': [

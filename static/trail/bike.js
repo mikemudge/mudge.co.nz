@@ -197,15 +197,15 @@ MainController.prototype.updateBiker = function(biker) {
 /**
  * The angular module
  */
-angular.module('biketrail', [
+angular.module('bike', [
   'config',
   'ngResource',
   'ngRoute',
 ])
 .config(function($locationProvider, $routeProvider, config) {
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $routeProvider.when('/', {
-    templateUrl: config.basePath + 'templates/Biking.html'
+  $routeProvider.otherwise({
+    templateUrl: config.basePath + 'Biking.html'
   });
 })
 .controller('MainController', MainController)

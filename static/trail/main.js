@@ -27,6 +27,7 @@ var MainController = function($resource, config, $scope) {
         }
       }));
 
+      person.color = ['', 'F52887', '41A317', '0000A0', 'F62817'][person.id];
       person.marker = new google.maps.Marker({
         icon: new google.maps.MarkerImage(
             "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + person.name.charAt(0) + "|" + person.color),
@@ -112,22 +113,28 @@ MainController.prototype.addWalk = function(person) {
     alert('You need to select a walker');
     return;
   }
-  this.addingWalk.name = person.name;
-  this.addingWalk.date = new Date();
   if (!this.addingWalk.distance) {
     alert('Distance walked doesn\'t appear to be a number');
     return;
   }
-  person.walks.push(this.addingWalk);
+  this.addingWalk.name = person.name;
+  this.addingWalk.date = new Date();
+  this.addingWalk.walker_id = person.id;
+
+  this.Walk.save(this.addingWalk, angular.bind(this, function(walk) {
+    console.log('added walk for ', person.name, walk);
+    var date = walk.date;
+    walk.date = new Date(date);
+
+    person.walks.push(walk);
+    // Updates local UI.
+    this.updatePerson(person);
+  }), function() {
+    console.log(error);
+    alert("something went wrong while adding walk");
+  });
   // clear the model which is used to create a new walk.
   this.addingWalk = {};
-  // Will save the person and the new walk
-  this.savePerson(person, function() {}, function() {
-    console.log(error);
-    alert("something went wrong, updating person");
-  });
-  // Updates local UI.
-  this.updatePerson(person);
 }
 
 MainController.prototype.saveWalk = function(walk) {
@@ -136,21 +143,15 @@ MainController.prototype.saveWalk = function(walk) {
     console.log(response);
   }), angular.bind(this, function(error) {
     console.log(error);
-    alert("something went wrong, your walk was not added");
+    alert("something went wrong, your walk was not updated");
   }));
 }
 
 MainController.prototype.deleteWalk = function(person, walk) {
-  this.Walk.remove(walk, angular.bind(this, function(response) {
+  this.Walk.remove({id: walk.id}, angular.bind(this, function(response) {
     // local remove.
     var idx = person.walks.indexOf(walk);
     person.walks.splice(idx, 1);
-    // Update the person to no longer reference the walk.
-    // TODO it would be nice to have a transaction for this.
-    this.savePerson(person, function() {}, function() {
-      console.log('walk is deleted but person still references it', error);
-      alert("something went wrong, your walk may not be deleted correctly");
-    });
     this.updatePerson(person);
   }), angular.bind(this, function(error) {
     console.log(error);
@@ -165,7 +166,9 @@ MainController.prototype.savePerson = function(person, success, failure) {
   this.Walker.save({
     name: person.name,
     id: person.id,
-    walks: person.walks,
+    // Don't send walks to the server everytime a walker is saved.
+    // They should be edited and saved individually.
+    // walks: person.walks,
     color: person.color
   }, success, failure);
 };
@@ -238,11 +241,10 @@ angular.module('trail', [
   'ngResource',
   'ngRoute',
 ])
-.config(['$routeProvider', 'config',
-    function($routeProvider, config) {
-      $routeProvider.when('/', {
-        templateUrl: config.basePath + 'templates/Trail.html'
-      });
-    }
-])
+.config(function($locationProvider, $routeProvider, config) {
+  $locationProvider.html5Mode(true).hashPrefix('!');
+  $routeProvider.otherwise({
+    templateUrl: config.basePath + 'Trail.html'
+  });
+})
 .controller('MainController', MainController)

@@ -2,6 +2,7 @@ import bcrypt
 import datetime
 import json
 import models
+import requests
 
 from flask import Blueprint, Response
 from flask import abort, make_response, request, session
@@ -113,9 +114,19 @@ def friend_api():
 def address_api():
     return rest_response(models.Address)
 
-def rest_response(cls):
+@api_bp.route('/walker', methods=['POST', 'GET'])
+def walker_api():
+    return rest_response(models.Walker, extras=['walks'])
+
+@api_bp.route('/walk', methods=['POST', 'GET', 'DELETE'])
+def walk_api():
+    return rest_response(models.Walk)
+
+def rest_response(cls, extras=[]):
     id = request.args.get('id', request.form.get('id'))
-    extras = request.args.get('extras', request.form.get('extras'))
+    extras2 = request.args.get('extras', request.form.get('extras'))
+    if extras2:
+        extras += extras2
 
     if request.method == "POST":
         if not request.data:
@@ -135,24 +146,34 @@ def rest_response(cls):
         db.session.refresh(result)
 
         response = simpleSerialize(result)
+        for extra in extras:
+            response[extra] = [simpleSerialize(v) for v in getattr(result, extra)]
+    elif request.method == "DELETE":
+        if id:
+            result = db.session.query(cls).get(id)
+        if not result:
+            abort(404)
+
+        response = simpleSerialize(result)
+        for extra in extras:
+            response[extra] = [simpleSerialize(v) for v in getattr(result, extra)]
+        db.session.delete(result)
+        db.session.commit()
     elif id:
         result = db.session.query(cls).get(id)
         if not result:
             abort(404)
         response = simpleSerialize(result)
-        if extras:
-            response[extras] = [simpleSerialize(v) for v in getattr(result, extras)]
+        for extra in extras:
+            response[extra] = [simpleSerialize(v) for v in getattr(result, extra)]
     else:
-        print cls
         result = db.session.query(cls).all()
-        print result
         response = []
         for v in result:
             result2 = simpleSerialize(v)
-            if extras:
-                result2[extras] = [simpleSerialize(v2) for v2 in getattr(v, extras)]
+            for extra in extras:
+                result2[extra] = [simpleSerialize(v2) for v2 in getattr(v, extra)]
             response.append(result2)
-        print response
 
     # TODO only indent for debug?
     jsonStr = json.dumps(response, sort_keys=True, indent=2)

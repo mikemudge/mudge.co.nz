@@ -94,3 +94,50 @@ def racer():
             url_for('static', filename="racer/racer.css")
         ]
     })
+
+@main_bp.route('/stuff')
+def stuff():
+    return ''.join([
+        "You made it to my home page<br>",
+        "<a href='/stuff/trail'> Te Araroa Trial Walk </a><br>",
+        "<a href='/stuff/bike'> Tour Aotearoa MTB </a><br>"])
+
+@main_bp.route('/stuff/trail')
+def trail():
+    return render_template('angular.tmpl', **{
+        'angular': {
+            'app': 'trail',
+            'base': '/stuff/trail',
+            'config': {
+                'basePath': '/static/trail/',
+                'baseUrl': '/'
+            }
+        },
+        'scripts': [
+            "https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry",
+            url_for('static', filename='trail/main.js'),
+        ],
+        'styles': [
+            url_for('static', filename='trail/trail.css'),
+        ]
+    })
+
+@main_bp.route('/stuff/bike')
+def bike():
+    return render_template('angular.tmpl', **{
+        'angular': {
+            'app': 'bike',
+            'base': '/stuff/bike',
+            'config': {
+                'basePath': '/static/trail/',
+                'baseUrl': '/'
+            }
+        },
+        'scripts': [
+            "https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry",
+            url_for('static', filename='trail/bike.js'),
+        ],
+        'styles': [
+            url_for('static', filename='trail/bike.css'),
+        ]
+    })

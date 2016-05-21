@@ -169,7 +169,7 @@ MainController.prototype.updateBiker = function(biker) {
   }));
 
   console.log('totalDistance', totalDistance, 'km')
-  biker.total = totalDistance;
+  biker.total = totalDistance.toFixed(2);
 
   // Convert to meters for the next step.
   totalDistance *= 1000;

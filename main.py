@@ -9,6 +9,10 @@ main_bp = Blueprint('main', __name__)
 def favicon():
     return send_from_directory(os.path.join(main_bp.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
+@main_bp.route('/')
+def main_page():
+    return "Welcome"
+
 @main_bp.route('/hello/')
 @main_bp.route('/hello/<path:path>')
 def hello_world(path=None):

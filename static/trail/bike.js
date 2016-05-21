@@ -98,7 +98,7 @@ MainController.prototype.convertBiker = function(biker) {
 
   var marker = new google.maps.Marker({
     icon: new google.maps.MarkerImage(
-        "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + biker.name.charAt(0) + "|" + biker.color),
+        "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + biker.name.charAt(0) + "|" + biker.color),
     map: this.map,
     title: biker.name
   });

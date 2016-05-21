@@ -30,7 +30,7 @@ var MainController = function($resource, config, $scope) {
       person.color = ['', 'F52887', '41A317', '0000A0', 'F62817'][person.id];
       person.marker = new google.maps.Marker({
         icon: new google.maps.MarkerImage(
-            "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + person.name.charAt(0) + "|" + person.color),
+            "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + person.name.charAt(0) + "|" + person.color),
         map: this.map,
         title: person.name
       });

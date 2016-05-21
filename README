@@ -8,6 +8,12 @@ lsvirtualenv
 mkvirtualenv
 workon
 
+Restart the python app.
+sudo restart webserver
+
+Restart nginx
+sudo service nginx restart
+
 Logs location on server.
 /var/log/upstart/webserver.log
 
@@ -15,6 +21,12 @@ SSL Certificate
 /etc/letsencrypt/live/mudge.co.nz/fullchain.pem
 Using letsencrypt
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
+Auto renew
+/opt/letsencrypt/letsencrypt-auto renew
+cron this, weekly
+Needs to be root cron to reload the nginx.
+30 2 * * 1 /opt/letsencrypt/letsencrypt-auto renew >> /var/log/le-renew.log
+35 2 * * 1 /etc/init.d/nginx reload
 
 Mail Server
 config is at.

@@ -17,6 +17,7 @@
               Showing last 5 rides,
               click here to show all {{ ctrl.whosStats.rides.length }} rides.
             </span>
+            <div>Total Distance: {{ ctrl.whosStats.total }}km</div>
             <div ng-repeat="ride in ctrl.whosStats.rides">
               Rode {{ ride.distance }}km
               <span ng-if="ride.date">on {{ ride.date | date:'mediumDate'}}</span>
@@ -37,9 +38,9 @@
     </div>
   </div>
   <div class="hamburger" ng-click="expand = !expand; ctrl.whosStats=null;">
-    <div class="pattie" />
-    <div class="pattie" />
-    <div class="pattie" />
+    <div class="pattie"></div>
+    <div class="pattie"></div>
+    <div class="pattie"></div>
     <div class="options" ng-show="expand">
       <ul>
         <li ng-click="ctrl.addBiker = true; ctrl.addRide=false;">Add Biker</li>

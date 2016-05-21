@@ -89,11 +89,6 @@ MainController.prototype.convertBiker = function(biker) {
   angular.forEach(biker.rides, angular.bind(this, function(ride) {
     var date = ride.date;
     ride.date = new Date(date);
-    // if (isNaN(walk.date.getTime())) {
-    //   // unset invalid dates like 0000-00-00
-    //   console.log("don't understand " + date);
-    //   walk.date = undefined;
-    // }
   }));
 
   var marker = new google.maps.Marker({
@@ -174,6 +169,7 @@ MainController.prototype.updateBiker = function(biker) {
   }));
 
   console.log('totalDistance', totalDistance, 'km')
+  biker.total = totalDistance;
 
   // Convert to meters for the next step.
   totalDistance *= 1000;

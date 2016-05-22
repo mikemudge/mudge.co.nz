@@ -1,7 +1,8 @@
+import json
 import os
 
 from flask import Blueprint
-from flask import render_template, send_from_directory, url_for
+from flask import render_template, request, send_from_directory, url_for
 
 main_bp = Blueprint('main', __name__)
 
@@ -56,6 +57,35 @@ def angular(app):
             url_for('static', filename="%s/%s.css" % (app, app))
         ]
     })
+
+@main_bp.route('/geohash')
+def geohash():
+    # TODO check what files exist in the /static/<app> folder.
+    return render_template('angular.tmpl', **{
+        'angular': {
+            'app': 'geohash',
+            'config': {
+                'basePath': '/static/geohash/'
+            }
+        },
+        'scripts': [
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
+            # "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
+            url_for('static', filename='geohash/geohash.js')
+        ],
+        'styles': [
+            url_for('static', filename="geohash/geohash.css")
+        ]
+    })
+
+# TODO doesn't belong here.
+@main_bp.route('/api/geohash')
+def get_geohash():
+    import geohash
+    dj = geohash.loadDowJones()
+    lat = request.args.get('lat', -41)
+    lng = request.args.get('lng', 174)
+    return json.dumps(geohash.calculateFractions(dj, lat, lng))
 
 @main_bp.route('/jack')
 def jack():

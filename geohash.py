@@ -24,13 +24,12 @@ def haversine(lon1, lat1, lon2, lat2):
 
 def loadDowJones():
     # TODO figure out the params.
-    lines = urllib2.urlopen("https://ichart.yahoo.com/table.csv?s=%5EDJI&a=00&b=1&c=2016&d=$mon&e=$dat&f=$year&g=d&ignore=.csv").readlines()
+    lines = urllib2.urlopen("https://ichart.yahoo.com/table.csv?s=%5EDJI&a=00&b=1&c=2015&d=$mon&e=$dat&f=$year&g=d&ignore=.csv").readlines()
     lines = lines[1:]
     lines = [l.strip('\n') for l in lines]
 
     dj = {}
     for l in lines:
-        print l
         values = l.split(',')
         dat = values[0]
         dowjones = values[1]
@@ -79,7 +78,9 @@ def calculateFractions(dj, lat, lon):
         # -> use the previous day!
         if lon > -30 and d >= date(2008, 5, 27):
             significantDJdate -= timedelta(days=1)
-        # go back up to 2 days(weekends), until we have a DJ value!
+        # go back up to 3 days(long weekends), until we have a DJ value!
+        if significantDJdate not in dj:
+            significantDJdate -= timedelta(days=1)
         if significantDJdate not in dj:
             significantDJdate -= timedelta(days=1)
         if significantDJdate not in dj:
@@ -96,9 +97,9 @@ def calculateFractions(dj, lat, lon):
         # fractionB = struct.unpack(">L", md5Output[12:16])[0] / (256**8)
         # fractionA = int.from_bytes(md5Output[0:8], byteorder='big', signed=False) / (256**8)
         # fractionB = int.from_bytes(md5Output[8:16], byteorder='big', signed=False) / (256**8)
-        distance = nearest(lat, lon, fractionA, fractionB)
+        # distance = nearest(lat, lon, fractionA, fractionB)
         # I'm not 100% sure about these distances?
-        print("%s km near normal hash, hash(%s), fractions: %f, %f" % (distance, s, fractionA, fractionB))
+        # print("%s km near normal hash, hash(%s), fractions: %f, %f" % (distance, s, fractionA, fractionB))
         result = {
             'date': str(d),
             'hash': s

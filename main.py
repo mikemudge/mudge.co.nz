@@ -33,6 +33,7 @@ def hello_world(path=None):
     })
 
 @main_bp.route('/a/<app>')
+@main_bp.route('/a/<app>/')
 def angular(app):
     # TODO check what files exist in the /static/<app> folder.
     include = 'static/%s/%s.html' % (app, app)
@@ -43,6 +44,7 @@ def angular(app):
     return render_template('angular.tmpl', **{
         'angular': {
             'app': app,
+            'base': '/a/%s/' % app,
             'include': include,
             'config': {
                 'basePath': '/static/%s/' % app

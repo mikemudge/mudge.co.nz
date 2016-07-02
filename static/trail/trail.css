@@ -1,53 +1,117 @@
-  #map {
-    width: 100%;
-    height: 400px;
-  }
+body {
+  margin: 0;
+}
+#map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.hamburger {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 4px;
+  border-radius: 8px;
+}
+.hamburger .pattie {
+  border-top: 3px solid black;
+  margin: 4px;
+  width: 24px;
+}
+.hamburger:hover {
+  background-color: red;
+}
+.hamburger .options {
+  position: absolute;
+  right: 0;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 8px 8px;
+}
+.hamburger .options ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.hamburger .options li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.hamburger .options li:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.close {
+  font-family: sans-serif;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.stats {
+  pointer-events: initial;
+  background: white;
+  padding: 1;
+}
+.walks {
+  pointer-events: initial;
+  background: white;
+}
+.walks .tab {
+  display: inline-block;
+  border: 1px #000000 solid;
+  border-bottom: 0px;
+  padding: 10px;
+  cursor: pointer;
+}
+.walks .tab:hover {
+  background-color: #DDDDDD;
+}
+.walks .tab.selected {
+  background-color: #BBBBBB;
+}
+.walks .list {
+  border: 1px #000000 solid;
+  min-height: 50px;
+  padding: 8px;
+}
+.walks .delete {
+  margin-left: 8px;
+}
+.action {
+  color: #0000BB;
+  cursor: pointer;
+}
+.person {
+  box-shadow: 1px 1px 10px 2px;
+  padding: 8px;
+  margin: 8px;
+}
+.person .name {
+  display: inline-block;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+.person .trail {
+  display: inline-block;
+  float: right;
+}
+@media screen and (max-width: 950px) {
   .column {
-    width:450px;
-    vertical-align: top;
-    display: inline-block;
+    width: 100%;
   }
-  .walks .tab {
-    display: inline-block;
-    border: 1px #000000 solid;
-    border-bottom: 0px;
-    padding: 10px;
-    cursor: pointer;
-  }
-  .walks .tab:hover {
-    background-color: #DDDDDD;
-  }
-  .walks .tab.selected {
-    background-color: #BBBBBB;
-  }
-  .walks .list {
-    border: 1px #000000 solid;
-    min-height: 50px;
-    padding: 8px;
-  }
-  .walks .delete {
-    margin-left: 8px;
-  }
-  .action {
-    color: #0000BB;
-    cursor: pointer;
-  }
-  .person {
-    box-shadow: 1px 1px 10px 2px;
-    padding: 8px;
-    margin: 8px;
-  }
-  .person .name {
-    display: inline-block;
-    font-weight: bold;
-    padding-bottom: 8px;
-  }
-  .person .trail {
-    display: inline-block;
-    float: right;
-  }
-  @media screen and (max-width: 950px) {
-    .column {
-      width: 100%;
-    }
-  }
+}

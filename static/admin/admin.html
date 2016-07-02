@@ -1,0 +1,16 @@
+<div ng-controller="AdminController as ctrl">
+  <div class="nav">
+    <a href="." class="nav-item">Admin</a>
+  </div>
+  <div>
+    <h4>Register a user</h4>
+    <label>
+      Username: <input ng-model="ctrl.register.username" />
+    </label>
+    <label>
+      Password: <input type="password" ng-model="ctrl.register.password" />
+    </label>
+    <button ng-click="ctrl.registerUser();">Register</button>
+  </div>
+  <pre>{{ ctrl.users | json }}</pre>
+</div>

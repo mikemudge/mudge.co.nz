@@ -53,6 +53,7 @@ def angular(app):
         'scripts': [
             # TODO dependency lookups?
             url_for('static', filename="js/three.min.js"),
+            url_for('static', filename="js/three.js/OrbitControls.js"),
             url_for('static', filename='%s/%s.js' % (app, app))
         ],
         'styles': [
@@ -135,7 +136,7 @@ def racer():
 def stuff():
     return ''.join([
         "You made it to my home page<br>",
-        "<a href='/stuff/trail'> Te Araroa Trial Walk </a><br>",
+        "<a href='/stuff/trail'> Te Araroa Trail Walk </a><br>",
         "<a href='/stuff/bike'> Tour Aotearoa MTB </a><br>"])
 
 @main_bp.route('/stuff/trail')

@@ -4,7 +4,7 @@ import json
 import models
 
 from flask import Blueprint, Response
-from flask import abort, make_response, request, session
+from flask import abort, jsonify, make_response, request, session
 from models import db, simpleSerialize
 from sqlalchemy.exc import IntegrityError
 
@@ -128,6 +128,51 @@ def biker_api():
 @api_bp.route('/ride', methods=['POST', 'GET', 'DELETE'])
 def ride_api():
     return rest_response(models.Ride)
+
+import Cookie
+
+@api_bp.route('/rock1500', methods=['POST', 'GET', 'DELETE'])
+def rock_api():
+    # User auth?
+    c = Cookie.SimpleCookie()
+    token = None
+    if 'rock_token' in request.cookies:
+        token = request.cookies['rock_token']
+    else:
+        somevalue = str(datetime.datetime.now())
+        print 'somevalue', somevalue
+        token = bcrypt.hashpw(somevalue.encode('utf-8'), bcrypt.gensalt())
+        c['rock_token'] = token
+
+    result = models.Rock1500.query.filter_by(rock_token=token).one_or_none()
+    if request.method == "POST":
+        picks = request.json.get('picks')
+
+        print picks
+        if not result:
+            result = models.Rock1500(rock_token=token)
+            db.session.add(result)
+        result.picks = json.dumps(picks)
+
+        # Update the DB.
+        db.session.commit()
+        db.session.refresh(result)
+    else:
+        if not result:
+            return jsonify({})
+
+    print result
+    ret = simpleSerialize(result)
+    ret['picks'] = json.loads(result.picks)
+    # This is set in the cookie.
+    ret['rock_token'] = None
+    response = jsonify(ret)
+    response.set_cookie('rock_token', value=token)
+    return response
+
+@api_bp.route('/rock1500song', methods=['POST', 'GET'])
+def rock_song_api():
+    return rest_response(models.Rock1500Song)
 
 def rest_response(cls, extras=[]):
     id = request.args.get('id', request.form.get('id'))

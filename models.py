@@ -91,6 +91,27 @@ class Ride(db.Model):
     date = db.Column(db.String)
     distance = db.Column(db.String)
 
+class Rock1500(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = relationship("User", backref="rock1500s")
+
+    # A random token used to id the user.
+    # TODO not real auth.
+    rock_token = db.Column(db.String)
+
+    # Json encoded and in order from 1 - 10. May contain nulls.
+    picks = db.Column(db.String)
+    public = db.Column(db.Boolean)
+
+# Used for suggestions.
+# Can be added by users.
+class Rock1500Song(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.String)
+    band = db.Column(db.String)
+
 def simpleSerialize(value):
     result = {}
     for k, v in vars(value).iteritems():

@@ -1,0 +1,25 @@
+<div ng-controller="MyController as ctrl">
+  <h4>Rock 1500</h4>
+  <div class="song">
+    <label>
+      Song: <input ng-model="ctrl.newsong.name" />
+    </label>
+    <label>
+      Band: <input ng-model="ctrl.newsong.band" />
+    </label>
+    <button ng-click="ctrl.addSong(ctrl.newsong)">Add song</button>
+  </div>
+  <div ng-repeat="song in ctrl.songs">
+    {{ song.name }} by {{ song.band }} <span ng-click="ctrl.addPick(song)">Add Pick</span>
+  </div>
+  <div ng-repeat="pick in ctrl.me.picks">
+    <!-- TODO table this? -->
+    {{ $index + 1 }} - {{ pick.name }} by {{ pick.band }}
+  </div>
+  <p>
+    <label>
+      <input type="checkbox" ng-model="ctrl.me.public"/>Allow others see my picks
+    </label>
+  </p>
+  <button ng-click="ctrl.savePicks()">Save Picks</button>
+</div>

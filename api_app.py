@@ -112,6 +112,13 @@ def googleAuth(id_token):
 
     return data["sub"], data
 
+@api_bp.route('create_tables')
+def create_tables():
+    # This isn't going to work well all the time.
+    # TODO figure out a better way to seperate data for apps.
+    # Yet still allow sharing when it is required
+    db.create_all()
+
 @api_bp.route('/logout')
 def logout():
     db.session.pop('logged_in', None)

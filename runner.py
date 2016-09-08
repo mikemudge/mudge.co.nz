@@ -12,7 +12,6 @@ def create_app(config):
     app.register_blueprint(main_bp, url_prefix='')
     app.register_blueprint(api_bp, url_prefix='/api')
     db.init_app(app)
-    db.create_all()
     return app
 
 def start():

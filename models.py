@@ -1,3 +1,5 @@
+import datetime
+
 from sqlalchemy import select
 from sqlalchemy.types import TIMESTAMP
 from sqlalchemy.sql.expression import func
@@ -96,7 +98,12 @@ class Rock1500(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = relationship("User", backref="rock1500s")
 
+    created = db.Column(db.DateTime(timezone=True), default=func.now())
+    updated = db.Column(db.DateTime(timezone=True), default=func.now(), onupdate=func.now())
     email = db.Column(db.String)
+
+    # deprecated. But sqlite doesn't remove columns?
+    rock_token = db.Column(db.String)
 
     # Json encoded and in order from 1 - 10. Length can vary up to 10.
     picks = db.Column(db.String)
@@ -113,6 +120,8 @@ class Rock1500Song(db.Model):
 def simpleSerialize(value):
     result = {}
     for k, v in vars(value).iteritems():
+        if type(v) is datetime.datetime:
+            result[k] = v.isoformat()
         if type(v) in [unicode, int, str]:
             result[k] = v
         # elif v is None:

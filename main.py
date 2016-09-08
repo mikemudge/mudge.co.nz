@@ -33,7 +33,7 @@ def hello_world(path=None):
         ]
     })
 
-@main_bp.route('/a/<app>')
+@main_bp.route('/a/<app>/')
 @main_bp.route('/a/<app>/<path:path>')
 def angular(app, path=None):
     # TODO check what files exist in the /static/<app> folder.

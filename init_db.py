@@ -1,13 +1,20 @@
 import bcrypt
 
+from flask import Blueprint
 from models import db
 from models import User, Rock1500Song
+
+init_bp = Blueprint('init', __name__)
 
 def init_user(username, password):
     hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     return User(username=username, name=username, fullname=username, hash=hashed)
 
+@init_bp.route('users', methods=['GET'])
 def init_users():
+    users = User.query.all()
+    if len(users) > 0:
+        return "Already has users"
     db.session.add_all([
         init_user('mike', 'mike'),
         init_user('Test 1', 'test'),
@@ -16,6 +23,9 @@ def init_users():
     ])
     db.session.commit()
 
+    return "Done"
+
+@init_bp.route('rock_songs', methods=['GET'])
 def rock_song_add():
     songs = Rock1500Song.query.all()
     if len(songs) == 0:
@@ -38,6 +48,8 @@ def rock_song_add():
         addSong('Master of Puppets', 'Metallica')
         addSong('The General Electric', 'Shihad')
         addSong('Bohemian Rhapsody', 'Queen')
+        return "Done"
+    return "Already has songs"
 
 def addSong(name, band):
     song = Rock1500Song(name=name, band=band)

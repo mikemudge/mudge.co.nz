@@ -10,6 +10,7 @@ db = SQLAlchemy()
 
 class Friendship(db.Model):
     __tablename__ = 'friendship'
+    __bind_key__ = 'db1'
 
     initiator_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
@@ -18,6 +19,7 @@ class Friendship(db.Model):
 
 class User(db.Model):
     __tablename__ = 'users'
+    __bind_key__ = 'db1'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, unique=True)
@@ -53,6 +55,7 @@ User.all_friends = relationship(
 
 class UserAuth(db.Model):
     __tablename__ = 'user_auth'
+    __bind_key__ = 'db1'
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     user = relationship("User", backref="auths")
 
@@ -60,6 +63,7 @@ class UserAuth(db.Model):
     expires = db.Column(TIMESTAMP, nullable=False)
 
 class Address(db.Model):
+    __bind_key__ = 'db1'
     __tablename__ = 'addresses'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -68,11 +72,13 @@ class Address(db.Model):
     email_address = db.Column(db.String, nullable=False)
 
 class Walker(db.Model):
+    __bind_key__ = 'db1'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     color = db.Column(db.String)
 
 class Walk(db.Model):
+    __bind_key__ = 'db1'
     id = db.Column(db.Integer, primary_key=True)
     walker_id = db.Column(db.Integer, db.ForeignKey('walker.id'))
     walker = relationship("Walker", backref="walks")
@@ -81,11 +87,13 @@ class Walk(db.Model):
     distance = db.Column(db.String)
 
 class Biker(db.Model):
+    __bind_key__ = 'db1'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     color = db.Column(db.String)
 
 class Ride(db.Model):
+    __bind_key__ = 'db1'
     id = db.Column(db.Integer, primary_key=True)
     biker_id = db.Column(db.Integer, db.ForeignKey('biker.id'))
     biker = relationship("Biker", backref="rides")
@@ -94,9 +102,8 @@ class Ride(db.Model):
     distance = db.Column(db.String)
 
 class Rock1500(db.Model):
+    __bind_key__ = 'db2'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = relationship("User", backref="rock1500s")
 
     created = db.Column(db.DateTime(timezone=True), default=func.now())
     updated = db.Column(db.DateTime(timezone=True), default=func.now(), onupdate=func.now())
@@ -112,6 +119,7 @@ class Rock1500(db.Model):
 # Used for suggestions.
 # Can be added by users.
 class Rock1500Song(db.Model):
+    __bind_key__ = 'db2'
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String)

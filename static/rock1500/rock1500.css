@@ -6,7 +6,8 @@ body {
 .content {
   display: inline-block;
   vertical-align: top;
-  width: 40%;
+  width: 45%;
+  min-width: 490px;
   background-color: #FFFFFF;
   padding: 20px;
   font-size: 16px;

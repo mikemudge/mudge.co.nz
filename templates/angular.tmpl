@@ -3,8 +3,6 @@
   <base href="{{ angular.base | default('/') }}" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <meta charset="UTF-8">
-  <meta name="google-signin-client_id"
-      content="617413556283-u2glkds0e166eghg3b9l60cu8j3fevcv.apps.googleusercontent.com">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
 
   <title ng-bind="title">{{ angular.title | default(angular.app)}}</title>
@@ -15,9 +13,6 @@
   <script>
     // make client_config available to the angular app through a module called config.
     config = {{ angular.config | tojson }};
-    config.google = {
-      client_id: '617413556283-u2glkds0e166eghg3b9l60cu8j3fevcv.apps.googleusercontent.com'
-    }
     angular.module('config', []).constant('config', config);
   </script>
   {% for style in styles %}

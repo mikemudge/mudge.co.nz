@@ -1,3 +1,4 @@
+import config
 import json
 import os
 
@@ -33,8 +34,8 @@ def hello_world(path=None):
     })
 
 @main_bp.route('/a/<app>')
-@main_bp.route('/a/<app>/')
-def angular(app):
+@main_bp.route('/a/<app>/<path:path>')
+def angular(app, path=None):
     # TODO check what files exist in the /static/<app> folder.
     include = 'static/%s/%s.html' % (app, app)
     if os.path.isfile(include):
@@ -47,7 +48,8 @@ def angular(app):
             'base': '/a/%s/' % app,
             'include': include,
             'config': {
-                'basePath': '/static/%s/' % app
+                'basePath': '/static/%s/' % app,
+                'GOOGLE_CLIENT_ID': config.GOOGLE_CLIENT_ID
             }
         },
         'scripts': [

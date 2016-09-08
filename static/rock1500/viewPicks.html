@@ -1,0 +1,19 @@
+<div ng-controller="ShowPicksController as ctrl">
+  <table>
+    <tr>
+      <td></td>
+      <td ng-repeat="rock1500 in ctrl.picks">{{ rock1500.email }}</td>
+    </tr>
+    <tr ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+      <td>
+        {{ i }}
+      </td>
+      <td ng-repeat="rock1500 in ctrl.picks">
+        <span ng-show="rock1500.picks[i - 1]">
+          {{ rock1500.picks[i - 1].name }}
+        </span>
+        <span ng-show="!rock1500.picks[i - 1]"> No pick </span>
+      </td>
+    </tr>
+  </div>
+</div>

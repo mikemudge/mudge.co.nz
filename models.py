@@ -96,11 +96,9 @@ class Rock1500(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = relationship("User", backref="rock1500s")
 
-    # A random token used to id the user.
-    # TODO not real auth.
-    rock_token = db.Column(db.String)
+    email = db.Column(db.String)
 
-    # Json encoded and in order from 1 - 10. May contain nulls.
+    # Json encoded and in order from 1 - 10. Length can vary up to 10.
     picks = db.Column(db.String)
     public = db.Column(db.Boolean)
 

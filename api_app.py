@@ -1,7 +1,9 @@
 import bcrypt
+import config
 import datetime
 import json
 import models
+import requests
 
 from flask import Blueprint, Response
 from flask import abort, jsonify, make_response, request, session
@@ -96,6 +98,20 @@ def login():
             'result': False
         })
 
+def googleAuth(id_token):
+    if not id_token:
+        raise Exception('You did not provide a token')
+    r = requests.get("https://www.googleapis.com/oauth2/v3/tokeninfo", params={"id_token": id_token})
+    data = r.json()
+    if "iss" not in data or "aud" not in data or not data["iss"].endswith("accounts.google.com"):
+        print id_token
+        print data
+        raise Exception("We cannot authorize your Google login at this time.")
+    if data["aud"] != config.GOOGLE_CLIENT_ID:
+        raise Exception("We cannot verify your Google login at this time.")
+
+    return data["sub"], data
+
 @api_bp.route('/logout')
 def logout():
     db.session.pop('logged_in', None)
@@ -129,48 +145,63 @@ def biker_api():
 def ride_api():
     return rest_response(models.Ride)
 
-import Cookie
+@api_bp.route('/rock1500', methods=['GET'])
+def rock_get_my_picks():
+    result = None
+    if 'id_token' in request.args:
+        id_token = request.args.get('id_token')
+        # Verify with google
 
-@api_bp.route('/rock1500', methods=['POST', 'GET', 'DELETE'])
-def rock_api():
-    # User auth?
-    c = Cookie.SimpleCookie()
-    token = None
-    if 'rock_token' in request.cookies:
-        token = request.cookies['rock_token']
+        (sub, userData) = googleAuth(id_token)
+        if not userData.get('email_verified'):
+            return "No thanks"
+        email = userData['email']
+        # If we reach here we know this is a google user.
+        # Save the models.Rock1500 for that email?
+        result = models.Rock1500.query.filter_by(email=email).one_or_none()
+
+    if result:
+        ret = simpleSerialize(result)
+        ret['picks'] = json.loads(result.picks)
+        return jsonify(ret)
     else:
-        somevalue = str(datetime.datetime.now())
-        print 'somevalue', somevalue
-        token = bcrypt.hashpw(somevalue.encode('utf-8'), bcrypt.gensalt())
-        c['rock_token'] = token
+        return jsonify({})
 
-    result = models.Rock1500.query.filter_by(rock_token=token).one_or_none()
-    if request.method == "POST":
-        picks = request.json.get('picks')
+@api_bp.route('/rock1500', methods=['POST'])
+def save_my_picks():
+    id_token = request.json.get('id_token')
+    picks = request.json.get('picks')
+    # Verify with google
+    if not id_token:
+        return "Need an id_token"
 
-        print picks
-        if not result:
-            result = models.Rock1500(rock_token=token)
-            db.session.add(result)
-        result.picks = json.dumps(picks)
+    (sub, userData) = googleAuth(id_token)
+    if not userData.get('email_verified'):
+        return "No thanks"
+    email = userData['email']
+    # If we reach here we know this is a google user.
+    # Save the models.Rock1500 for that email?
+    rockPicks = models.Rock1500.query.filter_by(email=email).one_or_none()
+    if not rockPicks:
+        rockPicks = models.Rock1500(email=email)
+        db.session.add(rockPicks)
 
-        # Update the DB.
-        db.session.commit()
-        db.session.refresh(result)
-    else:
-        if not result:
-            return jsonify({})
+    rockPicks.picks = json.dumps(picks)
 
-    print result
-    ret = simpleSerialize(result)
-    ret['picks'] = json.loads(result.picks)
-    # This is set in the cookie.
-    ret['rock_token'] = None
+    # Update the DB.
+    db.session.commit()
+    db.session.refresh(rockPicks)
+
+    ret = simpleSerialize(rockPicks)
+    ret['picks'] = json.loads(rockPicks.picks)
     response = jsonify(ret)
-    response.set_cookie('rock_token', value=token)
     return response
 
-@api_bp.route('/rock1500song', methods=['POST', 'GET'])
+@api_bp.route('/rock1500picks', methods=['GET'])
+def rock_picks_api():
+    return rest_response(models.Rock1500)
+
+@api_bp.route('/rock1500song', methods=['POST', 'GET', 'DELETE'])
 def rock_song_api():
     return rest_response(models.Rock1500Song)
 
@@ -201,8 +232,11 @@ def rest_response(cls, extras=[]):
         for extra in extras:
             response[extra] = [simpleSerialize(v) for v in getattr(result, extra)]
     elif request.method == "DELETE":
-        if id:
-            result = db.session.query(cls).get(id)
+        result = None
+        if not id:
+            raise Exception('Not deletable')
+
+        result = db.session.query(cls).get(id)
         if not result:
             abort(404)
 

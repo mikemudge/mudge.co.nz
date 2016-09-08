@@ -9,7 +9,7 @@ var auth2 = {
   },
   load: function() {
     this.auth2 = gapi.auth2.init({
-      client_id: config.GOOGLE_CLIENT_ID
+      client_id: '872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com'
     });
     var i = 0;
     for (;i < this.cbs.length;i++) {

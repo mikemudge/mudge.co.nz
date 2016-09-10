@@ -63,5 +63,9 @@ target/
 
 *.DS_Store
 
-sqlite DB files
+# sqlite DB files
 *.db
+
+# Https stuff
+key.key
+key.crt

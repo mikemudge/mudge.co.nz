@@ -42,3 +42,8 @@ tail -f -n100 /var/log/maillog
 
 Could add spamassassin?
 /etc/init.d/spamassassin start
+
+Postgres setup
+CREATE DATABASE "mudgeconz";
+CREATE USER "mudgeconz" WITH PASSWORD 'xXBE3RcJi1ULfeo3LKENqdBZqmtzLI';
+GRANT ALL PRIVILEGES ON DATABASE "mudgeconz" to "mudgeconz";

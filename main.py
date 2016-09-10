@@ -178,3 +178,27 @@ def bike():
             url_for('static', filename='trail/bike.css'),
         ]
     })
+
+@main_bp.route('/ar')
+def at_test():
+    return render_template('angular.tmpl', **{
+        'angular': {
+            'app': 'ar',
+            'base': '/ar/',
+            'include': '/static/ar/ar.html',
+            'config': {
+                'basePath': '/static/ar/',
+                'baseUrl': '/'
+            }
+        },
+        'scripts': [
+            url_for('static', filename="js/three.min.js"),
+            url_for('static', filename="js/three.js/OrbitControls.js"),
+            url_for('static', filename="js/three.js/DeviceOrientationControls.js"),
+            url_for('static', filename='ar/ar.js'),
+            url_for('static', filename='rts/rts.js'),
+        ],
+        'styles': [
+            url_for('static', filename='ar/ar.css'),
+        ]
+    })

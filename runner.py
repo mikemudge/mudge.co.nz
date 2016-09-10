@@ -44,10 +44,17 @@ def start():
     #         actualTable.drop(engine)
     #         table.create(engine)
 
-    # app.run(host='0.0.0.0')
-    # app.debug = True
+    # from werkzeug.serving import make_ssl_devcert
+    # make_ssl_devcert('key', host='192.168.1.16')
 
-    app.run()
+    if 'ssl' in sys.argv:
+        import ssl
+        ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+        ctx.load_cert_chain('key.crt', 'key.key')
+        app.run(host='0.0.0.0', ssl_context=ctx)
+    else:
+        app.run(host='0.0.0.0')
+    app.debug = True
 
 app = create_app(config)
 

@@ -66,6 +66,12 @@ angular.module('rts', [])
 .controller('MainController', MainController);
 
 /* ---------------------------------- Game objects ---------------------------------- */
+var colors = {
+  BLACK: new THREE.Color(THREE.ColorKeywords.black),
+  GREEN: new THREE.Color(THREE.ColorKeywords.lime),
+  RED: new THREE.Color(THREE.ColorKeywords.red)
+}
+
 var Game = function(scene) {
   this.scene = scene;
   this.players = [];
@@ -75,10 +81,10 @@ var Game = function(scene) {
 }
 
 Game.prototype.setup = function() {
-  var team1 = new Team(this, 0x00ff00);
+  var team1 = new Team(this, colors.GREEN);
   this.addObject(new Spawner(team1, -50, -50));
 
-  var team2 = new Team(this, 0xff0000);
+  var team2 = new Team(this, colors.RED);
   this.addObject(new Spawner(team2, 50, 50));
 }
 
@@ -92,6 +98,10 @@ Game.prototype.removeObject = function(gameObject) {
 }
 Game.prototype.update = function(time) {
   angular.forEach(this.gameObjects, angular.bind(this, function(gameObject) {
+    if (gameObject.health <= 0) {
+      // Dead, leave the game.
+      this.removeObject(gameObject);
+    }
     gameObject.update();
   }));
 }
@@ -133,25 +143,88 @@ Spawner.prototype.update = function() {
   if (this.buildTime <= 0) {
     // Complete a unit.
     // TODO generate a position next to this spawner.
-    this.game.addObject(new Unit(this.team, this.mesh.position));
+    this.game.addObject(new Carrier(this.team, this.mesh.position));
     // 60fps * seconds.
     this.buildTime = 60 * 10;
   }
 }
 
-var Unit = function(team, position) {
+var Carrier = function(team, position) {
+  this.dockedUnits = 5;
+  this.game = team.game;
+  this.team = team;
+  this.health = 100;
+  this.mesh = cube(6, team.color);
+  this.mesh.scale.z = 2;
+  this.mesh.position.copy(position);
+
+  var pos = new THREE.Vector3();
+  pos.copy(position).negate();
+  this.move = new MoveAction(this, pos);
+}
+Carrier.prototype.update = function() {
+  var colorScale = 1 - this.health / 100;
+  this.mesh.material.color.copy(this.team.color);
+  this.mesh.material.color.lerp(colors.BLACK, colorScale);
+  this.mesh.material.needsUpdate = true;
+
+  if (!this.target) {
+    // Look for enemy.
+    // TODO use sight for range.
+    var nearbyUnits = this.game.getNearby(this.mesh.position, 30);
+    angular.forEach(nearbyUnits, angular.bind(this, function(unit) {
+      if (unit.team != this.team) {
+        console.log('Found target', this.team, unit.team);
+        this.target = unit;
+      }
+    }))
+  }
+
+  if (this.target) {
+    if (this.dockedUnits > 0) {
+      // Deploy units.
+      this.dockedUnits--;
+      var unit = new Unit(this.team, this.mesh.position, this.move.targetPosition);
+      // TODO some randomness to units?
+      this.game.addObject(unit);
+    }
+    if (this.target.health <= 0) {
+      this.target = null;
+    }
+  } else {
+    this.move.update();
+  }
+}
+
+var MoveAction = function(unit, position) {
+  this.targetPosition = position;
+  this.mesh = unit.mesh;
+
+  this.velocity = new THREE.Vector3();
+  // TODO should do this each time target position changes.
+  this.velocity.subVectors(this.targetPosition, this.mesh.position).setLength(0.1);
+}
+
+MoveAction.prototype.update = function() {
+  this.mesh.lookAt(this.targetPosition);
+  this.mesh.position.add(this.velocity);
+}
+
+var Unit = function(team, position, targetPosition) {
   this.game = team.game;
   this.mesh = cube(1, team.color);
   this.team = team;
   this.health = 100;
-  // TODO needs an x, y;
-  this.vx = -0.1 * Math.sign(position.x);
-  this.vz = -0.1 * Math.sign(position.z);
   this.mesh.position.copy(position);
+
+  this.move = new MoveAction(this, targetPosition);
 }
 Unit.prototype.update = function() {
-  // this.vx += Math.sin(this.mesh.rotation.y) * Player.ACCELERATION;
-  // this.vz += Math.cos(this.mesh.rotation.y) * Player.ACCELERATION;
+  var colorScale = 1 - this.health / 100;
+  this.mesh.material.color.copy(this.team.color);
+  this.mesh.material.color.lerp(colors.BLACK, colorScale);
+  this.mesh.material.needsUpdate = true;
+
   if (!this.target) {
     // Look for enemy.
     // TODO use sight for range.
@@ -167,15 +240,10 @@ Unit.prototype.update = function() {
     // Fight the target, chasing it down.
     this.target.health--;
     if (this.target.health <= 0) {
-      // killed him, next time will do something else.
-      this.game.removeObject(this.target);
       this.target = null;
     }
   } else {
-    // Walk
-    // TODO should update directions or something.
-    this.mesh.position.x += this.vx;
-    this.mesh.position.z += this.vz;
+    this.move.update();
   }
 }
 

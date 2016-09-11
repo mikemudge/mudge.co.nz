@@ -86,6 +86,7 @@ MyController.prototype.logout = function() {
   this.prompt = 'select_account';
   this.auth2.signOut();
 }
+
 MyController.prototype.loginToGoogle = function() {
   if (!this.auth2) {
     alert('auth2 not ready');

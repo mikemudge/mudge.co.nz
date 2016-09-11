@@ -62,8 +62,16 @@ MainController.prototype.render = function(time) {
   this.renderer.render(this.scene, this.camera);
 }
 
-angular.module('rts', [])
-.controller('MainController', MainController);
+angular.module('rts', [
+  'ngRoute'
+])
+.controller('MainController', MainController)
+.config(function($locationProvider, $routeProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider.when('/', {
+    templateUrl: '/static/rts/rts.html'
+  })
+});
 
 /* ---------------------------------- Game objects ---------------------------------- */
 var colors = {

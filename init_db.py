@@ -1,57 +1,75 @@
 import bcrypt
+import datetime
 
-from flask import Blueprint
 from models import db
-from models import User, Rock1500Song
+from models import User, Rock1500Song, Biker, Ride, Walker, Walk
 
-init_bp = Blueprint('init', __name__)
+def init_all():
+    init_bikers()
+    init_walkers()
+    init_users()
+    rock_song_add()
 
-def init_user(username, password):
+def init_user(email, password):
+    username = email.split('@')[0]
     hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-    return User(username=username, name=username, fullname=username, hash=hashed)
+    return User(username=username, email=email, name=username, fullname=username, hash=hashed)
 
-@init_bp.route('users', methods=['GET'])
 def init_users():
-    users = User.query.all()
-    if len(users) > 0:
-        return "Already has users"
     db.session.add_all([
-        init_user('mike', 'mike'),
-        init_user('Test 1', 'test'),
-        init_user('Test 2', 'test'),
-        init_user('Test 3', 'test'),
+        init_user('mike.mudge@gmail.com', 'mike'),
+        init_user('mike.mudge.test@gmail.com', 'test'),
+        init_user('mike.mudge+test2@gmail.com', 'test'),
+        init_user('mike.mudge+test3@gmail.com', 'test'),
     ])
     db.session.commit()
 
-    return "Done"
+def init_bikers():
+    db.session.add_all([
+        Biker(name="Mike", rides=[
+            Ride(distance=132, date=datetime.datetime.utcnow().isoformat()),
+        ]),
+        Biker(name="Test2", rides=[
+            Ride(distance=100, date=datetime.datetime.utcnow().isoformat()),
+            Ride(distance=242, date=datetime.datetime.utcnow().isoformat()),
+        ])
+    ])
+    db.session.commit()
 
-@init_bp.route('rock_songs', methods=['GET'])
+def init_walkers():
+    db.session.add_all([
+        Walker(name="Mike", walks=[
+            Walk(distance=132, date=datetime.datetime.utcnow().isoformat()),
+        ]),
+        Walker(name="Test2", walks=[
+            Walk(distance=100, date=datetime.datetime.utcnow().isoformat()),
+            Walk(distance=242, date=datetime.datetime.utcnow().isoformat()),
+        ])
+    ])
+    db.session.commit()
+
 def rock_song_add():
-    songs = Rock1500Song.query.all()
-    if len(songs) == 0:
-        addSong('Thunderstruck', 'AC/DC')
-        addSong('Free Bird', 'Lynyrd Skynyrd')
-        addSong('Smells Like Teen Spirit', 'Nirvana')
-        addSong('Killing In The Name', 'Rage Against The Machine')
-        addSong('One', 'Metallica')
-        addSong('Everlong', 'Foo Fighters')
-        addSong('Sober', 'Tool')
-        addSong('Home Again', 'Shihad')
-        addSong('November Rain', 'Guns \'N\' Roses')
-        addSong('All My Life', 'Foo Fighters')
-        addSong('Enter Sandman', 'Metallica')
-        addSong('Back \'n\' Black', 'AC/DC')
-        addSong('Stinkfist', 'Tool')
-        addSong('Stairway to Heaven', 'Led Zeppelin')
-        addSong('Little Pills', 'Devilskin')
-        addSong('Sweet Child \'O Mine', 'Guns \'N\' Roses')
-        addSong('Master of Puppets', 'Metallica')
-        addSong('The General Electric', 'Shihad')
-        addSong('Bohemian Rhapsody', 'Queen')
-        return "Done"
-    return "Already has songs"
+    addSong('Thunderstruck', 'AC/DC')
+    addSong('Free Bird', 'Lynyrd Skynyrd')
+    addSong('Smells Like Teen Spirit', 'Nirvana')
+    addSong('Killing In The Name', 'Rage Against The Machine')
+    addSong('One', 'Metallica')
+    addSong('Everlong', 'Foo Fighters')
+    addSong('Sober', 'Tool')
+    addSong('Home Again', 'Shihad')
+    addSong('November Rain', 'Guns \'N\' Roses')
+    addSong('All My Life', 'Foo Fighters')
+    addSong('Enter Sandman', 'Metallica')
+    addSong('Back \'n\' Black', 'AC/DC')
+    addSong('Stinkfist', 'Tool')
+    addSong('Stairway to Heaven', 'Led Zeppelin')
+    addSong('Little Pills', 'Devilskin')
+    addSong('Sweet Child \'O Mine', 'Guns \'N\' Roses')
+    addSong('Master of Puppets', 'Metallica')
+    addSong('The General Electric', 'Shihad')
+    addSong('Bohemian Rhapsody', 'Queen')
+    db.session.commit()
 
 def addSong(name, band):
     song = Rock1500Song(name=name, band=band)
     db.session.add(song)
-    db.session.commit()

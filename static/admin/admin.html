@@ -3,6 +3,13 @@
     <a href="." class="nav-item">Admin</a>
   </div>
   <div>
+    <div class="clickable" ng-click="ctrl.initUsers()"> Init some users. </div>
+    <div class="clickable" ng-click="ctrl.loginUsingGoogle()">
+      Login Using Google
+    </div>
+    <div ng-show="ctrl.userService.googleUser">
+      <pre>{{ ctrl.userService.googleUser | json }}</pre>
+    </div>
     <h4>Register a user</h4>
     <label>
       Username: <input ng-model="ctrl.register.username" />
@@ -12,5 +19,8 @@
     </label>
     <button ng-click="ctrl.registerUser();">Register</button>
   </div>
-  <pre>{{ ctrl.users | json }}</pre>
+  <div ng-repeat="user in ctrl.users">
+    {{ user.username }}
+    | Auths: {{ user.auths.length }}
+  </div>
 </div>

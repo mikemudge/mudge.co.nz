@@ -1,19 +1,38 @@
+var auth2 = {
+  auth2: null,
+  cbs: [],
+  addCallback: function(cb) {
+    if (this.auth2) {
+      cb.apply(null, [this.auth2]);
+    }
+    this.cbs.push(cb)
+  },
+  load: function() {
+    this.auth2 = gapi.auth2.init({
+      client_id: '872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com'
+    });
+    var i = 0;
+    for (;i < this.cbs.length;i++) {
+      this.cbs[i].apply(null, [this.auth2]);
+    }
+  }
+}
 
-var LoginControl = function(userService) {
-  window.login = this;
- this.userService = userService;
-};
+// Called when the google auth script is downloaded.
+function initGoogle() {
+  gapi.load('auth2', auth2.load.bind(auth2));
+}
+(function() {
+  var js = document.createElement('script');
+  js.src = 'https://apis.google.com/js/api:client.js?onload=initGoogle'
+  var fjs = document.getElementsByTagName('script')[0];
+  fjs.parentNode.insertBefore(js, fjs);
+})();
 
-LoginControl.prototype.createUser = function(user) {
-  this.user = this.userService.register(user);
-};
-
-LoginControl.prototype.login = function(user) {
-  this.user = this.userService.login(user);
-};
-
-var UserService = function($resource, $rootScope) {
+var UserService = function(config, $cookies, $location, $resource, $rootScope) {
   this.$rootScope = $rootScope;
+  this.config = config;
+  this.$cookies = $cookies;
   this.User = $resource('/api/user', {}, {
     'login': {
       method: 'POST',
@@ -22,14 +41,96 @@ var UserService = function($resource, $rootScope) {
     'register': {
       method: 'POST',
       url: '/api/register'
+    },
+    'init': {
+      method: 'GET',
+      url: '/init/users'
     }
   });
 
+  this.cookie = $cookies.get(config.AUTH_COOKIE_ID);
+
+  console.log("Cookie:", this.cookie, $cookies);
+
+  if (this.cookie) {
+    // This just needs to check the token is still valid?
+    // May require relogin if its expired etc?
+    // this.user = this.User.get({'auth_token': this.cookie})
+  }
   // TODO longer persistance?
   if (sessionStorage.auth_token) {
     this.user = this.User.get({'auth_token': sessionStorage.auth_token})
   }
+
+  // TODO check cookie to see if the user is already auth'd?
+  this.googleUser = null;
+  auth2.addCallback(this.setAuth.bind(this));
 };
+
+UserService.prototype.setAuth = function(auth2) {
+  this.auth2 = auth2;
+  auth2.currentUser.listen(this.googleUserChanged.bind(this));
+
+  if (!this.cookie) {
+    // Attempt passive login?
+  }
+}
+
+UserService.prototype.googleUserChanged = function(user) {
+  this.loginComplete = true;
+  if (!user.isSignedIn()) {
+    // No google account is logged in, clear google data.
+    this.googleUser = null;
+    console.log('Not Logged in:', this.googleUser);
+    return;
+  }
+
+  // If signup we need to create the user in the 8i DB.
+  var parts = user.getAuthResponse().id_token.split('.');
+  var data = JSON.parse(atob(parts[1]))
+  this.googleUser = {
+    id_token: user.getAuthResponse().id_token,
+    data: data,
+    name: data.name,
+    email: data.email
+  };
+
+  console.log('Logged in:', this.googleUser);
+
+  // TODO if we have a cookie already we can skip this?
+  // What about expired cookies?
+  if (!this.cookie) {
+    this.user = this.User.login({
+      'id_token': this.googleUser.id_token
+    }, function() {
+      if (this.loginCallback) {
+        this.cookie = this.$cookies.get(this.config.AUTH_COOKIE_ID);
+        this.loginCallback.apply();
+      }
+    }.bind(this));
+  } else {
+    // We have a cookie, but we might need to re auth if its expired?
+  }
+  this.$rootScope.$apply();
+};
+
+UserService.prototype.logout = function() {
+  this.prompt = 'select_account';
+  this.auth2.signOut();
+}
+
+UserService.prototype.loginToGoogle = function(callback) {
+  if (!this.auth2) {
+    alert('auth2 not ready');
+    return;
+  }
+  this.loginCallback = callback;
+  // 'prompt': 'none' will login without showing a popup if it can.
+  this.auth2.signIn({
+    'scope': 'profile email',
+    'prompt': this.prompt
+  });
+}
 
 UserService.prototype.register = function(user) {
   this.User.register(user, angular.bind(this, function(result) {
@@ -58,11 +159,32 @@ UserService.prototype.login = function(user) {
   }));
 };
 
-angular.module('user', [
-  'ngRoute'
+// Example control.
+var LoginControl = function(userService) {
+  window.login = this;
+ this.userService = userService;
+};
+
+LoginControl.prototype.createUser = function(user) {
+  this.user = this.userService.register(user);
+};
+
+LoginControl.prototype.login = function(user) {
+  this.user = this.userService.login(user);
+};
+
+angular.module('userService', [
+  'config',
+  'ngCookies',
+  'ngResource'
+])
+.service('userService', UserService)
+
+angular.module('userExample', [
+  'ngRoute',
+  'userService'
 ])
 .controller('LoginControl', LoginControl)
-.service('userService', UserService)
 .config(function($routeProvider) {
   $routeProvider
     .when('/login', {

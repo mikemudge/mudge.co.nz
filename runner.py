@@ -1,6 +1,5 @@
 from api_app import api_bp
 from main import main_bp
-from init_db import init_bp
 from flask import Flask
 from models import db
 
@@ -12,7 +11,6 @@ def create_app(config):
     app.config.from_object(config)
     app.register_blueprint(main_bp, url_prefix='')
     app.register_blueprint(api_bp, url_prefix='/api')
-    app.register_blueprint(init_bp, url_prefix='/init/')
     db.init_app(app)
     return app
 
@@ -27,8 +25,7 @@ def start():
 
     if 'reset' in sys.argv:
         import init_db
-        init_db.init_users()
-        init_db.rock_song_add()
+        init_db.init_all()
         # Due to reset param, we shouldn't run the server.
         return
 

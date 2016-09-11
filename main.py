@@ -37,23 +37,24 @@ def hello_world(path=None):
 @main_bp.route('/a/<app>/<path:path>')
 def angular(app, path=None):
     # TODO check what files exist in the /static/<app> folder.
-    include = 'static/%s/%s.html' % (app, app)
-    if os.path.isfile(include):
-        include = url_for('static', filename='%s/%s.html' % (app, app))
-    else:
-        include = None
+    # include = 'static/%s/%s.html' % (app, app)
+    # if os.path.isfile(include):
+    #     include = url_for('static', filename='%s/%s.html' % (app, app))
+    # else:
+    #     include = None
     return render_template('angular.tmpl', **{
         'angular': {
             'app': app,
             'base': '/a/%s/' % app,
-            'include': include,
             'config': {
                 'basePath': '/static/%s/' % app,
-                'GOOGLE_CLIENT_ID': config.GOOGLE_CLIENT_ID
+                'GOOGLE_CLIENT_ID': config.GOOGLE_CLIENT_ID,
+                'AUTH_COOKIE_ID': config.AUTH_COOKIE_ID,
             }
         },
         'scripts': [
             # TODO dependency lookups?
+            url_for('static', filename="common/user.js"),
             url_for('static', filename="js/three.min.js"),
             url_for('static', filename="js/three.js/OrbitControls.js"),
             url_for('static', filename='%s/%s.js' % (app, app))

@@ -125,5 +125,13 @@ MyController.prototype.updateVideoFeed = function(cameraSource) {
 };
 
 angular.module('ar', [
+  'ngRoute'
 ])
 .controller('MyController', MyController)
+.config(function($locationProvider, $routeProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider.when('/', {
+    templateUrl: '/static/ar/ar.html'
+  })
+})
+;

@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 db = SQLAlchemy()
 
 class Friendship(db.Model):
+    __bind_key__ = 'db2'
     __tablename__ = 'friendship'
 
     initiator_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
@@ -17,10 +18,12 @@ class Friendship(db.Model):
     # , onupdate=func.current_timestamp())
 
 class User(db.Model):
+    __bind_key__ = 'db2'
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, unique=True)
+    email = db.Column(db.String, unique=True)
     hash = db.Column(db.String)
     name = db.Column(db.String)
     fullname = db.Column(db.String)
@@ -52,6 +55,7 @@ User.all_friends = relationship(
     viewonly=True)
 
 class UserAuth(db.Model):
+    __bind_key__ = 'db2'
     __tablename__ = 'user_auth'
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     user = relationship("User", backref="auths")
@@ -60,6 +64,7 @@ class UserAuth(db.Model):
     expires = db.Column(TIMESTAMP, nullable=False)
 
 class Address(db.Model):
+    __bind_key__ = 'db2'
     __tablename__ = 'addresses'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -116,6 +121,16 @@ class Rock1500Song(db.Model):
 
     name = db.Column(db.String)
     band = db.Column(db.String)
+
+# Testing the authed rest stuff.
+class AuthedThing(db.Model):
+    __bind_key__ = 'db2'
+    id = db.Column(db.Integer, primary_key=True)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    user = relationship("User")
+
+    name = db.Column(db.String)
 
 def simpleSerialize(value):
     result = {}

@@ -160,7 +160,14 @@ BreakoutController.prototype.render = function(time) {
 }
 
 angular.module('breakout', [
-  'config'
+  'config',
+  'ngRoute'
 ])
 .controller('BreakoutController', BreakoutController)
+.config(function($locationProvider, $routeProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider.when('/', {
+    templateUrl: '/static/breakout/breakout.html'
+  })
+})
 ;

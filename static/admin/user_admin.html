@@ -1,0 +1,23 @@
+<div ng-controller="AdminController as ctrl">
+  <div>
+    <div class="clickable" ng-click="ctrl.loginUsingGoogle()">
+      Login Using Google
+    </div>
+    <h4> Mudge.co.nz user:</h4>
+    <div ng-show="ctrl.userService.user">
+      <pre>{{ ctrl.userService.user | json }}</pre>
+    </div>
+    <h4>Register a user</h4>
+    <label>
+      Username: <input ng-model="ctrl.register.username" />
+    </label>
+    <label>
+      Password: <input type="password" ng-model="ctrl.register.password" />
+    </label>
+    <button ng-click="ctrl.registerUser();">Register</button>
+  </div>
+  <div ng-repeat="user in ctrl.users">
+    {{ user.username }}
+    | Auth Expires: {{ user.auth.expires }}
+  </div>
+</div>

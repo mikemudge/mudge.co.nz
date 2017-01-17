@@ -1,8 +1,8 @@
 import bcrypt
 import datetime
 
-from models import db
-from models import User, Rock1500Song, Biker, Ride, Walker, Walk
+from app.models import db
+from app.models import User, Rock1500Song, Biker, Ride, Walker, Walk
 
 def init_all():
     init_bikers()

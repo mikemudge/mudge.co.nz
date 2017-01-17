@@ -5,3 +5,30 @@ body {
 .clickable {
   cursor: pointer;
 }
+
+.header {
+  background-color: #a92d38;
+  height: 80px;
+}
+
+.user {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.info {
+  vertical-align: middle;
+  display: inline-block;
+}
+.picture {
+  vertical-align: middle;
+  display: inline-block;
+  margin: 20px;
+}
+
+.picture img {
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+}

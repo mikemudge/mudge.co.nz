@@ -1,12 +1,12 @@
 import bcrypt
 import config
 import datetime
-import models
 import requests
 
+from app import models
 from flask import request, jsonify, session
 from functools import wraps
-from models import db
+from app.models import db
 
 def ensure_user(f):
     @wraps(f)
@@ -22,14 +22,31 @@ def ensure_user(f):
 
     return wrapper
 
+def ensure_admin(f):
+    @wraps(f)
+    def wrapper(*args, **kwds):
+        # TODO handle exceptions while checking this?
+        auth = getCurrentAuth()
+        if auth and auth.user.email == 'mike.mudge@gmail.com':
+            # TODO support a better admin concept.
+            return f(auth, *args, **kwds)
+        if not auth:
+            return notLoggedIn('Not Logged In')
+        # TODO check expired or invalid token etc.
+        return notLoggedIn('Not an admin')
+
+    return wrapper
+
 def getCurrentAuth():
     # TODO read cookie for auth token and user id.
     token = request.cookies.get(config.AUTH_COOKIE_ID)
     if not token:
+        print "No auth token"
         return None
 
     pieces = token.split('-')
     if len(pieces) < 2:
+        print "Bad auth token"
         return None
     user_id = int(pieces[0])
     auth_token = pieces[1]
@@ -37,6 +54,7 @@ def getCurrentAuth():
     auth = models.UserAuth.query.filter_by(user_id=user_id, auth_token=auth_token).first()
     if auth and datetime.datetime.now() < auth.expires:
         return auth
+    print "Expired auth token"
     return None
 
 def createNewAuth(user):

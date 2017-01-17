@@ -1,15 +1,12 @@
 import auth
 import bcrypt
-import config
-import datetime
 import json
-import models
-import requests
 
+from app import models
 from auth import ensure_user, googleAuth
 from flask import Blueprint, Response
 from flask import abort, jsonify, make_response, request
-from models import db, simpleSerialize
+from app.models import db, simpleSerialize
 from sqlalchemy.exc import IntegrityError
 
 api_bp = Blueprint('api', __name__)
@@ -71,22 +68,20 @@ def login():
             'result': False
         })
 
-@api_bp.route('/create_tables')
-def create_tables():
-    # This isn't going to work well all the time.
-    # TODO figure out a better way to seperate data for apps.
-    # Yet still allow sharing when it is required
-    db.create_all()
-
 @api_bp.route('/logout')
 def logout():
     db.session.pop('logged_in', None)
     return json.dumps({'result': 'success'})
 
-@api_bp.route('/user', methods=['POST', 'GET'])
-def user_api():
-    # TODO deleting a user requires deleting all the auths as well.
-    return rest_response(models.User, extras=['auths'])
+@api_bp.route('/user', methods=['GET'])
+@ensure_user
+def auth_user(auth):
+    result = auth.user.serializable()
+    result['auth'] = {
+        'expires': auth.expires
+    }
+
+    return jsonify(result)
 
 @api_bp.route('/friends', methods=['POST', 'GET'])
 def friend_api():

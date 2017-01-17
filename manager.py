@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+
 import config
 
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-from runner import create_app
-from models import db
+from main import create_app
+from app.models import db
 
 app = create_app(config)
 

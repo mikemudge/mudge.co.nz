@@ -14,7 +14,7 @@ var MainController = function() {
   this.camera.position.z = 80;
   this.camera.position.y = 80;
   // This is 45 degrees down onto the map.
-  this.camera.rotation.x = -Math.PI * 1 / 4;
+  this.camera.rotation.x = -Math.PI / 4;
 
   var gridHelper = new THREE.GridHelper(100, 1);
   this.scene.add(gridHelper);
@@ -225,6 +225,7 @@ var Unit = function(team, position, targetPosition) {
   this.health = 100;
   this.mesh.position.copy(position);
 
+  this.speed = 1;
   this.move = new MoveAction(this, targetPosition);
 }
 Unit.prototype.update = function() {

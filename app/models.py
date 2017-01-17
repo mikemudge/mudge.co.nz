@@ -1,12 +1,12 @@
 import datetime
 
+from app.database import db
+
 from sqlalchemy import select
 from sqlalchemy.types import TIMESTAMP
 from sqlalchemy.sql.expression import func
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
 
-db = SQLAlchemy()
+from sqlalchemy.orm import relationship
 
 class Friendship(db.Model):
     __bind_key__ = 'db2'
@@ -35,6 +35,17 @@ class User(db.Model):
         secondaryjoin=id == Friendship.recipient_id,
         backref="friends2",
     )
+
+    def serializable(self):
+        return {
+            'id': self.id,
+            'email': self.email,
+            'name': self.name,
+            'username': self.username
+        }
+
+    def __repr__(self):
+        return self.email
 
 friendship_union = select([
     Friendship.initiator_id,
@@ -77,6 +88,9 @@ class Walker(db.Model):
     name = db.Column(db.String)
     color = db.Column(db.String)
 
+    def __repr__(self):
+        return self.name
+
 class Walk(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     walker_id = db.Column(db.Integer, db.ForeignKey('walker.id'))
@@ -89,6 +103,9 @@ class Biker(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     color = db.Column(db.String)
+
+    def __repr__(self):
+        return self.name
 
 class Ride(db.Model):
     id = db.Column(db.Integer, primary_key=True)

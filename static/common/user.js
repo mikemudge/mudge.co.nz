@@ -50,19 +50,28 @@ var UserService = function(config, $cookies, $location, $resource, $rootScope) {
 
   this.cookie = $cookies.get(config.AUTH_COOKIE_ID);
 
-  console.log("Cookie:", this.cookie, $cookies);
+  console.log("I found a user cookie:", this.cookie);
 
   if (this.cookie) {
     // This just needs to check the token is still valid?
     // May require relogin if its expired etc?
-    // this.user = this.User.get({'auth_token': this.cookie})
-  }
-  // TODO longer persistance?
-  if (sessionStorage.auth_token) {
-    this.user = this.User.get({'auth_token': sessionStorage.auth_token})
+    this.user = this.User.get(function(response) {
+      // Nothing else to do, you were logged in.
+    }.bind(this), function(response) {
+      console.log('response', response)
+      if (response.status == 403) {
+        // Need to login.
+        if (this.googleUser) {
+          this.User.login({
+            'id_token': this.googleUser.id_token
+          });
+        }
+        this.user.loginRequired = true;
+      }
+    }.bind(this));
   }
 
-  // TODO check cookie to see if the user is already auth'd?
+  // Always load google user data.
   this.googleUser = null;
   auth2.addCallback(this.setAuth.bind(this));
 };
@@ -97,9 +106,8 @@ UserService.prototype.googleUserChanged = function(user) {
 
   console.log('Logged in:', this.googleUser);
 
-  // TODO if we have a cookie already we can skip this?
-  // What about expired cookies?
-  if (!this.cookie) {
+  // If there is no cookie or the user requires login then do it with id_token.
+  if (!this.cookie || this.user.loginRequired) {
     this.user = this.User.login({
       'id_token': this.googleUser.id_token
     }, function() {
@@ -108,8 +116,6 @@ UserService.prototype.googleUserChanged = function(user) {
         this.loginCallback.apply();
       }
     }.bind(this));
-  } else {
-    // We have a cookie, but we might need to re auth if its expired?
   }
   this.$rootScope.$apply();
 };

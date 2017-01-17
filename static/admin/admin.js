@@ -2,14 +2,10 @@ var AdminController = function($resource, $scope, userService) {
   this.userService = userService;
   this.$scope = $scope;
 
-  this.User = $resource('/api/user', {}, {
+  this.User = $resource('/admin/api/user', {}, {
     register: {
       method: 'POST',
       url: '/api/register'
-    },
-    init: {
-      method: 'POST',
-      url: '/init/users'
     }
   });
   this.users = this.User.query();
@@ -45,8 +41,13 @@ angular.module('admin', [
 .config(function($locationProvider, $routeProvider, config) {
   $locationProvider.html5Mode(true);
   $routeProvider
+    .when('/users', {
+      templateUrl: config.basePath + 'user_admin.html',
+    })
     .otherwise({
-      templateUrl: config.basePath + 'admin/admin.html',
+      templateUrl: config.basePath + 'admin.html',
     });
+}).run(function($rootScope, config) {
+  $rootScope.baseURL = config.basePath;
 })
 ;

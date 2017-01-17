@@ -69,3 +69,6 @@ target/
 # Https stuff
 key.key
 key.crt
+
+# The local_config should stay local.
+local_config.py

@@ -3,6 +3,10 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
 import logging
+import sqlalchemy as sa
+from app.database import UUID
+
+sa.UUID = UUID
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

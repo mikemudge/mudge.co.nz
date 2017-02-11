@@ -1,10 +1,15 @@
-from app import admin
-from app.routes import routes
+from auth.provider import oauth
+from flask import Flask
+from flask_marshmallow import Marshmallow
+from shared import exceptions
+from shared.database import db
+
+# Import routes.
 from app.api_app import api_bp
 from app.main import main_bp
-from app.models import db
-from flask import Flask
-from tournament.routes import routes as tournament_routes
+from auth.routes import routes as auth_routes
+from tournament_app.routes import routes as tournament_routes
+from app.admin import routes as admin_routes
 
 def create_app(config):
     app = Flask(__name__)
@@ -12,10 +17,18 @@ def create_app(config):
     app.config.from_object(config)
     app.register_blueprint(main_bp, url_prefix='')
     app.register_blueprint(api_bp, url_prefix='/api')
-    app.register_blueprint(admin.admin_bp, url_prefix='/admin/api/')
 
-    routes(app)
+    admin_routes(app)
+    auth_routes(app)
     tournament_routes(app)
 
     db.init_app(app)
+
+    exceptions.registerHandlers(app)
+
+    ma = Marshmallow()
+    ma.init_app(app)
+
+    oauth.init_app(app)
+
     return app

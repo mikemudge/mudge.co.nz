@@ -4,6 +4,7 @@ import os
 
 from flask import Blueprint
 from flask import render_template, request, send_from_directory, url_for
+from app import angular
 
 main_bp = Blueprint('main', __name__)
 
@@ -35,7 +36,7 @@ def hello_world(path=None):
 
 @main_bp.route('/a/<app>/')
 @main_bp.route('/a/<app>/<path:path>')
-def angular(app, path=None):
+def angularEndpoint(app, path=None):
     # TODO check what files exist in the /static/<app> folder.
     # include = 'static/%s/%s.html' % (app, app)
     # if os.path.isfile(include):
@@ -57,10 +58,18 @@ def angular(app, path=None):
             url_for('static', filename="common/user.js"),
             url_for('static', filename="js/three.min.js"),
             url_for('static', filename="js/three.js/OrbitControls.js"),
-            url_for('static', filename='%s/%s.js' % (app, app))
+            url_for('static', filename='%s/%s.js' % (app, app)),
+
+            # Angular material.
+            "http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js",
+            "http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js",
+            "http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js",
+            'http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js',
         ],
         'styles': [
-            url_for('static', filename="%s/%s.css" % (app, app))
+            url_for('static', filename="%s/%s.css" % (app, app)),
+            # Add angular material.
+            'http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css',
         ]
     })
 
@@ -205,3 +214,12 @@ def at_test():
             url_for('static', filename='ar/ar.css'),
         ]
     })
+
+@main_bp.route('/login/')
+@main_bp.route('/login/<path:path>')
+def login(path=None):
+    app = angular.app('login')
+    app.addScripts([
+        url_for('static', filename='login/loginService.js')
+    ])
+    return app.render()

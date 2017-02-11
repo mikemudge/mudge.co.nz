@@ -1,26 +1,46 @@
-import auth
 import config
-import json
 
 from app import models
-from flask import Blueprint
-from app.models import db
+from auth.models import Client, Scope, User, Profile
+from tournament_app.models import Tournament, Team, Match, Round
+from shared.database import db
+from flask_admin import Admin, AdminIndexView
+from flask_admin.contrib.sqla import ModelView
 
-# My admin stuff.
-admin_bp = Blueprint('myAdmin', __name__)
+class BaseView(ModelView):
+    form_excluded_columns = ['date_created']
 
-@admin_bp.route('create_tables')
-def create_tables():
-    # This isn't going to work well all the time.
-    # TODO figure out a better way to seperate data for apps.
-    # Yet still allow sharing when it is required
-    db.create_all()
+class UserView(BaseView):
+    column_exclude_list = ['hash']
 
-@admin_bp.route('user', methods=['GET'])
-@auth.ensure_admin
-def user_api(adminUser):
-    users = models.User.query.all()
-    return json_array([u.serializable() for u in users])
+def routes(app):
 
-def json_array(arg):
-    return ")]}',\n" + json.dumps(arg)
+    if not config.ENABLE_TEST:
+        # Don't enable the flask admin on prod.
+        # Can enable this once auth is in place.
+        return
+
+    flaskAdmin = Admin(app, name='Mudge.co.nz', template_mode='bootstrap3', index_view=AdminIndexView(
+        name='Home',
+        template='admin/master.html',
+        url='/flask-admin'
+    ))
+
+    flaskAdmin.add_view(BaseView(models.Walker, db.session, category="Walk"))
+    flaskAdmin.add_view(BaseView(models.Walk, db.session, category="Walk"))
+
+    flaskAdmin.add_view(BaseView(models.Biker, db.session, category="Bike"))
+    flaskAdmin.add_view(BaseView(models.Ride, db.session, category="Bike"))
+
+    flaskAdmin.add_view(BaseView(models.Rock1500, db.session, category="Rock1500"))
+    flaskAdmin.add_view(BaseView(models.Rock1500Song, db.session, category="Rock1500"))
+
+    flaskAdmin.add_view(BaseView(Tournament, db.session, category="Tournament"))
+    flaskAdmin.add_view(BaseView(Match, db.session, category="Tournament"))
+    flaskAdmin.add_view(BaseView(Round, db.session, category="Tournament"))
+    flaskAdmin.add_view(BaseView(Team, db.session, category="Tournament"))
+
+    flaskAdmin.add_view(BaseView(Client, db.session, category="Auth"))
+    flaskAdmin.add_view(BaseView(Scope, db.session, category="Auth"))
+    flaskAdmin.add_view(BaseView(User, db.session, category="Auth"))
+    flaskAdmin.add_view(BaseView(Profile, db.session, category="Auth"))

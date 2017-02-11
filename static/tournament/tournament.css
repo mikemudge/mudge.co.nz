@@ -1,0 +1,14 @@
+.team.active {
+  background-color: red;
+}
+
+.button {
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 6px 20px;
+  cursor: pointer;
+  border: 1px solid #00d0e0;
+}
+.button:hover {
+  background-color: #EEE;
+}

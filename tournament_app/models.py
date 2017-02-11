@@ -1,29 +1,30 @@
-import uuid
-
-from app.database import db, UUID
+from shared.database import db, BaseModel, UUID
 
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
 
-class BaseModel(db.Model):
+class TournamentBaseModel(BaseModel):
     __abstract__ = True
-    id = db.Column('id', UUID(), primary_key=True, default=uuid.uuid4)
-
-    date_created = db.Column(db.DateTime(timezone=True), server_default=func.now())
     name = db.Column(db.String)
 
-class Tournament(BaseModel):
+    def __repr__(self):
+        return self.name
+
+class Tournament(TournamentBaseModel):
     pass
 
-class Team(BaseModel):
+class Team(TournamentBaseModel):
     tournament_id = db.Column(UUID(), db.ForeignKey('tournament.id', ondelete='CASCADE'))
     tournament = relationship("Tournament", backref="teams")
 
-class Round(BaseModel):
+    @classmethod
+    def loadByName(name):
+        return Team.query.filter_by(name=name).first()
+
+class Round(TournamentBaseModel):
     tournament_id = db.Column(UUID(), db.ForeignKey('tournament.id', ondelete='CASCADE'))
     tournament = relationship("Tournament", backref="rounds")
 
-class Match(BaseModel):
+class Match(TournamentBaseModel):
     round_id = db.Column(UUID(), db.ForeignKey('round.id', ondelete='CASCADE'))
     round = relationship("Round", backref="matches")
 

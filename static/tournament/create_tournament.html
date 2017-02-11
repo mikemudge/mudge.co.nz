@@ -1,0 +1,56 @@
+<div ng-controller='CreateTournamentController as ctrl'>
+  <div>
+    <h3> Create a new Tournament</h3>
+  </div>
+
+  <label>
+    Tournament name
+    <input ng-model="ctrl.newTournament.name" />
+  </label>
+
+  <div ng-show="ctrl.newSettings">
+    <h4> Create new Settings </h4>
+    <!-- Round robin settings -->
+    <label>
+      # Teams per pool
+      <input type="number" ng-model="ctrl.newSettings.teamsPerPool" />
+    </label>
+    <label>
+      # Teams progressing from each pool
+      <input type="number" ng-model="ctrl.newSettings.teamsPerPool" />
+    </label>
+    <label>
+      # wildcard entries
+      <input type="number" ng-model="ctrl.newSettings.teamsPerPool" />
+    </label>
+    <!-- Knockout settings -->
+    <label>
+      <input type="checkbox"
+          ng-model="ctrl.newSettings.doubleElimination" />
+        Double elimination?
+    </label>
+  </div>
+
+  <h3>Add Teams</h3>
+  <!-- Seperate page for this? -->
+  <div class="team" ng-repeat="team in ctrl.teams"
+      ng-class="{active: team.selected}"
+      ng-click="team.selected = !team.selected">
+    {{ team.name }}
+  </div>
+
+  <h3>Tournament Settings</h3>
+  <select ng-options="settings.name for settings in ctrl.settings"
+      ng-model="ctrl.newTournament.settings">
+  </select>
+  <div> Or
+    <span ng-click="ctrl.createSettings()">
+      create a new settings
+    </span>
+  </div>
+
+  <div class="button" ng-click="ctrl.createTournament()">
+    Create new Tournament
+  </div>
+  <md-button>Create new Tournament</md-button>
+</div>

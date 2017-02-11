@@ -1,95 +1,11 @@
-import auth
-import bcrypt
 import json
 
 from app import models
-from auth import ensure_user, googleAuth
 from flask import Blueprint, Response
 from flask import abort, jsonify, make_response, request
 from app.models import db, simpleSerialize
-from sqlalchemy.exc import IntegrityError
 
 api_bp = Blueprint('api', __name__)
-
-@api_bp.route('/register', methods=['POST'])
-def register():
-    data = request.json
-
-    # Use a random salt which is saved along side the hash.
-    hashed = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
-
-    user = models.User(
-        username=data['username'],
-        hash=hashed
-    )
-    try:
-        db.session.add(user)
-        db.session.commit()
-        db.session.close()
-        return login()
-    except IntegrityError:
-        db.session.close()
-        return json.dumps({
-            'result': False,
-            'error': 'User is already registered',
-        })
-
-@api_bp.route('/login', methods=['POST'])
-def login():
-    data = request.json
-    if not data:
-        # TODO bad request.
-        return json.dumps({
-            'result': False
-        })
-
-    if data.get('id_token'):
-        return auth.loginWithIdToken(data['id_token'])
-
-    # Log in with user/password
-    user = models.User.query.filter_by(username=data['username']).first()
-    if user and bcrypt.hashpw(data['password'].encode('utf-8'), user.hash.encode('utf-8')) == user.hash:
-        auth.createNewAuth(user)
-        return json.dumps({
-            'result': True,
-            'auth': {
-                'user_id': auth.user_id,
-                'auth_token': auth.auth_token
-            },
-            'user': {
-                'username': user.username,
-                'name': user.name,
-                'fullname': user.fullname,
-                'id': user.id,
-            }
-        })
-    else:
-        return json.dumps({
-            'result': False
-        })
-
-@api_bp.route('/logout')
-def logout():
-    db.session.pop('logged_in', None)
-    return json.dumps({'result': 'success'})
-
-@api_bp.route('/user', methods=['GET'])
-@ensure_user
-def auth_user(auth):
-    result = auth.user.serializable()
-    result['auth'] = {
-        'expires': auth.expires
-    }
-
-    return jsonify(result)
-
-@api_bp.route('/friends', methods=['POST', 'GET'])
-def friend_api():
-    return rest_response(models.Friendship)
-
-@api_bp.route('/address', methods=['POST', 'GET'])
-def address_api():
-    return rest_response(models.Address)
 
 @api_bp.route('/walker', methods=['POST', 'GET'])
 def walker_api():
@@ -107,11 +23,9 @@ def biker_api():
 def ride_api():
     return rest_response(models.Ride)
 
-@api_bp.route('/authedModel', methods=['GET', 'POST', 'DELETE'])
-@ensure_user
-def get_authed_model(user):
-    # TODO do something with user?
-    return rest_response(models.AuthedThing, extras=['user'])
+@api_bp.route('/address', methods=['POST', 'GET'])
+def address_api():
+    return rest_response(models.Address)
 
 @api_bp.route('/rock1500', methods=['GET'])
 def rock_get_my_picks():

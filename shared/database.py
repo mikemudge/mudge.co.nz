@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import types, CHAR
 from sqlalchemy.dialects.mysql.base import MSBinary
 from sqlalchemy.dialects.postgresql import UUID as postgresUUID
+from sqlalchemy.sql import func
 
 db = SQLAlchemy()
 
@@ -48,3 +49,12 @@ class UUID(types.TypeDecorator):
 
     def is_mutable(self):
         return False
+
+class BaseModel(db.Model):
+    __abstract__ = True
+    id = db.Column('id', UUID(), primary_key=True, default=uuid.uuid4)
+
+    date_created = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    def __repr__(self):
+        return self.name

@@ -3,11 +3,11 @@ import config
 import json
 import logging
 
-from app.models import db
+from app import create_app
 from auth.models import Client, Scope, User
 from flask_testing import TestCase
 from jose import jwt
-from main import create_app
+from shared.database import db
 
 # Turn down logging.
 logging.getLogger('oauthlib').setLevel(logging.WARN)
@@ -19,7 +19,11 @@ class BaseTestCase(TestCase):
 
     def create_app(self):
         config.TESTING = True
-        config.SQLALCHEMY_DATABASE_URI = "sqlite://"
+        config.SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@localhost/mudgeconzTest'
+        config.SQLALCHEMY_BINDS = {
+            # Used for trails.
+            'old_sqlite': 'sqlite:///firstproject.db',
+        }
         config.PRESERVE_CONTEXT_ON_EXCEPTION = False
         config.SECRET_KEY = "Testing Secret"
         app = create_app(config)

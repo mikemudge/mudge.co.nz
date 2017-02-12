@@ -5,13 +5,17 @@ from shared import exceptions
 from shared.database import db
 
 # Import routes.
+from app.admin import routes as admin_routes
 from app.api_app import api_bp
 from app.main import main_bp
 from auth.routes import routes as auth_routes
+from flask_migrate import Migrate
 from tournament_app.routes import routes as tournament_routes
-from app.admin import routes as admin_routes
+
+migrate = Migrate()
 
 def create_app(config):
+
     app = Flask(__name__)
     # TODO load from a config.py
     app.config.from_object(config)
@@ -25,6 +29,7 @@ def create_app(config):
     tournament_routes(app)
 
     db.init_app(app)
+    migrate.init_app(app, db)
 
     exceptions.registerHandlers(app)
 

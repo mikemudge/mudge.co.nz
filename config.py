@@ -2,6 +2,11 @@ ENABLE_TEST = False
 
 # Configuration
 SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconz:xXBE3RcJi1ULfeo3LKENqdBZqmtzLI@localhost/mudgeconz'
+SQLALCHEMY_BINDS = {
+    # Used for trails.
+    'old_sqlite': 'sqlite:///firstproject.db',
+}
+
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 DEBUG = True
 SECRET_KEY = 'development key mike rocks ^U8f)PpGhyf"ECf/'

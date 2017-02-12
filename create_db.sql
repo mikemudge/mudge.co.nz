@@ -1,0 +1,3 @@
+CREATE DATABASE "mudgeconz";
+CREATE USER "mudgeconz" WITH PASSWORD 'xXBE3RcJi1ULfeo3LKENqdBZqmtzLI';
+GRANT ALL PRIVILEGES ON DATABASE "mudgeconz" to "mudgeconz";

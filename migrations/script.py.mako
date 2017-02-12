@@ -13,6 +13,7 @@ down_revision = ${repr(down_revision)}
 from alembic import op
 import app
 import sqlalchemy as sa
+import shared
 ${imports if imports else ""}
 
 def upgrade():

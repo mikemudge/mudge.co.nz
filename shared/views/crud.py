@@ -1,12 +1,10 @@
 from app.models import db
 from flask import jsonify, request
 from flask.views import MethodView
-from auth.provider import oauth
 
 class DBModelView(MethodView):
     model = None
 
-    @oauth.require_oauth('profile')
     def get(self, pk):
         # Get single or multiple.
         if pk is None:

@@ -1,6 +1,7 @@
 import bcrypt
 from shared.database import db, BaseModel, UUID
 from sqlalchemy.orm import relationship
+from werkzeug.security import gen_salt
 
 api_client_scope = db.Table(
     'api_client_scope',
@@ -11,14 +12,30 @@ api_client_scope = db.Table(
 )
 
 class Client(BaseModel):
-    client_key = db.Column(db.String(40), primary_key=True)
-    client_secret = db.Column(db.String(55), index=True, nullable=False)
+    client_id = db.Column(db.String(40), unique=True, index=True, nullable=False)
+    client_secret = db.Column(db.String(55), unique=True, index=True, nullable=False)
 
     name = db.Column(db.String(255))
 
     scopes = db.relationship("Scope",
                              secondary=api_client_scope,
                              back_populates="clients")
+
+    @classmethod
+    def create(cls, name):
+        client = Client(name=name)
+        client.client_id = gen_salt(40)
+        client.client_secret = gen_salt(50)
+        return client
+
+    # Some properties required by oauthlib.
+    @property
+    def default_redirect_uri(self):
+        return None
+
+    @property
+    def default_scopes(self):
+        return [scope.name for scope in self.scopes]
 
 class Scope(BaseModel):
     name = db.Column(db.String(255))
@@ -63,7 +80,7 @@ class User(BaseModel):
         db.session.commit()
         return user
 
-    def password_match(self, password_attempt):
+    def check_password(self, password_attempt):
         return bcrypt.hashpw(password_attempt.encode('utf-8'), self.password_hash.encode('utf-8')) == self.password_hash
 
 class Profile(BaseModel):

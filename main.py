@@ -1,4 +1,4 @@
-from auth.provider import oauth
+from auth.provider import oauth, setup as setup_auth
 from flask import Flask
 from flask_marshmallow import Marshmallow
 from shared import exceptions
@@ -17,6 +17,8 @@ def create_app(config):
     app.config.from_object(config)
     app.register_blueprint(main_bp, url_prefix='')
     app.register_blueprint(api_bp, url_prefix='/api')
+
+    setup_auth(app)
 
     admin_routes(app)
     auth_routes(app)

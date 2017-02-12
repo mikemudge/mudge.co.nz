@@ -1,103 +1,66 @@
-import json
-
 from ..models import User
-from ..serialize import UserSchema
 from ..utils import googleAuth
+from ..provider import oauth
 from flask import request, jsonify
 from flask import Blueprint
-from functools import wraps
+from flask.views import MethodView
 from shared.database import db
 from shared.exceptions import ValidationException, AuthenticationException
 
 auth_bp = Blueprint('auth_api', __name__, url_prefix='/api')
 
+class AuthenticationTokenView(MethodView):
 
-def require_client(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        # Get client_id and secret.
-        if request.client_id is not None:
-            return request.client_id, request.client_secret
+    @oauth.token_handler
+    def post(self):
+        # This seems like a dumb thing to me.
+        return None
 
-@auth_bp.route('/register', methods=['POST'])
-def register():
-    data = request.json
+class AuthenticationConnectorView(MethodView):
 
-    email = data['email']
-    existing_user = User.query.filter_by(email=email).first()
-    if existing_user:
-        # TODO could just signin if password matches?
-        raise Exception('Already exists')
+    def post(self):
+        """
+        Get Token through social login
+        :return:
+        """
+        try:
+            # valid = self._validator.authenticate_client(request=request)
+            # This doesn't seem legit?
+            valid = oauth._validator.authenticate_client(request)
+        except Exception as e:
+            raise e
+            # raise AuthenticationException(e, error_code=codes.MALFORMED_OR_MISSING_BASIC_AUTH)
 
-    # Else create the user.
-    user = User.create(
-        email,
-        data['firstname'],
-        data['lastname'],
-        data['password'])
+        if not valid:
+            raise AuthenticationException(['Invalid basic auth'])
 
-    return jsonify({
-        'email': user.email
-    })
+        data = request.json
 
-# Authenticate using a social connection.
-@auth_bp.route('/connect-token', methods=['POST'])
-def connectViaSocial():
-    data = request.json
+        # Check Google Login
+        if data.get("type") == "google":
+            response = self.googleConnection(data).get('id_token')
+            return jsonify(response)
+        else:
+            raise NotImplemented('Social connect with type: ' + data.get('type'))
 
-    if data['type'] == 'google':
-        user = googleConnection(data.get('id_token'))
-    else:
-        raise NotImplemented('Social connect with type: ' + data.get('type'))
+    def googleConnection(self, token):
+        if not token:
+            raise ValidationException(['No id_token'])
+        sub, data = googleAuth(token)
 
-    userSchema = UserSchema()
-    result, errors = userSchema.dump(user)
-    if errors:
-        raise ValidationException(errors)
-    return jsonify(data=result)
+        print data
+        email = data['email']
+        user = User.query.filter_by(email=email).first()
 
-def googleConnection(token):
-    if not token:
-        raise ValidationException(['No id_token'])
-    sub, data = googleAuth(token)
+        if not user:
+            user = User.create(
+                email,
+                data.get('firstname'),
+                data.get('lastname'))
+            user.is_active = True
+            db.session.add(user)
 
-    print data
-    email = data['email']
-    user = User.query.filter_by(email=email).first()
+        user.profile.image = data.get('picture')
 
-    if not user:
-        user = User.create(
-            email,
-            data.get('firstname'),
-            data.get('lastname'))
-        user.is_active = True
-        db.session.add(user)
-
-    user.profile.image = data.get('picture')
-
-    db.session.commit()
-    return user
-
-@auth_bp.route('/login', methods=['POST'])
-def login():
-    data = request.json
-    if not data:
-        raise ValidationException('bad email or password')
-
-    # Log in with user/password
-    email = data['email']
-    user = User.query.filter_by(email=email).first()
-
-    if user and user.password_match(data.get('password')):
-        userSchema = UserSchema()
-        result, errors = userSchema.dump(user)
-        if errors:
-            raise ValidationException(errors)
-        return jsonify(data=result)
-    else:
-        raise AuthenticationException('bad email or password')
-
-@auth_bp.route('/logout')
-def logout():
-    db.session.pop('logged_in', None)
-    return json.dumps({'result': 'success'})
+        db.session.commit()
+        return user

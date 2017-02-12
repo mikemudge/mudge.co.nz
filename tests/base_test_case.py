@@ -1,10 +1,17 @@
+import base64
 import config
 import json
+import logging
 
-from flask_testing import TestCase
-from main import create_app
 from app.models import db
 from auth.models import Client, Scope, User
+from flask_testing import TestCase
+from jose import jwt
+from main import create_app
+
+# Turn down logging.
+logging.getLogger('oauthlib').setLevel(logging.WARN)
+logging.getLogger('flask_oauthlib').setLevel(logging.WARN)
 
 class BaseTestCase(TestCase):
 
@@ -30,41 +37,40 @@ class BaseTestCase(TestCase):
         db.session.remove()
         db.drop_all()
 
-    def newUser(self, username, password):
-        return self.postJson('/api/register', jsonObj={
-            'username': username,
-            'password': password
-        })
-
     def assertContains(self, got, expected):
         for k, expect in expected.iteritems():
             if k not in got:
                 raise AssertionError('missing ' + k)
             self.assertEquals(got[k], expect)
 
+    def parseJwt(self, token):
+        return jwt.get_unverified_claims(token)
+
     # Use jsonClient.post instead.
     def postJson(self, url, jsonObj):
-        return self.client.post(
-            url,
-            data=json.dumps(jsonObj),
-            content_type='application/json')
+        return self.jsonClient.post(url, jsonObj)
 
 class JsonClient():
 
     def __init__(self, client):
         self.client = client
+        self.users = {}
+        self.userJwt = None
 
-        client = Client(
-            name="Test Client",
-            client_key="random_key",
-            client_secret="random_secret",
-            scopes=[
-                Scope('basic')
-            ])
-        db.session.add(client)
+        self.clientApp = Client.create("Test Client")
+        self.clientApp.scopes = [
+            Scope('basic'),
+            Scope('profile'),
+        ]
+        db.session.add(self.clientApp)
         db.session.commit()
 
     def createLoggedInUser(self, username):
+        user = self.createUser(username)
+        self.loginAs(username)
+        return user
+
+    def createUser(self, username):
         user = User.create(
             username + '@test.mudge.co.nz',
             'Test',
@@ -74,15 +80,46 @@ class JsonClient():
         db.session.add(user)
         db.session.commit()
 
-        # Set auth header?
-
+        self.users[username] = {
+            'email': user.email,
+            'password': '1234abcd'
+        }
         return user
 
+    def loginAs(self, username):
+        user = self.users[username]
+
+        # To talk to the API you must identify a client.
+        auth = base64.b64encode(self.clientApp.client_id + ':' + self.clientApp.client_secret)
+        headers = {
+            'Authorization': 'Basic ' + auth
+        }
+
+        response = self.client.post(
+            "/auth/token",
+            data={
+                'grant_type': "password",
+                'username': user['email'],
+                'password': user['password'],
+            },
+            content_type='application/x-www-form-urlencoded',
+            headers=headers)
+
+        # Save this to auth with in future.
+        self.userJwt = response.json['access_token']
+
+    def logout(self):
+        self.userJwt = None
+
     def post(self, url, data={}):
+        headers = {}
+        if self.userJwt:
+            headers['Authorization'] = 'Bearer %s' % self.userJwt
         response = self.client.post(
             url,
             data=json.dumps(data),
-            content_type="application/json")
+            content_type="application/json",
+            headers=headers)
 
         try:
             response.json
@@ -90,17 +127,21 @@ class JsonClient():
             print 'Not JSON'
             print response.status_code, 'for', url
             print response.data
-            raise Exception('Not JSON for ' + url)
 
         if response.status_code != 200:
             print response.status_code, 'for', url
             print response.json
-            raise Exception(response.status_code + ' for ' + url)
 
         return response
 
-    def get(self, url):
-        response = self.client.get(url)
+    def get(self, url, extraHeaders=None):
+        headers = {}
+        if extraHeaders:
+            headers.update(extraHeaders)
+        if self.userJwt:
+            headers['Authorization'] = 'Bearer %s' % self.userJwt
+
+        response = self.client.get(url, headers=headers)
 
         try:
             response.json
@@ -108,12 +149,10 @@ class JsonClient():
             print 'Not JSON'
             print response.status_code, 'for', url
             print response.data
-            raise Exception('Not JSON for ' + url)
 
         if response.status_code != 200:
             print response.status_code, 'for', url
             print response.json
-            raise Exception(response.status_code + ' for ' + url)
 
         return response
 

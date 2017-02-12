@@ -1,11 +1,12 @@
 
 # Configuration
-# TODO use sqlite for development because it doesn't need migrations?
-SQLALCHEMY_DATABASE_URI = 'sqlite:///firstproject.db'
+
+SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconz:xXBE3RcJi1ULfeo3LKENqdBZqmtzLI@localhost/mudgeconz'
 SQLALCHEMY_BINDS = {
-    'db1': SQLALCHEMY_DATABASE_URI,
-    'db2': 'postgres://mudgeconz:xXBE3RcJi1ULfeo3LKENqdBZqmtzLI@localhost/mudgeconz'
+    # Used for trails.
+    'old_sqlite': 'sqlite:///firstproject.db',
 }
+
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 DEBUG = True
 SECRET_KEY = 'development key mike rocks ^U8f)PpGhyf"ECf/'

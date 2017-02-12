@@ -1,7 +1,7 @@
 import config
 import json
 
-from flask.ext.testing import TestCase
+from flask_testing import TestCase
 from runner import create_app
 from models import db
 
@@ -12,7 +12,11 @@ class BaseTestCase(TestCase):
 
     def create_app(self):
         config.TESTING = True
-        config.SQLALCHEMY_DATABASE_URI = "sqlite://"
+        config.SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@localhost/mudgeconzTest'
+        config.SQLALCHEMY_BINDS = {
+            # Used for trails.
+            'old_sqlite': 'sqlite:///firstproject.db',
+        }
         config.PRESERVE_CONTEXT_ON_EXCEPTION = False
         config.SECRET_KEY = "Testing Secret"
         app = create_app(config)

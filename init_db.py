@@ -1,28 +1,16 @@
-import bcrypt
+import config
 import datetime
 
+from app import create_app
 from models import db
-from models import User, Rock1500Song, Biker, Ride, Walker, Walk
+from models import Biker, Ride, Walker, Walk
 
 def init_all():
-    init_bikers()
-    init_walkers()
-    init_users()
-    rock_song_add()
-
-def init_user(email, password):
-    username = email.split('@')[0]
-    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-    return User(username=username, email=email, name=username, fullname=username, hash=hashed)
-
-def init_users():
-    db.session.add_all([
-        init_user('mike.mudge@gmail.com', 'mike'),
-        init_user('mike.mudge.test@gmail.com', 'test'),
-        init_user('mike.mudge+test2@gmail.com', 'test'),
-        init_user('mike.mudge+test3@gmail.com', 'test'),
-    ])
-    db.session.commit()
+    app = create_app(config)
+    with app.app_context():
+        db.create_all(bind='old_sqlite')
+        init_bikers()
+        init_walkers()
 
 def init_bikers():
     db.session.add_all([
@@ -48,28 +36,5 @@ def init_walkers():
     ])
     db.session.commit()
 
-def rock_song_add():
-    addSong('Thunderstruck', 'AC/DC')
-    addSong('Free Bird', 'Lynyrd Skynyrd')
-    addSong('Smells Like Teen Spirit', 'Nirvana')
-    addSong('Killing In The Name', 'Rage Against The Machine')
-    addSong('One', 'Metallica')
-    addSong('Everlong', 'Foo Fighters')
-    addSong('Sober', 'Tool')
-    addSong('Home Again', 'Shihad')
-    addSong('November Rain', 'Guns \'N\' Roses')
-    addSong('All My Life', 'Foo Fighters')
-    addSong('Enter Sandman', 'Metallica')
-    addSong('Back \'n\' Black', 'AC/DC')
-    addSong('Stinkfist', 'Tool')
-    addSong('Stairway to Heaven', 'Led Zeppelin')
-    addSong('Little Pills', 'Devilskin')
-    addSong('Sweet Child \'O Mine', 'Guns \'N\' Roses')
-    addSong('Master of Puppets', 'Metallica')
-    addSong('The General Electric', 'Shihad')
-    addSong('Bohemian Rhapsody', 'Queen')
-    db.session.commit()
-
-def addSong(name, band):
-    song = Rock1500Song(name=name, band=band)
-    db.session.add(song)
+if __name__ == '__main__':
+    init_all()

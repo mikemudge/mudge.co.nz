@@ -4,7 +4,7 @@ import os
 
 from flask import Blueprint
 from flask import render_template, request, send_from_directory, url_for
-from app import angular
+from shared import angular
 
 main_bp = Blueprint('main', __name__)
 

@@ -1,4 +1,4 @@
-from app.models import db
+from shared.database import db
 from flask import jsonify, request
 from flask.views import MethodView
 

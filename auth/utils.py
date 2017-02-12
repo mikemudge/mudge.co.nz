@@ -1,66 +1,7 @@
-import bcrypt
 import config
-import datetime
 import requests
 
-from app import models
-from app.models import db
-from flask import request, jsonify, session
-
-def getCurrentAuth():
-    # TODO read cookie for auth token and user id.
-    token = request.cookies.get(config.AUTH_COOKIE_ID)
-    if not token:
-        print "No auth token"
-        return None
-
-    pieces = token.split('-')
-    if len(pieces) < 2:
-        print "Bad auth token"
-        return None
-    user_id = int(pieces[0])
-    auth_token = pieces[1]
-
-    auth = models.UserAuth.query.filter_by(user_id=user_id, auth_token=auth_token).first()
-    if auth and datetime.datetime.now() < auth.expires:
-        return auth
-    print "Expired auth token"
-    return None
-
-def createNewAuth(user):
-    session['logged_in'] = user.id
-    auth = models.UserAuth(
-        user=user,
-        auth_token=bcrypt.gensalt(),
-        expires=datetime.datetime.now() + datetime.timedelta(days=1)
-    )
-    print auth.expires
-    db.session.add(auth)
-    db.session.commit()
-    # set cookie
-    response = jsonify({
-        'result': True,
-        'auth': {
-            'user_id': auth.user_id,
-            'auth_token': auth.auth_token
-        },
-        'user': {
-            'username': user.username,
-            'name': user.name,
-            'fullname': user.fullname,
-            'id': user.id,
-        }
-    })
-    response.set_cookie(config.AUTH_COOKIE_ID, "%s-%s" % (user.id, auth.auth_token))
-    return response
-
-def loginWithIdToken(id_token):
-    (sub, userData) = googleAuth(id_token)
-    user = models.User.query.filter_by(email=userData.get('email')).first()
-    if not user:
-        return notLoggedIn('No user found for that email')
-
-    return createNewAuth(user)
+from flask import jsonify
 
 def googleAuth(id_token):
     if not id_token:

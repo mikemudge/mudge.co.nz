@@ -1,5 +1,6 @@
 import config
 
+from api.models import Biker, Ride, Walk, Walker
 from auth.models import Client, Scope, User, Profile
 from tournament_app.models import Tournament, Team, Match, Round
 from shared.database import db
@@ -25,11 +26,11 @@ def routes(app):
         url='/flask-admin'
     ))
 
-    # flaskAdmin.add_view(BaseView(models.Walker, db.session, category="Walk"))
-    # flaskAdmin.add_view(BaseView(models.Walk, db.session, category="Walk"))
+    flaskAdmin.add_view(BaseView(Walker, db.session, category="Walk"))
+    flaskAdmin.add_view(BaseView(Walk, db.session, category="Walk"))
 
-    # flaskAdmin.add_view(BaseView(models.Biker, db.session, category="Bike"))
-    # flaskAdmin.add_view(BaseView(models.Ride, db.session, category="Bike"))
+    flaskAdmin.add_view(BaseView(Biker, db.session, category="Bike"))
+    flaskAdmin.add_view(BaseView(Ride, db.session, category="Bike"))
 
     # flaskAdmin.add_view(BaseView(models.Rock1500, db.session, category="Rock1500"))
     # flaskAdmin.add_view(BaseView(models.Rock1500Song, db.session, category="Rock1500"))

@@ -10,6 +10,9 @@ class Walker(db.Model):
     name = db.Column(db.String)
     color = db.Column(db.String)
 
+    def __repr__(self):
+        return "<Walker: %s>" % self.name
+
 class Walk(db.Model):
     __bind_key__ = 'old_sqlite'
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +27,9 @@ class Biker(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     color = db.Column(db.String)
+
+    def __repr__(self):
+        return "<Biker: %s>" % self.name
 
 class Ride(db.Model):
     __bind_key__ = 'old_sqlite'

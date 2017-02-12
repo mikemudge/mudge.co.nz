@@ -6,7 +6,7 @@ from shared.database import db
 
 # Import routes.
 from api.admin import routes as admin_routes
-# from api.api_app import api_bp
+from api.api_app import api_bp
 from api.main import main_bp
 from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
@@ -20,7 +20,7 @@ def create_app(config):
     # TODO load from a config.py
     app.config.from_object(config)
     app.register_blueprint(main_bp, url_prefix='')
-    # app.register_blueprint(api_bp, url_prefix='/api')
+    app.register_blueprint(api_bp, url_prefix='/api')
 
     setup_auth(app)
 

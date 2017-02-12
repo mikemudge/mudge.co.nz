@@ -11,8 +11,10 @@ from api.main import main_bp
 from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
 from tournament_app.routes import routes as tournament_routes
+from trail.routes import routes as trail_routes
 
 migrate = Migrate()
+ma = Marshmallow()
 
 def create_app(config):
 
@@ -26,6 +28,7 @@ def create_app(config):
 
     admin_routes(app)
     auth_routes(app)
+    trail_routes(app)
     tournament_routes(app)
 
     db.init_app(app)
@@ -33,7 +36,6 @@ def create_app(config):
 
     exceptions.registerHandlers(app)
 
-    ma = Marshmallow()
     ma.init_app(app)
 
     oauth.init_app(app)

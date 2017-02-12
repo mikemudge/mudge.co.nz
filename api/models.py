@@ -1,6 +1,6 @@
 import datetime
 
-from shared.database import db
+from shared.database import db, BaseModel, UUID
 
 from sqlalchemy.orm import relationship
 

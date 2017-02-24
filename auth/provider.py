@@ -9,7 +9,7 @@ from shared.exceptions import AuthenticationException, ValidationException
 oauth = OAuth2Provider()
 
 def setup(app):
-    app.config.setdefault('OAUTH2_PROVIDER_TOKEN_GENERATOR', create_token)
+    app.config.setdefault('OAUTH2_PROVIDER_TOKEN_GENERATOR', create_token_generator)
 
 @oauth.clientgetter
 def load_client(client_id):
@@ -25,29 +25,43 @@ def get_user(email, password, *args, **kwargs):
     return user
 
 class Token():
-    def __init__(self, data):
+    def __init__(self, data, access_token):
         user_id = data.get('user', {}).get('id')
         if not user_id:
             raise Exception('No user')
+
+        self.access_token = access_token
+        self.refresh_token = access_token
         self.user = User.query.filter_by(id=user_id).first()
 
         self.client_id = data.get("client_id")
-        self.scopes = data.get("scopes")
+        self._scopes = data.get("scopes")
         self.expires = datetime.utcfromtimestamp(data.get('exp'))
 
     def delete(self):
+        print 'delete', self.scopes
         # TODO can this work?
         pass
 
+    # The scopes property must be a string for require_oauth to work.refresh_token
+    # Just magic shit you are supposed to know.
+    @property
+    def scopes(self):
+        return self._scopes.split()
+
+
 @oauth.tokengetter
 def load_token(access_token=None, refresh_token=None):
+    print 'load token', access_token
     if access_token:
         # Validate the access_token jwt.
         # pull any pieces out of it, e.g user_id->user?
         # This is what is loaded into request.oauth
         data = validate_token(access_token)
+        print data
         # TODO should make this an object.
-        return Token(data)
+        token = Token(data, access_token)
+        return token
     elif refresh_token:
         print 'Unsupported refresh token?'
     else:
@@ -55,9 +69,11 @@ def load_token(access_token=None, refresh_token=None):
 
 @oauth.tokensetter
 def save_token(token, request, *args, **kwargs):
+    print 'load token', access_token
+
     # save a token?
     # We don't actually care about this as we expect clients to keep them.
-    return token['access_token']
+    return token
 
 # We don't deal in grants, but this thing won't work without them?
 @oauth.grantgetter
@@ -97,8 +113,11 @@ def validate_token(token):
     except jwt.JWTError:
         raise ValidationException(['Invalid jwt'])
 
-def create_token(request):
-    token_body = _create_token_body(request)
+def create_token_generator(request):
+    token_body = create_token(request, request.client, request.user)
+
+def create_token(request, client, user):
+    token_body = _create_token_body(request, client, user)
 
     try:
         return jwt.encode(token_body,
@@ -108,7 +127,7 @@ def create_token(request):
     except jwt.JWSError:
         raise AuthenticationException(['Invalid jwt signing'])
 
-def _create_token_body(request):
+def _create_token_body(request, client, user):
 
     # Needs to be a unix timestamp.
     timeStampNow = timegm(datetime.utcnow().utctimetuple())
@@ -121,16 +140,17 @@ def _create_token_body(request):
     }
 
     # Add some client stuff to the token?
-    token['scopes'] = request.scopes
+    token['scopes'] = ' '.join([s.name for s in client.scopes])
     # TODO use the magic serializer?
+    token['client_id'] = client.client_id
     token['client'] = {
-        'id': str(request.client.id),
-        'client_id': request.client_id,
-        'name': request.client.name,
+        'id': str(client.id),
+        'client_id': client.client_id,
+        'name': client.name,
     }
     token['user'] = {
-        'id': str(request.user.id),
-        'email': request.user.email,
+        'id': str(user.id),
+        'email': user.email,
     }
 
     return token

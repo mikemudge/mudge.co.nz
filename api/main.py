@@ -4,7 +4,7 @@ import os
 
 from flask import Blueprint
 from flask import render_template, request, send_from_directory, url_for
-from shared import angular
+from shared.helpers.angular import Angular
 
 main_bp = Blueprint('main', __name__)
 
@@ -104,24 +104,33 @@ def get_geohash():
 
 @main_bp.route('/jack')
 def jack():
+
+    app = Angular('jack')
+
+    app.scripts += [
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
+        "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
+    ]
+    return app.render()
     # TODO check what files exist in the /static/<app> folder.
-    return render_template('angular.tmpl', **{
-        'angular': {
-            'app': 'jack',
-            'config': {
-                'basePath': '/static/jack/'
-            }
-        },
-        'scripts': [
-            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-            "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
-            "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
-            url_for('static', filename='jack/jack.js')
-        ],
-        'styles': [
-            url_for('static', filename="jack/jack.css")
-        ]
-    })
+    # return render_template('angular.tmpl', **{
+    #     'angular': {
+    #         'app': 'jack',
+    #         'config': {
+    #             'basePath': '/static/jack/'
+    #         }
+    #     },
+    #     'scripts': [
+    #         "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
+    #         "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
+    #         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
+    #         url_for('static', filename='jack/jack.js')
+    #     ],
+    #     'styles': [
+    #         url_for('static', filename="jack/jack.css")
+    #     ]
+    # })
 
 # Other random standalone pages.
 @main_bp.route('/racer')
@@ -153,43 +162,29 @@ def stuff():
 
 @main_bp.route('/stuff/trail')
 def trail():
-    return render_template('angular.tmpl', **{
-        'angular': {
-            'app': 'trail',
-            'base': '/stuff/trail',
-            'config': {
-                'basePath': '/static/trail/',
-                'baseUrl': '/'
-            }
-        },
-        'scripts': [
-            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-            url_for('static', filename='trail/main.js'),
-        ],
-        'styles': [
-            url_for('static', filename='trail/trail.css'),
-        ]
-    })
+    app = Angular('trail')
+    app.base = '/stuff/trail'
+    app.config['baseUrl'] = '/'
+    app.scripts = [
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
+        url_for('static', filename='trail/main.js'),
+    ]
+    return app.render()
 
 @main_bp.route('/stuff/bike')
 def bike():
-    return render_template('angular.tmpl', **{
-        'angular': {
-            'app': 'bike',
-            'base': '/stuff/bike',
-            'config': {
-                'basePath': '/static/trail/',
-                'baseUrl': '/'
-            }
-        },
-        'scripts': [
-            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-            url_for('static', filename='trail/bike.js'),
-        ],
-        'styles': [
-            url_for('static', filename='trail/bike.css'),
-        ]
-    })
+    app = Angular('bike')
+    app.base = '/stuff/bike'
+    app.config['baseUrl'] = '/'
+    app.config['basePath'] = '/static/trail/'
+    app.scripts = [
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
+        url_for('static', filename='trail/bike.js'),
+    ]
+    app.styles = [
+        url_for('static', filename='trail/bike.css'),
+    ]
+    return app.render()
 
 @main_bp.route('/ar')
 def at_test():
@@ -218,8 +213,9 @@ def at_test():
 @main_bp.route('/login/')
 @main_bp.route('/login/<path:path>')
 def login(path=None):
-    app = angular.app('login')
-    app.addScripts([
+    app = Angular('login')
+    app.base = '/'
+    app.scripts += [
         url_for('static', filename='login/loginService.js')
-    ])
+    ]
     return app.render()

@@ -1,5 +1,6 @@
 from auth.provider import oauth, setup as setup_auth
 from flask import Flask
+from flask_cors import CORS
 from flask_marshmallow import Marshmallow
 from shared import exceptions
 from shared.database import db
@@ -40,4 +41,5 @@ def create_app(config):
 
     oauth.init_app(app)
 
+    CORS(app, origins=['http://localhost:3333'])
     return app

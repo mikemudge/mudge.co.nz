@@ -21,12 +21,15 @@ class Client(BaseModel):
                              secondary=api_client_scope,
                              back_populates="clients")
 
+    def __init__(self, name=None, scopes=[]):
+        self.name = name
+        self.scopes = scopes
+        self.client_id = gen_salt(40)
+        self.client_secret = gen_salt(50)
+
     @classmethod
     def create(cls, name):
-        client = Client(name=name)
-        client.client_id = gen_salt(40)
-        client.client_secret = gen_salt(50)
-        return client
+        return Client(name=name)
 
     # Some properties required by oauthlib.
     @property
@@ -44,8 +47,8 @@ class Scope(BaseModel):
                               secondary=api_client_scope,
                               back_populates="scopes")
 
-    def __init__(self, name):
-        self.name = name
+    def __repr__(self):
+        return self.name
 
 class User(BaseModel):
     profile_id = db.Column(UUID(), db.ForeignKey('profile.id', ondelete='CASCADE'))

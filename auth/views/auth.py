@@ -1,12 +1,13 @@
 from ..models import User
 from ..utils import googleAuth
-from ..provider import oauth
+from ..provider import oauth, create_token
+from ..serialize import UserSchema
 from flask import request, jsonify
 from flask import Blueprint
 from flask.views import MethodView
 from shared.database import db
 from shared.exceptions import ValidationException, AuthenticationException
-
+from shared.exceptions import codes
 auth_bp = Blueprint('auth_api', __name__, url_prefix='/api')
 
 class AuthenticationTokenView(MethodView):
@@ -26,10 +27,11 @@ class AuthenticationConnectorView(MethodView):
         try:
             # valid = self._validator.authenticate_client(request=request)
             # This doesn't seem legit?
+            print oauth.server
             valid = oauth._validator.authenticate_client(request)
         except Exception as e:
-            raise e
-            # raise AuthenticationException(e, error_code=codes.MALFORMED_OR_MISSING_BASIC_AUTH)
+            print e.message
+            raise AuthenticationException('failed to authenticate client', error_code=codes.MALFORMED_OR_MISSING_BASIC_AUTH)
 
         if not valid:
             raise AuthenticationException(['Invalid basic auth'])
@@ -38,10 +40,14 @@ class AuthenticationConnectorView(MethodView):
 
         # Check Google Login
         if data.get("type") == "google":
-            response = self.googleConnection(data).get('id_token')
-            return jsonify(response)
+            user = self.googleConnection(data.get('id_token'))
         else:
             raise NotImplemented('Social connect with type: ' + data.get('type'))
+
+        # User was legit, lets create a token for them.
+        return jsonify(data={
+            'access_token': create_token(request, request.client, user)
+        })
 
     def googleConnection(self, token):
         if not token:

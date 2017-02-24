@@ -17,7 +17,7 @@ class UUID(types.TypeDecorator):
         if length:
             self.impl.length = length
         else:
-            self.impl.length = 32
+            self.impl.length = 64
 
         types.TypeDecorator.__init__(self, length=self.impl.length)
 
@@ -25,7 +25,7 @@ class UUID(types.TypeDecorator):
         if dialect.name == 'postgresql':
             return dialect.type_descriptor(postgresUUID())
         else:
-            return dialect.type_descriptor(CHAR(32))
+            return dialect.type_descriptor(CHAR(64))
 
     def process_bind_param(self, value, dialect=None):
 

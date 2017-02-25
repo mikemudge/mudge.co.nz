@@ -109,11 +109,9 @@ class CustomAdminIndexView(AdminIndexView):
         if not user or user.email not in emails:
             raise AuthenticationException('INSUFFICIENT_ACCESS')
 
-        print user, user.email
-
+        print user.is_active
+        # If a user isn't active this will not work.
         login_user(user)
-
-        print current_user
 
         if current_user.is_authenticated:
             return jsonify({

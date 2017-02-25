@@ -12,8 +12,11 @@ def migrateWalks():
 
     walkers = Walker.query.all()
     for walker in walkers:
-        print walker.name
-        newWalker = TrailWalker(name=walker.name)
+        print walker.name, walker.color, int(walker.color, 16)
+        newWalker = TrailWalker(
+            name=walker.name,
+            color=int(walker.color, 16)
+        )
         db.session.add(newWalker)
         for walk in walker.walks:
             newWalk = TrailWalk(
@@ -34,8 +37,11 @@ def migrateRides():
 
     bikers = Biker.query.all()
     for biker in bikers:
-        print biker.name
-        newBiker = TrailBiker(name=biker.name)
+        print biker.name, biker.color, int(biker.color, 16)
+        newBiker = TrailBiker(
+            name=biker.name,
+            color=int(biker.color, 16)
+        )
         db.session.add(newBiker)
         for ride in biker.rides:
             newRide = TrailRide(

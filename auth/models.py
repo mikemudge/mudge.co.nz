@@ -86,6 +86,14 @@ class User(BaseModel):
     def check_password(self, password_attempt):
         return bcrypt.hashpw(password_attempt.encode('utf-8'), self.password_hash.encode('utf-8')) == self.password_hash
 
+    # For flask login
+    @property
+    def is_authenticated(self):
+        return True
+
+    def get_id(self):
+        return str(self.id)
+
 class Profile(BaseModel):
     username = db.Column(db.String)
     image = db.Column(db.String)
@@ -93,4 +101,4 @@ class Profile(BaseModel):
     lastname = db.Column(db.String)
 
     def __repr__(self):
-        return self.firstname + ' ' + self.lastname
+        return str(self.firstname) + ' ' + str(self.lastname)

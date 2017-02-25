@@ -19,6 +19,10 @@ AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 JWT_TOKEN_SECRET_KEY = "Random Secret Token string"
 JWT_TOKEN_ALGORITHM = "HS512"
 
+# TODO could just put this on prod?
+RESTRICT_FLASK_ADMIN = [
+	'210.246.46.149'
+]
 try:
     # import the local config to override for local settings
     from local_config import *

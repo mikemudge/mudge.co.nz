@@ -31,16 +31,11 @@ class ClientView(BaseView):
 
 def routes(app):
 
-    if not config.ENABLE_TEST:
-        # Don't enable the flask admin on prod.
-        # Can enable this once auth is in place.
-        return
-
     login_manager.init_app(app)
 
     flaskAdmin = Admin(
-        app, 
-        name='Mudge.co.nz', 
+        app,
+        name='Mudge.co.nz',
         # name='Home',
         index_view=CustomAdminIndexView(
             url='/flask-admin',

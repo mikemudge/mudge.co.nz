@@ -109,7 +109,7 @@ class CustomAdminIndexView(AdminIndexView):
 
         emails = [
             'mike.mudge@gmail.com',
-            'mike.mudge.test@gmail.com'
+            'mike.mudge.test@gmail.com',
         ]
         if not user or user.email not in emails:
             raise AuthenticationException('INSUFFICIENT_ACCESS')
@@ -124,7 +124,7 @@ class CustomAdminIndexView(AdminIndexView):
                 }
             })
 
-        raise AuthenticationException('USER_AUTH_ERROR')
+        raise AuthenticationException('UNKNOWN_USER_AUTH_ERROR')
 
     @expose('/logout/')
     def logout_view(self):

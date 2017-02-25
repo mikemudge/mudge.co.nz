@@ -94,12 +94,7 @@ class CustomAdminIndexView(AdminIndexView):
 
     @expose('/login/social', methods=('POST',))
     def login_social_view(self):
-
-        try:
-            data = request.get_json()
-        except Exception:
-            data = {}
-
+        data = request.json
         if not data.get("access_token", None):
             raise AuthenticationException('USER_AUTH_ERROR')
 

@@ -7,14 +7,16 @@ class TournamentBaseModel(BaseModel):
     name = db.Column(db.String)
 
     def __repr__(self):
-        return self.name
+        if self.name:
+            return self.name
+        return super(BaseModel, self).__repr__()
 
 class Tournament(TournamentBaseModel):
     pass
 
 class Team(TournamentBaseModel):
     tournament_id = db.Column(UUID(), db.ForeignKey('tournament.id', ondelete='CASCADE'))
-    tournament = relationship("Tournament", backref="teams")
+    tournament = relationship("Tournament", backref=db.backref("teams", lazy="dynamic"))
 
     @classmethod
     def loadByName(name):
@@ -22,9 +24,9 @@ class Team(TournamentBaseModel):
 
 class Round(TournamentBaseModel):
     tournament_id = db.Column(UUID(), db.ForeignKey('tournament.id', ondelete='CASCADE'))
-    tournament = relationship("Tournament", backref="rounds")
+    tournament = relationship("Tournament", backref=db.backref("rounds", lazy="dynamic"))
 
-class Match(TournamentBaseModel):
+class Match(BaseModel):
     round_id = db.Column(UUID(), db.ForeignKey('round.id', ondelete='CASCADE'))
     round = relationship("Round", backref="matches")
 

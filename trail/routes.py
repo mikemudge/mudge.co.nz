@@ -20,7 +20,7 @@ class RideView(DBModelView):
 
 def routes(app):
     # TODO migrate angular app to use new API's
-    crud(app, 'trail/walker', WalkerView)
-    crud(app, 'trail/walk', WalkView)
-    crud(app, 'trail/biker', BikerView)
-    crud(app, 'trail/ride', RideView)
+    crud(app, 'trail/v1/walker', WalkerView)
+    crud(app, 'trail/v1/walk', WalkView)
+    crud(app, 'trail/v1/biker', BikerView)
+    crud(app, 'trail/v1/ride', RideView)

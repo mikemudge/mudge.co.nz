@@ -1,5 +1,3 @@
-import config
-
 from api.custom_flask_admin import CustomAdminIndexView
 from api.login_manager import login_manager
 from api.models import Biker, Ride, Walk, Walker
@@ -14,6 +12,7 @@ from trail.models import TrailBiker, TrailRide, TrailWalk, TrailWalker
 
 class BaseView(ModelView):
     form_excluded_columns = ['date_created']
+    can_view_details = True
 
     def is_accessible(self):
         if not current_user.is_authenticated:

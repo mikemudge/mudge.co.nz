@@ -31,7 +31,6 @@ CreateTournamentController.prototype.createTournament = function() {
 }
 
 angular.module('tournament', [
-  'ngMaterial',
   'ngResource',
   'ngRoute'
 ])

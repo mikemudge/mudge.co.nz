@@ -1,8 +1,6 @@
 import config
 import requests
 
-from flask import jsonify
-
 def googleAuth(id_token):
     if not id_token:
         raise Exception('You did not provide a token')
@@ -16,10 +14,3 @@ def googleAuth(id_token):
         raise Exception("We cannot verify your Google login at this time.")
 
     return data["sub"], data
-
-def notLoggedIn(reason):
-    response = jsonify({
-        'error': reason
-    })
-    response.status_code = 403
-    return response

@@ -2,7 +2,7 @@ from api.models import Walker, Biker
 from trail.models import TrailBiker, TrailRide, TrailWalker, TrailWalk
 from flask_script import Manager
 from shared.database import db
-TrailCommand = Manager(usage='Perform user administration')
+TrailCommand = Manager(usage='Migrate Trail and Biking data')
 
 @TrailCommand.command
 def migrateWalks():

@@ -21,7 +21,8 @@ JWT_TOKEN_ALGORITHM = "HS512"
 
 # TODO could just put this on prod?
 RESTRICT_FLASK_ADMIN = [
-	'210.246.46.149'
+    '210.246.24.124',
+    '127.0.0.1',
 ]
 try:
     # import the local config to override for local settings

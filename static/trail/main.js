@@ -15,6 +15,9 @@ var MainController = function($resource, config, $scope) {
   this.Walker = $resource(config.baseUrl + 'api/walker');
   this.Walk = $resource(config.baseUrl + 'api/walk');
 
+  // this.Walker = $resource(config.baseUrl + 'api/trail/v1/walker');
+  // this.Walk = $resource(config.baseUrl + 'api/trail/v1/walk');
+
   this.Walker.query({}, angular.bind(this, function(response) {
     angular.forEach(response, angular.bind(this, function(person, x) {
       angular.forEach(person.walks, angular.bind(this, function(walk, i) {
@@ -27,10 +30,11 @@ var MainController = function($resource, config, $scope) {
         }
       }));
 
-      person.color = ['', 'F52887', '41A317', '0000A0', 'F62817'][person.id];
+      chld = person.name.charAt(0) + "|" + ("000000" + person.color.toString(16)).slice(-6)
+
       person.marker = new google.maps.Marker({
         icon: new google.maps.MarkerImage(
-            "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + person.name.charAt(0) + "|" + person.color),
+            "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + chld),
         map: this.map,
         title: person.name
       });
@@ -248,3 +252,35 @@ angular.module('trail', [
   });
 })
 .controller('MainController', MainController)
+.filter('toColor', function () {
+  return function(input) {
+    return ("000000" + input.toString(16)).slice(-6);
+  };
+})
+.config(function($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
+})
+.factory('authInterceptor', function ($injector, $q, $templateCache) {
+  return {
+    response: function(response) {
+      if (response.data.data) {
+        // Handle API's which always return json with a data object.
+        return $q.resolve({
+          data: response.data.data
+        })
+      }
+      return $q.resolve(response);
+    },
+    responseError: function (response) {
+      if (response.status == 403 || response.status == 401) {
+        // Need to lazy inject this to avoid a dependency cycle.
+        console.warn('Should attempt relogin here?');
+        // var loginService = $injector.get('loginService');
+        // loginService.badResponse();
+      }
+      alert('Error occurred')
+      // Fail the request.
+      return $q.reject(response);
+    }
+  }
+});

@@ -5,43 +5,31 @@ from shared.marshmallow import BaseSchema
 class WalkSchema(BaseSchema):
     class Meta:
         model = TrailWalk
-        exclude = ['date_created']
 
-    date = fields.Method('get_date')
-
-    def get_date(self, obj):
-        return obj.date_created
+    # Can load existing via *_id
+    # walker works by default but stops working if we dump it with a schema.
+    walker_id = fields.Str(load_only=True)
+    walker = fields.Nested('WalkerSchema', exclude=['walks'])
+    date_created = fields.DateTime(load_from='date', dump_to='date')
 
 class WalkerSchema(BaseSchema):
     class Meta:
         model = TrailWalker
         exclude = ['date_created']
 
-    date = fields.Method('get_date')
     walks = fields.Nested(WalkSchema, many=True, exclude=["walker"])
-
-    def get_date(self, obj):
-        return obj.date_created
 
 class RideSchema(BaseSchema):
     class Meta:
         model = TrailRide
-        exclude = ['date_created']
 
+    biker_id = fields.Str(load_only=True)
     biker = fields.Nested('BikerSchema', exclude=["rides"])
-    date = fields.Method('get_date')
-
-    def get_date(self, obj):
-        return obj.date_created
-
+    date_created = fields.DateTime(load_from='date', dump_to='date')
 
 class BikerSchema(BaseSchema):
     class Meta:
         model = TrailBiker
         exclude = ['date_created']
 
-    date = fields.Method('get_date')
     rides = fields.Nested(RideSchema, many=True, exclude=["biker"])
-
-    def get_date(self, obj):
-        return obj.date_created

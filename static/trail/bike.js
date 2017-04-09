@@ -1,10 +1,10 @@
 var MainController = function($resource, config, $scope) {
 
-  // this.Biker = $resource(config.baseUrl + 'api/biker');
-  // this.Ride = $resource(config.baseUrl + 'api/ride');
+  this.Biker = $resource(config.baseUrl + 'api/biker');
+  this.Ride = $resource(config.baseUrl + 'api/ride');
 
-  this.Biker = $resource(config.baseUrl + 'api/trail/v1/biker');
-  this.Ride = $resource(config.baseUrl + 'api/trail/v1/ride');
+  // this.Biker = $resource(config.baseUrl + 'api/trail/v1/biker');
+  // this.Ride = $resource(config.baseUrl + 'api/trail/v1/ride');
 
   // default center and zoom shows all of nz.
   this.map = new google.maps.Map(document.getElementById('map'), {

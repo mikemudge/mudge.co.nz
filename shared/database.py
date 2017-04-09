@@ -57,4 +57,4 @@ class BaseModel(db.Model):
     date_created = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self):
-        return self.name
+        return "%s: %s" % (type(self).__name__, self.id)

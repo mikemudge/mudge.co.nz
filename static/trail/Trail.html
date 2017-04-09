@@ -18,7 +18,7 @@
       <div class="close" ng-click="ctrl.showWalks=false">X</div>
       <div ng-class="{selected: ctrl.selectedWalker == name}" class="tab"
           ng-repeat="(name, person) in ctrl.people" ng-click="ctrl.selectedWalker = name">
-        <span style="color: #{{ person.color }}">{{name}}'s walks</span>
+        <span style="color: #{{ person.color | toColor }}">{{name}}'s walks</span>
       </div>
       <div ng-repeat="(name, person) in ctrl.people" class="list" ng-show="ctrl.selectedWalker == name">
         <div ng-init="limit = person.walks.length > 5 ? -5 : Infinity">

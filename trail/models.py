@@ -24,6 +24,6 @@ class TrailBiker(BaseModel):
 
 class TrailRide(BaseModel):
     biker_id = db.Column(UUID(), db.ForeignKey('trail_biker.id', ondelete='CASCADE'))
-    walker = relationship("TrailBiker", backref="rides")
+    biker = relationship("TrailBiker", backref="rides")
 
     distance = db.Column(db.Float)

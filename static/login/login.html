@@ -1,13 +1,11 @@
 <div ng-controller="LoginController as ctrl">
 
-  <div ng-hide="ctrl.googleLoginButton">
-    {{ ctrl.loginService.googleStatus }}
-  </div>
+  Google Status: {{ ctrl.loginService.googleStatus }}
 
   <div ng-show="ctrl.googleLoginButton">
-    <div class="button">
+    <span class="button" ng-click="ctrl.loginWithGoogle()">
       Login with Google
-    </div>
+    </span>
   </div>
 
   <div ng-show="ctrl.loginService.googleUser">
@@ -18,10 +16,13 @@
   </div>
 
   <div ng-show="ctrl.loginService.googleUser.id_token">
-    <div class="button" ng-click="ctrl.loginWithGoogle()">
+    <span class="button" ng-click="ctrl.loginWithGoogle()">
       Login
-    </div>
-
+    </span>
+    <span class="button" ng-click="ctrl.logout()">
+      Logout
+    </span>
+  </div>
   <div ng-show="ctrl.loginService.user">
     <div ng-click="debug=!debug"> Show user </div>
     <div ng-show="debug">

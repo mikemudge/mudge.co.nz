@@ -17,6 +17,8 @@ class Angular():
             'basePath': '/static/%s/' % self.appName,
             'GOOGLE_CLIENT_ID': config.GOOGLE_CLIENT_ID,
             'AUTH_COOKIE_ID': config.AUTH_COOKIE_ID,
+            'CLIENT_ID': config.CLIENT_ID,
+            'CLIENT_SECRET': config.CLIENT_SECRET,
         }
 
     def render(self):
@@ -40,12 +42,5 @@ class Angular():
             url_for('static', filename="js/three.min.js"),
             url_for('static', filename="js/three.js/OrbitControls.js"),
         ]
-
-        # TODO check what files exist in the /static/<app> folder.
-        # include = 'static/%s/%s.html' % (app, app)
-        # if os.path.isfile(include):
-        #     include = url_for('static', filename='%s/%s.html' % (app, app))
-        # else:
-        #     include = None
 
         return app

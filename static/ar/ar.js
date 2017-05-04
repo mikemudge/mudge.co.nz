@@ -124,6 +124,8 @@ MyController.prototype.updateVideoFeed = function(cameraSource) {
   });
 };
 
+require('rts/rts.js');
+
 angular.module('ar', [
   'ngRoute'
 ])

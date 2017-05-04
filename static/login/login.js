@@ -12,10 +12,18 @@ var LoginController = function(loginService) {
 }
 
 LoginController.prototype.loginWithGoogle = function() {
-  this.loginService.loginWithGoogle().then(function() {
+  this.loginService.loginToGoogle().then(function() {
+    console.log('google login success');
+    this.googleLoginButton = false;
+    return this.loginService.loginWithGoogle();
+  }.bind(this)).then(function() {
     console.log('login complete');
     // Do we need to do anything here?
-  });
+  }.bind(this));
+}
+
+LoginController.prototype.logout = function() {
+  this.loginService.logout();
 }
 
 angular.module('login', [
@@ -29,4 +37,5 @@ angular.module('login', [
     .when('/login', {
       templateUrl: '/static/login/login.html'
     });
-});
+})
+;

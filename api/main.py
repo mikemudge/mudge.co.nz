@@ -3,6 +3,7 @@ import os
 
 from flask import Blueprint
 from flask import request, send_from_directory, url_for
+from flask import current_app
 from shared.helpers.angular import Angular
 
 main_bp = Blueprint('main', __name__)
@@ -19,6 +20,37 @@ def main_page():
 @main_bp.route('/a/<appName>/<path:path>')
 def angularEndpoint(appName, path=None):
     app = Angular.basicAngular(appName)
+    return app.render()
+
+# Brunch endpoints.
+@main_bp.route('/brunch/<appName>/')
+@main_bp.route('/brunch/<appName>/<path:path>')
+def brunchEndpoint(appName, path=None):
+
+    # TODO keep track of which deps each app needs?
+    # E.g jquery, threejs.
+
+    brunchServer = current_app.config.get('STATIC_URL')
+
+    app = Angular(appName)
+    app.base = '/brunch/%s/' % appName
+    app.styles = [
+        '%s%s/app.css' % (brunchServer, appName),
+    ]
+    app.scripts = [
+        # Include pieces from RTS.
+        '%s%s/app.js' % (brunchServer, appName),
+        # TODO allow skipping templates?
+        '%s%s/templates.js' % (brunchServer, appName),
+    ]
+
+    app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
+    app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
+
+    if appName == 'racer':
+        # Special case.
+        app.scripts += [url_for('static', filename="js/three.js/BinaryLoader.js")]
+
     return app.render()
 
 @main_bp.route('/geohash')
@@ -50,19 +82,6 @@ def jack():
         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
     ]
     return app.render()
-
-# Other random standalone pages.
-@main_bp.route('/racer')
-def racer():
-    app = Angular('racer')
-    app.include = '/static/racer/page.html'
-    app.scripts = [
-        url_for('static', filename="js/three.min.js"),
-        "http://threejs.org/examples/js/controls/OrbitControls.js",
-        "http://threejs.org/examples/js/loaders/BinaryLoader.js",
-        url_for('static', filename="racer/cars.js"),
-        url_for('static', filename="racer/racer.js"),
-    ]
 
 @main_bp.route('/stuff')
 def stuff():
@@ -107,8 +126,10 @@ def at_test():
         url_for('static', filename="js/three.min.js"),
         url_for('static', filename="js/three.js/OrbitControls.js"),
         url_for('static', filename="js/three.js/DeviceOrientationControls.js"),
+        # Include pieces from RTS.
+        current_app.config.get('STATIC_URL') + 'rts/templates.js',
+        current_app.config.get('STATIC_URL') + 'rts/app.js',
         url_for('static', filename='ar/ar.js'),
-        url_for('static', filename='rts/rts.js'),
     ]
     return app.render()
 

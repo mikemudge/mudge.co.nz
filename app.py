@@ -6,6 +6,7 @@ from shared import exceptions
 from shared.database import db
 
 # Import routes.
+from admin.routes import routes as mudge_admin_routes
 from api.admin import routes as admin_routes
 from api.api_app import api_bp
 from api.main import main_bp
@@ -31,6 +32,7 @@ def create_app(config):
     auth_routes(app)
     trail_routes(app)
     tournament_routes(app)
+    mudge_admin_routes(app)
 
     db.init_app(app)
     migrate.init_app(app, db)

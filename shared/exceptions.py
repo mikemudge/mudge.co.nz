@@ -6,6 +6,7 @@ class ErrorCodes:
     MALFORMED_OR_MISSING_BASIC_AUTH = 'MALFORMED_OR_MISSING_BASIC_AUTH'
     UNKNOWN_ERROR = 'UNKNOWN_ERROR'
 
+
 codes = ErrorCodes()
 
 class BaseException(Exception):
@@ -32,18 +33,22 @@ def registerHandlers(app):
 
     # An application specific exception has more structure.
     @app.errorhandler(BaseException)
-    def handle_invalid_usage(error):
+    def handle_known_error(error):
+        error_code = codes.UNKNOWN_ERROR
+        if hasattr(error, 'error_code'):
+            error_code = error.error_code
         response = jsonify({
             'message': error.message,
             'status_code': error.status_code,
-            'error_code': error.error_code,
+            'error_code': error_code,
         })
         response.status_code = error.status_code
         return response
+
     # The catch all error handler.
     @app.errorhandler(Exception)
     @app.errorhandler(500)
-    def handle_invalid_usage(error):
+    def handle_unknown_error(error):
         # Unknown errors should always be 500's
         traceback.print_exc()
         response = jsonify({

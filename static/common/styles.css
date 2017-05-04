@@ -2,7 +2,8 @@
   border-radius: 5px;
   border: 1px solid #000;
   cursor: pointer;
-  padding: 8px 4px;
+  padding: 4px 16px;
+  display: inline-block;
 }
 .button:hover {
   background-color: #DDD;

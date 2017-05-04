@@ -25,7 +25,6 @@ class AuthenticationConnectorView(MethodView):
         :return:
         """
         try:
-            # valid = self._validator.authenticate_client(request=request)
             # This doesn't seem legit?
             print oauth.server
             valid = oauth._validator.authenticate_client(request)

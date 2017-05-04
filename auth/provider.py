@@ -52,7 +52,7 @@ class Token():
 
 @oauth.tokengetter
 def load_token(access_token=None, refresh_token=None):
-    print 'load token', access_token
+    print 'load token', access_token, refresh_token
     if access_token:
         # Validate the access_token jwt.
         # pull any pieces out of it, e.g user_id->user?
@@ -69,7 +69,7 @@ def load_token(access_token=None, refresh_token=None):
 
 @oauth.tokensetter
 def save_token(token, request, *args, **kwargs):
-    print 'load token', access_token
+    print 'load token', token
 
     # save a token?
     # We don't actually care about this as we expect clients to keep them.

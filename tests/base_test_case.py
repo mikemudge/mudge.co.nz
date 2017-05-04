@@ -63,8 +63,8 @@ class JsonClient():
 
         self.clientApp = Client.create("Test Client")
         self.clientApp.scopes = [
-            Scope('basic'),
-            Scope('profile'),
+            Scope(name='basic'),
+            Scope(name='profile'),
         ]
         db.session.add(self.clientApp)
         db.session.commit()

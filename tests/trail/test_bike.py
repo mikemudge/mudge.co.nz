@@ -1,6 +1,6 @@
 import models
 
-from base_test_case import BaseTestCase
+from tests.base.base_test_case import BaseTestCase
 from models import db
 
 

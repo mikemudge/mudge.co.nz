@@ -1,8 +1,8 @@
-from tests.base_test_case import BaseTestCase
-from trail.models import TrailRide
 from audit.models import AuditEvent
-
 from shared.database import db
+from trail.models import TrailRide
+
+from tests.base.base_test_case import BaseTestCase
 
 class TestTournament(BaseTestCase):
 

@@ -1,7 +1,7 @@
 from .models import Client, User
 from calendar import timegm
 from datetime import datetime
-from flask import current_app as app
+from flask import current_app as app, abort, jsonify
 from flask_oauthlib.provider import OAuth2Provider
 from jose import jwt
 from shared.exceptions import AuthenticationException, ValidationException
@@ -52,14 +52,12 @@ class Token():
 
 @oauth.tokengetter
 def load_token(access_token=None, refresh_token=None):
-    print 'load token', access_token, refresh_token
     if access_token:
         # Validate the access_token jwt.
         # pull any pieces out of it, e.g user_id->user?
         # This is what is loaded into request.oauth
         data = validate_token(access_token)
         print data
-        # TODO should make this an object.
         token = Token(data, access_token)
         return token
     elif refresh_token:
@@ -69,9 +67,6 @@ def load_token(access_token=None, refresh_token=None):
 
 @oauth.tokensetter
 def save_token(token, request, *args, **kwargs):
-    print 'load token', token
-
-    # save a token?
     # We don't actually care about this as we expect clients to keep them.
     return token
 
@@ -83,6 +78,18 @@ def load_grant(client_id, code):
 @oauth.grantsetter
 def save_grant(client_id, code, request, *args, **kwargs):
     return None
+
+@oauth.invalid_response
+def invalid_require_oauth(req):
+    # TODO throw exceptions which get handled with the default handler?
+    # Get better error messages than the default abort(401)
+    response = jsonify({
+        'message': req.error_message,
+        'detail': 'Missing the scope required for this endpoint',
+        'status_code': 401
+    })
+    response.status_code = 401
+    return response
 
 def validate_token(token):
     try:
@@ -114,7 +121,7 @@ def validate_token(token):
         raise ValidationException(['Invalid jwt'])
 
 def create_token_generator(request):
-    token_body = create_token(request, request.client, request.user)
+    return create_token(request, request.client, request.user)
 
 def create_token(request, client, user):
     token_body = _create_token_body(request, client, user)

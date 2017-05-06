@@ -9,7 +9,7 @@ class UserView(DBModelView):
     model = User
     schema = UserSchema
 
-    @oauth.require_oauth('scope1')
+    @oauth.require_oauth('read_user')
     def get(self, pk):
         return super(UserView, self).get(pk)
 

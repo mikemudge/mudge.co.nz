@@ -23,6 +23,23 @@ def angularEndpoint(appName, path=None):
     return app.render()
 
 # Brunch endpoints.
+@main_bp.route('/brunch/')
+def allBrunch():
+    # TODO should be able to auto create this?
+    links = [
+        'soccer',
+        'rts',
+        'tournament',
+        'breakout',
+        'poker',
+        'racer'
+    ]
+
+    result = [
+        '<p><a href="/brunch/%s">%s</a></p>' % (link, link) for link in links
+    ]
+    return ''.join(result)
+
 @main_bp.route('/brunch/<appName>/')
 @main_bp.route('/brunch/<appName>/<path:path>')
 def brunchEndpoint(appName, path=None):

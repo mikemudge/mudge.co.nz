@@ -1,5 +1,6 @@
 import json
-from tests.base_test_case import BaseTestCase
+
+from tests.base.base_test_case import BaseTestCase
 
 class TestTournament(BaseTestCase):
 

@@ -26,7 +26,7 @@ def generateTournamentRounds(pk):
 
 def generateRoundRobin(tournament):
     teams = tournament.teams
-    numTeams = len(teams)
+    numTeams = teams.count()
 
     for r in range(1):
         roundA = Round(name="Round 1")

@@ -1,6 +1,6 @@
 import base64
 
-from base_test_case import BaseTestCase
+from tests.base.base_test_case import BaseTestCase
 
 class TestLogin(BaseTestCase):
 
@@ -45,6 +45,7 @@ class TestLogin(BaseTestCase):
             'refresh_token': result['refresh_token'],
             'token_type': 'Bearer'
         })
+        print result['access_token']
         claims = self.parseJwt(result['access_token'])
         self.assertContains(claims, {
             'aud': 'mudge.co.nz',
@@ -96,7 +97,9 @@ class TestLogin(BaseTestCase):
 
         # We didn't provide a Bearer token, because no one is logged in.
         self.assertEqual(response.json, {
-            'errors': ['No token found']
+            'error_code': None,
+            'message': ['No token found'],
+            'status_code': 401
         })
 
     def test_invalid_access(self):
@@ -110,5 +113,7 @@ class TestLogin(BaseTestCase):
 
         # We didn't provide a Bearer token, because no one is logged in.
         self.assertEqual(response.json, {
-            'errors': ['Invalid jwt']
+            'error_code': 'UNKNOWN_ERROR',
+            'message': ['Invalid jwt'],
+            'status_code': 400
         })

@@ -57,3 +57,16 @@ def registerHandlers(app):
         })
         response.status_code = 500
         return response
+
+    def handle_abort_error(error):
+        response = jsonify({
+            'message': 'Unknown abort error',
+            'status_code': error.code
+        })
+        response.status_code = error.code
+        return response
+
+    # called when abort(code) is called.
+    app.register_error_handler(401, handle_abort_error)
+    app.register_error_handler(403, handle_abort_error)
+    app.register_error_handler(404, handle_abort_error)

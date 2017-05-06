@@ -63,6 +63,7 @@ class JsonClient():
 
         self.clientApp = Client.create("Test Client")
         self.clientApp.scopes = [
+            Scope(name='read_user'),
             Scope(name='basic'),
             Scope(name='profile'),
         ]
@@ -109,6 +110,10 @@ class JsonClient():
             content_type='application/x-www-form-urlencoded',
             headers=headers)
 
+        if response.status_code != 200:
+            print 'login failed'
+            print response.json
+
         # Save this to auth with in future.
         self.userJwt = response.json['access_token']
 
@@ -148,7 +153,7 @@ class JsonClient():
         response = self.client.get(url, headers=headers)
 
         try:
-            response.json
+            data = response.json
         except ValueError:
             print 'Not JSON'
             print response.status_code, 'for', url
@@ -156,7 +161,7 @@ class JsonClient():
 
         if response.status_code != 200:
             print response.status_code, 'for', url
-            print response.json
+            print data
 
         return response
 

@@ -49,7 +49,14 @@ class DBModelView(MethodView):
 
     def delete(self, pk):
         # delete
-        pass
+        result = self.model.query.filter_by(id=pk).delete()
+        if result != 1:
+            raise Exception('Bad delete: ' + result)
+
+        db.session.commit()
+        return jsonify({
+            'success': True
+        })
 
     def put(self, pk):
         # update

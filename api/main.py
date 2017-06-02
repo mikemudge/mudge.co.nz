@@ -32,7 +32,9 @@ def allBrunch():
         'tournament',
         'breakout',
         'poker',
-        'racer'
+        'racer',
+        'bike',
+        'trail',
     ]
 
     result = [
@@ -50,6 +52,7 @@ def brunchEndpoint(appName, path=None):
     brunchServer = current_app.config.get('STATIC_URL')
 
     app = Angular(appName)
+    app.config['baseUrl'] = request.url_root
     app.base = '/brunch/%s/' % appName
     app.styles = [
         '%s%s/app.css' % (brunchServer, appName),
@@ -63,6 +66,10 @@ def brunchEndpoint(appName, path=None):
 
     app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
     app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
+
+    if appName == 'bike' or appName == 'trail':
+        app.scripts += ['%s/js/api-templates.js' % brunchServer]
+        app.scripts += ["https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry"]
 
     if appName == 'racer':
         # Special case.

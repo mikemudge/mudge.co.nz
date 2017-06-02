@@ -1,5 +1,4 @@
 import models
-import dateutil
 
 from tests.base.base_test_case import BaseTestCase
 from shared.database import db
@@ -67,12 +66,6 @@ class TestBike(BaseTestCase):
         })
 
         ride = response.json['data']
-
-        print ride['date'], dateutil.parser.parse(ride['date'])
-
-        print '1997-05-05T02:11:13.659000+00:00'
-        print 'Mon, 05 May 1997 02:11:13 GMT'
-        # self.assertEquals(ride.get('date'), '1997-05-05T02:11:13.659Z')
         self.assertEquals(ride.get('date'), '1997-05-05T02:11:13.659000+00:00')
 
         self.assertEquals(ride, {

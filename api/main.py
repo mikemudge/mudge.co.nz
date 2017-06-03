@@ -13,7 +13,7 @@ def favicon():
     path = os.path.dirname(main_bp.root_path)
     path = os.path.join(path, 'static')
     favicon = current_app.config.get('FAVICON', 'favicon.ico')
-    return send_from_directory(path, favicon)
+    return send_from_directory(path, favicon, mimetype='image/vnd.microsoft.icon')
 
 @main_bp.route('/')
 def main_page():

@@ -1,4 +1,4 @@
-import config
+from flask import current_app
 from flask import render_template, url_for
 
 class Angular():
@@ -15,18 +15,24 @@ class Angular():
         ]
         self.config = {
             'basePath': '/static/%s/' % self.appName,
-            'GOOGLE_CLIENT_ID': config.GOOGLE_CLIENT_ID,
-            'AUTH_COOKIE_ID': config.AUTH_COOKIE_ID,
-            'CLIENT_ID': config.CLIENT_ID,
-            'CLIENT_SECRET': config.CLIENT_SECRET,
+            'GOOGLE_CLIENT_ID': current_app.config.get('GOOGLE_CLIENT_ID'),
+            'AUTH_COOKIE_ID': current_app.config.get('AUTH_COOKIE_ID'),
+            'CLIENT_ID': current_app.config.get('CLIENT_ID'),
+            'CLIENT_SECRET': current_app.config.get('CLIENT_SECRET'),
         }
+        self.favicon = url_for('static', filename='favicon-dev.png')
+        if not self.favicon:
+            self.favicon = url_for('static', filename='favicon.ico')
+
+        self.favicon = '/favicon.ico'
 
     def render(self):
         return render_template('angular.tmpl', **{
             'angular': {
                 'app': self.appName,
                 'base': self.base,
-                'config': self.config
+                'config': self.config,
+                'favicon': self.favicon,
             },
             'scripts': self.scripts,
             'styles': self.styles,

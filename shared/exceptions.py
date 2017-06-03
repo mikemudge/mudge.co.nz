@@ -1,6 +1,9 @@
 from flask import jsonify
 import traceback
 
+from raven.contrib.flask import Sentry
+
+sentry = Sentry()
 
 class ErrorCodes:
     MALFORMED_OR_MISSING_BASIC_AUTH = 'MALFORMED_OR_MISSING_BASIC_AUTH'
@@ -51,6 +54,7 @@ def registerHandlers(app):
     def handle_unknown_error(error):
         # Unknown errors should always be 500's
         traceback.print_exc()
+        sentry.captureException()
         response = jsonify({
             'message': error.message,
             'status_code': 500
@@ -59,6 +63,9 @@ def registerHandlers(app):
         return response
 
     def handle_abort_error(error):
+        print error
+        traceback.print_exc()
+        sentry.captureException()
         response = jsonify({
             'message': 'Unknown abort error',
             'status_code': error.code

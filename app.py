@@ -14,19 +14,30 @@ from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
 from tournament_app.routes import routes as tournament_routes
 from trail.routes import routes as trail_routes
+from shared.exceptions import sentry
+
+import os
 
 migrate = Migrate()
 ma = Marshmallow()
 
-def create_app(config):
+def create_app(config=None):
 
     app = Flask(__name__)
-    # TODO load from a config.py
+
+    if not config:
+        if os.environ.get('APP_SETTINGS'):
+            config = os.environ.get('APP_SETTINGS')
+        else:
+            raise Exception('Can\'t determine which config file to use. Specify via argument or environment variable APP_SETTINGS')
+
     app.config.from_object(config)
     app.register_blueprint(main_bp, url_prefix='')
     app.register_blueprint(api_bp, url_prefix='/api')
 
     setup_auth(app)
+
+    sentry.init_app(app, logging=True)
 
     admin_routes(app)
     auth_routes(app)

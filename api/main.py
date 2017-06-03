@@ -3,18 +3,25 @@ import os
 
 from flask import Blueprint
 from flask import request, send_from_directory, url_for
-from flask import current_app
+from flask import abort, current_app
 from shared.helpers.angular import Angular
 
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(main_bp.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    path = os.path.dirname(main_bp.root_path)
+    path = os.path.join(path, 'static')
+    favicon = current_app.config.get('FAVICON', 'favicon.ico')
+    return send_from_directory(path, favicon)
+
 @main_bp.route('/')
 def main_page():
     return "Welcome"
+
+@main_bp.route('/error')
+def error_test():
+    abort(500, 'Error message here')
 
 @main_bp.route('/a/<appName>/')
 @main_bp.route('/a/<appName>/<path:path>')

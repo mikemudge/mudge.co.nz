@@ -1,5 +1,11 @@
 ENABLE_TEST = False
 
+ENV = 'dev'
+
+FAVICON = 'favicon.png'
+
+SENTRY_DSN = None
+
 # Configuration
 SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconz:xXBE3RcJi1ULfeo3LKENqdBZqmtzLI@localhost/mudgeconz'
 SQLALCHEMY_BINDS = {
@@ -27,8 +33,3 @@ RESTRICT_FLASK_ADMIN = [
     '210.246.24.124',
     '127.0.0.1',
 ]
-try:
-    # import the local config to override for local settings
-    from local_config import *
-except:
-    pass

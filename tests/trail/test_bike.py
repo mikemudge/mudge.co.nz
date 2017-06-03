@@ -1,4 +1,4 @@
-import models
+from api import models
 
 from tests.base.base_test_case import BaseTestCase
 from shared.database import db

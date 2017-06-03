@@ -1,5 +1,4 @@
 import base64
-import config
 import json
 import logging
 
@@ -18,15 +17,7 @@ class BaseTestCase(TestCase):
     render_templates = False
 
     def create_app(self):
-        config.TESTING = True
-        config.SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@localhost/mudgeconzTest'
-        config.SQLALCHEMY_BINDS = {
-            # Used for trails.
-            'old_sqlite': 'sqlite:///firstproject.db',
-        }
-        config.PRESERVE_CONTEXT_ON_EXCEPTION = False
-        config.SECRET_KEY = "Testing Secret"
-        app = create_app(config)
+        app = create_app('settings.test')
         return app
 
     def setUp(self):

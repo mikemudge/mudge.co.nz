@@ -1,4 +1,5 @@
-import config
+
+from flask import current_app
 import requests
 
 def googleAuth(id_token):
@@ -10,7 +11,7 @@ def googleAuth(id_token):
         print 'google response', data
         print id_token
         raise Exception("We cannot authorize your Google login at this time.")
-    if data["aud"] != config.GOOGLE_CLIENT_ID:
+    if data["aud"] != current_app.config.get('GOOGLE_CLIENT_ID'):
         raise Exception("We cannot verify your Google login at this time.")
 
     return data["sub"], data

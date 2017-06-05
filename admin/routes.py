@@ -1,3 +1,5 @@
+from auth.provider import oauth
+
 from tournament_app.models import Tournament, Team, Match, Round
 
 from shared.marshmallow import BaseSchema
@@ -22,6 +24,10 @@ def adminCrud(app, cls):
     class View(DBModelView):
         model = cls
         schema = Schema
+
+        # @oauth.require_oauth('???')
+        # def get(self, **kwargs):
+        #     return super(View, self).get(**kwargs)
 
     view = View.as_view("%s_crud" % modelName)
 

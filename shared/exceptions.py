@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, request
 import traceback
 
 from raven.contrib.flask import Sentry
@@ -55,6 +55,7 @@ def registerHandlers(app):
         # Unknown errors should always be 500's
         traceback.print_exc()
         sentry.captureException()
+        print 'Unknown Exception or abort for route: %s' % request.url_rule
         response = jsonify({
             'message': error.message,
             'status_code': 500
@@ -66,6 +67,7 @@ def registerHandlers(app):
         print error
         traceback.print_exc()
         sentry.captureException()
+        print 'Unknown Exception or abort for route: %s' % request.url_rule
         response = jsonify({
             'message': 'Unknown abort error',
             'status_code': error.code

@@ -17,7 +17,6 @@ class UserView(DBModelView):
     def post(self, pk):
         return super(UserView, self).post(pk)
 
-
 def routes(app):
     app.register_blueprint(auth_bp)
 

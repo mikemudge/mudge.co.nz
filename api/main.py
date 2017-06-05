@@ -15,6 +15,10 @@ def favicon():
     favicon = current_app.config.get('FAVICON', 'favicon.ico')
     return send_from_directory(path, favicon, mimetype='image/vnd.microsoft.icon')
 
+@main_bp.route('google1afd17490c9b7ab4.html')
+def google():
+    return 'google-site-verification: google1afd17490c9b7ab4.html'
+
 @main_bp.route('/')
 def main_page():
     return "Welcome"
@@ -71,11 +75,16 @@ def brunchEndpoint(appName, path=None):
         '%s%s/templates.js' % (brunchServer, appName),
     ]
 
-    app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
-    app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
+    # TODO better way to include dependencies.
+    if appName in ['racer', 'rts', 'ar']:
+        app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
+        app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
+
+    if appName in ['bike', 'trail', 'tournament']:
+        # Include common templates.
+        app.scripts += ['%s/js/api-templates.js' % brunchServer]
 
     if appName == 'bike' or appName == 'trail':
-        app.scripts += ['%s/js/api-templates.js' % brunchServer]
         app.scripts += ["https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry"]
 
     if appName == 'racer':

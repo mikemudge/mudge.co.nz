@@ -43,7 +43,7 @@ def create_app(config=None):
     auth_routes(app)
     trail_routes(app)
     tournament_routes(app)
-    mudge_admin_routes(app)
+    # mudge_admin_routes(app)
 
     db.init_app(app)
     migrate.init_app(app, db)

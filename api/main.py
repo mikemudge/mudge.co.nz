@@ -15,7 +15,7 @@ def favicon():
     favicon = current_app.config.get('FAVICON', 'favicon.ico')
     return send_from_directory(path, favicon, mimetype='image/vnd.microsoft.icon')
 
-@main_bp.route('google1afd17490c9b7ab4.html')
+@main_bp.route('/google1afd17490c9b7ab4.html')
 def google():
     return 'google-site-verification: google1afd17490c9b7ab4.html'
 

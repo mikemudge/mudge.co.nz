@@ -10,6 +10,7 @@ from admin.routes import routes as mudge_admin_routes
 from api.admin import routes as admin_routes
 from api.api_app import api_bp
 from api.main import main_bp
+from api.routes import routes as api_routes
 from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
 from tournament_app.routes import routes as tournament_routes
@@ -39,6 +40,7 @@ def create_app(config=None):
 
     sentry.init_app(app, logging=True)
 
+    api_routes(app)
     admin_routes(app)
     auth_routes(app)
     trail_routes(app)

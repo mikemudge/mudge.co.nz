@@ -32,6 +32,11 @@ class AuthenticationException(BaseException):
         self.error_code = error_code
         self.status_code = 401
 
+
+status_code_messages = {
+    404: 'Not found'
+}
+
 def registerHandlers(app):
 
     # An application specific exception has more structure.
@@ -55,7 +60,8 @@ def registerHandlers(app):
         # Unknown errors should always be 500's
         traceback.print_exc()
         sentry.captureException()
-        print 'Unknown Exception or abort for route: %s' % request.url_rule
+        print error
+        print 'Unknown Exception for route: %s' % request.url
         response = jsonify({
             'message': error.message,
             'status_code': 500
@@ -64,12 +70,14 @@ def registerHandlers(app):
         return response
 
     def handle_abort_error(error):
-        print error
         traceback.print_exc()
         sentry.captureException()
-        print 'Unknown Exception or abort for route: %s' % request.url_rule
+        print 'abort for route: %s' % request.url
+        message = 'Unknown Error'
+        if error.code in status_code_messages:
+            message = status_code_messages[error.code]
         response = jsonify({
-            'message': 'Unknown abort error',
+            'message': message,
             'status_code': error.code
         })
         response.status_code = error.code

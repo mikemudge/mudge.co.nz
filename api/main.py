@@ -19,6 +19,10 @@ def favicon():
 def google():
     return 'google-site-verification: google1afd17490c9b7ab4.html'
 
+@main_bp.route('/robots.txt')
+def robots():
+    return ''
+
 @main_bp.route('/')
 def main_page():
     return "Welcome"

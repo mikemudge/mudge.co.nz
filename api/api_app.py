@@ -5,6 +5,7 @@ from flask import Blueprint, Response
 from flask import abort, make_response, request
 from api.models import db, simpleSerialize
 
+# Under /api
 api_bp = Blueprint('api', __name__)
 
 @api_bp.route('/walker', methods=['POST', 'GET'])

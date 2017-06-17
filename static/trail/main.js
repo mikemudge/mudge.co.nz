@@ -275,8 +275,6 @@ angular.module('trail', [
       if (response.status == 403 || response.status == 401) {
         // Need to lazy inject this to avoid a dependency cycle.
         console.warn('Should attempt relogin here?');
-        // var loginService = $injector.get('loginService');
-        // loginService.badResponse();
       }
       alert('Error occurred')
       // Fail the request.

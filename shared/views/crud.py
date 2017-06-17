@@ -23,13 +23,14 @@ class DBModelView(MethodView):
                 return self.errorResponse(errors)
             return jsonify(data=result)
 
-    def post(self):
+    def post(self, pk=None):
         # I don't know why but it doesn't seem to know about the session?
         # This was failing during tests, not sure about real requests.
         s = self.schema(session=db.session)
         if not request.json:
             return self.errorResponse(['No request.json'])
 
+        # TODO if pk, load an instance first?
         # s.make_instance?
         instance, errors = s.load(request.json)
         if errors:
@@ -83,4 +84,4 @@ def crud(app, path, viewCls):
     app.add_url_rule(
         '/api/%s/<pk>' % path,
         view_func=view,
-        methods=['GET', 'PUT', 'DELETE'])
+        methods=['GET', 'PUT', 'POST', 'DELETE'])

@@ -1,11 +1,17 @@
-from .models import Tournament, Team, Round, Match
-from .serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema
-from .views.tournament import tournament_bp
+from auth.provider import oauth
+
+from tournament_app.models import Tournament, Team, Round, Match
+from tournament_app.serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema
+from tournament_app.views.tournament import tournament_bp
 from shared.views.crud import DBModelView, crud
 
 class TournamentView(DBModelView):
     model = Tournament
     schema = TournamentSchema
+
+    @oauth.require_oauth('tournament')
+    def get(self, pk=None):
+        super(TournamentView, self).get(pk)
 
 class TeamView(DBModelView):
     model = Team

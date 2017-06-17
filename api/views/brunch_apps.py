@@ -33,11 +33,18 @@ class BrunchAppView(MethodView):
 
         app = Angular(app_name)
         app.config['baseUrl'] = request.url_root
+        app.config['LOGIN_URL'] = request.url_root
         app.base = '/brunch/%s/' % app_name
         app.styles = [
+            # Login + login templates.
+            '%slogin/app.css' % brunchServer,
             '%s%s/app.css' % (brunchServer, app_name),
         ]
         app.scripts = [
+            # Login + login templates.
+            '%slogin/app.js' % brunchServer,
+            '%slogin/templates.js' % brunchServer,
+
             # Include pieces from RTS.
             '%s%s/app.js' % (brunchServer, app_name),
             # TODO allow skipping templates?

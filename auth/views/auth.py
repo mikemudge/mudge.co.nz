@@ -1,7 +1,6 @@
-from ..models import User
+from ..models import User, Profile
 from ..utils import googleAuth
 from ..provider import oauth, create_token
-from ..serialize import UserSchema
 from flask import request, jsonify
 from flask import Blueprint
 from flask.views import MethodView
@@ -24,9 +23,12 @@ class AuthenticationConnectorView(MethodView):
         Get Token through social login
         :return:
         """
+        # TODO verify client header.
+        # Then verify login via google.
         try:
             # This doesn't seem legit?
-            print oauth.server
+            # Its not good, need to do something better.
+            print 'This is server', oauth.server
             valid = oauth._validator.authenticate_client(request)
         except Exception as e:
             print e.message
@@ -51,20 +53,41 @@ class AuthenticationConnectorView(MethodView):
     def googleConnection(self, token):
         if not token:
             raise ValidationException(['No id_token'])
-        sub, data = googleAuth(token)
+        data = googleAuth(token)
 
-        print data
+        # {u'picture': u'https://lh6.googleusercontent.com/-H2j2IzGSxdg/AAAAAAAAAAI/AAAAAAAAAbY/0oiKsVRnc5A/s96-c/photo.jpg',
+        # u'aud': u'872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com',
+        # u'family_name': u'Mudge',
+        # u'iss': u'accounts.google.com',
+        #  u'email_verified': u'true',
+        #  u'name': u'Michael Mudge',
+        #  u'at_hash': u'1CvFBd6GwEXRPxHBESgV0w',
+        #  u'given_name': u'Michael',
+        #  u'exp': u'1497664124',
+        #   u'alg': u'RS256',
+        #   u'azp': u'872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com',
+        #   u'iat': u'1497660524',
+        #   u'locale': u'en',
+        #   u'kid': u'a298a56b6ac05431253d49030816a5ebf99a13c5',
+        #   u'email': u'mike.mudge@gmail.com',
+        #   u'sub': u'113404678280283320527'
+        # }
         email = data['email']
+        if not data.get('email_verified'):
+            raise Exception('Email is not verified' + data['email'])
+
         user = User.query.filter_by(email=email).first()
 
         if not user:
-            user = User.create(
-                email,
-                data.get('firstname'),
-                data.get('lastname'))
+            user = User.create(email)
             user.is_active = True
             db.session.add(user)
 
+        if not user.profile:
+            user.profile = Profile()
+
+        user.profile.firstname = data.get('given_name')
+        user.profile.lastname = data.get('family_name')
         user.profile.image = data.get('picture')
 
         db.session.commit()

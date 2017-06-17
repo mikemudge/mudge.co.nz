@@ -5,6 +5,7 @@ class Angular():
 
     def __init__(self, name):
         self.appName = name
+        self.require = self.appName + '/' + self.appName
         self.base = '/'
         self.scripts = [
             url_for('static', filename='%s/%s.js' % (name, name))
@@ -33,6 +34,9 @@ class Angular():
                 'base': self.base,
                 'config': self.config,
                 'favicon': self.favicon,
+            },
+            'brunch': {
+                'require': self.require,
             },
             'scripts': self.scripts,
             'styles': self.styles,

@@ -9,11 +9,11 @@ class UserView(DBModelView):
     model = User
     schema = UserSchema
 
-    @oauth.require_oauth('read_user')
+    @oauth.require_oauth('user')
     def get(self, pk):
         return super(UserView, self).get(pk)
 
-    @oauth.require_oauth('scope1')
+    @oauth.require_oauth('user')
     def post(self, pk):
         return super(UserView, self).post(pk)
 

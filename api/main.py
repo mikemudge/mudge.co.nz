@@ -31,24 +31,6 @@ def main_page():
 def error_test():
     abort(500, 'Error message here')
 
-@main_bp.route('/geohash')
-def geohash():
-    app = Angular('geohash')
-    app.scripts += [
-        # "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-    ]
-    return app.render()
-
-# TODO doesn't belong here.
-@main_bp.route('/api/geohash')
-def get_geohash():
-    from geohash import geohash
-    dj = geohash.loadDowJones()
-    lat = request.args.get('lat', -41)
-    lng = request.args.get('lng', 174)
-    return json.dumps(geohash.calculateFractions(dj, lat, lng))
-
 @main_bp.route('/jack')
 def jack():
 
@@ -111,12 +93,18 @@ def at_test():
     ]
     return app.render()
 
-@main_bp.route('/login/')
-@main_bp.route('/login/<path:path>')
-def login(path=None):
-    app = Angular('login')
-    app.base = '/'
-    app.scripts += [
-        url_for('static', filename='login/loginService.js')
-    ]
-    return app.render()
+# TODO make a standalone login section.
+# @main_bp.route('/login/')
+# def login(path=None):
+#     brunchServer = current_app.config.get('STATIC_URL')
+#     app = Angular('mmLogin')
+#     app.base = '/'
+#     app.scripts = [
+#         '%slogin/app.js' % brunchServer,
+#         '%slogin/templates.js' % brunchServer,
+#     ]
+#     app.styles = [
+#         '%slogin/app.css' % brunchServer
+#     ]
+#     app.require = 'login/login'
+#     return app.render()

@@ -5,7 +5,7 @@ from flask_admin import helpers, expose
 
 from flask_login import login_user, logout_user, current_user
 from auth.utils import googleAuth
-from api.login_manager import login_manager
+from auth.login_manager import login_manager
 from auth.models import User
 
 from shared.exceptions import AuthenticationException
@@ -29,18 +29,6 @@ class LoginForm(form.Form):
 
     def get_user(self):
         return login_manager.get_user()
-
-@login_manager.user_loader
-def load_user(user_id):
-    user = User.query.get(user_id)
-    emails = [
-        'mike.mudge@gmail.com',
-        'mike.mudge.test@gmail.com'
-    ]
-
-    if user.email in emails:
-        return user
-    return None
 
 def get_ip_from_request(req):
     if 'X-Forwarded-For' in req.headers:
@@ -98,7 +86,7 @@ class CustomAdminIndexView(AdminIndexView):
         if not data.get("access_token", None):
             raise AuthenticationException('USER_AUTH_ERROR')
 
-        sub, googleData = googleAuth(data.get('access_token'))
+        googleData = googleAuth(data.get('access_token'))
 
         user = User.query.filter_by(email=googleData['email']).first()
 

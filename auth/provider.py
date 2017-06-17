@@ -1,13 +1,14 @@
 from .models import Client, User
 from calendar import timegm
 from datetime import datetime
-from flask import current_app as app, abort, jsonify
+from flask import current_app, jsonify
 from flask_oauthlib.provider import OAuth2Provider
 from jose import jwt
 from shared.exceptions import AuthenticationException, ValidationException
 
 oauth = OAuth2Provider()
 
+# TODO this might be bad???
 def setup(app):
     app.config.setdefault('OAUTH2_PROVIDER_TOKEN_GENERATOR', create_token_generator)
 
@@ -57,7 +58,6 @@ def load_token(access_token=None, refresh_token=None):
         # pull any pieces out of it, e.g user_id->user?
         # This is what is loaded into request.oauth
         data = validate_token(access_token)
-        print data
         token = Token(data, access_token)
         return token
     elif refresh_token:
@@ -100,8 +100,8 @@ def validate_token(token):
     try:
         token_body = jwt.decode(
             token=token,
-            key=app.config.get('JWT_TOKEN_SECRET_KEY'),
-            algorithms=app.config.get('JWT_TOKEN_ALGORITHM'),
+            key=current_app.config.get('JWT_TOKEN_SECRET_KEY'),
+            algorithms=current_app.config.get('JWT_TOKEN_ALGORITHM'),
             # Skip some of the validations.
             options={
                 'verify_nbf': False,
@@ -127,9 +127,10 @@ def create_token(request, client, user):
     token_body = _create_token_body(request, client, user)
 
     try:
-        return jwt.encode(token_body,
-                          app.config.get('JWT_TOKEN_SECRET_KEY'),
-                          algorithm=app.config.get('JWT_TOKEN_ALGORITHM'))
+        return jwt.encode(
+            token_body,
+            current_app.config.get('JWT_TOKEN_SECRET_KEY'),
+            algorithm=current_app.config.get('JWT_TOKEN_ALGORITHM'))
 
     except jwt.JWSError:
         raise AuthenticationException(['Invalid jwt signing'])

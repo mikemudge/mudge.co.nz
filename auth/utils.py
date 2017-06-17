@@ -14,4 +14,8 @@ def googleAuth(id_token):
     if data["aud"] != current_app.config.get('GOOGLE_CLIENT_ID'):
         raise Exception("We cannot verify your Google login at this time.")
 
-    return data["sub"], data
+    # TODO check iat and exp?
+    # TODO can we validate sub?
+    print 'google sub', data['sub']
+
+    return data

@@ -13,7 +13,7 @@
   <script type="text/javascript" src="/static/js/angular/angular-route.min.js"></script>
   <script>
     // make client_config available to the angular app through a module called config.
-    config = {{ angular.config | tojson }};
+    var config = {{ angular.config | tojson }};
     angular.module('config', []).constant('config', config);
   </script>
   {% for style in styles %}
@@ -34,7 +34,7 @@
   <script type="text/javascript">
     if (typeof require !== 'undefined') {
       // When using brunch load the required modules.
-      require('{{ angular.app }}/{{ angular.app }}');
+      require('{{ brunch.require }}');
     }
   </script>
 </body>

@@ -40,6 +40,9 @@ class Client(BaseModel):
     def default_scopes(self):
         return [scope.name for scope in self.scopes]
 
+    def __repr__(self):
+        return self.name
+
 class Scope(BaseModel):
     name = db.Column(db.String(255))
 
@@ -63,8 +66,9 @@ class User(BaseModel):
         return self.email
 
     @classmethod
-    def create(cls, email, firstname, lastname, password=None):
+    def create(cls, email, password=None):
         if not password:
+            # Generate a random password for social users.
             password = bcrypt.gensalt()
             print 'Password length', len(password)
 
@@ -73,10 +77,6 @@ class User(BaseModel):
         user = User(
             email=email,
             password_hash=hashed,
-            profile=Profile(
-                firstname=firstname,
-                lastname=lastname
-            )
         )
 
         db.session.add(user)

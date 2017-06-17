@@ -30,6 +30,6 @@ JWT_TOKEN_ALGORITHM = "HS512"
 
 # TODO could just put this on prod?
 RESTRICT_FLASK_ADMIN = [
-    '210.246.49.204',
+    '118.93.226.220',
     '127.0.0.1',
 ]

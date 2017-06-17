@@ -47,12 +47,12 @@ class BrunchAppView(MethodView):
 
             # Include pieces from RTS.
             '%s%s/app.js' % (brunchServer, app_name),
-            # TODO allow skipping templates?
-            '%s%s/templates.js' % (brunchServer, app_name),
         ]
+        if app_name not in ['breakout']:
+            app.scripts += ['%s%s/templates.js' % (brunchServer, app_name)]
 
         # TODO better way to include dependencies.
-        if app_name in ['racer', 'rts', 'ar']:
+        if app_name in ['breakout', 'racer', 'rts', 'ar']:
             app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
             app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
 

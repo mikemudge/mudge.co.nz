@@ -86,6 +86,9 @@ class AuthenticationConnectorView(MethodView):
         if not user.profile:
             user.profile = Profile()
 
+        if not user.profile.username:
+            user.profile.username = email.split('@')[0]
+
         user.profile.firstname = data.get('given_name')
         user.profile.lastname = data.get('family_name')
         user.profile.image = data.get('picture')

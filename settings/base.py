@@ -22,7 +22,7 @@ GOOGLE_CLIENT_ID = '872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleuse
 AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 
 # Used to locate static files, aka brunch server.
-STATIC_URL = 'http://192.168.1.26:3333/'
+STATIC_URL = 'http://192.168.1.16:3333/'
 
 # JWT
 JWT_TOKEN_SECRET_KEY = "Random Secret Token string"

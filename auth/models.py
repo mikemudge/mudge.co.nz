@@ -1,4 +1,6 @@
 import bcrypt
+import pytz
+
 from shared.database import db, BaseModel, UUID
 from sqlalchemy.orm import relationship
 from werkzeug.security import gen_salt
@@ -93,6 +95,11 @@ class User(BaseModel):
 
     def get_id(self):
         return str(self.id)
+
+    def get_preferred_timezone(self):
+        # TODO should get from profile.
+        # local_tz = pytz.timezone(current_user.profile.timezone)
+        return pytz.timezone('Pacific/Auckland')
 
 class Profile(BaseModel):
     username = db.Column(db.String)

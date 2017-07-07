@@ -30,6 +30,17 @@ class BaseView(ModelView):
 
         return Markup('<img class="img-admin-list-view" src="%s">' % getattr(model, name))
 
+    def format_datetime(view, context, model, name):
+        date = getattr(model, name)
+        if not date:
+            return ''
+
+        timezone = current_user.get_preferred_timezone()
+        # Change date into users preferred time.
+        date = date.astimezone(timezone)
+        result = date.strftime('%Y-%m-%d %H:%M %Z')
+        return result
+
     # Creates a view formatter which links to a details endpoint.
     @classmethod
     def _to_view_url(cls, endpoint):
@@ -43,12 +54,18 @@ class BaseView(ModelView):
 
         return _instance_view_url
 
+    column_formatters = {
+        'date_created': format_datetime,
+        'date_updated': format_datetime,
+    }
+
 class UserView(BaseView):
     column_exclude_list = ['password_hash']
     form_excluded_columns = ['date_created', 'password_hash']
     can_create = False
 
     column_formatters = {
+        'date_created': BaseView.format_datetime,
         'profile': BaseView._to_view_url('profile')
     }
 
@@ -57,6 +74,7 @@ class ClientView(BaseView):
 
 class ProfileView(BaseView):
     column_formatters = {
+        'date_created': BaseView.format_datetime,
         'image': BaseView.format_image,
     }
 
@@ -86,9 +104,6 @@ def routes(app):
     flaskAdmin.add_view(BaseView(TrailWalk, db.session, category="Trail"))
     flaskAdmin.add_view(BaseView(TrailBiker, db.session, category="Trail"))
     flaskAdmin.add_view(BaseView(TrailRide, db.session, category="Trail"))
-
-    # flaskAdmin.add_view(BaseView(models.Rock1500, db.session, category="Rock1500"))
-    # flaskAdmin.add_view(BaseView(models.Rock1500Song, db.session, category="Rock1500"))
 
     flaskAdmin.add_view(BaseView(Tournament, db.session, category="Tournament"))
     flaskAdmin.add_view(BaseView(Match, db.session, category="Tournament"))

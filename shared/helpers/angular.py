@@ -11,7 +11,8 @@ class Angular():
             url_for('static', filename='%s/%s.js' % (name, name))
         ]
         self.styles = [
-            url_for('static', filename='common/styles.css'),
+            # I removed this, it had button styles in.
+            # url_for('static', filename='common/styles.css'),
             url_for('static', filename='%s/%s.css' % (name, name))
         ]
         self.config = {

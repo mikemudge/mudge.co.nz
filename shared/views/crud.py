@@ -52,7 +52,7 @@ class DBModelView(MethodView):
         # delete
         result = self.model.query.filter_by(id=pk).delete()
         if result != 1:
-            raise Exception('Bad delete: ' + result)
+            raise Exception('Bad delete: ' + str(result))
 
         db.session.commit()
         return jsonify({

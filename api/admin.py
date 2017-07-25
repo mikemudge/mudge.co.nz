@@ -8,8 +8,9 @@ from flask_login import current_user
 from jinja2 import Markup
 from shared.database import db
 from tournament_app.models import Tournament, Team, Match, Round
-from trail.models import TrailBiker, TrailRide, TrailWalk, TrailWalker
+from trail.models import Trail, TrailProgress, TrailProfile
 
+from wtforms.fields import SelectField
 
 class BaseView(ModelView):
     form_excluded_columns = ['date_created']
@@ -78,11 +79,20 @@ class ProfileView(BaseView):
         'image': BaseView.format_image,
     }
 
+class TrailView(BaseView):
+    form_extra_fields = {
+        'activity': SelectField(label='Activity', choices=Trail.ACTIVITIES),
+    }
+
+    def on_form_prefill(self, form, id):
+        # Select Fields don't prefill right.
+        form.activity.data = form.activity.object_data.code
+
 def routes(app):
 
     login_manager.init_app(app)
 
-    flaskAdmin = Admin(
+    admin = Admin(
         app,
         name='Mudge.co.nz',
         # name='Home',
@@ -95,22 +105,21 @@ def routes(app):
         base_template='admin/master.html'
     )
 
-    flaskAdmin.add_view(ClientView(Client, db.session, category="Auth"))
-    flaskAdmin.add_view(BaseView(Scope, db.session, category="Auth"))
-    flaskAdmin.add_view(UserView(User, db.session, category="Auth"))
-    flaskAdmin.add_view(ProfileView(Profile, db.session, category="Auth"))
+    admin.add_view(ClientView(Client, db.session, category="Auth"))
+    admin.add_view(BaseView(Scope, db.session, category="Auth"))
+    admin.add_view(UserView(User, db.session, category="Auth"))
+    admin.add_view(ProfileView(Profile, db.session, category="Auth"))
 
-    flaskAdmin.add_view(BaseView(TrailWalker, db.session, category="Trail"))
-    flaskAdmin.add_view(BaseView(TrailWalk, db.session, category="Trail"))
-    flaskAdmin.add_view(BaseView(TrailBiker, db.session, category="Trail"))
-    flaskAdmin.add_view(BaseView(TrailRide, db.session, category="Trail"))
+    admin.add_view(TrailView(Trail, db.session, category="Trail"))
+    admin.add_view(BaseView(TrailProgress, db.session, category="Trail"))
+    admin.add_view(BaseView(TrailProfile, db.session, category="Trail"))
 
-    flaskAdmin.add_view(BaseView(Tournament, db.session, category="Tournament"))
-    flaskAdmin.add_view(BaseView(Match, db.session, category="Tournament"))
-    flaskAdmin.add_view(BaseView(Round, db.session, category="Tournament"))
-    flaskAdmin.add_view(BaseView(Team, db.session, category="Tournament"))
+    admin.add_view(BaseView(Tournament, db.session, category="Tournament"))
+    admin.add_view(BaseView(Match, db.session, category="Tournament"))
+    admin.add_view(BaseView(Round, db.session, category="Tournament"))
+    admin.add_view(BaseView(Team, db.session, category="Tournament"))
 
-    flaskAdmin.add_view(BaseView(Walker, db.session, category="Old"))
-    flaskAdmin.add_view(BaseView(Walk, db.session, category="Old"))
-    flaskAdmin.add_view(BaseView(Biker, db.session, category="Old"))
-    flaskAdmin.add_view(BaseView(Ride, db.session, category="Old"))
+    admin.add_view(BaseView(Walker, db.session, category="Old"))
+    admin.add_view(BaseView(Walk, db.session, category="Old"))
+    admin.add_view(BaseView(Biker, db.session, category="Old"))
+    admin.add_view(BaseView(Ride, db.session, category="Old"))

@@ -16,6 +16,5 @@ def googleAuth(id_token):
 
     # TODO check iat and exp?
     # TODO can we validate sub?
-    print 'google sub', data['sub']
 
     return data

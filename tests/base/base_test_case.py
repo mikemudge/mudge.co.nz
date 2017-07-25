@@ -38,6 +38,28 @@ class BaseTestCase(TestCase):
                 raise AssertionError('missing ' + k)
             self.assertEquals(got[k], expect)
 
+    def assertEqual(self, got, expected):
+        if type(expected) is dict:
+            if type(got) is not dict:
+                raise AssertionError('Expected dict but got %s' % got)
+
+            for k, v in expected.iteritems():
+                if k not in got:
+                    raise AssertionError('Expected %s but it was missing' % k)
+                try:
+                    self.assertEqual(got[k], v)
+                except AssertionError as e:
+                    raise AssertionError("%s.%s" % (k, e.message))
+
+            # All things were as expected. Now check for extras.
+            for k, v in got.iteritems():
+                if k not in expected:
+                    raise AssertionError('Unexpected %s=%s' % (k, v))
+
+        else:
+            # All other types get the default.
+            super(TestCase, self).assertEqual(got, expected)
+
     def parseJwt(self, token):
         return jwt.get_unverified_claims(token)
 
@@ -61,6 +83,9 @@ class JsonClient():
         db.session.add(self.clientApp)
         db.session.commit()
 
+    def add_scope(self, scope):
+        self.clientApp.scopes.append(Scope(name=scope))
+
     def createLoggedInUser(self, username):
         user = self.createUser(username)
         self.loginAs(username)
@@ -69,8 +94,6 @@ class JsonClient():
     def createUser(self, username):
         user = User.create(
             username + '@test.mudge.co.nz',
-            'Test',
-            'User',
             password='1234abcd')
         user.is_active = True
         db.session.add(user)

@@ -2,11 +2,25 @@ import uuid
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import types, CHAR
+from sqlalchemy import MetaData
 from sqlalchemy.dialects.mysql.base import MSBinary
 from sqlalchemy.dialects.postgresql import UUID as postgresUUID
 from sqlalchemy.sql import func
 
-db = SQLAlchemy()
+# Allows overriding the metadata used by flask.
+# Adds a naming scheme for foreign constraints.
+# Allows alembic to delete those constraints when downgrading.
+# http://stackoverflow.com/questions/29153930/changing-constraint-naming-conventions-in-flask-sqlalchemy
+
+metadata = MetaData(naming_convention={
+    'pk': 'pk_%(table_name)s',
+    'fk': 'fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s',
+    'ix': 'ix_%(table_name)s_%(column_0_name)s',
+    'uq': 'uq_%(table_name)s_%(column_0_name)s',
+    'ck': 'ck_%(table_name)s_%(constraint_name)s',
+})
+
+db = SQLAlchemy(metadata=metadata)
 
 # As per SQL alchemy docs
 # http://docs.sqlalchemy.org/en/rel_0_8/core/types.html#backend-agnostic-guid-type

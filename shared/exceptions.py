@@ -32,6 +32,13 @@ class AuthenticationException(BaseException):
         self.error_code = error_code
         self.status_code = 401
 
+class BadRequestException(BaseException):
+    def __init__(self, message, error_code=None):
+        Exception.__init__(self)
+        self.message = message
+        self.error_code = error_code
+        self.status_code = 400
+
 
 status_code_messages = {
     404: 'Not found'
@@ -71,7 +78,9 @@ def registerHandlers(app):
 
     def handle_abort_error(error):
         traceback.print_exc()
-        sentry.captureException()
+        if error.code != 404:
+            # So many 404's for random urls.
+            sentry.captureException()
         print 'abort for route: %s' % request.url
         message = 'Unknown Error'
         if error.code in status_code_messages:

@@ -5,7 +5,13 @@ from shared.database import db
 TrailCommand = Manager(usage='Migrate Trail and Biking data')
 
 @TrailCommand.command
-def migrateWalks():
+def clear_walks():
+    # Delete all.
+    TrailWalker.query.delete()
+    db.session.commit()
+
+@TrailCommand.command
+def migrate_walks():
 
     # Delete all.
     TrailWalker.query.delete()
@@ -28,9 +34,14 @@ def migrateWalks():
     db.session.commit()
     print 'Done'
 
+@TrailCommand.command
+def clear_rides():
+    # Delete all.
+    TrailBiker.query.delete()
+    db.session.commit()
 
 @TrailCommand.command
-def migrateRides():
+def migrate_rides():
 
     # Delete all.
     TrailBiker.query.delete()

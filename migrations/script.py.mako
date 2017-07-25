@@ -14,6 +14,7 @@ from alembic import op
 import app
 import sqlalchemy as sa
 import shared
+import sqlalchemy_utils
 ${imports if imports else ""}
 
 def upgrade():

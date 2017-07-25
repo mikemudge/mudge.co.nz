@@ -28,7 +28,6 @@ class AuthenticationConnectorView(MethodView):
         try:
             # This doesn't seem legit?
             # Its not good, need to do something better.
-            print 'This is server', oauth.server
             valid = oauth._validator.authenticate_client(request)
         except Exception as e:
             print e.message

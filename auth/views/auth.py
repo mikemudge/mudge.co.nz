@@ -6,7 +6,7 @@ from flask import Blueprint
 from flask.views import MethodView
 from shared.database import db
 from shared.exceptions import ValidationException, AuthenticationException
-from shared.exceptions import codes
+from shared.exceptions import ErrorCodes
 auth_bp = Blueprint('auth_api', __name__, url_prefix='/api')
 
 class AuthenticationTokenView(MethodView):
@@ -31,7 +31,7 @@ class AuthenticationConnectorView(MethodView):
             valid = oauth._validator.authenticate_client(request)
         except Exception as e:
             print e.message
-            raise AuthenticationException('failed to authenticate client', error_code=codes.MALFORMED_OR_MISSING_BASIC_AUTH)
+            raise AuthenticationException('failed to authenticate client', error_code=ErrorCodes.MALFORMED_OR_MISSING_BASIC_AUTH)
 
         if not valid:
             raise AuthenticationException(['Invalid basic auth'])

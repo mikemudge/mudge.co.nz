@@ -69,6 +69,12 @@ def run_migrations_online():
                 directives[:] = []
                 logger.info('No changes in schema detected.')
 
+    def include_object(object, name, type_, reflected, compare_to):
+        if object.info.get('bind_key'):
+            print 'Skipping', object.name, 'due to bind_key', object.info.get('bind_key')
+            return False
+        return True
+
     engine = engine_from_config(config.get_section(config.config_ini_section),
                                 prefix='sqlalchemy.',
                                 poolclass=pool.NullPool)
@@ -77,6 +83,7 @@ def run_migrations_online():
     context.configure(connection=connection,
                       target_metadata=target_metadata,
                       process_revision_directives=process_revision_directives,
+                      include_object=include_object,
                       **current_app.extensions['migrate'].configure_args)
 
     try:

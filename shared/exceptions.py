@@ -9,14 +9,11 @@ class ErrorCodes:
     MALFORMED_OR_MISSING_BASIC_AUTH = 'MALFORMED_OR_MISSING_BASIC_AUTH'
     UNKNOWN_ERROR = 'UNKNOWN_ERROR'
 
-
-codes = ErrorCodes()
-
 class BaseException(Exception):
     # allows for a common parent.
     def __init__(self):
         self.status_code = 500
-        self.error_code = codes.UNKNOWN_ERROR
+        self.error_code = ErrorCodes.UNKNOWN_ERROR
         pass
 
 class ValidationException(BaseException):
@@ -49,7 +46,7 @@ def registerHandlers(app):
     # An application specific exception has more structure.
     @app.errorhandler(BaseException)
     def handle_known_error(error):
-        error_code = codes.UNKNOWN_ERROR
+        error_code = ErrorCodes.UNKNOWN_ERROR
         if hasattr(error, 'error_code'):
             error_code = error.error_code
         response = jsonify({

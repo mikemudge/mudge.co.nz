@@ -14,6 +14,7 @@ class BrunchAppsListView(MethodView):
             'breakout',
             'poker',
             'racer',
+            'rock',
             'bike',
             'trail',
         ]
@@ -45,7 +46,7 @@ class BrunchAppView(MethodView):
             '%slogin/app.js' % brunchServer,
             '%slogin/templates.js' % brunchServer,
 
-            # Include pieces from RTS.
+            # Include pieces from the app.
             '%s%s/app.js' % (brunchServer, app_name),
         ]
         if app_name not in ['breakout']:
@@ -56,10 +57,17 @@ class BrunchAppView(MethodView):
             app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
             app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
 
-        if app_name in ['bike', 'trail', 'tournament']:
-            # Include common libs and templates.
-            app.scripts += ['%sjs/api.js' % brunchServer]
-            app.scripts += ['%sjs/api-templates.js' % brunchServer]
+        # Include common libs and templates.
+        app.scripts += ['%sjs/api.js' % brunchServer]
+        app.scripts += ['%sjs/api-templates.js' % brunchServer]
+
+        if app_name == 'rock':
+            # Add select2 library for easier client selection.
+            app.styles += ['https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css']
+            app.scripts += [
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js',
+            ]
 
         if app_name == 'bike' or app_name == 'trail':
             app.scripts += ["https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry"]

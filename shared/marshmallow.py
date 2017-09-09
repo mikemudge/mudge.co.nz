@@ -1,9 +1,15 @@
 from flask import jsonify
+from flask_marshmallow import Marshmallow
 from marshmallow_sqlalchemy import ModelSchema, ModelSchemaOpts
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+from shared.database import db
+from shared.exceptions import ValidationException
+
 # Make marshmallow sqlalchemy friendly.
 Session = scoped_session(sessionmaker())
+
+ma = Marshmallow()
 
 class BaseOpts(ModelSchemaOpts):
     def __init__(self, meta):
@@ -19,6 +25,12 @@ class BaseSchema(ModelSchema):
         if errors:
             return self.errorResponse(errors)
         return jsonify(data=result)
+
+    def parse(self, data):
+        result, errors = self.load(data, session=db.session)
+        if errors:
+            raise ValidationException(errors)
+        return result
 
     def errorResponse(self, errors):
         # TODO structure this

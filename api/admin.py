@@ -3,6 +3,7 @@ from auth.custom_flask_admin import CustomAdminIndexView
 from auth.login_manager import login_manager
 from auth.models import Client, Scope, User, Profile
 from flask_admin import Admin
+from rock1500.models import Rock1500Album, Rock1500Song, Rock1500Artist, Rock1500Pick
 from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user
 from jinja2 import Markup
@@ -88,6 +89,31 @@ class TrailView(BaseView):
         # Select Fields don't prefill right.
         form.activity.data = form.activity.object_data.code
 
+
+class RockArtistView(BaseView):
+    column_exclude_list = ['date_created']
+
+    column_searchable_list = ['name']
+
+class RockSongView(BaseView):
+    column_exclude_list = ['date_created']
+
+    column_searchable_list = ['title', 'rank2017', 'rank2016', 'rank2015']
+
+class RockAlbumView(BaseView):
+    column_exclude_list = ['date_created']
+
+    column_searchable_list = ['name']
+
+    column_formatters = {
+        'cover_art_url': BaseView.format_image,
+    }
+
+class RockPickView(BaseView):
+    column_exclude_list = ['date_created']
+
+    column_searchable_list = ['song.title']
+
 def routes(app):
 
     login_manager.init_app(app)
@@ -123,3 +149,8 @@ def routes(app):
     admin.add_view(BaseView(Walk, db.session, category="Old"))
     admin.add_view(BaseView(Biker, db.session, category="Old"))
     admin.add_view(BaseView(Ride, db.session, category="Old"))
+
+    admin.add_view(RockAlbumView(Rock1500Album, db.session, category="Rock 1500"))
+    admin.add_view(RockArtistView(Rock1500Artist, db.session, category="Rock 1500"))
+    admin.add_view(RockSongView(Rock1500Song, db.session, category="Rock 1500"))
+    admin.add_view(RockPickView(Rock1500Pick, db.session, category="Rock 1500"))

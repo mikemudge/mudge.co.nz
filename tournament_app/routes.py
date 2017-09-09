@@ -11,7 +11,19 @@ class TournamentView(DBModelView):
 
     @oauth.require_oauth('tournament')
     def get(self, pk=None):
-        super(TournamentView, self).get(pk)
+        return super(TournamentView, self).get(pk)
+
+    @oauth.require_oauth('tournament')
+    def delete(self, pk):
+        return self.remove(pk)
+
+    @oauth.require_oauth('tournament')
+    def post(self, pk=None):
+        # Edit or Create.
+        if pk:
+            return self.edit(Tournament.query.get(pk))
+        else:
+            return self.create()
 
 class TeamView(DBModelView):
     model = Team

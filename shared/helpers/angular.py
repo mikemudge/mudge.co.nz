@@ -17,6 +17,7 @@ class Angular():
         ]
         self.config = {
             'basePath': '/static/%s/' % self.appName,
+            'API_URL': current_app.config.get('API_URL'),
             'GOOGLE_CLIENT_ID': current_app.config.get('GOOGLE_CLIENT_ID'),
             'AUTH_COOKIE_ID': current_app.config.get('AUTH_COOKIE_ID'),
             'CLIENT_ID': current_app.config.get('CLIENT_ID'),

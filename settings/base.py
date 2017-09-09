@@ -23,6 +23,7 @@ AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 
 # Used to locate static files, aka brunch server.
 STATIC_URL = 'http://localhost:3333/'
+API_URL = 'http://localhost:5000/'
 
 # JWT
 JWT_TOKEN_SECRET_KEY = "Random Secret Token string"

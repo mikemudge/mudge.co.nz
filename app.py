@@ -1,9 +1,9 @@
 from auth.provider import oauth, setup as setup_auth
 from flask import Flask
 from flask_cors import CORS
-from flask_marshmallow import Marshmallow
 from shared import exceptions
 from shared.database import db
+from shared.marshmallow import ma
 
 # Import routes.
 from admin.routes import routes as mudge_admin_routes
@@ -13,6 +13,7 @@ from api.main import main_bp
 from api.routes import routes as api_routes
 from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
+from rock1500.routes import routes as rock_routes
 from tournament_app.routes import routes as tournament_routes
 from trail.routes import routes as trail_routes
 from shared.exceptions import sentry
@@ -20,7 +21,6 @@ from shared.exceptions import sentry
 import os
 
 migrate = Migrate()
-ma = Marshmallow()
 
 def create_app(config=None):
 
@@ -43,6 +43,7 @@ def create_app(config=None):
     api_routes(app)
     admin_routes(app)
     auth_routes(app)
+    rock_routes(app)
     trail_routes(app)
     tournament_routes(app)
     # mudge_admin_routes(app)

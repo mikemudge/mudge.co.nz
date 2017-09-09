@@ -1,4 +1,4 @@
-from ..models import User, Profile
+from ..models import User, Profile, Client
 from ..utils import googleAuth
 from ..provider import oauth, create_token
 from flask import request, jsonify
@@ -7,6 +7,7 @@ from flask.views import MethodView
 from shared.database import db
 from shared.exceptions import ValidationException, AuthenticationException
 from shared.exceptions import ErrorCodes
+
 auth_bp = Blueprint('auth_api', __name__, url_prefix='/api')
 
 class AuthenticationTokenView(MethodView):
@@ -18,17 +19,37 @@ class AuthenticationTokenView(MethodView):
 
 class AuthenticationConnectorView(MethodView):
 
+    def check_client(self, request):
+        # Werkzeug, and subsequently Flask provide a safe Authorization header
+        # parsing, so we just use that if it is present.
+        if request.authorization:
+            auth = request.authorization
+            client_id = auth.get('username')
+            client_secret = auth.get('password')
+        else:
+            raise AuthenticationException('Bad basic auth')
+
+        client = Client.query.filter_by(client_id=client_id).first()
+        if not client:
+            return False
+
+        request.client = client
+
+        # http://tools.ietf.org/html/rfc6749#section-2
+        # The client MAY omit the parameter if the client secret is an empty string.
+        if hasattr(client, 'client_secret') and client.client_secret != client_secret:
+            return False
+
+        # Finally got it all right.
+        return True
+
     def post(self):
         """
         Get Token through social login
         :return:
         """
-        # TODO verify client header.
-        # Then verify login via google.
         try:
-            # This doesn't seem legit?
-            # Its not good, need to do something better.
-            valid = oauth._validator.authenticate_client(request)
+            valid = self.check_client(request)
         except Exception as e:
             print e.message
             raise AuthenticationException('failed to authenticate client', error_code=ErrorCodes.MALFORMED_OR_MISSING_BASIC_AUTH)

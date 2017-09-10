@@ -50,6 +50,9 @@ class Rock1500Song(BaseModel):
 
     @classmethod
     def find_by_name(cls, title, artist):
+        if not artist.id:
+            # If the artist doesn't exist yet, then there won't be any songs by them.
+            return None
         song = Rock1500Song.query.filter_by(title=title, artist=artist).first()
         return song
 

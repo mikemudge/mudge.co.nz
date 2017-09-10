@@ -29,12 +29,17 @@ class Rock1500Album(BaseModel):
         album = Rock1500Album.query.filter_by(name=name).first()
         return album
 
+    def __repr__(self):
+        return self.name
 
 class Rock1500Song(BaseModel):
-    title = db.Column(db.String(100), unique=True, index=True)
+    title = db.Column(db.String(100), index=True)
 
     artist_id = db.Column(UUID(), db.ForeignKey('rock1500_artist.id'), nullable=False)
     artist = db.relationship(Rock1500Artist, backref="songs")
+
+    album_id = db.Column(UUID(), db.ForeignKey('rock1500_album.id'), nullable=False)
+    album = db.relationship(Rock1500Album, backref="songs")
 
     # The important rank, once it is known.
     rank2017 = db.Column(db.Integer(), index=True)
@@ -44,8 +49,8 @@ class Rock1500Song(BaseModel):
     rank2015 = db.Column(db.String(100))
 
     @classmethod
-    def find_by_name(cls, title):
-        song = Rock1500Song.query.filter_by(title=title).first()
+    def find_by_name(cls, title, artist):
+        song = Rock1500Song.query.filter_by(title=title, artist=artist).first()
         return song
 
     def __repr__(self):

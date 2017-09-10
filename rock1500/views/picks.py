@@ -26,7 +26,6 @@ class RockPicksView(MethodView):
 
         song_schema = Rock1500SongSchema()
         picks = []
-        # TODO does this load songs by id?
         for i, pick in enumerate(request.json['picks']):
             song = song_schema.parse(pick['song'])
             if not song:
@@ -40,7 +39,6 @@ class RockPicksView(MethodView):
         # TODO verify no duplicate songs?
         print picks
 
-        # TODO should be able to just do this???
         request.oauth.user.rock_picks = picks
         db.session.commit()
 

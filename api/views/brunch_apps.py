@@ -62,11 +62,14 @@ class BrunchAppView(MethodView):
         app.scripts += ['%sjs/api-templates.js' % brunchServer]
 
         if app_name == 'rock':
-            # Add select2 library for easier client selection.
-            app.styles += ['https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css']
+            # Add rock styles and scripts
+            app.styles += [
+                # 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
+            ]
             app.scripts += [
                 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js',
+                # 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js',
             ]
 
         if app_name == 'bike' or app_name == 'trail':

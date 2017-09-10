@@ -28,14 +28,13 @@ class ImportView(MethodView):
             )
             db.session.add(album)
         else:
-            # Add album to artist if its not already there.
-            if album not in artist.albums:
-                artist.albums.append(album)
+            album.artist = artist
 
         song_name = item.get('title')
-        song = Rock1500Song.find_by_name(song_name)
+        song = Rock1500Song.find_by_name(song_name, artist)
         if not song:
             song = Rock1500Song(
+                album=album,
                 artist=artist,
                 title=song_name
             )

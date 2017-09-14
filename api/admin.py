@@ -103,17 +103,6 @@ class RockSongView(BaseView):
 
     column_filters = ['rank2017', 'rank2016']
 
-    def _int_format(view, context, model, name):
-        value = getattr(model, name)
-        if not value:
-            return ''
-
-        return int(value)
-
-    column_formatters = {
-        # 'rank2016': _int_format
-    }
-
     form_overrides = dict(rank2016=IntegerField)
 
 class RockAlbumView(BaseView):

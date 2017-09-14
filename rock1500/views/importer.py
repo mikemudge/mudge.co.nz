@@ -22,26 +22,21 @@ class ImportView(MethodView):
         if not album:
             album = Rock1500Album(
                 name=album_name,
-                artist=artist,
-                year=item.get('albumYear'),
-                cover_art_url=item.get('albumArt'),
             )
             db.session.add(album)
-        else:
-            album.artist = artist
+        album.artist = artist
+        album.cover_art_url = item.get('albumArt')
+        album.year = item.get('albumYear')
 
         song_name = item.get('title')
         song = Rock1500Song.find_by_name(song_name, artist)
         if not song:
             song = Rock1500Song(
-                album=album,
-                artist=artist,
                 title=song_name
             )
             db.session.add(song)
-        else:
-            if song not in artist.songs:
-                artist.songs.append(song)
+        song.artist = artist
+        song.album = album
 
         song.rank2017 = item.get('rank')
         song.rank2016 = item.get('rankOneYearAgo')

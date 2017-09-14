@@ -1,4 +1,4 @@
-from rock1500.models import Rock1500Song, Rock1500Artist, Rock1500Pick
+from rock1500.models import Rock1500Album, Rock1500Song, Rock1500Artist, Rock1500Pick
 
 from shared.marshmallow import BaseSchema, ma
 
@@ -6,11 +6,17 @@ class Rock1500ArtistSchema(BaseSchema):
     class Meta:
         model = Rock1500Artist
 
+class Rock1500AlbumSchema(BaseSchema):
+    class Meta:
+        model = Rock1500Album
+
 class Rock1500SongSchema(BaseSchema):
     class Meta:
         model = Rock1500Song
 
     artist = ma.Nested(Rock1500ArtistSchema, dump_only=True)
+
+    album = ma.Nested(Rock1500AlbumSchema, dump_only=True)
 
 class Rock1500PickSchema(BaseSchema):
     class Meta:

@@ -11,11 +11,12 @@ from shared.database import db
 from tournament_app.models import Tournament, Team, Match, Round
 from trail.models import Trail, TrailProgress, TrailProfile
 
-from wtforms.fields import SelectField
+from wtforms.fields import SelectField, IntegerField
 
 class BaseView(ModelView):
     form_excluded_columns = ['date_created']
     can_view_details = True
+    can_export = True
     # can_create = True
     # can_edit = True
 
@@ -98,7 +99,22 @@ class RockArtistView(BaseView):
 class RockSongView(BaseView):
     column_exclude_list = ['date_created']
 
-    column_searchable_list = ['title', 'rank2017', 'rank2016', 'rank2015']
+    column_searchable_list = ['title', 'rank2017', 'rank2016', 'rank2015', 'artist.name', 'album.name']
+
+    column_filters = ['rank2017', 'rank2016']
+
+    def _int_format(view, context, model, name):
+        value = getattr(model, name)
+        if not value:
+            return ''
+
+        return int(value)
+
+    column_formatters = {
+        # 'rank2016': _int_format
+    }
+
+    form_overrides = dict(rank2016=IntegerField)
 
 class RockAlbumView(BaseView):
     column_exclude_list = ['date_created']

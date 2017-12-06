@@ -69,21 +69,24 @@ class User(BaseModel):
 
     @classmethod
     def create(cls, email, password=None):
+        user = User(
+            email=email,
+        )
+
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        return user
+
+    def set_password(self, password):
         if not password:
             # Generate a random password for social users.
+            print "Generating random password for %s" % self.email
             password = bcrypt.gensalt()
             print 'Password length', len(password)
 
         hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-        user = User(
-            email=email,
-            password_hash=hashed,
-        )
-
-        db.session.add(user)
-        db.session.commit()
-        return user
+        self.password_hash = hashed
 
     def check_password(self, password_attempt):
         return bcrypt.hashpw(password_attempt.encode('utf-8'), self.password_hash.encode('utf-8')) == self.password_hash

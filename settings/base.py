@@ -14,7 +14,7 @@ SQLALCHEMY_BINDS = {
 }
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-DEBUG = True
+DEBUG = False
 SECRET_KEY = 'development key mike rocks ^U8f)PpGhyf"ECf/'
 USERNAME = 'admin'
 PASSWORD = 'default'

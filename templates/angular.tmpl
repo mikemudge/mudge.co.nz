@@ -26,7 +26,9 @@
 {% else %}
   {# Show the view for the current page #}
   <div ng-view autoscroll="true">
+    {% if angular.config.DEBUG %}
     Make sure you run <pre>brunch watch --server</pre>
+    {% endif %}
   </div>
 {% endif %}
 

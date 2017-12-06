@@ -1,0 +1,4977 @@
+{
+    "messages": [
+        {
+            "text": "master is ready, master", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510106563.000032"
+        }, 
+        {
+            "text": "oh yea, which ever is ready", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510101868.000179"
+        }, 
+        {
+            "text": "it will be master if it's an auto build, but I'll give you deets in a bi\\", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510101855.000243"
+        }, 
+        {
+            "text": "let me know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510101847.000060"
+        }, 
+        {
+            "text": "No not yet", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510101843.000168"
+        }, 
+        {
+            "text": "is develop ready?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510101839.000138"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510101839.000083"
+        }, 
+        {
+            "text": "na you\u2019ll still be on mudge_test branch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510101835.000299"
+        }, 
+        {
+            "text": "From Develop?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510101824.000160"
+        }, 
+        {
+            "text": "already have", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510101798.000031"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510101789.000086"
+        }, 
+        {
+            "text": "Are you going to set up an auto pull of the documentation from github", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1510101787.000163"
+        }, 
+        {
+            "text": "<https://github.com/8i/UnityPlugin_Documentation/blob/master/docs/source/index.rst>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098201.000047", 
+            "attachments": [
+                {
+                    "thumb_height": 134, 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "thumb_width": 134, 
+                    "title": "8i/UnityPlugin_Documentation", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/8i/UnityPlugin_Documentation/blob/master/docs/source/index.rst", 
+                    "text": "Contribute to UnityPlugin_Documentation development by creating an account on GitHub.", 
+                    "id": 1, 
+                    "fallback": "GitHub: 8i/UnityPlugin_Documentation", 
+                    "thumb_url": "https://avatars1.githubusercontent.com/u/7752511?s=400&v=4", 
+                    "from_url": "https://github.com/8i/UnityPlugin_Documentation/blob/master/docs/source/index.rst"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://staging.8i.com/android/docs/tutorial-one.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098056.000261"
+        }, 
+        {
+            "text": "guzzle_sphinx_theme&gt;=0.7.11,&lt;0.8\nrecommonmark&gt;=0.4.0,&lt;0.5\nsphinx&gt;=1.6.3,&lt;1.7", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510092096.000300"
+        }, 
+        {
+            "text": "from \n/app/argo-android/ArgoDocumentation\nsphinx-build -b html -a source/ build/", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510092060.000026"
+        }, 
+        {
+            "text": "<https://github.com/8i/argo-android>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1509913782.000071"
+        }, 
+        {
+            "text": "Its up now, but chrome will just download text files by default", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509572815.000105"
+        }, 
+        {
+            "username": "isaac_u", 
+            "display_as_bot": false, 
+            "text": "<@U11C3K5EC> uploaded a file: <https://hvr.slack.com/files/U11C3K5EC/F7UDGCZ0W/terms.txt|TERMS.txt> and commented: <https://8i.com/developerterms>", 
+            "upload": true, 
+            "ts": "1509571095.000033", 
+            "subtype": "file_share", 
+            "user": "U11C3K5EC", 
+            "file": {
+                "initial_comment": {
+                    "comment": "<https://8i.com/developerterms>", 
+                    "created": 1509571094, 
+                    "timestamp": 1509571094, 
+                    "is_intro": true, 
+                    "user": "U11C3K5EC", 
+                    "id": "Fc7TM03TTP"
+                }, 
+                "filetype": "text", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F7UDGCZ0W", 
+                "size": 40330, 
+                "title": "TERMS.txt", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F7UDGCZ0W/terms.txt", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1509571094, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F7UDGCZ0W/download/terms.txt", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "TERMS.txt", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F7UDGCZ0W-09ce66514f", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F7UDGCZ0W/terms.txt", 
+                "is_external": false, 
+                "created": 1509571094, 
+                "comments_count": 1, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<https://play.google.com/apps/testing/com.eighti.argo.lambshank>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1507694858.000184"
+        }, 
+        {
+            "text": "<https://8i.com/scene/6689df7d-a87f-47c8-a69b-871b0fbd3303>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507239072.000341", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "HWEEN01_170", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/scene/6689df7d-a87f-47c8-a69b-871b0fbd3303", 
+                    "text": "None - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: HWEEN01_170", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/production/experience/50ee2d10-f34e-4658-91d8-67759103d3b3/sceneThumb.png?time=1506739911987", 
+                    "from_url": "https://8i.com/scene/6689df7d-a87f-47c8-a69b-871b0fbd3303"
+                }
+            ]
+        }, 
+        {
+            "text": "I\u2019d add price to the list of things to consider for the device farm", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507081205.000279"
+        }, 
+        {
+            "text": "<https://google.github.io/dagger/>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506983621.000109", 
+            "attachments": [
+                {
+                    "title": "Dagger \u2021 A fast dependency injector for Android and Java.", 
+                    "text": "A fast dependency injector for Android and Java.", 
+                    "title_link": "https://google.github.io/dagger/", 
+                    "service_name": "google.github.io", 
+                    "id": 1, 
+                    "fallback": "Dagger \u2021 A fast dependency injector for Android and Java.", 
+                    "from_url": "https://google.github.io/dagger/"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://github.com/8i/argo-android/blob/develop/ArgoDocumentation/getting-started.md>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506905889.000016"
+        }, 
+        {
+            "text": "Champion", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506567727.000088"
+        }, 
+        {
+            "text": "Opacity is in now, <https://holo-staging.8i.com/flask-admin/ei-scene-admin/details/?url=%2Fflask-admin%2Fei-scene-admin%2F&amp;id=e9ddf042-267c-473e-a4ee-aff6a95b634b>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506567720.000007"
+        }, 
+        {
+            "text": "ha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506560317.000138"
+        }, 
+        {
+            "text": "Look at that glorious thumbnail", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506560308.000085"
+        }, 
+        {
+            "text": "<https://holo-staging.8i.com/admin/s/e9ddf042-267c-473e-a4ee-aff6a95b634b?tab=Experience>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506560299.000108"
+        }, 
+        {
+            "text": "0.5 opacity please", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506559598.000154"
+        }, 
+        {
+            "text": "<https://holo-staging.8i.com/flask-admin/ei-scene-admin/details/?id=e9ddf042-267c-473e-a4ee-aff6a95b634b>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506559592.000181"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506548677.000288"
+        }, 
+        {
+            "text": "He did tell me about the campaign_id last week, then I tested and couldn\u2019t get it to work. But nothing yesterday.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506548569.000292"
+        }, 
+        {
+            "text": "on the DL, did Michael talk to you about this at all yesterday?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506548419.000264"
+        }, 
+        {
+            "text": "campaign_id", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506548373.000224"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506285116.000072"
+        }, 
+        {
+            "text": "FYI, it is just about to happen - Tokes got back to me this morning", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506285101.000056"
+        }, 
+        {
+            "text": "No worries, I will do", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506142596.000045"
+        }, 
+        {
+            "text": "Yea, cool. Let me know if it happens", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506142552.000016"
+        }, 
+        {
+            "text": "best way to state things I reckon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506142526.000017"
+        }, 
+        {
+            "text": "but I'll talk to them tomorrow and make sure", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506142523.000047"
+        }, 
+        {
+            "text": "Haha, I should have said that", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506142517.000065"
+        }, 
+        {
+            "text": "I told you to say you\u2019d do it unless you heard from them :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506142509.000069"
+        }, 
+        {
+            "text": "Just checking, I\u2019m keen to see some analytics/suggestions come through", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506142491.000034"
+        }, 
+        {
+            "text": "Why?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506142467.000050"
+        }, 
+        {
+            "text": "Nope - I haven't heard from Mitch/Tokes", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1506142464.000022"
+        }, 
+        {
+            "text": "Yo, did you release a search build today?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506142441.000046"
+        }, 
+        {
+            "text": "Omw", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1502344451.519435"
+        }, 
+        {
+            "text": "Here now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502344365.505420"
+        }, 
+        {
+            "text": "955e039e-e19b-484d-868a-e49425fcac3e", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502060808.196922"
+        }, 
+        {
+            "text": "<http://10.20.10.64:8082/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496898941.272040"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496877519.705452"
+        }, 
+        {
+            "text": "<https://play.google.com/apps/testing/com.eighti.holo.android.beta>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496876915.606709"
+        }, 
+        {
+            "text": "Where do we download the Business Partner version of Holo?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496876895.603293"
+        }, 
+        {
+            "text": "opps, my `*`\u2018s become bold text", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496793777.577831"
+        }, 
+        {
+            "text": "Hey, once you are back can you double check the \u201cProfile\u201d screen is still being sent. It was in 2.0.* but haven\u2019t seen any in 2.1.*", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496793747.573055"
+        }, 
+        {
+            "attachments": [
+                {
+                    "image_bytes": 167835, 
+                    "image_width": 447, 
+                    "image_height": 332, 
+                    "image_url": "https://interestingliterature.files.wordpress.com/2013/06/frankenstein.gif", 
+                    "fallback": "<https://interestingliterature.files.wordpress.com/2013/06/frankenstein.gif>", 
+                    "id": 1, 
+                    "is_animated": true
+                }
+            ], 
+            "text": "", 
+            "ts": "1496314315.303212", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "bot_id": "B335DMCP8"
+        }, 
+        {
+            "text": "/gif frankestein", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496314313.302828"
+        }, 
+        {
+            "text": "I'M ALIVE!!", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496314299.300139"
+        }, 
+        {
+            "text": "Hope you didn't die", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496311929.831618"
+        }, 
+        {
+            "text": "Yes Dave's not the most accurate at time predictions", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496296259.708701"
+        }, 
+        {
+            "text": "5 mins?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496296081.688935"
+        }, 
+        {
+            "text": "Ignore it, I\u2019m just checking the meta tags", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496278178.617970"
+        }, 
+        {
+            "text": "<https://thisisholo.com/support/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496278167.616524", 
+            "attachments": [
+                {
+                    "title": "Holo - Mix Holograms into Photos &amp; Videos \u2014 None", 
+                    "service_name": "None", 
+                    "title_link": "https://thisisholo.com/support/", 
+                    "text": "Welcome to Holo, the app that lets you add holograms into your real-world environment and take videos and photos to share with friends.", 
+                    "id": 1, 
+                    "fallback": "None: Holo - Mix Holograms into Photos &amp; Videos \u2014 None", 
+                    "from_url": "https://thisisholo.com/support/"
+                }
+            ]
+        }, 
+        {
+            "text": "thanks heaps", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496037709.912433"
+        }, 
+        {
+            "text": "Done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496037421.880281"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496037316.869685"
+        }, 
+        {
+            "text": "can you add me?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496037310.868996"
+        }, 
+        {
+            "text": "210.246.45.192", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1496037306.868595"
+        }, 
+        {
+            "username": "isaac_u", 
+            "display_as_bot": false, 
+            "text": "<@U11C3K5EC> uploaded a file: <https://hvr.slack.com/files/U11C3K5EC/F5G2X7W59/-.txt|Untitled>", 
+            "upload": true, 
+            "ts": "1495423868.113238", 
+            "subtype": "file_share", 
+            "user": "U11C3K5EC", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 8, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F5G2X7W59", 
+                "size": 324, 
+                "title": "Untitled", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5G2X7W59/-.txt", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "preview": "\r\nnzkiwigirl2004@gmail.com.nz\r\n16187ws@hvhs.co.nz\r\nnella.e@hotmail.co.nz\r\nshedriki@gmail.com\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U11C3K5EC/F5G2X7W59/-.txt/edit", 
+                "username": "", 
+                "timestamp": 1495423867, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5G2X7W59/download/-.txt", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "-.txt", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5G2X7W59-c3a8503b83", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F5G2X7W59/-.txt", 
+                "is_external": false, 
+                "created": 1495423867, 
+                "lines": 13, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre></pre></div>\n<div><pre>nzkiwigirl2004@gmail.com.nz</pre></div>\n<div><pre>16187ws@hvhs.co.nz</pre></div>\n<div><pre>nella.e@hotmail.co.nz</pre></div>\n<div><pre>shedriki@gmail.com</pre></div>\n<div><pre></pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Sure, thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495413877.338567"
+        }, 
+        {
+            "text": "I have added some additional emails to the \u201cAll Android Users\u201d sheet, could you do the device compatibility checks for them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495408498.030882"
+        }, 
+        {
+            "text": "Hold off on that, I have a few more android users to add", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495407186.962137"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0C90MHEH/F52JLEV6C/androidnzholobeta|Holo Beta Device compat>", 
+            "upload": false, 
+            "ts": "1495405435.879312", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_64.png", 
+                "size": 44165, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo Beta Device compat", 
+                "url_private": "https://docs.google.com/spreadsheets/d/1oevqA_BopjMs54-x1SHSrJR7nA5tUpnkBkYlUWu6FlQ/edit#gid=898038143", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_360.png", 
+                "id": "F52JLEV6C", 
+                "ims": [
+                    "D0G4CDXNX", 
+                    "D12DBF78S"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_800.png", 
+                "timestamp": 1492993630, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_1024.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "AndroidNZHoloBeta", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F52JLEV6C/androidnzholobeta", 
+                "is_external": true, 
+                "created": 1492993630, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Yo, <https://docs.google.com/spreadsheets/d/1oevqA_BopjMs54-x1SHSrJR7nA5tUpnkBkYlUWu6FlQ/edit#gid=836402225>, can you add all those emails from the Filtered Android Users to the beta whitelist. Should already contain the original beta groups emails.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495405435.879290"
+        }, 
+        {
+            "text": "Thanks man", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163991.974944"
+        }, 
+        {
+            "text": "yea will try and remember to update holo-dev when I do future invites", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163963.972511"
+        }, 
+        {
+            "text": "I'm easy as, I just want to know what's going on :)", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163885.965354"
+        }, 
+        {
+            "text": "Otherwise it's easy for me to do", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163848.961967"
+        }, 
+        {
+            "text": "oh yup that works too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163847.961817"
+        }, 
+        {
+            "text": "alright, will filter the list and let you know the emails when I have them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163840.961169"
+        }, 
+        {
+            "text": "Michael knows how. If he is happy to do it, im happy for him to do it", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163839.961152"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163789.956025"
+        }, 
+        {
+            "text": "do we still need to white list the emails in google play?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163780.955189"
+        }, 
+        {
+            "text": "just follows the existing ones", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163761.953532"
+        }, 
+        {
+            "text": "The list of 130 has yes no and maybes on it", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163739.951581"
+        }, 
+        {
+            "text": "oh yup, I found them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163736.951321"
+        }, 
+        {
+            "text": "its all filtered by device compatibility already right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163682.946586"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163668.945506"
+        }, 
+        {
+            "text": "Yup, cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163666.945297"
+        }, 
+        {
+            "text": "Ok. Im keen to get Android invites out, but Im not desperate, so next week is ok. Just let me know if anything happens re: Android", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163654.944298"
+        }, 
+        {
+            "text": "I\u2019m just waiting for the go ahead", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163543.934096"
+        }, 
+        {
+            "text": "Amy is trying to get videos sorted for the email or something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163538.933552"
+        }, 
+        {
+            "text": "Alright, no worries.", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163518.931749"
+        }, 
+        {
+            "text": "No idea sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163501.930003"
+        }, 
+        {
+            "text": "and then we can invite those android users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163496.929512"
+        }, 
+        {
+            "text": "Ok. Will that be today or Monday?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163492.929143"
+        }, 
+        {
+            "text": "I think we will finish the iOS and then make it generic again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163480.928193"
+        }, 
+        {
+            "text": "with the switch to mail chimp templates we have iOSinised the content a bit", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163450.925362"
+        }, 
+        {
+            "text": "Ok. I thought the plan was to do all of those invites with ios", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163441.924533"
+        }, 
+        {
+            "text": "I was thinking after then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163421.922613"
+        }, 
+        {
+            "text": "Yeah we haven't", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163418.922355"
+        }, 
+        {
+            "text": "oh actually maybe we didn\u2019t invite them in yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163410.921661"
+        }, 
+        {
+            "text": "I thought we got a new list of 130 users?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163400.920607"
+        }, 
+        {
+            "text": "I haven\u2019t received a large number of new android users recently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495163351.916288"
+        }, 
+        {
+            "text": "Hey, how many new Android users do we have ready to invite? Micheal said about 10 or 20, but I thought it was a lot more than that", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495163325.914002"
+        }, 
+        {
+            "text": "Haha, I'll add something for the next build, especially for you :)", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1495077872.153203"
+        }, 
+        {
+            "text": "Hey, I tapped 8 times on the build version in Holo, but it didn\u2019t do anything. Whats up with that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495057900.598716"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494581528.531095"
+        }, 
+        {
+            "text": "Jjs?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494581304.487227"
+        }, 
+        {
+            "text": "String dimensionValue = \u201cSOME_DIMENSION_VALUE\u201d;\ntracker.set(Fields.customDimension(1), dimensionValue);", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494477006.661919"
+        }, 
+        {
+            "text": "imageSprite == null || imageSprite.getUrl() == null || imageSprite.getUrl().equals(\"\")", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494458414.844397"
+        }, 
+        {
+            "text": "6f3a2b2de81466ffb78f0a5aa060dd6e", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494394830.429795"
+        }, 
+        {
+            "text": "Prod token f7fe11ba1e16339215560a3b5d4c1dc4", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494394640.414162"
+        }, 
+        {
+            "username": "isaac_u", 
+            "display_as_bot": false, 
+            "text": "<@U11C3K5EC> uploaded a file: <https://hvr.slack.com/files/U11C3K5EC/F5AKWKF6D/foxtrot02_240_iv_v01.hvrs|FOXTROT02_240_iv_v01.hvrs>", 
+            "upload": true, 
+            "ts": "1494393298.309057", 
+            "subtype": "file_share", 
+            "user": "U11C3K5EC", 
+            "file": {
+                "filetype": "binary", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F5AKWKF6D", 
+                "size": 63006047, 
+                "title": "FOXTROT02_240_iv_v01.hvrs", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5AKWKF6D/foxtrot02_240_iv_v01.hvrs", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1494393290, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5AKWKF6D/download/foxtrot02_240_iv_v01.hvrs", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Binary", 
+                "name": "FOXTROT02_240_iv_v01.hvrs", 
+                "mimetype": "application/octet-stream", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5AKWKF6D-3d883060bf", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F5AKWKF6D/foxtrot02_240_iv_v01.hvrs", 
+                "is_external": false, 
+                "created": 1494393290, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "dReBVi2BR8k:APA91bGEt6bBr7zEyaKAMrSOKf2qWJDSlRJTno3SoisJpsHpaBMCKXFu1Z-xJh-xgGkP-8o7hDsGRNxdhy8A8xP_T6S2Pqv9VKWjU-v8J378Wo41V_U-Ka5s11y2ET8p3kNayNfmPDtg", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494388158.217384"
+        }, 
+        {
+            "text": "294b56b2-7116-45cb-be45-89e642c87bf1", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494387590.175524"
+        }, 
+        {
+            "text": "<https://eighteye.atlassian.net/browse/HOLOALL-157>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494387504.169352"
+        }, 
+        {
+            "text": "c5CfeGcz9tQ:APA91bFLy-z-hcxcrkWZCfE9hbbn7-4uBcQJrpF9ul05Aeu8X0W-wg6k6DWBp7AEUlh0zeDAb-WUvTaUMKS1iMkVSuegBy5AeD4p4RpEbZi8ys4JWdkL8-QADLX91TlX_P4H_gpyfcoB", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494385691.025068"
+        }, 
+        {
+            "text": "c5CfeGcz9tQ:APA91bHQB-O51TIi2nYsbvSIeyWxU4jx0WKeYOaAZvZzKj8_uhLF8s5kWcr_ob0-Oz0Tpg_Kh_r-lJpnk3XswWKy0hiCuBrpykzKIuBxJ7wtQplpNuo-b2moKsCHuBHMhrXgABPSKfYj", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494381732.672012"
+        }, 
+        {
+            "text": "b43a9671-5db3-40c2-9f8b-abd7c489a91c", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494380145.517724"
+        }, 
+        {
+            "text": "so I can find them in the backend", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375499.034364"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375496.034131"
+        }, 
+        {
+            "text": "can you get the id of the user when you do please", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375487.033190"
+        }, 
+        {
+            "text": "I'm still setting things up", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375482.032673"
+        }, 
+        {
+            "text": "no", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375472.031624"
+        }, 
+        {
+            "text": "Have you registered a device for a user?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375464.030648"
+        }, 
+        {
+            "text": "which is the second one", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375247.005913"
+        }, 
+        {
+            "text": "I think it's probably the legacy key", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375239.005013"
+        }, 
+        {
+            "text": "That looks more like the one I saw in their example", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375237.004772"
+        }, 
+        {
+            "text": "and the sender ID is: 699399425997", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375231.004093"
+        }, 
+        {
+            "text": "AIzaSyBJuX2jFdHiTsJNGeMMEJzma5i1maa8j9I", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375223.003001"
+        }, 
+        {
+            "text": "It might be this one:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375219.002653"
+        }, 
+        {
+            "text": "I'm confused by their documentation, I'm not sure if that's the key you need", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375212.001895"
+        }, 
+        {
+            "text": "AAAAotd0T80:APA91bFsl2Z6FDPioaK5ELU6bGFPW5ZY4jTPqHiknIDGsXMwlWEAE8K0XCvNXTkSVxZgVWSmWQrKnLY9Twccq_f-0OIp3GL4OeT_GvmfRFT_4zcvWEoNNjATn4-Z1KEcEMzVullNc75j", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375179.998244"
+        }, 
+        {
+            "text": "Yea its only asking for \u201cAndroid GCM API Key\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375106.990075"
+        }, 
+        {
+            "text": "no, I'm wrong", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375092.988342"
+        }, 
+        {
+            "text": "hmm", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375089.987994"
+        }, 
+        {
+            "text": "No, you need to upload that I believe", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1494375072.986193"
+        }, 
+        {
+            "text": "I think I just need the Google API key", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375063.985091"
+        }, 
+        {
+            "text": "Do I need that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494375054.984007"
+        }, 
+        {
+            "username": "isaac_u", 
+            "display_as_bot": false, 
+            "text": "<@U11C3K5EC> uploaded a file: <https://hvr.slack.com/files/U11C3K5EC/F5BV3KZ7Z/google-services.json|google-services.json>", 
+            "upload": true, 
+            "ts": "1494374982.975574", 
+            "subtype": "file_share", 
+            "user": "U11C3K5EC", 
+            "file": {
+                "filetype": "javascript", 
+                "lines_more": 96, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F5BV3KZ7Z", 
+                "size": 2914, 
+                "title": "google-services.json", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5BV3KZ7Z/google-services.json", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "preview": "{\r\n  \"project_info\": {\r\n    \"project_number\": \"699399425997\",\r\n    \"firebase_url\": \"https://holo-44694840.firebaseio.com\",\r\n    \"project_id\": \"holo-44694840\",\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U11C3K5EC/F5BV3KZ7Z/google-services.json/edit", 
+                "username": "", 
+                "timestamp": 1494374979, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5BV3KZ7Z/download/google-services.json", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "JavaScript/JSON", 
+                "name": "google-services.json", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5BV3KZ7Z-993cd7a91c", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F5BV3KZ7Z/google-services.json", 
+                "is_external": false, 
+                "created": 1494374979, 
+                "lines": 101, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>{</pre></div>\n<div><pre>  <span class=\"cm-string\">&quot;project_info&quot;</span>: {</pre></div>\n<div><pre>    <span class=\"cm-string\">&quot;project_number&quot;</span>: <span class=\"cm-string\">&quot;699399425997&quot;</span>,</pre></div>\n<div><pre>    <span class=\"cm-string\">&quot;firebase_url&quot;</span>: <span class=\"cm-string\">&quot;https://holo-44694840.firebaseio.com&quot;</span>,</pre></div>\n<div><pre>    <span class=\"cm-string\">&quot;project_id&quot;</span>: <span class=\"cm-string\">&quot;holo-44694840&quot;</span>,</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Or pass it to Michael, I\u2019d just like to get an example notification working for early next week and I saw you are both out Monday/Tuesday.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493939386.960073"
+        }, 
+        {
+            "text": "I'll try", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1493939215.937222"
+        }, 
+        {
+            "text": "Hey, would you be able to take a look at this today?\n<https://eighteye.atlassian.net/browse/HOLOALL-170>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493938928.896176"
+        }, 
+        {
+            "text": "<https://documenter.getpostman.com/collection/view/1335607-79d9746d-f445-a9c7-994c-ee344539fc52#e1bdaa82-e0c6-4905-df5c-86715de0df65>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493699963.225665"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0C90MHEH/F544B8X70/filtered_android_beta_users|Android Beta Users>", 
+            "upload": false, 
+            "ts": "1493007102.511610", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_64.png", 
+                "size": 139284, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Android Beta Users", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/15RllMNiZFl0cnT_x0tRzKb6JR2i1a-Z6QYzzZrU5-ec/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_360.png", 
+                "id": "F544B8X70", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_800.png", 
+                "timestamp": 1493007102, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_1024.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_960.png", 
+                "is_public": false, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Filtered Android Beta Users", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [], 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F544B8X70/filtered_android_beta_users", 
+                "is_external": true, 
+                "created": 1493007102, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": false, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F544B8X70-b5b3020acf/filtered_android_beta_users_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<https://play.google.com/apps/testing/com.eighti.holo.android>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1493002116.166977"
+        }, 
+        {
+            "text": "For capturing Beta Analytics in the CMS, the main items I have are:\nLocation\nAge\nGender\n\nActivities:\nTotal user session length\nUser session count\nUser download count\nUser Hologram drop count\nUser video create count\nUser photo create count\nUser share: Platform Count\n\nIt would be great to capture which Characters they\u2019re interacting with so we can see which ones are most liked by different demographics.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492060872.532190"
+        }, 
+        {
+            "text": "<https://play.google.com/apps/testing/com.eighti.holo.android>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1489551650.017964"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet|Holo - Google Analytics Events and Timing Logging Sheet>", 
+            "upload": false, 
+            "ts": "1489524712.353794", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [
+                    "G4KR129L0", 
+                    "G6UG2M5C5"
+                ], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_64.png", 
+                "size": 57339, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_360.png", 
+                "id": "F3X0XTCG3", 
+                "ims": [
+                    "D12DBF78S", 
+                    "D3X61C9HA", 
+                    "D431QMJ66", 
+                    "D450Y9VNH", 
+                    "D5MK78T28"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_800.png", 
+                "timestamp": 1485462811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5", 
+                    "C3QBYRUKE"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet", 
+                "is_external": true, 
+                "created": 1485462811, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<https://github.com/8i/holo-api/blob/develop/static/angular/eighti_admin/scenes/scene.js#L267>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488921031.000002"
+        }, 
+        {
+            "text": "its 30 seconds now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488498817.000017"
+        }, 
+        {
+            "text": "CognitoService.prototype.accessContent = function(cognitoInfo) {\n  AWS.config.credentials = new AWS.CognitoIdentityCredentials({\n    IdentityPoolId: cognitoInfo.pool_id,\n    Logins: {\n      '<http://cognito-identity.amazonaws.com|cognito-identity.amazonaws.com>': cognitoInfo.token\n    },\n    IdentityId: cognitoInfo.identity_id\n  });\n  AWS.config.region = cognitoInfo.pool_region;\n\n  var path = cognitoInfo.share_path;\n\n  var bucket = new AWS.S3({\n    params: {Bucket: cognitoInfo.bucket}\n  });", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488430160.000016"
+        }, 
+        {
+            "text": "{\n    \"base_url\": \"<https://d7cvc31wlmbhf.cloudfront.net/>\",\n    \"bucket\": \"<http://content.8i.com|content.8i.com>\",\n    \"expires\": 900,\n    \"identity_id\": \"us-west-2:f8057c0b-1bfa-4045-b4ca-9ab0c89baa0c\",\n    \"paths\": {\n      \"share_path\": \"production/holo/public/share/0x6om0ryim/\"\n    },\n    \"pool_id\": \"us-west-2:49b61d88-4fb5-4a15-badc-d06c0bb7dfcc\",\n    \"pool_region\": \"us-west-2\",\n    \"token\": \"eyJraWQiOiJ1cy13ZXN0LTIxIiwidHlwIjoiSldTIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiJ1cy13ZXN0LTI6ZjgwNTdjMGItMWJmYS00MDQ1LWI0Y2EtOWFiMGM4OWJhYTBjIiwiYXVkIjoidXMtd2VzdC0yOjQ5YjYxZDg4LTRmYjUtNGExNS1iYWRjLWQwNmMwYmI3ZGZjYyIsImFtciI6WyJ1bmF1dGhlbnRpY2F0ZWQiXSwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJleHAiOjE0ODg0MzA3MjcsImlhdCI6MTQ4ODQzMDEyN30.FlpzKoadmYktPX_laJLs4uw8W7AdD7rE0tQ7y4Bz1tllid4OYWs7IYgXluVcoMP_T4BYk_vDTGiqHUrvZF3_096jUU61vy2Irb1Nagy7PPeAGLgv4p5xZ6jWBIMVuAWL0M3-V_dxqiMm5ML_WSMg3FVU4R7sdevoG5GTrUwVYhRHnwqLPZN9AImS5GsKm2ZKoEOoHSeOYd1dKDHMoCtHKx1O_Ijrf8qn58_ZTWltFYByU4r62fLCbTNh-2ABApX7AJglcRWsJ2nQKB_vdnN5f5sAsEnYcinfkh8EmvxTWCdyDN_mHHTk7B0EfCjilSzYd_FbDmo-sL4E3ivDPNiQXg\",\n    \"type\": \"cognito-token\"\n  }", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488430138.000015"
+        }, 
+        {
+            "text": "{\n  \"data\": {\n    \"base_url\": \"<https://d7cvc31wlmbhf.cloudfront.net/>\", \n    \"bucket\": \"<http://content.8i.com|content.8i.com>\", \n    \"expires\": 900, \n    \"identity_id\": \"us-west-2:bcdfc1f4-87e8-4c17-b266-036bd1337141\", \n    \"paths\": {\n      \"share_path\": \"staging/holo/public/share/iecz9wkmty/\"\n    }, \n    \"pool_id\": \"us-west-2:e46e65bd-62a4-492c-a900-3d70a955a05d\", \n    \"pool_region\": \"us-west-2\", \n    \"token\": \"eyJraWQiOiJ1cy13ZXN0LTIxIiwidHlwIjoiSldTIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiJ1cy13ZXN0LTI6YmNkZmMxZjQtODdlOC00YzE3LWIyNjYtMDM2YmQxMzM3MTQxIiwiYXVkIjoidXMtd2VzdC0yOmU0NmU2NWJkLTYyYTQtNDkyYy1hOTAwLTNkNzBhOTU1YTA1ZCIsImFtciI6WyJ1bmF1dGhlbnRpY2F0ZWQiXSwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJleHAiOjE0ODg0MjQxOTYsImlhdCI6MTQ4ODQyMzU5Nn0.FNnH37FKaT17nwOJdauKyHaP7PEfeorgvNLhUuwAh445LRoF9SGLXg7iuGkqSqCNpgrUzCUcvlg75tcZgVvRbd2CovVUaqtHQZrk87_ADHzdH334lHB0JDZvyvyT_CPwPEywyYUJsiCDNJud-cHaC01kBkLA3M5Tm_m2AoLhLtQZZWUAC43qpbAXRPUkO6PEkHZmp9V-12IW35CiPDOcKca2Wz7AbDLWLU2qahUsgcGmMyaHVxInyNQXM6u1pLD5FLv-LkKhJVLTmoW5vAWnlsZCqUiZkCttHpweI8jSlRXn2Mp8pMu5F3RQHzCYo3RJBE5ZajgE7ge1AabJgBJdKg\", \n    \"type\": \"cognito-token\"\n  }\n}", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488423622.000014"
+        }, 
+        {
+            "text": "--", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488423621.000013"
+        }, 
+        {
+            "text": "--", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488423621.000012"
+        }, 
+        {
+            "text": "--", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488423619.000011"
+        }, 
+        {
+            "text": "---", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488423618.000010"
+        }, 
+        {
+            "text": "{\n  \"data\": {\n    \"base_url\": \"<https://d7cvc31wlmbhf.cloudfront.net/>\", \n    \"bucket\": \"<http://content.8i.com|content.8i.com>\", \n    \"expires\": 900, \n    \"identity_id\": \"us-west-2:b9c332b8-eafe-4702-9a3e-28aab4ea10c2\", \n    \"paths\": {\n      \"share_path\": \"production/holo/public/share/cvny6ddtdm/\"\n    }, \n    \"pool_id\": \"us-west-2:49b61d88-4fb5-4a15-badc-d06c0bb7dfcc\", \n    \"pool_region\": \"us-west-2\", \n    \"token\": \"eyJraWQiOiJ1cy13ZXN0LTIxIiwidHlwIjoiSldTIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiJ1cy13ZXN0LTI6YjljMzMyYjgtZWFmZS00NzAyLTlhM2UtMjhhYWI0ZWExMGMyIiwiYXVkIjoidXMtd2VzdC0yOjQ5YjYxZDg4LTRmYjUtNGExNS1iYWRjLWQwNmMwYmI3ZGZjYyIsImFtciI6WyJ1bmF1dGhlbnRpY2F0ZWQiXSwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJleHAiOjE0ODg0MTIxNzQsImlhdCI6MTQ4ODQxMTU3NH0.gCVBGw4yx7QI3r8AhFwGYOeew3H_XAjXaB1hpRlH48DXbwySk8_Sl3R3SbxqoErARijFRm3ii-Ei307R2Ljc705MYKuH9KyXdgF-wbYKPmCdjZCVSa6j8OqkKUyQ6WjrUOHSgvTLe0aqPzOsxKaaM5UHy1cxXcMcQhQxAyMRXtRN8QWpB_Peb7GeR7T9NcrTpEB9ElKRkwrcthwxPd9fU1ffZDLwV8u5VaapSKpKCaZ2h4sDjvlFgqxKUZWPjx5ICnLe-hPIp3dZD62BYlUA-4P3r4AAWcIHazzA88hmGWBICRz-J6m2a76gRRIu5NeLxfw17hcISScwrOjyTteWbQ\", \n    \"type\": \"cognito-token\"\n  }\n}", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488423307.000009"
+        }, 
+        {
+            "text": "Do you know what url you are trying to download?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488423105.000008"
+        }, 
+        {
+            "text": "CognitoPoolId: us-west-2:e46e65bd-62a4-492c-a900-3d70a955a05d", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488422642.000007"
+        }, 
+        {
+            "text": "Region: us-west-2", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488422630.000006"
+        }, 
+        {
+            "text": "Identity: us-west-2:a156beb3-bf4f-4ff4-ae2e-5aa99060dbfd", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488422623.000005"
+        }, 
+        {
+            "text": "eyJraWQiOiJ1cy13ZXN0LTIxIiwidHlwIjoiSldTIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiJ1cy13ZXN0LTI6YTE1NmJlYjMtYmY0Zi00ZmY0LWFlMmUtNWFhOTkwNjBkYmZkIiwiYXVkIjoidXMtd2VzdC0yOmU0NmU2NWJkLTYyYTQtNDkyYy1hOTAwLTNkNzBhOTU1YTA1ZCIsImFtciI6WyJ1bmF1dGhlbnRpY2F0ZWQiXSwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJleHAiOjE0ODg0MjMxODcsImlhdCI6MTQ4ODQyMjU4N30.UAhFsG_BDrrzsku4eQbQRU4b7xFL4s3dERIwGoAO2CGWd5BqYsnmYSXeIDP4ZRgIUe-5f0oa6iRR7lBF4Fmv1QBGdpzAxNbUs0uqh7MeHHiijuNpC7gLINPjJjM5cBPkvmBDjLceQ_XA_FzQE0HoqhwRwKf9EDundztrM-zxoSC51C6XPZkD1varKn42Xy10h2_b5EntgDZ-Cy07kpiIDf1_z4ELafqAxRbAEN8YGDDjIGyVWH7WLrGQHIBVNQ6tsPjZ3DgbuER6q7sZLYYDWPq0HqGBjJluR4ypIUrW4qHWaU1lPICBZ-wwwMCj_UZrH0-rX93fecnqYihfN6bqNQ", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488422613.000004"
+        }, 
+        {
+            "text": "eyJraWQiOiJ1cy13ZXN0LTIxIiwidHlwIjoiSldTIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiJ1cy13ZXN0LTI6MWY1MzFkM2ItODFkNi00ZjBjLTk1ZmQtNTdjZjUxNDc0YWQ0IiwiYXVkIjoidXMtd2VzdC0yOmU0NmU2NWJkLTYyYTQtNDkyYy1hOTAwLTNkNzBhOTU1YTA1ZCIsImFtciI6WyJ1bmF1dGhlbnRpY2F0ZWQiXSwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJleHAiOjE0ODg0MjMwMDQsImlhdCI6MTQ4ODQyMjQwNH0.A7b3qmBau8rs3fWh1JGlIdDJzF82KQieQyo-IzlbhBhzbODfa-ZM5EZ-3IHz1peD4302mTS-ZqQ7i4bZy4BlLm90OSBd1m-gCTUM1IEp6d5w0cIW-9bp-ZAZmZHjDzhKw5AjAjF5_8d_sK164e3XlIxzh9AiVyOXNwFc5j68lp9khuTxtraWr4cv48lPDospyYqxJcv4rU91PuzvlkcoilhgofhikEMNHZ4WmR8p9koE_jBdsIB31FFM7RwG4KxiWbMAUnA1rrLgj8kS2-9BjSqrZxly0YN_faxy2K3BueYSq8QMTsNXdh0alEsCT8xZdRVHz-CdAOk2Xg7NcgSjJg", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488422415.000003"
+        }, 
+        {
+            "text": "573d7e96-fef1-11e6-a59f-69e6ee240f3e", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1488422369.000002"
+        }, 
+        {
+            "text": "<https://ladders.pw/games/4295>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487904304.000003"
+        }, 
+        {
+            "text": "Don't worry about the query", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487887227.000002"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487542901.000035"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487542898.000034"
+        }, 
+        {
+            "text": "don't tell anyone you had to pretend to be iOS.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487542886.000033"
+        }, 
+        {
+            "text": "winnar", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487542840.000032"
+        }, 
+        {
+            "text": "Yo, the android details.\nClient Id\tPUlyYvZ8pLoiaY6PFhFcwNhNBNujSEwpMHbpyAYx\nClient Secret\tDMfOX7uIImPejpNMgOWnV3kI9cpkkzvyrVOd5yO2wv8C8LxI5p", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487537757.000031"
+        }, 
+        {
+            "text": "we can update it on Monday", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388271.000030"
+        }, 
+        {
+            "text": "champ :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388257.000029"
+        }, 
+        {
+            "text": "Client Id    lZKxjesH6o7Fp2oG3InHIEuWZyP3MUVdssyuPAvR\nClient Secret    W7nFHBzsr1ceThMKrkU77ECZDYOO2cunqSO1HTW6Qt1aCLh5XT", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388253.000028"
+        }, 
+        {
+            "text": "I have that info in my chat history with jed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388251.000027"
+        }, 
+        {
+            "text": "yeah that would be good", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388250.000026"
+        }, 
+        {
+            "text": "ok, sorry to interupt your weekend", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388245.000025"
+        }, 
+        {
+            "text": "if you want to fake it you can use the iOS client", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388238.000024"
+        }, 
+        {
+            "text": "if I was at work it would be easy to grab for you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388206.000023"
+        }, 
+        {
+            "text": "the admin stuff is all ip protected", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388195.000022"
+        }, 
+        {
+            "text": "At home", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388185.000021"
+        }, 
+        {
+            "text": "or am I bugging you at home?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388147.000020"
+        }, 
+        {
+            "text": "are you at work?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388142.000019"
+        }, 
+        {
+            "text": "no worries", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388140.000018"
+        }, 
+        {
+            "text": "Give me a minute", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388135.000017"
+        }, 
+        {
+            "text": "do you know what it is?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388113.000016"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487388109.000015"
+        }, 
+        {
+            "text": "oh yea it does", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487388064.000014"
+        }, 
+        {
+            "text": "do you know if the launch API uses a different \"basic-auth\" string for the authentication apis?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387975.000013"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487387497.000012"
+        }, 
+        {
+            "text": "ty", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387494.000011"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487387488.000010"
+        }, 
+        {
+            "text": "should be the same", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487387486.000009"
+        }, 
+        {
+            "text": "I'm assuming they're just /api/v1 on that address, right?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387484.000008"
+        }, 
+        {
+            "text": "but the api calls", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387473.000007"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387462.000006"
+        }, 
+        {
+            "text": "That one?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487387459.000005"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487387456.000004"
+        }, 
+        {
+            "text": "but what's the address of the new API?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387422.000003"
+        }, 
+        {
+            "text": "hey, sorry to bug you if you're not at work", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487387404.000002"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/api/v1/scene/dGX>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487113762.000002"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487024686.000007"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487024686.000006"
+        }, 
+        {
+            "text": "that should work for now", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1487024676.000005"
+        }, 
+        {
+            "text": "Not sure what the best delivery format for you is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487024665.000004"
+        }, 
+        {
+            "text": "<https://web-stage.dev.8i.com/s/dGX> is an mp3 audio file scene", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487024646.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "https://web-stage.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "Test MP3 Audio", 
+                    "service_name": "8i", 
+                    "title_link": "https://web-stage.dev.8i.com/s/dGX", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Test MP3 Audio", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/staging/thumbnails/dGX/scene_dGX.png?time=1487021417069", 
+                    "from_url": "https://web-stage.dev.8i.com/s/dGX"
+                }
+            ]
+        }, 
+        {
+            "text": "Sounds good to me!", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1486950467.000010"
+        }, 
+        {
+            "text": "\"sprite_thumbnail\": {\n        \"count\": 11, \n        \"height\": 720, \n        \"rotate_delta\": 0.1, \n        \"seek_delta\": 0.2, \n        \"url\": \"<https://s3-us-west-2.amazonaws.com/clouds.8i.com/development/exp_B9/spriteThumbnail.webp?time=1486949810993>\", \n        \"width\": 360\n      },", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486950095.000009"
+        }, 
+        {
+            "text": "<https://s3-us-west-2.amazonaws.com/clouds.8i.com/development/exp_oq/spriteThumbnail.webp?num=11&amp;time=1486946399351>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486946817.000008"
+        }, 
+        {
+            "text": "<https://s3-us-west-2.amazonaws.com/clouds.8i.com/development/exp_7v/spriteThumbnail.webp?num=11&amp;time=1486945115651>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486945114.000007"
+        }, 
+        {
+            "text": "<https://s3-us-west-2.amazonaws.com/clouds.8i.com/development/exp_7v/spriteThumbnail.webp?num=11&amp;time=1486942914938>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486943227.000006"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F43MM97D4/spriteexample.png|spriteExample.png>", 
+            "upload": true, 
+            "ts": "1486607844.000005", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_64.png", 
+                "size": 260665, 
+                "original_h": 480, 
+                "thumb_360_w": 360, 
+                "title": "spriteExample.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F43MM97D4/spriteexample.png", 
+                "thumb_720_h": 303, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_360.png", 
+                "id": "F43MM97D4", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 152, 
+                "thumb_480_h": 202, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1486607841, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F43MM97D4/download/spriteexample.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_1024.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "spriteExample.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F43MM97D4-e416d629d0", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F43MM97D4/spriteexample.png", 
+                "is_external": false, 
+                "created": 1486607841, 
+                "thumb_1024_h": 431, 
+                "thumb_960_h": 404, 
+                "original_w": 1140, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F43MM97D4-ba42b5bc70/spriteexample_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486594583.000004"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1486594579.000003"
+        }, 
+        {
+            "text": "Hey, quick test for me, can you reach <http://10.20.10.64:8080/holo>?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486594566.000002"
+        }, 
+        {
+            "text": "<mailto:mclemas@8i.com|mclemas@8i.com>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1486432387.000002"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/api/v1/scene?clientType=tango>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485741087.000002"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/admin/scene/EwG>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485489900.000002"
+        }, 
+        {
+            "username": "isaac_u", 
+            "display_as_bot": false, 
+            "text": "<@U11C3K5EC> uploaded a file: <https://hvr.slack.com/files/U11C3K5EC/F3V8ACEBT/holo08_160_2_silent.wav|HOLO08_160_2_SILENT.wav>", 
+            "upload": true, 
+            "ts": "1485291911.000003", 
+            "subtype": "file_share", 
+            "user": "U11C3K5EC", 
+            "file": {
+                "filetype": "wav", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F3V8ACEBT", 
+                "size": 44, 
+                "title": "HOLO08_160_2_SILENT.wav", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F3V8ACEBT/holo08_160_2_silent.wav", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1485291910, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F3V8ACEBT/download/holo08_160_2_silent.wav", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Waveform Audio", 
+                "name": "HOLO08_160_2_SILENT.wav", 
+                "mimetype": "audio/vnd.wave", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F3V8ACEBT-5a18c10229", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F3V8ACEBT/holo08_160_2_silent.wav", 
+                "is_external": false, 
+                "created": 1485291910, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<http://8i.com/admin/e/379>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1485291905.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1484694001.000008"
+        }, 
+        {
+            "text": "Alright width and height are allowed on the attachment now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484693479.000007"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/feed/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484692776.000006"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/api/v1/feed/post> POST", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484690615.000005"
+        }, 
+        {
+            "text": "<https://github.com/8i/holo-api/blob/develop/holo_feed/models/feed.py#L47>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484684511.000004"
+        }, 
+        {
+            "text": "{\"attachmentType\":\"video\",\"attachment\":{\"name\":\"HoloMix_20170111183938.mp4\",\"size\":12067168,\"url\":\"<https://s3-us-west-2.amazonaws.com/clouds.8i.com/holo/development/user/us-west-2:8dbacb88-b70a-49a0-b775-b611d41d1bc1/feed/HoloMix_20170111183938.mp4>\"},\"title\":\"This is new\"}", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484684461.000003"
+        }, 
+        {
+            "text": "attachment\n:\n{name: \"HoloMix_20170111183938.mp4\", size: 12067168,\u2026}\nattachmentType\n:\n\"video\"\ntitle\n:\n\"This is new\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484684427.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1484623781.000004"
+        }, 
+        {
+            "text": "yea, 1 minute, just chatting to ash", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484623756.000003"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: ?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1484623733.000002"
+        }, 
+        {
+            "text": "champion, thank you", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483996763.000003"
+        }, 
+        {
+            "text": "<http://8i.com/admin/sceneActions?tab=Characters&amp;limitless=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483996751.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483924916.000005"
+        }, 
+        {
+            "text": "in 10 minutes?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483924910.000004"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:  :question:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483924886.000003"
+        }, 
+        {
+            "text": "<http://jsonapi.org/format/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483915879.000002"
+        }, 
+        {
+            "text": "Things to discuss on Monday - \n\nAttachment width/height would be nice, and so would a single API with a query parameter. \n\nHow does paging work currently?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483667953.000002"
+        }, 
+        {
+            "text": "or created_by_id of the post", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588675.000014"
+        }, 
+        {
+            "text": "actually user.id", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588448.000013"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/api/v1/feed/user/3> where 3 is the user_id", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588398.000012"
+        }, 
+        {
+            "text": "sweet, hit me with those first", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483588345.000011"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/api/v1/feed/post>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588342.000010"
+        }, 
+        {
+            "text": "There are a few unauthenticated endpoints", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588336.000009"
+        }, 
+        {
+            "text": "does it take any params or authentication atm?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483588320.000008"
+        }, 
+        {
+            "text": "what's that address?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483588303.000007"
+        }, 
+        {
+            "text": "Yea there is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588294.000006"
+        }, 
+        {
+            "text": "is there no API to get the feed JSON?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483588278.000005"
+        }, 
+        {
+            "text": "Ye and Dave have been working on the uploading of videos/images so I\u2019m not sure what state that is at", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588263.000004"
+        }, 
+        {
+            "text": "<http://holo-stage.dev.8i.com/feed/> is the current web client", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483588200.000003"
+        }, 
+        {
+            "text": "What's the feed API info?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1483588012.000002"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/master/holo_cms.py>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481143719.000002"
+        }, 
+        {
+            "text": "<http://stackoverflow.com/questions/521493/creating-a-linear-gradient-in-2d-array>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480645243.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "http://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Creating a linear gradient in 2D array", 
+                    "text": "I have a 2D bitmap-like array of let's say 500*500 values. I'm trying to create a linear gradient on the array, so the resulting bitmap would look something like this (in grayscale): The input wou...", 
+                    "title_link": "http://stackoverflow.com/questions/521493/creating-a-linear-gradient-in-2d-array", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "Creating a linear gradient in 2D array", 
+                    "thumb_url": "http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a", 
+                    "from_url": "http://stackoverflow.com/questions/521493/creating-a-linear-gradient-in-2d-array"
+                }
+            ]
+        }, 
+        {
+            "text": "c9a1GQbz0Uw:APA91bFavq-c4XUGTPk9kfATFNNd3jUGTZOdQgJ9qVRxiPb17Wf-bVV0PEGSoGJ8btlNkoPqL9leEhtEG_1kWHH3wJAQEYD3D-w4sS_kM1QqCKzO8-GTb_5umgDbWseo8-3OOo3EVdzR", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1479438422.000006"
+        }, 
+        {
+            "text": "<http://stackoverflow.com/questions/37987821/get-all-subscribed-topics-from-firebase-cloud-messaging>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1479436316.000004", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "http://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Get all subscribed topics from firebase cloud messaging", 
+                    "text": "Using the new FirebaseMessaging it's easy to un/subscribe to topics via:FirebaseMessaging.getInstance().subscribeToTopic();FirebaseMessaging.getInstance().unsubscribeFromTopic(); But is there a...", 
+                    "title_link": "http://stackoverflow.com/questions/37987821/get-all-subscribed-topics-from-firebase-cloud-messaging", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "Get all subscribed topics from firebase cloud messaging", 
+                    "thumb_url": "http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&a", 
+                    "from_url": "http://stackoverflow.com/questions/37987821/get-all-subscribed-topics-from-firebase-cloud-messaging"
+                }
+            ]
+        }, 
+        {
+            "text": "thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1479422321.000003"
+        }, 
+        {
+            "text": "UI for notifications here <http://mudge-demo2.dev.8i.com/admin/notifications>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479422307.000002"
+        }, 
+        {
+            "text": "thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1479356499.000006"
+        }, 
+        {
+            "text": "If you need it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479356482.000005"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/api/tango/fcm/notification?device_id=cjHeVGu41Fw:APA91bEP7VNrSi-HpDfL2NU-n9SXqrmdGxEOWErdajzrLfz-kD3mYdfspDeQYANO2KyNkMM8_FmCr0547hcG4a1GnpFvjrfQR54HgacubQGjhtS0SKqtZRx_Pq2hDk58xWVJleUttGqF>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479356477.000004"
+        }, 
+        {
+            "text": "cjHeVGu41Fw:APA91bEP7VNrSi-HpDfL2NU-n9SXqrmdGxEOWErdajzrLfz-kD3mYdfspDeQYANO2KyNkMM8_FmCr0547hcG4a1GnpFvjrfQR54HgacubQGjhtS0SKqtZRx_Pq2hDk58xWVJleUttGqF", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1479353660.000003"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F33P4315K/google-services.json|google-services.json>", 
+            "upload": true, 
+            "ts": "1479345649.000002", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "javascript", 
+                "lines_more": 54, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F33P4315K", 
+                "size": 1651, 
+                "title": "google-services.json", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F33P4315K/google-services.json", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "preview": "{\n  \"project_info\": {\n    \"project_number\": \"699399425997\",\n    \"firebase_url\": \"https://holo-44694840.firebaseio.com\",\n    \"project_id\": \"holo-44694840\",", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0C90MHEH/F33P4315K/google-services.json/edit", 
+                "username": "", 
+                "timestamp": 1479345648, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F33P4315K/download/google-services.json", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "JavaScript/JSON", 
+                "name": "google-services.json", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F33P4315K-ac1d24632d", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F33P4315K/google-services.json", 
+                "is_external": false, 
+                "created": 1479345648, 
+                "lines": 59, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>{</pre></div>\n<div><pre>  <span class=\"cm-string\">&quot;project_info&quot;</span>: {</pre></div>\n<div><pre>    <span class=\"cm-string\">&quot;project_number&quot;</span>: <span class=\"cm-string\">&quot;699399425997&quot;</span>,</pre></div>\n<div><pre>    <span class=\"cm-string\">&quot;firebase_url&quot;</span>: <span class=\"cm-string\">&quot;https://holo-44694840.firebaseio.com&quot;</span>,</pre></div>\n<div><pre>    <span class=\"cm-string\">&quot;project_id&quot;</span>: <span class=\"cm-string\">&quot;holo-44694840&quot;</span>,</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/admin>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478647628.000002"
+        }, 
+        {
+            "text": "<http://sptboards.herokuapp.com/games/space-pirate-trainer/leaderboards/ion-grenade?page=5>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476303877.000002"
+        }, 
+        {
+            "text": "6 figure scores seem reachable, but those double bosses are tough", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476252796.000003"
+        }, 
+        {
+            "text": "91900", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476252761.000002"
+        }, 
+        {
+            "text": "<https://vimeo.com/166807261>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1474518931.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 166, 
+                    "service_icon": "https://a.slack-edge.com/e8ef6/img/unfurl_icons/vimeo.png", 
+                    "thumb_width": 295, 
+                    "author_link": "https://vimeo.com/chocobaby", 
+                    "service_name": "Vimeo", 
+                    "title": "HYPER-REALITY", 
+                    "video_html_height": 225, 
+                    "author_name": "Keiichi Matsuda", 
+                    "title_link": "https://vimeo.com/166807261", 
+                    "video_html": "<iframe src=\"https://player.vimeo.com/video/166807261?autoplay=1\" width=\"400\" height=\"225\" frameborder=\"0\" title=\"HYPER-REALITY\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>", 
+                    "video_html_width": 400, 
+                    "service_url": "https://vimeo.com/", 
+                    "text": "Hyper-Reality\u00a0presents a provocative and kaleidoscopic new vision of the future, where physical and virtual realities have merged, and the city is saturated in media. If you are interested in supporting the project, sponsoring the next work or would like to find out more, please send a hello to <mailto:info@km.cx|info@km.cx>\n\nby Keiichi Matsuda | <http://km.cx>\nmore at <http://hyper-reality.co>", 
+                    "id": 1, 
+                    "fallback": "Vimeo Video: HYPER-REALITY", 
+                    "thumb_url": "http://i.vimeocdn.com/video/571534199_295x166.jpg", 
+                    "from_url": "https://vimeo.com/166807261"
+                }
+            ]
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F23EGSGAZ/ww_logo_6.zip|WW logo 6.zip>", 
+            "upload": true, 
+            "ts": "1471827330.000002", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "zip", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F23EGSGAZ", 
+                "size": 588253, 
+                "title": "WW logo 6.zip", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F23EGSGAZ/ww_logo_6.zip", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1471827329, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F23EGSGAZ/download/ww_logo_6.zip", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Zip", 
+                "name": "WW logo 6.zip", 
+                "mimetype": "application/zip", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F23EGSGAZ-f95be49afc", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F23EGSGAZ/ww_logo_6.zip", 
+                "is_external": false, 
+                "created": 1471827329, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<http://8i.com/feedback/tango?version=%5BBETA%5D%201.0.3r1&amp;name=&amp;email=&amp;versionInfo=%7B%22holo_versionNumber%22:-1,%22holo_versionName%22:%22%5BBETA%5D%201.0.3r1%22,%22tango_ServiceVersion%22:%22UnityEditor%22,%22player_version%22:%220.2.1r18%22,%22player_gitHash%22:%221f7accc%22,%22player_buildDate%22:%222016-06-28%22%7D>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1471220816.000003"
+        }, 
+        {
+            "text": "%7B\"holo_versionNumber\":-1,\"holo_versionName\":\"%5BBETA%5D%201.0.3r1\",\"tango_ServiceVersion\":\"UnityEditor\",\"player_version\":\"0.2.1r18\",\"player_gitHash\":\"1f7accc\",\"player_buildDate\":\"2016-06-28\"%7D", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1471220789.000002"
+        }, 
+        {
+            "text": "Are you hitting the /api/v1/scene/actionList endpoint? I don\u2019t think its needed because /api/v1/scene/actionPack should return everything you need.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470368577.000002"
+        }, 
+        {
+            "text": "awesome, thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1470016930.000003"
+        }, 
+        {
+            "text": "<http://api.8i.com/api/serverHappy?clientType=tango&amp;clientVersion=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470016920.000002"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/5a53d8a667c43396cabed87b7b2f0e33a7b3922d/static/angular/director/OBJObject.js#L257>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469489062.000002"
+        }, 
+        {
+            "text": "ty", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1469421727.000003"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/5a53d8a667c43396cabed87b7b2f0e33a7b3922d/static/js/DeviceOrientationControls.js#L284>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469421720.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468810895.000010"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468810891.000009"
+        }, 
+        {
+            "text": "otherwise who knows when it will happen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468810888.000008"
+        }, 
+        {
+            "text": "na I may as well do it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468810880.000007"
+        }, 
+        {
+            "text": "Not very", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468810855.000006"
+        }, 
+        {
+            "text": "is it important?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468810838.000005"
+        }, 
+        {
+            "text": "I can do it today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468810827.000004"
+        }, 
+        {
+            "text": "what's the ETA on colours? Likely to happen today at all?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468810813.000003"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/simple/sceneActions>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468808581.000002"
+        }, 
+        {
+            "text": "alright, sounds good", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468543004.000045"
+        }, 
+        {
+            "text": "probably best to use https anyway", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542871.000044"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542857.000043"
+        }, 
+        {
+            "text": "it works", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468542849.000042"
+        }, 
+        {
+            "text": "you can have 5 if you like", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542322.000041"
+        }, 
+        {
+            "text": "alright, give me 2 mins", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468542290.000040"
+        }, 
+        {
+            "text": "alright, try that out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542262.000039"
+        }, 
+        {
+            "text": "nows good then?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542212.000038"
+        }, 
+        {
+            "text": "just do it and we'll find out haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468542206.000037"
+        }, 
+        {
+            "text": "IDK, maybe", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468542201.000036"
+        }, 
+        {
+            "text": "will that break anything for you?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542187.000035"
+        }, 
+        {
+            "text": "Hey, I can change those urls over to https now if you want", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468542182.000034"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541449.000033"
+        }, 
+        {
+            "text": "weird", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468541443.000032"
+        }, 
+        {
+            "text": "all of them fail at exactly the same time", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541428.000031"
+        }, 
+        {
+            "text": "and that if one fails", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541420.000030"
+        }, 
+        {
+            "text": "yeah, but the problem seems to be that it's random", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541406.000029"
+        }, 
+        {
+            "text": "and just queue up the others", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468541384.000028"
+        }, 
+        {
+            "text": "when the download fails you can slow down the number of parallel requests", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468541372.000027"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541038.000026"
+        }, 
+        {
+            "text": "throttle controller", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468541030.000025"
+        }, 
+        {
+            "text": "I'll figure it out", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541021.000024"
+        }, 
+        {
+            "text": "that's all good", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468541014.000023"
+        }, 
+        {
+            "text": "I can\u2019t seem to find anything regarding amazon timing out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468541004.000022"
+        }, 
+        {
+            "text": "hahaha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540684.000021"
+        }, 
+        {
+            "text": "maybe max out at 4 then :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540677.000020"
+        }, 
+        {
+            "text": "when this issue occurs", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540651.000019"
+        }, 
+        {
+            "text": "~5 or 6", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540646.000018"
+        }, 
+        {
+            "text": "how many downloads do you do in parallel?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540636.000017"
+        }, 
+        {
+            "text": "it might be something amazon is doing, but I don\u2019t know of anything in particular", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540544.000016"
+        }, 
+        {
+            "text": "I'm just trying to reproduce now", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540520.000015"
+        }, 
+        {
+            "text": "does it come with any kind of error or error code?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540508.000014"
+        }, 
+        {
+            "text": "the downloads will be actively downloading, but then BAM all downloads time out for no reason", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540448.000013"
+        }, 
+        {
+            "text": "right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540383.000012"
+        }, 
+        {
+            "text": "only happens on long downloads", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540373.000011"
+        }, 
+        {
+            "text": "hard to tell the difference", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540368.000010"
+        }, 
+        {
+            "text": "is this for the hvrs files, or everything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540357.000009"
+        }, 
+        {
+            "text": "I\u2019m not aware of anything which would make it special", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540321.000007", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1468540328.000000"
+            }
+        }, 
+        {
+            "text": "could that be anything to do with the server?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540316.000006"
+        }, 
+        {
+            "text": "and I am not sure why", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540266.000005"
+        }, 
+        {
+            "text": "Well, apparently the connection keeps timing out", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540256.000004"
+        }, 
+        {
+            "text": "special?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468540243.000003"
+        }, 
+        {
+            "text": "does <http://cdn-content.8i.com|cdn-content.8i.com> do anything special with downloads when they happen?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468540176.000002"
+        }, 
+        {
+            "text": "awesome, thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468470948.000063"
+        }, 
+        {
+            "text": "New assets should be up in the scene list now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468470891.000062"
+        }, 
+        {
+            "text": "<https://api-mudge-demo2.dev.8i.com/api/v1/scene/actionPack>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468464431.000061"
+        }, 
+        {
+            "text": "awesome, thanks dude", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468463051.000060"
+        }, 
+        {
+            "text": "Alright, I\u2019ll do it first", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468463044.000059"
+        }, 
+        {
+            "text": "this is top priority", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468463030.000058"
+        }, 
+        {
+            "text": "if you can fix this by the time I get out of a meeting with Tokes at 2.30 (which will be 30 mins)", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468463024.000057"
+        }, 
+        {
+            "text": "that depends", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468462999.000056"
+        }, 
+        {
+            "text": "which is more important?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462990.000055"
+        }, 
+        {
+            "text": "I\u2019m currently trying to upload all the new content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462984.000054"
+        }, 
+        {
+            "text": "angular, which I use on the website will just ignore that particular string as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462964.000053"
+        }, 
+        {
+            "text": "any eta on removing it from that endpoint?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468462954.000052"
+        }, 
+        {
+            "text": "ok, no problems then", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468462940.000051"
+        }, 
+        {
+            "text": "because it doesn\u2019t require credentials to access it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462931.000050"
+        }, 
+        {
+            "text": "Na, that endpoint doesn\u2019t actually need it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462922.000049"
+        }, 
+        {
+            "text": "I'm happy if you want to retain the security by using the `{\"d\":[ ... ]}` method", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468462901.000048"
+        }, 
+        {
+            "text": "very interesting", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468462853.000047"
+        }, 
+        {
+            "text": "but I have it added by default, because its better to forget to remove it than to forget to add it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462632.000046"
+        }, 
+        {
+            "text": "It only really matters when you are accessing data which requires credentials to access", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462609.000045"
+        }, 
+        {
+            "text": "<http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468462560.000043", 
+            "attachments": [
+                {
+                    "title": "Anatomy of a Subtle JSON Vulnerability - You've Been Haacked", 
+                    "text": "You've been Haacked and you like it", 
+                    "title_link": "http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/", 
+                    "service_name": "haacked.com", 
+                    "id": 1, 
+                    "fallback": "Anatomy of a Subtle JSON Vulnerability - You've Been Haacked", 
+                    "service_icon": "http://haacked.com/favicon.ico", 
+                    "from_url": "http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/"
+                }
+            ]
+        }, 
+        {
+            "text": "do you mind explaining the security thing? No important reason, just curious", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468462460.000042"
+        }, 
+        {
+            "text": "yea, thats a security thing, I\u2019ll remove it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468459249.000041"
+        }, 
+        {
+            "text": "I'm off for lunch now, but it would be good if we could get that sorted thisafternoon", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468459223.000040"
+        }, 
+        {
+            "text": "which prevents me from parsing it properly", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468459204.000039"
+        }, 
+        {
+            "text": "at the start", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468459194.000038"
+        }, 
+        {
+            "text": "including the `)]}',`", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468459190.000037"
+        }, 
+        {
+            "text": "that is the exact JSON I get back from \"<http://api-mudge-demo2.dev.8i.com/api/v1/scene/actionPack>\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468459178.000036"
+        }, 
+        {
+            "text": ")]}',\n[{\"actionLists\": [{\"id\": 5, \"name\": \"Princess\", \"sceneKeys\": [{\"key\": \"6JL\"}, {\"key\": \"wwz\"}, {\"key\": \"mbJ\"}]}, {\"id\": 6, \"name\": \"Monkey\", \"sceneKeys\": [{\"key\": \"bPW\"}, {\"key\": \"zZl\"}, {\"key\": \"dbv\"}]}, {\"id\": 7, \"name\": \"Fitness\", \"sceneKeys\": [{\"key\": \"peg\"}, {\"key\": \"4Jl\"}, {\"key\": \"VBL\"}]}], \"id\": 9, \"name\": \"Holo starter pack\"}]", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468459161.000035"
+        }, 
+        {
+            "text": "thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468458549.000028"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468458544.000027"
+        }, 
+        {
+            "text": "could we also rename \"sceneKeys\" to \"scenes\"?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468457730.000026"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382833.000025"
+        }, 
+        {
+            "text": "but didn\u2019t check it was still working on http", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382824.000024"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382822.000023"
+        }, 
+        {
+            "text": "I tested it worked on https", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382817.000022"
+        }, 
+        {
+            "text": "no worries dude", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382810.000021"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382807.000020"
+        }, 
+        {
+            "text": "sorry about that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382806.000019"
+        }, 
+        {
+            "text": "its back up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382804.000018"
+        }, 
+        {
+            "text": "oh", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382610.000017"
+        }, 
+        {
+            "text": "it shouldn\u2019t have been", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382607.000016"
+        }, 
+        {
+            "text": "can you let me know when it's back up", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382604.000015"
+        }, 
+        {
+            "text": "ahh, so it's dead for now?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382593.000014"
+        }, 
+        {
+            "text": "but I\u2019m making it https compatible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382583.000013"
+        }, 
+        {
+            "text": "Not on purpose", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468382575.000012"
+        }, 
+        {
+            "text": "have you taken the server down?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468382537.000011"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/simple/director> shows all existing scenes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468374671.000010"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/simple/scene/6JL> lets you set a transparent background image as the scene thumbnail", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468374641.000009"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468368243.000008"
+        }, 
+        {
+            "text": ":100:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468368241.000007"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/api/scene/actionPack> like this?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468368088.000006"
+        }, 
+        {
+            "text": "I believe I follow you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468365809.000005"
+        }, 
+        {
+            "text": "where the objects are just `{ \"key\": \"asd\" }` as this matches the scene API, which will allow me to fill out those objects with data from the other APIs, and still have valid action list objects. Does that make sense?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468365719.000004"
+        }, 
+        {
+            "text": "I'd like to see the \"sceneKeys\" array of strings replaced with an array of objects if possible", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468365627.000003"
+        }, 
+        {
+            "text": "So - I've finally got around to testing the action pack API", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468365582.000002"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468300772.000012"
+        }, 
+        {
+            "text": "that's w/h", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468300672.000011"
+        }, 
+        {
+            "text": "380 / 480 is the new number, please :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468300662.000010"
+        }, 
+        {
+            "text": "as long as both numbers fit into 75 * 90", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299880.000009"
+        }, 
+        {
+            "text": "If it's 750 pixels by 900 pixels, that's fine, or if it's 225px by 270px that's also fine", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299867.000008"
+        }, 
+        {
+            "text": "I just want it to scale evenly", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299832.000007"
+        }, 
+        {
+            "text": "because it's not pixels I want", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299819.000006"
+        }, 
+        {
+            "text": "Yeah, I said units", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299811.000005"
+        }, 
+        {
+            "text": "I should double that for retina displays", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468299726.000004"
+        }, 
+        {
+            "text": "1 : 1.2", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299197.000003"
+        }, 
+        {
+            "text": "75 units wide, 90 units tall", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1468299148.000002"
+        }, 
+        {
+            "text": "yea, no problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467863919.000009"
+        }, 
+        {
+            "text": "probably tomorrow though, all good?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467863913.000008"
+        }, 
+        {
+            "text": "ok, I'll do that", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467863906.000007"
+        }, 
+        {
+            "text": "but yea, have a play with it and see if there is anything else missing. And then I can have another go at it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467863893.000006"
+        }, 
+        {
+            "text": "I could get the thumbnail from the first scene of each action list", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467863856.000005"
+        }, 
+        {
+            "text": "No thumbnails anywhere, but I was going to double check which level we wanted those at", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467863825.000004"
+        }, 
+        {
+            "text": "awesome dude, thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467863821.000003"
+        }, 
+        {
+            "text": "Hey, I\u2019ve got the first pass of a pack API up now at <http://mudge-demo2.dev.8i.com/admin/api/scene/actionPack>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467863802.000002"
+        }, 
+        {
+            "text": "ok, lets do it now", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467673667.000026"
+        }, 
+        {
+            "text": "whenever", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467673661.000025"
+        }, 
+        {
+            "text": "now?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467673657.000024"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467673653.000023"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467673649.000022"
+        }, 
+        {
+            "text": "hey, are you free any time soon to disucss playlists and mutli-actor scenes?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467673637.000021"
+        }, 
+        {
+            "text": "f", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584811.000020"
+        }, 
+        {
+            "text": "I wanted to last week, but got side-tracked with other stuf", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584809.000019"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584807.000018"
+        }, 
+        {
+            "text": "We also need to talk about playlists at some point", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584800.000017"
+        }, 
+        {
+            "text": "not for release though", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584790.000016"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584783.000015"
+        }, 
+        {
+            "text": "All of those?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584778.000014"
+        }, 
+        {
+            "text": "The ones on the mudge-demo that are set for Tango should stay for now", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584759.000013"
+        }, 
+        {
+            "text": "or should I just make some up for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584737.000012"
+        }, 
+        {
+            "text": "Do you know if we have a list of scenes which we want on tango?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584726.000011"
+        }, 
+        {
+            "text": "we might need a couple of lists, one for the dev app and one for the live app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584658.000010"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584619.000009"
+        }, 
+        {
+            "text": "currently we don\u2019t have anything up there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584613.000008"
+        }, 
+        {
+            "text": "for now though should I stick on mudge-demo?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584611.000007"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584602.000006"
+        }, 
+        {
+            "text": "we should switch over to <http://8i.com|8i.com> before launch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584593.000005"
+        }, 
+        {
+            "text": "should I use something else?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584593.000004"
+        }, 
+        {
+            "text": "Yeah", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1467584587.000003"
+        }, 
+        {
+            "text": "Hey, you are still using mudge-demo\u2026 for getting scenes right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467584578.000002"
+        }, 
+        {
+            "text": "yea it explains exactly where to find it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466984692.000021"
+        }, 
+        {
+            "text": "and the floor is the component at [1]", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984687.000020"
+        }, 
+        {
+            "text": "well, it does say sceneobjects[1]", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984674.000019"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984664.000018"
+        }, 
+        {
+            "text": "that's all good, just wanted to make sure I was understanding", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984663.000017"
+        }, 
+        {
+            "text": "it just fails to say what that value actually is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466984661.000016"
+        }, 
+        {
+            "text": "but yea it found a component with a type which it doesn\u2019t like", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466984649.000015"
+        }, 
+        {
+            "text": "the validation isn\u2019t super good and reporting errors", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466984632.000014"
+        }, 
+        {
+            "text": "yea, most likely", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466984618.000013"
+        }, 
+        {
+            "text": "I'm guessing it's to do with the floor component?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984199.000012"
+        }, 
+        {
+            "text": "\"not a valid value for dictionary value @ data[u'sceneObjects'][1][u'components'][0][u'type']\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984188.000011"
+        }, 
+        {
+            "text": "do you mind explaining what this error is?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466984180.000010"
+        }, 
+        {
+            "text": "woo, thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466983449.000009"
+        }, 
+        {
+            "text": "Alright the new hvrs are in the director list now. <http://mudge-demo2.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466983441.000008"
+        }, 
+        {
+            "text": "great, thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466980731.000007"
+        }, 
+        {
+            "text": "not the version I\u2019ve been using", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466980724.000006"
+        }, 
+        {
+            "text": "does HVRS have built in audio?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466980620.000005"
+        }, 
+        {
+            "text": "ah cool, flick me a message when they're in - no rush", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466979961.000004"
+        }, 
+        {
+            "text": "yea I\u2019m working on getting those in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466979727.000003"
+        }, 
+        {
+            "text": "Hey, Asher said that the new tango stuff was up on Amazon - is it possible for me to add some of those to the demo director so I can play with those, or is that something that you have to dO?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1466979475.000002"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465954774.000005"
+        }, 
+        {
+            "text": "sure thing, might not be for a little while though, I'm right deep in the middle of something else right now", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465954758.000003"
+        }, 
+        {
+            "text": "Hey, this asset is set up to use meters instead of cm, would you mind loading it to see if it works for you (just when you get a chance) <http://api-mudge-demo2.dev.8i.com/api/v1/scene/BjE>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465954646.000002"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465867856.000022"
+        }, 
+        {
+            "text": "is now good?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465867663.000021"
+        }, 
+        {
+            "text": "alright, when you are back from lunch we can talk.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465866540.000020"
+        }, 
+        {
+            "text": "either that or I'm missing something haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465865356.000019"
+        }, 
+        {
+            "text": "we need to talk about scaling in the API stuff - it doesn't seem to be consistent", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465865312.000018"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855509.000017"
+        }, 
+        {
+            "text": "should keep you moving a bit further", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855489.000016"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855477.000015"
+        }, 
+        {
+            "text": "I just want to start testing things :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855474.000014"
+        }, 
+        {
+            "text": "close enough is good enough at the moment", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855468.000013"
+        }, 
+        {
+            "text": "but nothing is broken so at least you can get whats there :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855467.000012"
+        }, 
+        {
+            "text": "I think it might still be missing some of the info", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855453.000011"
+        }, 
+        {
+            "text": "woo", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855450.000010"
+        }, 
+        {
+            "text": "I\u2019ve updated it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855444.000009"
+        }, 
+        {
+            "text": "as", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855068.000008"
+        }, 
+        {
+            "text": "ok, sweet a", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855067.000007"
+        }, 
+        {
+            "text": "I think its ready now, just doing my final checks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855063.000006"
+        }, 
+        {
+            "text": "what address should I be hitting?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855058.000005"
+        }, 
+        {
+            "text": "ahhhh", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855043.000004"
+        }, 
+        {
+            "text": "I haven\u2019t put the changed on mudge-demo2 yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465855039.000003"
+        }, 
+        {
+            "text": "did you change the file meta data stuff back for objs?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465855019.000002"
+        }, 
+        {
+            "text": "<http://api-mudge.dev.8i.com/api/v1/scene/528>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465794589.000019"
+        }, 
+        {
+            "text": "sweet as :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465788848.000018"
+        }, 
+        {
+            "text": "alright, I\u2019ll add it when I can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465788833.000017"
+        }, 
+        {
+            "text": "I'm going to start dealing with OBJ files, and I want to do it in a kind of generic way", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465788830.000016"
+        }, 
+        {
+            "text": "yeah, it's working really well", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465788803.000015"
+        }, 
+        {
+            "text": "as long as the current format for hvr files is working for you I can add it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465788774.000014"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465788744.000013"
+        }, 
+        {
+            "text": "hmm", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465788743.000012"
+        }, 
+        {
+            "text": "It can be done, but might just take a bit of work", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465788738.000011"
+        }, 
+        {
+            "text": "how much effort would it be for you to add the same file meta data that exists for HVR files to OBJ files?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465788695.000010"
+        }, 
+        {
+            "text": "good plan haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465769817.000009"
+        }, 
+        {
+            "text": "thats why I got both :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465769802.000008"
+        }, 
+        {
+            "text": "but both could have worked", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465769798.000007"
+        }, 
+        {
+            "text": "I was wondering \"which one\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465769790.000006"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465769784.000005"
+        }, 
+        {
+            "text": "but <mailto:mudge@8i.com|mudge@8i.com> is an alias for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465769775.000004"
+        }, 
+        {
+            "text": "<mailto:michael@8i.com|michael@8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465769765.000003"
+        }, 
+        {
+            "text": "what's your email address?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465769751.000002"
+        }, 
+        {
+            "text": "I've just renamed it \"Yellow swimsuit on crate\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465517323.000009"
+        }, 
+        {
+            "text": "I want to test it for Tango", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465517300.000008"
+        }, 
+        {
+            "text": "\"Yellow Swimsuit\" with the model standing on a crate", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465517294.000007"
+        }, 
+        {
+            "text": "which scene?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465517281.000006"
+        }, 
+        {
+            "text": "Web director lets you take and upload a screenshot", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465517274.000005"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465517261.000004"
+        }, 
+        {
+            "text": "is there a way to change the thmbnail in webdirector?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465517255.000003"
+        }, 
+        {
+            "text": "hey man", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465517242.000002"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465430885.000004"
+        }, 
+        {
+            "text": "I'd like to talk to you again about component IDs", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465430762.000003"
+        }, 
+        {
+            "text": "busy?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465430702.000002"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465363721.000079"
+        }, 
+        {
+            "text": "I think that's just the way Amazon returns it. Let me have a look tomorrow ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465363697.000078"
+        }, 
+        {
+            "text": "or am I missing something important?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465362737.000077"
+        }, 
+        {
+            "text": "Can we un-include the parent directory from the HVRFile?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465362724.000076"
+        }, 
+        {
+            "text": "so probably not initially", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360566.000075"
+        }, 
+        {
+            "text": "ill come around", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360562.000074"
+        }, 
+        {
+            "text": "but it sounds complex", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360560.000073"
+        }, 
+        {
+            "text": "not really sure what component linking is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360555.000072"
+        }, 
+        {
+            "text": "oh yeah man, I understand that", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360555.000071"
+        }, 
+        {
+            "text": "ok, I haven\u2019t used unity for anything like this so I\u2019m just doing what I can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360545.000070"
+        }, 
+        {
+            "text": "are there any plans to do component linking?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360516.000069"
+        }, 
+        {
+            "text": "I kinda see what you're getting at, it's just a bit different to the way I'm used to things in Unity", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360492.000068"
+        }, 
+        {
+            "text": "hmm", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360474.000067"
+        }, 
+        {
+            "text": "until we support audio within the hvr file type", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360456.000066"
+        }, 
+        {
+            "text": "as the audio is kept in sync with the hvr", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360431.000065"
+        }, 
+        {
+            "text": "currently it needs to be attached to an hvr", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360414.000064"
+        }, 
+        {
+            "text": "but wouldn't audio be it's own component?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360396.000063"
+        }, 
+        {
+            "text": "I.E audioFile", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360382.000062"
+        }, 
+        {
+            "text": "I think it needs to be hvr specific as there can be other files also at that level", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360377.000061"
+        }, 
+        {
+            "text": "fileInfo?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360331.000060"
+        }, 
+        {
+            "text": "but something more generic then?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360297.000059"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360290.000058"
+        }, 
+        {
+            "text": "a bit risky maybe", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360287.000057"
+        }, 
+        {
+            "text": "ahhh", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360286.000056"
+        }, 
+        {
+            "text": "file seems like one of those keywords in some language", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360281.000055"
+        }, 
+        {
+            "text": "can we just rename the \"hvrFile\" tag to \"file\" instead? Or does that conflict for you?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360263.000054"
+        }, 
+        {
+            "text": "ahh, OK", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360246.000053"
+        }, 
+        {
+            "text": "but somethings are still using it in the hvrURL field", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360240.000052"
+        }, 
+        {
+            "text": "I just noticed", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360238.000051"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360231.000050"
+        }, 
+        {
+            "text": "the hvr is included in those values", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465360227.000049"
+        }, 
+        {
+            "text": "can we rename the \"hvrFile\" tag? and also possibly include the HVR in that set of values?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465360118.000048"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465358929.000047"
+        }, 
+        {
+            "text": "so I enabled that first to give me some time", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465358923.000046"
+        }, 
+        {
+            "text": "it was easier to make it as a separate API", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465358914.000045"
+        }, 
+        {
+            "text": "I thought ir was to be a separate API (not that I'm complaining, it's much nicer this way!)", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465358893.000044"
+        }, 
+        {
+            "text": "Oh, ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465358864.000043"
+        }, 
+        {
+            "text": "I added the data to the scene api", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465358854.000042"
+        }, 
+        {
+            "text": "(<http://mudge.dev.8i.com/admin/api/s3_files/mudge_stage_ND6>)", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465358815.000041"
+        }, 
+        {
+            "text": "the one you sent me a few days ago isn't working", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465358810.000040"
+        }, 
+        {
+            "text": "what's the metadata API?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465358801.000039"
+        }, 
+        {
+            "text": "ok, it must just have a bad redirect url somewhere", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465342197.000038"
+        }, 
+        {
+            "text": "that admin login page worked for me :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465342180.000037"
+        }, 
+        {
+            "text": "but you should also be logged in if you created a user", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465342164.000036"
+        }, 
+        {
+            "text": "I think it should be redirecting to <http://mudge-demo2.dev.8i.com/admin/login>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465342140.000035"
+        }, 
+        {
+            "text": "odd", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465342105.000034"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/simple/director>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465342036.000033"
+        }, 
+        {
+            "text": "which url is redirecting you?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465342001.000032"
+        }, 
+        {
+            "text": "and then it 404'd", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341965.000031"
+        }, 
+        {
+            "text": "and I entered it", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341961.000030"
+        }, 
+        {
+            "text": "it asked me for username/login the first time", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341958.000029"
+        }, 
+        {
+            "text": "You need to be an admin to use most of it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341953.000028"
+        }, 
+        {
+            "text": "which is what's 404ing", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341940.000027"
+        }, 
+        {
+            "text": "it redirects me to <http://mudge-demo2.dev.8i.com/api/login>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341934.000026"
+        }, 
+        {
+            "text": "link?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341916.000025"
+        }, 
+        {
+            "text": "when I try to go to director, I get a \"Not Found\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341838.000024"
+        }, 
+        {
+            "text": "no problem", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341050.000023"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341047.000022"
+        }, 
+        {
+            "text": "I\u2019m working on making the admin better right now so it may change next time I update the mudge-demo2 box", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341044.000021"
+        }, 
+        {
+            "text": "awesome :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465341027.000020"
+        }, 
+        {
+            "text": "there is a Add to Tango list button on each scene (for now)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341019.000019"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/simple/director>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341004.000018"
+        }, 
+        {
+            "text": "I'm dealing with downloading stuff at the moment, and it would be nice to be able to download a lot of assets before having to clear data", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465340951.000017"
+        }, 
+        {
+            "text": "Kind of", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465340949.000016"
+        }, 
+        {
+            "text": "is there an easy way for me to add a bunch of scenes to the tango stuff?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465340924.000015"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U11C3K5EC"
+                    ]
+                }
+            ], 
+            "text": "alright its back", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465336857.000013"
+        }, 
+        {
+            "text": "damn, no worries, just let me know when you've got it sorted", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465336182.000012"
+        }, 
+        {
+            "text": "something bad got into the DB", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465336134.000011"
+        }, 
+        {
+            "text": "the director", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465336120.000010"
+        }, 
+        {
+            "text": "the code or the tool?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465336070.000009"
+        }, 
+        {
+            "text": "yea, Pan has been playing with it overnight", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465336060.000008"
+        }, 
+        {
+            "text": "oh dear", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465336035.000007"
+        }, 
+        {
+            "text": "trying to find it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465335971.000006"
+        }, 
+        {
+            "text": "yea I think theres a bad scene been created", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465335963.000005"
+        }, 
+        {
+            "text": "is failing]", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465335942.000004"
+        }, 
+        {
+            "text": "<http://api-mudge-demo2.dev.8i.com/api/v1/scene?clientType=tango&amp;clientVersion=1>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465335940.000003"
+        }, 
+        {
+            "text": "server down?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1465335936.000002"
+        }, 
+        {
+            "text": "awesome :)\\", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464929650.000004"
+        }, 
+        {
+            "text": "<http://api-mudge-demo2.dev.8i.com/api/v1/scene?clientType=tango&amp;clientVersion=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464929614.000003"
+        }, 
+        {
+            "text": "I have added scene lists into the code, so now if you specify clientType=tango you will get a subset of scenes, which should be less likely to break.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464929613.000002"
+        }, 
+        {
+            "text": "and then it will be relatively cheap to add to the scene", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464749106.000039"
+        }, 
+        {
+            "text": "champion :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464749106.000038"
+        }, 
+        {
+            "text": "yea I may even be able to cache that data in the local DB", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464749087.000037"
+        }, 
+        {
+            "text": "ok, will it be split down scene by scene at some ponit?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464749064.000036"
+        }, 
+        {
+            "text": "at the moment yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464749048.000035"
+        }, 
+        {
+            "text": "is that for *all* s3 files?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464749031.000034"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464748895.000033"
+        }, 
+        {
+            "text": "that looks good", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464748876.000032"
+        }, 
+        {
+            "text": "yep", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464748873.000031"
+        }, 
+        {
+            "text": "Hey, is something like this good for getting file metadata? <http://mudge.dev.8i.com/admin/api/s3_files/mudge_stage_ND6>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464748804.000030"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464741819.000029"
+        }, 
+        {
+            "text": "I've created and assigned a task to you on Jira", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464741781.000028"
+        }, 
+        {
+            "text": "yea sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464738821.000027"
+        }, 
+        {
+            "text": "free to talk?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464738795.000026"
+        }, 
+        {
+            "text": "yeah - we want a transparent PNG with a single actor in it, which is obviously quite different to what you need for the web", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734376.000025"
+        }, 
+        {
+            "text": "cool, but I imagine different thumbnails makes sense.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464734219.000024"
+        }, 
+        {
+            "text": "ok, yeah, we can worry about that later anyway", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734153.000023"
+        }, 
+        {
+            "text": "we do", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734106.000022"
+        }, 
+        {
+            "text": "yea if we need something different", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464734097.000021"
+        }, 
+        {
+            "text": "we can probably add a tango only thumbnail in the future, right?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734082.000020"
+        }, 
+        {
+            "text": "maybe that should just be the accepted size for the default thumbnail", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464734079.000019"
+        }, 
+        {
+            "text": "I think they are all 300x200 right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464734061.000018"
+        }, 
+        {
+            "text": "actually, hold off on it for now", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734060.000017"
+        }, 
+        {
+            "text": "hmm", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734053.000016"
+        }, 
+        {
+            "text": "I haven\u2019t had a requirement for it yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464734018.000015"
+        }, 
+        {
+            "text": "but it's somewhat useful information to me *right now*, but it may become useless in the future", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464734011.000014"
+        }, 
+        {
+            "text": "open to other suggestions", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464733993.000013"
+        }, 
+        {
+            "text": "we could", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464733971.000012"
+        }, 
+        {
+            "text": "Can we add dimensions or an aspect ratio to the thumbnail objects?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464733934.000011"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464730178.000010"
+        }, 
+        {
+            "text": "won't be a big talk", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464730177.000009"
+        }, 
+        {
+            "text": "won", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464730173.000008"
+        }, 
+        {
+            "text": "now's good if you want", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464730171.000007"
+        }, 
+        {
+            "text": "but yea lets talk about the filtering for tango when you have a chance", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464730164.000006"
+        }, 
+        {
+            "text": "ok, sweet as", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464730157.000005"
+        }, 
+        {
+            "text": "All the scenes have been fixed/replaced now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464730150.000004"
+        }, 
+        {
+            "text": "<http://api-mudge-demo2.dev.8i.com/api/v1/scene/Xw> is the only scene which is currently valid", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464729632.000003"
+        }, 
+        {
+            "text": "Its back up with camel case now <http://api-mudge-demo2.dev.8i.com/api/v1/scene?clientType=web&amp;clientVersion=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464729586.000002"
+        }, 
+        {
+            "text": "<https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464673106.000035", 
+            "attachments": [
+                {
+                    "thumb_height": 128, 
+                    "service_icon": "https://www.google.com/images/icons/product/chrome_web_store-32.png", 
+                    "thumb_width": 128, 
+                    "title": "JSON Formatter", 
+                    "text": "Makes JSON easy to read. Open source.", 
+                    "title_link": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en", 
+                    "service_name": "chrome.google.com", 
+                    "id": 1, 
+                    "fallback": "JSON Formatter", 
+                    "thumb_url": "https://lh5.googleusercontent.com/6240D4mWfhicKkWdlGK9T8pn-vOE_Vop28CzN2YOQ7khF0TQ-oxZAEDgDrYD_JeyOP_ZFKby", 
+                    "from_url": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en"
+                }
+            ]
+        }, 
+        {
+            "text": "seems a bit strange", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651817.000034"
+        }, 
+        {
+            "text": "neither do I", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651807.000033"
+        }, 
+        {
+            "text": "yea I don\u2019t know how/why it started with all lower", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464651789.000032"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651776.000031"
+        }, 
+        {
+            "text": "haha, what joy!", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651774.000030"
+        }, 
+        {
+            "text": "I do need to rename a few other things to camel case as well, just as an FYI that it might break at some point :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464651767.000029"
+        }, 
+        {
+            "text": "sure, that would be fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464651743.000028"
+        }, 
+        {
+            "text": "maybe just \"defaultThumbnail\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651730.000027"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651723.000026"
+        }, 
+        {
+            "text": "so I don\u2019t like to name it that way", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464651686.000025"
+        }, 
+        {
+            "text": "yea, but its not restricted to web", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464651677.000024"
+        }, 
+        {
+            "text": "by default, those thumbnails are what you're using on the web", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651659.000023"
+        }, 
+        {
+            "text": "web", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651640.000022"
+        }, 
+        {
+            "text": "sure, any suggestions?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464651611.000021"
+        }, 
+        {
+            "text": "it has a value named \"default\", which is not a good name for a variable, as that's a protected key word in many languages", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651589.000020"
+        }, 
+        {
+            "text": "can we please change the name of the thumbnail object?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464651484.000019"
+        }, 
+        {
+            "text": "not by that name", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643838.000018"
+        }, 
+        {
+            "text": "not available through the scene API?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464643719.000017"
+        }, 
+        {
+            "text": "are \"experiences\"", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464643710.000016"
+        }, 
+        {
+            "text": "I was doing 'eightikitten'", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464643670.000015"
+        }, 
+        {
+            "text": "all the <http://dev.8i.com|dev.8i.com> sites use that :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643669.000014"
+        }, 
+        {
+            "text": "lol", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464643664.000013"
+        }, 
+        {
+            "text": "8i 8ikitten", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643659.000012"
+        }, 
+        {
+            "text": "what's the username for the demo2 domain?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464643640.000011"
+        }, 
+        {
+            "text": "You can see the list of scenes displayed a bit nicer at <http://mudge-demo2.dev.8i.com/admin/simple/director>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643598.000010"
+        }, 
+        {
+            "text": "E.g <http://api-mudge-demo2.dev.8i.com/api/v1/scene/Vo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643494.000009"
+        }, 
+        {
+            "text": "And for the extended version you can hit <http://api-mudge-demo2.dev.8i.com/api/v1/scene/&lt;key&gt;>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643475.000008"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643445.000007"
+        }, 
+        {
+            "text": "those are all webdirector scenes, right?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464643436.000006"
+        }, 
+        {
+            "text": "Actually do you want to use <http://api-mudge-demo2.dev.8i.com/> instead as it will most likely be more stable", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643333.000005"
+        }, 
+        {
+            "text": "the client_type and version can be anything but they just need to be sent for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643303.000004"
+        }, 
+        {
+            "text": "Use\n<http://api-mudge.dev.8i.com/api/v1/scene?client_type=web&amp;client_version=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464643286.000003"
+        }, 
+        {
+            "text": "using the api-mudge.dev.8i APIs, how do I get the full scene data?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464642833.000002"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464567760.000011"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464567756.000010"
+        }, 
+        {
+            "text": "<http://cdn-content.8i.com/yupan_stage_R3d/RESEVIL_CB_130_iv_v01_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464567737.000009"
+        }, 
+        {
+            "text": "can you please link me a sample HVRS file?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464567700.000008"
+        }, 
+        {
+            "text": "kk", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464566839.000007"
+        }, 
+        {
+            "text": "can just do it at my desk if you like", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464566836.000006"
+        }, 
+        {
+            "text": "probably won't be a long chat", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464566820.000005"
+        }, 
+        {
+            "text": "shall we grab a meeting room or something quickly?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464566815.000004"
+        }, 
+        {
+            "text": "yea sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464566799.000003"
+        }, 
+        {
+            "text": "Hey hey, do you have time to talk about downloading/APIs for Tango? I'm not 100% sure about what is and isn't available at the moment", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1464566783.000002"
+        }, 
+        {
+            "text": "And a long red bikini <http://cdn-content.8i.com/live_mGE/SWIMTWO_S03A_T02_bob_v11_full_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463711912.000005"
+        }, 
+        {
+            "text": "ty", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1463711855.000004"
+        }, 
+        {
+            "text": "2 seconds of yellow bikini <http://cdn-content.8i.com/mudge_stage_3x5/SWIMTWO_S06_T03_bob_v11_part1_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463711844.000003"
+        }, 
+        {
+            "text": "2 seconds of red bikini <http://cdn-content.8i.com/yupan_stage_a5N/SWIMTWO_S03A_T02_bob_v11_part1_600_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463711789.000002"
+        }, 
+        {
+            "text": "awesome, thanks!", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461815131.000031"
+        }, 
+        {
+            "text": "but its already up there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461815119.000030"
+        }, 
+        {
+            "text": "you\u2019ll need to change the domain", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461815114.000029"
+        }, 
+        {
+            "text": "<https://api.8i.com/.well-known/assetlinks.json>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461815107.000028"
+        }, 
+        {
+            "text": "is that something you can easily do?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461815086.000027"
+        }, 
+        {
+            "text": "apparently it needs to be on https", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461815071.000026"
+        }, 
+        {
+            "text": "crap", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461815064.000025"
+        }, 
+        {
+            "text": "ahhh, ok", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461814869.000024"
+        }, 
+        {
+            "text": "our config isn\u2019t set up to show static files anywhere except in static", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461814863.000023"
+        }, 
+        {
+            "text": "yea, I just chucked in an endpoint that cats the file", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461814839.000022"
+        }, 
+        {
+            "text": "and yes, that's a specific path haha", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461814816.000021"
+        }, 
+        {
+            "text": "yea I saw :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461814812.000020"
+        }, 
+        {
+            "text": "sorry, I was talking to Tokes", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461814806.000019"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461814802.000018"
+        }, 
+        {
+            "text": "Its up now, <http://8i.com/.well-known/assetlinks.json>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461814770.000017"
+        }, 
+        {
+            "text": "does it matter if I put it in /static/.well-known/assetlinks.json or is that path specific?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461814380.000016"
+        }, 
+        {
+            "text": "yup, will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461813958.000015"
+        }, 
+        {
+            "text": "thanks man, can you also just let me know when it's up there", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461813946.000014"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461813926.000013"
+        }, 
+        {
+            "text": "please", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461813918.000012"
+        }, 
+        {
+            "text": "<http://8i.com/.well-known/assetlinks.json|8i.com/.well-known/assetlinks.json>", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461813917.000011"
+        }, 
+        {
+            "text": "can you host that file under the following domain:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461813902.000010"
+        }, 
+        {
+            "text": "ok, cool", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461813891.000009"
+        }, 
+        {
+            "text": "any time is fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461813884.000008"
+        }, 
+        {
+            "text": "When you're not busy/free to host a file for me, please let me know and I'll tell you where I need it :simple_smile:", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461813857.000007"
+        }, 
+        {
+            "username": "isaac_u", 
+            "display_as_bot": false, 
+            "text": "<@U11C3K5EC> uploaded a file: <https://hvr.slack.com/files/U11C3K5EC/F14BNKMA7/assetlinks.json|assetlinks.json>", 
+            "upload": true, 
+            "ts": "1461813828.000006", 
+            "subtype": "file_share", 
+            "user": "U11C3K5EC", 
+            "file": {
+                "filetype": "javascript", 
+                "lines_more": 3, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F14BNKMA7", 
+                "size": 300, 
+                "title": "assetlinks.json", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F14BNKMA7/assetlinks.json", 
+                "ims": [
+                    "D12DBF78S"
+                ], 
+                "preview": "[{\r\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\r\n  \"target\": {\r\n    \"namespace\": \"android_app\",\r\n    \"package_name\": \"com.eighti.albatross\",\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U11C3K5EC/F14BNKMA7/assetlinks.json/edit", 
+                "username": "", 
+                "timestamp": 1461813828, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": null, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F14BNKMA7/download/assetlinks.json", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "JavaScript/JSON", 
+                "name": "assetlinks.json", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F14BNKMA7-030ed0a47f", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F14BNKMA7/assetlinks.json", 
+                "is_external": false, 
+                "created": 1461813828, 
+                "lines": 8, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>[{</pre></div>\n<div><pre>  <span class=\"cm-string cm-property\">&quot;relation&quot;</span>: [<span class=\"cm-string\">&quot;delegate_permission/common.handle_all_urls&quot;</span>],</pre></div>\n<div><pre>  <span class=\"cm-string cm-property\">&quot;target&quot;</span>: {</pre></div>\n<div><pre>    <span class=\"cm-string cm-property\">&quot;namespace&quot;</span>: <span class=\"cm-string\">&quot;android_app&quot;</span>,</pre></div>\n<div><pre>    <span class=\"cm-string cm-property\">&quot;package_name&quot;</span>: <span class=\"cm-string\">&quot;com.eighti.albatross&quot;</span>,</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461812729.000005"
+        }, 
+        {
+            "text": "ok awesome - I'm not ready just yet, but sometime this afternoon (or maybe tomorrow morning, depending on how things go) I'll need a file to go up for testing, if that's cool with you", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461812706.000004"
+        }, 
+        {
+            "text": "not long usually, a few minutes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461812554.000003"
+        }, 
+        {
+            "text": "hey if I wanted you to host a JSON file on the 8i site somewhere for testing, how long will it take to go live?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461812520.000002"
+        }, 
+        {
+            "text": "that is the same for all our *.<http://dev.8i.com|dev.8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461188157.000009"
+        }, 
+        {
+            "text": "ty", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461188152.000008"
+        }, 
+        {
+            "text": "8i 8ikitten", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461188145.000007"
+        }, 
+        {
+            "text": "uname/pword?", 
+            "type": "message", 
+            "user": "U11C3K5EC", 
+            "ts": "1461188135.000006"
+        }, 
+        {
+            "text": "It might not always be completely reliable but you can make some changes to the manifest if you need too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461188132.000005"
+        }, 
+        {
+            "text": "<http://mudge.dev.8i.com/admin/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461188066.000004"
+        }, 
+        {
+            "text": "that is just hitting my development backend", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461188058.000003"
+        }, 
+        {
+            "text": "<http://api-mudge.dev.8i.com/api/experience/287/manifest>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461188033.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U11C3K5EC", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -1,0 +1,541 @@
+{
+    "messages": [
+        {
+            "text": "It will ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451788.208538"
+        }, 
+        {
+            "text": "Yurp", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451785.207522"
+        }, 
+        {
+            "text": "maybe the new monitor at home will change me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451779.205204"
+        }, 
+        {
+            "text": "Haha wait till you use that 4K for coding or something", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451778.204887"
+        }, 
+        {
+            "text": "I can still handle them for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451764.199953"
+        }, 
+        {
+            "text": "oh yea?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451748.193910"
+        }, 
+        {
+            "text": "Ruined for anything now, normal monitors look blocky like pre retina phones ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451735.189613"
+        }, 
+        {
+            "text": "Sooooooo crisp", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451716.182634"
+        }, 
+        {
+            "text": "Uses 5K? I had a 5K monitor for my work mbp till yesterday ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451705.179010"
+        }, 
+        {
+            "text": "is there anything which uses that yet?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451682.170875"
+        }, 
+        {
+            "text": "oh yea, that\u2019ll be huge amount of pixels", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451674.168014"
+        }, 
+        {
+            "text": "But mac rumours says don't buy", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451657.161962"
+        }, 
+        {
+            "text": "I wanna get a new iMac 5K when I get to the UK ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451637.154970"
+        }, 
+        {
+            "text": "Always the way", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451621.149307"
+        }, 
+        {
+            "text": "oh don\u2019t you hate that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451611.145261"
+        }, 
+        {
+            "text": "Tr\u00e8s lame", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451595.139644"
+        }, 
+        {
+            "text": "I bought it for $1,500 in Dec and the price went down in jan lol", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451590.138374"
+        }, 
+        {
+            "text": "<https://m.pricespy.co.nz/product/2905076>", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451564.129200", 
+            "attachments": [
+                {
+                    "title": "             Best deals on Dell P2715Q - Compare prices on Pricespy              | PriceSpy    ", 
+                    "text": "Dell P2715Q, Lowest price: $884.99, Rating: 6.8/10 - Monitors", 
+                    "title_link": "https://m.pricespy.co.nz/product/2905076", 
+                    "service_name": "m.pricespy.co.nz", 
+                    "id": 1, 
+                    "fallback": "             Best deals on Dell P2715Q - Compare prices on Pricespy              | PriceSpy    ", 
+                    "service_icon": "https://pricespy-75b8.kxcdn.com/g/touch-icon-iphone-retina-se-precomposed.png", 
+                    "from_url": "https://m.pricespy.co.nz/product/2905076"
+                }
+            ]
+        }, 
+        {
+            "text": "Na all good, 80% seems fair", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451553.125110"
+        }, 
+        {
+            "text": "Yeah, i was thinking about $650 because that's 80% of the new price. Looking back tho I'm not sure I was very clear. My bad. ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451526.115708"
+        }, 
+        {
+            "text": "just need to download all the games again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451461.091723"
+        }, 
+        {
+            "text": "Its pretty good, got it set up and running last night", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451455.089333"
+        }, 
+        {
+            "text": "because you did ask if I wanted as well, so it should be worth something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451435.081975"
+        }, 
+        {
+            "text": "Heh cool. ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451428.079561"
+        }, 
+        {
+            "text": "Na, I was actually going to check if you wanted some $ for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494451415.074464"
+        }, 
+        {
+            "text": "Hey man! All ok with the computer? I got the cash, just wanted to check - did we say monitor was extra? Awkward... ", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494451395.067834"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494363121.576681"
+        }, 
+        {
+            "text": "Enjoy :smile: My account is 03-0584-0212356-001 whenever you have a sec, I know where you live", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494363085.561906"
+        }, 
+        {
+            "text": ":slightly_smiling_face: haha so soon after my last sick day", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211410.227181"
+        }, 
+        {
+            "text": "just pretend you got the flu", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211388.224867"
+        }, 
+        {
+            "text": "meh they\u2019ll be fine", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211383.224275"
+        }, 
+        {
+            "text": "I\u2019m not sure how that would go down with holo team", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211335.219256"
+        }, 
+        {
+            "text": "hahaha, at least some mods and stuff will give it a workout", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211328.218390"
+        }, 
+        {
+            "text": "that may require the week off work", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211315.216879"
+        }, 
+        {
+            "text": "Skyrim HD is out\u2026", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211292.214330"
+        }, 
+        {
+            "text": "I\u2019ll feel bad just playing Rocket League", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211282.213216"
+        }, 
+        {
+            "text": "I may need to purchase a new game to really make use of it though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211265.211262"
+        }, 
+        {
+            "text": "and to a good home too :smile:", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211246.209109"
+        }, 
+        {
+            "text": "yeah!", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211240.208475"
+        }, 
+        {
+            "text": "one thing marked off the list", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211234.207783"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211227.206927"
+        }, 
+        {
+            "text": "then at least I feel like I\u2019ve done *something* toward moving countries", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211222.206236"
+        }, 
+        {
+            "text": "sweet sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211205.204224"
+        }, 
+        {
+            "text": "or grab an uber one morning", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211203.203969"
+        }, 
+        {
+            "text": "nah all good, I\u2019ll just bring it in next time I drive or ange drives", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211198.203266", 
+            "edited": {
+                "user": "U3DMQK8AD", 
+                "ts": "1494211200.000000"
+            }
+        }, 
+        {
+            "text": "If you think you\u2019ll use it before then, feel free to hang on to it as long as you want", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211182.201423"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211150.197817"
+        }, 
+        {
+            "text": "yeah O_O i haven\u2019t packed at all", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211148.197671"
+        }, 
+        {
+            "text": "oh wow, that went fast", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211140.196685"
+        }, 
+        {
+            "text": "yeah man, done on Friday", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211130.195670"
+        }, 
+        {
+            "text": "Is this your last week?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211124.194941"
+        }, 
+        {
+            "text": "sweeeeeeet", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211105.192905"
+        }, 
+        {
+            "text": "all good, I\u2019m sure I can find something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211096.191829"
+        }, 
+        {
+            "text": "but I can hook you up with the dodgy site I got one from :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211090.191114"
+        }, 
+        {
+            "text": "oh I\u2019ll probably nuke the HDD if that\u2019s OK, so you might need a windows key", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211081.190030"
+        }, 
+        {
+            "text": "something to look forward too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211078.189665"
+        }, 
+        {
+            "text": "I don\u2019t think I\u2019ve ever been able to do that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211071.188992"
+        }, 
+        {
+            "text": "I wanted to turn every setting to \u201cMAX\u201d and not have to worry", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211056.187263"
+        }, 
+        {
+            "text": "and was planning on building something for this winter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211049.186484"
+        }, 
+        {
+            "text": "Yeah, that was why I built it", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211046.186202"
+        }, 
+        {
+            "text": "I\u2019ve been gaming on a laptop for far too long", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211036.185095"
+        }, 
+        {
+            "text": "yea I would be interested", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211019.182994"
+        }, 
+        {
+            "text": "I was actually going to ask about that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494211012.182243"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211004.181340"
+        }, 
+        {
+            "text": "you want the monitor too?", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494211000.180964"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210992.179949"
+        }, 
+        {
+            "text": "yea, that should be fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494210984.179084"
+        }, 
+        {
+            "text": "is the office OK?", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210946.174648"
+        }, 
+        {
+            "text": "Yea, whenever it suits you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494210929.172804"
+        }, 
+        {
+            "text": "I can bring it in the office or something?", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210905.170098"
+        }, 
+        {
+            "text": "so ya, if you want it it\u2019s yours anytime between now and Sat :smile:", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210899.169350"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494210872.166291"
+        }, 
+        {
+            "text": "I have the mobo box still with extra ties and etc.", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210862.165249"
+        }, 
+        {
+            "text": "I bought all the parts new last year", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210846.163522"
+        }, 
+        {
+            "text": "all the details are on there", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210840.162944"
+        }, 
+        {
+            "text": "yay", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1494210832.162022"
+        }, 
+        {
+            "text": "Hey, I would be interested in buying your comp", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494210824.161057"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1492481448.463219"
+        }, 
+        {
+            "text": "trololololol", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1492481447.463099"
+        }, 
+        {
+            "text": "<http://i.nikwakelin.com/0418ssxhi.png>", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1492481444.462687", 
+            "attachments": [
+                {
+                    "image_bytes": 23662, 
+                    "image_width": 1299, 
+                    "id": 1, 
+                    "image_height": 130, 
+                    "image_url": "http://i.nikwakelin.com/0418ssxhi.png", 
+                    "from_url": "http://i.nikwakelin.com/0418ssxhi.png", 
+                    "fallback": "1299x130px image"
+                }
+            ]
+        }, 
+        {
+            "text": "yea fine with me.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492481443.462434"
+        }, 
+        {
+            "text": "cool if I can it?", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1492481416.458445"
+        }, 
+        {
+            "text": "yo - looks like there may be a stray debug command in this build?", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1492481414.458220"
+        }, 
+        {
+            "text": "<https://buildkite.com/8i/holo-dot-8i-dot-com/builds/1133#35e5df79-9868-43d6-85b5-eb874f26053a>", 
+            "type": "message", 
+            "user": "U3DMQK8AD", 
+            "ts": "1492481403.456771"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3DMQK8AD", 
+            "U0C90MHEH"
+        ]
+    }
+}

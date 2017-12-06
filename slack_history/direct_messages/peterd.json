@@ -1,0 +1,148 @@
+{
+    "messages": [
+        {
+            "text": "Np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503968691.000002"
+        }, 
+        {
+            "text": "Amazing, thank you so much!", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503968684.000062"
+        }, 
+        {
+            "text": "Alright, its updated now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503968380.000146"
+        }, 
+        {
+            "text": "Let me know if you need anything ", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503967503.000153"
+        }, 
+        {
+            "text": "Oh ok awesome ", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503967499.000039"
+        }, 
+        {
+            "text": "all good, I can do it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503967478.000013"
+        }, 
+        {
+            "text": "I haven't taken the pose out and added a new one yet because our new office doesn't have cms access yet but I can do it as soon as it's ready and let you know?", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503967460.000085"
+        }, 
+        {
+            "text": "Did you want me to do the pose switch?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503967206.000147"
+        }, 
+        {
+            "text": "I can walk through it with you if you like, but I am about to go into a meeting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503962765.000119"
+        }, 
+        {
+            "text": "You\u2019ll first need to delete the existing pose using it. Just remember the analytics id so we can set the new pose to the same.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503962751.000069"
+        }, 
+        {
+            "text": "Ok so Andrew uploaded the new audio labeled holo14_130_2 in the dropdown. Do you also want us to create a new pose for it?", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503962679.000305"
+        }, 
+        {
+            "text": "Brilliant.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503538773.000146"
+        }, 
+        {
+            "text": "Ok great, just ran by Nicole and she is fine with that so I'll get the audio re synced. Thanks!", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503538678.000041"
+        }, 
+        {
+            "text": "If you are happy with those side effects, resync the audio and just send it through to me. Thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503537539.000039"
+        }, 
+        {
+            "text": "Got it. So should we resync the audio here,  enter it as a new pose, then let you know so you can adjust the google analytics?", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503537359.000129"
+        }, 
+        {
+            "text": "We need to recreate the pose, which means that users will lose the old files and need to re-download the new ones.\nIt also means that the popularity of the pose is reset to 0, it will appear at the bottom of popular until it regains downloads.\nI can keep the google analytics tracking id the same though so stats there are retained.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503537074.000259"
+        }, 
+        {
+            "text": "Hey Peter, yea thanks for informing me. Our current approach for this isn\u2019t well defined. And while I can do it, its a bit fiddly and there are some side effects.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503536833.000220"
+        }, 
+        {
+            "text": "Hey Mudge! Alenni mentioned that if we wanted to make adjustments to any live poses I should talk to you. We wanted to update audio for HOLO14_130, Kiki's \"popcorn\" pose. Is that something you can do if I provide you with the new audio?", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1503534346.000105"
+        }, 
+        {
+            "text": "Ah cool, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498523393.179773"
+        }, 
+        {
+            "text": "Hey Mudge! I have been helping out with writing the copy, but as far as scheduling goes I think Nicole and Amy would be better to ask. I usually only find out the day before :wink:", 
+            "type": "message", 
+            "user": "U2UNV6XCL", 
+            "ts": "1498523229.157218"
+        }, 
+        {
+            "text": "Its a bit fiddly to create the notification though, and I want to setup something which will make it easier. When would you require that to be ready to send out a notification?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521987.974554"
+        }, 
+        {
+            "text": "We recently added the ability to add a url which will deeplink into the app, and show a character or promotion page when the user opens it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521925.965164"
+        }, 
+        {
+            "text": "Hey peter, Mitch asked me to check in with you regarding push notifications", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521882.958462"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U2UNV6XCL", 
+            "U0C90MHEH"
+        ]
+    }
+}

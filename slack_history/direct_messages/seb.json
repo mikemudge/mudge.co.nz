@@ -1,0 +1,467 @@
+{
+    "messages": [
+        {
+            "text": "I set a time for Noon (NZ time) but could do early in morning if you'd rather", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499750376.750254"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499749170.555699"
+        }, 
+        {
+            "text": "cool, sounds good, I'll set something up", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499749154.552865"
+        }, 
+        {
+            "text": "I actually have to head out quite soon, but free most of tomorrow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499749137.550172"
+        }, 
+        {
+            "text": "you have a minute to chat?", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499749109.545769"
+        }, 
+        {
+            "text": "was never quite fully ready for regular users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748852.505154"
+        }, 
+        {
+            "text": "Awesome, yea its still protected to just 8i staff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748829.501510"
+        }, 
+        {
+            "text": "wrong email", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499748814.499227"
+        }, 
+        {
+            "text": "ok you were right we got it working", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499748811.498743"
+        }, 
+        {
+            "text": "I do get the same empty panel as you if I use my personal gmail", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748796.496351"
+        }, 
+        {
+            "text": "I think thats all that should be required", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748751.489416"
+        }, 
+        {
+            "text": "logged in again and almost worked", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499748751.489386"
+        }, 
+        {
+            "text": "Can you check if you are logged in with an @8i.com email?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748740.487827"
+        }, 
+        {
+            "text": "lol yea, I'm showing this to Alan and he's loosing his shit about how cool it is, even without a character in it", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499748703.481685"
+        }, 
+        {
+            "text": "oh you\u2019re over in LA", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748661.474915"
+        }, 
+        {
+            "text": "I\u2019ll come and have a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748537.455260"
+        }, 
+        {
+            "text": "oh right, maybe its not logging you in properly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748530.454097"
+        }, 
+        {
+            "username": "seb", 
+            "display_as_bot": false, 
+            "text": "<@U03E045EP> uploaded a file: <https://hvr.slack.com/files/U03E045EP/F6640MXH6/screen_shot_2017-07-10_at_9.47.13_pm.png|Screen Shot 2017-07-10 at 9.47.13 PM.png> and commented: not seeing any characters", 
+            "upload": true, 
+            "ts": "1499748505.450158", 
+            "subtype": "file_share", 
+            "user": "U03E045EP", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "not seeing any characters", 
+                    "created": 1499748502, 
+                    "timestamp": 1499748502, 
+                    "is_intro": true, 
+                    "user": "U03E045EP", 
+                    "id": "Fc66PKUZGS"
+                }, 
+                "filetype": "png", 
+                "thumb_800_h": 741, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_64.png", 
+                "size": 191000, 
+                "original_h": 1406, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2017-07-10 at 9.47.13 PM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F6640MXH6/screen_shot_2017-07-10_at_9.47.13_pm.png", 
+                "thumb_720_h": 667, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_360.png", 
+                "id": "F6640MXH6", 
+                "ims": [
+                    "D0C9166P9"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_80.png", 
+                "comments_count": 1, 
+                "thumb_360_h": 333, 
+                "thumb_480_h": 445, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_800.png", 
+                "timestamp": 1499748502, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F6640MXH6/download/screen_shot_2017-07-10_at_9.47.13_pm.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_1024.png", 
+                "user": "U03E045EP", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-07-10 at 9.47.13 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F6640MXH6-d9e341259c", 
+                "permalink": "https://hvr.slack.com/files/U03E045EP/F6640MXH6/screen_shot_2017-07-10_at_9.47.13_pm.png", 
+                "is_external": false, 
+                "created": 1499748502, 
+                "thumb_1024_h": 948, 
+                "thumb_960_h": 889, 
+                "original_w": 1518, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F6640MXH6-439623ad72/screen_shot_2017-07-10_at_9.47.13_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Example scene <https://holo.8i.com/d/44fc1a69-6eb7-46e0-a656-a1dabcb9e8f8>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748491.447631", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "https://holo.8i.com/d/44fc1a69-6eb7-46e0-a656-a1dabcb9e8f8", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "https://holo.8i.com/static/favicon.ico", 
+                    "from_url": "https://holo.8i.com/d/44fc1a69-6eb7-46e0-a656-a1dabcb9e8f8"
+                }
+            ]
+        }, 
+        {
+            "text": "oh, you should just be able to click on something in the sidebar then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748381.430762"
+        }, 
+        {
+            "text": "I think we controller who shows up in the sidebar using a tag", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748370.429002"
+        }, 
+        {
+            "text": "nope anything will do", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499748365.428259"
+        }, 
+        {
+            "text": "Do you need a specific person in there?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499748302.418104"
+        }, 
+        {
+            "text": "How do you put a person in there? Do you have an example scene", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499748104.385972"
+        }, 
+        {
+            "text": "It hasn\u2019t really been used much in a while so I can\u2019t promise that nothing has broken over time, but its here <https://holo.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499747914.355842", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "https://holo.8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "https://holo.8i.com/static/favicon.ico", 
+                    "from_url": "https://holo.8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Do you have  link to  a working version of web director?", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1499747807.339500"
+        }, 
+        {
+            "text": "I'm going home", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491560595.053424"
+        }, 
+        {
+            "text": "All good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491560589.052505"
+        }, 
+        {
+            "text": "They didn't let me in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491560585.051840"
+        }, 
+        {
+            "text": "I left", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491560575.049938"
+        }, 
+        {
+            "text": "Yoooooooo! Man down where you at, you have trouble getting? we can sort that", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1491560234.985232"
+        }, 
+        {
+            "text": "Oh awesome, I think andrew has been manually renaming each of them for now. But I can add in a new parser for that soon.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485234136.000004"
+        }, 
+        {
+            "text": "It's kinda of a mix at the moment, they have not fully transitioned to it but you could see if it works for the ones that fit the convention", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1485232301.000003"
+        }, 
+        {
+            "text": "Some of the reconstructions coming out of LA now have the correct format as discussed above. Here is an example:\n<https://s3.amazonaws.com/virginia.8i.com/cloudfarm/la/isilon/Storage/HOLO13/Hvr/HOLO13_180/HOLO13_180_napoleon_v01/Web600_HOLO13_180_napoleon_v01.hvrs>", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1485232263.000002"
+        }, 
+        {
+            "text": "\u0010I\u2019ll drop all the code which uses that naming convention then and only support the new one.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481164305.000021"
+        }, 
+        {
+            "text": "Oh right, yea that makes sense", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481164271.000020"
+        }, 
+        {
+            "text": "she uses a completely different script that Rob hacked together to make those hvrs files. That script produces files with some other random naming convention. I guess that's ok since I think your mainly interested in just what LA is processing and eventually they will be doing all the compressions for holo themselves.", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481164165.000019"
+        }, 
+        {
+            "text": "ok so what's pretty confusing at the moment is that the current hvrs files you see on S3 for holo have been made by taos", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481164097.000018"
+        }, 
+        {
+            "text": "So once your change is in I will update my code to handle the new format and let him know.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481164001.000017"
+        }, 
+        {
+            "text": "I think at the moment andrew is manually renaming the files to the current expected format", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481163947.000016"
+        }, 
+        {
+            "text": "sounds good to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481163895.000015"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481163892.000014"
+        }, 
+        {
+            "text": "yea there will be a user name and a version", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481163885.000013"
+        }, 
+        {
+            "text": "is the \u201cseb\u201d and \u201cv05\u201d always going to be set as well?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481163863.000012"
+        }, 
+        {
+            "text": "Yea, alright. I can live with that as long as the normal case works.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481163838.000011"
+        }, 
+        {
+            "text": "just chatted with some of the guys they are almost always going running shots on the cloud not takes. So if it doesn't do the right thing when a take goes up there I think it's ok.", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481163818.000010"
+        }, 
+        {
+            "text": "so yea varying number of underscores unfortunately... We could just say we don't support takes for the auto copy or multiple takes that have the same scene but different take number.", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481163742.000009"
+        }, 
+        {
+            "text": "ok, I guess the only problem I can foresee is that my code won\u2019t be able to tell if it is a take or a shot", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481163737.000008"
+        }, 
+        {
+            "text": "usually they process shots", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481163658.000007"
+        }, 
+        {
+            "text": "oh right, this is an example of a \"take\" that got processed. Doesn't happen super often in LA but sometimes does. When they process a shot it will look like this:  Web600_SOLDIER_200_seb_v05.hvrs", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481163646.000006"
+        }, 
+        {
+            "text": "Like with HOLO there is often a HOLO_210 or similar, and I\u2019m not sure how that would be represented", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481161728.000005"
+        }, 
+        {
+            "text": "I can make that work, is the number of _ separated parts always going to be the same?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481161698.000004"
+        }, 
+        {
+            "text": "Web600_SOLDIER_S07_T01_seb_v05.hvrs", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481161501.000003"
+        }, 
+        {
+            "text": "does this naming convention work for the hvrs files?", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1481161500.000002"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1479937099.000003"
+        }, 
+        {
+            "text": "Hey, when you have a few minutes, can we talk about getting hvrs files automatically into the web amazon bucket?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479934456.000002"
+        }, 
+        {
+            "text": "sweet, yea should be good for anything which is public", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474927783.000006"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test_df/NZTEST023/Hvr/NZTEST023_S01S_T01/NZTEST023_S01S_T01_sb_v33/Web600.hvrs>", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1474927727.000005"
+        }, 
+        {
+            "text": "sweet works", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1474927726.000004"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test_df/KNIGHT002/KNIGHT002_120/web2_hvr53/KNIGHT002_S01_T01_taos_v04_600_15_75_90.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474927685.000003"
+        }, 
+        {
+            "text": "what was that link?", 
+            "type": "message", 
+            "user": "U03E045EP", 
+            "ts": "1474927662.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03E045EP", 
+            "U0C90MHEH"
+        ]
+    }
+}

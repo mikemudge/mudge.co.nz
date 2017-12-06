@@ -1,0 +1,432 @@
+{
+    "messages": [
+        {
+            "text": "Yeah that would be good thanks", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511745706.000064"
+        }, 
+        {
+            "text": "See if they can get anyone else to commit to coming.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511744507.000089"
+        }, 
+        {
+            "text": "But if you aren\u2019t feeling well enough to play, I can let the others know.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511744477.000054"
+        }, 
+        {
+            "text": "I don\u2019t know, but I would guess not many with Erica out.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511744294.000050"
+        }, 
+        {
+            "text": "Hey do you know how many women you have for tonight? Not feeling so great", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511743999.000056"
+        }, 
+        {
+            "text": "Cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511214543.000397"
+        }, 
+        {
+            "text": "this AM was hospital one as referred from orthopaedic, not sure how that works without the referral", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511214483.000332"
+        }, 
+        {
+            "text": "I went to here with ACC a few months ago <http://tiaki.net.nz/> pretty pricey though, were super useful and stuff as I was about to fly to UK", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511214461.000481", 
+            "attachments": [
+                {
+                    "title": "Welcome - Tiaki", 
+                    "service_name": "Tiaki", 
+                    "title_link": "http://tiaki.net.nz/", 
+                    "text": "At Tiaki we believe that people suffer from pain and dysfunction because they've forgotten how to use their bodies. We've lost the awareness of how to move", 
+                    "id": 1, 
+                    "fallback": "Tiaki: Welcome - Tiaki", 
+                    "from_url": "http://tiaki.net.nz/"
+                }
+            ]
+        }, 
+        {
+            "text": "oh which physio? I haven\u2019t been for ages, do you recommend them?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511213767.000361"
+        }, 
+        {
+            "text": "sweet!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511213749.000324"
+        }, 
+        {
+            "text": "I\u2019m am interested in doing yoga regularly in future, but just want to get my hamstring looked at as it has been pretty sore", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511213729.000117"
+        }, 
+        {
+            "text": "I just went this morning!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511213712.000253"
+        }, 
+        {
+            "text": "Thanks, but I\u2019ll pass today. I\u2019m actually going to go and visit a physio this week.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511213683.000253"
+        }, 
+        {
+            "text": "I can get Katie to bring a spare mat", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511213610.000151"
+        }, 
+        {
+            "text": "hey you wana do yoga today?", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1511213603.000003"
+        }, 
+        {
+            "text": ":hayes: ", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509961089.000372"
+        }, 
+        {
+            "text": ":mudgicon: ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509958679.000194"
+        }, 
+        {
+            "text": ":mudgicon: ", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509955092.000126"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509396235.000315"
+        }, 
+        {
+            "text": "Oh you are crazy!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509396222.000056"
+        }, 
+        {
+            "text": "but I still have one more sport tonight before my relaxing half of the week", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509396019.000065"
+        }, 
+        {
+            "text": "and my body just feels exhausted", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509395999.000006"
+        }, 
+        {
+            "text": "Yea, I\u2019m starting to develop a nice alligator catching bruise on my wrist", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509395964.000635"
+        }, 
+        {
+            "text": "Omg so tired after that game!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509395915.000151"
+        }, 
+        {
+            "text": "oh sweet", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509066829.000066"
+        }, 
+        {
+            "text": "I think we are actually going to use Zendesk for FAQ\u2019s now anyway so that page may not even exist in the live version", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509066821.000106"
+        }, 
+        {
+            "text": "oh cool just checking as one or two words seemed weird!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509066786.000054"
+        }, 
+        {
+            "text": "I think Mark added those", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509066774.000037"
+        }, 
+        {
+            "text": "Most likely yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509066759.000039"
+        }, 
+        {
+            "text": "<http://portal-stage.dev.8i.com/support/>", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509066756.000226"
+        }, 
+        {
+            "text": "Which version are you looking at?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509066751.000097"
+        }, 
+        {
+            "text": "is the content in the FAQ a draft?", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509066732.000209"
+        }, 
+        {
+            "text": ":thumbsup::skin-tone-3:", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509066526.000097"
+        }, 
+        {
+            "text": "Oh thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509066519.000125"
+        }, 
+        {
+            "text": "Hey just seen a preview of the portal/8i.com from Mark, looking good!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1509066510.000031"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506630518.000403"
+        }, 
+        {
+            "text": "s", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1506630515.000406"
+        }, 
+        {
+            "text": "awesome thank", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1506630515.000090"
+        }, 
+        {
+            "text": "I haven\u2019t really been using it much yet, but we have <https://eighteye.atlassian.net/projects/PP/issues/PP-11?filter=allopenissues>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506630504.000244"
+        }, 
+        {
+            "text": "G\u2019day, do you have a JIRA case for the developer portal? we have started content platform work and will need to tie in at some point with whhats going on in that area and would be good to just add that jira to our cases that are realted", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1506630457.000211"
+        }, 
+        {
+            "text": ":ok_hand::skin-tone-3:", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030679.000057"
+        }, 
+        {
+            "text": "I will keep you in mind, thanks again.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030674.000019"
+        }, 
+        {
+            "text": "yeah for sure, well if you especially want any info on kong, discourse or swagger then im happy to help if i can!", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030652.000038"
+        }, 
+        {
+            "text": "or to support new SDK\u2019s as they become available", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030392.000073"
+        }, 
+        {
+            "text": "might be able to leverage some of that, and upgrade to your suggested tools where we see gaps.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030378.000120"
+        }, 
+        {
+            "text": "but I\u2019m talking to Tom next week, to see what his current process is for Unity", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030360.000016"
+        }, 
+        {
+            "text": "hmm yeah", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030328.000254"
+        }, 
+        {
+            "text": "yeah silverstripe could be an option", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030323.000032"
+        }, 
+        {
+            "text": "which I don\u2019t even know what language the code is in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030318.000032"
+        }, 
+        {
+            "text": "its possible that we may need more than one solution as its going to be for ios/android and unity/unreal", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030307.000052"
+        }, 
+        {
+            "text": "Yea I still need to find that out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030278.000099"
+        }, 
+        {
+            "text": "depends on what languages you need to document from (we had an old c# framework for the API which didnt have a great nuget package to generate swagger for you)", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030230.000086"
+        }, 
+        {
+            "text": "Yea, I have heard that name a few times before, and it does sound like the most recommended", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030228.000055"
+        }, 
+        {
+            "text": "swagger in general seemed cool as it is an automated process of updating your documentation whenever you deploy the code", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030196.000029"
+        }, 
+        {
+            "text": "Alright, thats super helpful. I really don\u2019t enjoy the researching solutions part. So thanks heaps for those.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030195.000013"
+        }, 
+        {
+            "text": "discourse is great for forums, super simple to set up with a docker image straight from them and also customisable <https://www.discourse.org/>", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030107.000187", 
+            "attachments": [
+                {
+                    "image_bytes": 3575, 
+                    "title": "Discourse - Civilized Discussion", 
+                    "text": "Discourse is modern forum software for your community. Use it as a mailing list, discussion forum, long-form chat room, and more!", 
+                    "image_width": 221, 
+                    "title_link": "https://www.discourse.org/", 
+                    "image_height": 221, 
+                    "image_url": "https://discourse.org/a/img/favicon.png", 
+                    "service_name": "discourse.org", 
+                    "id": 1, 
+                    "fallback": "Discourse - Civilized Discussion", 
+                    "service_icon": "https://www.discourse.org/a/img/favicon.png", 
+                    "from_url": "https://www.discourse.org/"
+                }
+            ]
+        }, 
+        {
+            "text": "and full on API gateway if you want with kong", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030063.000031"
+        }, 
+        {
+            "text": "also with kong if you need that for giving external devs API keys etc etc", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030055.000113"
+        }, 
+        {
+            "text": "<https://gelato.io/>", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030039.000075", 
+            "attachments": [
+                {
+                    "title": "Gelato.io \u2014 Super-Sweet Developer Portals", 
+                    "text": "A tool for creating and maintaining excellent Developer Portals and API or Technical Documentation", 
+                    "title_link": "https://gelato.io/", 
+                    "service_name": "gelato.io", 
+                    "id": 1, 
+                    "fallback": "Gelato.io \u2014 Super-Sweet Developer Portals", 
+                    "from_url": "https://gelato.io/"
+                }
+            ]
+        }, 
+        {
+            "text": "gelato seemed pretty cool (nik who worked in my team built it) which can handle swagger", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503030033.000191"
+        }, 
+        {
+            "text": "Oh brilliant, I will gladly take suggestions", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503030014.000115"
+        }, 
+        {
+            "text": "I spent a lot of time investigating these for Trade Me to move onto, along with forums, API gateways", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503029995.000087"
+        }, 
+        {
+            "text": "Ha, yea someone wants one, its just on me to make it :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503029987.000077"
+        }, 
+        {
+            "text": "helllo i hear you are wanting a developer portal/docs etc etc?", 
+            "type": "message", 
+            "user": "U5PQYGBSA", 
+            "ts": "1503029960.000056"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U5PQYGBSA", 
+            "U0C90MHEH"
+        ]
+    }
+}

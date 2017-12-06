@@ -1,0 +1,1402 @@
+{
+    "messages": [
+        {
+            "text": "If you could please drop those into the directory you sent me. I will test if they do what they are supposed to do. If they do then I'll send one more file to put there too.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1510114063.000107"
+        }, 
+        {
+            "username": "jed", 
+            "display_as_bot": false, 
+            "text": "<@U0G3RRHD3> uploaded a file: <https://hvr.slack.com/files/U0G3RRHD3/F7W1Y6E48/argo-ios-carthagebinary.json|Argo-iOS-CarthageBinary.json>", 
+            "upload": true, 
+            "ts": "1510113876.000120", 
+            "subtype": "file_share", 
+            "user": "U0G3RRHD3", 
+            "file": {
+                "filetype": "javascript", 
+                "lines_more": 0, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F7W1Y6E48", 
+                "size": 106, 
+                "title": "Argo-iOS-CarthageBinary.json", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F7W1Y6E48/argo-ios-carthagebinary.json", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "preview": "{\n\t\"0.1.0\": \"https://d7cvc31wlmbhf.cloudfront.net/8i+Website/Dev+Portal/Downloads/ArgoKit-iOS-0.1.0.zip\"\n}", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0G3RRHD3/F7W1Y6E48/argo-ios-carthagebinary.json/edit", 
+                "username": "", 
+                "timestamp": 1510113873, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F7W1Y6E48/download/argo-ios-carthagebinary.json", 
+                "user": "U0G3RRHD3", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "JavaScript/JSON", 
+                "name": "Argo-iOS-CarthageBinary.json", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F7W1Y6E48-4c5efd55cc", 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F7W1Y6E48/argo-ios-carthagebinary.json", 
+                "is_external": false, 
+                "created": 1510113873, 
+                "lines": 3, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>{</pre></div>\n<div><pre>\t<span class=\"cm-string\">&quot;0.1.0&quot;</span>: <span class=\"cm-string\">&quot;https://d7cvc31wlmbhf.cloudfront.net/8i+Website/Dev+Portal/Downloads/ArgoKit-iOS-0.1.0.zip&quot;</span></pre></div>\n<div><pre>}</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "jed", 
+            "display_as_bot": false, 
+            "text": "<@U0G3RRHD3> uploaded a file: <https://hvr.slack.com/files/U0G3RRHD3/F7W1X9GJU/argokit-ios-0.1.0.zip|ArgoKit-iOS-0.1.0.zip>", 
+            "upload": true, 
+            "ts": "1510113664.000086", 
+            "subtype": "file_share", 
+            "user": "U0G3RRHD3", 
+            "file": {
+                "filetype": "zip", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F7W1X9GJU", 
+                "size": 1290415, 
+                "title": "ArgoKit-iOS-0.1.0.zip", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F7W1X9GJU/argokit-ios-0.1.0.zip", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1510113663, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F7W1X9GJU/download/argokit-ios-0.1.0.zip", 
+                "user": "U0G3RRHD3", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Zip", 
+                "name": "ArgoKit-iOS-0.1.0.zip", 
+                "mimetype": "application/zip", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F7W1X9GJU-9d6b7e9c4a", 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F7W1X9GJU/argokit-ios-0.1.0.zip", 
+                "is_external": false, 
+                "created": 1510113663, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<https://d7cvc31wlmbhf.cloudfront.net/8i+Website/Dev+Portal/Downloads/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510112964.000210"
+        }, 
+        {
+            "text": "<https://firebase.google.com/docs/cloud-messaging/ios/send-multiple>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508457481.000121"
+        }, 
+        {
+            "text": "for devices running iOS 10 and above, you must assign your delegate object to the UNUserNotificationCenter object to receive display notifications, and the FIRMessaging object to receive data messages, before your app finishes launching. For example, in an iOS app, you must assign it in the applicationWillFinishLaunching: or applicationDidFinishLaunching: method.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508457477.000114"
+        }, 
+        {
+            "text": "Yea, be there soon, just chatting to Nicole.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645360.000090"
+        }, 
+        {
+            "text": "Did you want to come to the planning meeting", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1506645344.000162"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/608c296a64277d508ddbdb2c8ca1266debff9c6f/static/js/DeviceOrientationControls.js>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502063087.631632"
+        }, 
+        {
+            "text": "Na, anytime is fine.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498619562.580613"
+        }, 
+        {
+            "text": "Hey Mudge. I'm keen to start regular catchups with each of the team. It will probably be fortnightly to start with, for about 30 minutes, probably while walking around the block or over a coffee. Do you have a preferred day and/or time?", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1498619406.564340"
+        }, 
+        {
+            "text": "<https://itunes.apple.com/us/app/holo/id1194175772?ls=1&amp;mt=8>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1496277670.783158", 
+            "attachments": [
+                {
+                    "title": "Connecting to the iTunes Store.", 
+                    "text": "Connecting to the iTunes Store.", 
+                    "title_link": "https://itunes.apple.com/us/app/holo/id1194175772?ls=1&mt=8", 
+                    "service_name": "itunes.apple.com", 
+                    "id": 1, 
+                    "fallback": "Connecting to the iTunes Store.", 
+                    "service_icon": "https://itunes.apple.com/favicon.ico", 
+                    "from_url": "https://itunes.apple.com/us/app/holo/id1194175772?ls=1&mt=8"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://itunes.apple.com/nz/app/holo/id1194175772>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496277533.766094", 
+            "attachments": [
+                {
+                    "image_bytes": 19157, 
+                    "title": "Holo on the App Store", 
+                    "service_name": "App Store", 
+                    "image_width": 250, 
+                    "title_link": "https://itunes.apple.com/nz/app/holo/id1194175772", 
+                    "image_height": 250, 
+                    "image_url": "http://is5.mzstatic.com/image/thumb/Purple117/v4/84/ae/e4/84aee48e-e768-d290-8095-74d11392f79b/source/1200x630bb.jpg", 
+                    "text": "Read reviews, compare customer ratings, see screenshots and learn more about Holo. Download Holo and enjoy it on your iPhone, iPad and iPod\u00a0touch.", 
+                    "id": 1, 
+                    "fallback": "App Store: Holo on the App Store", 
+                    "service_icon": "https://itunes.apple.com/favicon.ico", 
+                    "from_url": "https://itunes.apple.com/nz/app/holo/id1194175772"
+                }
+            ]
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496275313.462798"
+        }, 
+        {
+            "text": "The link to the App Store on <http://thisisholo.com|thisisholo.com> is working for me.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1496275305.461774"
+        }, 
+        {
+            "text": "Based on a very old stackoverflow answer, this should work <http://itunes.apple.com/app/id1194175772>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1496111146.350114", 
+            "attachments": [
+                {
+                    "title": "Connecting to the iTunes Store.", 
+                    "text": "Connecting to the iTunes Store.", 
+                    "title_link": "http://itunes.apple.com/app/id1194175772", 
+                    "service_name": "itunes.apple.com", 
+                    "id": 1, 
+                    "fallback": "Connecting to the iTunes Store.", 
+                    "service_icon": "https://itunes.apple.com/favicon.ico", 
+                    "from_url": "http://itunes.apple.com/app/id1194175772"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey, do you have a link to the app store which will be usable once the app is live?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496108314.088003"
+        }, 
+        {
+            "text": "Isabella was activated pretty quickly after I sent out the welcome email", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495605312.704586"
+        }, 
+        {
+            "text": "Yea, I think I saw you doing it last time. Thanks, its only a few new users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495605247.697240"
+        }, 
+        {
+            "text": "You now have more power. When do you want to add testers? Apple have recently made the UI an abomination but the basics are 1. go to Holo app. 2. Select TestFlight up the top. 3. Select the Beta Program Testers group on the left. That is the group I am using for Beta testers. 4. Click the + beside Testers(xxx) and select Import CSV. Your CSV should be formatted ,,email_address, if you don't have first name last name. I can run you through it tomorrow if you want.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1495605197.691842"
+        }, 
+        {
+            "text": "Hey, I actually have access to itunes connect for holo, but just can\u2019t add new testers to the whitelist.\nIf you can update that permission for me, I can stop bugging you with new emails to add to that list.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495604504.616876"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0C90MHEH/F52JLEV6C/androidnzholobeta|Holo Beta Device compat>", 
+            "upload": false, 
+            "ts": "1495409301.456630", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_64.png", 
+                "size": 44165, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo Beta Device compat", 
+                "url_private": "https://docs.google.com/spreadsheets/d/1oevqA_BopjMs54-x1SHSrJR7nA5tUpnkBkYlUWu6FlQ/edit#gid=898038143", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_360.png", 
+                "id": "F52JLEV6C", 
+                "ims": [
+                    "D0G4CDXNX", 
+                    "D12DBF78S"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_800.png", 
+                "timestamp": 1492993630, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_1024.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "AndroidNZHoloBeta", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F52JLEV6C/androidnzholobeta", 
+                "is_external": true, 
+                "created": 1492993630, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F52JLEV6C-b52233cf6b/androidnzholobeta_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hey, I\u2019m going to send out the emails to the users from the \u201cFiltered New Form iOS\u201d sheet.\n<https://docs.google.com/spreadsheets/d/1oevqA_BopjMs54-x1SHSrJR7nA5tUpnkBkYlUWu6FlQ/edit#gid=1288910647>\nWill need to follow up with the test flight email at some point", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495409300.456598"
+        }, 
+        {
+            "text": "Can you please add a Production beta user: <mailto:8iholo@gmail.com|8iholo@gmail.com>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1494998540.319134"
+        }, 
+        {
+            "text": "<mailto:ios_holo+beta@8i.com|ios_holo+beta@8i.com>\n<mailto:jed+beta@8i.com|jed+beta@8i.com>\n<mailto:asher+beta@8i.com|asher+beta@8i.com>\n<mailto:ldasilva+beta@8i.com|ldasilva+beta@8i.com>\n<mailto:tverbeek+beta@8i.com|tverbeek+beta@8i.com>\n<mailto:smckenzie+beta@8i.com|smckenzie+beta@8i.com>\n<mailto:mcoates+beta@8i.com|mcoates+beta@8i.com>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1494899182.399283"
+        }, 
+        {
+            "text": "Do you manually enter them?", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1494898837.356880"
+        }, 
+        {
+            "text": "Yup, just need email addresses", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494898787.350438"
+        }, 
+        {
+            "text": "Can we set up beta users in Staging?", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1494898755.346355"
+        }, 
+        {
+            "text": "Mudge\u2019s MacBook Pro", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493871206.763912"
+        }, 
+        {
+            "text": "What's the name of your MacBook Pro? I'll Airdrop you the file.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1493871172.761032"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684621.342680"
+        }, 
+        {
+            "text": "OK, I've added them.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1493684595.339456"
+        }, 
+        {
+            "text": "and let me know, so I can reply to the Vic uni guy who is asking about them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684405.315437"
+        }, 
+        {
+            "text": "would you mind adding them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684373.311238"
+        }, 
+        {
+            "text": "They are both presenting the app to high schools tomorrow, to get new beta users.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684365.310482"
+        }, 
+        {
+            "text": "And Sebastien has only just come through so I haven't added him yet", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1493683320.168217"
+        }, 
+        {
+            "text": "Katie O'Brien doesn't because I have been trying to find out who she is.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1493683283.162438"
+        }, 
+        {
+            "text": "Do you know if these people have access to the iOS alpha?\nKatie O\u2019Brien [kaatie.obrien@hotmail.com]\nSebastien Voerman [sebastien.w.voerman@gmail.com]\n\nboth have filled in the Early access form", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493683248.157077"
+        }, 
+        {
+            "text": "Client Id\tlZKxjesH6o7Fp2oG3InHIEuWZyP3MUVdssyuPAvR\nClient Secret\tW7nFHBzsr1ceThMKrkU77ECZDYOO2cunqSO1HTW6Qt1aCLh5XT", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487298303.000002"
+        }, 
+        {
+            "text": "Here is a link to the staging scene API with an MP3 audio file <https://holo-stage.dev.8i.com/api/v1/scene/dGX>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487113936.000002"
+        }, 
+        {
+            "text": ":thumbsup:", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1485470071.000005"
+        }, 
+        {
+            "text": "Its created now, you, Scott and Thomas have admin control over the GA Property.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485470054.000004"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485464041.000003"
+        }, 
+        {
+            "text": "Can we get a Google Analytics property set up for Holo iOS?", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1485463057.000002"
+        }, 
+        {
+            "text": "Michael Mudge | Software Engineer at 8i | <http://8i.com|8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480997949.000002"
+        }, 
+        {
+            "text": "<https://hangouts.google.com/hangouts/_/8i.com/holo-standup?authuser=0>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479677991.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 1024, 
+                    "service_icon": "http://ssl.gstatic.com/chat/hangouts/favicon_17ac8bc99691bdbae5ca5e61fba644f8.ico", 
+                    "thumb_width": 1024, 
+                    "title": "Join this live Google Hangouts video call", 
+                    "service_name": "GOOGLE HANGOUTS", 
+                    "title_link": "https://hangouts.google.com/hangouts/_/8i.com/holo-standup?authuser=0", 
+                    "text": "Click to join now. If the call is over, invite your friends to a new one or start a chat with text, photos and emoji.", 
+                    "id": 1, 
+                    "fallback": "GOOGLE HANGOUTS: Join this live Google Hangouts video call", 
+                    "thumb_url": "https://www.gstatic.com/images/icons/material/product/2x/hangouts_512dp.png", 
+                    "from_url": "https://hangouts.google.com/hangouts/_/8i.com/holo-standup?authuser=0"
+                }
+            ]
+        }, 
+        {
+            "text": "Yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479424204.000003"
+        }, 
+        {
+            "text": "kebab?", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1479424195.000002"
+        }, 
+        {
+            "text": "but thats also saved into localStorage", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470010322.000007"
+        }, 
+        {
+            "text": "stopRecord will return the Json encoded values which were captured", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470010279.000006"
+        }, 
+        {
+            "text": "do those methods have return values?", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1470010251.000005"
+        }, 
+        {
+            "text": "cool, thanks", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1470005779.000004"
+        }, 
+        {
+            "text": "and then you can use ctrl.playbackRecording to playback the last recording", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470005723.000003"
+        }, 
+        {
+            "text": "The recording methods are ctrl.record and ctrl.stopRecord", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470005700.000002"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/webview/5Ga>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469408502.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://mudge-demo.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "Chuuwee", 
+                    "service_name": "8i", 
+                    "title_link": "http://mudge-demo.dev.8i.com/webview/5Ga", 
+                    "text": "Chuuwee - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Chuuwee", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/mudge_stage_5Ga/shareImage.png?v=1", 
+                    "from_url": "http://mudge-demo.dev.8i.com/webview/5Ga"
+                }
+            ]
+        }, 
+        {
+            "text": "and ctrl.playerService.takeScreenshot();", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468448139.000012"
+        }, 
+        {
+            "text": "Sorry I mean <https://mudge-demo.dev.8i.com/webview/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468448098.000011"
+        }, 
+        {
+            "text": "Alright try using <https://mudge.dev.8i.com/webview>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468448079.000010"
+        }, 
+        {
+            "text": "Sweet.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468383501.000009"
+        }, 
+        {
+            "text": "means I can use the web camera in chrome as well as firefox on android", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468383495.000008"
+        }, 
+        {
+            "text": "Oooh, exciting.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468383477.000007"
+        }, 
+        {
+            "text": "was upgrading to https", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468383467.000006"
+        }, 
+        {
+            "text": "I did break it sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468383462.000005"
+        }, 
+        {
+            "text": "It's working now.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468383439.000004"
+        }, 
+        {
+            "text": "Hmm, the player with the transparent background has stopped working for me. It's not loading anything. I just see the shadow. Have you changed something? <http://mudge-demo.dev.8i.com/p/g/zwr>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468382532.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://mudge-demo.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "Test Player 2 - Blue Dress quote\\'s", 
+                    "service_name": "8i", 
+                    "title_link": "http://mudge-demo.dev.8i.com/p/g/zwr", 
+                    "text": "Testing Player 2 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Test Player 2 - Blue Dress quote\\'s", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/mudge_stage_zwr/shareImage.png?v=1", 
+                    "from_url": "http://mudge-demo.dev.8i.com/p/g/zwr"
+                }
+            ]
+        }, 
+        {
+            "text": "Thanks. I'll give that a go after lunch.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468282051.000008"
+        }, 
+        {
+            "text": "not sure if that will help but you can try using it as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468281948.000007"
+        }, 
+        {
+            "text": "which returns a png data blob", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468281933.000006"
+        }, 
+        {
+            "text": "from that page which I gave you I can execute ctrl.playerService.webglRenderer.domElement.toDataURL()", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468281925.000005"
+        }, 
+        {
+            "text": "yea that might be a bit of a tricky one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468281767.000004"
+        }, 
+        {
+            "text": "mmm", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468281749.000003"
+        }, 
+        {
+            "text": "Sweet, I fixed the transparency problem. But still working on capturing webGL content. It doesn't work for any web page that uses webGL.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468281717.000002"
+        }, 
+        {
+            "text": "I see that on desktop and mobile.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1468205436.000005"
+        }, 
+        {
+            "username": "jed", 
+            "display_as_bot": false, 
+            "text": "<@U0G3RRHD3> uploaded a file: <https://hvr.slack.com/files/U0G3RRHD3/F1QDETPHD/screen_shot_2016-07-11_at_2.49.07_pm.png|This doesn't seem right.>", 
+            "upload": true, 
+            "ts": "1468205416.000004", 
+            "subtype": "file_share", 
+            "user": "U0G3RRHD3", 
+            "file": {
+                "thumb_480_w": 298, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_64.png", 
+                "size": 181807, 
+                "original_h": 1268, 
+                "thumb_360_w": 223, 
+                "title": "This doesn't seem right.", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F1QDETPHD/screen_shot_2016-07-11_at_2.49.07_pm.png", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_360.png", 
+                "id": "F1QDETPHD", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "thumb_720_w": 446, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1468205413, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F1QDETPHD/download/screen_shot_2016-07-11_at_2.49.07_pm.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2016-07-11 at 2.49.07 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F1QDETPHD-efbf980f3d", 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F1QDETPHD/screen_shot_2016-07-11_at_2.49.07_pm.png", 
+                "is_external": false, 
+                "created": 1468205413, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 786, 
+                "thumb_960_w": 595, 
+                "thumb_1024_w": 635, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F1QDETPHD-6f1b29df87/screen_shot_2016-07-11_at_2.49.07_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hey, <http://mudge-demo.dev.8i.com/p/g/zwr> should have a transparent background now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468196779.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://mudge-demo.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "Test Player 2 - Blue Dress quote\\'s", 
+                    "service_name": "8i", 
+                    "title_link": "http://mudge-demo.dev.8i.com/p/g/zwr", 
+                    "text": "Testing Player 2 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Test Player 2 - Blue Dress quote\\'s", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/mudge_stage_zwr/shareImage.png?v=1", 
+                    "from_url": "http://mudge-demo.dev.8i.com/p/g/zwr"
+                }
+            ]
+        }, 
+        {
+            "text": "This might be useful for us in the future: <http://graphics.pixar.com/usd/> Pixar open-sourced it last month and Apple demoed support for it at WWDC.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1466104899.000002", 
+            "attachments": [
+                {
+                    "title": "Universal Scene Description", 
+                    "text": "USD", 
+                    "title_link": "http://graphics.pixar.com/usd/", 
+                    "service_name": "graphics.pixar.com", 
+                    "id": 1, 
+                    "fallback": "Universal Scene Description", 
+                    "from_url": "http://graphics.pixar.com/usd/"
+                }
+            ]
+        }, 
+        {
+            "text": "The tracking is a little flakey on iOS.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1465957805.000005"
+        }, 
+        {
+            "text": "Oh cool, I\u2019ll have to have a play with that then, see what it can do.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465957748.000004"
+        }, 
+        {
+            "text": "The AR marker tracking SDK I was looking at using has a Javascript port: <https://github.com/artoolkit/jsartoolkit5>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1465957644.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 400, 
+                    "service_icon": "https://github.com/apple-touch-icon.png", 
+                    "thumb_width": 400, 
+                    "title": "artoolkit/jsartoolkit5", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/artoolkit/jsartoolkit5", 
+                    "text": "jsartoolkit5 - Javascript ARToolKit v5.x", 
+                    "id": 1, 
+                    "fallback": "GitHub: artoolkit/jsartoolkit5", 
+                    "thumb_url": "https://avatars2.githubusercontent.com/u/11845543?v=3&s=400", 
+                    "from_url": "https://github.com/artoolkit/jsartoolkit5"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en> is handy for viewing the json API as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464829825.000006", 
+            "attachments": [
+                {
+                    "thumb_height": 128, 
+                    "service_icon": "https://www.google.com/images/icons/product/chrome_web_store-32.png", 
+                    "thumb_width": 128, 
+                    "title": "JSON Formatter", 
+                    "text": "Makes JSON easy to read. Open source.", 
+                    "title_link": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en", 
+                    "service_name": "chrome.google.com", 
+                    "id": 1, 
+                    "fallback": "JSON Formatter", 
+                    "thumb_url": "https://lh5.googleusercontent.com/6240D4mWfhicKkWdlGK9T8pn-vOE_Vop28CzN2YOQ7khF0TQ-oxZAEDgDrYD_JeyOP_ZFKby", 
+                    "from_url": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en"
+                }
+            ]
+        }, 
+        {
+            "text": "Cool, thanks", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1464829781.000005"
+        }, 
+        {
+            "text": "Actually, I\u2019ll get you to use api-mudge-demo2 instead because it will be more stable", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464829760.000004"
+        }, 
+        {
+            "text": "if you click the View Json it will take you to the api end point E.g <http://api-mudge.dev.8i.com/api/v1/scene/1B>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464829724.000003"
+        }, 
+        {
+            "text": "This shows the list of current scenes <http://mudge.dev.8i.com/admin/simple/director>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464829696.000002"
+        }, 
+        {
+            "text": "<http://8i.com/p/RWW>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464561683.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 454, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 908, 
+                    "title": "The Final Look (Extended)", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/RWW", 
+                    "text": "Paul Falltrick reveals the finished look. Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: The Final Look (Extended)", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/live_RWW/shareImage.png?v=1", 
+                    "from_url": "http://8i.com/p/RWW"
+                }
+            ]
+        }, 
+        {
+            "text": "try that instead", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464209492.000004"
+        }, 
+        {
+            "text": "<https://s3-us-west-1.amazonaws.com/com.8i.newton/Share/20160516/05162016-holopic.rar>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464209489.000003"
+        }, 
+        {
+            "text": "<https://s3.amazonaws.com/com.8i.newton/Share/20160516/05162016-holopic.rar>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1464209395.000002"
+        }, 
+        {
+            "text": "Try <http://mudge.dev.8i.com/redirect_app/1zm> from the iphone", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463351183.000002"
+        }, 
+        {
+            "text": "Cool!", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1461712291.000009"
+        }, 
+        {
+            "text": "<https://api.8i.com/app/1zm> is redirecting now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461712240.000007", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "thumb_width": 548, 
+                    "title": "Chuuwee Rapping", 
+                    "service_name": "8i", 
+                    "title_link": "https://api.8i.com/app/1zm", 
+                    "text": "Chuuwee doing his thing. Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Chuuwee Rapping", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/live_1zm/shareImage.png?v=1", 
+                    "from_url": "https://api.8i.com/app/1zm"
+                }
+            ]
+        }, 
+        {
+            "text": "&lt;meta name=\"apple-itunes-app\" content=\"app-id=1090276248, app-argument=https://api.8i.com/app/experienceKey\u201d&gt;", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1461705607.000006"
+        }, 
+        {
+            "text": "Here is the smart banner tag:", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1461705576.000003"
+        }, 
+        {
+            "text": "Here are the five experiences in the app at the moment: \nChuuwee\n<https://api.8i.com/app/1zm>\n\nFlowing Dress\n<https://api.8i.com/app/RvW>\n\nThe Boxer\n<https://api.8i.com/app/vK7>\n\nRed Dress\n<https://api.8i.com/app/XOO>\n\nSwimsuit\n<https://api.8i.com/app/rm>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1461705531.000002"
+        }, 
+        {
+            "username": "jed", 
+            "display_as_bot": false, 
+            "text": "<@U0G3RRHD3> uploaded a file: <https://hvr.slack.com/files/U0G3RRHD3/F11NHEXUN/hemisphere.obj|hemisphere.obj>", 
+            "upload": true, 
+            "ts": "1461029428.000002", 
+            "subtype": "file_share", 
+            "user": "U0G3RRHD3", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 1606, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F11NHEXUN", 
+                "size": 51044, 
+                "title": "hemisphere.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F11NHEXUN/hemisphere.obj", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "preview": "# This file uses centimeters as units for non-parametric coordinates.\n\nmtllib hemisphere.mtl\ng default\nv 0.148778 0.000000 -0.048341", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0G3RRHD3/F11NHEXUN/hemisphere.obj/edit", 
+                "username": "", 
+                "timestamp": 1461029428, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F11NHEXUN/download/hemisphere.obj", 
+                "user": "U0G3RRHD3", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "hemisphere.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F11NHEXUN-0b450f8cee", 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F11NHEXUN/hemisphere.obj", 
+                "is_external": false, 
+                "created": 1461029428, 
+                "lines": 1611, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre># This file uses centimeters as units for non-parametric coordinates.</pre></div>\n<div><pre></pre></div>\n<div><pre>mtllib hemisphere.mtl</pre></div>\n<div><pre>g default</pre></div>\n<div><pre>v 0.148778 0.000000 -0.048341</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<smb://pandora._smb._tcp.local>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1460433204.000003"
+        }, 
+        {
+            "text": "on Pandora: Storage/shows/atrax/DAAN/Hvr/TOKESKIDS_S01_T2/Pub/TOKESKIDS_S01_T2_v04", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1460433044.000002"
+        }, 
+        {
+            "username": "jed", 
+            "display_as_bot": false, 
+            "text": "<@U0G3RRHD3> uploaded a file: <https://hvr.slack.com/files/U0G3RRHD3/F0ZEVV5A8/hemispherewithcurvedbottom.obj|hemisphereWithCurvedBottom.obj>", 
+            "upload": true, 
+            "ts": "1460327726.000002", 
+            "subtype": "file_share", 
+            "user": "U0G3RRHD3", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 1606, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0ZEVV5A8", 
+                "size": 51278, 
+                "title": "hemisphereWithCurvedBottom.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0ZEVV5A8/hemispherewithcurvedbottom.obj", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "preview": "# This file uses centimeters as units for non-parametric coordinates.\n\nmtllib hemisphereCurvedBottom.mtl\ng default\nv 0.148778 -0.188550 -0.048341", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0G3RRHD3/F0ZEVV5A8/hemispherewithcurvedbottom.obj/edit", 
+                "username": "", 
+                "timestamp": 1460327726, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0ZEVV5A8/download/hemispherewithcurvedbottom.obj", 
+                "user": "U0G3RRHD3", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "hemisphereWithCurvedBottom.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0ZEVV5A8-309563ef03", 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F0ZEVV5A8/hemispherewithcurvedbottom.obj", 
+                "is_external": false, 
+                "created": 1460327726, 
+                "lines": 1611, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre># This file uses centimeters as units for non-parametric coordinates.</pre></div>\n<div><pre></pre></div>\n<div><pre>mtllib hemisphereCurvedBottom.mtl</pre></div>\n<div><pre>g default</pre></div>\n<div><pre>v 0.148778 -0.188550 -0.048341</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Street view link <https://www.google.com/maps/@-41.2928008,174.7759239,0a,75y/data=!3m5!1e1!3m3!1s-YeRXBu9NlcY%2FUxvdNf02qcI%2FAAAAAAABGW8%2FGCfKwA78bWQ!2e4!6s%2F%2Flh3.ggpht.com%2F-YeRXBu9NlcY%2FUxvdNf02qcI%2FAAAAAAAAAAA%2FQ39iEcjosqk%2Fno%2Fphoto.jpg> \n\nThe photo URL from the end of that link\n<http://lh3.ggpht.com/-YeRXBu9NlcY/UxvdNf02qcI/AAAAAAAAAAA/Q39iEcjosqk/no/photo.jpg>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1459814433.000002", 
+            "attachments": [
+                {
+                    "image_bytes": 67798, 
+                    "image_width": 512, 
+                    "id": 1, 
+                    "image_height": 256, 
+                    "image_url": "http://lh3.ggpht.com/-YeRXBu9NlcY/UxvdNf02qcI/AAAAAAAAAAA/Q39iEcjosqk/no/photo.jpg", 
+                    "from_url": "http://lh3.ggpht.com/-YeRXBu9NlcY/UxvdNf02qcI/AAAAAAAAAAA/Q39iEcjosqk/no/photo.jpg", 
+                    "fallback": "512x256px image"
+                }
+            ]
+        }, 
+        {
+            "text": "mmm, does look interesting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458614136.000004"
+        }, 
+        {
+            "text": "Looks interesting <http://nzcricketmuseum.co.nz/death-of-a-gentleman/>", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1458614060.000002", 
+            "attachments": [
+                {
+                    "image_bytes": 247169, 
+                    "ts": 1458608531, 
+                    "title": "Death of a Gentleman - NZ CRICKET MUSEUM", 
+                    "service_name": "NZ CRICKET MUSEUM", 
+                    "image_width": 585, 
+                    "title_link": "http://nzcricketmuseum.co.nz/death-of-a-gentleman/", 
+                    "image_height": 250, 
+                    "image_url": "http://nzcricketmuseum.co.nz/wp-content/uploads/2016/03/DOAG.jpg", 
+                    "text": "After rave reviews around the globe, Death Of A Gentleman comes to New Zealand. Details on Wellington screenings in March 2016 here.", 
+                    "id": 1, 
+                    "fallback": "NZ CRICKET MUSEUM: Death of a Gentleman - NZ CRICKET MUSEUM", 
+                    "from_url": "http://nzcricketmuseum.co.nz/death-of-a-gentleman/"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/master/static/8i.controls.js#L241>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458528580.000006"
+        }, 
+        {
+            "text": "sweet, thanks", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1458517051.000005"
+        }, 
+        {
+            "text": "just added you to the team, try again?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458517030.000004"
+        }, 
+        {
+            "text": "Hmm, looks like I don't have access to that repo", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1458516961.000003"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/master/static/js/DeviceOrientationControls.js#L130>\nthis is where I change the gyro params into a quaternion. Not sure if it will be helpful or not, but feel free to take a look.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458515259.000002"
+        }, 
+        {
+            "text": "yea cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457496779.000005"
+        }, 
+        {
+            "text": "Thanks. That should be enough for me to test audio sync in various scenarios.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1457496761.000004"
+        }, 
+        {
+            "text": "Not sure if that is the full length or not but its something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457496729.000003"
+        }, 
+        {
+            "text": "<http://clouds.8i.com/BAND_210_auto_v01/BAND_2015_auto_v01_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457496716.000002"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F0R302CR4/venice_beach2.jpg|venice_beach2.jpg>", 
+            "upload": true, 
+            "ts": "1457399208.000004", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_64.jpg", 
+                "size": 1299013, 
+                "original_h": 4096, 
+                "thumb_360_w": 360, 
+                "title": "venice_beach2.jpg", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0R302CR4/venice_beach2.jpg", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_360.jpg", 
+                "id": "F0R302CR4", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_80.jpg", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1457399198, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0R302CR4/download/venice_beach2.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_1024.jpg", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "venice_beach2.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0R302CR4-818f155548", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F0R302CR4/venice_beach2.jpg", 
+                "is_external": false, 
+                "created": 1457399198, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 4096, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F0R302CR4-781b584880/venice_beach2_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F0R2UR7LK/stage.obj|stage.obj>", 
+            "upload": true, 
+            "ts": "1457399165.000003", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 1353, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0R2UR7LK", 
+                "size": 41931, 
+                "title": "stage.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0R2UR7LK/stage.obj", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "preview": "# This file uses centimeters as units for non-parametric coordinates.\n\nmtllib Stage20160301.mtl\ng default\nv -1.699188 -0.442059 4.237948", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0C90MHEH/F0R2UR7LK/stage.obj/edit", 
+                "username": "", 
+                "timestamp": 1457399165, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0R2UR7LK/download/stage.obj", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "stage.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0R2UR7LK-6b331309ba", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F0R2UR7LK/stage.obj", 
+                "is_external": false, 
+                "created": 1457399165, 
+                "lines": 1358, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre># This file uses centimeters as units for non-parametric coordinates.</pre></div>\n<div><pre></pre></div>\n<div><pre>mtllib Stage20160301.mtl</pre></div>\n<div><pre>g default</pre></div>\n<div><pre>v -1.699188 -0.442059 4.237948</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F0R2ZT570/stage.jpg|stage.jpg>", 
+            "upload": true, 
+            "ts": "1457399164.000002", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_64.jpg", 
+                "size": 362851, 
+                "original_h": 2048, 
+                "thumb_360_w": 360, 
+                "title": "stage.jpg", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0R2ZT570/stage.jpg", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_360.jpg", 
+                "id": "F0R2ZT570", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_80.jpg", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1457399160, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0R2ZT570/download/stage.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_1024.jpg", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "stage.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0R2ZT570-568c060578", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F0R2ZT570/stage.jpg", 
+                "is_external": false, 
+                "created": 1457399160, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 2048, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F0R2ZT570-1b2214c36e/stage_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Cool, thanks", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1456260806.000006"
+        }, 
+        {
+            "text": "but the others should be good for you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456260793.000005"
+        }, 
+        {
+            "text": "The files ending in -vr are just panorama\u2019s and were more complicated to render on a sphere", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456260784.000004"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F0NN44F8W/backgroundscenes.zip|backgroundScenes.zip>", 
+            "upload": true, 
+            "ts": "1456260774.000003", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "zip", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0NN44F8W", 
+                "size": 22135498, 
+                "title": "backgroundScenes.zip", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0NN44F8W/backgroundscenes.zip", 
+                "ims": [
+                    "D0G4CDXNX"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1456260772, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0NN44F8W/download/backgroundscenes.zip", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Zip", 
+                "name": "backgroundScenes.zip", 
+                "mimetype": "application/zip", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0NN44F8W-f01432c163", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F0NN44F8W/backgroundscenes.zip", 
+                "is_external": false, 
+                "created": 1456260772, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "When you get a chance could you please send me the photosphere textures you are using? Would be good to test them in iOS to compare.", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1456260699.000002"
+        }, 
+        {
+            "text": "<http://8i.com/api/content>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453068589.000002"
+        }, 
+        {
+            "text": "<http://cdn-content.8i.com/mom_and_baby/mom_baby_web_eug_v03_400-90.dat?v=5>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450061852.000002"
+        }, 
+        {
+            "text": "Thanks!", 
+            "type": "message", 
+            "user": "U0G3RRHD3", 
+            "ts": "1449546425.000003"
+        }, 
+        {
+            "text": "Hey, <http://cdn-content.8i.com/mom_and_baby/mom_baby_oct20_2015_eug_v01_400_sample.hvr>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449546092.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0G3RRHD3", 
+            "U0C90MHEH"
+        ]
+    }
+}

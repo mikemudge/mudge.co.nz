@@ -1,0 +1,70 @@
+{
+    "messages": [
+        {
+            "text": "docker-compose exec app /bin/bash", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510099206.000242"
+        }, 
+        {
+            "text": "Buildkite <https://buildkite.com/8i/8i-com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510095981.000097"
+        }, 
+        {
+            "text": "<https://papertrailapp.com/groups/6441591/events>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510095905.000263"
+        }, 
+        {
+            "text": "Yea cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509486921.000153"
+        }, 
+        {
+            "text": "cool yeah that sounds good - I\u2019ll have to check with my squad depending on the amount of work to do/whether they\u2019re happy for that too", 
+            "type": "message", 
+            "user": "U33655F3Q", 
+            "ts": "1509486908.000273"
+        }, 
+        {
+            "text": "Let me finish off today with Raf, Mark and Asher, and I\u2019ll see if I can break off some nice pieces of work which you can help me out with.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509486755.000537"
+        }, 
+        {
+            "text": "The designers keep coming up with new ideas and I have never done the amazon parts before, so both are largely unknown amounts of effort", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509486643.000271"
+        }, 
+        {
+            "text": "I\u2019m trying to balance implementing the designs with getting the site deployed on amazon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509486609.000033"
+        }, 
+        {
+            "text": "Hey man, I\u2019m really not sure how much work there is which I guess is my problem.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509486566.000209"
+        }, 
+        {
+            "text": "Hey Mudge, Mark said you might need some help on the 8i site? How much time do you think you would need from me?", 
+            "type": "message", 
+            "user": "U33655F3Q", 
+            "ts": "1509486500.000194"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U33655F3Q", 
+            "U0C90MHEH"
+        ]
+    }
+}

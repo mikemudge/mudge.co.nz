@@ -1,0 +1,2897 @@
+{
+    "messages": [
+        {
+            "text": "email: <mailto:sternutator@gmail.com|sternutator@gmail.com>\nphone 02102283614", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1479333027.000003"
+        }, 
+        {
+            "text": "personal details:", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1479333011.000002"
+        }, 
+        {
+            "text": "Ha, no worries.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1479183470.000003"
+        }, 
+        {
+            "text": "Oh sorry man, my reply didn't send yesterday. Internet was a bit patchy. But that sounds fine, thanks for the comments.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479176270.000002"
+        }, 
+        {
+            "text": "I've merge with master in the Effects branch. Would you like to see any other finalisations done? I've commented code in the particle effects files", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1479078293.000002"
+        }, 
+        {
+            "text": "Hey, for my presentation I'm going to give next time, I was thinking of creating some images of the things I've done. I'd like to pull from old commits, but not sure if they'd work on any new infrastructure in place now. Do you forsee any problems with this?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1478482047.000007"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478475594.000006"
+        }, 
+        {
+            "text": "that worked, thanks!", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1478475586.000005"
+        }, 
+        {
+            "text": "Alright the backend should be up now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478475104.000004"
+        }, 
+        {
+            "text": "Sorry, I'm still not sure how to get /d/ working in my dev share. Would it help to merge master?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1478474832.000003"
+        }, 
+        {
+            "text": "Hey, I'm trying to log in to <http://lohit.dev.8i.com/admin/> but just get \"login error\". I've restarted the server but no luck still. 502 HTTP error", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1478473967.000002"
+        }, 
+        {
+            "text": "Be there in 10", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1473627597.000002"
+        }, 
+        {
+            "text": "Could you help me log into this? <http://lohit.dev.8i.com/d/>\nGetting some js errors when trying to log in\nI've restarted the server as well", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1473025804.000003"
+        }, 
+        {
+            "text": "Looks like I'll be late this morning. In by 9:30", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1473022124.000002"
+        }, 
+        {
+            "text": "Nice one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472438954.000005"
+        }, 
+        {
+            "text": "It can be played here <http://lohit.dev.8i.com/d/?stats=1>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1472438670.000004"
+        }, 
+        {
+            "text": "But it's ready to actually build effects from so I'll be doing that next time", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1472438639.000003"
+        }, 
+        {
+            "text": "So I've fixed the weird bugs when integrating with Director. It's important that the physics update is done after the scene is rendered (as it's done on GPU), and the effects only seems to work after \"initialising player\", not really sure why", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1472438587.000002"
+        }, 
+        {
+            "text": "The working code can be tested by running effectTest.html in the localTesting folder", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1471834242.000003", 
+            "edited": {
+                "user": "U0DV809QQ", 
+                "ts": "1471834259.000000"
+            }
+        }, 
+        {
+            "text": "I've pulled out the code to its own file, but I've been stuck on a strange bug (1st physics iteration not being initialised) and I haven't yet been able to find the problem. I've gotta get going soon but I probably won't get to revise it 'til next week.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1471834196.000002"
+        }, 
+        {
+            "text": "Gotta get going now. I've got 3D physics going so we can soon make different effects using particles. Still have to make the code it neat before integration.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1471228104.000002"
+        }, 
+        {
+            "text": "Yeah, just uploaded it to myself on slack", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470708518.000007"
+        }, 
+        {
+            "text": "alright, feel free to just throw your code into a temporary folder in the repo for now. Just keeps it safely backed up if anything happens to your laptop.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470708491.000006"
+        }, 
+        {
+            "text": "Hey, gotta go soon, but I've got some basic physics going but I have yet to hook it up to an object. Just been working on local files so I don't really have any thing to push", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470708341.000005"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470690701.000004"
+        }, 
+        {
+            "text": "No, I don\u2019t have anything in particular. Particle effects sounds fine.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470690692.000003"
+        }, 
+        {
+            "text": "Hey, I was thinking about making a particle physics effect like sparks - unless you've got there's something more important", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470690561.000002"
+        }, 
+        {
+            "text": "alright, cool. Will see you tomorrow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470605575.000007"
+        }, 
+        {
+            "text": "Cheers. Sorry for be unorganised. Will do the time tomorrow.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470605544.000006"
+        }, 
+        {
+            "text": "oh yea, no biggie. Which ever is easiest for you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470605465.000005"
+        }, 
+        {
+            "text": "Wondering if it's better to just come in tomorrow morning instead", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470605425.000004"
+        }, 
+        {
+            "text": "Hey, I'm an idiot and forgot my laptop. Can still make it in like an hour. ", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470605402.000003"
+        }, 
+        {
+            "text": "Sorry I'm running late today. Hopefully in by 9:20", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470602978.000002"
+        }, 
+        {
+            "text": "Looking good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470018015.000020"
+        }, 
+        {
+            "text": "Gotta get to class now though...", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470017406.000019"
+        }, 
+        {
+            "text": "<http://lohit.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470017387.000018"
+        }, 
+        {
+            "username": "lohit", 
+            "display_as_bot": false, 
+            "text": "<@U0DV809QQ> uploaded a file: <https://hvr.slack.com/files/U0DV809QQ/F1WS42928/capture.png|Capture.PNG> and commented: Here's a little water ripple effect. It's basic but it will take a little longer to make it more realistic", 
+            "upload": true, 
+            "ts": "1470017370.000017", 
+            "subtype": "file_share", 
+            "user": "U0DV809QQ", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "Here's a little water ripple effect. It's basic but it will take a little longer to make it more realistic", 
+                    "created": 1470017369, 
+                    "timestamp": 1470017369, 
+                    "is_intro": true, 
+                    "user": "U0DV809QQ", 
+                    "id": "Fc1WSDT5N1"
+                }, 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F1WS42928-82dc54fdbd/capture_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F1WS42928-82dc54fdbd/capture_64.png", 
+                "size": 57099, 
+                "original_h": 465, 
+                "thumb_360_w": 360, 
+                "title": "Capture.PNG", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F1WS42928/capture.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F1WS42928-82dc54fdbd/capture_360.png", 
+                "id": "F1WS42928", 
+                "ims": [
+                    "D0FPC1YUE"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F1WS42928-82dc54fdbd/capture_80.png", 
+                "thumb_360_h": 275, 
+                "thumb_480_h": 367, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1470017369, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F1WS42928-82dc54fdbd/capture_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F1WS42928/download/capture.png", 
+                "user": "U0DV809QQ", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Capture.PNG", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F1WS42928-b14acf4740", 
+                "permalink": "https://hvr.slack.com/files/U0DV809QQ/F1WS42928/capture.png", 
+                "is_external": false, 
+                "created": 1470017369, 
+                "original_w": 608, 
+                "comments_count": 1, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470013355.000016"
+        }, 
+        {
+            "text": "Yea, that looks alright to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470013346.000015"
+        }, 
+        {
+            "text": "<http://lohit.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470013169.000014"
+        }, 
+        {
+            "text": "So this transparency cuts off other transparent objects behind it. This works well with the ground because the same colour is behind it. The grid does get cut off but it's less important.\n\nThis method probably won't work with multiple transparent effects going at once close together. If that's needed later on I have some other options to try", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470013162.000013"
+        }, 
+        {
+            "text": "Yup, that works", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470008210.000012"
+        }, 
+        {
+            "text": "With the ability to move it, we can always just place it slightly above ground level in director as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470008195.000011"
+        }, 
+        {
+            "text": "Na, that looks alright.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470008162.000010"
+        }, 
+        {
+            "text": "This shadow effect sometimes gets hidden because the grid has lots of transparent objects in the way, but it's fine when you hide the grid. Although it should be fixed for  director, for the time being, this shouldn't be a problem for the iOS app right?\n<http://lohit.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470008045.000009"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470002305.000008"
+        }, 
+        {
+            "text": "Yep, that's how i'm doing it", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470002290.000007"
+        }, 
+        {
+            "text": "but for now having seperate object will probably be easier/possible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470002264.000006"
+        }, 
+        {
+            "text": "Sure", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470002264.000005"
+        }, 
+        {
+            "text": "I think we should go with 1 object per effect for now, I still need to rethink the way the timeline works", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470002242.000004"
+        }, 
+        {
+            "text": "That would be great", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470002199.000003"
+        }, 
+        {
+            "text": "Thought about those ground effects for our assets, and I reckon I can get a simple shadow and water ripple effect done today", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1470002169.000002"
+        }, 
+        {
+            "text": "Hmm, good point, I think we can probably do the timeline a bit better, have to consider how we should do it for animations and effects.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469412657.000004"
+        }, 
+        {
+            "text": "- Or start the animation on the objects 1st keyframe where the starting keyframe can be changed. This would mean every animation re-trigger would need another effect object", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1469411275.000003"
+        }, 
+        {
+            "text": "Here's a muzzle flash effect: <http://lohit.dev.8i.com/d/>\n\nFor this one, we have to decide on how to re-trigger its animation. I had a couple of ideas:\n- Let the user put down keyframes and restart its animation on each keyframe", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1469411193.000002"
+        }, 
+        {
+            "text": "Alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468810341.000027"
+        }, 
+        {
+            "text": "Hey, I have class on Mondays so I had to leave early. I may get some time at home to continue on the effects.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468810288.000026"
+        }, 
+        {
+            "text": "Yea good call", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468802977.000025"
+        }, 
+        {
+            "text": "Yeah, not a problem. will do.\nI'll keep it on a separate branch, if that's cool, since it's not yet in the API", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468802966.000024"
+        }, 
+        {
+            "text": "so you just get going on effects.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468802922.000023"
+        }, 
+        {
+            "text": "I will have a closer look at what\u2019s done for animations, but might not be for a while", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468802913.000022"
+        }, 
+        {
+            "text": "Yea I think thats a good idea for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468802875.000021"
+        }, 
+        {
+            "text": "Cool, so are there any important gaps i'd need to fill in for the animation stuff? If not I could make a start on the effects", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468802837.000020"
+        }, 
+        {
+            "text": "yea we do need to think about how to handle things like the collada files better, the way it works for obj\u2019s and their related files is pretty messy right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468802614.000019"
+        }, 
+        {
+            "text": "Nice one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468802558.000018"
+        }, 
+        {
+            "text": "It's here under Objects at the bottom <http://lohit.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468802259.000017"
+        }, 
+        {
+            "text": "I guess, for now, we'll need to decide how the Collada objects will fit into the API. I've just copied how other objects are loaded and added a \"type = 'dae'\" for it to work. Haven't yet handled how textures and other resources that the DAE depends on gets specified.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468802225.000016"
+        }, 
+        {
+            "text": "Nah, not at the moment", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468800902.000015"
+        }, 
+        {
+            "text": "You probably don\u2019t have manual access to amazon right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468800759.000014"
+        }, 
+        {
+            "text": "Cool. I've done that so far", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468800728.000013"
+        }, 
+        {
+            "text": "you can probably add it to the html manually, but eventually it will need to be uploaded to amazon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468800709.000012"
+        }, 
+        {
+            "text": "So if I wanted this Collada file to be in the list, I'd need to have it uploaded?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468800645.000011"
+        }, 
+        {
+            "text": "It comes from amazon but is cached locally in a redis server", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468800602.000010"
+        }, 
+        {
+            "text": "Could you remind me where the list of OBJs get generated?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468800567.000009"
+        }, 
+        {
+            "text": "ok, cool", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468793562.000008"
+        }, 
+        {
+            "text": "and pass in the mesh to Initialize", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468793542.000007"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468793536.000006"
+        }, 
+        {
+            "text": "oh you\u2019ll just need to add an OBJObject", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468793528.000005"
+        }, 
+        {
+            "text": "Let it be interacted with using the 3D helper tool", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468793493.000004"
+        }, 
+        {
+            "text": "how do you mean movable?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468793471.000003"
+        }, 
+        {
+            "text": "Hey, if I want the Collada stuff to be movable like the OBJs, would I need to make it work as a component first?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468793451.000002"
+        }, 
+        {
+            "text": "Hey, sorry for the late notice. Yupan just let me know he's gonna get someone else to do the 8i Ad stuff. Will be in tomorrow for more director stuff, but this trimester I can only do half days unfortunately.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1468750646.000002"
+        }, 
+        {
+            "text": "Ah, cool. Will do.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467668315.000006"
+        }, 
+        {
+            "text": "Yea, all good. Keep Collette in that loop as well for desk management. I believe we should have 6 more in soon so it may not be a problem.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467668247.000005"
+        }, 
+        {
+            "text": "Cool, thanks again. BTW Tri 2 is starting next week so I'll let you know what day I'll be coming back. Courses not yet fully confirmed", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467668176.000004"
+        }, 
+        {
+            "text": "Nothing too major, its ok with me if you want to concentrate on your honours report.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467668094.000003"
+        }, 
+        {
+            "text": "Hey, were there were many major issues with the Director after dog-fooding?\nI'm wondering if I'm needed urgently this week. I have my first honours report due this week and I could do with the time off to get it done. Is that all good?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467668014.000002"
+        }, 
+        {
+            "text": "Wow cool man, its like JSFiddle for shaders.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467233777.000002"
+        }, 
+        {
+            "text": "This is a thing I made over the weekend if you're interested at all: \n<https://lohitpetikam.github.io/ShaderMate/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467179167.000015", 
+            "attachments": [
+                {
+                    "title": "    ShaderMate: Honey, does this shader make my butt look big?   ", 
+                    "text": "Test GLSL shader code on a mesh, via Three.js", 
+                    "title_link": "https://lohitpetikam.github.io/ShaderMate/", 
+                    "service_name": "lohitpetikam.github.io", 
+                    "id": 1, 
+                    "fallback": "    ShaderMate: Honey, does this shader make my butt look big?   ", 
+                    "from_url": "https://lohitpetikam.github.io/ShaderMate/"
+                }
+            ]
+        }, 
+        {
+            "text": "Ah, thanks, it is helpful", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467178165.000014"
+        }, 
+        {
+            "text": "This commit shows me adding the floor component, might be helpful <https://github.com/8i/WebPlatform/commit/4f327eb5993134ffd20f9b74d3b504085fad89c0>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467178116.000013"
+        }, 
+        {
+            "text": "yea, all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467177456.000012"
+        }, 
+        {
+            "text": "I might have to leave the component stuff 'til next time, but I'm just gonna submit a little fix to the helper rendering before I go", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467177441.000011"
+        }, 
+        {
+            "text": "Sure thing", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467173765.000010"
+        }, 
+        {
+            "text": "Do you want to give me about 15 minutes and then I will have some time.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467173756.000009"
+        }, 
+        {
+            "text": "I think I'm ready to add the Collada in as a component but up to you if you've got time to go through the system with me.\nOtherwise, I can make a start on effects", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467173676.000008"
+        }, 
+        {
+            "text": "sudo supervisorctl restart lohit_api_8i", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467150388.000007"
+        }, 
+        {
+            "text": "Can wait longer though", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467150231.000006"
+        }, 
+        {
+            "text": "Still a 502 for me", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467150194.000005"
+        }, 
+        {
+            "text": "sweet, thanks", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467150041.000004"
+        }, 
+        {
+            "text": "I added your domain to the list, might take a few minutes to take affect but let me know if its still not letting you login after that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467150020.000003"
+        }, 
+        {
+            "text": "Did you want me to look into more animation stuff today?\nAlso, I can't seem to get into the login page of the new Director. Could be something to do with the back end issues from before?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467149675.000002"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467070927.000003"
+        }, 
+        {
+            "text": "Confirmed with Collette, so I'll see you tomorrow.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1467070893.000002"
+        }, 
+        {
+            "text": "Good point. Will do.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1466994946.000004"
+        }, 
+        {
+            "text": "Thats ok with me, but do you want to check with Collette, as I\u2019m not sure what desk availability is like this week.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466993736.000003"
+        }, 
+        {
+            "text": "Hey, my honours meetings have switched to Thursdays. So for the next two weeks could I come in on Wednesdays instead?\n\nAfter those two weeks Tri 2 starts so that day may change again, but I'll let you know.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1466993337.000002"
+        }, 
+        {
+            "text": "Much appreciated!", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1466410046.000004"
+        }, 
+        {
+            "text": "Na that's fine with me.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466407062.000003"
+        }, 
+        {
+            "text": "Hey, I've got exams this week and wanting to know if I can take Thursday off for study. I will be coming in regularly from then on. Hope it's not too inconvenient.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1466404732.000002"
+        }, 
+        {
+            "text": "Could you remind me where I can include more threejs scripts? I'm trying to add the ColladaLoader.js from Loaders in three-js", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1466049273.000003"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/pull/301/files>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466029002.000002"
+        }, 
+        {
+            "text": "I haven't tried anything but just in the 3d helper is it possible for the axis which the asset rotates around and moves along to change? So it's not fixed to world x,y,z", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465542142.000003"
+        }, 
+        {
+            "text": "sorry, I hadn't checked Slack since. which helper are you trying to change?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1465538619.000002"
+        }, 
+        {
+            "text": "Hey, don\u2019t mean to bother you while you are studying but how hard would it be to change the axis of the helper for an object?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465419466.000002"
+        }, 
+        {
+            "text": "Sweet. And thanks.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1465341721.000006"
+        }, 
+        {
+            "text": "There is a slack channel, although I think just letting Collette know should be fine for you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341685.000005"
+        }, 
+        {
+            "text": "Okay cool. Not sure if I need to notify anyone else apart from Collette. Is there any procedure for getting leave?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1465341623.000004"
+        }, 
+        {
+            "text": "Yea I am alright with that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465341540.000003"
+        }, 
+        {
+            "text": "Hey, I was wondering if I could take the day off tomorrow, to get my COMP308 final project done. If there's nothing urgent to be done tomorrow it'd be a big help if I could use the time to finish this project due Friday. \nWould this be okay?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1465341519.000002"
+        }, 
+        {
+            "text": "`[2016-06-02 02:50:28 +0000] [29381] [ERROR] Error handling request\nTraceback (most recent call last):\n  File \"/usr/local/lib/python2.7/dist-packages/gunicorn/workers/sync.py\", line 130, in handle\n    self.handle_request(listener, req, client, addr)\n  File \"/usr/local/lib/python2.7/dist-packages/gunicorn/workers/sync.py\", line 171, in handle_request\n    respiter = self.wsgi(environ, resp.start_response)\n  File \"/usr/local/lib/python2.7/dist-packages/flask/app.py\", line 1836, in __call__\n    return self.wsgi_app(environ, start_response)\n  File \"/usr/local/lib/python2.7/dist-packages/werkzeug/contrib/fixers.py\", line 148, in __call__\n    return self.app(environ, start_response)\n  File \"/usr/local/lib/python2.7/dist-packages/flask/app.py\", line 1820, in wsgi_app\n    response = self.make_response(self.handle_exception(e))\n  File \"/usr/local/lib/python2.7/dist-packages/flask/app.py\", line 1403, in handle_exception\n    reraise(exc_type, exc_value, tb)\n  File \"/usr/local/lib/python2.7/dist-packages/flask/app.py\", line 1817, in wsgi_app\n    response = self.full_dispatch_request()\n  File \"/usr/local/lib/python2.7/dist-packages/flask/app.py\", line 1478, in full_dispatch_request\n    response = self.make_response(rv)\n  File \"/usr/local/lib/python2.7/dist-packages/flask/app.py\", line 1566, in make_response\n    raise ValueError('View function did not return a response')\nValueError: View function did not return a response`", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464836195.000003"
+        }, 
+        {
+            "text": "Hey, I'm getting an Internal Server Error on <http://lohit.dev.8i.com|lohit.dev.8i.com>.\nNot sure how to decipher this http.log error:", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464836189.000002"
+        }, 
+        {
+            "text": "Been thinking about rotation snapping. Right now we're rotating around global axes.  We're snapping the angle for each rotate operation. However, we're not snapping the rotation data (quaternion, or euler (XYZ) rotation). This means that after a bunch of rotations, you may not be able to get back to the starting (0,0,0) rotation.\n\nI've just done a test to see if we can snap the euler angle after rotating the quaternion. It's very glitchy. You end up running into the same mathematical problems where euler angles don't uniquely match a quaternion. Looked into other people's attempts at this and they have no solutions. \n\nI reckon we should keep this but, in future, let the user turn off snapping, and allow for manual editing of the XYZ rotation.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464830178.000022"
+        }, 
+        {
+            "text": "Yea, I\u2019m not really sure how we are going to use that just yet. It doesn\u2019t look like I can invite anyone. I\u2019ll get Tom to add you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464824520.000021"
+        }, 
+        {
+            "text": "BTW not sure how to access the Atlassian Jira tracking. Do I need to be invited (if you want me to keep an eye on it)?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464824338.000020"
+        }, 
+        {
+            "text": "Cool. Will merge then", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464824220.000019"
+        }, 
+        {
+            "text": "and just updating those quaternion values is a pretty safe change", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464824195.000018"
+        }, 
+        {
+            "text": "Doesn\u2019t matter too much as long as you are fairly confident you aren\u2019t going to break anything else", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464824180.000017"
+        }, 
+        {
+            "text": "Did you want the test to be run again before I merge in?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464824089.000016"
+        }, 
+        {
+            "text": "doh, I was thinking too hard about it. thanks", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464823831.000015"
+        }, 
+        {
+            "text": "Yea, that should be the correct one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464823805.000014"
+        }, 
+        {
+            "text": "Oh... I get it now. I can just copy and paste the quaternion from the log, since I know it works correctly?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464823762.000013"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464821605.000012"
+        }, 
+        {
+            "text": "It looks like the last push broke the rotate tool, but that is expected as you were changing how that worked", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464821447.000011"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/admin/tests>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464821425.000010"
+        }, 
+        {
+            "text": "The results will appear here once they are complete", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464821425.000009"
+        }, 
+        {
+            "text": "It's up now on Mouse-Accurate-Rotation", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464821339.000008"
+        }, 
+        {
+            "text": "do you want to do that, I\u2019ve got tests which will run on all the branches now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464821265.000007"
+        }, 
+        {
+            "text": "not yet", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464821222.000006"
+        }, 
+        {
+            "text": "have you pushed it up to a branch?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464821210.000005"
+        }, 
+        {
+            "text": "That was likely already there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464821191.000004"
+        }, 
+        {
+            "text": "One thing I found was the sky colour no longer changes. not sure if it was my code,  or if you're already aware of it", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464820970.000003"
+        }, 
+        {
+            "text": "Hey, I merged from master with minimal conflicts, but wanted to check with you if it's working as you expect it to.\n<http://lohit.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464820896.000002"
+        }, 
+        {
+            "text": "I've almost got this new rotate thing going. Wondering about `this.target.wrapper.position` in DirectorControls.js. Does this correspond to the selected object's position? Doesn't seem to do what I expect at the moment.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464229397.000022"
+        }, 
+        {
+            "text": "Not able to test with anything but our assets because the OBJs aren't listed anymore, and the text loading no longer works (JSON syntax error)", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464220543.000021"
+        }, 
+        {
+            "text": "or is it just our assets which stopped working?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464220458.000020"
+        }, 
+        {
+            "text": "the easy fix to get you back going is to just not make bounding boxes invisible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464220445.000019"
+        }, 
+        {
+            "text": "its possible, I\u2019m not sure exactly when that got broken", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464220409.000018"
+        }, 
+        {
+            "text": "Did you push some of those raycast changes? It seems I can no longer click-select assets, nor move them around", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464220354.000017"
+        }, 
+        {
+            "text": "Yea I think I\u2019ll go with that for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464219458.000016"
+        }, 
+        {
+            "text": "That's fine. Since we're only raycasting on a click, it's fine to raycast the mesh. I should have changed that earlier.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464219346.000015"
+        }, 
+        {
+            "text": "Just FYI, the raycasting stuff wasn\u2019t working because of the objects visibility. One trick we can use is to raycast into the Mesh itself rather than into the Object3d.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464219264.000014"
+        }, 
+        {
+            "text": "Yep", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464216157.000013"
+        }, 
+        {
+            "text": "a few deprecation warnings, but we can fix those as we go", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464216113.000012"
+        }, 
+        {
+            "text": "na it seems good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464216081.000011"
+        }, 
+        {
+            "text": "Cool. Hopefully things don't break all of a sudden", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464216062.000010"
+        }, 
+        {
+            "text": "you\u2019ll need to pull to get the latest three.min.js though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464216053.000009"
+        }, 
+        {
+            "text": "both", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464216035.000008"
+        }, 
+        {
+            "text": "Or just the extras?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464216030.000007"
+        }, 
+        {
+            "text": "Cool, thanks. Do you mean the most recent three.min.js?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464215993.000006"
+        }, 
+        {
+            "text": "Hey I updated the location of threejs so I could update it to the latest version. \nThe shortcut link now should point to /home/mudge/projects/three.js/examples/js", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464215822.000005"
+        }, 
+        {
+            "text": "I wanna look into making the rotation tool map correctly to the mouse as well. Tom suggested showing another sphere that rotates with you to provide feedback while rotating.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464211280.000004"
+        }, 
+        {
+            "text": "All good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464211176.000003"
+        }, 
+        {
+            "text": "Will be a bit late again unfortunately. Been stuck in traffic", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464209653.000002"
+        }, 
+        {
+            "text": "sounds good, see you tomorrow.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464155522.000005"
+        }, 
+        {
+            "text": "Cool. Will head off around 2 or 3 tomorrow, then.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464155478.000004"
+        }, 
+        {
+            "text": "Nope, that should be fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464155443.000003"
+        }, 
+        {
+            "text": "Hey, wondering if I could take a short day tomorrow. Got a test I need to revise for on Friday. \nIs there anything urgent that needs to be done tomorrow?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1464155408.000002"
+        }, 
+        {
+            "text": "Looks like it didn't work because it's using 8idirector.controls which doesn't have a movedCB. I could probably create one if it doesn't already have something I can use", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463635728.000020"
+        }, 
+        {
+            "text": "I'm making so that the 3D tool scales with the camera distance, so it's always the same size on the screen. Do you know where's an appropriate place in the code I can constantly update the tool? Not really sure how the new update functions work.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463633283.000019"
+        }, 
+        {
+            "text": "Go for it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463627206.000018"
+        }, 
+        {
+            "text": "Mind if I merge the pull request?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463627197.000017"
+        }, 
+        {
+            "text": "yea, its a nice to have but doesn\u2019t need to happen immediately.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463624449.000016"
+        }, 
+        {
+            "text": "True, will think about it later then.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463624422.000015"
+        }, 
+        {
+            "text": "so not really sure how that would all work together.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463624337.000014"
+        }, 
+        {
+            "text": "I guess we are going to have different materials as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463624327.000013"
+        }, 
+        {
+            "text": "Alright", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463624302.000012"
+        }, 
+        {
+            "text": "I haven\u2019t done it before though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463624291.000011"
+        }, 
+        {
+            "text": "Not sure but if you reused the same mesh in multiple Object3d\u2019s it might work?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463624263.000010"
+        }, 
+        {
+            "text": "Awesome. Also, do we have a system in place for caching the file? Right now, it's recreating the object for each arrow direction. Wondering if you've done a caching sort of thing for the other objs", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463624108.000009"
+        }, 
+        {
+            "text": "<https://s3-us-west-2.amazonaws.com/clouds.8i.com/Director/obj/arrow10.obj>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463624020.000008"
+        }, 
+        {
+            "username": "lohit", 
+            "display_as_bot": false, 
+            "text": "<@U0DV809QQ> uploaded a file: <https://hvr.slack.com/files/U0DV809QQ/F1A2VDWCC/arrow10.obj|arrow10.obj>", 
+            "upload": true, 
+            "ts": "1463623975.000007", 
+            "subtype": "file_share", 
+            "user": "U0DV809QQ", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 1592, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F1A2VDWCC", 
+                "size": 46782, 
+                "title": "arrow10.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F1A2VDWCC/arrow10.obj", 
+                "ims": [
+                    "D0FPC1YUE"
+                ], 
+                "preview": "# Blender v2.70 (sub 0) OBJ File: ''\n# www.blender.org\no Cone_Cone.000_Cone_Cone.003\nv 0.205872 2.225956 1.035942\nv -0.000040 4.365352 0.000749", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0DV809QQ/F1A2VDWCC/arrow10.obj/edit", 
+                "username": "", 
+                "timestamp": 1463623974, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F1A2VDWCC/download/arrow10.obj", 
+                "user": "U0DV809QQ", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "arrow10.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F1A2VDWCC-2d96e95dfb", 
+                "permalink": "https://hvr.slack.com/files/U0DV809QQ/F1A2VDWCC/arrow10.obj", 
+                "is_external": false, 
+                "created": 1463623974, 
+                "lines": 1597, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre># Blender v2.70 (sub 0) OBJ File: ''</pre></div>\n<div><pre># www.blender.org</pre></div>\n<div><pre>o Cone_Cone.000_Cone_Cone.003</pre></div>\n<div><pre>v 0.205872 2.225956 1.035942</pre></div>\n<div><pre>v -0.000040 4.365352 0.000749</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Nah should be all good.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463623959.000006"
+        }, 
+        {
+            "text": "I don\u2019t actually have admin to set you up on amazon, but you could talk to Yupan if you want.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463623918.000005"
+        }, 
+        {
+            "text": "if you send it to me I can upload it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463623889.000004"
+        }, 
+        {
+            "text": "You won\u2019t have an amazon account I\u2019d guess", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463623883.000003"
+        }, 
+        {
+            "text": "I've integrated the arrow object, but we'd probably want the obj to be on the server. How should we go about this?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463623608.000002"
+        }, 
+        {
+            "text": "stuff which wasn\u2019t in the default three.js", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463614302.000009"
+        }, 
+        {
+            "text": "yea, we were only using the link for extra threejs libs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463614292.000008"
+        }, 
+        {
+            "text": "So, is that one no longer accessed by the link file?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463614258.000007"
+        }, 
+        {
+            "text": "Sorry, I don't got it.  I tried angularPlayer.tmpl, but it doesn't seem to be the one", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463613944.000006"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463613844.000005"
+        }, 
+        {
+            "text": "Got it, never mind.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463613740.000004"
+        }, 
+        {
+            "text": "Do you know which html file loads up three.js for director? Wanting to temporarily redirect it to the unminified version for debugging", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463613677.000003"
+        }, 
+        {
+            "text": "Running late by about 10 minutes, sorry.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463604777.000002"
+        }, 
+        {
+            "text": "Changes pushed up to Fix-Mouse-Interaction branch", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463033174.000002"
+        }, 
+        {
+            "text": "No worries. I'm all good, but thanks", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463012683.000010"
+        }, 
+        {
+            "text": "oh man, sorry, take as much time as you need.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463012643.000009"
+        }, 
+        {
+            "text": "Just got notified that a family member passed away. Will get picked up shortly to go see, and I'll be back later.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463012605.000008"
+        }, 
+        {
+            "text": "cool :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463002807.000005"
+        }, 
+        {
+            "text": "I'll just put it here for my reference\nthree-js\n/home/mudge/projects/mrdoob-three.js-4bab468/examples/js", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463002796.000004", 
+            "edited": {
+                "user": "U0DV809QQ", 
+                "ts": "1463002820.000000"
+            }
+        }, 
+        {
+            "text": "I\u2019m not actually sure if they transfer well but I can try", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463002469.000003"
+        }, 
+        {
+            "text": "Hey, I accidentally lost my link file again. Would you be able to send me a copy so I can add it whenever I need to?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1463002424.000002"
+        }, 
+        {
+            "text": "Would be keen to implement Asher's designs for the new 3D tools, if there aren't any other pressing things to do", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1462396569.000004"
+        }, 
+        {
+            "text": "cool, I encountered a fair amount of those as well today.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462395056.000003"
+        }, 
+        {
+            "text": "Might be late. Weather and traffic ", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1462394976.000002"
+        }, 
+        {
+            "text": "Awesome. Thanks.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1462319123.000004"
+        }, 
+        {
+            "text": "Yea, thats fine. I talked with Pan and got a few things for you but nothing is particularly time sensitive.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462314535.000003"
+        }, 
+        {
+            "text": "Hey, I was wondering if I could take a half day tomorrow. I have a bunch of assignments to get through before Friday. If there's not too much work for me tomorrow, is it alright if I leave at 2 pm?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1462313294.000002"
+        }, 
+        {
+            "text": "Trying to get the updates working, but it's looking for \n`<http://lohit.dev.8i.com/static/three-js/loaders/OBJLoader.js> `\nyet there seems to be no three-js folder in static", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461802558.000003"
+        }, 
+        {
+            "text": "All good, thanks for the heads up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461789487.000002"
+        }, 
+        {
+            "text": "It looks like I'll be in at about 9:30 this morning. Bus problems, sorry about this.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461787440.000002"
+        }, 
+        {
+            "text": "But yes, outline would benefit from scaling as well", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461206336.000006"
+        }, 
+        {
+            "text": "I was actually thinking of making all the tool objects a constant size, even independent of the camera position, just to that objects are as easy to grab when far away as they are when close up", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461206324.000005"
+        }, 
+        {
+            "text": "I wonder if we want to also scale the tools and outline with the objects", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461206179.000004"
+        }, 
+        {
+            "text": "Looking good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461206159.000003"
+        }, 
+        {
+            "text": "Hey, scaling works now here: <http://lohit.dev.8i.com/d/6q>\n\nAs I've told Asher:\nI've opted with a vertical mouse movement control, so that it's as easy to scale up as it is to scale down.\nI thought it'd be more intuitive to scale based on whether you move the mouse toward or away from the object. This was hard with this center cube since it's small and there's not much room to move the mouse toward its center, therefore, it would need a more meaningfully designed object to represent it.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461205926.000002"
+        }, 
+        {
+            "text": "<http://k9wsj5.axshare.com/home.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461191202.000002"
+        }, 
+        {
+            "text": "We have the one behind me which Jordan used to sit at", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461128932.000005"
+        }, 
+        {
+            "text": "Sweet.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461128911.000004"
+        }, 
+        {
+            "text": "Yea, there will be", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461128898.000003"
+        }, 
+        {
+            "text": "Hey, do you know if there's a desk for me tomorrow?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1461128883.000002"
+        }, 
+        {
+            "text": "Thinking of implementing a quick switch panel that pops up near your cursor when you hover over an edit helper. Does Angular have something I could use for this?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460609870.000008"
+        }, 
+        {
+            "text": "So, just create a new branch when Director is gone? \nI don't really what a pull request is and when/how to do them.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460604671.000007"
+        }, 
+        {
+            "text": "I just like the github pull request to exist for each change", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460604626.000006"
+        }, 
+        {
+            "text": "you can make a pull request and merge it into master as well though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460604601.000005"
+        }, 
+        {
+            "text": "I prefer a new branch in general if its not too much hassle", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460604588.000004"
+        }, 
+        {
+            "text": "Just fixed the shaders that color the 3D handles. Appropriate place to push?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460604555.000003"
+        }, 
+        {
+            "text": "Ok, will push to master in a minute", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460600416.000002"
+        }, 
+        {
+            "text": "I merged Director into master, so you can push your circle change to that now if you want.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460597862.000069"
+        }, 
+        {
+            "text": "Yea, Its great like it is until then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460597741.000068"
+        }, 
+        {
+            "text": "Until Asher sorts out a more definitive style", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460597723.000067"
+        }, 
+        {
+            "text": "as it is the same size", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460597700.000066"
+        }, 
+        {
+            "text": "That's true. Could just make the two radii have a bigger difference for now.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460597696.000065"
+        }, 
+        {
+            "text": "That might only be a problem for the Male obj", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460597692.000064"
+        }, 
+        {
+            "text": "the only time its  bit odd is when the rotatation circle is in the same place", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460597621.000063"
+        }, 
+        {
+            "text": "Looks good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460597601.000062"
+        }, 
+        {
+            "text": "I've just replaced the outlines with base circles. I've kept them lying flat regardless of rotation. You might wanna see how they look\n<http://lohit.dev.8i.com/d/>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460597549.000061"
+        }, 
+        {
+            "text": "Yep", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595979.000060"
+        }, 
+        {
+            "text": "Director on github was merged into master already", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595968.000059"
+        }, 
+        {
+            "text": "oh that makes more sense", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595943.000058"
+        }, 
+        {
+            "text": "Oh, right. It was a local branch for me", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595924.000057"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595736.000056"
+        }, 
+        {
+            "text": "that shouldn\u2019t be a problem.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595727.000055"
+        }, 
+        {
+            "text": "from github?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595713.000054"
+        }, 
+        {
+            "text": "Hmm, I don't really wanna merge the old Director branch with the new stuff on master. Would there be anything wrong with deleting the Director branch and creating it new again?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595685.000053"
+        }, 
+        {
+            "text": "yea, thats fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595463.000052"
+        }, 
+        {
+            "text": "All good if it's called Director again?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595457.000051"
+        }, 
+        {
+            "text": "I\u2019ll take a look at the change just I can see how it works", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595432.000050"
+        }, 
+        {
+            "text": "push a new branch for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595420.000049"
+        }, 
+        {
+            "text": "Indeed.\nWould you like these two fixes on master, or a new branch?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595405.000048"
+        }, 
+        {
+            "text": "should prevent any crazy fast animations as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595391.000047"
+        }, 
+        {
+            "text": "yea, I think that will be nice", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595367.000046"
+        }, 
+        {
+            "text": "True, and limit how close two keyframes can be, for easier selection", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595354.000045"
+        }, 
+        {
+            "text": "we can also limit the number of key frames that someone can possibly create more easily with frames", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595309.000044"
+        }, 
+        {
+            "text": "Yep, no guarantees with floats", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595248.000043"
+        }, 
+        {
+            "text": "because using floats as keys just seems a bit fragile", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595225.000042"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595224.000041"
+        }, 
+        {
+            "text": "I still plan to move over to a frame based index at some point", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595212.000040"
+        }, 
+        {
+            "text": "Oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460595178.000039"
+        }, 
+        {
+            "text": "Cool. Think I've fixed rotation. I've also fixed a glitch that would slowly try to move the object to another keyframe position, while you were moving/rotating it: it was when using the unrounded time instead of rounded time on the update function", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460595140.000037", 
+            "edited": {
+                "user": "U0DV809QQ", 
+                "ts": "1460595164.000000"
+            }
+        }, 
+        {
+            "text": "It asks me to login/sign up but doesn't let me proceed afterwards", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460586860.000036"
+        }, 
+        {
+            "text": "It just gives you a list of all the current director scenes, you can easily get back to ones you have created.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586832.000035"
+        }, 
+        {
+            "text": "Hey, can you access <http://mudge.dev.8i.com/admin/simple/director>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586769.000034"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460586387.000033"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586377.000032"
+        }, 
+        {
+            "text": "Yes, it works", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460586374.000031"
+        }, 
+        {
+            "text": "is it better now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586365.000030"
+        }, 
+        {
+            "text": "I see", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460586300.000029"
+        }, 
+        {
+            "text": "so they don\u2019t care if our backend is out of date", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586288.000028"
+        }, 
+        {
+            "text": "OBj\u2019s come straight from amazon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586277.000027"
+        }, 
+        {
+            "text": "should be updated now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586233.000026"
+        }, 
+        {
+            "text": "Hmm, I can load in OBJs but experiences aren't coming up", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460586075.000025"
+        }, 
+        {
+            "text": "I\u2019ll update it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586059.000024"
+        }, 
+        {
+            "text": "oh, yupans backend is probably out of date", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460586051.000023"
+        }, 
+        {
+            "text": "So, I've gone to /d and clicked create a new scene. now getting this error:\nXMLHttpRequest cannot load <http://api-yupan.dev.8i.com/api/scene>. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin '<http://lohit.dev.8i.com>' is therefore not allowed access. The response had HTTP status code 404.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460585912.000022"
+        }, 
+        {
+            "text": "see if everything is working :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585817.000021"
+        }, 
+        {
+            "text": "just start a new scene at /d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585794.000020"
+        }, 
+        {
+            "text": "and we now use a scene id", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585782.000019"
+        }, 
+        {
+            "text": "right", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460585780.000018"
+        }, 
+        {
+            "text": "because thats the experience id", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585776.000017"
+        }, 
+        {
+            "text": "Although zwr won\u2019t work any more", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585770.000016"
+        }, 
+        {
+            "text": "I have created it for you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585572.000015"
+        }, 
+        {
+            "text": "just a link file", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585564.000014"
+        }, 
+        {
+            "text": "Is there like a config file that points it to  the external link?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460585504.000013"
+        }, 
+        {
+            "text": "probably not set up on your dev folder", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585399.000012"
+        }, 
+        {
+            "text": "yea that three-js is supposed to be a link to the three-js code", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585388.000011"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460585370.000010"
+        }, 
+        {
+            "text": "I'm trying to access <http://lohit.dev.8i.com/d/zwr> but it's unbale to find the OBJLoader file.\n<http://lohit.dev.8i.com/static/three-js/loaders/OBJLoader.js> \nHowever, I can't seem to find on master as well.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460585191.000009"
+        }, 
+        {
+            "text": "all good let me know if any of it is unclear", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460583687.000008"
+        }, 
+        {
+            "text": "Ah, got it. Sorry it wasn't showing up  before", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460583488.000007"
+        }, 
+        {
+            "text": "director.js", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460583422.000006"
+        }, 
+        {
+            "text": "In which file would the director code be?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460583394.000005"
+        }, 
+        {
+            "text": "its all on master now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460583329.000004"
+        }, 
+        {
+            "text": "Or should I checkout a different branch?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460583187.000003"
+        }, 
+        {
+            "text": "Is that latest Director stuff on master?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460583166.000002"
+        }, 
+        {
+            "text": "Gotta sign off now. Unfortunately I haven't made much progress in terms of isolating that HVR image before compositing into the threejs scene. I've tested that it can work with postprocessing but still can't yet get at that raw image though to make it work. I'll talk to Kieran next time, maybe there's a solution that extends eighti.lib.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1460004040.000023"
+        }, 
+        {
+            "text": "might be what you need", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459994073.000022"
+        }, 
+        {
+            "text": "<https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/colorMask>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459994067.000020", 
+            "attachments": [
+                {
+                    "thumb_height": 600, 
+                    "thumb_width": 600, 
+                    "title": "WebGLRenderingContext.colorMask()", 
+                    "service_name": "Mozilla Developer Network", 
+                    "title_link": "https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/colorMask", 
+                    "text": "The WebGLRenderingContext.colorMask() method of the WebGL API sets which color components to enable or to disable when drawing or rendering to a WebGLFramebuffer.", 
+                    "id": 1, 
+                    "fallback": "Mozilla Developer Network: WebGLRenderingContext.colorMask()", 
+                    "thumb_url": "https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png", 
+                    "from_url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/colorMask"
+                }
+            ]
+        }, 
+        {
+            "text": "Wanna do a fade out, but I don't think there's any transparency functionality an the asset API. So I'm looking to a post effect, thus I'll need the render target for it", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459993205.000019"
+        }, 
+        {
+            "text": "Don't suppose you know much about where the render output image of an hvr gets sent to on the web?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459993129.000018"
+        }, 
+        {
+            "text": "Cool.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459993087.000017"
+        }, 
+        {
+            "text": "from me, Pan or Asher for design", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459992160.000016"
+        }, 
+        {
+            "text": "and as long as you feel like you have any help you need", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459992127.000015"
+        }, 
+        {
+            "text": "Yep, no worries", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459992126.000014"
+        }, 
+        {
+            "text": "as long as we get a chance to see you once a week for a bit of a sync I think it should be fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459992104.000013"
+        }, 
+        {
+            "text": "*per", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459992073.000012"
+        }, 
+        {
+            "text": "all good then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459992072.000011"
+        }, 
+        {
+            "text": "At least 5 pre week", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459992063.000010"
+        }, 
+        {
+            "text": "how many hours are you set to do for us per week?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459992053.000009"
+        }, 
+        {
+            "text": "Yea man, I don\u2019t fore see a problem with that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459992029.000008"
+        }, 
+        {
+            "text": "Turns out I have a 489 lecture today at 5.\nIs it all good if I leave at 4:30 to make it?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459991800.000007"
+        }, 
+        {
+            "text": "Cool, thanks.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459983753.000006"
+        }, 
+        {
+            "text": "you should be able to \"sudo supervisorctl restart lohit_8i\u201d now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459983740.000005"
+        }, 
+        {
+            "text": "it's given me \n\"Uncaught Error: [$injector:modulerr] Failed to instantiate module new_player due to:\nError: [$injector:nomod] Module 'new_player' is not available! You either misspelled the module name or forgot to load it. If registering a module ensure that you specify the dependencies as the second argument.\"", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459983387.000004"
+        }, 
+        {
+            "text": "try hit your endpoint now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459983340.000003"
+        }, 
+        {
+            "text": "Mind helping me out with setting up a separate end point? Thought I'd be able to copy the function for /p/  and change the name but no luck there", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459982217.000002"
+        }, 
+        {
+            "text": "nice", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459309696.000006"
+        }, 
+        {
+            "text": "Sweet. \nI just got a scene and animation loading from a test JSON file, so I can have that tidied up before I'm in next week", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459309666.000005"
+        }, 
+        {
+            "text": "Cool, thanks. I can have those all fixed before you are here next week.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459309550.000004"
+        }, 
+        {
+            "text": "This is on <http://lohit.dev.8i.com/d/zwr>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459309291.000003"
+        }, 
+        {
+            "text": "Hey, just got around to merging but have a few problems:\n- Seeking to different times doesn't work\n- Some of my shaders no longer work, but i can look into it\n- Can't click the loop button, with error:\nangular.js:12416 TypeError: this.player.loop is not a function\n    at PlayerController.onLoopClicked (director.js?v=1:76)\n    at fn (eval at &lt;anonymous&gt; (angular.js:13231), &lt;anonymous&gt;:4:281)\n    at callback (angular.js:23371)\n    at Scope.$eval (angular.js:15878)\n    at Scope.$apply (angular.js:15978)\n    at HTMLSpanElement.&lt;anonymous&gt; (angular.js:23376)\n    at HTMLSpanElement.eventHandler (angular.js:3293)", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459309282.000002"
+        }, 
+        {
+            "text": "right", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459292596.000028"
+        }, 
+        {
+            "text": "it uses /d/zwr instead of /p/zwr", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459292574.000027"
+        }, 
+        {
+            "text": "Cool, will do", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459292568.000026"
+        }, 
+        {
+            "text": "next time you pull you can try it out and make sure its all working correctly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459292555.000025"
+        }, 
+        {
+            "text": "I just merged the angular stuff into your Director branch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459292530.000024"
+        }, 
+        {
+            "text": "cool, no worries", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459284505.000023"
+        }, 
+        {
+            "text": "updated a setting that wasn\u2019t compatible with old code", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459284502.000022"
+        }, 
+        {
+            "text": "yea, I think that was my bad", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459284479.000021"
+        }, 
+        {
+            "username": "lohit", 
+            "display_as_bot": false, 
+            "text": "<@U0DV809QQ> uploaded a file: <https://hvr.slack.com/files/U0DV809QQ/F0WBTFKPC/minicooper.obj|minicooper.obj>", 
+            "upload": true, 
+            "ts": "1459284473.000020", 
+            "subtype": "file_share", 
+            "user": "U0DV809QQ", 
+            "file": {
+                "filetype": "text", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0WBTFKPC", 
+                "size": 6352052, 
+                "title": "minicooper.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0WBTFKPC/minicooper.obj", 
+                "ims": [
+                    "D0FPC1YUE"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1459284472, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0WBTFKPC/download/minicooper.obj", 
+                "user": "U0DV809QQ", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "minicooper.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0WBTFKPC-dbf6c4beee", 
+                "permalink": "https://hvr.slack.com/files/U0DV809QQ/F0WBTFKPC/minicooper.obj", 
+                "is_external": false, 
+                "created": 1459284472, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Also, after merging, the animator works with p/3x5 so I'm guessing I don't need to do that change we talked about", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459284467.000019"
+        }, 
+        {
+            "username": "lohit", 
+            "display_as_bot": false, 
+            "text": "<@U0DV809QQ> uploaded a file: <https://hvr.slack.com/files/U0DV809QQ/F0WB9JHJA/alfa147.obj|alfa147.obj> and commented: huh... well just for now I'll send you the other two files in case you want them", 
+            "upload": true, 
+            "ts": "1459284447.000018", 
+            "subtype": "file_share", 
+            "user": "U0DV809QQ", 
+            "file": {
+                "initial_comment": {
+                    "comment": "huh... well just for now I'll send you the other two files in case you want them", 
+                    "created": 1459284445, 
+                    "timestamp": 1459284445, 
+                    "is_intro": true, 
+                    "user": "U0DV809QQ", 
+                    "id": "Fc0WBTCDNE"
+                }, 
+                "filetype": "text", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0WB9JHJA", 
+                "size": 10152408, 
+                "title": "alfa147.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0WB9JHJA/alfa147.obj", 
+                "ims": [
+                    "D0FPC1YUE"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1459284445, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0WB9JHJA/download/alfa147.obj", 
+                "user": "U0DV809QQ", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "alfa147.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0WB9JHJA-3115584ca7", 
+                "permalink": "https://hvr.slack.com/files/U0DV809QQ/F0WB9JHJA/alfa147.obj", 
+                "is_external": false, 
+                "created": 1459284445, 
+                "comments_count": 1, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "it found and added the obj file fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459284322.000017"
+        }, 
+        {
+            "text": "My branch doesn\u2019t seem to have a problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459284307.000016"
+        }, 
+        {
+            "username": "lohit", 
+            "display_as_bot": false, 
+            "text": "<@U0DV809QQ> uploaded a file: <https://hvr.slack.com/files/U0DV809QQ/F0WB4FYA0/male02.obj|male02.obj> and commented: One of the obj files", 
+            "upload": true, 
+            "ts": "1459284018.000015", 
+            "subtype": "file_share", 
+            "user": "U0DV809QQ", 
+            "file": {
+                "initial_comment": {
+                    "comment": "One of the obj files", 
+                    "created": 1459284018, 
+                    "timestamp": 1459284018, 
+                    "is_intro": true, 
+                    "user": "U0DV809QQ", 
+                    "id": "Fc0WBEN7GD"
+                }, 
+                "filetype": "text", 
+                "lines_more": 13884, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0WB4FYA0", 
+                "size": 464590, 
+                "title": "male02.obj", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0WB4FYA0/male02.obj", 
+                "ims": [
+                    "D0FPC1YUE"
+                ], 
+                "preview": "# Blender v2.54 (sub 0) OBJ File: ''\n# www.blender.org\nmtllib male02.mtl\no mesh1.002_mesh1-geometry\nv 4.649472 159.854965 5.793066", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0DV809QQ/F0WB4FYA0/male02.obj/edit", 
+                "username": "", 
+                "timestamp": 1459284018, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0WB4FYA0/download/male02.obj", 
+                "user": "U0DV809QQ", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "male02.obj", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0WB4FYA0-91b7e2fe44", 
+                "permalink": "https://hvr.slack.com/files/U0DV809QQ/F0WB4FYA0/male02.obj", 
+                "is_external": false, 
+                "created": 1459284018, 
+                "lines": 13889, 
+                "comments_count": 1, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre># Blender v2.54 (sub 0) OBJ File: ''</pre></div>\n<div><pre># www.blender.org</pre></div>\n<div><pre>mtllib male02.mtl</pre></div>\n<div><pre>o mesh1.002_mesh1-geometry</pre></div>\n<div><pre>v 4.649472 159.854965 5.793066</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hmmm, I've added the files and the obj directory again, but git's not recognising the changes. Am I forgetting something? I've checked gitignore and that folder's not listed", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459283658.000014"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459282986.000013"
+        }, 
+        {
+            "text": "see if we can access them across domains", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459282954.000012"
+        }, 
+        {
+            "text": "Cool, it might be worth putting them up on amazon s3", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459282934.000011"
+        }, 
+        {
+            "text": "Yup, just getting them now", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459282915.000010"
+        }, 
+        {
+            "text": "Yea, do you remember where you got them from?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459282903.000009"
+        }, 
+        {
+            "text": "I see. That's weird. Might be easier just to download them again", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459282884.000008"
+        }, 
+        {
+            "text": "It doesn\u2019t appear that they were ever actually commited", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459282832.000007"
+        }, 
+        {
+            "text": "did you try searching the git log for commits the file was in?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459282625.000006"
+        }, 
+        {
+            "text": "They used to be under a folder '/static/obj' but I'm looking at older commits like this \n<https://github.com/8i/WebPlatform/tree/841afba724afb1cb0ee0bf937279dfb9e9e1ff05>\nBut still can't seem to find it...", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459282461.000005"
+        }, 
+        {
+            "text": "alright, cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459281916.000004"
+        }, 
+        {
+            "text": "I'm currently trying to recover them from the history. Will get back to you soon", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1459281905.000003"
+        }, 
+        {
+            "text": "Hey, I checked out your Director branch and was having a play with it, but its missing the obj files. Can I grab those off you?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459281875.000002"
+        }, 
+        {
+            "text": "there is a config.enable_new_player which would need to be set to True for you to get the new player so you should actually be fine to merge with master. :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458793764.000006"
+        }, 
+        {
+            "text": "It could just be that its out of date actually, looks like <http://mudge-demo.dev.8i.com/p/R3d> is the same", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458792744.000005"
+        }, 
+        {
+            "text": "<http://lohit.dev.8i.com/p/R3d>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458792691.000004"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458789116.000003"
+        }, 
+        {
+            "text": "Hey, just another thing about the OBJTool that isn't obvious: \nThe OBJObject and OBJHelper/Handle objects have functions like: Select, Deselect, Activate, Deactivate. These only change the colour and they don't modify the OBJObjects in any way. This was again to keep all editing functionality in one place in OBJTool.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1458789061.000002"
+        }, 
+        {
+            "text": "and <http://lohit.dev.8i.com/p/3x5>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454535080.000011"
+        }, 
+        {
+            "text": "Sweet. thanks", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454535075.000010"
+        }, 
+        {
+            "text": "<http://lohit.dev.8i.com/p/zwr> uses player 2", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454535061.000009"
+        }, 
+        {
+            "text": "I see. Just looking to test some OBJ loading stuff. Is there any other player2 content or should I test with a generic player?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454535020.000008"
+        }, 
+        {
+            "text": "so /test/2 no longer exists", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454534921.000007"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/commit/e0777d2c9181da90028c5974cbf4d63666460d09>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454534909.000006"
+        }, 
+        {
+            "text": "looks like Yu Pan changed the url for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454534903.000005"
+        }, 
+        {
+            "text": "<http://lohit.dev.8i.com/test/2/test_MB2_234wAudio_FPS>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454534333.000004"
+        }, 
+        {
+            "text": "what link?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454534307.000003"
+        }, 
+        {
+            "text": "I seem to be having the same problem but I this time I do have a local_config.py with enable_test=True", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454534294.000002"
+        }, 
+        {
+            "text": "Yeah, looks like it did. I did a full synchronise since Source Tree didn't show me the changes since I last updated.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290986.000021"
+        }, 
+        {
+            "text": "I wonder if scp replaces that and/or the local_config.py sometimes?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290888.000020"
+        }, 
+        {
+            "text": "it does look like your http.log is working as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290855.000019"
+        }, 
+        {
+            "text": "I see. Thanks for that :simple_smile:", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290778.000018"
+        }, 
+        {
+            "text": "it just needed an enable_test = True in it so that all the end points are accessible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290746.000017"
+        }, 
+        {
+            "text": "and yours was missing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290729.000016"
+        }, 
+        {
+            "text": "each environment has a local_config.py file which is not checked into git", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290717.000015"
+        }, 
+        {
+            "text": "I think I fixed it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290694.000014"
+        }, 
+        {
+            "text": "Also, I can now access others for some reason", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290582.000013"
+        }, 
+        {
+            "text": "Hmm, that's changed now.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290559.000012"
+        }, 
+        {
+            "text": "I\u2019m getting a NotFound for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290538.000011"
+        }, 
+        {
+            "text": "as well as nay other URL that tries to download content", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290529.000010"
+        }, 
+        {
+            "text": "<http://lohit.dev.8i.com/test/2/test_MB2_234wAudio2>", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290514.000009"
+        }, 
+        {
+            "text": "what url is hitting an internal error?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290500.000008"
+        }, 
+        {
+            "text": "let me check", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290324.000007"
+        }, 
+        {
+            "text": "ah", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290321.000006"
+        }, 
+        {
+            "text": "Mine doesn't seem to write a log file. Kieran was confused by that too.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290312.000005"
+        }, 
+        {
+            "text": "or api_http.log", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290241.000004"
+        }, 
+        {
+            "text": "yea logs should be written to ~/projects/WebPlatform/http.log", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454290215.000003"
+        }, 
+        {
+            "text": "Just pulled the latest changes in WebPlatform and synced with my dev share, but I now get an Internal Server Error when trying to access any content. Wondering if you knew where I could look for the problem", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1454290178.000002"
+        }, 
+        {
+            "text": "I don't remember doing that but it must have done it by default", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1452812387.000011"
+        }, 
+        {
+            "text": "it gives you an option to delete after you merge", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452812355.000010"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452812341.000009"
+        }, 
+        {
+            "text": "or it already got deleted somehow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452812339.000008"
+        }, 
+        {
+            "text": "Maybe because I merged it master", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1452812338.000007"
+        }, 
+        {
+            "text": "that doesn\u2019t appear to have made it to github", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452812299.000006"
+        }, 
+        {
+            "text": "There is also a SnowEffect-Integrate branch you probably don't want either", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1452812280.000005"
+        }, 
+        {
+            "text": "cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452812259.000004"
+        }, 
+        {
+            "text": "Yep, go for it.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1452812254.000003"
+        }, 
+        {
+            "text": "Yo, you are all done with the SnowEffect branch on github right? I\u2019d like to delete it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452812239.000002"
+        }, 
+        {
+            "text": "Cool, so I'll push it up to master now", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450230911.000010"
+        }, 
+        {
+            "text": "correct", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450230886.000009"
+        }, 
+        {
+            "text": "So now the snow effect uses playerSettings.snow_position to get its position. If the incoming JSON that defines the player object in versionedPlay has a snow_position field, it should be passed on to settings right?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450230858.000008"
+        }, 
+        {
+            "text": "nice", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450229717.000007"
+        }, 
+        {
+            "text": "and having them both be .html was getting confusing for my text editor", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450229708.000006"
+        }, 
+        {
+            "text": "I\u2019ve started using 2 templating languages", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450229690.000005"
+        }, 
+        {
+            "text": "sweet, just making sure", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450229674.000004"
+        }, 
+        {
+            "text": "oh yea, it did", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450229664.000003"
+        }, 
+        {
+            "text": "Hey, did versionedPlay.html get renamed to versionedPlay.tmpl?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450229640.000002"
+        }, 
+        {
+            "text": "<http://mudge.dev.8i.com/create_card>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450068779.000012"
+        }, 
+        {
+            "text": "yea go for it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450063630.000011"
+        }, 
+        {
+            "text": "I can merge the changes to master on your go.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450063390.000010"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450063123.000009"
+        }, 
+        {
+            "text": "good to know :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450063106.000008"
+        }, 
+        {
+            "text": "\"Important: JavaScript does not have block scope. Variables introduced with a block are scoped to the containing function or script\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450063102.000007"
+        }, 
+        {
+            "text": "Hey, it's better now, using target_point. However, some assets load in different spots on each page load even thought the target_point doesn't change. It seems to be pretty unreliable", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450061656.000006"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450059099.000005"
+        }, 
+        {
+            "text": "let me have a quick look then I\u2019ll let you know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450059089.000004"
+        }, 
+        {
+            "text": "yea, its a bit odd right now, as it needs to support a few different ways of getting that information", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450059071.000003"
+        }, 
+        {
+            "text": "Looking at the 'asset' object but can't seem to find any position information related to it. Anywhere else I can get it from?", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1450058640.000002"
+        }, 
+        {
+            "text": "there is a getParameterByName method which will help with that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449720842.000019"
+        }, 
+        {
+            "text": "would you mind turning snow off by default for now as well, can make a url param to enable it if you want", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449720797.000018"
+        }, 
+        {
+            "text": "got it, will make one change to snowEffect.js", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449720731.000017"
+        }, 
+        {
+            "text": "\"Uncaught SecurityError: Failed to execute 'texImage2D' on 'WebGLRenderingContext': The cross-origin image at <http://lohit.dev.8i.com/static/Snow/perlin-512.png> may not be loaded.\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449720677.000015", 
+            "attachments": [
+                {
+                    "image_bytes": 187260, 
+                    "image_width": 512, 
+                    "id": 1, 
+                    "image_height": 512, 
+                    "image_url": "http://lohit.dev.8i.com/static/Snow/perlin-512.png", 
+                    "from_url": "http://lohit.dev.8i.com/static/Snow/perlin-512.png", 
+                    "fallback": "512x512px image"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey looks like something is still a bit broken with the snow effect", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449720675.000014"
+        }, 
+        {
+            "text": "oh right, thats all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449717101.000013"
+        }, 
+        {
+            "text": "sorry forgot to disable it", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449717048.000012"
+        }, 
+        {
+            "text": "same thing in versionedPlay.html", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449717031.000011"
+        }, 
+        {
+            "text": "awesome, how do I turn it off/on?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449717008.000010"
+        }, 
+        {
+            "text": "'tis done", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449716964.000009"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449716657.000008"
+        }, 
+        {
+            "text": "merge into master instead", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449716559.000007"
+        }, 
+        {
+            "text": "cool, there is no player branch anymore :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449716551.000006"
+        }, 
+        {
+            "text": "Ready to merge into player branch when you're ready.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449716492.000005"
+        }, 
+        {
+            "text": "Cheers. Will pull changes in now", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449703910.000004"
+        }, 
+        {
+            "text": "You may have some updating/merging to do. Let me know if you want a hand with any of that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449703885.000003"
+        }, 
+        {
+            "text": "Hey, I have merged the player branch into master now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449703868.000002"
+        }, 
+        {
+            "text": "Yep, thanks for that.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449181795.000006"
+        }, 
+        {
+            "text": "want to make sure it works for you?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449181586.000005"
+        }, 
+        {
+            "text": "Hey, this is my idea for turning on/off effects, <https://github.com/8i/WebPlatform/compare/player...player-effects?expand=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449181578.000004"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449089490.000003"
+        }, 
+        {
+            "text": "Now committing to a new SnowEffect branch. Lemme know if this is still interfering with your code at all.", 
+            "type": "message", 
+            "user": "U0DV809QQ", 
+            "ts": "1449089342.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0DV809QQ", 
+            "U0C90MHEH"
+        ]
+    }
+}

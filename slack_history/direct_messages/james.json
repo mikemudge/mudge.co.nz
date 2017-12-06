@@ -1,0 +1,82 @@
+{
+    "messages": [
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1501032016.087432"
+        }, 
+        {
+            "text": "<https://holo.8i.com/d/> should do it, will need to log in with an <http://8i.com|8i.com> Google account to use it currently. And its been a while but I think it's mostly still working.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501028051.246299", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "https://holo.8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "https://holo.8i.com/static/favicon.ico", 
+                    "from_url": "https://holo.8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey bro - how do I get to Web Director? Is that still online and accesible?", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1501025029.488912"
+        }, 
+        {
+            "text": "Hey bro. I've put the web hvrs in \\\\pandora\\storage\\temp\\james :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1492556582.315668"
+        }, 
+        {
+            "text": "Ch chur", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1489522836.298503"
+        }, 
+        {
+            "text": "Cool, thanks for reminding me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489522832.297025"
+        }, 
+        {
+            "text": "Think that's it :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1489522743.261453"
+        }, 
+        {
+            "text": "To remove - Dana, Tessa, Callum", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1489522737.258936"
+        }, 
+        {
+            "text": "There is an admin page for editing the team", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489522643.221474"
+        }, 
+        {
+            "text": "Sup - there's a couple of interns on the site still. How do we change and deploy stuff for <http://8i.com|8i.com>?", 
+            "type": "message", 
+            "user": "U27HH1VEJ", 
+            "ts": "1489522610.208094"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U27HH1VEJ", 
+            "U0C90MHEH"
+        ]
+    }
+}

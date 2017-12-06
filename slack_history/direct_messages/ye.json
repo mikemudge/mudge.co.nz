@@ -1,0 +1,1291 @@
+{
+    "messages": [
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/a7102077e8668516102ea9c655d217916074f420/static/angular/fileUpload.js#L114>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481231324.000007"
+        }, 
+        {
+            "text": "Accept:*/*\nAccept-Encoding:gzip, deflate\nAccept-Language:en-US,en;q=0.8\nCache-Control:no-cache\nConnection:keep-alive\nContent-Length:82902\nContent-Type:multipart/form-data; boundary=----WebKitFormBoundaryJDTycASA3BBAWhsH\nHost:<http://content.8i.com.s3.amazonaws.com|content.8i.com.s3.amazonaws.com>\nOrigin:<http://mudge.dev.8i.com>\nPragma:no-cache\nReferer:<http://mudge.dev.8i.com/feed/new/post>\nUser-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36\nRequest Payload\n------WebKitFormBoundaryJDTycASA3BBAWhsH\nContent-Disposition: form-data; name=\"key\"\n\nHoloFeed/staging/uploads/user_16/shareImage1.png\n------WebKitFormBoundaryJDTycASA3BBAWhsH\nContent-Disposition: form-data; name=\"AWSAccessKeyId\"\n\nAKIAIOUQFUBGG22AOAHA\n------WebKitFormBoundaryJDTycASA3BBAWhsH\nContent-Disposition: form-data; name=\"acl\"\n\npublic-read\n------WebKitFormBoundaryJDTycASA3BBAWhsH\nContent-Disposition: form-data; name=\"policy\"\n\neyJjb25kaXRpb25zIjogW3siYnVja2V0IjogImNvbnRlbnQuOGkuY29tIn0sIFsic3RhcnRzLXdpdGgiLCAiJGtleSIsICJIb2xvRmVlZC9zdGFnaW5nL3VwbG9hZHMvdXNlcl8xNi8iXSwgeyJhY2wiOiAicHVibGljLXJlYWQifSwgWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsIDAsIDEwMDAwMDAwMF1dLCAiZXhwaXJhdGlvbiI6ICIyMDE2LTEyLTA4VDIyOjA3OjE2LjgwOTA4M1oifQ==\n------WebKitFormBoundaryJDTycASA3BBAWhsH\nContent-Disposition: form-data; name=\"signature\"\n\nxdHHE3wdWOaqsCIU5ZlHIkur4O4=\n------WebKitFormBoundaryJDTycASA3BBAWhsH\nContent-Disposition: form-data; name=\"file\"; filename=\"shareImage1.png\"\nContent-Type: image/png\n\n\n------WebKitFormBoundaryJDTycASA3BBAWhsH--", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481231298.000006"
+        }, 
+        {
+            "text": "Thanks. I'll give it a go", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1481160811.000005"
+        }, 
+        {
+            "text": "ZTpgwJiqEZq1ZlgZ0xtS1o17wCVh7I/kMlvQGajq", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481160790.000004"
+        }, 
+        {
+            "text": "Hey I\u2019ve got the video uploading working on mudge-demo2 now.\n<http://api-mudge-demo2.dev.8i.com/api/v1/feed/prepost>\n\nAnd here is a web based example of the file uploading (if it helps).\n<http://mudge-demo2.dev.8i.com/feed/new/post>\nLet me know if you want some help.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481079038.000003"
+        }, 
+        {
+            "text": "<http://api-mudge.dev.8i.com/api/v1/feed/prepost>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481000577.000002"
+        }, 
+        {
+            "text": "Thank you so much, it's working", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1480473301.000009"
+        }, 
+        {
+            "text": "Cool, should be working now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480473147.000008"
+        }, 
+        {
+            "text": "cheers", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480472881.000007"
+        }, 
+        {
+            "text": "id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImQzNWI0Y2YyMmIyZjM2NGEyYzczYTYxNWQxYzNkMjQ3NGI0Mjk1MzAifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJpYXQiOjE0ODA0NzE4NzcsImV4cCI6MTQ4MDQ3NTQ3NywiYXVkIjoiMTAzMDY2NjA3NTkwNS05cnBkNGxlZnN0dWM4anBwb2RqNGRpa3RhZG5uaG4xcy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwNjkxNjcxMTA1NTcwNzg0NTYxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhenAiOiIxMDMwNjY2MDc1OTA1LThvdTQwdXBsdTIzMHJ1ZjU2MWl2MGRvcG1kZDdjM2N1LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiaGQiOiI4aS5jb20iLCJlbWFpbCI6ImhvbG90ZXN0aW5nQDhpLmNvbSIsIm5hbWUiOiI4aSBMVEQiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1NZnVWTE1oRURBUS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BRU1PWVNESE5vaTk0MnRKMEJRQ1FWN1ktTDAtLWltdGFRL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiI4aSIsImZhbWlseV9uYW1lIjoiTFREIiwibG9jYWxlIjoiZW4ifQ.M8QxazjG7XuOiV4PcRGqeuLO25Ots1CWVXAgCxSLxkG0TqbUS-dF9iL94BWH9Dok0aIqaFIgIBZ-GHWqy9pnFI4cSUhNd8TRozHrOEcRGQ7s_NxxUBmQHvulXsQh4WsfD2OVtZEHW9ZJJy_AUbDRIT7yvz6X0tOv0dkljPF5qFDBxEOofZ5NSxZl745HmYUu3eayjqd8fwDHxcaD3u_BeuH-YvWPyXyFXKGiY9MgaDTq9cRuSsr7Pvo2rny2pGV8J--_ff2DIkkQOFQI6nmrlLPoe9TDdhOkA_nNG8gFP6knjnANG896SQsZsgALOjzS1yDw_LZ5DmRat7wJHKmiMg", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1480472871.000006"
+        }, 
+        {
+            "text": "Sure", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1480472859.000005"
+        }, 
+        {
+            "text": "Can you send me an id_token, so I can test the API?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480472851.000004"
+        }, 
+        {
+            "text": "The project should reads \"Project Holo for Android\"", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1480472706.000003"
+        }, 
+        {
+            "text": "Invitation sent", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1480472693.000002"
+        }, 
+        {
+            "text": "where it wasn\u2019t encoding spaces and then trying to load half of a url", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479676057.000013"
+        }, 
+        {
+            "text": "You might need to have a chat with Issac, but I think we had the opposite problem before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479676037.000012"
+        }, 
+        {
+            "text": "Ah right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479675980.000011"
+        }, 
+        {
+            "text": "I tried. I don't think that's a server problem. The json returned is fine, must be double encoding on client side.", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1479675969.000010"
+        }, 
+        {
+            "text": "I just republished the scene which uses that sound file", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479675855.000009"
+        }, 
+        {
+            "text": "Do you want to try loading it again now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479675839.000008"
+        }, 
+        {
+            "text": "I would prefer to allow spaces, as its probably more annoying to make people rename all their files", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479675807.000007"
+        }, 
+        {
+            "text": "Shall we allow uploading files with filename contains spaces? That could cause problems like this", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1479675724.000006"
+        }, 
+        {
+            "text": "Since if I download <https://d7cvc31wlmbhf.cloudfront.net/live_Z5w/wrestler%20short%20edit_v2.wav> is fine", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1479675521.000005"
+        }, 
+        {
+            "text": "Yea, it could be", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479675518.000004"
+        }, 
+        {
+            "text": "I believe the %2520 is a double encoding issue?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1479675494.000003"
+        }, 
+        {
+            "text": "Hi, Holo gets a 403 error when downloading the file <https://d7cvc31wlmbhf.cloudfront.net/live_Z5w/wrestler%2520short%2520edit_v2.wav>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1479675484.000002"
+        }, 
+        {
+            "text": "Thanks for the info!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477862006.000025"
+        }, 
+        {
+            "text": "Yupan may be able to help as well if Tom is out today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861879.000024"
+        }, 
+        {
+            "text": "Yea, I think we have had GA for a while, maybe before we started using accounts@", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861855.000023"
+        }, 
+        {
+            "text": "Yeah it's probably Tom. <mailto:accounts@8i.com|accounts@8i.com> seems doesn't work", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477861818.000022"
+        }, 
+        {
+            "text": "I think tom may have had full admin access, but can\u2019t remember exactly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861191.000021"
+        }, 
+        {
+            "text": "Alright, I can add the filter once its created if you need me too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861167.000020"
+        }, 
+        {
+            "text": "OK, thanks, I probably need to handle it myself", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477861149.000019"
+        }, 
+        {
+            "text": "Collette should hold the account, no worries", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477861097.000018"
+        }, 
+        {
+            "text": "but someone who owns the whole account needs to create a filter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861089.000017"
+        }, 
+        {
+            "text": "I\u2019m not sure who the main admin is for GA", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861072.000016"
+        }, 
+        {
+            "text": "the button was misleading", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861046.000015"
+        }, 
+        {
+            "text": "Actually cancel that, I can only add existing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477861040.000014"
+        }, 
+        {
+            "text": "Collette says Mike Baltaza might know but I doubt quite a few around here also know", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477861029.000013"
+        }, 
+        {
+            "text": "I can add a new filter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860988.000012"
+        }, 
+        {
+            "text": "Do you know what the IP address is for the new office?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860965.000011"
+        }, 
+        {
+            "text": "Yes, I see there're two US office IPs but I believe that still don't cover the entire new LA office", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477860965.000010"
+        }, 
+        {
+            "text": "we have Wellington, LA and LA 2", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860947.000009"
+        }, 
+        {
+            "text": "I can add and remove existing filters, but I\u2019m not sure if I can create them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860934.000008"
+        }, 
+        {
+            "text": "It looks like there is already filters in place", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860920.000007"
+        }, 
+        {
+            "text": "Let me check", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860811.000006"
+        }, 
+        {
+            "text": "Hmm. but you do have the access to add a filter in Analytics, right?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477860798.000005"
+        }, 
+        {
+            "text": "but it seems possible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860590.000004"
+        }, 
+        {
+            "text": "I\u2019m not really sure about that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477860582.000003"
+        }, 
+        {
+            "text": "Hi Mudge, I believe LA has a new IP for the whole office, which isn't captured by the IP filter created on Google Analytics?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477860552.000002"
+        }, 
+        {
+            "text": "It should auto publish when hvr files are added, but I imagine there could of been something wrong with those assets as they were part of the very first set.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477019190.000006"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477019111.000005"
+        }, 
+        {
+            "text": "publishing should always be fine. It basically does all the expensive tasks (e.g. fetching metadata from amazon)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477019100.000004"
+        }, 
+        {
+            "text": "Looks like there're other 2 assets also needs tweaking. I did the same \"save - publish\" procedure you did, I now downloads normally. hope that won't cause problems.", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477019050.000003"
+        }, 
+        {
+            "text": "<http://8i.com/api/v1/scene/z9B>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1477017190.000002"
+        }, 
+        {
+            "text": "It is 776Mb which seems annoyingly large to download", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475034376.000012"
+        }, 
+        {
+            "text": "I believe I dont have the access to upload hvrs to tango action packs, but can make characters/packs out of it", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475033966.000011"
+        }, 
+        {
+            "text": "\\\\pandora\\Storage\\shows\\atrax\\THRESHOLD\\HVRS\\THRESHOLD_170", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475033904.000010"
+        }, 
+        {
+            "text": "Hi Mudge, can we make this hvrs as an tango-accessible action?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475033903.000009"
+        }, 
+        {
+            "text": "I\u2019m not sure what files are available there, but make sure Taos knows if you want it as an hvrs file.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475019871.000008"
+        }, 
+        {
+            "text": "Oh I see", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475019819.000007"
+        }, 
+        {
+            "text": "It might need to be compressed to the hvrs format as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475019801.000006"
+        }, 
+        {
+            "text": "Alright, I've already asked her to grab it. Could take hours", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475019762.000005"
+        }, 
+        {
+            "text": "Na, I don\u2019t have permission, but Taos should be able to copy it over to <http://clouds.8i.com|clouds.8i.com> which I can access", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475019718.000004"
+        }, 
+        {
+            "text": "The treadmill should be in there, but I don't have access", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475019677.000003"
+        }, 
+        {
+            "text": "Can you access that? <http://virginia.8i.com.s3.amazonaws.com/cloudfarm/la/isilon/Storage/THRESHOLD/Hvr/THRESHOLD_170/THRESHOLD_170_iv_v01/vr>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1475019657.000002"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474862542.000008"
+        }, 
+        {
+            "text": "yeah, i suppose. just want to confirm with you. thanks.", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1474862509.000007"
+        }, 
+        {
+            "text": "you should always update all characters, each time the character API is hit.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474862403.000006"
+        }, 
+        {
+            "text": "oh right, characters don\u2019t have that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474862293.000005"
+        }, 
+        {
+            "text": "What about character? Do they have similar version as well?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1474862273.000004"
+        }, 
+        {
+            "text": "Each scene has a sceneVersion which should be incremented each time the scene is published", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474862205.000003"
+        }, 
+        {
+            "text": "Hi Mudge, in terms of each character, do we have something like a \"modification date\" can be accessed in API? I found in each scene we have meta field that contains created date.", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1474862093.000002"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473895776.000012"
+        }, 
+        {
+            "text": "Maybe next board game night happens in December, so I will still give you the money instead of waiting 2 months :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473895767.000011"
+        }, 
+        {
+            "text": "Otherwise, you can just buy the pizza next time we have a board games night", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473894464.000010"
+        }, 
+        {
+            "text": "Yea, all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473894434.000009"
+        }, 
+        {
+            "text": "Oh, I still owe you $10 right? Need to find the changes..", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473894422.000008"
+        }, 
+        {
+            "text": "life saver!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473894219.000007"
+        }, 
+        {
+            "text": "And Privacy is at <http://8i.com/holo/privacy>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473894212.000005", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 1920, 
+                    "title": "8i | Privacy", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/holo/privacy", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Privacy", 
+                    "thumb_url": "http://8i.com/static/images/shareImage.jpg", 
+                    "from_url": "http://8i.com/holo/privacy"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://8i.com/holo/terms>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473894196.000003", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 1920, 
+                    "title": "8i | Terms", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/holo/terms", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Terms", 
+                    "thumb_url": "http://8i.com/static/images/shareImage.jpg", 
+                    "from_url": "http://8i.com/holo/terms"
+                }
+            ]
+        }, 
+        {
+            "text": "Hi Mudge, do you have the updated terms &amp; service link?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473894163.000002"
+        }, 
+        {
+            "text": "Here are the wav and hvrs files. Thanks for the help :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473199368.000006"
+        }, 
+        {
+            "username": "ye", 
+            "display_as_bot": false, 
+            "text": "<@U1ASX2W9G> uploaded a file: <https://hvr.slack.com/files/U1ASX2W9G/F28RQK4DC/2016-09-05_06_29_new.wav|2016-09-05 06_29_new.wav>", 
+            "upload": true, 
+            "ts": "1473199364.000005", 
+            "subtype": "file_share", 
+            "user": "U1ASX2W9G", 
+            "file": {
+                "filetype": "wav", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F28RQK4DC", 
+                "size": 782410, 
+                "title": "2016-09-05 06_29_new.wav", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F28RQK4DC/2016-09-05_06_29_new.wav", 
+                "ims": [
+                    "D1SFZHNQN"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1473199364, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F28RQK4DC/download/2016-09-05_06_29_new.wav", 
+                "user": "U1ASX2W9G", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Waveform Audio", 
+                "name": "2016-09-05 06_29_new.wav", 
+                "mimetype": "audio/vnd.wave", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F28RQK4DC-92ed1de7e7", 
+                "permalink": "https://hvr.slack.com/files/U1ASX2W9G/F28RQK4DC/2016-09-05_06_29_new.wav", 
+                "is_external": false, 
+                "created": 1473199364, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "ye", 
+            "display_as_bot": false, 
+            "text": "<@U1ASX2W9G> uploaded a file: <https://hvr.slack.com/files/U1ASX2W9G/F28S76XT4/tcs03_s15_t09_600_30_75_85.hvrs|TCS03_S15_T09_600_30_75_85.hvrs>", 
+            "upload": true, 
+            "ts": "1473199362.000004", 
+            "subtype": "file_share", 
+            "user": "U1ASX2W9G", 
+            "file": {
+                "filetype": "binary", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F28S76XT4", 
+                "size": 76575768, 
+                "title": "TCS03_S15_T09_600_30_75_85.hvrs", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F28S76XT4/tcs03_s15_t09_600_30_75_85.hvrs", 
+                "ims": [
+                    "D1SFZHNQN"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1473199331, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F28S76XT4/download/tcs03_s15_t09_600_30_75_85.hvrs", 
+                "user": "U1ASX2W9G", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Binary", 
+                "name": "TCS03_S15_T09_600_30_75_85.hvrs", 
+                "mimetype": "application/octet-stream", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F28S76XT4-55736843dd", 
+                "permalink": "https://hvr.slack.com/files/U1ASX2W9G/F28S76XT4/tcs03_s15_t09_600_30_75_85.hvrs", 
+                "is_external": false, 
+                "created": 1473199331, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Am I supposed to use web director to upload hvrs? I think only obj files are allowed there", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473199056.000003"
+        }, 
+        {
+            "text": "Hi Mudge. What should I do if I want to upload an hvrs file to the cloud? When I click \"create new experience\" in admin portal, the web page asked me to \"choose an hvr file or folder from <http://clouds.8i.com|clouds.8i.com>\"", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1473198964.000002"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472619478.000008"
+        }, 
+        {
+            "text": "works now. thanks!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1472619474.000007"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1472619460.000006"
+        }, 
+        {
+            "text": "its fixed now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472619364.000005"
+        }, 
+        {
+            "text": "I did fix it, but silly me I forgot to update <http://8i.com|8i.com> :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472619362.000004"
+        }, 
+        {
+            "text": "Yea, there was a problem when Josh deleted one of the characters which the pack was looking for", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472619310.000003"
+        }, 
+        {
+            "text": "Hi Mudge, any changes with the authentication recently? I got empty action pack if I logged in an 8i account. If I skip, then the action pack shows normally(a public pack)", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1472619280.000002"
+        }, 
+        {
+            "text": "OK, I'll leave it like that for now. Let me know if there will be any changes in name since that name can effect when we log the events", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471831028.000005"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471830946.000004"
+        }, 
+        {
+            "text": "Like in <http://8i.com/api/v1/scene/KLL>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471830827.000003"
+        }, 
+        {
+            "text": "Hi Mudge, in each scene we're still getting name attribute like \"FOXTROT02_250\" right?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471830819.000002"
+        }, 
+        {
+            "text": "It works. So basically client stores the information retrieved from API locally, and it never got expired, which ultimate causes the problem. Do you think we need add some code(which I'm not quite sure how to do it properly on both side) to invalidate the local copy(maybe after a certain period of time or something) and get a fresh one from the web instead?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471493239.000012"
+        }, 
+        {
+            "text": "Cool thanks for the help!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471492222.000011"
+        }, 
+        {
+            "text": "I found the issue, the size was getting cached more than it should of. Should be fixed now though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471492197.000010"
+        }, 
+        {
+            "text": "Thanks!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471490955.000009"
+        }, 
+        {
+            "text": "oh right, I\u2019ll check it out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471490947.000008"
+        }, 
+        {
+            "text": "But in the json returned by API, it says should be 30490426", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471490913.000007"
+        }, 
+        {
+            "text": "When I downloaded it has the size of 30,294,118", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471490895.000006"
+        }, 
+        {
+            "text": "Say the hvr file in the above example: <https://d7cvc31wlmbhf.cloudfront.net/live_G4a/FOXTROT02_380_300_30_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471490878.000005"
+        }, 
+        {
+            "text": "sorry, where are they different?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471490858.000004"
+        }, 
+        {
+            "text": "Do you aware of that?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471490834.000003"
+        }, 
+        {
+            "text": "Hi Mudge, I found that some hvr files downloaded has different size with the scene description API says, for example: <http://8i.com/api/v1/scene/Ypz>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471490827.000002"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471231315.000012"
+        }, 
+        {
+            "text": "thats the only place which I\u2019m checking the id_token so its fine for now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471231259.000011"
+        }, 
+        {
+            "text": "I don\u2019t think there is any other api calls right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471231195.000010"
+        }, 
+        {
+            "text": "About holo-114, is it only the actionPack api requires passing the id_token as parameter, or others might need as well?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471231144.000009"
+        }, 
+        {
+            "text": ":ok_hand:", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471216477.000008"
+        }, 
+        {
+            "text": "I gave you manage users permission for the Project Holo property", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471216461.000007"
+        }, 
+        {
+            "text": "Awesome thanks!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471216454.000006"
+        }, 
+        {
+            "text": "Tokes is already able to see everything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471216405.000005"
+        }, 
+        {
+            "text": "Thanks!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471216308.000004"
+        }, 
+        {
+            "text": "I\u2019ll check, I think I can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471216299.000003"
+        }, 
+        {
+            "text": "Do you have the permission to add tokes and others to Project Holo in google analytics? I don't have the permission to add people", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1471216092.000002"
+        }, 
+        {
+            "text": "<https://developers.google.com/identity/sign-in/android/backend-auth> has a link to the public key", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470972842.000040"
+        }, 
+        {
+            "text": "you shouldn\u2019t be able to get the private key", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470972809.000039"
+        }, 
+        {
+            "text": "You would need the public key from google", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470972787.000038"
+        }, 
+        {
+            "text": "the header and payload are fine", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470972719.000037"
+        }, 
+        {
+            "text": "Do you know how to fill in the blanks in <http://jwt.io|jwt.io> that's public key and private key? I pasted the key but always get \"invalid signature\"", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470972707.000036"
+        }, 
+        {
+            "text": "but it might be now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470970174.000035"
+        }, 
+        {
+            "text": "It wasn\u2019t before I don\u2019t think", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470970170.000034"
+        }, 
+        {
+            "text": "i can debug into it later", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470970163.000033"
+        }, 
+        {
+            "text": "I believe it's probably expired but I don't have access to an tango now", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470970152.000032"
+        }, 
+        {
+            "text": "You can use <https://jwt.io/> to help debug the id_token", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470969632.000030", 
+            "attachments": [
+                {
+                    "image_bytes": 16303, 
+                    "title": "JWT.IO", 
+                    "text": "JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.", 
+                    "image_width": 500, 
+                    "title_link": "https://jwt.io/", 
+                    "image_height": 250, 
+                    "image_url": "http://jwt.io/img/twitter-card.png", 
+                    "service_name": "jwt.io", 
+                    "id": 1, 
+                    "fallback": "JWT.IO", 
+                    "service_icon": "https://jwt.io/img/favicon/apple-icon-57x57.png", 
+                    "from_url": "https://jwt.io/"
+                }
+            ]
+        }, 
+        {
+            "text": "yea, thats what I\u2019m using", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470968531.000029"
+        }, 
+        {
+            "text": "The api at <https://www.googleapis.com/oauth2/v3/tokeninfo> complains the same error", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470968520.000028"
+        }, 
+        {
+            "text": "I believe it's my id_token's problem", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470968503.000027"
+        }, 
+        {
+            "text": "I\u2019m trying to follow the steps from <https://developers.google.com/identity/sign-in/android/backend-auth>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470968480.000026"
+        }, 
+        {
+            "text": "which means it doesn\u2019t like the id_token for some reason", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470968038.000025"
+        }, 
+        {
+            "text": "I get a {u'error_description': u'Invalid Value\u2019} back from the google endpoint", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470968028.000024"
+        }, 
+        {
+            "text": "\"We cannot authorize your Google login at this time.\"", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470967009.000023"
+        }, 
+        {
+            "text": "I think the actionPack api still gives the same result", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470967003.000022"
+        }, 
+        {
+            "text": "alright, that should be in there now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470961397.000021"
+        }, 
+        {
+            "text": "Client id: <http://821737659264-cg55tte60er126l8lrjru5oavllr9vgf.apps.googleusercontent.com|821737659264-cg55tte60er126l8lrjru5oavllr9vgf.apps.googleusercontent.com>", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470960438.000020"
+        }, 
+        {
+            "text": "Yea, at the moment we are only checking against the web client id, and we will probably need to support multiple client id's", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470957714.000019"
+        }, 
+        {
+            "text": "I think after you accept isaac's invitation, you can browse a project named 'Default Demo App', and from there you can get the client id and client secret, which you might required when doing the server side verification", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470957539.000018"
+        }, 
+        {
+            "text": "Nice", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470953831.000017"
+        }, 
+        {
+            "text": "GET or POST should both work", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470953821.000016"
+        }, 
+        {
+            "text": "It should be a GET method right?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470953800.000015"
+        }, 
+        {
+            "text": "I believe the app has an option somewhere to toggle between <http://mudge-demo2.dev.8i.com|mudge-demo2.dev.8i.com> and <http://8i.com|8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470953750.000014"
+        }, 
+        {
+            "text": "Alright, if you use <http://api-mudge-demo2.dev.8i.com/api/v1/scene/actionPack> you will be able to send it an id_token", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470953716.000013"
+        }, 
+        {
+            "text": "sounds good!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470951843.000012"
+        }, 
+        {
+            "text": "Yea, I\u2019m not even sure that we need proper session support, we can just authenticate the user with google each time for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470951804.000011"
+        }, 
+        {
+            "text": "Hmm... I believe there's a way to get around with that. The basic network api in unity doesn't have explicit cookie support", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470951758.000010"
+        }, 
+        {
+            "text": "Yea, we are using a cookie based system to maintain a user session at the moment. Android doesn\u2019t use cookies though does it?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470951589.000009"
+        }, 
+        {
+            "text": "Ok, please let me know when the authentication actually in place so I can test it out on my side :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470951508.000008"
+        }, 
+        {
+            "text": "but that way sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470951475.000007"
+        }, 
+        {
+            "text": "Yea, I haven\u2019t got the code which reads that yet, so however you want to pass it is fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470951432.000006"
+        }, 
+        {
+            "text": "How can I submit the id_token through the api? Is that just a key with \"id_token\" and the value of the token returned from google?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470951374.000005"
+        }, 
+        {
+            "text": "we just need to authenticate the user making the request", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470951310.000004"
+        }, 
+        {
+            "text": "Yea, it will use the same api to get the packs as before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470951295.000003"
+        }, 
+        {
+            "text": "Hi Mudge, I'm planning to work on the public pack api feature. Is the api already in place?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470951038.000002"
+        }, 
+        {
+            "text": "but I like to think a good API doesn\u2019t need it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470719846.000012"
+        }, 
+        {
+            "text": "Ha, I\u2019m sure real documentation would be useful too :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470719832.000011"
+        }, 
+        {
+            "text": "you are my life saver", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470719813.000010"
+        }, 
+        {
+            "text": "Then to see the full scene data you can add the scene[\u2018key\u2019] to the url like so <http://api-mudge-demo2.dev.8i.com/api/v1/scene/1OX>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470719757.000009"
+        }, 
+        {
+            "text": "You can also see what it actually returns at <http://api-mudge-demo2.dev.8i.com/api/v1/scene?clientType=tango&amp;clientVersion=1> (its useful to install a json formatter like <https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en>)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470719701.000007", 
+            "attachments": [
+                {
+                    "thumb_height": 128, 
+                    "service_icon": "https://www.google.com/images/icons/product/chrome_web_store-32.png", 
+                    "thumb_width": 128, 
+                    "title": "JSON Formatter", 
+                    "text": "Makes JSON easy to read. Open source.", 
+                    "title_link": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en", 
+                    "service_name": "chrome.google.com", 
+                    "id": 1, 
+                    "fallback": "JSON Formatter", 
+                    "thumb_url": "https://lh5.googleusercontent.com/6240D4mWfhicKkWdlGK9T8pn-vOE_Vop28CzN2YOQ7khF0TQ-oxZAEDgDrYD_JeyOP_ZFKby", 
+                    "from_url": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en"
+                }
+            ]
+        }, 
+        {
+            "text": "awesome thanks!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470719592.000006"
+        }, 
+        {
+            "text": "it may be out of date a little by now, but still a good start", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470719584.000005"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F12Q6TZSM/sceneschemadiscussion|Scene Schema Discussion>", 
+            "upload": false, 
+            "ts": "1470719570.000004", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "gdoc", 
+                "channels": [
+                    "C03LFC6K6", 
+                    "C12DGKJCC"
+                ], 
+                "display_as_bot": false, 
+                "thumb_64": "https://slack.com/img/files/gdoc_64.v.png", 
+                "size": 5009, 
+                "thumb_360_w": 360, 
+                "title": "Scene Schema Discussion", 
+                "url_private": "https://docs.google.com/a/8i.com/document/d/176bTU-phOI1i1H6wwOiVY-WgcdA46JIyG7MF46fy88I/edit?usp=drivesdk", 
+                "thumb_360": "https://a.slack-edge.com/b008f/img/files/gdraw_360.png", 
+                "id": "F12Q6TZSM", 
+                "ims": [
+                    "D1SFZHNQN"
+                ], 
+                "thumb_360_h": 167, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "timestamp": 1461280345, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "user": "U0G3RRHD3", 
+                "groups": [], 
+                "is_public": true, 
+                "pretty_type": "GDocs Document", 
+                "name": "SceneSchemaDiscussion", 
+                "mimetype": "application/vnd.google-apps.document", 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F12Q6TZSM/sceneschemadiscussion", 
+                "is_external": true, 
+                "created": 1461280345, 
+                "comments_count": 0, 
+                "mode": "external"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "We did come up with <https://docs.google.com/document/d/176bTU-phOI1i1H6wwOiVY-WgcdA46JIyG7MF46fy88I/edit#> while we were creating the scene schema", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470719568.000003"
+        }, 
+        {
+            "text": "do you have a document or a readme about the scene descriptor structure and how the hvr download api is organized?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1470719484.000002"
+        }, 
+        {
+            "text": "I believe you need a payment /merchant/wallet service on before sign up because a developer need to receive money from Google Play", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468981707.000002"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468895165.000007"
+        }, 
+        {
+            "text": "I\u2019ve given you edit permission for it as well.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468895085.000006"
+        }, 
+        {
+            "text": "Cool thanks so much!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468895054.000005"
+        }, 
+        {
+            "text": "Cool, done. Tracking ID is UA-60838253-6", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468894914.000004"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468894196.000003"
+        }, 
+        {
+            "text": "Could you help me to create a property named \"Project Holo\" under 8i in google analytics? I was added to the group but has no privilege to create a property", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468894018.000002"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468798515.000011"
+        }, 
+        {
+            "text": "oh google play developer requires a registration fee USD 25 BTW", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468798498.000010"
+        }, 
+        {
+            "text": "no rush, just in case one day I need it", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468798312.000009"
+        }, 
+        {
+            "text": "much thanks!", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468798302.000008"
+        }, 
+        {
+            "text": "sorry, I\u2019ll talk to Yu Pan", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468798296.000007"
+        }, 
+        {
+            "text": "actually, I don\u2019t think I can add users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468798283.000006"
+        }, 
+        {
+            "text": "Thanks, I'll check if that also works with google play", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468798262.000005"
+        }, 
+        {
+            "text": "not sure about Google play though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468798212.000004"
+        }, 
+        {
+            "text": "I have access to our GA account, I can add you on that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468798200.000003"
+        }, 
+        {
+            "text": "Hi Mudge, do we have some official google developer account? I need it for Google Analytics and Google Play service. I can use my account for now but eventually need a official one. Do you have any ideas on that?", 
+            "type": "message", 
+            "user": "U1ASX2W9G", 
+            "ts": "1468798158.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U1ASX2W9G", 
+            "U0C90MHEH"
+        ]
+    }
+}

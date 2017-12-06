@@ -1,0 +1,1187 @@
+{
+    "messages": [
+        {
+            "text": "Lol. ", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1512448055.000122"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512448025.000001"
+        }, 
+        {
+            "text": "Because you'll see it tomorrow and remember", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512448021.000115"
+        }, 
+        {
+            "text": "Haha, this was your worse one yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512448011.000011"
+        }, 
+        {
+            "text": ":heart: ", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1512447214.000094", 
+            "edited": {
+                "user": "U3F2AC5V4", 
+                "ts": "1512448218.000000"
+            }
+        }, 
+        {
+            "text": "Sorry, if I went too far. ", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1512446963.000196"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510786186.000238"
+        }, 
+        {
+            "text": "Doing... Done.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510786183.000239"
+        }, 
+        {
+            "text": "yea that should be fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510786175.000061"
+        }, 
+        {
+            "text": "oh ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510786170.000438"
+        }, 
+        {
+            "text": "If refreshes the cache. I've uploaded some new files.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510786164.000115"
+        }, 
+        {
+            "text": "Invalidate?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510786138.000306"
+        }, 
+        {
+            "text": "You cool if I invalidate the /8i+Website/Dev+Portal/Downloads/* for Cloudfront?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510786087.000026"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: It's been a while.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510710646.000079"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098478.000117"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510098475.000259"
+        }, 
+        {
+            "text": "is it in develop?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098473.000033"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098467.000444"
+        }, 
+        {
+            "text": "Renamed to index.md", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510098460.000219"
+        }, 
+        {
+            "text": "<https://github.com/8i/UnityPlugin_Documentation/blob/master/docs/source/index.rst>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098204.000381", 
+            "attachments": [
+                {
+                    "thumb_height": 134, 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "thumb_width": 134, 
+                    "title": "8i/UnityPlugin_Documentation", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/8i/UnityPlugin_Documentation/blob/master/docs/source/index.rst", 
+                    "text": "Contribute to UnityPlugin_Documentation development by creating an account on GitHub.", 
+                    "id": 1, 
+                    "fallback": "GitHub: 8i/UnityPlugin_Documentation", 
+                    "thumb_url": "https://avatars1.githubusercontent.com/u/7752511?s=400&v=4", 
+                    "from_url": "https://github.com/8i/UnityPlugin_Documentation/blob/master/docs/source/index.rst"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://staging.8i.com/ios/docs/getting-started.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510098036.000208"
+        }, 
+        {
+            "text": "Will probably need to merge it in today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510097493.000192"
+        }, 
+        {
+            "text": "checkout the new feature/mudge_test branch. Had to add some sphinx build config stuff to get it in sync with the other repos", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510097465.000033"
+        }, 
+        {
+            "text": "repo: git@github.com:8i/argo-ios.git\nbranch: develop\nfolder: docs", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1510089270.000521"
+        }, 
+        {
+            "text": "Now you mention it, that should of been my first question", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509074461.000040"
+        }, 
+        {
+            "text": "That, or star.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1509074446.000015"
+        }, 
+        {
+            "text": "If you had asked, \"Can I wish on it?\" you would have got it straight away...", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1509074437.000026"
+        }, 
+        {
+            "text": "No, afterwards. But this is what I was visualising.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1509074416.000034"
+        }, 
+        {
+            "text": "was I still guessing when you sent this?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509074389.000066"
+        }, 
+        {
+            "text": "<http://enchanted-earth.com/ekmps/shops/encearth/images/fiddlehead-large-wishing-well-19cm-tall-74-p.jpg>", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1509072130.000112", 
+            "attachments": [
+                {
+                    "image_bytes": 314819, 
+                    "image_width": 1923, 
+                    "id": 1, 
+                    "image_height": 2048, 
+                    "image_url": "http://enchanted-earth.com/ekmps/shops/encearth/images/fiddlehead-large-wishing-well-19cm-tall-74-p.jpg", 
+                    "from_url": "http://enchanted-earth.com/ekmps/shops/encearth/images/fiddlehead-large-wishing-well-19cm-tall-74-p.jpg", 
+                    "fallback": "1923x2048px image"
+                }
+            ]
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508207018.000012"
+        }, 
+        {
+            "text": "After Thomas and Lucas have warmed the table?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1508206999.000148"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1508192133.000170"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:  @ 4?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1507775084.000135"
+        }, 
+        {
+            "text": "Cool, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507235271.000258"
+        }, 
+        {
+            "text": "If you want to catch up at all, re: yesterday, let me know. And Owen will be available, too.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1507235248.000334"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: before i head off?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1507000063.000008"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1506911994.000030"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1506568396.000102"
+        }, 
+        {
+            "text": "Let me know when you want a rematch.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1506300543.000093"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505964980.000109"
+        }, 
+        {
+            "text": "Rematch?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1505964970.000003"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504666457.000061"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1504565562.000014"
+        }, 
+        {
+            "text": "Now?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1504491982.000141"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1504150491.000037"
+        }, 
+        {
+            "text": "Sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504052022.000179"
+        }, 
+        {
+            "text": "Will you be my doubles partner? Maybe against Isaac and Dave?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1504052014.000005", 
+            "edited": {
+                "user": "U3F2AC5V4", 
+                "ts": "1504052023.000000"
+            }
+        }, 
+        {
+            "text": "I\u2019m a man of many excuses", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503976270.000012"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503976254.000184"
+        }, 
+        {
+            "text": "Ah, yes. It was probably the jeans that gave me an edge in the first round.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503976242.000171", 
+            "edited": {
+                "user": "U3F2AC5V4", 
+                "ts": "1503976254.000000"
+            }
+        }, 
+        {
+            "text": "I think its the jeans", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503976212.000112"
+        }, 
+        {
+            "text": "yea I feel warm", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503976205.000028"
+        }, 
+        {
+            "text": "Super hot after that game.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503976196.000105"
+        }, 
+        {
+            "text": "Well done. Quite surprisingly, I did not make it to the play-offs. So, you\u2019ll be playing someone undeserving.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503641689.000153"
+        }, 
+        {
+            "text": "I won", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503640295.000043"
+        }, 
+        {
+            "text": "I hope there is another one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503551645.000167"
+        }, 
+        {
+            "text": "Yes. The things I do for 8i", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503551618.000112"
+        }, 
+        {
+            "text": "did you miss the train?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503551513.000061"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503551509.000045"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: soon, after Tokes vs Thomas", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503551487.000086"
+        }, 
+        {
+            "text": "<https://docs.google.com/presentation/d/1tTqqX5PxYuIGoG055HhTVs0GY6d1tBMq0rHcWB4ejqE/edit#slide=id.g24e41cacd6_1_15>", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503463163.000115"
+        }, 
+        {
+            "text": "<https://docs.google.com/document/d/1geYU0qHvHi_1gfB_BPOILIzCqPG74QX-bTNGcYg3GVE/edit#heading=h.7blousnrlzh7>", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503463154.000182"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1503444327.000048"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1502843412.000143"
+        }, 
+        {
+            "text": "lmk when you\u2019ve got a minute", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502841343.000122"
+        }, 
+        {
+            "username": "scottmckenzie", 
+            "display_as_bot": false, 
+            "text": "<@U3F2AC5V4> shared a file: <https://hvr.slack.com/files/U11C3K5EC/F6G7GSTRN/-.txt|Untitled>", 
+            "upload": false, 
+            "ts": "1502756305.928680", 
+            "subtype": "file_share", 
+            "user": "U3F2AC5V4", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 79, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F6G7GSTRN", 
+                "size": 2741, 
+                "title": "Untitled", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F6G7GSTRN/-.txt", 
+                "ims": [
+                    "D431QMJ66"
+                ], 
+                "preview": "\r\n    fun listBySearchTerm(searchTerm: String, onSearchCompleted: (List<Pose>, List<Tag>) -> Unit){\r\n\r\n        val tagsQuery = dao.getRealm()\r\n            .where(Tag::class.java)\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U11C3K5EC/F6G7GSTRN/-.txt/edit", 
+                "username": "", 
+                "timestamp": 1501647291, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F6G7GSTRN/download/-.txt", 
+                "user": "U11C3K5EC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "-.txt", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F6G7GSTRN-a1f2752f1c", 
+                "permalink": "https://hvr.slack.com/files/U11C3K5EC/F6G7GSTRN/-.txt", 
+                "is_external": false, 
+                "created": 1501647291, 
+                "lines": 84, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre></pre></div>\n<div><pre>    fun listBySearchTerm(searchTerm: String, onSearchCompleted: (List&lt;Pose&gt;, List&lt;Tag&gt;) -&gt; Unit){</pre></div>\n<div><pre></pre></div>\n<div><pre>        val tagsQuery = dao.getRealm()</pre></div>\n<div><pre>            .where(Tag::class.java)</pre></div>\n<div><pre></pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1502680470.237150"
+        }, 
+        {
+            "text": ":tabletennis: now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502323937.931173"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet|Holo - Google Analytics Events and Timing Logging Sheet>", 
+            "upload": false, 
+            "ts": "1501814811.903276", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [
+                    "G4KR129L0", 
+                    "G6UG2M5C5"
+                ], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_64.png", 
+                "size": 57339, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_360.png", 
+                "id": "F3X0XTCG3", 
+                "ims": [
+                    "D12DBF78S", 
+                    "D3X61C9HA", 
+                    "D431QMJ66", 
+                    "D450Y9VNH", 
+                    "D5MK78T28"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_800.png", 
+                "timestamp": 1485462811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5", 
+                    "C3QBYRUKE"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet", 
+                "is_external": true, 
+                "created": 1485462811, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "for Category/Action/Label", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501814801.901469"
+        }, 
+        {
+            "text": "UI\tCharacter Profile\t&lt;CharacterUniqueName/PoseUniqueName&gt;", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501814793.900036"
+        }, 
+        {
+            "text": "What were the details for the new GA event?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1501814759.894121"
+        }, 
+        {
+            "text": "<http://challonge.com/tournaments/signup/VtN2nRjf2d>", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1500941176.304071", 
+            "attachments": [
+                {
+                    "image_bytes": 39129, 
+                    "title": "8i - Challonge", 
+                    "service_name": "challonge.com", 
+                    "image_width": 250, 
+                    "title_link": "http://challonge.com/tournaments/signup/VtN2nRjf2d", 
+                    "image_height": 250, 
+                    "image_url": "https://challonge.com/assets/og-default-ec9ebd1c1ec398ef8a6600f2ff8bcc2e.png", 
+                    "id": 1, 
+                    "fallback": "8i - Challonge", 
+                    "service_icon": "http://challonge.com/favicon.ico", 
+                    "from_url": "http://challonge.com/tournaments/signup/VtN2nRjf2d"
+                }
+            ]
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: at 4.15?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1497412974.169604"
+        }, 
+        {
+            "text": "<https://youtu.be/CDeG4S-mJts>", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496374725.988087", 
+            "attachments": [
+                {
+                    "thumb_height": 360, 
+                    "service_icon": "https://a.slack-edge.com/2089/img/unfurl_icons/youtube.png", 
+                    "thumb_width": 480, 
+                    "author_link": "https://www.youtube.com/user/ronopolis", 
+                    "service_name": "YouTube", 
+                    "title": "Hitler uses git", 
+                    "video_html_height": 225, 
+                    "author_name": "ronopolis", 
+                    "title_link": "https://youtu.be/CDeG4S-mJts", 
+                    "video_html": "<iframe width=\"400\" height=\"225\" src=\"https://www.youtube.com/embed/CDeG4S-mJts?feature=oembed&autoplay=1&iv_load_policy=3\" frameborder=\"0\" allowfullscreen></iframe>", 
+                    "video_html_width": 400, 
+                    "service_url": "https://www.youtube.com/", 
+                    "id": 1, 
+                    "fallback": "YouTube Video: Hitler uses git", 
+                    "thumb_url": "https://i.ytimg.com/vi/CDeG4S-mJts/hqdefault.jpg", 
+                    "from_url": "https://youtu.be/CDeG4S-mJts"
+                }
+            ]
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet|Holo - Google Analytics Events and Timing Logging Sheet>", 
+            "upload": false, 
+            "ts": "1496371049.601136", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [
+                    "G4KR129L0", 
+                    "G6UG2M5C5"
+                ], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_64.png", 
+                "size": 57339, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_360.png", 
+                "id": "F3X0XTCG3", 
+                "ims": [
+                    "D12DBF78S", 
+                    "D3X61C9HA", 
+                    "D431QMJ66", 
+                    "D450Y9VNH", 
+                    "D5MK78T28"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_800.png", 
+                "timestamp": 1485462811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5", 
+                    "C3QBYRUKE"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet", 
+                "is_external": true, 
+                "created": 1485462811, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: ", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496285653.977380"
+        }, 
+        {
+            "text": "Mitch wants some kind of access so he can test Facebook Ad attributions. Is this something that you a) can do b) think is right to do?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496179321.955817"
+        }, 
+        {
+            "text": "I think so", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496179264.939669"
+        }, 
+        {
+            "text": "Do you have all the control of the Facebook app stuff?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496179249.935155"
+        }, 
+        {
+            "text": "yea lets", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496104166.325703"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:  in about 5-10 mins?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496104156.324889"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014752.851010"
+        }, 
+        {
+            "text": "NP. Just make sure when you comment it's worthy of being on the Mudge Quote Wall", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496014745.850681"
+        }, 
+        {
+            "text": "It just popped up suggesting that I didn\u2019t have permission to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014707.848761"
+        }, 
+        {
+            "text": "I didn\u2019t actually have a comment yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014691.847790"
+        }, 
+        {
+            "text": "Try now...", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496014646.845513"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014533.839999"
+        }, 
+        {
+            "text": "Have asked Erica to add you to Holo Team Drive.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1496014508.838606"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: ?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1495777056.252200"
+        }, 
+        {
+            "text": "All good, I don\u2019t actually mind tasks being assigned to me, I just wasn\u2019t sure how to action that one.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495770034.264658"
+        }, 
+        {
+            "text": "Sorry Mudge, I was in a hurry earlier when I was adding tasks and things. I meant to talk to you first.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1495769713.218736"
+        }, 
+        {
+            "text": "<mailto:hello@rezatari.com|hello@rezatari.com>\n<mailto:rach.zerger@gmail.com|rach.zerger@gmail.com>\n<mailto:juliansmto@gmail.com|juliansmto@gmail.com>\n<mailto:emmaflinoff@gmail.com|emmaflinoff@gmail.com>\n<mailto:john@signaturecreative.com|john@signaturecreative.com>\n<mailto:koreapeekay@gmail.com|koreapeekay@gmail.com>\n<mailto:kevin@Home3D.us|kevin@Home3D.us>\n<mailto:harvey.miche@gmail.com|harvey.miche@gmail.com>\n<mailto:futera@gmail.com|futera@gmail.com>\n<mailto:isabella@video.geek.nz|isabella@video.geek.nz>\n<mailto:xlilac@icloud.com|xlilac@icloud.com>\n<mailto:s.burton104@gmail.com|s.burton104@gmail.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495601487.513578"
+        }, 
+        {
+            "text": "Let's try and get some doubles in. ", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1495170850.999934"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495081630.381602"
+        }, 
+        {
+            "text": "9.01 tomorrow, though. Rematch.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1495081594.376609"
+        }, 
+        {
+            "text": "We don't _have_ to count it.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1495081564.372475"
+        }, 
+        {
+            "text": "Sent you an invite for Fabric (iOS analytics and crash reporting). Wondering if you could push that onto one of the screens, perhaps the one above me.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1494276644.409221"
+        }, 
+        {
+            "text": "I feel it too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493953205.502954"
+        }, 
+        {
+            "text": "I'm hot and slightly shaken from that game.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1493953195.501126"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1493844475.857569"
+        }, 
+        {
+            "text": "Nah. It would probably give you more of an edge and you'd beat me even harder than usual.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1493689535.109555"
+        }, 
+        {
+            "text": "I got a mini twisted ankle yesterday playing netball, today would of been your day to win a game of :table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493688255.904159"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492651903.771694"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492651889.769161"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492561632.963765"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492561426.924403"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492483841.299623"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492483106.176386"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/flask-admin/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492050780.403590"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/admin/eighti/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492050769.401901"
+        }, 
+        {
+            "text": "HTigerChimp_211", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492050629.380068"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492050596.374117"
+        }, 
+        {
+            "text": "Point is not.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492050593.373711"
+        }, 
+        {
+            "text": "Sorry, I think i mislead you. Chimping is fine.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492050588.373036"
+        }, 
+        {
+            "text": "Would you like me to show you how I add those to staging?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492050560.368718"
+        }, 
+        {
+            "text": "HTigerChimp_211_andrew_v01_600_15_75_85.hvrs \"Pointing\" also failing", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492050520.362749"
+        }, 
+        {
+            "text": "Should be HTigerChimp_331_napoleon_v01_600_15_75_85.hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492050307.330951"
+        }, 
+        {
+            "text": "ok, can you check what the hvrs file name is?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492050266.324655"
+        }, 
+        {
+            "text": "UNfortunately that is still crashing", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492050247.321657"
+        }, 
+        {
+            "text": "HTigerChimp_330", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1492049871.263379"
+        }, 
+        {
+            "text": "Game on!", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1491784423.796334", 
+            "edited": {
+                "user": "U3F2AC5V4", 
+                "ts": "1491784441.000000"
+            }
+        }, 
+        {
+            "text": "Suyre.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1490067199.407182"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490067191.405989"
+        }, 
+        {
+            "text": "A game?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1489532686.275539"
+        }, 
+        {
+            "text": "Sure. No problem", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1489452545.563939"
+        }, 
+        {
+            "text": "Alright, I have a 2 meeting, so it may need to be after that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489452533.561952"
+        }, 
+        {
+            "text": "When you get a moment, I need a warm-up partner.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1489452444.545904"
+        }, 
+        {
+            "text": "Yea, I think there was a point where each client wanted a different default, so I was leaving it up to you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489114563.150124"
+        }, 
+        {
+            "text": "Win!", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1489114523.145102"
+        }, 
+        {
+            "text": "Na, it makes sense. Will do it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489113897.073651"
+        }, 
+        {
+            "text": "Added a Jira for you. Happy to hear your thoughts.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1489113827.065673"
+        }, 
+        {
+            "text": "we will just need to add it to one of the poses which you like.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488767663.000010"
+        }, 
+        {
+            "text": "alright, those values are available in prod now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488767638.000009"
+        }, 
+        {
+            "text": "Works for me", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488762935.000008"
+        }, 
+        {
+            "text": "although I did just make those up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488762928.000007"
+        }, 
+        {
+            "text": "loop or boomerang", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488762919.000006"
+        }, 
+        {
+            "text": "And what are the style values? \"boomerang\" and \"forward\"?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488762908.000005"
+        }, 
+        {
+            "text": "play_speed = db.Column(db.Integer, nullable=True)\n    # Play style. Currently one of loop or boomerang.\n    play_style = db.Column(db.String, nullable=True)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488762827.000004"
+        }, 
+        {
+            "text": "By the way, what are you calling the attributes for the speed and style? And is style a string or an int (I can convert either to an enum on my side).", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488762774.000003"
+        }, 
+        {
+            "text": "I. Challenge. You.", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488760663.000002"
+        }, 
+        {
+            "text": "Staging, <@U0GNPM0QK>, Jedi KNight", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488425668.000003"
+        }, 
+        {
+            "text": "I've just sent a download notification. Can you check it came through on your end OK, please?", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488425647.000002"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: :table-flip: :fist:", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1488335090.000002"
+        }, 
+        {
+            "text": "Nasty URL, but links to animated webp", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1486934998.000004"
+        }, 
+        {
+            "text": "<https://www.google.co.nz/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwj2yZqwwIvSAhVBsJQKHYfUBcMQygQILDAC&amp;url=https%3A%2F%2Fdevelopers.google.com%2Fspeed%2Fwebp%2Ffaq%23why_should_i_use_animated_webp&amp;usg=AFQjCNGzZ-D0fQh8zvlB174PFcTXAOPBFg>", 
+            "type": "message", 
+            "user": "U3F2AC5V4", 
+            "ts": "1486934990.000003"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F434BE51B/spriteexample.webp|spriteExample.webp>", 
+            "upload": true, 
+            "ts": "1486608581.000002", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "binary", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F434BE51B", 
+                "size": 23844, 
+                "title": "spriteExample.webp", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F434BE51B/spriteexample.webp", 
+                "ims": [
+                    "D431QMJ66"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1486608580, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F434BE51B/download/spriteexample.webp", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Binary", 
+                "name": "spriteExample.webp", 
+                "mimetype": "application/octet-stream", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F434BE51B-a9d946dab8", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F434BE51B/spriteexample.webp", 
+                "is_external": false, 
+                "created": 1486608580, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3F2AC5V4", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -1,7 +1,7 @@
 from auth.provider import oauth
 
-from tournament_app.models import Tournament, Team, Round, Match
-from tournament_app.serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema
+from tournament_app.models import Tournament, Team, Round, Match, MatchResult
+from tournament_app.serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema, MatchResultSchema
 from tournament_app.views.tournament import tournament_bp
 from shared.views.crud import DBModelView, crud
 
@@ -37,10 +37,25 @@ class MatchView(DBModelView):
     model = Match
     schema = MatchSchema
 
+    @oauth.require_oauth('tournament')
+    def post(self, pk=None):
+        # Edit or Create.
+        if pk:
+            instance = Match.query.get(pk)
+            print instance
+            return self.edit(instance=instance)
+        else:
+            return self.create()
+
+class MatchResultView(DBModelView):
+    model = MatchResult
+    schema = MatchResultSchema
+
 def routes(app):
     crud(app, 'tournament/tournament', TournamentView)
     crud(app, 'tournament/team', TeamView)
     crud(app, 'tournament/match', MatchView)
     crud(app, 'tournament/round', RoundView)
+    crud(app, 'tournament/matchresult', MatchResultView)
 
     app.register_blueprint(tournament_bp, url_prefix='/api/tournament/')

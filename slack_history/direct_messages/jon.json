@@ -1,0 +1,221 @@
+{
+    "messages": [
+        {
+            "text": "Thats awesome man, its nice to have someone who knows a bit more about that stuff looking at it :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452833464.000035"
+        }, 
+        {
+            "text": "Note: I was sort of just hacking at the numbers a bit. I can tell what the code is generally trying to do but I plan to look at it more closely later and come up with better stereo knobs for it.", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452830018.000034"
+        }, 
+        {
+            "text": "Ah great, thanks!", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452826605.000033"
+        }, 
+        {
+            "text": "hopefully that can be of some use", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825392.000032"
+        }, 
+        {
+            "text": "actually, I used this tutorial, <http://www.sitepoint.com/bringing-vr-to-web-google-cardboard-three-js/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825379.000030", 
+            "attachments": [
+                {
+                    "thumb_height": 710, 
+                    "thumb_width": 710, 
+                    "title": "Bringing VR to the Web with Google Cardboard and Three.js", 
+                    "service_name": "SitePoint", 
+                    "ts": 1431946829, 
+                    "title_link": "http://www.sitepoint.com/bringing-vr-to-web-google-cardboard-three-js/", 
+                    "text": "Patrick Catanzariti explains how to bring web APIs into the virtual reality world using Google Cardboard, JavaScript and three.js.", 
+                    "id": 1, 
+                    "fallback": "SitePoint: Bringing VR to the Web with Google Cardboard and Three.js", 
+                    "thumb_url": "http://www.sitepoint.com/wp-content/themes/sitepoint/assets/images/icon.javascript.png", 
+                    "from_url": "http://www.sitepoint.com/bringing-vr-to-web-google-cardboard-three-js/"
+                }
+            ]
+        }, 
+        {
+            "text": "I don\u2019t know that anyone in 8i has a better idea than me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825313.000029"
+        }, 
+        {
+            "text": "that code was copied from <http://threejs.org/examples/js/effects/StereoEffect.js>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825287.000028"
+        }, 
+        {
+            "text": "ok cool no prob. I can mess around deeper in the code. :simple_smile: Or let me know if there's anyone who knows some of that part more. (Kieran?)", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452825256.000027"
+        }, 
+        {
+            "text": "mmm, I\u2019m a bit out of my depth :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825232.000026"
+        }, 
+        {
+            "text": "Is that what \"focalLength\" in the code is? That name isn't right but the comments indicate so...", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452825213.000025"
+        }, 
+        {
+            "text": "the target is initially 0,0,0 so I think it depends on the asset", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825213.000024"
+        }, 
+        {
+            "text": "(In stereography this would be called the convergence plane.)", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452825171.000023"
+        }, 
+        {
+            "text": "Or maybe the target isn't at the same distance as subject?", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452825160.000022"
+        }, 
+        {
+            "text": "Do the two stereo cameras each look at their own target or the same target? I increased the IO but the subject began to separate too much. I want to be able to incease the IO but have the subject stay in the same relative position in camera space.", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452825142.000021"
+        }, 
+        {
+            "text": "so I believe that would mean angle in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825134.000020"
+        }, 
+        {
+            "text": "the controls we use have a target vector and the camera is set to look towards that at all times", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452825073.000019"
+        }, 
+        {
+            "text": "I just realized something about the cameras: do you know if the cameras are pointing in parallel directions? Or do they angle-in towards the subject?", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452825017.000017", 
+            "edited": {
+                "user": "U03HD62CH", 
+                "ts": "1452825025.000000"
+            }
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452824984.000016"
+        }, 
+        {
+            "text": "Ok cool. Working. I can adjust the source file and see changes.", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452824935.000015"
+        }, 
+        {
+            "text": "Cool, working!", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452820853.000014"
+        }, 
+        {
+            "text": "Alright, its up and running now <http://jon.dev.8i.com/cardboard-demo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819856.000013"
+        }, 
+        {
+            "text": "sweet, I\u2019ll do that and let you know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819424.000012"
+        }, 
+        {
+            "text": "Nah. You could bounce it to WebPlatform.", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452819410.000011"
+        }, 
+        {
+            "text": "is that still useful?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819384.000010"
+        }, 
+        {
+            "text": "It looks like <http://jon.dev.8i.com|jon.dev.8i.com> is using the ~/projects/Chimera/Web folder", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819376.000009"
+        }, 
+        {
+            "text": "Yea, he mentioned you were going to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819219.000008"
+        }, 
+        {
+            "text": "(Er, I just realized you weren't on an earlier thread where I was talking about this, but I think Pan may have told you I was gonna test it?)", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452819194.000007"
+        }, 
+        {
+            "text": "let me have a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819171.000006"
+        }, 
+        {
+            "text": "Hey, so I was gonna try to mess around with the IO in my own checkout via <http://jon.dev.8i.com|jon.dev.8i.com>. I've got the web-cardboard branch checked out under ~/projects/WebPlatform. Do I need to do anything to get the web server running, or do you or Pan have to?", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452819144.000005"
+        }, 
+        {
+            "text": "whats up?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819060.000004"
+        }, 
+        {
+            "text": "Hey", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819052.000003"
+        }, 
+        {
+            "text": "Hi! There?", 
+            "type": "message", 
+            "user": "U03HD62CH", 
+            "ts": "1452819044.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03HD62CH", 
+            "U0C90MHEH"
+        ]
+    }
+}

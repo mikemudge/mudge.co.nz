@@ -1,0 +1,53 @@
+{
+    "messages": [
+        {
+            "text": "And Hannibal Buress", 
+            "type": "message", 
+            "user": "U03U9D1FJ", 
+            "ts": "1503053644.000222"
+        }, 
+        {
+            "text": "Check out Jerrod Carmichael:\n```<https://www.youtube.com/watch?v=KiQvO8OC7jc>```", 
+            "is_starred": true, 
+            "type": "message", 
+            "user": "U03U9D1FJ", 
+            "ts": "1503053079.000004"
+        }, 
+        {
+            "text": "That will be great. Thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502342343.180869"
+        }, 
+        {
+            "text": "There was a 5mm error in the board-height parameter LA has been using. Alenni is now aware of it and said she will get LA to fix it in future solves. \n\nHopefully these two fixes will resolve the manual correction step.", 
+            "type": "message", 
+            "user": "U03U9D1FJ", 
+            "ts": "1502337655.437942"
+        }, 
+        {
+            "text": "That\u2019s awesome. Sorry about the mislead.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502323386.771038"
+        }, 
+        {
+            "text": "Great. I will also make sure LA is setting the 'board height' parameter correctly.", 
+            "type": "message", 
+            "user": "U03U9D1FJ", 
+            "ts": "1502323365.766058"
+        }, 
+        {
+            "text": "Hey, Pro. I think I was wrong. \nI have the grid floor in web director offset slightly so it would render over any background/floor textures. \nIt was set to 0.01 cm and I think I failed to convert that into meters when we updated the units used in web director.\nWhich means it would actually be rendering the grid 10mm higher than ground, and explain why Lucas needs to locate the assets below the grid.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502323279.745499"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03U9D1FJ", 
+            "U0C90MHEH"
+        ]
+    }
+}

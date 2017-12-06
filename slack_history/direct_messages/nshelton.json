@@ -1,0 +1,1174 @@
+{
+    "messages": [
+        {
+            "text": "Tags are tags.  I'm glad to do what's needed.  :slightly_smiling_face: I'm excited to see the feature it in the live environment!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1506400982.000097"
+        }, 
+        {
+            "text": "We had a meeting yesterday,and me and Isaac convinced everyone that we need to release search and get some analytics. We super appreciate all of the tagging which you did, I can\u2019t imagine that was the most exciting job ever.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506101631.000233"
+        }, 
+        {
+            "text": "oh Nadine, sorry to hear that. You have been great, thanks so much for everything.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506101389.000307"
+        }, 
+        {
+            "text": "Hey Mudge,  I just learned that next week will be my last week at 8i.  You have been an absolute pleasure to work with.  I wanted to say thank you for being a wonderful teammate!  I'm sorry I didnt' have the chance to learn more about the technology!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1506101127.000490"
+        }, 
+        {
+            "text": "Cool sounds good.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505947268.000200"
+        }, 
+        {
+            "text": "haha, just that I'll catch up on slack and emails then", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505947258.000202"
+        }, 
+        {
+            "text": "All good, I won\u2019t wake up until around then :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505947231.000118"
+        }, 
+        {
+            "text": "I'll be on a plane US time till 2pm PT", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505947213.000051"
+        }, 
+        {
+            "text": "thank you!!!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505947202.000265"
+        }, 
+        {
+            "text": "Oh yea, cool. I\u2019m looking into all the notification stuff today. I can sync up with you tomorrow.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505947192.000026"
+        }, 
+        {
+            "text": "Hey Mudge, I'm crashing out and can check back in.  Let me know if you find any data on the notification indicating if it worked or not", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505947148.000183"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505939069.000234"
+        }, 
+        {
+            "text": "ur awesome!!!  Thank you for taking this seriously, but not too seriously that we can't joke around!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505939002.000201"
+        }, 
+        {
+            "text": "Maybe I'll get it when back in the US :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938961.000021"
+        }, 
+        {
+            "text": "LOL", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938949.000007"
+        }, 
+        {
+            "text": "The notification did go out to at least 1 device", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938944.000133"
+        }, 
+        {
+            "text": "all is not lost hahaha", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938929.000283", 
+            "edited": {
+                "user": "U6Q5CG407", 
+                "ts": "1505938939.000000"
+            }
+        }, 
+        {
+            "text": "Yea, that makes me feel a tiny bit better", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938918.000252"
+        }, 
+        {
+            "text": "Hopefully anyway", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938907.000301"
+        }, 
+        {
+            "text": "did you see Alenni got the notification?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938906.000115"
+        }, 
+        {
+            "text": "Press is probably driving new users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938902.000086"
+        }, 
+        {
+            "text": ":sweat_smile:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938896.000242"
+        }, 
+        {
+            "text": "I don\u2019t know that notifications and press are targeting the same users.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938896.000024"
+        }, 
+        {
+            "text": "i just get edgy on missing the window to benefit from any press", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938863.000307"
+        }, 
+        {
+            "text": "i know it's risky and we don't want to duplicate notification deliveries", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938847.000352"
+        }, 
+        {
+            "text": "haha!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938834.000448"
+        }, 
+        {
+            "text": "Yea, sorry about this. Notifications are my nemesis", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938808.000602"
+        }, 
+        {
+            "text": "and Alenni", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938773.000218"
+        }, 
+        {
+            "text": "let me check with Amy and Nicole", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938768.000037"
+        }, 
+        {
+            "text": "I'm nervous about waiting too long and missing all timezones cuz it's too late", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938745.000076"
+        }, 
+        {
+            "text": "Actually at this point most of our users have probably used the app within the last day", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938736.000007"
+        }, 
+        {
+            "text": "hmm we have a couple more hours right?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938709.000006"
+        }, 
+        {
+            "text": "I would hate to have it double send", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938705.000217"
+        }, 
+        {
+            "text": "Do you want to wait until this one is completed just incase?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938696.000648"
+        }, 
+        {
+            "text": "that's good!!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938676.000523"
+        }, 
+        {
+            "text": "Peter said he didn't get it.  Should I push a Pacific time only to iOS", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938661.000202"
+        }, 
+        {
+            "text": "I have a bit of a sinking feeling about this notification\u2019s success. But I will reassess once the notification is \u201cComplete\u201d and see what I can find out. Luckily the natural increase in traffic from iOS 11 is performing so well.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938652.000542"
+        }, 
+        {
+            "text": "yeah ...just want to see results :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938292.000093"
+        }, 
+        {
+            "text": "It is still 9:09am in Samoa, so :fingerscrossed: that the notification is completed once they reach 12. Then we should be able to see the analytics", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938259.000390"
+        }, 
+        {
+            "text": "I\u2019m not sure, this is the first scheduled notification we have done through firebase.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938154.000443"
+        }, 
+        {
+            "text": "Okay is there a delay?  oR should it be showing in real time?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938122.000321"
+        }, 
+        {
+            "text": "No I don\u2019t see any analytics for that notification right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938108.000671"
+        }, 
+        {
+            "text": "I haven't but I'm traveling with terrible phone service right now", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938096.000241"
+        }, 
+        {
+            "text": "let's try that again with my fingers on the right keys....I don't see a open rate % yet", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938078.000302"
+        }, 
+        {
+            "text": "and was going to ask if you got the notification?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938078.000033"
+        }, 
+        {
+            "text": "I was just trying to figure that out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505938068.000007"
+        }, 
+        {
+            "text": "I do't see a nope rate % yet", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938058.000263"
+        }, 
+        {
+            "text": "Hey Mudge,  The notification says \"In Progress\" for today.  Is there any other way to confirm it's working?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505938047.000299"
+        }, 
+        {
+            "text": "All good I've got a theory about how it may happen now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505888388.000094"
+        }, 
+        {
+            "text": "Okay, I think I put some placeholders in just before reaching out to Mark, but honestly can't remember which ones now.", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505888303.000137"
+        }, 
+        {
+            "text": "Actually nevermind, I can see that <mailto:mcoates@8i.com|mcoates@8i.com> has been replacing some of the ANIMALS2 sprites with the double resolution sized ones.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505877355.000192"
+        }, 
+        {
+            "text": "Hey, this can wait until tomorrow.\nDo you remember any thing odd happening when making the sprite thumbnails for ANIMALS2_290 and ANIMALS2_330?\nThe current images are bigger than I was expecting them to be, which probably means something is wrong, but I can\u2019t identify where or what it is.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505875847.000163"
+        }, 
+        {
+            "text": "All good.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860819.000087"
+        }, 
+        {
+            "text": "ok thanks!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860808.000027"
+        }, 
+        {
+            "text": "i believe stats show users don't scroll down too far on Featured", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860786.000080"
+        }, 
+        {
+            "text": "Yea, cool. Was just making sure I understood. That makes sense to me too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860779.000056"
+        }, 
+        {
+            "text": "yeah, i think that would make sense", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860761.000049"
+        }, 
+        {
+            "text": "ok, but when that happens we want to reduce the number of featured poses right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860741.000019"
+        }, 
+        {
+            "text": "might be a couple weeks", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860730.000179"
+        }, 
+        {
+            "text": "no idea", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860722.000184"
+        }, 
+        {
+            "text": "When do we plan to stop targeting our content by device?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860715.000137"
+        }, 
+        {
+            "text": "will do", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860690.000177"
+        }, 
+        {
+            "text": "thanks Mudge", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860687.000136"
+        }, 
+        {
+            "text": "yeah i don't either", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860684.000155"
+        }, 
+        {
+            "text": "Maybe double check with Alenni though, not sure I understand what her comment means.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860667.000193"
+        }, 
+        {
+            "text": "No deleting those should be fine, I\u2019d be surprised if things hadn\u2019t been deleted from there in the past.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860598.000344"
+        }, 
+        {
+            "text": "but I wanted to double check that deleting doesn't break anything because it came up today", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860552.000057"
+        }, 
+        {
+            "text": "so similar to double featured slots (not quite that much) in CMS.  When you all move away from targeting to device, it will be much less slots.", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860522.000013"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860478.000271"
+        }, 
+        {
+            "text": "yes exactly.  there is a number 1 for iOS and number 1 for Android", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860473.000168"
+        }, 
+        {
+            "text": "oh and that is why the order values are the same for some of the featured poses?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860446.000141"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860389.000050"
+        }, 
+        {
+            "username": "nshelton", 
+            "display_as_bot": false, 
+            "text": "<@U6Q5CG407> shared a file: <https://hvr.slack.com/files/U6Q5CG407/F75J827A8/september_19_content_push|September 19 Content Push>", 
+            "upload": false, 
+            "ts": "1505860380.000260", 
+            "subtype": "file_share", 
+            "user": "U6Q5CG407", 
+            "file": {
+                "thumb_480_w": 371, 
+                "groups": [], 
+                "filetype": "gdoc", 
+                "thumb_800_h": 1035, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_64.png", 
+                "size": 4935, 
+                "original_h": 1035, 
+                "thumb_360_w": 278, 
+                "title": "September 19 Content Push", 
+                "url_private": "https://docs.google.com/document/d/1618qMgRPMDfE0wiM_zBZpxkwVpFQSV_lQ0uOOLq_IPI/edit", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_360.png", 
+                "id": "F75J827A8", 
+                "ims": [
+                    "D6PKY5B6W"
+                ], 
+                "thumb_720_w": 557, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_800.png", 
+                "timestamp": 1505844495, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_1024.png", 
+                "user": "U6Q5CG407", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Document", 
+                "name": "September 19 Content Push", 
+                "mimetype": "application/vnd.google-apps.document", 
+                "channels": [
+                    "C65QGF50C"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U6Q5CG407/F75J827A8/september_19_content_push", 
+                "is_external": true, 
+                "created": 1505844495, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 800, 
+                "thumb_960_w": 742, 
+                "thumb_1024_w": 791, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F75J827A8-cb51027df7/september_19_content_push_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "As of 10 mins ago, this list at the end of the doc.  :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860378.000254"
+        }, 
+        {
+            "text": "Just a single one is fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860352.000148"
+        }, 
+        {
+            "text": "Which poses are currently featured and specific to iOS or Android?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860319.000101"
+        }, 
+        {
+            "text": "ok that's my guess", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860276.000118"
+        }, 
+        {
+            "text": "Yea, I\u2019m not sure what the process Alenni used is, but I would have though deleting would be fine once the pose is no longer featured.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860261.000107"
+        }, 
+        {
+            "text": "some are targeted to iOS, some to Android, some not targeted at all", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860215.000221"
+        }, 
+        {
+            "text": "At some point, I anticipate we will need to delete some", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860187.000218"
+        }, 
+        {
+            "text": "BUT with the current iOS/Android specific targeting, we need more featured poses than used in the past", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860176.000118"
+        }, 
+        {
+            "text": "Alenni told me not to delete things there earlier today", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860152.000072"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin/holo-feature-pose/>", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860140.000007"
+        }, 
+        {
+            "text": "Oh meaning a post in this section of CMS", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860139.000071"
+        }, 
+        {
+            "text": "Does that mean use a pose which is specific for iOS as a featured pose?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505860110.000309"
+        }, 
+        {
+            "text": "...and separate question - Can I create new featured poses while we use Android and iOS targeting and then delete them in the future?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505860072.000031"
+        }, 
+        {
+            "text": "No, its better to say something. Even if I can\u2019t do anything to help.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505859824.000139", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1505859833.000000"
+            }
+        }, 
+        {
+            "text": "ok sorry to bug... should be ok", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505859780.000099"
+        }, 
+        {
+            "text": "As for your other question, I\u2019m not sure I understand.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505859779.000224"
+        }, 
+        {
+            "text": "yeah haven't seen it again in a bit", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505859748.000090"
+        }, 
+        {
+            "text": "that's fine", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505859739.000045"
+        }, 
+        {
+            "text": "Alright, I don\u2019t believe there is much I can do about that. 502 indicates an amazon problem, which will happen time to time. \nHas it stopped happening for you since?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505859723.000124"
+        }, 
+        {
+            "text": "I was reordering", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505859537.000089"
+        }, 
+        {
+            "text": "Featured poses", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505859531.000415"
+        }, 
+        {
+            "text": "what page was it for?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505859486.000086"
+        }, 
+        {
+            "text": "It should only be temporary though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505859471.000182"
+        }, 
+        {
+            "text": "ah ok", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505859456.000028"
+        }, 
+        {
+            "text": "So I think just due to high traffic its possible that you may see the 502 error", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505859442.000220"
+        }, 
+        {
+            "text": "...and separate question - Can I create new featured poses while we use Android and iOS targeting and then delete them in the future?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505858909.000035"
+        }, 
+        {
+            "text": "Are there any updates going on?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505858576.000146"
+        }, 
+        {
+            "text": "I'm udpating the Featured poses right now", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505858554.000006"
+        }, 
+        {
+            "text": "just got it 2 out of three actions", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505858546.000158"
+        }, 
+        {
+            "text": "Hey Mudge, getting a 502 Bad Gateway message", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505858538.000219"
+        }, 
+        {
+            "text": "No problem, wish I could of be more useful.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505855363.000516"
+        }, 
+        {
+            "text": "thanks for taking the time to troubleshoot", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505855266.000282"
+        }, 
+        {
+            "text": "got it.  Thank you Mudge!!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505855251.000207"
+        }, 
+        {
+            "text": "Alright, I\u2019m a bit stumped on that. But do let me know if you see this happen again. If you can leave the poses without the sprite screenshot it would be helpful, but don\u2019t let it hold up a content release :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505855093.000098"
+        }, 
+        {
+            "text": "but that\u2019s not really the important problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854827.000033"
+        }, 
+        {
+            "text": "It could explain why you needed to create the sprite twice to fix it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854810.000713"
+        }, 
+        {
+            "text": "I'll def lookout to see if there are any other instances", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854802.000446"
+        }, 
+        {
+            "text": "i know...sorry!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854791.000418"
+        }, 
+        {
+            "text": "i'll keep that in mind", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854786.000348"
+        }, 
+        {
+            "text": "oh, that rules my theory out then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854782.000108"
+        }, 
+        {
+            "text": "good to know on session expiry", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854781.000214"
+        }, 
+        {
+            "text": "I saw them the night before when confirming order of poses for hte push...then they were gone the next morning", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854769.000253"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854762.000471"
+        }, 
+        {
+            "text": "that", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854741.000091"
+        }, 
+        {
+            "text": "ok but i didn't create the sprites", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854738.000283"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854731.000164"
+        }, 
+        {
+            "text": "oh wait as in my CMS session?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854725.000050"
+        }, 
+        {
+            "text": "which would automatically log you back in with a new 20 minute session", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854720.000298"
+        }, 
+        {
+            "text": "After that expires it could fail to update the scene, and then reload the page.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854704.000369"
+        }, 
+        {
+            "text": "it's sticking for now..i just thought it was odd", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854680.000265"
+        }, 
+        {
+            "text": "A theory I have currently is that when you log in you get an active session for 20 minutes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854673.000216"
+        }, 
+        {
+            "text": "I understand", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854670.000546"
+        }, 
+        {
+            "text": "I can\u2019t see anything odd about them in particular, also don\u2019t want to do too much with them now they are live.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854626.000334"
+        }, 
+        {
+            "text": "ok thank you...what did you find?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854575.000087"
+        }, 
+        {
+            "text": "Hey, I was having a look at those poses you mentioned, HBOLLYWOOD_150 and 170", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854560.000169"
+        }, 
+        {
+            "text": "hey Mudge!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505854524.000327"
+        }, 
+        {
+            "text": "Hey, LMK when you have a minute.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505854476.000041"
+        }, 
+        {
+            "text": "Oh cool, Thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505785378.000183"
+        }, 
+        {
+            "text": "ur awesome!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505785293.000070"
+        }, 
+        {
+            "text": "ur a continent and ocean away and I have more direct communication with you than anyone else :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505785288.000010"
+        }, 
+        {
+            "text": "I'd like to simplify the process but it's been a challenge in speaking directly to anyone", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505785255.000173"
+        }, 
+        {
+            "text": "seriously", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505785224.000131"
+        }, 
+        {
+            "text": "haha no it's not you don't worry", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505785220.000054"
+        }, 
+        {
+            "text": "I\u2019m sorry, I realize this stuff is horrible, and my attempted humour probably doesn\u2019t help.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505785208.000156"
+        }, 
+        {
+            "text": "ur good! don't worry", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505785130.000135"
+        }, 
+        {
+            "text": "Hey was getting food.  Thanks for your help!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505772248.000146"
+        }, 
+        {
+            "text": "Yo, I\u2019m in now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765251.000346"
+        }, 
+        {
+            "text": "Hey Mudge,  When you are in, we can do a test for the notification.", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505758178.000381"
+        }, 
+        {
+            "text": "You\u2019re very welcome :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505260873.000314"
+        }, 
+        {
+            "text": "Thanks for all of your help today!!", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505260851.000160"
+        }, 
+        {
+            "text": "It should be enabled for both of your <http://8i.com|8i.com> google accounts", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505253085.000602"
+        }, 
+        {
+            "text": "Try <https://console.firebase.google.com/u/0/project/holo-44694840/overview>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505253070.000360"
+        }, 
+        {
+            "text": "I believe I invited you the other day. I take it you didn\u2019t get an email from them about that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505253033.000351"
+        }, 
+        {
+            "text": "We'll need to figure out how to launch and target notifications before Tuesday", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505252993.000089"
+        }, 
+        {
+            "text": "hey Mudge, can you share the Firebase info with Alenni and I?", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505252919.000218"
+        }, 
+        {
+            "text": "cool, Im in the meeting in the calendar invite.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505250198.000173"
+        }, 
+        {
+            "text": "heading to a room now", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1505250131.000159"
+        }, 
+        {
+            "text": "that wasn\u2019t even that quick. I\u2019m no good at leaving unread messages alone :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504228220.000137"
+        }, 
+        {
+            "text": "Ok!  Thanks for the quick reaponse", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1504227798.000179"
+        }, 
+        {
+            "text": "Oh wow, long hours. Na it can wait until the week after.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504227689.000244"
+        }, 
+        {
+            "text": "Next week I'm at a VR summit and will be in sessions 8am to 10pm :open_mouth:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1504226461.000049"
+        }, 
+        {
+            "text": "have to run out for a bit but will be back home in an hour.", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1504226440.000145"
+        }, 
+        {
+            "text": "Hey!  Yes, I'm around tonight or tomorrow if you want to talk through it.", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1504226422.000127"
+        }, 
+        {
+            "text": "I\u2019d like to set up some time to talk about the CMS dashboard for when you are back", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504219327.000352"
+        }, 
+        {
+            "text": "Hey, are you away for all of next week?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504219283.000194"
+        }, 
+        {
+            "username": "nshelton", 
+            "display_as_bot": false, 
+            "text": "<@U6Q5CG407> shared a file: <https://hvr.slack.com/files/U0489AHLU/F6UMQE6KA/image_uploaded_from_ios.jpg|Image uploaded from iOS>", 
+            "upload": false, 
+            "ts": "1504029527.000905", 
+            "subtype": "file_share", 
+            "user": "U6Q5CG407", 
+            "file": {
+                "thumb_480_w": 270, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_800_h": 800, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_800_w": 450, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_64.jpg", 
+                "size": 880781, 
+                "original_h": 1334, 
+                "thumb_360_w": 202, 
+                "title": "Image uploaded from iOS", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F6UMQE6KA/image_uploaded_from_ios.jpg", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_360.jpg", 
+                "id": "F6UMQE6KA", 
+                "ims": [
+                    "D6PKY5B6W"
+                ], 
+                "thumb_720_w": 405, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_80.jpg", 
+                "comments_count": 1, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_800.jpg", 
+                "timestamp": 1504029063, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F6UMQE6KA/download/image_uploaded_from_ios.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_1024.jpg", 
+                "user": "U0489AHLU", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "Image uploaded from iOS.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F6UMQE6KA-8ef8465cda", 
+                "permalink": "https://hvr.slack.com/files/U0489AHLU/F6UMQE6KA/image_uploaded_from_ios.jpg", 
+                "is_external": false, 
+                "created": 1504029063, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 750, 
+                "thumb_960_w": 540, 
+                "thumb_1024_w": 576, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F6UMQE6KA-a46df0f5f8/image_uploaded_from_ios_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "nshelton", 
+            "display_as_bot": false, 
+            "text": "<@U6Q5CG407> shared a file: <https://hvr.slack.com/files/U0489AHLU/F6V97B8CB/image_uploaded_from_ios.jpg|Image uploaded from iOS>", 
+            "upload": false, 
+            "ts": "1504029462.009000", 
+            "subtype": "file_share", 
+            "user": "U6Q5CG407", 
+            "file": {
+                "thumb_480_w": 270, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_800_h": 800, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_800_w": 450, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_64.jpg", 
+                "size": 892924, 
+                "original_h": 1334, 
+                "thumb_360_w": 202, 
+                "title": "Image uploaded from iOS", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F6V97B8CB/image_uploaded_from_ios.jpg", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_360.jpg", 
+                "id": "F6V97B8CB", 
+                "ims": [
+                    "D6PKY5B6W"
+                ], 
+                "thumb_720_w": 405, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_80.jpg", 
+                "comments_count": 1, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_800.jpg", 
+                "timestamp": 1504029067, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F6V97B8CB/download/image_uploaded_from_ios.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_1024.jpg", 
+                "user": "U0489AHLU", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "Image uploaded from iOS.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F6V97B8CB-365f649b92", 
+                "permalink": "https://hvr.slack.com/files/U0489AHLU/F6V97B8CB/image_uploaded_from_ios.jpg", 
+                "is_external": false, 
+                "created": 1504029067, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 750, 
+                "thumb_960_w": 540, 
+                "thumb_1024_w": 576, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F6V97B8CB-b155869bd7/image_uploaded_from_ios_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Haha, all good.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503443212.000210"
+        }, 
+        {
+            "text": "I'll try to be better about using slack :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U6Q5CG407", 
+            "ts": "1503443071.000067"
+        }, 
+        {
+            "text": "Hey Nadine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502922328.000215"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U6Q5CG407", 
+            "U0C90MHEH"
+        ]
+    }
+}

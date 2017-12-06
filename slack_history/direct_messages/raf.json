@@ -1,0 +1,853 @@
+{
+    "messages": [
+        {
+            "text": "I wasn\u2019t sure if there was a way to setup the dockerfile/docker-compose to get different behaviour for different environments", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674418.000096"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674388.000072"
+        }, 
+        {
+            "text": "Ok, that makes sense", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1509674381.000047"
+        }, 
+        {
+            "text": "which is good for staging/prod", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674371.000140"
+        }, 
+        {
+            "text": "uwsgi doesn\u2019t seem to have that behaviour", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674364.000102"
+        }, 
+        {
+            "text": "Ah I see", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1509674361.000104"
+        }, 
+        {
+            "text": "because that actively watches the python files and updates when I change them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674351.000133"
+        }, 
+        {
+            "text": "What's the different between running manage.py and calling uwsgi directly?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1509674348.000011"
+        }, 
+        {
+            "text": "Ideal for dev (only dev) it would run /app/eighti/manage.py runserver 0.0.0.0:8080", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674328.000066"
+        }, 
+        {
+            "text": "I\u2019m not sure about the differences between running the docker image for dev vs for staging", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674304.000095"
+        }, 
+        {
+            "text": "Hey", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509674268.000103"
+        }, 
+        {
+            "text": "<https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Parameters:sort=Name>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1509486102.000283"
+        }, 
+        {
+            "text": "Alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508819551.000185"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508819545.000182"
+        }, 
+        {
+            "text": "Hey, not sure I completely understand how you PR works, is it using buildkite to build the docker container and then build and deploy it only for the branches which start with a v*?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508819527.000073"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449864.000466"
+        }, 
+        {
+            "text": "Just sent an invite now", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508449405.000167"
+        }, 
+        {
+            "text": "Is it something I need to be invited too?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449374.000134"
+        }, 
+        {
+            "text": "I\u2019m not sure if I have an account for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449356.000140"
+        }, 
+        {
+            "text": "(currently has no logs)", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508449341.000264"
+        }, 
+        {
+            "text": "Logs for that cluster will end up here: <https://papertrailapp.com/groups/6780962/events>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508449337.000345"
+        }, 
+        {
+            "text": "Correct", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508449323.000279"
+        }, 
+        {
+            "text": "paper trail would be our logging service right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449319.000154"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449289.000038"
+        }, 
+        {
+            "text": "That is correct. The RDS instance is created separately, manually", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508449283.000150"
+        }, 
+        {
+            "text": "is that separate?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449278.000399"
+        }, 
+        {
+            "text": "I don\u2019t see anything about an RDS instance", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449271.000093"
+        }, 
+        {
+            "text": "So from what I can tell that will create an amazon cloud with 1-3 ec2 instances and a bastion box", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508449255.000057"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "thumbsup_all", 
+                    "users": [
+                        "U69DBJQ5R"
+                    ]
+                }
+            ], 
+            "text": "Cool yea, I\u2019m sure I\u2019ll have a few questions", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508448760.000492"
+        }, 
+        {
+            "text": "Then you just deploy tasks on top of it", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508448630.000058"
+        }, 
+        {
+            "text": "Please feel free to ask any questions. This PR basically uses the building block modules we created a few months back to set up a private network and Docker cluster", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508448623.000164"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508448367.000267"
+        }, 
+        {
+            "text": "Gonna assign you a PR to review of the ECS cluster for <http://8i.com|8i.com> and dev portal, so you can see what I'm doing", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1508447935.000415"
+        }, 
+        {
+            "text": "This document outlines how to go about setting things up (don't worry if you don't understand it now, I'll walk through it with you when we come to that bridge) <https://eighteye.atlassian.net/wiki/spaces/SRE/pages/1671180/ECS>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1507848819.000225"
+        }, 
+        {
+            "text": "I'll come down and explain a bit more", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1507848694.000123"
+        }, 
+        {
+            "text": "alright, I don\u2019t actually know what that is though :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507848577.000194"
+        }, 
+        {
+            "text": "So on the topic of setting up infrastructure for running <http://8i.com|8i.com> and dev portal, we'll probably roll the same setup as we did for studio, content platform, etc.", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1507848533.000206"
+        }, 
+        {
+            "text": "Coming down", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1507511286.000067"
+        }, 
+        {
+            "text": "thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507510920.000023"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507510918.000070"
+        }, 
+        {
+            "text": "Ok, five minutes", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1507510914.000024"
+        }, 
+        {
+            "text": "anytime is good for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507510905.000092"
+        }, 
+        {
+            "text": "Sure. When's good?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1507510894.000080"
+        }, 
+        {
+            "text": "Hey, do you think you\u2019d have some time to have a chat at some point today or tomorrow?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507510808.000116"
+        }, 
+        {
+            "text": "Oh awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503609665.000235"
+        }, 
+        {
+            "text": "I updated the BuildKite page with steps to fix this: <https://eighteye.atlassian.net/wiki/spaces/SRE/pages/1572865/BuildKite>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503609305.000002"
+        }, 
+        {
+            "text": "Cool, I\u2019ll sync with dave once he\u2019s in and let you know if we need you again :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503609164.000304"
+        }, 
+        {
+            "text": "I have no idea where buildkite stuff happens, but I\u2019m pretty happy with that :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503609111.000274"
+        }, 
+        {
+            "text": "For now, yes", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503609089.000226"
+        }, 
+        {
+            "text": "Sweet, is that something we will need to get you to do if it comes up again?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503609081.000264"
+        }, 
+        {
+            "text": "I basically logged into the box and did `sudo git clean -fxdq` inside the `/var/lib/buildkite-agent/builds/build-agent/8i/holo-dot-8i-dot-com` folder", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503609007.000188"
+        }, 
+        {
+            "text": "ah yea, I think we have hit similar problems before. Is there an easy way to get out of that state? I\u2019m not sure how much more work dave has to go on his change. He is in late today but will check with him when he gets in.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608785.000368"
+        }, 
+        {
+            "text": "And `git clean` runs as `buildkite-agent` user", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503608696.000060"
+        }, 
+        {
+            "text": "Yeah, the `__pycache__` folder had root:root permissions", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503608686.000100"
+        }, 
+        {
+            "text": "And actually the first failure for holo-api looks like it was on dave\u2019s branch where he is doing some docker stuff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608579.000200"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503608528.000351"
+        }, 
+        {
+            "text": "It looks like it was the same, <https://buildkite.com/organizations/8i/agents/f76820e8-96a2-4a91-b1d5-63c0048f1b7d>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608523.000409"
+        }, 
+        {
+            "text": "Its happened on multiple branches, I\u2019m not which agents they used, but could of been the same one.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608473.000033"
+        }, 
+        {
+            "text": "Is this happening on multiple agents?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503608441.000396", 
+            "edited": {
+                "user": "U69DBJQ5R", 
+                "ts": "1503608445.000000"
+            }
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608410.000667"
+        }, 
+        {
+            "text": "I don\u2019t believe anything has changed from our side", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608407.000142"
+        }, 
+        {
+            "text": "Hey, let's have a look", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1503608397.000350"
+        }, 
+        {
+            "text": "Hey, we seem to be getting some problems with buildkite. git clean is not working. \n<https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2629#b87a7da3-cd58-408e-a73e-dfba23763c8f>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503608381.000133"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "trophy", 
+                    "users": [
+                        "U69DBJQ5R"
+                    ]
+                }
+            ], 
+            "text": "Yea I saw, Champion.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502935181.000036"
+        }, 
+        {
+            "text": "Issue resolved. Your build is green", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502935155.000060"
+        }, 
+        {
+            "text": "Awesome, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502932991.000151"
+        }, 
+        {
+            "text": "Hey, had a look at it now, let me see", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502932972.000108"
+        }, 
+        {
+            "text": "Hey I\u2019m getting a buildkite error.\nERROR: Service \u2018app\u2019 failed to build: error creating aufs mount to /var/lib/docker/aufs/mnt/ee8e3f989cbfcc67583524449db419f1aa386cae50dd281099ba170ac44c9c84-init: invalid argument\n<https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2574#31ec4fe9-1552-46e9-9607-7b300681f1d3>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502932947.000174"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502146283.853335"
+        }, 
+        {
+            "text": "Until we get more info on why it's doing that", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502146278.852095"
+        }, 
+        {
+            "text": "We'll keep a closer eye on the agents for now", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502146259.846856"
+        }, 
+        {
+            "text": "mmm, ok, yea I\u2019m out of my depth when it comes to how buildkite does its thing :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502146240.841769"
+        }, 
+        {
+            "text": "Thats about the only thing I can think of which would make that branch unique in anyway", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502146191.828788"
+        }, 
+        {
+            "text": "Because I fixed it with a `git fetch`", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502146186.827400"
+        }, 
+        {
+            "text": "Still, feels like BK is not checking origin properly", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502146179.825535"
+        }, 
+        {
+            "text": "Hmm maybe", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502146168.822502"
+        }, 
+        {
+            "text": "Thats probably something which happens in that branch, but not with the others as much", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502146157.819698"
+        }, 
+        {
+            "text": "I wonder if its something to do with using the github \u201cMerge Pull Request\u201d to merge into that branch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502146131.812847"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502146102.804860"
+        }, 
+        {
+            "text": "I have added my voice to that GH issue, and a retry fixed it for us", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502146035.786695"
+        }, 
+        {
+            "text": "oh yea, I thought that might be the case", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502145892.746891"
+        }, 
+        {
+            "text": "BuildKite pulls whatever ref is on the webhook", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502145877.742620"
+        }, 
+        {
+            "text": "Is it possible to configure buildkite to always pull from the git HEAD?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502145835.731616"
+        }, 
+        {
+            "text": "so yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502145768.713870"
+        }, 
+        {
+            "text": "Its our default branch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502145764.712662"
+        }, 
+        {
+            "text": "Is this the most actively used one?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502145752.709648"
+        }, 
+        {
+            "text": "hmm, strange that it only happens on the develop branch though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502145742.707042"
+        }, 
+        {
+            "text": "Looks like we may be hitting this: <https://github.com/buildkite/agent/issues/477>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502145646.680485", 
+            "attachments": [
+                {
+                    "thumb_height": 250, 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "thumb_width": 250, 
+                    "title": "Retry/sleep Git checkouts \u00b7 Issue #477 \u00b7 buildkite/agent", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/buildkite/agent/issues/477", 
+                    "text": "Sometimes GitHub web hooks sender faster than the time it takes for their Git servers to update. So builds end up starting before the commit exists. This often surfaces as this error: $ git checkou...", 
+                    "id": 1, 
+                    "fallback": "GitHub: Retry/sleep Git checkouts \u00b7 Issue #477 \u00b7 buildkite/agent", 
+                    "thumb_url": "https://avatars1.githubusercontent.com/u/25882?v=4&s=400", 
+                    "from_url": "https://github.com/buildkite/agent/issues/477"
+                }
+            ]
+        }, 
+        {
+            "text": "Strange. Let me take a look", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502143539.043919"
+        }, 
+        {
+            "text": "Hmm, that \u201creference is not a tree: be789751bbebcbf032a2af052525af11750c4a93\u201d has come back. <https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2524#35b691f9-6357-4b97-aabe-bad6d2ecc456>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502143218.926467"
+        }, 
+        {
+            "text": "Yeah, that'd be great :thumbsup_all:", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1502053356.490017"
+        }, 
+        {
+            "text": "Hey, I\u2019m going to update the settings of our runscope a little bit, try and avoid those alerts for a single 504 like we were getting over the weekend. \nAdding immediate re-run after a failure and alerts will only fire after 2 fails instead of 1.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502053012.461724"
+        }, 
+        {
+            "text": "Oh yup, cool. Thanks, and I\u2019ll let you know if I see it again.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501799808.434951"
+        }, 
+        {
+            "text": "I have found a few mentions of this bug in BuildKite's GitHub repo but they claimed it was fixed", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501799782.427275"
+        }, 
+        {
+            "text": "The thing I've done in the past is to log into the buildkite agent and run `git reset --hard HEAD` inside the build folder. Have just done it on two of the build nodes. Can you let me know if your builds fail again?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501799767.422756"
+        }, 
+        {
+            "text": "Alright, let me have a looksie", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501799480.336405"
+        }, 
+        {
+            "text": "but not sure about dave, who is away now for a week", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501799325.287944"
+        }, 
+        {
+            "text": "I haven\u2019t done that before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501799307.282189"
+        }, 
+        {
+            "text": "Does the team regularly push with `--force`?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501799294.278217", 
+            "edited": {
+                "user": "U69DBJQ5R", 
+                "ts": "1501799296.000000"
+            }
+        }, 
+        {
+            "text": "Yup, seen this before. Seems to happen more often than not in that repo", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501799277.272990"
+        }, 
+        {
+            "text": "Yo, if you have some spare time today (no rush) would you mind looking into a funny buildkite error for me.\n<https://buildkite.com/8i/holo-dot-8i-dot-com/builds?branch=develop>\nThis branch, and only this branch is failing to find the right git commit \u201cfatal: reference is not a tree: a62077ee09d7f438fc33ff46e2a07876d5cdff7a\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501799240.261811"
+        }, 
+        {
+            "text": "Yea cool, thanks for taking a look.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501101211.179017"
+        }, 
+        {
+            "text": "Maybe it was a transient issue, so please let me know if it re-occurs", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501063941.181337"
+        }, 
+        {
+            "text": "I re-ran it and it seems to have worked: <https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2407>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501063925.176209"
+        }, 
+        {
+            "text": "Its running this script AFAIK <https://github.com/8i/holo-api/blob/develop/.buildkite/deploy-backend/run_deploy.sh>\nI\u2019m not familiar with that script, but it looks like it does have a few custom exit calls in it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046592.171456"
+        }, 
+        {
+            "text": "Yeah, it's the final step indeed. Will investigate", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501046257.118722"
+        }, 
+        {
+            "text": "Cheers for that. It looks like it may have gotten most of the way there. So if there is any manual steps I can perform to get me through tomorrow that is fine too.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046234.115300"
+        }, 
+        {
+            "text": "Ok, will have to take this as homework and investigate a bit. Will let you know tonight/tomorrow", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501046166.104678", 
+            "edited": {
+                "user": "U69DBJQ5R", 
+                "ts": "1501046173.000000"
+            }
+        }, 
+        {
+            "text": "Good to know :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501046118.096921"
+        }, 
+        {
+            "text": "Always try again before I bother someone :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046092.092534"
+        }, 
+        {
+            "text": "Yea its happened twice for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046082.091124"
+        }, 
+        {
+            "text": "Have you re-triggered it?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501046071.089359"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046051.086224"
+        }, 
+        {
+            "text": "I wasn\u2019t planning for prod today.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046048.085700"
+        }, 
+        {
+            "text": "I'm gonna be out of office all of tomorrow", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501046046.085476"
+        }, 
+        {
+            "text": "It is, but its just for staging", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501046016.080560"
+        }, 
+        {
+            "text": "Is this blocking your deployment?", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501045823.050362"
+        }, 
+        {
+            "text": "Exit code 255 is strange", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501045817.049359"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501045647.023626"
+        }, 
+        {
+            "text": "Let me have a look", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501045634.021785"
+        }, 
+        {
+            "text": "That's a new one", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501045630.021077"
+        }, 
+        {
+            "text": "Another buildkite failure for you to take a look at when you can. \nThe final deploy step appears to be timing out (10 minutes) before it completes. I don\u2019t believe it used to get close to that timeout. \n<https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2405#_>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501045388.981386"
+        }, 
+        {
+            "text": "Cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501041817.404594"
+        }, 
+        {
+            "text": "No worries. Let me know if that doesn't fix it", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501041811.403720", 
+            "edited": {
+                "user": "U69DBJQ5R", 
+                "ts": "1501041814.000000"
+            }
+        }, 
+        {
+            "text": "oh right, hadn\u2019t checked that :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501041803.402426"
+        }, 
+        {
+            "text": "Your build's failure looks exactly like what I found on other pipelines. The blurb above is the fix", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501041754.394627"
+        }, 
+        {
+            "text": "Did you see this message? <https://hvr.slack.com/archives/C5C3ANG3G/p1501041305545066>", 
+            "type": "message", 
+            "user": "U69DBJQ5R", 
+            "ts": "1501041724.389266", 
+            "attachments": [
+                {
+                    "footer": "Posted in #engineering", 
+                    "channel_name": "engineering", 
+                    "text": "<!here|@here> if you use the `docker-compose` plugin on BuildKite, make sure you're pinning the plugin version. So where you see:\n```\n...\n    plugins:\n      docker-compose:\n...\n```\nChange it to:\n```\n...\n    plugins:\n      docker-compose#v1.4.0:\n...\n```", 
+                    "author_link": "https://hvr.slack.com/team/raf", 
+                    "ts": "1501041305.545066", 
+                    "author_name": "Rafael Fonseca", 
+                    "id": 1, 
+                    "channel_id": "C5C3ANG3G", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "author_subname": "raf", 
+                    "from_url": "https://hvr.slack.com/archives/C5C3ANG3G/p1501041305545066", 
+                    "author_icon": "https://avatars.slack-edge.com/2017-07-17/212872467504_df9a334192435c603a1f_48.jpg", 
+                    "is_msg_unfurl": true, 
+                    "fallback": "[July 25th, 2017 8:55 PM] raf: <!here|@here> if you use the `docker-compose` plugin on BuildKite, make sure you're pinning the plugin version. So where you see:\n```\n...\n    plugins:\n      docker-compose:\n...\n```\nChange it to:\n```\n...\n    plugins:\n      docker-compose#v1.4.0:\n...\n```"
+                }
+            ]
+        }, 
+        {
+            "text": "Can you see anything in that which would cause it to be red?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501041688.383131"
+        }, 
+        {
+            "text": "Hey, thanks for the fixes on our buildkite pipeline. I did just get a fail which I don\u2019t understand though. It looks like all the tests pass but something must be returning a fail status code after that. <https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2400#c8b9fa8a-4fef-48bc-be9d-75312b6394ed>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501041660.377892"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U69DBJQ5R", 
+            "U0C90MHEH"
+        ]
+    }
+}

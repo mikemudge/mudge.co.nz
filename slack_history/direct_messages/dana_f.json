@@ -1,0 +1,423 @@
+{
+    "messages": [
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484701220.000011"
+        }, 
+        {
+            "text": "You can pull out the measurements, colors &amp; files from there, but let me know if anything is missing", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1484700097.000010"
+        }, 
+        {
+            "text": "Just sent you an invite to Zeplin - it might ended up in your spam folder.\nThe screen is here: <https://zpl.io/Z1JmOxJ>", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1484700065.000008", 
+            "attachments": [
+                {
+                    "thumb_height": 228, 
+                    "service_icon": "https://app.zeplin.io/img/favicon/57x57.png", 
+                    "thumb_width": 228, 
+                    "title": "Zeplin", 
+                    "text": "Collaboration app for UI designers and frontend developers", 
+                    "title_link": "https://zpl.io/Z1JmOxJ", 
+                    "service_name": "Zeplin", 
+                    "id": 1, 
+                    "fallback": "Zeplin", 
+                    "thumb_url": "https://zeplin.io/img/favicon/228x228.png", 
+                    "from_url": "https://zpl.io/Z1JmOxJ"
+                }
+            ]
+        }, 
+        {
+            "text": "Sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484693333.000007"
+        }, 
+        {
+            "text": "sure - will send them through in the afternoon :+1:", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1484693326.000006"
+        }, 
+        {
+            "text": "Yea those would be great to get at some point. Whenever you have them available.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484692993.000005"
+        }, 
+        {
+            "text": "I probably need to send you measurements and icons", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1484692928.000004"
+        }, 
+        {
+            "text": "This is awesome!", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1484692909.000003"
+        }, 
+        {
+            "text": "Hey, you can view the current state of the Feed webview here <http://holo-stage.dev.8i.com/feed/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484692822.000002"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482361086.000005"
+        }, 
+        {
+            "text": "The clickable wireframes", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1482361080.000004"
+        }, 
+        {
+            "text": "<http://6ypwvx.axshare.com/>", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1482361068.000003"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/feed/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482359083.000002"
+        }, 
+        {
+            "text": "Thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1482192184.000009"
+        }, 
+        {
+            "text": "Will do, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482192179.000008"
+        }, 
+        {
+            "text": "Sweet, I sent you an updated version. \nJust let me know if you have any questions / feedback.", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1482192171.000007"
+        }, 
+        {
+            "username": "dana_f", 
+            "display_as_bot": false, 
+            "text": "<@U335T69M4> uploaded a file: <https://hvr.slack.com/files/U335T69M4/F3HFPMYNB/webview-s1-2.pdf|Webview-s1-2.pdf>", 
+            "upload": true, 
+            "ts": "1482192096.000006", 
+            "subtype": "file_share", 
+            "user": "U335T69M4", 
+            "file": {
+                "filetype": "pdf", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F3HFPMYNB", 
+                "size": 22193189, 
+                "title": "Webview-s1-2.pdf", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F3HFPMYNB/webview-s1-2.pdf", 
+                "ims": [
+                    "D33EKKR9P"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1482192094, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F3HFPMYNB/download/webview-s1-2.pdf", 
+                "user": "U335T69M4", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "PDF", 
+                "name": "Webview-s1-2.pdf", 
+                "mimetype": "application/pdf", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F3HFPMYNB-295bfd0ca2", 
+                "permalink": "https://hvr.slack.com/files/U335T69M4/F3HFPMYNB/webview-s1-2.pdf", 
+                "is_external": false, 
+                "created": 1482192094, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Otherwise I think I\u2019m good to work towards this for now, and will let you know if I notice anything else.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482191942.000005"
+        }, 
+        {
+            "text": "No that looks pretty good. Is there anything in particular you wanted to discuss about them?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482191875.000004"
+        }, 
+        {
+            "text": "Let me know when you free to discuss those - and if you have any concerns / questions. \nThis version is after a review with Asher", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1482186981.000003"
+        }, 
+        {
+            "username": "dana_f", 
+            "display_as_bot": false, 
+            "text": "<@U335T69M4> uploaded a file: <https://hvr.slack.com/files/U335T69M4/F3GSGL2AZ/webview-s1-2.pdf|Webview-s1-2.pdf>", 
+            "upload": true, 
+            "ts": "1482186856.000002", 
+            "subtype": "file_share", 
+            "user": "U335T69M4", 
+            "file": {
+                "filetype": "pdf", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F3GSGL2AZ", 
+                "size": 22165576, 
+                "title": "Webview-s1-2.pdf", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F3GSGL2AZ/webview-s1-2.pdf", 
+                "ims": [
+                    "D33EKKR9P"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1482186854, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F3GSGL2AZ/download/webview-s1-2.pdf", 
+                "user": "U335T69M4", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "PDF", 
+                "name": "Webview-s1-2.pdf", 
+                "mimetype": "application/pdf", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F3GSGL2AZ-58dd7836a0", 
+                "permalink": "https://hvr.slack.com/files/U335T69M4/F3GSGL2AZ/webview-s1-2.pdf", 
+                "is_external": false, 
+                "created": 1482186854, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hi Mudge, let me know if anything doesn't make sense or if you have any concerns about the file below. \nI've put on the percentage for now but it will probably will change later as we go.", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481857622.000003"
+        }, 
+        {
+            "username": "dana_f", 
+            "display_as_bot": false, 
+            "text": "<@U335T69M4> uploaded a file: <https://hvr.slack.com/files/U335T69M4/F3FLCTCJG/webview-s1-wireframes.pdf|Webview-s1-wireframes.pdf>", 
+            "upload": true, 
+            "ts": "1481857535.000002", 
+            "subtype": "file_share", 
+            "user": "U335T69M4", 
+            "file": {
+                "filetype": "pdf", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F3FLCTCJG", 
+                "size": 15874480, 
+                "title": "Webview-s1-wireframes.pdf", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F3FLCTCJG/webview-s1-wireframes.pdf", 
+                "ims": [
+                    "D33EKKR9P"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1481857534, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F3FLCTCJG/download/webview-s1-wireframes.pdf", 
+                "user": "U335T69M4", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "PDF", 
+                "name": "Webview-s1-wireframes.pdf", 
+                "mimetype": "application/pdf", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F3FLCTCJG-0ac6ce55a1", 
+                "permalink": "https://hvr.slack.com/files/U335T69M4/F3FLCTCJG/webview-s1-wireframes.pdf", 
+                "is_external": false, 
+                "created": 1481857534, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":+1: cool!", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481773545.000011"
+        }, 
+        {
+            "text": "Yea, using percentages will help with the massive range of screen sizes possible on web.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481773508.000010"
+        }, 
+        {
+            "text": "great - yep. I'll make a web view version of them as well, and their fit on different devices", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481773401.000009"
+        }, 
+        {
+            "text": "Yea tomorrow morning sounds good, we can have a look at them then.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481773344.000008"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481773286.000007"
+        }, 
+        {
+            "text": "I\u2019m mainly concentrating on the database parts, but the wireframes will help me know what fields I need to save.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481773254.000006"
+        }, 
+        {
+            "text": "What stage are you in?", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481773197.000005"
+        }, 
+        {
+            "text": "Cool, let me know when you want to talk about it, I will send you the other wire frames by tomorrow morning.", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481773183.000004"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481773138.000003"
+        }, 
+        {
+            "text": "Hi Mudge, are you currently working on the web view? And can I help you with the wireframes for it? :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1481773129.000002"
+        }, 
+        {
+            "text": "I think it's too sunny....", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1480624771.000002"
+        }, 
+        {
+            "text": "Hi Mudge, will it be to close the curtain today please? :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1480296692.000002"
+        }, 
+        {
+            "text": "I can scale down, but its hard to scale up :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479418258.000007"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1479418252.000006"
+        }, 
+        {
+            "text": "Yea, thats fine, just need 300x300 for the site", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479418240.000005"
+        }, 
+        {
+            "text": "Cool, let me know if the size is ok - Thanks!", 
+            "type": "message", 
+            "user": "U335T69M4", 
+            "ts": "1479418226.000004"
+        }, 
+        {
+            "text": "\u0010Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479418210.000003"
+        }, 
+        {
+            "username": "dana_f", 
+            "display_as_bot": false, 
+            "text": "<@U335T69M4> uploaded a file: <https://hvr.slack.com/files/U335T69M4/F347LCS4D/image.jpg|Image.jpg>", 
+            "upload": true, 
+            "ts": "1479418201.000002", 
+            "subtype": "file_share", 
+            "user": "U335T69M4", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F347LCS4D-6b6920bfff/image_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F347LCS4D-6b6920bfff/image_64.jpg", 
+                "size": 48046, 
+                "original_h": 480, 
+                "thumb_360_w": 360, 
+                "title": "Image.jpg", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F347LCS4D/image.jpg", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F347LCS4D-6b6920bfff/image_360.jpg", 
+                "id": "F347LCS4D", 
+                "ims": [
+                    "D33EKKR9P"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F347LCS4D-6b6920bfff/image_80.jpg", 
+                "thumb_360_h": 350, 
+                "thumb_480_h": 466, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1479418199, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F347LCS4D-6b6920bfff/image_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F347LCS4D/download/image.jpg", 
+                "user": "U335T69M4", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "Image.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F347LCS4D-8a98b1d0d1", 
+                "permalink": "https://hvr.slack.com/files/U335T69M4/F347LCS4D/image.jpg", 
+                "is_external": false, 
+                "created": 1479418199, 
+                "original_w": 494, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U335T69M4", 
+            "U0C90MHEH"
+        ]
+    }
+}

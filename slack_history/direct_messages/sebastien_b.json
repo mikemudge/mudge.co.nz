@@ -1,0 +1,46 @@
+{
+    "messages": [
+        {
+            "text": "Can't take away all those lovely faces", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489000885.000007"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489000877.000006"
+        }, 
+        {
+            "text": "it makes me feel special to have my pictures next to yours guys :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U346H4YUT", 
+            "ts": "1489000867.000005"
+        }, 
+        {
+            "text": "Thanks man", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489000825.000004"
+        }, 
+        {
+            "text": "bouh :disappointed:", 
+            "type": "message", 
+            "user": "U346H4YUT", 
+            "ts": "1488957259.000003"
+        }, 
+        {
+            "text": "&lt;!-- ngRepeat: teamMember in teamCtrl.teamMembers --&gt;", 
+            "type": "message", 
+            "user": "U346H4YUT", 
+            "ts": "1488957252.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U346H4YUT", 
+            "U0C90MHEH"
+        ]
+    }
+}

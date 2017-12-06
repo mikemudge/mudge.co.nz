@@ -1,0 +1,450 @@
+{
+    "messages": [
+        {
+            "text": "All good, I forgot you were over in NYC for the week.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507242768.000334"
+        }, 
+        {
+            "text": "Hi!!! I started on it and didn\u2019t get to finish it up. I have my second week in NYC this week so really looking forward to being back in LA for a stretch! I will scope it for the next push for sure :) ", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1507242710.000403"
+        }, 
+        {
+            "text": "So any notifications we send after ~Thursday next week should give us some pretty good analytics.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507240661.000108"
+        }, 
+        {
+            "text": "We will have it going in for iOS in their next build (next week)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507240618.000374"
+        }, 
+        {
+            "text": "Hey, did you ever get a chance to have a look at the Google analytics with the notification segment?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507240583.000008"
+        }, 
+        {
+            "text": ":slightly_smiling_face: Thankyou Mudge", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506647201.000230"
+        }, 
+        {
+            "text": "No rush, analytics will be still be there tomorrow too.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647181.000262"
+        }, 
+        {
+            "text": "I\u2019ll add some instructions for you then, and whenever you get a chance have a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647151.000193"
+        }, 
+        {
+            "text": "Cool, yea.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647135.000137"
+        }, 
+        {
+            "text": "not really but was in NYC all week so gotta get home in time for kids bedtime :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506647117.000261"
+        }, 
+        {
+            "text": "Oh yea cool, it is late over there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647099.000078"
+        }, 
+        {
+            "text": "I have to head home but if you leave it here will do after kids are in bed! :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506647081.000225"
+        }, 
+        {
+            "text": "hoping you think so too :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647080.000010"
+        }, 
+        {
+            "text": "I think its a pretty cool view of the notification", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647075.000055"
+        }, 
+        {
+            "text": "It\u2019s really not a very complicated one to make though, if you want me to run you through it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647063.000271"
+        }, 
+        {
+            "text": "yeah I can't see it", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506647063.000102"
+        }, 
+        {
+            "text": "I\u2019m not sure if Segments created by other users are discoverable", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506647039.000140"
+        }, 
+        {
+            "text": "if you made a segment I'll go find it, I use those for countries", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506646990.000106"
+        }, 
+        {
+            "text": "Yea, I haven\u2019t used the Segment share before, so I wasn\u2019t sure how it would work", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506646975.000055"
+        }, 
+        {
+            "text": "hmmm still bouncing me into signup from GA which is weird", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506646972.000139"
+        }, 
+        {
+            "text": "this one yeah?", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506646943.000198"
+        }, 
+        {
+            "text": "<https://analytics.google.com/analytics/web/template?uid=IG4s6uq9QzeFooWEAefDQA>", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506646941.000299"
+        }, 
+        {
+            "text": "i tried on my trabels but it bounced me out", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506646941.000023"
+        }, 
+        {
+            "text": "Have you had a look at the GA link which I pasted in <#C602ANT39|holo-stats>?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506646788.000100"
+        }, 
+        {
+            "text": "And we don\u2019t really have all that much analytics coming in to firebase at the moment.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645410.000167"
+        }, 
+        {
+            "text": "ok, I could see the download and pose placement events when I went into that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645393.000061"
+        }, 
+        {
+            "text": "I'll spend a little more time in there and see if I find anything", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506645366.000059"
+        }, 
+        {
+            "text": "I am in that. I still get the same 14 events to work with though. But you are right! New page.", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506645353.000044"
+        }, 
+        {
+            "text": "And it offers a \u201cNEW FUNNEL\u201d button", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645309.000151"
+        }, 
+        {
+            "text": "if you click on \u201cFunnels\u201d tab again from that page you get a different page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645293.000193"
+        }, 
+        {
+            "text": "Yea, its not the right button for what we are trying to do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645275.000241"
+        }, 
+        {
+            "text": "it does filter on things like audience and device, but those are in GA too", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506645271.000185"
+        }, 
+        {
+            "text": "you can see my funnel is downloads to placeents, but I was curious if I could dig a layer deeper", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506645257.000128"
+        }, 
+        {
+            "text": "yeah but I don't see any of the secondary events in there either", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506645244.000164"
+        }, 
+        {
+            "text": "This is some pretty bad UX, but that is exactly what I clicked on. \nThat seems to let you apply an existing filter, but not allow you to create a new one.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645217.000058"
+        }, 
+        {
+            "text": "Actually did you click on this?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506645117.000256"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F7ALNQ0F4/add_filter.jpg|Add filter.jpg>", 
+            "upload": true, 
+            "ts": "1506645111.000285", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "groups": [], 
+                "filetype": "jpg", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F7ALNQ0F4-826848e280/add_filter_64.jpg", 
+                "size": 2939, 
+                "original_h": 52, 
+                "thumb_360_w": 187, 
+                "title": "Add filter.jpg", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F7ALNQ0F4/add_filter.jpg", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F7ALNQ0F4-826848e280/add_filter_360.jpg", 
+                "id": "F7ALNQ0F4", 
+                "ims": [
+                    "D5R6X71D4"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F7ALNQ0F4-826848e280/add_filter_80.jpg", 
+                "thumb_360_h": 52, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1506645110, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F7ALNQ0F4-826848e280/add_filter_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F7ALNQ0F4/download/add_filter.jpg", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "Add filter.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F7ALNQ0F4-6be1cf9889", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F7ALNQ0F4/add_filter.jpg", 
+                "is_external": false, 
+                "created": 1506645110, 
+                "original_w": 187, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "me too", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506645075.000248"
+        }, 
+        {
+            "text": "Which is a bit confusing, I thought the point of a funnel was to connect events to each other.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644989.000078"
+        }, 
+        {
+            "text": "hmm, yea I\u2019m having a look at the funnels now and it doesn\u2019t seem to let you funnel on the download events", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644951.000026"
+        }, 
+        {
+            "text": "I'm just trying to see Funnels but it doesn't have any content events - mostly notifications. It has a few high level ones but the funnels only let you work from the 14 events in Firebase, not smaller things like downloads of a certain pose or character.", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506644729.000101"
+        }, 
+        {
+            "text": "I just stick to Analytics and Notification tabs.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644556.000096"
+        }, 
+        {
+            "text": "There is a lot going on in Firebase, I still don\u2019t know about most of it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644542.000211"
+        }, 
+        {
+            "text": "Haha, just don\u2019t do anything I wouldn\u2019t do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644494.000249"
+        }, 
+        {
+            "text": "I have no idea what I'm doing but promise to proceed with caution :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506644482.000183"
+        }, 
+        {
+            "text": "aw THANK YOU", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506644469.000097"
+        }, 
+        {
+            "text": "Already done :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644435.000131"
+        }, 
+        {
+            "text": "thanks! no rush", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506644405.000005"
+        }, 
+        {
+            "text": "Sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506644393.000061"
+        }, 
+        {
+            "text": "possible to make me an editor or owner so I can create funnels in Firebase? :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1506644379.000005"
+        }, 
+        {
+            "text": "great thanks!", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1498604527.105317"
+        }, 
+        {
+            "text": "Hey, those spidey numbers look fine to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498604492.098172"
+        }, 
+        {
+            "text": "All good, glad it wasn\u2019t anything too bad :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497656328.282126"
+        }, 
+        {
+            "text": "thank you", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656309.280133"
+        }, 
+        {
+            "text": "and often a couple of refreshes does the trick", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497656287.277859"
+        }, 
+        {
+            "text": "sometimes things on web do get cached and can cause problems", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497656272.276459"
+        }, 
+        {
+            "text": "it wasn't working a few minutes ago but such is the rule of such things", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656253.274608"
+        }, 
+        {
+            "text": "Oh cool, glad it is working", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497656243.273634"
+        }, 
+        {
+            "text": "so much happening", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656232.272423"
+        }, 
+        {
+            "text": "sorry, I am the worst this week", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656230.272192"
+        }, 
+        {
+            "text": "I got in!!", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656225.271689"
+        }, 
+        {
+            "text": "I'll try it again", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656103.259416"
+        }, 
+        {
+            "text": "i think I was clicking on the wrong one", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656101.259129"
+        }, 
+        {
+            "text": "yes but Alenni told me I just need to refresh. I keep getting the Google auth", 
+            "type": "message", 
+            "user": "U3A3Q08BS", 
+            "ts": "1497656094.258275"
+        }, 
+        {
+            "text": "Can you tell me what is happening?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497656084.257190"
+        }, 
+        {
+            "text": "Hi Nicole, Asher says you are having trouble with accessing the sprite editor page.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497656070.255657"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3A3Q08BS", 
+            "U0C90MHEH"
+        ]
+    }
+}

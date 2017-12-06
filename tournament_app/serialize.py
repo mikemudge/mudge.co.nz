@@ -1,5 +1,5 @@
 from marshmallow import fields
-from .models import Tournament, Team, Round, Match
+from .models import Tournament, Team, Round, Match, MatchResult
 from shared.marshmallow import BaseSchema
 
 class TeamSchema(BaseSchema):
@@ -14,6 +14,9 @@ class MatchSchema(BaseSchema):
     awayTeam = fields.Nested(TeamSchema)
     homeTeam = fields.Nested(TeamSchema)
 
+class MatchResultSchema(BaseSchema):
+    class Meta:
+        model = MatchResult
 
 class RoundSchema(BaseSchema):
     class Meta:

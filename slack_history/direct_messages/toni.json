@@ -1,0 +1,112 @@
+{
+    "messages": [
+        {
+            "text": "let's do now.", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1507521611.000057"
+        }, 
+        {
+            "text": "tomorrow is ok too.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507521599.000050"
+        }, 
+        {
+            "text": "Now is alright if you aren\u2019t busy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507521595.000059"
+        }, 
+        {
+            "text": "sweet. do you want to do now or would you prefer tomorrow?", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1507521584.000069"
+        }, 
+        {
+            "text": "Yea I wouldn\u2019t mind having a chat.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507521552.000104"
+        }, 
+        {
+            "text": "Hey Mudge. I was meaning to check in with you to see if you had any questions of concerns following Steve's announcement last week about the org change. I'm happy to chat about any of that stuff if you want. Just lmk.", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1507521504.000014"
+        }, 
+        {
+            "text": "Thanks!", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1484270640.000004"
+        }, 
+        {
+            "text": "Cool, they should all be on there now. And should have received emails notifying them.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484270584.000003"
+        }, 
+        {
+            "text": "Hey Mudge. Could you please add Hayes and Nicole St Jean and Steve to our Google analytics if they are not already on there and let me know when you've done so. Not super urgent, but later today or on Monday would be great.", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1484270447.000002"
+        }, 
+        {
+            "text": "No problem, yea I know what you mean.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453093741.000003"
+        }, 
+        {
+            "text": "Thanks for bringing my bike in! Nice not to have to end the day with the water bucket challenge", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1453093719.000002"
+        }, 
+        {
+            "text": "Cool, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450647409.000003"
+        }, 
+        {
+            "text": "hey Mike. Just wanted to let you know that the cardboard prototype was a hit in LA.  Pan again gave feedback that he's really stoked with your work and with Jed on board too the Platform team is doing great.", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1450647098.000002"
+        }, 
+        {
+            "text": ":simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449634798.000005"
+        }, 
+        {
+            "text": "I like the cardboardeeeee", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1449634273.000004"
+        }, 
+        {
+            "text": "oh no my gif didn't work.", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1449634264.000003"
+        }, 
+        {
+            "text": "<https://hvr.slack.com/files/troy/F0G76TFFC/giphy.gif>", 
+            "type": "message", 
+            "user": "U03E2MLRJ", 
+            "ts": "1449634249.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03E2MLRJ", 
+            "U0C90MHEH"
+        ]
+    }
+}

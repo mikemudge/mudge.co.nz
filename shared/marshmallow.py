@@ -1,6 +1,8 @@
 from flask import jsonify
 from flask_marshmallow import Marshmallow
-from marshmallow_sqlalchemy import ModelSchema, ModelSchemaOpts
+# from flask_marshmallow.sqla import ModelSchema
+from marshmallow_sqlalchemy import ModelSchema
+from marshmallow_sqlalchemy import ModelSchemaOpts
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 from shared.database import db
@@ -14,7 +16,7 @@ ma = Marshmallow()
 class BaseOpts(ModelSchemaOpts):
     def __init__(self, meta):
         if not hasattr(meta, 'sqla_session'):
-            meta.sqla_session = Session
+            meta.sqla_session = db.session
         super(BaseOpts, self).__init__(meta)
 
 class BaseSchema(ModelSchema):

@@ -1,0 +1,40 @@
+{
+    "messages": [
+        {
+            "text": "<@U0G3RRHD3> may know more, but otherwise we probably don\u2019t", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485485382.000005"
+        }, 
+        {
+            "text": "I don\u2019t think I\u2019m the right person to know that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485485344.000004"
+        }, 
+        {
+            "text": "No idea sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485485333.000003"
+        }, 
+        {
+            "text": "Is there an 8i Apple account for apple machines? Or should I just make a new one? (NB: This is for a server.)", 
+            "type": "message", 
+            "user": "U03E281KC", 
+            "ts": "1485485308.000002"
+        }, 
+        {
+            "text": "This is the asset <http://cdn-content.8i.com/yupan_stage_R3d/RESEVIL_CB_130_iv_v01_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463096148.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03E281KC", 
+            "U0C90MHEH"
+        ]
+    }
+}

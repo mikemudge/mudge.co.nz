@@ -1,0 +1,1827 @@
+{
+    "messages": [
+        {
+            "text": "ok thnx", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473898113.000008"
+        }, 
+        {
+            "text": "Not sure how the 2:25 version will fit in with that constraint, but we can try it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473897932.000007"
+        }, 
+        {
+            "text": "As for the length, chrome has a hard limit on the amount of data it can cache so if we go over that then the hvr will just stop loading.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473897891.000006"
+        }, 
+        {
+            "text": "Sorry man, I think we can do the fade in/fade out stuff. But I'm not sure if the whole thing will be 3d, me may have to do a bit in 2d on top of the hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473897805.000005"
+        }, 
+        {
+            "text": "I'm actually on my way to lunch ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473897699.000004"
+        }, 
+        {
+            "text": "Wanna try a Slack call?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473897515.000003"
+        }, 
+        {
+            "text": "hey man, got a minute to talk about that Buzz Aldrin cardboard thingy?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473897504.000002"
+        }, 
+        {
+            "text": "Awesome, I\u2019ll upload them.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473725237.000034"
+        }, 
+        {
+            "text": "ok, just sent you a bug with those quieter files", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473725128.000033"
+        }, 
+        {
+            "text": "Thanks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721370.000032"
+        }, 
+        {
+            "text": "if you could keep the names (just add a v2 or something to the end) it will make it easy for me to figure out which files they need to replace", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721361.000031"
+        }, 
+        {
+            "text": "will do!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721300.000030"
+        }, 
+        {
+            "text": "once you\u2019ve got a good copy, you can just zip em and send them to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721295.000029"
+        }, 
+        {
+            "text": "Audacity", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721288.000028"
+        }, 
+        {
+            "text": "actually, im using the worst one", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721285.000027"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721276.000026"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721264.000025"
+        }, 
+        {
+            "text": "oh hell ya man!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721258.000024"
+        }, 
+        {
+            "text": "have you got a sound editor which can change the volume?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721247.000023"
+        }, 
+        {
+            "text": "the originals which you have are probably a better way to go", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721216.000022"
+        }, 
+        {
+            "text": "I\u2019ll make do with what i have", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721208.000021"
+        }, 
+        {
+            "text": "whoops", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721197.000020"
+        }, 
+        {
+            "text": "O", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721194.000019"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721194.000018"
+        }, 
+        {
+            "text": "they do live on a server, but its not really built for grabbing them quickly unfortunately", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473721186.000017"
+        }, 
+        {
+            "text": "but do they all live someplace else (on a server or source control) that might be easier for me to check them all out &amp; replace them?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721151.000016"
+        }, 
+        {
+            "text": "I have the originals I sent you which I can use", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721124.000015"
+        }, 
+        {
+            "text": "b) reduce the volume of the dance music", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721095.000014"
+        }, 
+        {
+            "text": "or (probably more safe)", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721086.000013"
+        }, 
+        {
+            "text": "a) boost the volume of all the VO", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721078.000012"
+        }, 
+        {
+            "text": "Hey, so I want to either:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473721067.000011"
+        }, 
+        {
+            "text": "weird", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473716522.000010"
+        }, 
+        {
+            "text": "hmm\u2026its working in Safari but not in Chrome for some reason", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473716514.000009"
+        }, 
+        {
+            "text": "and no sorry I don\u2019t have a way to control the volume.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473716497.000008"
+        }, 
+        {
+            "text": "Its the 5th Zombie pose", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473716467.000007"
+        }, 
+        {
+            "text": "I do see 160 in the web preview, are you not seeing it?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473716434.000006"
+        }, 
+        {
+            "text": "Also, do you have the ability to reduce the volume on certain moves? Or should I just give you new .wav\u2019s?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473716239.000005"
+        }, 
+        {
+            "text": "any idea why FOXTROT04_160 wont show up in the web preview?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473716163.000004"
+        }, 
+        {
+            "text": "how goes?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473716143.000003"
+        }, 
+        {
+            "text": "hey man", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1473716140.000002"
+        }, 
+        {
+            "text": "Its easy enough to do, it just may not work as well for the non tango content, as the descriptions get kind of wordy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472779999.000032"
+        }, 
+        {
+            "text": "yep\u2026it would be helpful to be able all that stuff at a glance. didnt know if it was a quick tweak\u2026i know you have a million things on your plate", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472779954.000031"
+        }, 
+        {
+            "text": "if you mouse over them it should show you in the hover text", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472779905.000030"
+        }, 
+        {
+            "text": "How hard would it be to have the description text on the sceneActions page?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472779822.000029"
+        }, 
+        {
+            "text": "RIP", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472777102.000028"
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472777093.000027"
+        }, 
+        {
+            "text": "Ok\u2026do you want to move them out of the Holo Starter Pack for me?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472776956.000026"
+        }, 
+        {
+            "text": "I just put them in the private pack though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472776896.000025"
+        }, 
+        {
+            "text": "and I have to add them back in so they can try out their video", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472776884.000024"
+        }, 
+        {
+            "text": "occasionally people are asking me where they can find those removed assets", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472776869.000023"
+        }, 
+        {
+            "text": "Is there a way to turn them into private characters?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472776858.000022"
+        }, 
+        {
+            "text": "Or just leave them in the private pack?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472776836.000021"
+        }, 
+        {
+            "text": "ok, im about to get drastic with the characters, and I\u2019m going to remove the princess &amp; fitness lady", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472776797.000020"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768779.000019"
+        }, 
+        {
+            "text": "Ah", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768778.000018"
+        }, 
+        {
+            "text": "one with all the moves and one without", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472768763.000017"
+        }, 
+        {
+            "text": "there is no limit, so you would have to make 2 different characters", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472768749.000016"
+        }, 
+        {
+            "text": "but it seems like per pack I can only assign how many CHARACTERS are in them?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768745.000015"
+        }, 
+        {
+            "text": "So, I want to make 2 new packs, and limit the number of MOVES in them", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768729.000014"
+        }, 
+        {
+            "text": "I\u2019m not sure what you mean?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472768700.000013"
+        }, 
+        {
+            "text": "characters seem to be defined by a global setting?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768698.000012"
+        }, 
+        {
+            "text": "im not seeing a way to limit a characters moves per pack", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768678.000011"
+        }, 
+        {
+            "text": "hmmm", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768659.000010"
+        }, 
+        {
+            "text": "brilliant thnx", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768427.000009"
+        }, 
+        {
+            "text": "Yup, <http://8i.com/admin/tango?auth=1> will show private packs as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472768411.000008"
+        }, 
+        {
+            "text": "like this page:  <http://8i.com/admin/tango>", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768362.000007"
+        }, 
+        {
+            "text": "im wondering, is there an interface page for private packs that works like the published packs?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768350.000006"
+        }, 
+        {
+            "text": "hey im putting together those private packs", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768323.000005"
+        }, 
+        {
+            "text": "whats up?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472768300.000004"
+        }, 
+        {
+            "text": "Hey", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472768296.000003"
+        }, 
+        {
+            "text": "Hey man how goes?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472768257.000002"
+        }, 
+        {
+            "text": "I\u2019m not really sure who we are allowing to see the private version and who can't", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472694129.000041"
+        }, 
+        {
+            "text": "but just know that the UI could start to look cluttered for any demos we do which include all the private stuff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472694110.000040"
+        }, 
+        {
+            "text": "Yea, feel free to play with private packs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472694071.000039"
+        }, 
+        {
+            "text": "or I guess I could do new private packs?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472694056.000038"
+        }, 
+        {
+            "text": "ok to be safe I\u2019ll just do it tomorrow afternoon", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472694021.000037"
+        }, 
+        {
+            "text": "Although having said that, it hasn\u2019t been tested very throughly.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472694003.000036"
+        }, 
+        {
+            "text": "it should even be ok to download first, each individual pose is downloaded independently and it shouldn\u2019t matter how the packs/characters are structured", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472693977.000035"
+        }, 
+        {
+            "text": "shouldn\u2019t be any problems with that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472693923.000034"
+        }, 
+        {
+            "text": "if I split up the packs tonight before she downloads them, will she have an issue?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693897.000033"
+        }, 
+        {
+            "text": "Amy is showing the build to Samsung tomorrow, and she has the current packs, but they are not fully downloaded to the device yet", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693872.000032"
+        }, 
+        {
+            "text": "ANYHOO", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693828.000031"
+        }, 
+        {
+            "text": "i was thinking 2 smalls, but small &amp; full is probably better", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693813.000030"
+        }, 
+        {
+            "text": "Like a small and a full of each?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472693781.000029"
+        }, 
+        {
+            "text": "and split them up that way", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693768.000028"
+        }, 
+        {
+            "text": "and 2 Presidential packs", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693758.000027"
+        }, 
+        {
+            "text": "I make 2 Starter packs", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693750.000026"
+        }, 
+        {
+            "text": "SOOO what I\u2019m thinking is:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693742.000025"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472693719.000024"
+        }, 
+        {
+            "text": "(probably around v2.0)", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693710.000023"
+        }, 
+        {
+            "text": "and then have an \u201cupdate\u201d pack later that fills the pack out with more moves", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693702.000022"
+        }, 
+        {
+            "text": "Taking with Tokes, I think we want to make the packs pretty small\u20264-5 selects at most", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693659.000021"
+        }, 
+        {
+            "text": "Yup?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472693593.000020"
+        }, 
+        {
+            "text": "hey dude question:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472693581.000019"
+        }, 
+        {
+            "text": "thanks for the tips!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472686662.000018"
+        }, 
+        {
+            "text": "mouse wheel zooms in/out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685931.000017"
+        }, 
+        {
+            "text": "left click will rotate, right click will move the character", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685918.000016"
+        }, 
+        {
+            "text": "I think its off by a frame which is pretty frustrating", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685886.000015"
+        }, 
+        {
+            "text": "or use left and right arrows to scrub, although its not updating the scene perfectly at the moment", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685868.000014"
+        }, 
+        {
+            "text": "you can click to play/pause on the video", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685843.000013"
+        }, 
+        {
+            "text": "oh yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685833.000012"
+        }, 
+        {
+            "text": "from <http://8i.com/admin/scene/GMG> or similar you will see the \u201cSet Screenshot\u201d button?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685823.000011"
+        }, 
+        {
+            "text": "but i want to pick a different frame", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685790.000010"
+        }, 
+        {
+            "text": "I see the \u201cset screenshot\u201d in the edit page", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685780.000009"
+        }, 
+        {
+            "text": "If I want to alter a screenshot, how do I do that?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685770.000008"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685667.000007"
+        }, 
+        {
+            "text": "i\u2019ll go through &amp; add names real quick", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685623.000006"
+        }, 
+        {
+            "text": "sweeeeeet", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685603.000005"
+        }, 
+        {
+            "text": "give me a shout when u push them &amp; I\u2019ll try em out", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685598.000004"
+        }, 
+        {
+            "text": "yea just done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472685598.000003"
+        }, 
+        {
+            "text": "looks like you\u2019re about to update the zombie &amp; gorilla selects in the pack. WOO!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472685583.000002"
+        }, 
+        {
+            "text": "Cool man, no problem, catch you tomorrow. I\u2019ll try and get the foxtrot4 stuff up tonight", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472616509.000079"
+        }, 
+        {
+            "text": "Thanks for your help tonight! I'm outta here", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472616479.000078"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615694.000077"
+        }, 
+        {
+            "text": "lets never speak of this again", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615693.000076"
+        }, 
+        {
+            "text": "or something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615613.000075"
+        }, 
+        {
+            "text": "I wonder if the connection failed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615609.000074"
+        }, 
+        {
+            "text": "whew", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615596.000073"
+        }, 
+        {
+            "text": "just logged out &amp; back in, and now they are there", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615595.000072"
+        }, 
+        {
+            "text": "the web API looks fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615574.000071"
+        }, 
+        {
+            "text": "hmm, thats not good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615565.000070"
+        }, 
+        {
+            "text": ":scream:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615484.000069"
+        }, 
+        {
+            "text": "and now NO Packs show up", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615473.000068"
+        }, 
+        {
+            "text": "I just de-installed &amp; reinstalled the app", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615457.000067"
+        }, 
+        {
+            "text": "uh ohhhhh", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615444.000066"
+        }, 
+        {
+            "text": "yeh just sent him after it", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615301.000065"
+        }, 
+        {
+            "text": "Although it might need a better background color, Asher can probably come up with something pretty.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615157.000064"
+        }, 
+        {
+            "text": "looks good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615101.000063"
+        }, 
+        {
+            "text": "OK!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472615070.000062"
+        }, 
+        {
+            "text": "It will give you a warning that it will make it public", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615035.000061"
+        }, 
+        {
+            "text": "Cool, you should just be able to click \"Publish Pack\u201d on that particular pack", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472615014.000060"
+        }, 
+        {
+            "text": "[17] PRESIDENTIAL PACK", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472614985.000059"
+        }, 
+        {
+            "text": "ok, just made one\u2026but its set to private", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472614929.000058"
+        }, 
+        {
+            "text": "Yea, you should be able to do that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472613682.000057"
+        }, 
+        {
+            "text": "\u201cPresidential Pack\u201d is the candidates", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472613665.000056"
+        }, 
+        {
+            "text": "\u201cHolo Starter Pack\u201d is all the weirdos", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472613654.000055"
+        }, 
+        {
+            "text": "hey, i want to try something. Can we make 2 public packs:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472613643.000054"
+        }, 
+        {
+            "text": "it would make it much easier for me to find the right video quickly :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472612878.000053"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472612873.000052"
+        }, 
+        {
+            "text": "If its not too difficult for you, could you add the Foxtrot_\u2026 id in those bugs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472612856.000051"
+        }, 
+        {
+            "text": "its a pre-bug  :wink:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472612809.000050"
+        }, 
+        {
+            "text": "Alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472612806.000049"
+        }, 
+        {
+            "text": "not yet\u2026coming soon", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472612799.000048"
+        }, 
+        {
+            "text": "Hey, the Zombie dance music you gave me, is that for one of the zombies already on Tango?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472612783.000047"
+        }, 
+        {
+            "text": "its awkward on those devices, much easier on normal android phones", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472611415.000046"
+        }, 
+        {
+            "text": "hold them down for a little while", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472611399.000045"
+        }, 
+        {
+            "text": "or just tap them all @ the same time?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472611379.000044"
+        }, 
+        {
+            "text": "arrg do you have to hold them down?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472611373.000043"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472608469.000042"
+        }, 
+        {
+            "text": "whew", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472608461.000041"
+        }, 
+        {
+            "text": "ok that worked that time", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472608459.000040"
+        }, 
+        {
+            "text": "ah ok I\u2019ll try that", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472608076.000039"
+        }, 
+        {
+            "text": "or if its just Dance you can just deselect that, and reselect it (it will add it to the end)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472608059.000038"
+        }, 
+        {
+            "text": "Its a bit nasty, but you can \u201cEdit\u201d, deselect all of them, then select them in the order you want.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472608026.000037"
+        }, 
+        {
+            "text": "ok, so if I wanted to change the ORDER of the clips, so the Dance move is always the last...", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472607978.000036"
+        }, 
+        {
+            "text": "it could happen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472607975.000035"
+        }, 
+        {
+            "text": "Let me know if you find anything else which breaks :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472607971.000034"
+        }, 
+        {
+            "text": "SWEEEEET", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472607958.000033"
+        }, 
+        {
+            "text": "Yea I think I have fixed it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472607919.000032"
+        }, 
+        {
+            "text": "whew", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472607909.000031"
+        }, 
+        {
+            "text": "ok the edit page seems back to normal now", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472607908.000030"
+        }, 
+        {
+            "text": "Well, thats promising. That page uses the same data which the app gets so it should be accurate to exactly what is available to the app.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472607442.000029"
+        }, 
+        {
+            "username": "josh.randall", 
+            "display_as_bot": false, 
+            "text": "<@U19HF6Z1A> uploaded a file: <https://hvr.slack.com/files/U19HF6Z1A/F26LKTX34/screen_shot_2016-08-30_at_6.34.21_pm.png|Screen Shot 2016-08-30 at 6.34.21 PM.png>", 
+            "upload": true, 
+            "ts": "1472607273.000028", 
+            "subtype": "file_share", 
+            "user": "U19HF6Z1A", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F26LKTX34-9b950a09a1/screen_shot_2016-08-30_at_6.34.21_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F26LKTX34-9b950a09a1/screen_shot_2016-08-30_at_6.34.21_pm_64.png", 
+                "size": 211195, 
+                "original_h": 816, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2016-08-30 at 6.34.21 PM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F26LKTX34/screen_shot_2016-08-30_at_6.34.21_pm.png", 
+                "thumb_720_h": 633, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F26LKTX34-9b950a09a1/screen_shot_2016-08-30_at_6.34.21_pm_360.png", 
+                "id": "F26LKTX34", 
+                "ims": [
+                    "D1ZEK5UBH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F26LKTX34-9b950a09a1/screen_shot_2016-08-30_at_6.34.21_pm_80.png", 
+                "thumb_360_h": 317, 
+                "thumb_480_h": 422, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1472607271, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F26LKTX34-9b950a09a1/screen_shot_2016-08-30_at_6.34.21_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F26LKTX34/download/screen_shot_2016-08-30_at_6.34.21_pm.png", 
+                "user": "U19HF6Z1A", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2016-08-30 at 6.34.21 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F26LKTX34-ce512cfb9a", 
+                "permalink": "https://hvr.slack.com/files/U19HF6Z1A/F26LKTX34/screen_shot_2016-08-30_at_6.34.21_pm.png", 
+                "is_external": false, 
+                "created": 1472607271, 
+                "original_w": 928, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F26LKTX34-9b950a09a1/screen_shot_2016-08-30_at_6.34.21_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "well, it looks like this page has all my edits:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472607255.000027"
+        }, 
+        {
+            "text": ":nuke:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606725.000026"
+        }, 
+        {
+            "text": "yea, my not very robust code wasn\u2019t up to the task :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606610.000025"
+        }, 
+        {
+            "text": "good times", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606583.000024"
+        }, 
+        {
+            "text": "but thats not your fault, deleting should remove it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606561.000023"
+        }, 
+        {
+            "text": "the HOLO STARTER PACK still is trying to use it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606544.000022"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606515.000021"
+        }, 
+        {
+            "text": "did you delete barrel?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606508.000020"
+        }, 
+        {
+            "text": "which is my fault", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606441.000019"
+        }, 
+        {
+            "text": "I think there is a problem with the server", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606425.000018"
+        }, 
+        {
+            "text": "sorry\u2026I was trying to save you the headache", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606422.000017"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606408.000016"
+        }, 
+        {
+            "text": "Can I just log a bug with instructions, and you can take care of it?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606372.000015"
+        }, 
+        {
+            "text": "i followed the instructions you gave me last time", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606329.000014"
+        }, 
+        {
+            "text": "I\u2019m trying to remove certain moves", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606316.000013"
+        }, 
+        {
+            "text": "danngit", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606294.000012"
+        }, 
+        {
+            "text": "what were you trying to do?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606285.000011"
+        }, 
+        {
+            "text": "which I didn\u2019t think there was a way to do that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606245.000010"
+        }, 
+        {
+            "text": "It looks like some of the characters have become private", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472606233.000009"
+        }, 
+        {
+            "username": "josh.randall", 
+            "display_as_bot": false, 
+            "text": "<@U19HF6Z1A> uploaded a file: <https://hvr.slack.com/files/U19HF6Z1A/F26LG8MPU/pre-edit.txt|pre-edit.txt>", 
+            "upload": true, 
+            "ts": "1472606193.000008", 
+            "subtype": "file_share", 
+            "user": "U19HF6Z1A", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 5, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F26LG8MPU", 
+                "size": 1056, 
+                "title": "pre-edit.txt", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F26LG8MPU/pre-edit.txt", 
+                "ims": [
+                    "D1ZEK5UBH"
+                ], 
+                "preview": "[1] Wrestler - [{\"key\":\"b2\"},{\"key\":\"KLL\"},{\"key\":\"PgW\"},{\"key\":\"ZD\"},{\"key\":\"g1\"}] | Edit | Delete\n[2] super lady - [{\"key\":\"Ypz\"},{\"key\":\"vAz\"},{\"key\":\"o4w\"},{\"key\":\"528\"},{\"key\":\"qpg\"},{\"key\":\"X6w\"}] | Edit | Delete\n[3] Princess - [{\"key\":\"qg\"},{\"key\":\"7yO\"},{\"key\":\"No7\"},{\"key\":\"E6P\"},{\"key\":\"y3R\"},{\"key\":\"JML\"},{\"key\":\"Rd8\"},{\"key\":\"DMv\"},{\"key\":\"MWE\"}] | Edit | Delete\n[4] Pirate - [{\"key\":\"nB\"},{\"key\":\"8K\"},{\"key\":\"2L\"},{\"key\":\"1B\"},{\"key\":\"ME\"},{\"key\":\"OV\"},{\"key\":\"1DB\"}] | Edit | Delete\n[5] Text - [{\"key\":\"0LL\"},{\"key\":\"DVv\"},{\"key\":\"RW8\"},{\"key\":\"JpL\"}] | Edit | Delete", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U19HF6Z1A/F26LG8MPU/pre-edit.txt/edit", 
+                "username": "", 
+                "timestamp": 1472606192, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F26LG8MPU/download/pre-edit.txt", 
+                "user": "U19HF6Z1A", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "pre-edit.txt", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F26LG8MPU-35b36829f5", 
+                "permalink": "https://hvr.slack.com/files/U19HF6Z1A/F26LG8MPU/pre-edit.txt", 
+                "is_external": false, 
+                "created": 1472606192, 
+                "lines": 10, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>[1] Wrestler - [{&quot;key&quot;:&quot;b2&quot;},{&quot;key&quot;:&quot;KLL&quot;},{&quot;key&quot;:&quot;PgW&quot;},{&quot;key&quot;:&quot;ZD&quot;},{&quot;key&quot;:&quot;g1&quot;}] | Edit | Delete</pre></div>\n<div><pre>[2] super lady - [{&quot;key&quot;:&quot;Ypz&quot;},{&quot;key&quot;:&quot;vAz&quot;},{&quot;key&quot;:&quot;o4w&quot;},{&quot;key&quot;:&quot;528&quot;},{&quot;key&quot;:&quot;qpg&quot;},{&quot;key&quot;:&quot;X6w&quot;}] | Edit | Delete</pre></div>\n<div><pre>[3] Princess - [{&quot;key&quot;:&quot;qg&quot;},{&quot;key&quot;:&quot;7yO&quot;},{&quot;key&quot;:&quot;No7&quot;},{&quot;key&quot;:&quot;E6P&quot;},{&quot;key&quot;:&quot;y3R&quot;},{&quot;key&quot;:&quot;JML&quot;},{&quot;key&quot;:&quot;Rd8&quot;},{&quot;key&quot;:&quot;DMv&quot;},{&quot;key&quot;:&quot;MWE&quot;}] | Edit | Delete</pre></div>\n<div><pre>[4] Pirate - [{&quot;key&quot;:&quot;nB&quot;},{&quot;key&quot;:&quot;8K&quot;},{&quot;key&quot;:&quot;2L&quot;},{&quot;key&quot;:&quot;1B&quot;},{&quot;key&quot;:&quot;ME&quot;},{&quot;key&quot;:&quot;OV&quot;},{&quot;key&quot;:&quot;1DB&quot;}] | Edit | Delete</pre></div>\n<div><pre>[5] Text - [{&quot;key&quot;:&quot;0LL&quot;},{&quot;key&quot;:&quot;DVv&quot;},{&quot;key&quot;:&quot;RW8&quot;},{&quot;key&quot;:&quot;JpL&quot;}] | Edit | Delete</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "just in case something like this happened, i grabbed the text from the page before i edited", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606188.000007"
+        }, 
+        {
+            "text": "which makes no sense", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606167.000006"
+        }, 
+        {
+            "text": "its saying 1/2 the characters were removed", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606164.000005"
+        }, 
+        {
+            "username": "josh.randall", 
+            "display_as_bot": false, 
+            "text": "<@U19HF6Z1A> uploaded a file: <https://hvr.slack.com/files/U19HF6Z1A/F26L6A91B/screen_shot_2016-08-30_at_6.14.50_pm.png|Screen Shot 2016-08-30 at 6.14.50 PM.png>", 
+            "upload": true, 
+            "ts": "1472606112.000004", 
+            "subtype": "file_share", 
+            "user": "U19HF6Z1A", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_64.png", 
+                "size": 48782, 
+                "original_h": 156, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2016-08-30 at 6.14.50 PM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F26L6A91B/screen_shot_2016-08-30_at_6.14.50_pm.png", 
+                "thumb_720_h": 91, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_360.png", 
+                "id": "F26L6A91B", 
+                "ims": [
+                    "D1ZEK5UBH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 46, 
+                "thumb_480_h": 61, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1472606109, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F26L6A91B/download/screen_shot_2016-08-30_at_6.14.50_pm.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_1024.png", 
+                "user": "U19HF6Z1A", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2016-08-30 at 6.14.50 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F26L6A91B-798677d5ac", 
+                "permalink": "https://hvr.slack.com/files/U19HF6Z1A/F26L6A91B/screen_shot_2016-08-30_at_6.14.50_pm.png", 
+                "is_external": false, 
+                "created": 1472606109, 
+                "thumb_1024_h": 129, 
+                "thumb_960_h": 121, 
+                "original_w": 1234, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F26L6A91B-3e7f8a17a5/screen_shot_2016-08-30_at_6.14.50_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":disappointed:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606083.000003"
+        }, 
+        {
+            "text": "oh crap. I\u2019m trying to edit the character pack, and something happened", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1472606081.000002"
+        }, 
+        {
+            "text": "Alright, the new file is ready.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470794841.000076"
+        }, 
+        {
+            "text": "all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470794217.000075"
+        }, 
+        {
+            "text": "sorry to bother you.  :disappointed:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470794213.000074"
+        }, 
+        {
+            "text": "I\u2019ll reopen that bug &amp; put in the new one", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470794208.000073"
+        }, 
+        {
+            "text": "oh no", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470794184.000072"
+        }, 
+        {
+            "text": ":disappointed:", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470794180.000071"
+        }, 
+        {
+            "text": "I should punch HIM properly!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470794179.000070"
+        }, 
+        {
+            "text": "ARRRRG\u2026the guy who made this file didn\u2019t line up the punch properly", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470794169.000069"
+        }, 
+        {
+            "text": "Thanks man!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470794150.000068"
+        }, 
+        {
+            "text": "ok thnx", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470793130.000067"
+        }, 
+        {
+            "text": "Should be in now, you will probably need to redownload the scene, maybe even the same reboot trick you needed before.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470793120.000066"
+        }, 
+        {
+            "text": "adding a punching sound when she punches\u2026should make that move more fun!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470792514.000065"
+        }, 
+        {
+            "text": "yea, sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470792498.000064"
+        }, 
+        {
+            "text": "hey dude i just sent you an audio file in a bug for the SuperLady punch. If there\u2019s any chance you could drop this in tonight it would be rad for playtest. THANKS!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470792369.000063"
+        }, 
+        {
+            "text": "I think Isaac has recently worked on how content is updated so hopefully the next version of the app will handle that better.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470783491.000062"
+        }, 
+        {
+            "text": "The other option is to uninstall/reinstall the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470783395.000061"
+        }, 
+        {
+            "text": "Yea, I\u2019m not super familiar with exactly how the app works, but I would of thought that would of worked.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470783378.000060"
+        }, 
+        {
+            "text": "Hmm\u2026nope\u2026they are still in there", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470782258.000059"
+        }, 
+        {
+            "text": "(trying now)", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470782096.000058"
+        }, 
+        {
+            "text": "hey, so the changes i made\u2026should those show up in the build if I remove a character, reboot the app, and redownload?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470782090.000057"
+        }, 
+        {
+            "text": "Yea, no probs.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781242.000056"
+        }, 
+        {
+            "text": "thanks man!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470781229.000055"
+        }, 
+        {
+            "text": "Cool, let me know if you get stuck on anything else using that page, but hopefully it will let you do what you need to.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781175.000054"
+        }, 
+        {
+            "text": "I\u2019m clearly more of a developer than a designer", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781110.000053"
+        }, 
+        {
+            "text": "its great thnx", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470781106.000052"
+        }, 
+        {
+            "text": "cool, hope it wasn\u2019t too painful :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781097.000051"
+        }, 
+        {
+            "text": "OK that worked! Thanks!!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470781088.000050"
+        }, 
+        {
+            "text": "\"Republish public packs\" will publish all the packs, which is fine for now as we only have one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781076.000049"
+        }, 
+        {
+            "text": "at the end of the \"HOLO STARTER PACK\u201c row", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781024.000048"
+        }, 
+        {
+            "text": "just below that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470781000.000047"
+        }, 
+        {
+            "text": "it allows you to make multiple edits but only update what the app gets once", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780992.000046"
+        }, 
+        {
+            "text": "\"Republish public packs\u201d ?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780991.000045"
+        }, 
+        {
+            "text": "under \"Current Action Packs\u201d on <http://8i.com/admin/sceneActions> you need to click \u201cPublish Pack\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780963.000044"
+        }, 
+        {
+            "text": "Yea, thats expected. You still need to publish the changes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780935.000043"
+        }, 
+        {
+            "text": "tried a refresh too", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780912.000042"
+        }, 
+        {
+            "text": "just tried that, and went back to <http://8i.com/admin/tango> and it didnt change", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780906.000041"
+        }, 
+        {
+            "text": "hmm", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780884.000040"
+        }, 
+        {
+            "text": "Then click \u201cUpdate Character\u201d to update", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780880.000039"
+        }, 
+        {
+            "text": "just click a red background scene to remove it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780865.000038"
+        }, 
+        {
+            "text": "and then you can add/remove the scenes from the rest of the page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780852.000037"
+        }, 
+        {
+            "text": "so the popup shows your current selection", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780840.000036"
+        }, 
+        {
+            "text": "red", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780836.000035"
+        }, 
+        {
+            "text": "got it", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780835.000034"
+        }, 
+        {
+            "text": "oh ok, under the pop up", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780828.000033"
+        }, 
+        {
+            "text": "Is that all you can see? the rest of the page should show all the scenes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780811.000032"
+        }, 
+        {
+            "text": "no difference if i scroll down", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780788.000031"
+        }, 
+        {
+            "username": "josh.randall", 
+            "display_as_bot": false, 
+            "text": "<@U19HF6Z1A> uploaded a file: <https://hvr.slack.com/files/U19HF6Z1A/F1ZRM47UM/screen_shot_2016-08-09_at_3.12.35_pm.png|Screen Shot 2016-08-09 at 3.12.35 PM.png>", 
+            "upload": true, 
+            "ts": "1470780778.000030", 
+            "subtype": "file_share", 
+            "user": "U19HF6Z1A", 
+            "file": {
+                "thumb_480_w": 130, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F1ZRM47UM-8a2168f5c6/screen_shot_2016-08-09_at_3.12.35_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F1ZRM47UM-8a2168f5c6/screen_shot_2016-08-09_at_3.12.35_pm_64.png", 
+                "size": 77894, 
+                "original_h": 736, 
+                "thumb_360_w": 98, 
+                "title": "Screen Shot 2016-08-09 at 3.12.35 PM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F1ZRM47UM/screen_shot_2016-08-09_at_3.12.35_pm.png", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F1ZRM47UM-8a2168f5c6/screen_shot_2016-08-09_at_3.12.35_pm_360.png", 
+                "id": "F1ZRM47UM", 
+                "ims": [
+                    "D1ZEK5UBH"
+                ], 
+                "thumb_720_w": 196, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F1ZRM47UM-8a2168f5c6/screen_shot_2016-08-09_at_3.12.35_pm_80.png", 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1470780774, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F1ZRM47UM-8a2168f5c6/screen_shot_2016-08-09_at_3.12.35_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F1ZRM47UM/download/screen_shot_2016-08-09_at_3.12.35_pm.png", 
+                "user": "U19HF6Z1A", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2016-08-09 at 3.12.35 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F1ZRM47UM-d446070ebc", 
+                "permalink": "https://hvr.slack.com/files/U19HF6Z1A/F1ZRM47UM/screen_shot_2016-08-09_at_3.12.35_pm.png", 
+                "is_external": false, 
+                "created": 1470780774, 
+                "original_w": 200, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F1ZRM47UM-8a2168f5c6/screen_shot_2016-08-09_at_3.12.35_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "scroll down a bit", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780760.000029"
+        }, 
+        {
+            "text": "but there\u2019s a list with pics", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780751.000028"
+        }, 
+        {
+            "text": "no red background", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780745.000027"
+        }, 
+        {
+            "text": "Then it should highlight (red background) all the scenes which make up that character.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780727.000026"
+        }, 
+        {
+            "text": "find the Wrestler row and click the Edit near the end of it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780655.000025"
+        }, 
+        {
+            "text": "under \"Current Characters\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780633.000024"
+        }, 
+        {
+            "text": "on the <http://8i.com/admin/sceneActions> page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780621.000023"
+        }, 
+        {
+            "text": "No need to delete it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780611.000022"
+        }, 
+        {
+            "text": "what if I ever want to put it back in?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780597.000021"
+        }, 
+        {
+            "text": "ok, so say I want to remove the \u201cMY HOUSE!\u201d move from the wrestler, would I just delete it?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780587.000020"
+        }, 
+        {
+            "text": "no prob thnx", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780399.000019"
+        }, 
+        {
+            "text": "I\u2019m not even sure who would be the right person to ask", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780386.000018"
+        }, 
+        {
+            "text": "I\u2019m not the right person to ask about that sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780358.000017"
+        }, 
+        {
+            "text": "If I wanted to make an HVR shorter as a test, is there a way to do that without re-processing?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780278.000016"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780271.000015"
+        }, 
+        {
+            "text": "I went through and added move descriptions last week", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780239.000014"
+        }, 
+        {
+            "text": "Yeh it\u2019s great!", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780227.000013"
+        }, 
+        {
+            "text": "Then <http://8i.com/admin/sceneActions> has some terrible UI but you can add Characters or edit existing Characters", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780105.000012"
+        }, 
+        {
+            "text": "if you click the pack it expands", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780063.000011"
+        }, 
+        {
+            "text": "which shows what the current tango app can see", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780052.000010"
+        }, 
+        {
+            "text": "Yup, I added this page <http://8i.com/admin/tango>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780039.000009"
+        }, 
+        {
+            "text": "oh really?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470780025.000008"
+        }, 
+        {
+            "text": "Cool, you should actually be able to change which content is available as well through that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470780014.000007"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470779966.000006"
+        }, 
+        {
+            "text": "Have you been using the <http://8i.com/admin|8i.com/admin> pages to add the description to each of the scenes?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470778122.000005"
+        }, 
+        {
+            "text": "I\u2019ve actually updated the code so I can add and remove them now, so it shouldn\u2019t be a problem anymore.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470778060.000004"
+        }, 
+        {
+            "text": "Hey man, I\u2019m doing a pass of HVRs to remove. Alenni tells me it\u2019s a pain to remove them, so I\u2019ll try to log all the bugs this week, then you can rip them all out together at a point where it makes most sense for you. Sound good?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470770250.000002"
+        }, 
+        {
+            "text": "That works for me, unless you have a better idea. The only other way I usually get files is via the <http://clouds.8i.com|clouds.8i.com> bucket on Amazon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470704362.000008"
+        }, 
+        {
+            "text": "i could", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470704247.000007"
+        }, 
+        {
+            "text": "Do you want to just put the audio files in a Zip and attach it to an issue assigned to me?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470704216.000006"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470704194.000005"
+        }, 
+        {
+            "text": "Are you using Jira?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470704177.000004"
+        }, 
+        {
+            "text": "I don\u2019t have access to LA, I\u2019ve had Taos get files for me in the past, but that seems a bit unnecessary", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470704169.000003"
+        }, 
+        {
+            "text": "Hey man, I\u2019m doing an update pass on all the Holo audio files. I\u2019m going to do some cleanup and add voice compression to make them pop. Plus add new music for the dancing. What\u2019s the best way to get these to you? Do you have access to our drives here, or should I do Dropbox or something?", 
+            "type": "message", 
+            "user": "U19HF6Z1A", 
+            "ts": "1470704103.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U19HF6Z1A", 
+            "U0C90MHEH"
+        ]
+    }
+}

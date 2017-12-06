@@ -1,0 +1,948 @@
+{
+    "messages": [
+        {
+            "text": "Thank you ", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1512437913.000189"
+        }, 
+        {
+            "text": "All good, thought I'd just offer", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512437734.000076"
+        }, 
+        {
+            "text": "Ok cool I might just stop in the office for a minute ", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1512437561.000083"
+        }, 
+        {
+            "text": "Dave, Jed, Scott, Amelia and Isaac", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512437434.000162"
+        }, 
+        {
+            "text": "The tuatara pub on the bypass road", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512437403.000012"
+        }, 
+        {
+            "text": "Who\u2019s going?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1512437353.000102"
+        }, 
+        {
+            "text": "I\u2019m keen. Where\u2019s that\u2019s?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1512437339.000085"
+        }, 
+        {
+            "text": "Bumped into some people going to third eye. If you guys wanted to come", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512436693.000084"
+        }, 
+        {
+            "text": "Alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511293605.000330"
+        }, 
+        {
+            "text": "it\u2019s Jed\u2019 8i anniversary, would you like to say something for his \u201ccelebration\u201d?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1511293509.000620"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "raised_hands", 
+                    "users": [
+                        "U31U28KBR"
+                    ]
+                }
+            ], 
+            "text": "Can\u2019t wait for the next one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510717854.000089"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510717849.000062"
+        }, 
+        {
+            "text": "yeah, Connor was really awesome and I think our moves really improved. Very deliberate.", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1510717834.000194"
+        }, 
+        {
+            "text": "I heard no subs, but it was still the closest game yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510717528.000101"
+        }, 
+        {
+            "text": "Yea, how did it go?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510717512.000029"
+        }, 
+        {
+            "text": "ps welcome back, we played a really fun game frisbee game Monday", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1510717500.000171"
+        }, 
+        {
+            "text": "cool beans", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1510710663.000103"
+        }, 
+        {
+            "text": "Yea, I think there are a couple of people we can easter egg at some point, just need to remember to do them one day.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510710577.000038"
+        }, 
+        {
+            "text": "on eug\u2019s photo can you do your magic trick to get the equation back? just when you can obv not urgent", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1510710523.000018"
+        }, 
+        {
+            "text": "I hope you feel better quickly.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509910425.000018"
+        }, 
+        {
+            "text": "Oh no, that sucks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509910396.000127"
+        }, 
+        {
+            "text": "Mudge, my cold turned into a really horrible chest infection and I'm home sick today. Cant even lie down never mind run :disappointed:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1509910306.000010"
+        }, 
+        {
+            "text": "Sorry. I'm at the doctor :expressionless:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1509325595.000044"
+        }, 
+        {
+            "text": "Doesn\u2019t sound like anyone other the regular players are coming, but you shouldn\u2019t play if you are not breathing well. We will just have to make do without you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509319161.000052"
+        }, 
+        {
+            "text": "ok, let me know.", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1509317602.000063"
+        }, 
+        {
+            "text": "oh no, I\u2019ll check with Dan.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509317579.000044"
+        }, 
+        {
+            "text": "hey, I think I\u2019m too sick to run around for frisbee today. :disappointed: I can\u2019t take deep breaths without having a coughing fit. Is there someone who can sub for me?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1509317551.000026"
+        }, 
+        {
+            "text": "cool thanks Mudge. :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508979787.000108"
+        }, 
+        {
+            "text": "If you log in with an @8i.com email you should be able to see MTV", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508979730.000194"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508882313.000213"
+        }, 
+        {
+            "text": "just in schrodinger", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508882302.000490"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508378150.000102"
+        }, 
+        {
+            "text": "true", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508378148.000237"
+        }, 
+        {
+            "text": "looks a bit like a wall of Developer", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508378137.000099"
+        }, 
+        {
+            "text": "I think we have to be more self directed given these constraints.. \nyep, sure, whatever makes sense :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508378130.000238"
+        }, 
+        {
+            "text": "Developer (web)\n    Developer (unity)\n    Developer (unreal)\n    Developer (android)\n    Developer (iOS)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508378130.000062"
+        }, 
+        {
+            "text": "Do you think it might be better to do Web Developer rather than the other way around?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508378118.000057"
+        }, 
+        {
+            "text": "great", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508378086.000052"
+        }, 
+        {
+            "text": "I can start with those options, and change it later if needed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508378080.000130"
+        }, 
+        {
+            "text": "Alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508378062.000134"
+        }, 
+        {
+            "text": "I had suggested: Designer\n\tDeveloper (web)\n\tDeveloper (unity)\n\tDeveloper (unreal)\n\tDeveloper (android)\n\tDeveloper (iOS)\n\tMarketer\n\tProducer\n\tOther\n\nbut I didn\u2019t hear back from Amy regarding whether or not she thinks these are relevant to us", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508378044.000106", 
+            "edited": {
+                "user": "U31U28KBR", 
+                "ts": "1508378050.000000"
+            }
+        }, 
+        {
+            "text": "HI", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508377996.000090"
+        }, 
+        {
+            "text": "HI!", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508377975.000120"
+        }, 
+        {
+            "text": "Hey just wanted to check something for dev portal. Are we getting a list of role\u2019s for the newsletter signup form? \nDon\u2019t need them right now, but want to make sure this is getting tracked.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508377303.000117"
+        }, 
+        {
+            "text": "I think it might only be possible for dave as the Owner", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508297575.000145"
+        }, 
+        {
+            "text": "No it doesn\u2019t appear so, even though I am an admin.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508297545.000231", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1508297554.000000"
+            }
+        }, 
+        {
+            "text": "hey, do you have the ability to make <mailto:licensing@8i.com|licensing@8i.com> a manager on sentry? I need to be able to log in and remove outgoing team members.", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1508297336.000112"
+        }, 
+        {
+            "text": "setup for what? I don\u2019t know about anything?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506369558.000273"
+        }, 
+        {
+            "text": "Im gonna go set up in Babbage", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1506369533.000120", 
+            "edited": {
+                "user": "U31U28KBR", 
+                "ts": "1506369538.000000"
+            }
+        }, 
+        {
+            "text": "May want to check that with asher.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506302302.000089"
+        }, 
+        {
+            "text": "I don\u2019t know if these are up to date either, but the designs are here <https://app.zeplin.io/project/59812b07beaa439cf7568e44>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506302287.000099", 
+            "attachments": [
+                {
+                    "thumb_height": 228, 
+                    "service_icon": "https://app.zeplin.io/img/favicon/57x57.png", 
+                    "thumb_width": 228, 
+                    "title": "Zeplin - Login", 
+                    "service_name": "Zeplin", 
+                    "title_link": "https://app.zeplin.io/project/59812b07beaa439cf7568e44", 
+                    "text": "Collaboration app for UI designers and frontend developers", 
+                    "id": 1, 
+                    "fallback": "Zeplin: Zeplin - Login", 
+                    "thumb_url": "https://zeplin.io/img/favicon/228x228.png", 
+                    "from_url": "https://app.zeplin.io/project/59812b07beaa439cf7568e44"
+                }
+            ]
+        }, 
+        {
+            "text": "It maybe shouldn\u2019t be used for design approval, because I built it using marks older designs. but it is available at <http://8i-stage.dev.8i.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506302199.000128"
+        }, 
+        {
+            "text": "ok, and do you have a link to the WIP <http://8i.com|8i.com> site that I can link for design approval?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1506302108.000126"
+        }, 
+        {
+            "text": "CMS stands for content management system, so anything which allows someone to manage content is a CMS. You could call it sample asset CMS or dev portal CMS or <http://8i.com|8i.com> CMS", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506301993.000025", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1506302010.000000"
+            }
+        }, 
+        {
+            "text": "would I call that content CMS?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1506300661.000090"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504236058.000081"
+        }, 
+        {
+            "text": "it\u2019s just a funny perspective. L)", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1504236029.000123"
+        }, 
+        {
+            "text": "most things will be replaced", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504235939.000056"
+        }, 
+        {
+            "text": "Probably will be replaced with an asset from mark one day", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504235929.000062"
+        }, 
+        {
+            "text": "Buzz looks constipated in the image on dev portal", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1504235755.000028"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503962919.000139"
+        }, 
+        {
+            "text": "you good for an 1130 meeting with Amy? re:web design?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503962900.000185"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "star", 
+                    "users": [
+                        "U31U28KBR"
+                    ]
+                }
+            ], 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1503616907.000000"
+            }, 
+            "text": "You\u2019re good now", 
+            "ts": "1503616900.000138", 
+            "user": "U0C90MHEH", 
+            "type": "message"
+        }, 
+        {
+            "text": "fail. let me know when I can start breathing normally again :wink:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503616873.000081"
+        }, 
+        {
+            "text": ":wink: you were", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503616618.000085"
+        }, 
+        {
+            "text": "I thought I was being proactive", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503616607.000027"
+        }, 
+        {
+            "text": "thanks :upside_down_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503616599.000347"
+        }, 
+        {
+            "text": "I can do that quietly :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503616591.000049"
+        }, 
+        {
+            "text": "we don\u2019t announce until NOVEMBER", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503616585.000245"
+        }, 
+        {
+            "text": "Oh yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503616584.000007"
+        }, 
+        {
+            "text": "omg!! I didn\u2019t know this re: Amy\u2019s post! QUICK change our address back on our website  ahhhh :see_no_evil:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503616573.000146"
+        }, 
+        {
+            "text": "Any feedback on Mark\u2019s designs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503614529.000360"
+        }, 
+        {
+            "text": "brilliant", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503614516.000152"
+        }, 
+        {
+            "text": "that was really fast meeting but to answer your q, yes, will be part of the <http://8i.com|8i.com> site /developer or what have you :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503614506.000238"
+        }, 
+        {
+            "text": "Any idea where the map marker should go?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503540908.000176"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503540775.000122"
+        }, 
+        {
+            "text": "Think we should change our LA based address to: 5340 Alla Rd, Los Angeles, CA 90066", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503539955.000227"
+        }, 
+        {
+            "text": "Hey", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503539939.000217"
+        }, 
+        {
+            "text": "ok, I\u2019ll make us a Kanban", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503280087.000007"
+        }, 
+        {
+            "text": "sweet, its at 10:30 and Mark is coming along AFAIK", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503280023.000149"
+        }, 
+        {
+            "text": "HOLA, what time is your meeting with Tom tomorrow and would you have time in the afternoon to distill the deets to Mark, Asher, and me? Was thinking of creating a mini 25 mins meeting", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503279984.000023"
+        }, 
+        {
+            "text": "Yup, Mark is picking me up any minute, and then we are coming in.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503121739.000004"
+        }, 
+        {
+            "text": "Hey we are at rogue and vagabond if you wanna come out still???? Laundry was too busy ", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1503121707.000040"
+        }, 
+        {
+            "text": "is Lola (tiger) called Lola the Tiger, or does she have a formal name? Also, do we have info on our most popular Holo character if I were to select 4?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1502752615.956687"
+        }, 
+        {
+            "text": "that\u2019s ok, thank you.", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1502162868.501037"
+        }, 
+        {
+            "text": "And I will delete the other Amelia when I have a chance to fix the broken piece of code.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502162789.488172"
+        }, 
+        {
+            "text": "Awesome, yea amazon can be so great but also very frustrating at times.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502162751.482030"
+        }, 
+        {
+            "text": "worked :slightly_smiling_face: so smart. :star:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1502162720.477064"
+        }, 
+        {
+            "text": "for whatever reason, I can\u2019t get Amelia\u2019s pic to sit right on the website and by accident I entered her twice and I can\u2019t figure out how to delete?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1502161703.307982"
+        }, 
+        {
+            "text": "306,834 Total users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713710.785901"
+        }, 
+        {
+            "text": "that might sound better", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713700.782736"
+        }, 
+        {
+            "text": "1,864 New Zealand users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713693.780440"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713663.771257"
+        }, 
+        {
+            "text": "maybe that\u2019s a detail I\u2019ll leave our for our NZ innovation info lol", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1501713657.769718"
+        }, 
+        {
+            "text": "NZ is 32nd on our list of user countries", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713650.767356"
+        }, 
+        {
+            "text": "oh wow", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1501713628.760665"
+        }, 
+        {
+            "text": "99.4% of users are outside of NZ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713611.755244", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1501713626.000000"
+            }
+        }, 
+        {
+            "text": "215 Countries", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501713548.735333"
+        }, 
+        {
+            "text": "Hey Mudge, can you fill these blanks for me? Thank you :slightly_smiling_face: Holo is used in [xxx] countries and [xx]% of Holo users are outside of New Zealand.", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1501713416.692848"
+        }, 
+        {
+            "text": "You weren't wrong about that rain.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500631580.681238"
+        }, 
+        {
+            "text": "<@U3AF7DXEY> ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496723433.749540"
+        }, 
+        {
+            "text": "Hi - who has the login details for our sentry account?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1496722944.699553"
+        }, 
+        {
+            "text": "I keep uploading Lucas\u2019 pic but it\u2019s not showing up on the website\u2026?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1496269150.045633"
+        }, 
+        {
+            "text": "Oh sure ", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1496178247.614568"
+        }, 
+        {
+            "text": "We found a bit of a bug in the team member uploading code. \nIt\u2019s fixed now, but I had to reupload all the images, I didn\u2019t have access to Lucas\u2019s image though. Could you re-do that please.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496176595.062855"
+        }, 
+        {
+            "text": "Yea, should only be a few more days until its released too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496176065.879142"
+        }, 
+        {
+            "text": "Thanks! So many people already want to download! ", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1496175927.832494"
+        }, 
+        {
+            "text": "but if its a business partner etc you can just ask Jed to add them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496175727.764669"
+        }, 
+        {
+            "text": "<https://8i.com/holo/beta> is the start page for beta users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496175712.760016", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/holo/beta", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://8i.com/holo/beta"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey, where can people get an invite for an iOS version of holo?", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1496175676.748158"
+        }, 
+        {
+            "text": "Can you take Nik down from our 8i website? Thank you", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1495754980.557989"
+        }, 
+        {
+            "text": "ok I\u2019ll ask Isaac.", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1495055721.037096"
+        }, 
+        {
+            "text": "Sounds like a cool idea, I\u2019m not sure I have a great story for Ye though. Isaac or Michael might be better as they do more day to day work with him.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495055602.988140"
+        }, 
+        {
+            "text": "Hey we\u2019re trying to do this new way of celebrating 8iversaries, Ye is up for May. Since you work closely with him would you like to share a story? It helps for us to get to know each other this way. Let me know if you\u2019re up for that. :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1495055411.908060"
+        }, 
+        {
+            "text": "LOLs", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1491887384.285167"
+        }, 
+        {
+            "text": "Or maybe thats just his haircut", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491887376.283994"
+        }, 
+        {
+            "text": "<https://holo.8i.com/admin/eighti/s/66f75fe1-76f2-4513-a934-908758d34548>", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1491887248.266752"
+        }, 
+        {
+            "text": "this guy\u2019s head gets cut off when you face him forward on the sprite creator", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1491887247.266627"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin/holo-poses/edit/?id=8f93e633-358e-4ec6-a324-7bd35c5bb70c>", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1491871391.800144"
+        }, 
+        {
+            "text": "can you send me a link", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491871365.796024"
+        }, 
+        {
+            "text": "the \u201cseated intro\u201d pose for superfruit doesn\u2019t load on my page. I\u2019ve tried all sorts, signing in, out, etc. but nothing", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1491871270.779341"
+        }, 
+        {
+            "text": "Alright cool, yea let me know. Can always wait if you don't find one you like today.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488060504.000004"
+        }, 
+        {
+            "text": "Hey! Let me get back to you. I just bought a bed now I gotta find a bike! Shopping for one today", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1488060452.000003"
+        }, 
+        {
+            "text": "Hi, Hope the move went smoothly. Still keen to ride in to work tomorrow? We can meet at about 7:50 at the roundabout on Dee st if you want.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488060405.000002"
+        }, 
+        {
+            "text": "Oh good spotting, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487024561.000003"
+        }, 
+        {
+            "text": "hey Napoleon\u2019s name is spelled incorrectly on the website", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1487024493.000002"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592825.000008"
+        }, 
+        {
+            "text": "(but I meant addresses too)", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1486592817.000007"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1486592807.000006"
+        }, 
+        {
+            "text": "I didn\u2019t actually get photos from all of the Seattle team, would you mind chasing them up about those?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592797.000005"
+        }, 
+        {
+            "text": "and also maybe check in that we add our Seattle Office below. thanks mudge! :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1486592589.000004"
+        }, 
+        {
+            "text": "Yea, I\u2019ll check", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486591958.000003"
+        }, 
+        {
+            "text": "Hey Mudge, think we need to retitle Steve Raymond on our Website to CEO, but could you connect with Amy to see how the top row of our website should appear? Not sure if a reshuffle is in order...", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1486591903.000002"
+        }, 
+        {
+            "text": "sure, just whenever you have time not to interfere with your real work :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1485293402.000003"
+        }, 
+        {
+            "text": "Hey, I was supposed to be looking into KinHr for you as well. Do you want to have a quick chat about it when you have a few minutes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485290983.000002"
+        }, 
+        {
+            "text": "Hey Mudge, can I ask a favour from you when you get a chance? I\u2019m looking into a software called <https://kinhr.com/> so we can potentially store employee info and payroll into one secure system. It would be good if we were able to integrate let\u2019s say ipayroll and trello into kin, which apparently we can via API integration. That aspect is a bit beyond my understanding, would you have the time to quickly assess whether kin could integrate trello and ipayroll?  <https://kinhr.com/kin-api/>", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1484698951.000002", 
+            "attachments": [
+                {
+                    "title": "HR Software | Kin HR", 
+                    "service_name": "Kin", 
+                    "title_link": "https://kinhr.com/", 
+                    "text": "Kin HR Software streamlines HR for your entire team with employee file &amp; data management, time-off tracking and new hire onboarding. Start a free trial!", 
+                    "id": 1, 
+                    "fallback": "Kin: HR Software | Kin HR", 
+                    "from_url": "https://kinhr.com/"
+                }, 
+                {
+                    "title": "Kin API | Kin HR", 
+                    "service_name": "Kin", 
+                    "title_link": "https://kinhr.com/kin-api/", 
+                    "text": "Kin API - Access your Kin data in a secure way.", 
+                    "id": 2, 
+                    "fallback": "Kin: Kin API | Kin HR", 
+                    "from_url": "https://kinhr.com/kin-api/"
+                }
+            ]
+        }, 
+        {
+            "text": "Rugby ball", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481675077.000003"
+        }, 
+        {
+            "text": "I need to know what your gift is for customs purposes", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1481675068.000002"
+        }, 
+        {
+            "text": "Oh yea, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481073319.000003"
+        }, 
+        {
+            "text": "just remember to clean the coffee grind from where the coffee dispenses and the wand  :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1481073298.000002"
+        }, 
+        {
+            "text": "Secret Santa! :gift: :santa: You are shopping for: Hayes", 
+            "type": "message", 
+            "user": "U31U28KBR", 
+            "ts": "1480454862.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U31U28KBR", 
+            "U0C90MHEH"
+        ]
+    }
+}

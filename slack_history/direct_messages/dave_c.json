@@ -1,0 +1,4676 @@
+{
+    "messages": [
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509394919.000066"
+        }, 
+        {
+            "text": "Not at all!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1509394914.000453"
+        }, 
+        {
+            "text": "Hey, I\u2019m going to be on holiday from the 9th-14th, you mind if I switch around our weeks of holo on call?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509394904.000209"
+        }, 
+        {
+            "text": "Yeah, cool. I only saw that Raf had updated the agents when I looked into the engineering channel.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1506726600.000093"
+        }, 
+        {
+            "text": "When it went wrong, I figured it would be best to wait until Monday", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506726537.000061"
+        }, 
+        {
+            "text": "I wasn't aware anything had changed to the process", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506726511.000104"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1506726507.000059"
+        }, 
+        {
+            "text": "Yea, cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506726490.000174"
+        }, 
+        {
+            "text": "Heya, even when Raf gets the pipeline fixed, let's maybe wait until Monday for the deployment just incase something else goes wrong further down the track...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1506726466.000169"
+        }, 
+        {
+            "text": "WebPlatform -&gt; feature/docker-base\nI\u2019ve added frontend setup through docker to the project Readme", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1506309442.000039"
+        }, 
+        {
+            "text": "<https://github.com/8i/dockerfiles/tree/master/webdev-backend-base>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1506050677.000084"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505766035.000624"
+        }, 
+        {
+            "text": "Na, it does look like it handles that case fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765967.000317"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505765950.000147"
+        }, 
+        {
+            "text": "Well, I\u2019d say getlist is the ugly thing :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765935.000270"
+        }, 
+        {
+            "text": "Ahh, yeah. Maybe try and see if my solution still works for that case, it's not really beautiful.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505765914.000642"
+        }, 
+        {
+            "text": "but I didn\u2019t realize more values would not add more items to that list", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765887.000273"
+        }, 
+        {
+            "text": "which was causing errors when trying to batch edit anything else", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765846.000547"
+        }, 
+        {
+            "text": "My solution worked for the no change case", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765830.000449"
+        }, 
+        {
+            "text": "But I guess it surves some odd purpose...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505765815.000231", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1505765828.000000"
+            }
+        }, 
+        {
+            "text": "yea, that seems like a terrible getlist method", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765802.000177"
+        }, 
+        {
+            "text": "Yep, seems stupid to me that getlist returns it that way...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505765787.000385"
+        }, 
+        {
+            "text": "just as comma separated values in the first item?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765752.000423"
+        }, 
+        {
+            "text": "oh are the values not passed as a list", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765734.000123"
+        }, 
+        {
+            "text": "If you try master branch with your changes compared to my update you will see what I mean (it doesn't run and throughs an exception)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505765686.000421"
+        }, 
+        {
+            "text": "Yeah, I saw your solution, it didn't work as you were iterating a list with a single string at first position. This basically just created a new list with the same string at first position. The string (IDs with commas) itself wasn't affected.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505765625.000104"
+        }, 
+        {
+            "text": "You might have to tell me what the issue was, because I\u2019m pretty sure I already fixed and tested removing empty strings from the batch edit user.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505765456.000627"
+        }, 
+        {
+            "text": "Seemingly there is a bug in the current release which prevents batch editing user on poses. I\u2019ve fixed the issue a pushed a new release to staging for testing (batch edit users / groups on poses). I\u2019ll test staging when I\u2019m at the office and then push it to prod", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505762240.000184"
+        }, 
+        {
+            "text": "Alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505248056.000521"
+        }, 
+        {
+            "text": "Nah, all good, I missed adding the new read replica to the worker tasks which caused the error. All resolved now.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1505248038.000387"
+        }, 
+        {
+            "text": "Hey, I saw there was several errors on Sentry overnight, but you have resolved/assigned them to yourself. Is there anything I need to investigate?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505247794.000363"
+        }, 
+        {
+            "text": "Error for endpoint /admin/api/v1/cognito-token\nTraceback (most recent call last):\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/flask/app.py\u201d, line 1612, in full_dispatch_request\n    rv = self.dispatch_request()\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/flask/app.py\u201d, line 1598, in dispatch_request\n    return self.view_functions[rule.endpoint](**req.view_args)\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/flask_oauthlib/provider/oauth2.py\u201d, line 565, in decorated\n    return f(*args, **kwargs)\n  File \u201c/holo/app/scenes/views/eighti_admin.py\u201d, line 103, in cognito_token\n    cognito_result = amazonHelpers.get_or_create_admin_cognito_user(request.oauth.user)\n  File \u201c/holo/app/api/utils/amazonHelpers.py\u201d, line 137, in get_or_create_admin_cognito_user\n    TokenDuration=app.config.get(\u201cUSER_IDENTITY_POOL_TOKEN_DURATION\u201d)\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/botocore/client.py\u201d, line 312, in _api_call\n    return self._make_api_call(operation_name, kwargs)\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/botocore/client.py\u201d, line 575, in _make_api_call\n    api_params, operation_model, context=request_context)\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/botocore/client.py\u201d, line 630, in _convert_to_request_dict\n    api_params, operation_model)\n  File \u201c/holo/venv/app/lib/python3.4/site-packages/botocore/validate.py\u201d, line 291, in serialize_to_request\n    raise ParamValidationError(report=report.generate_report())\nbotocore.exceptions.ParamValidationError: Parameter validation failed:\nInvalid type for parameter <http://Logins.login.admin.holo.stage.8i.com|Logins.login.admin.holo.stage.8i.com>, value: b\u2019michael@8i.com\u2019, type: &lt;class \u2018bytes\u2019&gt;, valid types: &lt;class \u2018str\u2019&gt;", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503891235.000141"
+        }, 
+        {
+            "text": "<https://docs.quay.io/solution/getting-started.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1503890057.000035"
+        }, 
+        {
+            "text": "<http://quay.io|quay.io>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1503889909.000070"
+        }, 
+        {
+            "text": "feature/docker-python-upgrade", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1503889394.000063"
+        }, 
+        {
+            "text": "<https://drive.google.com/drive/u/0/folders/0B4EjWzNfEoARTzVpSEh0Mjk4S0U>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1503461836.000041"
+        }, 
+        {
+            "text": "<mailto:nathan.fothergill@gmail.com|nathan.fothergill@gmail.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502932619.000113"
+        }, 
+        {
+            "text": "FYI, got a small migration going in soon. The model change is already in develop, but I missed the migration.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502745507.691135"
+        }, 
+        {
+            "text": ".gitattributes", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1502690453.628023"
+        }, 
+        {
+            "text": "```\n*.py linguist-language=Python\n```", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1502690444.626344", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1502690564.000000"
+            }
+        }, 
+        {
+            "text": "Ok, so the branch for the Feedback (search / generic) is located under:\nfeature/feedback\n(I\u2019ve added the API endpoint to Postman and administration under Flask-Admin -&gt; Content (Feedback can be \u201cacknowledged\u201d by CMS editors) \n\nI have also added the required migration into the branch (you might need to re-create it if you have added other migrations in the meantime).\n\nHave a great week!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501758588.419170", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1501758693.000000"
+            }
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501649740.088311"
+        }, 
+        {
+            "text": "nope should be fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501649734.087365"
+        }, 
+        {
+            "text": "Do you mind if I do a push to prod?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501649562.060121"
+        }, 
+        {
+            "text": ":metal: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501649392.033058"
+        }, 
+        {
+            "text": "Yea, they weren\u2019t when he checked. So I enabled him access so he can test it as much as he needs to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501648135.832891"
+        }, 
+        {
+            "text": "Yeah, I asked him if he needed access to it or if he just wanted to test. For testing he could just pop round your laptop and have a quick look if his tokens were coming through.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501648062.821162", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1501648081.000000"
+            }
+        }, 
+        {
+            "text": "He said you gave him the link to it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501646829.619484"
+        }, 
+        {
+            "text": "Hey, Michael can\u2019t see the Users &gt; Device view of flask admin. I\u2019m going to make it viewable by staff users.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501646788.612461"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501639909.409238"
+        }, 
+        {
+            "text": "Hmm\u2026 yeah, let\u2019s maybe have a chat tomorrow to figure how to prevent us from accidentally working on the same thing.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501639663.362455"
+        }, 
+        {
+            "text": "Yea, that makes sense. No one should be asking multiple people to do things, not really sure what time it was when I chatted with Lucas/Issac, but it was basically right when I got it, so he may have asked you after that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501639589.348281"
+        }, 
+        {
+            "text": "Ok, cool. I just was talking explicitly with Nicole and Lucas at 9 this morning and I told them I was working on it. I understood that you starting working on this as a result of you chat with Lucs (who must have know I was working on it). I just don\u2019t want people asking different team members to do the same thing.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501639483.327638"
+        }, 
+        {
+            "text": "and I already had the change by then anyhow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501639379.306847"
+        }, 
+        {
+            "text": "All good, I was working on allowing to filter the Pose downloaded stats on Start and End date (so it works a little different)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501639367.304536"
+        }, 
+        {
+            "text": "I heard you were working on the featured issue in standup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501639361.303267"
+        }, 
+        {
+            "text": "My change is already merged in now, but if you have a better solution go for it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501639327.296766"
+        }, 
+        {
+            "text": "I didn\u2019t hear from nicole, but Isaac/Lucas were talking about it this morning", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501638455.124702"
+        }, 
+        {
+            "text": "Did Nicole ask you? I already had told her this morning that I was working on it, I don\u2019t really want her to go off and ask multiple people to do the same thing.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501638426.118964"
+        }, 
+        {
+            "text": "oh yea I had a change from this morning which will show downloads just from the past 24 hours in the stats", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501638356.105321"
+        }, 
+        {
+            "text": "<@U0C90MHEH> Are you also working on Popularity?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501638316.097738"
+        }, 
+        {
+            "text": "Stand up is happening now if you want to join.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501627802.653964"
+        }, 
+        {
+            "text": "arn:aws:iam::689633986593:user/mudge is not authorized to perform: elasticloadbalancing:ModifyTargetGroup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501209916.631785"
+        }, 
+        {
+            "text": "The DataDog agents are still playing up, the DD agent itself is randomly not passing an internal health check to register with the DataDog server. I\u2019ll be having a meet up with Raf first thing to see if he has any ideas why this would be suddenly occurring.\n\nIn the meanwhile I\u2019m monitoring the servers through AWS", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501181362.013207", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1501187010.000000"
+            }
+        }, 
+        {
+            "text": "<https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#logEventViewer:group=holo-api-stage;stream=holo_/holo-api/f26184b3-0aad-41ef-96a6-39b383a73913>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501123950.916165"
+        }, 
+        {
+            "text": "<https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#logEventViewer:group=holo-api-stage-migration;stream=holo_migrate/holo-api-migration/e8cb91b8-c295-4875-848b-d481e91cb109>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501123318.808375"
+        }, 
+        {
+            "text": "<https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#logEventViewer:group=holo-api-stage-migration;stream=holo_migrate/holo-api-migration/50de7000-af21-49c7-87a7-c7ceb83d0285>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501122676.692380"
+        }, 
+        {
+            "text": "<https://github.com/marmelab/admin-on-rest>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501109123.625950", 
+            "attachments": [
+                {
+                    "thumb_height": 250, 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "thumb_width": 250, 
+                    "title": "marmelab/admin-on-rest", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/marmelab/admin-on-rest", 
+                    "text": "admin-on-rest - A frontend framework for building admin SPAs on top of REST services, using React and Material Design", 
+                    "id": 1, 
+                    "fallback": "GitHub: marmelab/admin-on-rest", 
+                    "thumb_url": "https://avatars2.githubusercontent.com/u/3116319?v=4&s=400", 
+                    "from_url": "https://github.com/marmelab/admin-on-rest"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://www.material-ui.com>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501108602.471003", 
+            "attachments": [
+                {
+                    "title": "Material-UI", 
+                    "text": "Google's material design UI components built with React.", 
+                    "title_link": "http://www.material-ui.com", 
+                    "service_name": "material-ui.com", 
+                    "id": 1, 
+                    "fallback": "Material-UI", 
+                    "service_icon": "http://www.material-ui.com/images/favicon.ico", 
+                    "from_url": "http://www.material-ui.com"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://8i.github.io/cloud-ui/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501108551.455588"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1501041961.429350"
+        }, 
+        {
+            "text": "I\u2019ve got a migration going in FYI.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501040581.203205"
+        }, 
+        {
+            "text": "Euclid", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1500861877.130480"
+        }, 
+        {
+            "text": "Where about?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500861870.129559"
+        }, 
+        {
+            "text": "Oh yea, we haven\u2019t been doing it all week because Mitch is away", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500590037.094713"
+        }, 
+        {
+            "text": "Just heading in, Thomas forgot to open video for standup", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1500589692.984856"
+        }, 
+        {
+            "text": "File path to the collection of Holo quality solves\nI haven\u2019t named each, but the general idea is:\nS01 : Jed\u2019s\nS02 : Charles\u2019\nS03 : Tokes\u2019\nS04 : Owen\u2019s\nS05 : Dave\u2019s\n\n`P:\\users\\patrick\\NZFAMILY_web600`", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1500515814.197721"
+        }, 
+        {
+            "text": "<https://jordijoan.me/simple-orderable-menus-wagtail/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1500501316.587944", 
+            "attachments": [
+                {
+                    "image_bytes": 190022, 
+                    "title": "Simple orderable menus for Wagtail", 
+                    "text": "The last few months I've been doing a good amount of work using Wagtail. Wagtail is a pretty cool CMS built on top of the Django\u00a0framework. It hasn't been around for long but it has a pretty active community and a nice documentation. I've built a couple of relatively large sites with it and been quite happy with the result so far.", 
+                    "image_width": 816, 
+                    "title_link": "https://jordijoan.me/simple-orderable-menus-wagtail/", 
+                    "image_height": 250, 
+                    "image_url": "https://jordijoan.me/static/images/bg.jpg", 
+                    "service_name": "jordijoan.me", 
+                    "id": 1, 
+                    "fallback": "Simple orderable menus for Wagtail", 
+                    "service_icon": "https://jordijoan.me/static/images/icons/apple-icon-57x57.png", 
+                    "from_url": "https://jordijoan.me/simple-orderable-menus-wagtail/"
+                }
+            ]
+        }, 
+        {
+            "text": "import nose.tools; nose.tools.set_trace()", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1500422097.343233"
+        }, 
+        {
+            "text": "Flask Admins native select box library: \n<https://select2.github.io/examples.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499989227.274462"
+        }, 
+        {
+            "text": "chur", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499920505.257575"
+        }, 
+        {
+            "text": "Give it a restart, should have space now", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499920497.256305"
+        }, 
+        {
+            "text": "Cheers", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499919972.172915"
+        }, 
+        {
+            "text": "For fucks sake\u2026^^ will clear it", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499919953.170024"
+        }, 
+        {
+            "text": "Hmm just because buildkite is having such a great day I\u2019m getting \u201cno space left on device\u201d now when trying to push to prod.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499919897.161008"
+        }, 
+        {
+            "text": "can\u2019t push to staging currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499907827.051796"
+        }, 
+        {
+            "text": "Yea its doing a different error for me now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499907818.050053"
+        }, 
+        {
+            "text": "...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499907808.047848"
+        }, 
+        {
+            "text": "Just waiting for a fix from Gerrard for Buildkite", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499907806.047351"
+        }, 
+        {
+            "text": ":+1: Thx for letting me know!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499893189.587027"
+        }, 
+        {
+            "text": "but just an FYI incase it happens to you when trying to deploy etc", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892415.188596"
+        }, 
+        {
+            "text": "ok I think I found where the timeout comes from, so I can fix that in the meantime", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892399.180640"
+        }, 
+        {
+            "text": "Could be. When I find some time I will move the Websites to staging and prod and rebuild the pipline for them", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499892372.166694"
+        }, 
+        {
+            "text": "maybe that doesn\u2019t have the same timeout policy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892314.137094"
+        }, 
+        {
+            "text": "oh that 4 day one came from WebPlatform", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892304.131992"
+        }, 
+        {
+            "text": "Hmm.. I\u2019ll probably just push this on to Gerred.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499892290.124751"
+        }, 
+        {
+            "text": "I thought we had added a 10 minute per task timeout or something like that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892237.097812"
+        }, 
+        {
+            "text": "but yea I had a build which was using up an agent for a few days which I didn\u2019t even know about", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892208.083088"
+        }, 
+        {
+            "text": "Seems to only happen on some agents, so retrying works", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892186.072263"
+        }, 
+        {
+            "text": "Will look into it", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499892184.071316"
+        }, 
+        {
+            "text": "Hey have you seen the buildkite issue where it isn\u2019t connecting to <http://github.com|github.com>? <https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2190#c1b0eaf2-1e5c-4e51-905b-899ee3364cec>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499892174.065657"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499403226.686681"
+        }, 
+        {
+            "text": "Sure, will merge up develop before pushing", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499403221.686045"
+        }, 
+        {
+            "text": "just make sure you pick that up and it should be good for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499403199.683007"
+        }, 
+        {
+            "text": "I just did a push to staging", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499403188.681312"
+        }, 
+        {
+            "text": "Heya Mudge, \nIf I push some changes directly from a branch to staging, would that be good with you?\nDo you need to push anything to staging over the weekend?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499403074.664662"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499213139.685169"
+        }, 
+        {
+            "text": "No password for remote desktop", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499213132.684392"
+        }, 
+        {
+            "text": "Thx!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499213119.683213", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1499213126.000000"
+            }
+        }, 
+        {
+            "text": "Admin password is 8ioperations", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499213106.681974"
+        }, 
+        {
+            "text": "Hey, just in case you check this today, do you by any chance remember the password for our two TV boxes Ceres &amp; Eros?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499213082.679358", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1499213092.000000"
+            }
+        }, 
+        {
+            "text": "cloudwatch.ListMetrics", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499061299.668291"
+        }, 
+        {
+            "text": "User: arn:aws:iam::689633986593:user/mudge is not authorized to perform: iam:PassRole on resource: arn:aws:iam::689633986593:role/ecs_holo_api_role", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499061022.626573"
+        }, 
+        {
+            "text": "User: arn:aws:iam::689633986593:user/mudge is not authorized to perform: iam:PassRole on resource: arn:aws:iam::689633986593:role/ecs_holo_api_role", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499060402.536081"
+        }, 
+        {
+            "text": "No worries, all good. It's me who's late. Thx for pushing!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499029814.215351"
+        }, 
+        {
+            "text": "sorry that took a bit longer than I thought it would, got side tracked when I arrived. On its way to prod now though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499029770.211958"
+        }, 
+        {
+            "text": "Awesome, thx!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499027525.048239"
+        }, 
+        {
+            "text": "I'm about 2 minutes from it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499027513.047285"
+        }, 
+        {
+            "text": "Cheers!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499027501.046407"
+        }, 
+        {
+            "text": "Only if you are in the office of course!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499027497.046133"
+        }, 
+        {
+            "text": "Sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499027488.045476"
+        }, 
+        {
+            "text": "Heya Mudge, just making my way into the office now. Tokes just requested me to update his IP address. I\u2019ve added it to the develop branch and pushed to staging.\n\nOnce the staging deployment has complete, could you check everything worked fine, merge it into master and push to prod?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1499027442.041844"
+        }, 
+        {
+            "text": "I'll be missing that :-/", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498601140.608955"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498601126.604847"
+        }, 
+        {
+            "text": "but we have the all hands now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498601125.604694"
+        }, 
+        {
+            "text": "Need to look into that more", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498601119.603100"
+        }, 
+        {
+            "text": "Ok...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498601109.600327"
+        }, 
+        {
+            "text": "and not used for postman", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498601108.600200"
+        }, 
+        {
+            "text": "I don\u2019t know why it was getting used", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498601092.595957"
+        }, 
+        {
+            "text": "no it was just completely empty", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498601083.593638"
+        }, 
+        {
+            "text": "Oh, bad characters?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498600984.568994"
+        }, 
+        {
+            "text": "Actually looks like that pose has a bad localisation", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498600948.559790"
+        }, 
+        {
+            "text": "Yea, I can\u2019t see anything which looks wrong", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498600841.531516"
+        }, 
+        {
+            "text": "The content guys were yestday playing around with weird Unicode characters and spacing... Maybe they added something weird to a pose name...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498600391.411761"
+        }, 
+        {
+            "text": "Oh, that's weird", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498600317.392632"
+        }, 
+        {
+            "text": "No it looks like it is an ios thing, not finding name on a pose when there is definitely a name set", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498600230.369739"
+        }, 
+        {
+            "text": "Thomas added his new refresh token workflow in their yesterday's release, maybe that is causing issues...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498599705.228456"
+        }, 
+        {
+            "text": "They should be able to point the Dev app against prod and just login (or is the issue non reproducible)?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498599407.145613"
+        }, 
+        {
+            "text": "If something was wrong with the endpoint, the tests should have normally complained...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498599324.121565"
+        }, 
+        {
+            "text": "Hmm... It shouldn't be for all logged in users then, what does postman return?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498599224.093409"
+        }, 
+        {
+            "text": "which is why the login causes it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498599065.046760"
+        }, 
+        {
+            "text": "I think its something to do with a private pose actually", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498599055.044053"
+        }, 
+        {
+            "text": "Na cool, would have probably been my first guess too", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498598970.017429"
+        }, 
+        {
+            "text": "I\u2019m not convinced, but because you just mentioned it before and they started seeing the problem this morning", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598908.999813"
+        }, 
+        {
+            "text": "Yea for sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598877.990751"
+        }, 
+        {
+            "text": " In case it does, I can quickly rollback. But I would only do that if we can definitely confirm.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498598868.988022"
+        }, 
+        {
+            "text": "ok cool, probably something else then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598835.978650"
+        }, 
+        {
+            "text": "Yeah, the change shouldn't affect regularly authentication users", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498598823.975177"
+        }, 
+        {
+            "text": "The iOS team is investigating what is causing the failure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598814.972424"
+        }, 
+        {
+            "text": "ok it could be unrelated", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598780.962712"
+        }, 
+        {
+            "text": "Can they try and test on staging and confirm? That exception only gets called for anonymous users", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498598749.953553", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1498598779.000000"
+            }
+        }, 
+        {
+            "text": "ah it might be Barrista Boris actually", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598739.950760"
+        }, 
+        {
+            "text": "nope only after a user login", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598708.941383"
+        }, 
+        {
+            "text": "After anonymous login?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498598692.936656"
+        }, 
+        {
+            "text": "are you sure that identifier missing exception is safe?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598689.935662"
+        }, 
+        {
+            "text": "Hey, there seems to be a problem with iOS crashing after login", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498598661.927331"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498597654.618280"
+        }, 
+        {
+            "text": "Don't worry about the new \"identifier missing\" exception conning through on sentry for an amount of anonymous users. I found a bug yesterday evening which was causing anonymous useres to not  consistently passing their clients identity in the refresh token. Those which are popping up are useres which have to bad token. I might need to kill their refresh tokens if the issue doesn't phase out naturally.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498597628.609611"
+        }, 
+        {
+            "text": "Have fun :football: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498551727.579667"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498551705.574325"
+        }, 
+        {
+            "text": "But I'm.not pushing any time soon because of the rugby", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498551602.550434"
+        }, 
+        {
+            "text": "Yea sorry, I was waiting for the tests and then me and Collette had to head out for the rugby. So I didn't push", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498551567.542902"
+        }, 
+        {
+            "text": "2 Things:\n- I don\u2019t think you pushed your str() changes, I updated them myself on develop (you might get merge conflicts when pulling from develop if you commited locally)\n- I\u2019m just testing a change in the develop branch, plz hold off pushing develop to master for the next 1 - 2 hours", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498550551.312475"
+        }, 
+        {
+            "text": "generate_auth_user_specific_cache", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498539347.652865"
+        }, 
+        {
+            "text": "SharedBaseMixin", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498539215.639670"
+        }, 
+        {
+            "text": "<https://stackoverflow.com/questions/6327494/what-is-the-following-unicode-string-xe9>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498537597.477877", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "What is the following Unicode string \\xe9?", 
+                    "text": "I wanted to know what is the following Unicode string \\xe9? And is there a detailed tutorial that explains this Unicode string?", 
+                    "title_link": "https://stackoverflow.com/questions/6327494/what-is-the-following-unicode-string-xe9", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "What is the following Unicode string \\xe9?", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", 
+                    "from_url": "https://stackoverflow.com/questions/6327494/what-is-the-following-unicode-string-xe9"
+                }
+            ]
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498126511.190851"
+        }, 
+        {
+            "text": "na I\u2019m in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498126506.189911"
+        }, 
+        {
+            "text": "Let me know if you're having issues accessing, I'll be home in 10 min", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498126495.187287"
+        }, 
+        {
+            "text": "The proxy will only work for\n<https://holo-staging.8i.com/flask-admin>\n<https://holo.8i.com/flask-admin>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498126208.122350", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1498126297.000000"
+            }
+        }, 
+        {
+            "text": "cheers", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498126077.092036"
+        }, 
+        {
+            "text": "username: isaac\npassword: letIsacUseHolo", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498126061.088252"
+        }, 
+        {
+            "text": "arn:aws:iam::689633986593:user/mudge is not authorized to perform: elasticache:DescribeCacheClusters (Service: AmazonElastiCache; Status Code: 403; Error Code: AccessDenied; Request ID: 9b599a63-56cb-11e7-926a-afd0f319b843)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498081828.788476"
+        }, 
+        {
+            "text": "na, seems that maybe quay is having some connectivity issues", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498003274.731089"
+        }, 
+        {
+            "text": "Just retry until it works", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498003253.727434"
+        }, 
+        {
+            "text": "might be one of the agents is dud", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498003252.727304"
+        }, 
+        {
+            "text": "Same up here for the studio team", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498003246.726226"
+        }, 
+        {
+            "text": "Merge into develop and master did work though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498003242.725441"
+        }, 
+        {
+            "text": "Hmm\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498003185.714238"
+        }, 
+        {
+            "text": "and in one of my branches too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498003175.712718"
+        }, 
+        {
+            "text": "Na same issue happened again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498003166.711358"
+        }, 
+        {
+            "text": "Just give the build  a restart, Bad Gateway could just have been a hickup", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1498002122.543537"
+        }, 
+        {
+            "text": "<https://buildkite.com/8i/holo-dot-8i-dot-com/builds/1980#819cff48-c11d-4fd7-b74a-a42f76832ee0>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498001921.510334"
+        }, 
+        {
+            "text": "Hey I\u2019m getting errors on the \u201cBuilding Container\u201d step of buildkite", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498001913.509028"
+        }, 
+        {
+            "text": "Yea I've got another branch messing with the DB setup and tear down stuff.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497941568.108699"
+        }, 
+        {
+            "text": "Haha, but good work on cleaning up the class, looks nice &amp; clean now :wink:  :+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497940409.928746"
+        }, 
+        {
+            "text": "Not much you can improve on a single running thread.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939973.863191", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1497939985.000000"
+            }
+        }, 
+        {
+            "text": "The two big time consumers are creating / tearing down the database &amp; the request/response delay (even if its just a few milliseconds it adds up)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939876.849295"
+        }, 
+        {
+            "text": "E.g. 2 processes should half the time, 4 process \u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939794.838070"
+        }, 
+        {
+            "text": "Yeah, all good. If it speeds up the tests, thats most important for now.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939598.810920"
+        }, 
+        {
+            "text": "All we need for that is to randomise the test DB name\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939559.805690", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1497939563.000000"
+            }
+        }, 
+        {
+            "text": "Ok cool, I had a feeling the flask_base class was responsible for the celery single process issue as it was holding onto some weird stuff. I\u2019ll investigate some other time. I guess we can massively improve test time with running tests on multiple processes.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939533.802309"
+        }, 
+        {
+            "text": "Not really sure how to improve that one though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939493.796563"
+        }, 
+        {
+            "text": "And I can't even run all the tests in the promotions folder without getting the segmentation fault", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939459.791908"
+        }, 
+        {
+            "text": "But several of the tests are still taking 3 seconds plus each", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939429.787733"
+        }, 
+        {
+            "text": "Yea, it was about a minute faster", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939410.785295"
+        }, 
+        {
+            "text": "But revert it if you have to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939381.781269"
+        }, 
+        {
+            "text": "Did it help?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939379.781125"
+        }, 
+        {
+            "text": "I was just trying to improve our test times because they are starting to take a while", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939370.779730"
+        }, 
+        {
+            "text": "Creating so many app comtexts", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939289.768581"
+        }, 
+        {
+            "text": "It was making the tests slower", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939276.766814"
+        }, 
+        {
+            "text": "Yep", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939269.765801"
+        }, 
+        {
+            "text": "Oh really?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497939263.764924"
+        }, 
+        {
+            "text": "Hey Mudge,\nDid you change my \ntests/server/holo_cms/base.py class?\nI was purposely not using flask_testing.TestCase\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497939203.757017"
+        }, 
+        {
+            "text": "/scenes/views/flask_admin.pyc", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497841837.051178"
+        }, 
+        {
+            "text": "# The Developer token for mixpanel.\nMIXPANEL_TOKEN = \u20186f3a2b2de81466ffb78f0a5aa060dd6e\u2019\n\nMANDRILL_API_KEY = \u2018Lg6h4AfApGo4q17VCQIYsA\u2019", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497824266.713897"
+        }, 
+        {
+            "text": "on resource: arn:aws:iam::689633986593:role/ecs_holo_api_role", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497569176.084801"
+        }, 
+        {
+            "text": "User: arn:aws:iam::689633986593:user/mudge is not authorized to perform: iam:PassRole", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497569143.079587"
+        }, 
+        {
+            "text": "when trying to create an access key", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497567700.838485"
+        }, 
+        {
+            "text": "Hey, I\u2019m trying to set up aws-vault for 8iprod amazon account but get \u201cUser: arn:aws:iam::689633986593:user/mudge is not authorized to perform: iam:CreateAccessKey on resource: user mudge\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497567689.836335"
+        }, 
+        {
+            "text": "Seems also that coverage &gt;4.0 doesn\u2019t by default show the missing lines of code\nFix -&gt;\n<https://stackoverflow.com/questions/37733194/python-nosetests-with-coverage-no-longer-shows-missing-lines>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497508907.271182", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Python nosetests with coverage no longer shows missing lines", 
+                    "text": "I've been using the following command to run tests and evaluate code coverage for a Python project for over a year now. nosetests -v --with-coverage --cover-package=genhub genhub/*.py The coverage", 
+                    "title_link": "https://stackoverflow.com/questions/37733194/python-nosetests-with-coverage-no-longer-shows-missing-lines", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "Python nosetests with coverage no longer shows missing lines", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", 
+                    "from_url": "https://stackoverflow.com/questions/37733194/python-nosetests-with-coverage-no-longer-shows-missing-lines"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://nose.readthedocs.io/en/latest/plugins/cover.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497507850.122984"
+        }, 
+        {
+            "text": "nosetests -v --cover-erase  --with-coverage --cover-package=. tests/server/", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497507621.093359", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1497507847.000000"
+            }
+        }, 
+        {
+            "text": "nosetests -v --processes=1 --process-timeout=60 --process-restartworker", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1497504489.729520"
+        }, 
+        {
+            "text": "<https://github.com/8i/holo-api/tree/bugfix/oauthBroken>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497402798.984014"
+        }, 
+        {
+            "text": "I\u2019ll see if I can remove it, but it may still be needed to support that old Tango build", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496976966.815556"
+        }, 
+        {
+            "text": ":+1: Good catch", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496976962.815072"
+        }, 
+        {
+            "text": "Don\u2019t worry about that slow spike, someone used the old admin endpoint I had which isn\u2019t paginated, just returns all the experiences", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496976938.812326"
+        }, 
+        {
+            "text": "No problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895361.494419"
+        }, 
+        {
+            "text": "But na, sorry, no real experience using any of those services :confused:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895353.493612"
+        }, 
+        {
+            "text": "When unsure, I like to ask github\n<https://github.com/search?l=Python&amp;o=desc&amp;q=geoip&amp;s=stars&amp;type=Repositories&amp;utf8=%E2%9C%93>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895253.482524", 
+            "attachments": [
+                {
+                    "title": "Build software better, together", 
+                    "service_name": "GitHub", 
+                    "image_width": 1200, 
+                    "title_link": "https://github.com/search?l=Python&o=desc&q=geoip&s=stars&type=Repositories&utf8=%E2%9C%93", 
+                    "image_height": 620, 
+                    "text": "GitHub is where people build software. More than 22 million people use GitHub to discover, fork, and contribute to over 60 million projects.", 
+                    "id": 1, 
+                    "fallback": "GitHub: Build software better, together", 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "from_url": "https://github.com/search?l=Python&o=desc&q=geoip&s=stars&type=Repositories&utf8=%E2%9C%93"
+                }
+            ]
+        }, 
+        {
+            "text": "all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895213.478417"
+        }, 
+        {
+            "text": "Na, haven\u2019t heard of others", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895206.477695"
+        }, 
+        {
+            "text": "just wondered if you had experience", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895202.477199"
+        }, 
+        {
+            "text": "yea those were the ones I found", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895195.476453"
+        }, 
+        {
+            "text": "^^ \n<https://github.com/maxmind/GeoIP2-python>\n<https://github.com/mitsuhiko/python-geoip>\nBoth use maxmind as far as I can see\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895180.474708", 
+            "attachments": [
+                {
+                    "thumb_height": 250, 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "thumb_width": 250, 
+                    "title": "maxmind/GeoIP2-python", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/maxmind/GeoIP2-python", 
+                    "text": "GeoIP2-python - Python code for GeoIP2 webservice client and database reader", 
+                    "id": 1, 
+                    "fallback": "GitHub: maxmind/GeoIP2-python", 
+                    "thumb_url": "https://avatars3.githubusercontent.com/u/1181834?v=3&s=400", 
+                    "from_url": "https://github.com/maxmind/GeoIP2-python"
+                }, 
+                {
+                    "thumb_height": 250, 
+                    "service_icon": "https://a.slack-edge.com/bfaba/img/unfurl_icons/github.png", 
+                    "thumb_width": 250, 
+                    "title": "mitsuhiko/python-geoip", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/mitsuhiko/python-geoip", 
+                    "text": "python-geoip - GeoIP database access for Python under a BSD license.", 
+                    "id": 2, 
+                    "fallback": "GitHub: mitsuhiko/python-geoip", 
+                    "thumb_url": "https://avatars3.githubusercontent.com/u/7396?v=3&s=400", 
+                    "from_url": "https://github.com/mitsuhiko/python-geoip"
+                }
+            ]
+        }, 
+        {
+            "text": "but if I can\u2019t convince Mitch, some ideas of good services would be nice", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895152.471716"
+        }, 
+        {
+            "text": "I\u2019m thinking the work is a lot for the payoff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895123.468501"
+        }, 
+        {
+            "text": "I also know of <http://www.hostip.info/index.html>, not sure how good they are", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895108.466948", 
+            "attachments": [
+                {
+                    "title": "IP Address Lookup Hostip.info", 
+                    "text": "<http://Hostip.info|Hostip.info> is an established community that provides an extended IP domain and address database for free search.", 
+                    "title_link": "http://www.hostip.info/index.html", 
+                    "service_name": "hostip.info", 
+                    "id": 1, 
+                    "fallback": "IP Address Lookup Hostip.info", 
+                    "service_icon": "http://www.hostip.info/favicon.ico", 
+                    "from_url": "http://www.hostip.info/index.html"
+                }
+            ]
+        }, 
+        {
+            "text": "or a \u201cComing soon\u201d bit of text", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895099.465971"
+        }, 
+        {
+            "text": "Ah, cool", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895091.465111"
+        }, 
+        {
+            "text": "nope, just for a link to download the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895082.464088"
+        }, 
+        {
+            "text": "Is this for the whole API e.g. Poses, Promotions, Filters? This will definitely be a bigger job if he wants regionalisation on top of localisation. Also, going on a pure IP basis can be quite dodgy (haven\u2019t used it myself yet but a lot of python libs utilise <https://www.maxmind.com/en/home>).", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496895067.462286", 
+            "attachments": [
+                {
+                    "title": "IP Geolocation and Online Fraud Prevention | MaxMind", 
+                    "text": "MaxMind is a leading provider of IP intelligence and online fraud prevention tools. Learn about GeoIP databases and services and minFraud services.", 
+                    "title_link": "https://www.maxmind.com/en/home", 
+                    "service_name": "maxmind.com", 
+                    "id": 1, 
+                    "fallback": "IP Geolocation and Online Fraud Prevention | MaxMind", 
+                    "service_icon": "https://www.maxmind.com/favicon.ico", 
+                    "from_url": "https://www.maxmind.com/en/home"
+                }
+            ]
+        }, 
+        {
+            "text": "Have you used a good library for finding a users country via their IP? Mitch wants geo specific content for the limited release countries.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496894354.379797"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496719055.378529"
+        }, 
+        {
+            "text": "Probably the public website and marketing assets should be easy", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718999.372446"
+        }, 
+        {
+            "text": "That should be the easier one. Probably the cloudfron account, if its hosted in WW might get tricky. We\u2019ve got the url hardcoded into the datasets and the url gets auto-generated when creating a new cloudfront account\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718987.371301", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496719020.000000"
+            }
+        }, 
+        {
+            "text": "but will think about it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718920.364099"
+        }, 
+        {
+            "text": "I think the 2 s3 buckets are the big things", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718907.362661"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718894.361250"
+        }, 
+        {
+            "text": "It would probably at some point be good to think about what is left from the holo team which needs migrating over to the new accounts. I\u2019d like to have us off the wild west account at some time soon so we can reduce any redundant but billed infrastructure.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718879.359571", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496718897.000000"
+            }
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718760.347325"
+        }, 
+        {
+            "text": "the one you got full access to", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718755.346690"
+        }, 
+        {
+            "text": "ok cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718751.346208"
+        }, 
+        {
+            "text": "In our new Stage account", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718746.345682"
+        }, 
+        {
+            "text": "where is that set?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718720.342434"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718709.341380"
+        }, 
+        {
+            "text": "Could take a up to 5 mins to propagate.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718703.340750"
+        }, 
+        {
+            "text": "Ok, updated", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718684.338761"
+        }, 
+        {
+            "text": "Thx, I\u2019ll give it a try", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718653.335290"
+        }, 
+        {
+            "text": "<http://ec2-54-218-18-208.us-west-2.compute.amazonaws.com|ec2-54-218-18-208.us-west-2.compute.amazonaws.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718641.333960"
+        }, 
+        {
+            "text": "Then all I need is the public DNS for stage", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718632.333014"
+        }, 
+        {
+            "text": "It doesn\u2019t look like we do in wild west", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718611.330829"
+        }, 
+        {
+            "text": "Good question\u2026 maybe not. I\u2019ll have a look to be sure", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718599.329465"
+        }, 
+        {
+            "text": "Do we have a load balancer for staging?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718561.325508"
+        }, 
+        {
+            "text": "thx", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718456.314567"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718447.313549"
+        }, 
+        {
+            "text": "ehh, stage server I mean", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718444.313269"
+        }, 
+        {
+            "text": "Could you quickly look up the prod load balancer dns for me?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718433.312034"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718414.310139"
+        }, 
+        {
+            "text": "Are you currently logged into the old wild west account?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718401.308610"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718388.307260"
+        }, 
+        {
+            "text": "ah holo-stage.dev", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718376.306008"
+        }, 
+        {
+            "text": "yea, I think thats all we need", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718368.305169"
+        }, 
+        {
+            "text": "Probably it would make more sense to only redirect <http://holo.dev.8i.com|holo.dev.8i.com>?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718357.304030"
+        }, 
+        {
+            "text": "Ok, so currently *.<http://dev.8i.com|dev.8i.com> is redirecting to the new staging server setup.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718338.302128"
+        }, 
+        {
+            "text": "\u201cThis server could not prove that it is <http://web-stage.dev.8i.com|web-stage.dev.8i.com>; its security certificate is from <http://holo-staging.8i.com|holo-staging.8i.com>\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718187.286024"
+        }, 
+        {
+            "text": "I\u2019ll check route53", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718184.285689"
+        }, 
+        {
+            "text": "nope, should only be <http://holo.dev.8i.com|holo.dev.8i.com>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718177.284808"
+        }, 
+        {
+            "text": "I think that it might of been caught up in that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718173.284366"
+        }, 
+        {
+            "text": "we redirecting everything to *.<http://dev.8i.com|dev.8i.com> to holo-staging right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718154.282290"
+        }, 
+        {
+            "text": "old wild west account", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718149.281773"
+        }, 
+        {
+            "text": "Hmm.. we\u2019ll probably need to renew that one", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718143.281082"
+        }, 
+        {
+            "text": "bad certificate for it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718119.278134"
+        }, 
+        {
+            "text": "I also noticed that <https://web-stage.dev.8i.com/> is not working anymore", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718112.277268"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718101.275914"
+        }, 
+        {
+            "text": "Hmm.. might have been me. I\u2019ll check after I pushed my updates", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496718097.275426"
+        }, 
+        {
+            "text": "Was just timing out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718031.267031"
+        }, 
+        {
+            "text": "oh it\u2019s going again now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496718025.266262"
+        }, 
+        {
+            "text": "What\u2019s not loading?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496717996.261914"
+        }, 
+        {
+            "text": "but its not loading now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496717958.257837"
+        }, 
+        {
+            "text": "not sure if that affected something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496717951.257039"
+        }, 
+        {
+            "text": "alright, I did just do a push to them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496717930.254740"
+        }, 
+        {
+            "text": "Might need to take down the staging server for  2 - 3 minutes", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496717915.253191"
+        }, 
+        {
+            "text": "graphs are doing things", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496713770.773323"
+        }, 
+        {
+            "text": "Did you restart the containers?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496713750.770845"
+        }, 
+        {
+            "text": "No problem, I\u2019ve seen how complicated those roles get", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496375559.104872"
+        }, 
+        {
+            "text": "My fault.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496375541.103071"
+        }, 
+        {
+            "text": "In Cognito Federate Identities we\u2019ve got one identity provider for admin and one for normal user.\nIn the provider itself you\u2019ve got two drop-downs to select a authenticated and unauthenticated user role.\nAWS however has switched the intuitive positions\u2026 You first need to define your unauthenticated role, then you authenticated. I had them switched\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496375524.101239"
+        }, 
+        {
+            "text": "cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496375449.093385"
+        }, 
+        {
+            "text": "Fixed.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496375357.083892"
+        }, 
+        {
+            "text": "Hmm\u2026 just checking", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373430.883175"
+        }, 
+        {
+            "text": "should be 8i-content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496373420.882057"
+        }, 
+        {
+            "text": "to what bucket do the sprite images get uploaded?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373388.878574"
+        }, 
+        {
+            "text": "must be a config issue on AWS then\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373376.877173"
+        }, 
+        {
+            "text": "Ah hmm\u2026 looking at the JWT token which is returned, the contents is correct.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373360.875496"
+        }, 
+        {
+            "text": "Jup, should be overwritten by ECS config\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373268.865334"
+        }, 
+        {
+            "text": "ADMIN_USER_IDENTITY_POOL_DEVELOPER_PROVIDER = \u201c<http://login.admin.holo.8i.com|login.admin.holo.8i.com>\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496373239.862260"
+        }, 
+        {
+            "text": "ADMIN_USER_IDENTITY_POOL_ID", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496373227.860822"
+        }, 
+        {
+            "text": "give me a moment", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373208.858858"
+        }, 
+        {
+            "text": "Strange", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373205.858482"
+        }, 
+        {
+            "text": "but it might be different now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496373205.858475"
+        }, 
+        {
+            "text": "oh that was what it was in production.py", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496373196.857413"
+        }, 
+        {
+            "text": "Hmm\u2026 both production pools don\u2019t match that pool id, still investigating\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496373169.854484", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496373180.000000"
+            }
+        }, 
+        {
+            "text": "It will be for the pool us-west-2:953eb1bb-e8e0-45ef-85a6-71ae18709ef1", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496365803.978651"
+        }, 
+        {
+            "text": "InvalidIdentityPoolConfigurationException\u201d,\u201cmessage\u201d:\u201cInvalid identity pool configuration. Check assigned IAM roles for this pool.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496365698.965680"
+        }, 
+        {
+            "text": "you find anything?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496365580.951031"
+        }, 
+        {
+            "text": "I\u2019m back now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496365575.950333"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496363371.664368"
+        }, 
+        {
+            "text": "Yea, all good thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496363334.659260"
+        }, 
+        {
+            "text": "Ah! Yes, I just came out from the doc, will look at it as soon as I'm home.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496363278.652252"
+        }, 
+        {
+            "text": "Not the full screen, sorry probably bad naming.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496363069.625032"
+        }, 
+        {
+            "text": "It's a canvas screenshots", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496363043.621546"
+        }, 
+        {
+            "text": "Yea from the scene admin page, after importing new experiences", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496363017.617980"
+        }, 
+        {
+            "text": "Hey, it sounds like uploading screenshots to Amazon isn't working either. That uses cognito. I'll take a look after lunch, but if you have a chance before me would you mind checking it out.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496362869.598209"
+        }, 
+        {
+            "text": "The three of us are already heading towards HopGarden, meet you there.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496296067.062665"
+        }, 
+        {
+            "text": "-----BEGIN PGP MESSAGE-----\nVersion: Keybase OpenPGP v2.0.71\nComment: <https://keybase.io/crypto>\n\nwcFMAy1/QNB/zm2uARAAxapbZqs969nCO2Luj2MIzmKwxXahSAg73N6oIaAyG4ez\nGaRTajjwIq+UL+F8RqQYnkuNgJHa9u0wR31h19aB50jnnUI1QdVN2Fi/Jhhy6t2m\nC5kDzgyDSIQl/QoALJnXXpYsXRYkhfkk3Y6Sv5p9abKCL82TeAsJAkYyb3hlNVUb\nNIMvDM0Zo0+W4dJUjrcVinnjSChVKO5coFQd5QeL5UK1sXk+0bMO2HEtA1bGREld\n38MKBOvmWclDdQzr8zQOnkbJe4PlwlhzpC15d8ak/wBcjr5mUaz01V+olZcRwO+T\niY6wmKhyRiifG4iXCbeNV1ffUlgIp7lVQukB3fLqoLfLumhN78DNv1NVCiGNaLIG\n4bzRDwQI9F9LyOB6FaFYTC3mshY89gscnwY9ZMqViWM81lezomQKweRhfYC+T88u\nxnG4mXyEqXxFmqIjdS+xmrMeZ4kyWVNorGrTAPgahqHm3VBzYggxELRyjbQT19ri\nGMrQuliQTHhX08Q8FYtL0Z+kOWAOHTVN3G9xcg2nWHRCS1ydvCf5L7LLoFU/0ZR4\nTPF5lB3ZFgo1YOzFzV3S8ruV24nH9EnA6Kw2EXiHuTAxjL/doF+SOMXyhjQPvoXr\n91wxyXlloAfIaoUG/neSNAeQ1b7LSub8yLgdDkaddLyKZUIwbnho9fIFgf6ZTZXS\nuAFaH+ECcF8vPv43C/dw4T5T4hKwHVfw8y6FpPZBvlRCJCgf5Jh1vkl9abf956IL\nRPmQ6qpYlwYi7+8NX9N9CioV/2H96ia1dfJ16YF4zoDg0XZmGKCB4n6+LKj3IXEc\nuFSYvKKliHifY88DjIoVLXSIpQ74QZibtADzaLKzZNsx4ijqLWQmviYl485JBzH7\nZCDTHeIEqLwsuME5xUqnCD8/WPBL0XFVSTjOGv2mE/VizkC4yU+W930=\n=34m/\n-----END PGP MESSAGE-----", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496293806.806281", 
+            "attachments": [
+                {
+                    "image_bytes": 205620, 
+                    "title": "Keybase", 
+                    "text": "Public key crypto for everyone, publicly auditable proofs of identity.", 
+                    "image_width": 357, 
+                    "title_link": "https://keybase.io/crypto", 
+                    "image_height": 250, 
+                    "image_url": "https://keybase.io/images/walkthrough/chalkboard_900_630.png", 
+                    "service_name": "keybase.io", 
+                    "id": 1, 
+                    "fallback": "Keybase", 
+                    "service_icon": "https://keybase.io/favicon.ico", 
+                    "from_url": "https://keybase.io/crypto"
+                }
+            ]
+        }, 
+        {
+            "text": "MX records\n1 <http://ASPMX.L.GOOGLE.COM|ASPMX.L.GOOGLE.COM>.\n5 <http://ALT1.ASPMX.L.GOOGLE.COM|ALT1.ASPMX.L.GOOGLE.COM>.\n5 <http://ALT2.ASPMX.L.GOOGLE.COM|ALT2.ASPMX.L.GOOGLE.COM>.\n10 <http://ASPMX2.GOOGLEMAIL.COM|ASPMX2.GOOGLEMAIL.COM>.\n10 <http://ASPMX3.GOOGLEMAIL.COM|ASPMX3.GOOGLEMAIL.COM>.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292685.684523"
+        }, 
+        {
+            "text": "for <http://thisisholo.com|thisisholo.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291763.588479"
+        }, 
+        {
+            "text": "hey txt record for google is \ngoogle-site-verification=itziUfl503l6PwzR-ygcHGEte222FkQtfz7Bgm3lLEo", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291752.587375"
+        }, 
+        {
+            "text": "f7fe11ba1e16339215560a3b5d4c1dc4", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496281877.472360"
+        }, 
+        {
+            "text": "Testing <https://thisisholo.com/support/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496276623.779822", 
+            "attachments": [
+                {
+                    "title": "Holo - Mix Holograms into Photos &amp; Videos \u2014 None", 
+                    "service_name": "None", 
+                    "title_link": "https://thisisholo.com/support/", 
+                    "text": "Welcome to Holo, the app that lets you add holograms into your real-world environment and take videos and photos to share with friends.", 
+                    "id": 1, 
+                    "fallback": "None: Holo - Mix Holograms into Photos &amp; Videos \u2014 None", 
+                    "from_url": "https://thisisholo.com/support/"
+                }
+            ]
+        }, 
+        {
+            "text": "OK, manual deployment on fallback services is a bit clunky, you need to restart supervisor on both manually\u2026 but for now thats ok, I only want it as a fallback and to have a hour or two testing the ecs setup before switching.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496262304.527445", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496262387.000000"
+            }
+        }, 
+        {
+            "text": "will be in the office by around ~9:30", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496261387.213858"
+        }, 
+        {
+            "text": "Once in the box\ncd /holo/app/\ngit pull\n\nYou might need to manually restart supervisor afterwards\nsudo service supervisor stop\nsudo service supervisor start", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496248283.509223", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496248349.000000"
+            }
+        }, 
+        {
+            "text": "To reach the Fallback setup from within production bastion:\nssh -A admin@ip-172-60-20-21.us-west-2.compute.internal\nor\nssh -A admin@ip-172-60-20-212.us-west-2.compute.internal\n\nCurrently production is pointing to the Fallback.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496245974.622364", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496248410.000000"
+            }
+        }, 
+        {
+            "text": "Just so you know, I\u2019ve moved prod over into the new AWS account tonight/this morning.\n\nI\u2019ve completed the ECS setup, and also created a full and working Fallback setup (which runs in parallel on the same DB), which more closely resembles the old prod setup in case ECS fails at any point. (we only need to switch the DNS).\n\nBoth systems, ECS &amp; Fallback, can be accessed through the new prod bastion box (I\u2019ve added pem and ip into 1Password).", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496244214.897035", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496248267.000000"
+            }
+        }, 
+        {
+            "text": "Perfect, thanks.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496204909.725385"
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496204875.721841"
+        }, 
+        {
+            "text": "Could you please accept them again?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496204809.714952", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496204816.000000"
+            }
+        }, 
+        {
+            "text": "Just sent out two new certificate requests (had the wrong account)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496204801.714120"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496203901.615540"
+        }, 
+        {
+            "text": "Will look at it!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496203898.615234"
+        }, 
+        {
+            "text": "Hey it doesn\u2019t actually look like <http://www.thisisholo.com|www.thisisholo.com> is being mapped by our current DNS setup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496203881.613328"
+        }, 
+        {
+            "text": "Sure, I\u2019ll pop down", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496199273.116676"
+        }, 
+        {
+            "text": "Are you around?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496199256.114893"
+        }, 
+        {
+            "text": "Hey, I\u2019m pretty stuck deploying <http://thisisholo.com|thisisholo.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496199248.113842"
+        }, 
+        {
+            "text": "54.218.18.208", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496184756.095852"
+        }, 
+        {
+            "text": "<http://ec2-54-191-134-247.us-west-2.compute.amazonaws.com|ec2-54-191-134-247.us-west-2.compute.amazonaws.com>\n54.191.134.247", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496184574.062148"
+        }, 
+        {
+            "text": "<https://eighti.signin.aws.amazon.com/console>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496184234.997161"
+        }, 
+        {
+            "text": "<mailto:ubuntu@ec2-54-201-159-17.us-west-2.compute.amazonaws.com|ubuntu@ec2-54-201-159-17.us-west-2.compute.amazonaws.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496118312.012385"
+        }, 
+        {
+            "text": "arn:aws:iam::676619819294:user/mudge", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496116325.817456"
+        }, 
+        {
+            "text": "-----BEGIN PGP MESSAGE-----\nVersion: Keybase OpenPGP v2.0.71\nComment: <https://keybase.io/crypto>\n\nwcFMAy1/QNB/zm2uAQ//V1YV/qVJOn/xQcJUbMALY90iKo1qc7C8uxubDS0NP8t1\npfx/To2bOwdilZkidKiAbprPF6ZZBqukKAqZJKg/HxuBMDYJ0nFEpM8NWw0C0w3m\nfElQjjOQSGqCflgu5Oy0gPKG4C6Kx9JjWm1LIndarOD0ZPH0senw6WGra61LGfYT\nZpu720ZFZdqa0Ap3cpYoF4w08HaIn2mo8OX38iv6egMc4/kaUIrlt1AlGE4Ivwb6\n64Vlg+DDvmvNpodimTJFQ7Lsm6zM6F79REqEPfSpOosAbFzs726L5zgtUYAzW5M8\nwa0Mimx6QpwB4bT2k6938lnBSQgoOI4uHq+DpVtnByecfloV9gfrHbIHT1ZaI4w1\nB8WBMVymid5s6Gq6Aai5Gal4NRdlHiE9GURh8cOg0R+pViGoS3wDxOx8Ax+wx96k\n9AmtfZFXW38AHKvPlzRSYlTvtpaPmE/rXj9q53KJIH/gw+J2zVqsDANRXgo86TWW\nNPiFHqhgZ822slyM3pfgcQolf+qeCJqZvxQQLOai32OYrH++iUu3iwjEgrmcU5Be\nzJOXeF+a67LUiOk87dtkSNVRHEPha+0H8xDdX8vzvUW/3CQ8QKGqLJHwxvEgmSUN\nTROGH6AJcQO/F/Qaaq5RO/g1qFaesc8oMiXrnDKgjv2osIMc309ivKOG1LsmHTjS\njwHjUWGH+5kKGXfqTix9w4+oLaNiA/JjeovtqBuc6V9pM+4vm8i0XrCaHtFLh8Hq\nvsi9gdo+aeEKh7D/oi1XN0qPZ0/XBkb6NIvCTcHyQSD8tzmLliN2sMQKJTOUlc1I\nffGmyxMf3u9SXNSfK5SSOdxEJz8w7RjdHp11qMeR3D+CGM+6Rc/wKxh3oT+J8nQk\n=ZEs/\n-----END PGP MESSAGE-----", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496115796.768703", 
+            "attachments": [
+                {
+                    "image_bytes": 205620, 
+                    "title": "Keybase", 
+                    "text": "Public key crypto for everyone, publicly auditable proofs of identity.", 
+                    "image_width": 357, 
+                    "title_link": "https://keybase.io/crypto", 
+                    "image_height": 250, 
+                    "image_url": "https://keybase.io/images/walkthrough/chalkboard_900_630.png", 
+                    "service_name": "keybase.io", 
+                    "id": 1, 
+                    "fallback": "Keybase", 
+                    "service_icon": "https://keybase.io/favicon.ico", 
+                    "from_url": "https://keybase.io/crypto"
+                }
+            ]
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496106017.787885"
+        }, 
+        {
+            "text": "What I probably need to do is create a seperate ELB pointing to the prod box with new https certificates for <http://thisisholo.com|thisisholo.com>. Shouldn\u2019t make any difference on your end, I\u2019ll look into this after lunch", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496105981.783177", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1496105993.000000"
+            }
+        }, 
+        {
+            "text": "chur", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496105661.752647"
+        }, 
+        {
+            "text": "<http://thisisholo.com|thisisholo.com> should be pointing to the same LB as <http://8i.com|8i.com>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496104779.673911"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496102015.436638"
+        }, 
+        {
+            "text": "I can set up all the nginx stuff once I\u2019ve got a site on there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496102009.436108"
+        }, 
+        {
+            "text": "Not yet, but I\u2019ll add it", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496102008.436055"
+        }, 
+        {
+            "text": "Hey, is <http://thisisholo.com|thisisholo.com> pointing to the same place as <http://8i.com|8i.com>?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496101994.434922"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496007898.024921"
+        }, 
+        {
+            "text": "yea, will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496007892.024629"
+        }, 
+        {
+            "text": "Just give me a shout in case you get stuck anywhere, it can be a bit tricky first time round.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496007876.024016"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496007845.022495"
+        }, 
+        {
+            "text": "Before I forget:\nFor starting a new git repo with a working Vagrant box you will need:\n-&gt; Vagrant file - (change the project_name to your new project folder name &amp; change the ports so they don\u2019t collide with your holo box)\n-&gt; provision folder (update the vagrant.yml file with your new configuration values)\n\nYou might want to manually change/create your own virtual environment with python3. It would be awesome if we could start new projects with python3.\nThe only difference normally is\n- On the host make sure python 3 is installed (python3 --version) or apt-get install python3\n- Create your virtual environment while with python3 (virtualenv -p python3 project)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496007813.020872"
+        }, 
+        {
+            "text": "<https://wagtail.io/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1496004358.854652", 
+            "attachments": [
+                {
+                    "thumb_height": 150, 
+                    "service_icon": "https://wagtail.io/static/img/favicons/apple-touch-icon-57x57.png", 
+                    "thumb_width": 150, 
+                    "title": "Django Content Management System | Wagtail CMS", 
+                    "service_name": "Wagtail CMS", 
+                    "title_link": "https://wagtail.io/", 
+                    "text": "Meet Wagtail, an open-source Django content management system built by Torchbox. It's free, beautiful, versatile and fast. Find out how to get started.", 
+                    "id": 1, 
+                    "fallback": "Wagtail CMS: Django Content Management System | Wagtail CMS", 
+                    "thumb_url": "https://wagtail.io/media/images/torchbox_developer_account7.width-400.png", 
+                    "from_url": "https://wagtail.io/"
+                }
+            ]
+        }, 
+        {
+            "text": "Yeah, the flag will work if you are an admin (but not if you are staff)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871451.674879"
+        }, 
+        {
+            "text": "Yea, we really only need to change it via command line", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495871411.673135"
+        }, 
+        {
+            "text": "Alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495871377.671677"
+        }, 
+        {
+            "text": "(As staff users can not created / edited the admin flag any longer)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871346.670309"
+        }, 
+        {
+            "text": "I\u2019ll re-enable edit and create", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871316.668958", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1495871359.000000"
+            }
+        }, 
+        {
+            "text": "I turned off edit and delete", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495871310.668752"
+        }, 
+        {
+            "text": "no worries", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871303.668479"
+        }, 
+        {
+            "text": "Yeah,", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871301.668354"
+        }, 
+        {
+            "text": "Oh, is create enabled?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495871296.668123"
+        }, 
+        {
+            "text": "I\u2019ll be pushing out an update which disables the admin flag for staff users on create/edit models. This also checks when saving for tampering.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871287.667707"
+        }, 
+        {
+            "text": "Standard staff users can currently just create admin users as they please.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871248.666121"
+        }, 
+        {
+            "text": "I\u2019m just updating the admin view for users.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495871231.665443"
+        }, 
+        {
+            "text": "Hey, I\u2019ve started getting an error when I run a migrate command.\nIt seems to still work, but prints out the following afterwards.\nERROR:ddtrace.writer:cannot send spans: [Errno 111] Connection refused\nERROR:ddtrace.writer:cannot send services: [Errno 111] Connection refused", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495680837.148803"
+        }, 
+        {
+            "text": "as long as everyone is aware of the double DB situation", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495155553.063846"
+        }, 
+        {
+            "text": "We can use both in parallel for a while", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495155525.059899"
+        }, 
+        {
+            "text": "its probably alright to leave holo-stage and let the clients switch over to holo-staging for testing it for a while right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495155508.057563"
+        }, 
+        {
+            "text": "alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495155470.052222"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/flask-admin/login/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495155387.040838"
+        }, 
+        {
+            "text": "Ok, I\u2019ve switched it back to the old server for now. Gerred seems to be out today on a Family emergency and Owen needs to head off to a meeting.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495155386.040621"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495154997.985229"
+        }, 
+        {
+            "text": "Yeah, something is going on. Working with Owen trying to fix it.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495154920.974196"
+        }, 
+        {
+            "text": "Are you doing something with staging now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495154892.970132"
+        }, 
+        {
+            "text": "odd", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495154872.967346"
+        }, 
+        {
+            "text": "!@#$ aws", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495153055.693293"
+        }, 
+        {
+            "text": "All fixed, the AWS cognito pool had los reference to the role", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495153052.692787"
+        }, 
+        {
+            "text": "Cool, yeah I\u2019ll get right onto this.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495148416.847803"
+        }, 
+        {
+            "text": "Lucas needs to do a few sprite screenshots for us in staging today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495148383.839625"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495148365.835812"
+        }, 
+        {
+            "text": "Give me a sec. just pushing out scots changes, will then tend to the identity id", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495148343.831036"
+        }, 
+        {
+            "text": "yea, fair enough", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495148315.825285"
+        }, 
+        {
+            "text": "The old staging server doesn\u2019t have access to the new resources. This means I can\u2019t really change the settings file itself until I know don\u2019t need to change back", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495148291.820078", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1495148322.000000"
+            }
+        }, 
+        {
+            "text": "right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495148264.814048"
+        }, 
+        {
+            "text": "Yes, I just currently overrides certain settings", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495148247.810520"
+        }, 
+        {
+            "text": "does it still use settings/staging.py?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495148220.804975"
+        }, 
+        {
+            "text": "Hmm\u2026 looking at the body for the request is showing the wrong id, just checking on my end what the environment has set", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495148122.784534"
+        }, 
+        {
+            "username": "dave_c", 
+            "display_as_bot": false, 
+            "text": "<@U3AF7DXEY> uploaded a file: <https://hvr.slack.com/files/U3AF7DXEY/F5FBP0UJW/screen_shot_2017-05-19_at_10.54.17_am.png|Screen Shot 2017-05-19 at 10.54.17 AM.png>", 
+            "upload": true, 
+            "ts": "1495148090.778017", 
+            "subtype": "file_share", 
+            "user": "U3AF7DXEY", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_800_h": 126, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_64.png", 
+                "size": 66484, 
+                "original_h": 212, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2017-05-19 at 10.54.17 AM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5FBP0UJW/screen_shot_2017-05-19_at_10.54.17_am.png", 
+                "thumb_720_h": 113, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_360.png", 
+                "id": "F5FBP0UJW", 
+                "ims": [
+                    "D3B3X4X5L"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 57, 
+                "thumb_480_h": 75, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_800.png", 
+                "timestamp": 1495148085, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5FBP0UJW/download/screen_shot_2017-05-19_at_10.54.17_am.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_1024.png", 
+                "user": "U3AF7DXEY", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-05-19 at 10.54.17 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5FBP0UJW-6964611a88", 
+                "permalink": "https://hvr.slack.com/files/U3AF7DXEY/F5FBP0UJW/screen_shot_2017-05-19_at_10.54.17_am.png", 
+                "is_external": false, 
+                "created": 1495148085, 
+                "thumb_1024_h": 161, 
+                "thumb_960_h": 151, 
+                "original_w": 1348, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5FBP0UJW-f588a5dc57/screen_shot_2017-05-19_at_10.54.17_am_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "using app.config.get(\u2018ADMIN_USER_IDENTITY_POOL_ID\u2019)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495148058.771161"
+        }, 
+        {
+            "text": "its loading through <http://holo-staging.8i.com|holo-staging.8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495147956.748833"
+        }, 
+        {
+            "text": "It should be using the same config for the admin section", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495147937.744712"
+        }, 
+        {
+            "text": "Do you need to change these on the frontend client?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495147655.683286"
+        }, 
+        {
+            "text": "These are the new pools:\ncognito_admin_pool_id = us-west-2:650d5600-187d-4b2c-9649-dcd242dd6b2e\ncognito_user_pool_id = us-west-2:4b4399b5-3e7b-444c-93a6-0f7875b3d716", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495147642.680683"
+        }, 
+        {
+            "text": "Ah, I think I know what that could bwe", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495147581.667213"
+        }, 
+        {
+            "text": "Hey, uploading sprite images on <https://holo-staging.8i.com> is giving me an error.\nInvalidIdentityPoolConfigurationException: Invalid identity pool configuration. Check assigned IAM roles for this pool.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495147514.652274", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://web-stage.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://holo-staging.8i.com", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://web-stage.dev.8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://holo-staging.8i.com"
+                }
+            ]
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495143213.535446"
+        }, 
+        {
+            "text": "Deployments working again, locked down alembic to version 0.9.1 for now, will look into the cause of the problem this afternoon.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495143164.519897"
+        }, 
+        {
+            "text": "yup, sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495140676.941316"
+        }, 
+        {
+            "text": "I\u2019ll see if it\u2019s a minor fix or else I\u2019ll lock down to the previous version until I have time to look at whats going on.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495140665.937132", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1495140682.000000"
+            }
+        }, 
+        {
+            "text": "Yes alembic has upgraded.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495140619.919627"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495140487.870393"
+        }, 
+        {
+            "text": "Currently the upgrade pod is suddenly giving out following warning:\n2017-05-18T20:44:29.526963058Z Migrations head at /holo/venv/app/local/lib/python2.7/site-packages/alembic/util/messaging.py:69: UserWarning: \u2018connection\u2019 argument to configure() is expected to be a sqlalchemy.engine.Connection instance, got Engine(<postgresql://holomaster:***@holo-stage.crwjle2ocnle.us-west-2.rds.amazonaws.com:5432/api_8i>)\n2017-05-18T20:44:29.526990806Z   warnings.warn(msg)\n\nStarted this morning so I\u2019m suspecting maybe alembic might have released a new version\u2026\n\nIf I can\u2019t get this fixed within the next 15 minutes I\u2019ll switch back to the old test server.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1495140464.862017"
+        }, 
+        {
+            "text": "VISITOR_COOKIE_DOMAIN", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495065979.278307"
+        }, 
+        {
+            "text": "<https://holo-staging.8i.com/flask-admin/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494997060.150565"
+        }, 
+        {
+            "text": "MX Server address    Priority\n<http://ASPMX.L.GOOGLE.COM|ASPMX.L.GOOGLE.COM>.    1\n<http://ALT1.ASPMX.L.GOOGLE.COM|ALT1.ASPMX.L.GOOGLE.COM>.    5\n<http://ALT2.ASPMX.L.GOOGLE.COM|ALT2.ASPMX.L.GOOGLE.COM>.    5\n<http://ASPMX2.GOOGLEMAIL.COM|ASPMX2.GOOGLEMAIL.COM>.    10\n<http://ASPMX3.GOOGLEMAIL.COM|ASPMX3.GOOGLEMAIL.COM>.    10", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494892535.845503"
+        }, 
+        {
+            "text": "TXT google-site-verification=G8ePT9rNQYJowEQRiqzQ5xWxxqyb6uvwMq1C7XtWc8U", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494892006.751496"
+        }, 
+        {
+            "text": "20\t<http://30999213.in2.mandrillapp.com|30999213.in2.mandrillapp.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494809527.047045"
+        }, 
+        {
+            "text": "10\t<http://30999213.in1.mandrillapp.com|30999213.in1.mandrillapp.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494809521.046440"
+        }, 
+        {
+            "text": "<http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-setting-up.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494806514.801053", 
+            "attachments": [
+                {
+                    "title": "Setting Up Amazon SES Email          Receiving - Amazon Simple Email Service       ", 
+                    "text": "Overview of how to set up Amazon SES email receiving.", 
+                    "title_link": "http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-setting-up.html", 
+                    "service_name": "docs.aws.amazon.com", 
+                    "id": 1, 
+                    "fallback": "Setting Up Amazon SES Email          Receiving - Amazon Simple Email Service       ", 
+                    "service_icon": "http://docs.aws.amazon.com/images/favicon.ico", 
+                    "from_url": "http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-setting-up.html"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://holo.8i.com|holo.8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494804435.654550"
+        }, 
+        {
+            "text": "for <http://holo.8i.com|holo.8i.com>\nv=spf1 include:<http://spf.mandrillapp.com|spf.mandrillapp.com> ?all\n\nv=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;\n\n<http://mandrill._domainkey.holo.8i.com|mandrill._domainkey.holo.8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494804399.652251"
+        }, 
+        {
+            "text": "<http://mandrill._domainkey.8i.com|mandrill._domainkey.8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494804344.648538"
+        }, 
+        {
+            "text": "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494804325.647355"
+        }, 
+        {
+            "text": "v=spf1 include:<http://_spf.google.com|_spf.google.com> include:<http://spf.mandrillapp.com|spf.mandrillapp.com> ~all", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494804180.638239"
+        }, 
+        {
+            "text": "they occur deep down inside of the SQS stuff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558503.608522"
+        }, 
+        {
+            "text": "There is a couple of \u201cSystemExit\u201d errors in sentry which I don\u2019t like the look of", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558458.602974"
+        }, 
+        {
+            "text": "but there could be a bigger issue too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558425.599264"
+        }, 
+        {
+            "text": "Alright I did get the email now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558412.597566"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494558308.584765"
+        }, 
+        {
+            "text": "I\u2019m going to restart the workers, see if that fixes it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558294.582944"
+        }, 
+        {
+            "text": "I\u2019ll have to look at that a bit more closely\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494558270.579894"
+        }, 
+        {
+            "text": "!@#$%", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494558260.578796"
+        }, 
+        {
+            "text": "uff\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494558257.578448"
+        }, 
+        {
+            "text": "<https://sentry.io/8i/holo-api/issues/254264212/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558158.565845"
+        }, 
+        {
+            "text": "actually looks like it might be a sqs issue", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494558157.565686"
+        }, 
+        {
+            "text": "I\u2019ll need to check the worker logs /var/log/supervisor/worker~", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494558016.546673"
+        }, 
+        {
+            "text": "Yeah\u2026", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494557996.542940"
+        }, 
+        {
+            "text": "it might be something else though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494557991.542179"
+        }, 
+        {
+            "text": "yea, I thought it may have come back", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494557979.540606"
+        }, 
+        {
+            "text": "I\u2019ll double check (you can just give it a restart)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494557978.540548"
+        }, 
+        {
+            "text": "I had issues with that one a few days ago", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494557965.538931"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494557953.537414"
+        }, 
+        {
+            "text": "On production?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494557946.536597"
+        }, 
+        {
+            "text": "how do I check that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494557922.533344"
+        }, 
+        {
+            "text": "Hey, it looks like activation emails aren\u2019t being sent, I wonder if it might be the celery workers getting overloaded?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494557916.532365"
+        }, 
+        {
+            "text": "Whats that? I can\u2019t access", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494544817.562352"
+        }, 
+        {
+            "text": "<https://docs.google.com/spreadsheets/d/1oJosC3C7fnvhe_15pVY02nZL0VdRKTh56ToEeSfVDy4/edit#gid=1587220237>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494544539.508556"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494465379.780102"
+        }, 
+        {
+            "text": "Hey, I\u2019m going to disable the auto scene migrate, as I have got andrew making content directly using the new models.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494459754.865199"
+        }, 
+        {
+            "text": "<https://mandrillapp.com/api/docs/index.python.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494364198.623563", 
+            "attachments": [
+                {
+                    "title": "API | Mandrill", 
+                    "text": "Mandrill is a transactional email platform from MailChimp", 
+                    "title_link": "https://mandrillapp.com/api/docs/index.python.html", 
+                    "service_name": "mandrillapp.com", 
+                    "id": 1, 
+                    "fallback": "API | Mandrill", 
+                    "from_url": "https://mandrillapp.com/api/docs/index.python.html"
+                }
+            ]
+        }, 
+        {
+            "text": "<mailto:jonathankru@google.com|jonathankru@google.com>\n[65] Walter Prime", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1494217895.910904", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1494218174.000000"
+            }
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1493710325.860687"
+        }, 
+        {
+            "text": "Cool, thanks for the heads up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493710316.858950"
+        }, 
+        {
+            "text": "Heya Mudge,\nI got a request in to add two email address to the Google pack. \n\nFor now I\u2019ve added them manually to the file on the production server (and added them to the master branch). If you are in the office before me tomorrow, you will need to revert that change on the production server before you can pull any update!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1493709850.769746"
+        }, 
+        {
+            "text": "feature/erlibird", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1493682010.132567"
+        }, 
+        {
+            "text": "When you got a moment, could you change my user to Owner or add Scott &amp; Jed to firebase?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492723796.609381", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1492723812.000000"
+            }
+        }, 
+        {
+            "text": "<https://console.cloud.google.com/iam-admin/iam/project?project=holo-44694840&amp;consoleReturnUrl=https:%2F%2Fconsole.firebase.google.com%2Fproject%2Fholo-44694840%2Fsettings%2Fcloudmessaging&amp;consoleUI=FIREBASE>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492723749.594563", 
+            "attachments": [
+                {
+                    "title": "Firebase Console", 
+                    "text": "Firebase is a mobile platform that helps you quickly develop high-quality apps, grow your user base, and earn more money.", 
+                    "title_link": "https://console.cloud.google.com/iam-admin/iam/project?project=holo-44694840&consoleReturnUrl=https:%2F%2Fconsole.firebase.google.com%2Fproject%2Fholo-44694840%2Fsettings%2Fcloudmessaging&consoleUI=FIREBASE", 
+                    "service_name": "accounts.google.com", 
+                    "id": 1, 
+                    "fallback": "Firebase Console", 
+                    "service_icon": "https://accounts.google.com/favicon.ico", 
+                    "from_url": "https://console.cloud.google.com/iam-admin/iam/project?project=holo-44694840&consoleReturnUrl=https:%2F%2Fconsole.firebase.google.com%2Fproject%2Fholo-44694840%2Fsettings%2Fcloudmessaging&consoleUI=FIREBASE"
+                }
+            ]
+        }, 
+        {
+            "text": ":metal:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492721939.996057", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1492721957.000000"
+            }
+        }, 
+        {
+            "text": "I found out when I tried it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492721850.963430"
+        }, 
+        {
+            "text": "done :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492721839.959316"
+        }, 
+        {
+            "text": "fyi: n case you are pushing to prod, you will need to run a pip install &amp; migration.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492721744.924692"
+        }, 
+        {
+            "text": "<http://local.8i.com:8081/admin/notifications> is the simple UI which hits the endpoint as well.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492643444.848041"
+        }, 
+        {
+            "text": "CELERY_ALWAYS_EAGER", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492641582.456349"
+        }, 
+        {
+            "text": "mock&gt;=2.0.0, &lt;2.1.0", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492639603.979001"
+        }, 
+        {
+            "text": "<http://docs.celeryproject.org/en/master/userguide/testing.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492637994.523151"
+        }, 
+        {
+            "text": "client_secret: W7nFHBzsr1ceThMKrkU77ECZDYOO2cunqSO1HTW6Qt1aCLh5XT", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492485392.580497"
+        }, 
+        {
+            "text": "client_id: lZKxjesH6o7Fp2oG3InHIEuWZyP3MUVdssyuPAvR", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492485382.578120"
+        }, 
+        {
+            "text": "alias runcelery=\u201ccelery -A celery_app:celery --loglevel=info worker --beat\u201d", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492461895.693905"
+        }, 
+        {
+            "text": "apt-get install libcurl4-openssl-dev", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1492461755.639958"
+        }, 
+        {
+            "text": "You will need to run the following command locally in case the latest migration fails:\n./manage.py --settings=settings.dev auth remove_duplicate_identities", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1491774271.899039"
+        }, 
+        {
+            "text": "<https://d7cvc31wlmbhf.cloudfront.net/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491347168.005604"
+        }, 
+        {
+            "text": "<http://sqlalchemy-utils.readthedocs.io/en/latest/generic_relationship.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1491257640.476387"
+        }, 
+        {
+            "text": "merging in a migration now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490065679.455528"
+        }, 
+        {
+            "text": "WEB_CLIENT_ID = 'LfwpJjboETdE2hJTBR1z1qcqRXpXyBoggH1Prd7b'\nWEB_CLIENT_SECRET = 'QYOmPGxRaFzfWCrDYW0ZRnvf2rG7tk4EJVLoiNTLYG7xn4efRy'", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490057820.400745"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489988718.901307"
+        }, 
+        {
+            "text": "Hey, just an FYI, I added a migration.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489988702.900010"
+        }, 
+        {
+            "text": "All good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639582.249412"
+        }, 
+        {
+            "text": "Awesome, thx", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489639562.247364"
+        }, 
+        {
+            "text": "will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639553.246367"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639551.246179"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489639547.245618"
+        }, 
+        {
+            "text": "will that disable it?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639542.245095"
+        }, 
+        {
+            "text": "Pretty near the end that defines the caching type as \"redis\"", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489639532.243839"
+        }, 
+        {
+            "text": "Could you commented the line ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489639471.237225"
+        }, 
+        {
+            "text": "so its skipping the request path in the cache key", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639467.236775"
+        }, 
+        {
+            "text": "I \"think\" its that key_prefix as a callable doesn't support the whole %s in the result thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639449.234806"
+        }, 
+        {
+            "text": "In the settings/staging.py", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489639448.234657"
+        }, 
+        {
+            "text": "Ha!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489639411.230610"
+        }, 
+        {
+            "text": "Or maybe its returning tags", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639401.229725"
+        }, 
+        {
+            "text": "Hey, I'm pretty sure there is an issue with the caching. The /api/v1/holo-poses/popular is currently returning filters rather than pose id's", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489639390.228452"
+        }, 
+        {
+            "text": "Awesome, thx", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489109159.542553"
+        }, 
+        {
+            "text": "Prod push is done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489109147.541312"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489104293.962370"
+        }, 
+        {
+            "text": "I'll try and get my one in as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489104051.926749"
+        }, 
+        {
+            "text": "Yea sure will", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489104042.925481"
+        }, 
+        {
+            "text": "You think you could do a push to pro (migration) today?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489104029.923404"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489104001.918815"
+        }, 
+        {
+            "text": "Yeah, leave email out. I'll cull the model next migration.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489103991.917466"
+        }, 
+        {
+            "text": "Awesome, just won't init any of those in my command if they don't get used.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489103916.907621"
+        }, 
+        {
+            "text": "Jup, can go now.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489103548.856418"
+        }, 
+        {
+            "text": "Hey, are we using HoloFeatureTagModel for anything anymore? It seems like HoloFilterModel does the same job and more right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489101419.546263"
+        }, 
+        {
+            "text": "Ok cool, will merge my migration now then", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489090159.122375", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1489090166.000000"
+            }
+        }, 
+        {
+            "text": "Will get to it later, but you go ahead with any you have.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489090139.117949"
+        }, 
+        {
+            "text": "No, still just in my branch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489090116.112996"
+        }, 
+        {
+            "text": "Heya Mudge, did you merge in your migration yesterday?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489090078.103473", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1489090087.000000"
+            }
+        }, 
+        {
+            "text": "2d3b4ce0-1d8e-4676-97d0-0edc695e1975", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1489013486.000002"
+        }, 
+        {
+            "text": "HhQdx7VqUj796ce2Cc9hinBvGc4ZFPWT7XaVt6XpxcNMhmHmuaFcLkPyj8qD", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488938914.000007"
+        }, 
+        {
+            "text": "hgM2vBMEBPwA8fmaheiFVumYh6mmh6L3d6TTuYenizB37msZFAkHiWLQ4R3Z", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488938905.000006"
+        }, 
+        {
+            "text": "vCYamfTnrreLCKgn7eUUEmk422b3Ldce6FyHwUDm3iYGN4d8imrcrbPDrs3q", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488938896.000005"
+        }, 
+        {
+            "text": "RNT39qekaUYbeY6BK7YBDua9hCnCWcVxZdH8Jfj2GH7yzLz2xa2htGnceRYx", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488938887.000004"
+        }, 
+        {
+            "text": "f8cckzHEYE7VAZpLKJams28C3J4QEfeK6bsjaBw2ZBTkdkYeVkjNpJt3d3dP", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488938879.000003"
+        }, 
+        {
+            "text": "Pys8gdF2RG4fKHA7dbAcGE9mMjvNTsbPkNRebAb3hYZ8ZuA9Ka7iQe8RPBJP", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488938871.000002"
+        }, 
+        {
+            "text": "# Any request that did not originally come in to the ELB\n#  over HTTPS gets redirected.\nif ($http_x_forwarded_proto != \"https\") {\n    rewrite ^(.*)$ https://$server_name$1 permanent;\n}", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488833315.000002"
+        }, 
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780899.000024"
+        }, 
+        {
+            "text": "but don't need to worry about it until tomorrow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780889.000023"
+        }, 
+        {
+            "text": "Ah, cool. Will check when I'm home if a save would update. Could very well be!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780877.000022"
+        }, 
+        {
+            "text": "either that or the clients don't use the start time currently so see all the changes immediately even if the version doesn't change", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780876.000021"
+        }, 
+        {
+            "text": "changing the thumbnails must of auto called update poses through the update magic", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780810.000020"
+        }, 
+        {
+            "text": "which is why I didn't think it was doing anything when I did call it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780768.000019"
+        }, 
+        {
+            "text": "Yea it must of done, even before I actually called the update poses I think", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780750.000018"
+        }, 
+        {
+            "text": "So everything got updated?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780723.000017"
+        }, 
+        {
+            "text": "so the changes have hit from right back at the start", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780675.000016"
+        }, 
+        {
+            "text": "I had my understanding of the change the wrong way around", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780663.000015"
+        }, 
+        {
+            "text": "It doesn't matter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780648.000014"
+        }, 
+        {
+            "text": "What does postman return?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780627.000013"
+        }, 
+        {
+            "text": "because I didn't call update on the poses I assumed they wouldn't have changed yet, but maybe they did.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780436.000012"
+        }, 
+        {
+            "text": "oh maybe it did actually update right at the start then, I might have been trying to do an update which doesn't change anything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780363.000011"
+        }, 
+        {
+            "text": "In theory, even just calling the default poses endpoint without parameters should order all poses by release datetime. E.g you changes should show up first.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780250.000010"
+        }, 
+        {
+            "text": "E.g making a change to a published pose in the CMS changed the clients instantly on the last builds I saw.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780168.000009"
+        }, 
+        {
+            "text": "The endpoint call is very simple, they just send a datetime stamp from the last update and get all poses with a newer release datetime", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780102.000008"
+        }, 
+        {
+            "text": "maybe they have bugs now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780038.000007"
+        }, 
+        {
+            "text": "it seems to be something with the clients not noticing the updates", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780027.000006"
+        }, 
+        {
+            "text": "Should be easy to get this resolved though, let's fix it first thing tomorrow.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488780005.000005"
+        }, 
+        {
+            "text": "yea I even checked the value is changing on the pose", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488780003.000004"
+        }, 
+        {
+            "text": "Are you sure update_release_version is being called and saved? Calling theis method on a single pose and saving definitely works (we tested this quite thoroughly).", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488779974.000003"
+        }, 
+        {
+            "text": "Hey, updating the release version of the pose doesn't seem to be getting through to the clients. I'm not really sure how the clients are pulling for updates but we will need to take a look at that flow tomorrow. I'm sure that minor changes to multiple poses like will be an important use case to maintain.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488779757.000002"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/admin/eighti/cognito>\nThis page gets the amazon library and an auth user cognito-token from our server then trys to get an object from S3.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488747455.000002"
+        }, 
+        {
+            "text": "not for downloading at least", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488421270.000012"
+        }, 
+        {
+            "text": "Ah, I thought Thomas had implemented it...", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488421249.000011"
+        }, 
+        {
+            "text": "iOS doesn't use amazon SDK", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488421190.000010"
+        }, 
+        {
+            "text": "Maybe also check if the iOS team are having the same issue. If it's server side, it must be broken for all.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488421097.000007", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1488421141.000000"
+            }
+        }, 
+        {
+            "text": "Awesome, thank you:+1: :metal: ", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488421031.000006"
+        }, 
+        {
+            "text": "I was going to try that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488420971.000005"
+        }, 
+        {
+            "text": "Maybe you could grab a cognito token through Postman and send it through your AWS JavaScript SDK.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488420947.000004"
+        }, 
+        {
+            "text": "Yea, he told me he was having issues. Admin cognito tokens are still fine.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488420905.000003"
+        }, 
+        {
+            "text": "Heya Mudge,\nIsaac is semmingly suddenly getting invalid tokens returned from the cognito endpoint (anonymous users). \nIs there any chance you could get together with him and checkout what is going on?\n\n-  Are your Cognito tokens for your admin interface still working?\n- I suspect that the server time might be off. (Or S3 is having issues).\n\nMy last release had a minor change to the cognito endpoint. I changed the way how anonymous useres are identified. As the endpoint is correctly returning tokens, I don't think this would be the cause.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488420806.000002"
+        }, 
+        {
+            "text": "Hey Mudge,\nI\u2019ve just pushed a migration to staging which after running, will also require a manual command to be run:\n\nExample (I\u2019ve already run this on staging):\n\u2026\ngit pull\n./manage.py db upgrade\n./manage.py auth generateusernames \n\u2026\n\nAll it does is autogenerates usernames for already existing users. \nWould be awesome if you could run this after the next push to master", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488357269.000002", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1488357289.000000"
+            }
+        }, 
+        {
+            "text": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjgxMDkxNGZiOTk0OGYxZTQzNTdjYzg3MjY4MDg3Mjk4ZTgzNTlkMjAifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJpYXQiOjE0ODgxMzc1NTQsImV4cCI6MTQ4ODE0MTE1NCwiYXVkIjoiODIxNzM3NjU5MjY0LWNnNTV0dGU2MGVyMTI2bDhscmpydTVvYXZsbHI5dmdmLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEyMzA1MzY3MTQ1NjkwNTQyOTYyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF6cCI6IjgyMTczNzY1OTI2NC05amE0c2hqMm9jZm50YXJ0dm1zazFtaW1tZWFvbzczcy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImVtYWlsIjoiaGFuc29na2luZUBnbWFpbC5jb20iLCJuYW1lIjoiSGFucyBKw7hyZ2VuIEpvaGFubmVzc2VuIiwicGljdHVyZSI6Imh0dHBzOi8vbGg1Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tdWVQUVZPaW10TlEvQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUFvbXZWMm8tTVA3ak5uYWYyVGhMcWpvMzNGZzBuWG9IQS9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiSGFucyBKw7hyZ2VuIiwiZmFtaWx5X25hbWUiOiJKb2hhbm5lc3NlbiIsImxvY2FsZSI6Im5vIn0.Ts5bHzFTvICocgacLju3ghrNihsh6Bc8XtWq2HFTGWxhO4880b4jo94zSakSw3sk9GLOdSBimBP4FzbF_R9QdXokq5rP4mMyVnC8s9BDujENHKTIwnx7Q495fCssV_P59QxGrimf8g3f5VbmwRxfTqNEe2ipoAwEKV8OrmoFW9RlvIm_SxD-I0VnN6CRN7kciP4bfy-_RqLjFOHAjnmutbNYJJ5ZCk1sKbt4_7kjkF8iclQChQ4ddbTrCBADWy8lGTP749GPr7k_0ScP-RWkZmkSlBiGwYXDuqDYbPMVjiEwvL4bSM7cZGefHzUe1CLkieAIqFergdIbcQkSb2NNYw", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1488162019.000002"
+        }, 
+        {
+            "text": "Ah, yeah, that could be the case!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487893333.000026"
+        }, 
+        {
+            "text": "you would get notified", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487893308.000025"
+        }, 
+        {
+            "text": "yea but if I did the activity", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487893300.000024"
+        }, 
+        {
+            "text": "Nah, I haven\u2019t got that one enabled either", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487893288.000023"
+        }, 
+        {
+            "text": "maybe its just \"Receive notifications about my own activity\" is unchecked", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487893226.000022"
+        }, 
+        {
+            "text": "hmm, yea that all looks correct", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487893199.000021"
+        }, 
+        {
+            "text": "I think you can set your notifications on a per project basis", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487893140.000019", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1487893147.000000"
+            }
+        }, 
+        {
+            "text": "<https://sentry.io/account/sudo/?next=/account/settings/notifications/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487893092.000018"
+        }, 
+        {
+            "text": "strange", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487893066.000017"
+        }, 
+        {
+            "text": "oh, I haven't gotten any", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487893058.000016"
+        }, 
+        {
+            "text": "I started receiving notifications", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487893048.000015"
+        }, 
+        {
+            "text": "How could you tell I got webplatform hooked up?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487893034.000014"
+        }, 
+        {
+            "text": "absolutly", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487892860.000013"
+        }, 
+        {
+            "text": "figured it would be good to play with things like the level warning there first", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487892846.000012"
+        }, 
+        {
+            "text": "working on it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487892826.000011"
+        }, 
+        {
+            "text": "I see you got the Webplatform also hooked up to Sentry, good work :+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487892817.000010"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487880185.000009"
+        }, 
+        {
+            "text": "yea, no changes from me in there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487880178.000008"
+        }, 
+        {
+            "text": "I\u2019d like to push an update with a few fixes to prod, all good from you side?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487880147.000005", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1487880161.000000"
+            }
+        }, 
+        {
+            "text": "Awesome, thx!", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487880098.000004"
+        }, 
+        {
+            "text": "52.11.156.124", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487880027.000003"
+        }, 
+        {
+            "text": "Heya Mudge, could you send me the production servers IP address?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487879960.000002"
+        }, 
+        {
+            "text": "-&gt; for local_config.py\n\n# Sentry error logging\nSENTRY_CONFIG = {\n        'dsn': '<https://27f1389aef414e50a50108b96224c555:6e0914bcba5d45178b55e52e6e29a634@sentry.io/141359>',\n        'release': '0.6.0',\n        'environment': \u2018development'\n    }", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487795255.000002"
+        }, 
+        {
+            "text": "In case I\u2019n mot yet in the office tomorrow morning and you want to push something live:\nPlease add SECURE_ACCOUNT_ACCESS_SALT (see staging) to the local_config. I\u2019ll add it as soon s I\u2019m at the office.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487758090.000002"
+        }, 
+        {
+            "text": "Be there in 5 minutes", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487709650.000004"
+        }, 
+        {
+            "text": "Hey, I just fixed up the tests and had to make a small change to the email manager, do you want to make sure it is doing the right thing?\n<https://github.com/8i/holo-api/blob/develop/api/helpers/email/manager.py#L62>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487709387.000003"
+        }, 
+        {
+            "text": "1413842422", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487639089.000002"
+        }, 
+        {
+            "text": "<http://askubuntu.com/questions/547656/install-pillow-on-ubuntu-14-04>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487297612.000009", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/askubuntu/img/favicon.ico?v=eff8fd315b9e", 
+                    "thumb_width": 316, 
+                    "title": "install pillow on ubuntu 14.04", 
+                    "text": "I'm crazy with Pillow. I already ask here, without solving: Python Django Mezzanine install fail for Pillow package I have Ubuntu 14.04 and python 2.7. Installing pillow using pip or from github I", 
+                    "title_link": "http://askubuntu.com/questions/547656/install-pillow-on-ubuntu-14-04", 
+                    "service_name": "askubuntu.com", 
+                    "id": 1, 
+                    "fallback": "install pillow on ubuntu 14.04", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/askubuntu/img/apple-touch-icon@2.png?v=c492c9229955", 
+                    "from_url": "http://askubuntu.com/questions/547656/install-pillow-on-ubuntu-14-04"
+                }
+            ]
+        }, 
+        {
+            "text": "If your are interested in diving deeper into REST &amp; RESTful API design principles and strategies, there's a really good article / book on <https://codeplanet.io/principles-good-restful-api-design/>, here is also a good link referencing many sources of literature <http://design.apievangelist.com/tools/design-guides/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487288392.000007", 
+            "attachments": [
+                {
+                    "thumb_height": 263, 
+                    "thumb_width": 620, 
+                    "title": "Principles of good RESTful API Design - Code Planet", 
+                    "service_name": "Code Planet", 
+                    "ts": 1388487659, 
+                    "title_link": "https://codeplanet.io/principles-good-restful-api-design/", 
+                    "text": "This article which teach you about good, restful API design! An API represents a contract between you and those who Consume your data.", 
+                    "id": 1, 
+                    "fallback": "Code Planet: Principles of good RESTful API Design - Code Planet", 
+                    "thumb_url": "https://codeplanet.io/wp-content/uploads/2013/12/rest_api.jpg", 
+                    "from_url": "https://codeplanet.io/principles-good-restful-api-design/"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487280856.000006"
+        }, 
+        {
+            "text": "I think tokes/asher are running late for standup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487280848.000005"
+        }, 
+        {
+            "text": "and at the standup", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487280805.000004"
+        }, 
+        {
+            "text": "Yes, will be in after lunch", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487280801.000003"
+        }, 
+        {
+            "text": "Hey, are you coming in to the office today?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487280780.000002"
+        }, 
+        {
+            "text": "<https://tools.ietf.org/html/rfc7159> (JOSN standards)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487222582.000016"
+        }, 
+        {
+            "text": "<https://tools.ietf.org/html/rfc7231> (General Standards)\n<https://tools.ietf.org/html/rfc5789> (Patch for partial updates)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487222569.000015", 
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1487222685.000000"
+            }
+        }, 
+        {
+            "text": "Hey I created a new Cognito user pool for Prod Admin users. Would you mind giving it a look over to make sure I set it up correctly.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487204895.000014"
+        }, 
+        {
+            "text": "apt-get build-dep python-imaging", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487197974.000013"
+        }, 
+        {
+            "text": "<https://holo.8i.com/api/serverHappy>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1487040649.000012"
+        }, 
+        {
+            "text": "asdecimal=True", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1486945691.000011"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486595325.000010"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486595323.000009"
+        }, 
+        {
+            "text": "\u201c./ngrok http 8001\" (or the port you want to forward two)\nthe address for externals will be broadcasted in your command prompt", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1486594804.000008"
+        }, 
+        {
+            "text": "<https://ngrok.com/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1486594723.000006", 
+            "attachments": [
+                {
+                    "title": "ngrok - secure introspectable tunnels to localhost", 
+                    "text": "ngrok secure introspectable tunnels to localhost webhook development tool and debugging tool", 
+                    "title_link": "https://ngrok.com/", 
+                    "service_name": "ngrok.com", 
+                    "id": 1, 
+                    "fallback": "ngrok - secure introspectable tunnels to localhost", 
+                    "from_url": "https://ngrok.com/"
+                }
+            ]
+        }, 
+        {
+            "text": "ngrok", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1486594700.000005"
+        }, 
+        {
+            "text": "Hey, I remember you telling me about a tool which port forwarded a local webserver for mobile testing. What was that called?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486594653.000004"
+        }, 
+        {
+            "text": "I had to undo your last change to the Dockerfile as well, apt-get install build-dep was erroring with package not found.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486522478.000003"
+        }, 
+        {
+            "text": "You\u2019ll want to merge this in to get back on the automated train. <https://github.com/8i/holo-api/commit/eeff1ccd84355ff62c6d8cbce62f694109e744e8>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486521101.000002"
+        }, 
+        {
+            "text": "sudo date -s \"$(wget -qSO- --max-redirect=0 <http://google.com|google.com> 2&gt;&amp;1 | grep Date: | cut -d' ' -f5-8)Z\"", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1485749693.000009"
+        }, 
+        {
+            "text": "<http://stackoverflow.com/questions/6765370/merge-image-using-javascript>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1485732837.000007", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Merge Image using Javascript", 
+                    "text": "Is it possible to merge pictures using javascript?For example, if you have 2 rectangle .jpg or .png images files of the same size, is it possible that you can align it side by side and produce a ...", 
+                    "title_link": "http://stackoverflow.com/questions/6765370/merge-image-using-javascript", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "Merge Image using Javascript", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", 
+                    "from_url": "http://stackoverflow.com/questions/6765370/merge-image-using-javascript"
+                }
+            ]
+        }, 
+        {
+            "text": "var c=document.getElementById(\"myCanvas\");\nvar ctx=c.getContext(\"2d\");\nvar imageObj1 = new Image();\nvar imageObj2 = new Image();\nimageObj1.src = \"1.png\"\nimageObj1.onload = function() {\n   ctx.drawImage(imageObj1, 0, 0, 328, 526);\n   imageObj2.src = \"2.png\";\n   imageObj2.onload = function() {\n      ctx.drawImage(imageObj2, 15, 85, 300, 300);\n      var img = c.toDataURL(\"image/png\");\n      document.write('&lt;img src=\"' + img + '\" width=\"328\" height=\"526\"/&gt;');\n   }\n};", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1485732826.000006"
+        }, 
+        {
+            "text": "self.invalid_require_oauth(self.custom_response)\n\n    def invalid_require_oauth(self, req):\n        \n        \n        raise UnauthorizedException(error_code=codes.ARCHIVED_HOLO_PACKS_LOCKED)", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1485723428.000005"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485722214.000004"
+        }, 
+        {
+            "text": "That was a suggestion for translating services. Haven\u2019t had the time to look into it yet in details though", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1485722202.000003"
+        }, 
+        {
+            "text": "<http://www.tethras.com/api_documentation|www.tethras.com/api_documentation>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1485722175.000002"
+        }, 
+        {
+            "text": "None of the native guys have asked for it yet so can wait until tomorrow morning.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484807260.000017"
+        }, 
+        {
+            "text": "Awesome, thanks. I will push the changes asap", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484807220.000016"
+        }, 
+        {
+            "text": "Hey I added some more API's to Postman for the Feed Profile. Give it another publish for me when you have a chance.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484804448.000015"
+        }, 
+        {
+            "text": "oh right, cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484797876.000014"
+        }, 
+        {
+            "text": "Yes, has nothing to do with us. The guys from studio team are fixing a memory leak on the servers together with infrastructure. Should be back up and running by tomorrow", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484797863.000013"
+        }, 
+        {
+            "text": "Is there something wrong with our auto test runner at the moment?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484797806.000012"
+        }, 
+        {
+            "text": "Yeah, using camel case is tempting and makes more sense from a human readable position ^^", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484782701.000011"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484782621.000010"
+        }, 
+        {
+            "text": "yea its fine. Just have to remember :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484782615.000009"
+        }, 
+        {
+            "edited": {
+                "user": "U3AF7DXEY", 
+                "ts": "1484782611.000000"
+            }, 
+            "attachments": [
+                {
+                    "thumb_height": 630, 
+                    "service_icon": "https://static.xx.fbcdn.net/rsrc.php/yV/r/hzMapiNYYpW.ico", 
+                    "thumb_width": 1200, 
+                    "title": "Facebook Pixel - Documentation - Facebook for Developers", 
+                    "service_name": "Facebook for Developers", 
+                    "title_link": "https://developers.facebook.com/docs/facebook-pixel", 
+                    "text": "Drive and measure conversions on your website using Facebook ad technology", 
+                    "id": 1, 
+                    "fallback": "Facebook for Developers: Facebook Pixel - Documentation - Facebook for Developers", 
+                    "thumb_url": "https://static.xx.fbcdn.net/rsrc.php/v3/yb/r/nrpLiSINthw.png", 
+                    "from_url": "https://developers.facebook.com/docs/facebook-pixel"
+                }, 
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Test mail using gmail smtp using swiftmailer?", 
+                    "text": "I m trying to send an email from a PHP script running on localhost. I am using the gmail smtp server and swiftmailer. Following is the code:$transport = Swift_SmtpTransport::newInstance('smtp.gma...", 
+                    "title_link": "http://stackoverflow.com/questions/41731346/test-mail-using-gmail-smtp-using-swiftmailer", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 2, 
+                    "fallback": "Test mail using gmail smtp using swiftmailer?", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", 
+                    "from_url": "http://stackoverflow.com/questions/41731346/test-mail-using-gmail-smtp-using-swiftmailer"
+                }
+            ], 
+            "text": "Are you cool with that? Thx, I think because of the above issue nearly all big sites have moved to using hyphens in url paths\ne.g.\n<https://developers.facebook.com/docs/facebook-pixel>\n<http://stackoverflow.com/questions/41731346/test-mail-using-gmail-smtp-using-swiftmailer>", 
+            "ts": "1484782591.000006", 
+            "user": "U3AF7DXEY", 
+            "type": "message"
+        }, 
+        {
+            "text": "I'll change it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484782475.000005"
+        }, 
+        {
+            "text": "probably just writing it the same style as I was writing methods", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484782470.000004"
+        }, 
+        {
+            "text": "no real reason", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484782417.000003"
+        }, 
+        {
+            "text": "Heya Mudge, quick question regarding url structures:\nIs there a particular reason you use camel case for urls , e.g. \u201cmyFollowedUsers\u201d, instead of hyphens, e.g. \u201cmy-followed-users\" ? \nI'm asking as I\u2019m generally used to using hyphens in url paths to mitigate any possible issues with case-sensitivity.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484782021.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484770379.000007"
+        }, 
+        {
+            "text": "yea cool, I can do that as needed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484770373.000006"
+        }, 
+        {
+            "text": "You just need to add you ip to the list \u201cRESTRICT_FLASK_ADMIN\u201d in settings/base.py", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484770342.000005"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484770246.000004"
+        }, 
+        {
+            "text": "Oh yea, its just in the config file right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484770238.000003"
+        }, 
+        {
+            "text": "In case you need access to <http://holo-stage.dev.8i.com/flask-admin/login/today>, let me know your IP address and I\u2019ll get it added.", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484770192.000002"
+        }, 
+        {
+            "text": ":table_tennis_paddle_and_ball: ?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484698769.000006"
+        }, 
+        {
+            "text": "<https://stoplight.io>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484695605.000004", 
+            "attachments": [
+                {
+                    "image_bytes": 136624, 
+                    "title": "Home", 
+                    "service_name": "StopLight", 
+                    "image_width": 472, 
+                    "title_link": "https://stoplight.io", 
+                    "image_height": 250, 
+                    "image_url": "https://stoplight.io/assets/img/homescreen.png", 
+                    "text": "StopLight, providing engineering teams with the best way to document, test, and build web APIs.", 
+                    "id": 1, 
+                    "fallback": "StopLight: Home", 
+                    "service_icon": "https://stoplight.io/favicon.ico", 
+                    "from_url": "https://stoplight.io"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://documenter.getpostman.com/view/1335607/8i-holo/2SKWhL>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484694978.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 512, 
+                    "service_icon": "https://documenter.getpostman.com/favicon.ico", 
+                    "fields": [
+                        {
+                            "short": true, 
+                            "value": "2 minutes ago", 
+                            "title": "Last Update"
+                        }
+                    ], 
+                    "thumb_width": 512, 
+                    "title": "8i Holo", 
+                    "service_name": "Postman Documenter", 
+                    "title_link": "https://documenter.getpostman.com/view/1335607/8i-holo/2SKWhL", 
+                    "text": "The Postman Documenter generates and maintains beautiful, live documentation for your collections. Never worry about maintaining API documentation again.", 
+                    "id": 1, 
+                    "fallback": "Postman Documenter: 8i Holo", 
+                    "thumb_url": "https://documenter.getpostman.com/images/logo-glyph.png", 
+                    "from_url": "https://documenter.getpostman.com/view/1335607/8i-holo/2SKWhL"
+                }
+            ]
+        }, 
+        {
+            "text": "GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO \"8i_api_access\";", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484525469.000005"
+        }, 
+        {
+            "text": "SELECT grantee, privilege_type \nFROM information_schema.role_table_grants \nWHERE table_name='mytable'", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484525272.000004"
+        }, 
+        {
+            "text": "Prod IP 52.11.156.124", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484519477.000003"
+        }, 
+        {
+            "text": "ADMIN_DATABASE_URL", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484513711.000002"
+        }, 
+        {
+            "text": "<https://eighti.signin.aws.amazon.com/console>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484277251.000002"
+        }, 
+        {
+            "text": "InvalidRequestError: When initializing mapper Mapper|APIUser|api_user, expression 'AuthenticationConnector' failed to locate a name (\"name 'AuthenticationConnector' is not defined\"). If this is a class name, consider adding this relationship() to the &lt;class 'auth.models.users.APIUser'&gt; class after both dependent classes have been defined.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484259822.000002"
+        }, 
+        {
+            "text": "<http://stackoverflow.com/questions/3043770/many-to-many-relationship-on-same-table-with-association-object>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484192755.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Many-to-many relationship on same table with association object", 
+                    "text": "Related (for the no-association-object use case): SQLAlchemy Many-to-Many Relationship on a Single TableBuilding a many-to-many relationship is easy. Building a many-to-many relationship on the s...", 
+                    "title_link": "http://stackoverflow.com/questions/3043770/many-to-many-relationship-on-same-table-with-association-object", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "Many-to-many relationship on same table with association object", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", 
+                    "from_url": "http://stackoverflow.com/questions/3043770/many-to-many-relationship-on-same-table-with-association-object"
+                }
+            ]
+        }, 
+        {
+            "text": "import ipdb;\n            ipdb.set_trace()", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484106773.000004"
+        }, 
+        {
+            "text": "You\u2019re the man! Thx:+1:", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1484090891.000003"
+        }, 
+        {
+            "text": "https is up on <https://holo-stage.dev.8i.com/admin/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484089825.000002"
+        }, 
+        {
+            "text": "sudo ntpdate -s <http://time.nist.gov|time.nist.gov>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483938362.000007"
+        }, 
+        {
+            "text": "AWS_ACCESS_KEY_ID", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1483926141.000006"
+        }, 
+        {
+            "text": "AWS_SECRET_ACCESS_KEY", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1483926138.000005"
+        }, 
+        {
+            "text": "<http://jsfiddle.net/Hitbox/u6qccbz0/48/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1483924706.000003", 
+            "attachments": [
+                {
+                    "title": "Basic AWS template - JSFiddle", 
+                    "text": "Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.", 
+                    "title_link": "http://jsfiddle.net/Hitbox/u6qccbz0/48/", 
+                    "service_name": "jsfiddle.net", 
+                    "id": 1, 
+                    "fallback": "Basic AWS template - JSFiddle", 
+                    "service_icon": "http://jsfiddle.net/favicon.png", 
+                    "from_url": "http://jsfiddle.net/Hitbox/u6qccbz0/48/"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://flask-admin.readthedocs.io/en/latest/api/mod_model/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1483909409.000002"
+        }, 
+        {
+            "text": "<https://console.aws.amazon.com/s3/home?region=us-west-2#&amp;bucket=content.8i.com&amp;prefix=HoloFeed/staging/uploads/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1483496468.000004"
+        }, 
+        {
+            "text": "<http://stackoverflow.com/questions/17371150/moving-git-repository-content-to-another-repository-preserving-history>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1483486568.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 316, 
+                    "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d", 
+                    "thumb_width": 316, 
+                    "title": "Moving Git repository content to another repository preserving history", 
+                    "text": "I am trying to move only the contents of one repository (say repo1) to another existing repository (say repo2) using the following commands; git clone repo1 git clone repo2 cd repo1 git", 
+                    "title_link": "http://stackoverflow.com/questions/17371150/moving-git-repository-content-to-another-repository-preserving-history", 
+                    "service_name": "stackoverflow.com", 
+                    "id": 1, 
+                    "fallback": "Moving Git repository content to another repository preserving history", 
+                    "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", 
+                    "from_url": "http://stackoverflow.com/questions/17371150/moving-git-repository-content-to-another-repository-preserving-history"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://ngrok.com/download>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1482441447.000002", 
+            "attachments": [
+                {
+                    "title": "ngrok - download", 
+                    "text": "ngrok secure introspectable tunnels to localhost webhook development tool and debugging tool", 
+                    "title_link": "https://ngrok.com/download", 
+                    "service_name": "ngrok.com", 
+                    "id": 1, 
+                    "fallback": "ngrok - download", 
+                    "from_url": "https://ngrok.com/download"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://github.com/buildkite-plugins/docker-compose-buildkite-plugin>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482349950.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 400, 
+                    "service_icon": "https://github.com/apple-touch-icon.png", 
+                    "thumb_width": 400, 
+                    "title": "buildkite-plugins/docker-compose-buildkite-plugin", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/buildkite-plugins/docker-compose-buildkite-plugin", 
+                    "text": "docker-compose-buildkite-plugin - Run build jobs in Docker Compose containers", 
+                    "id": 1, 
+                    "fallback": "GitHub: buildkite-plugins/docker-compose-buildkite-plugin", 
+                    "thumb_url": "https://avatars3.githubusercontent.com/u/17957497?v=3&s=400", 
+                    "from_url": "https://github.com/buildkite-plugins/docker-compose-buildkite-plugin"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://trello.com/b/iR2YUnHU/holo-api-cms-roadmap>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1482275178.000002"
+        }, 
+        {
+            "text": "<http://jsonapi.org/format/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1482179612.000002"
+        }, 
+        {
+            "text": "<https://www.getpostman.com/collections/542a48345899470db51d>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481748380.000002"
+        }, 
+        {
+            "text": "from nose.tools import set_trace", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481668594.000002"
+        }, 
+        {
+            "text": "SQLALCHEMY_DATABASE_URI = \"<postgresql://8i_api:kittensforall@localhost:5432/8i>\"", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481604005.000008"
+        }, 
+        {
+            "text": "CREATE EXTENSION postgis;", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481603960.000007"
+        }, 
+        {
+            "text": ".... /etc/hosts &lt;- 127.0.0.1 <http://local.8i.com|local.8i.com>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481601095.000006"
+        }, 
+        {
+            "text": "<https://www.virtualbox.org/wiki/Downloads?replytocom=98578>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481600927.000005"
+        }, 
+        {
+            "text": "<https://www.vagrantup.com/downloads.html>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481600850.000003", 
+            "attachments": [
+                {
+                    "title": "Download - Vagrant by HashiCorp", 
+                    "text": "This page lists all the available downloads for Vagrant.", 
+                    "title_link": "https://www.vagrantup.com/downloads.html", 
+                    "service_name": "vagrantup.com", 
+                    "id": 1, 
+                    "fallback": "Download - Vagrant by HashiCorp", 
+                    "service_icon": "https://www.vagrantup.com/assets/images/favicon-d7af32eb.png", 
+                    "from_url": "https://www.vagrantup.com/downloads.html"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://www.safaribooksonline.com/blog/2014/11/18/intro-python-debugger/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481599961.000002"
+        }, 
+        {
+            "text": "If we were to split out the 8i Website into a seperate repo, (and maybe the holo stomp project) who would be responsible for creating a new repo (or would it be fine for us to do that ourselves)?", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481498300.000003"
+        }, 
+        {
+            "text": "<https://eighteye.atlassian.net/secure/RapidBoard.jspa?rapidView=10&amp;view=detail&amp;selectedIssue=HOLO-378&amp;quickFilter=48>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481497136.000002"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0C90MHEH/F3CD1H743/employee_contact_list|Employee Contact List>", 
+            "upload": false, 
+            "ts": "1481228184.000003", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_64.png", 
+                "size": 72584, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Employee Contact List", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1BvtBnVlGCk1D5g61aiChQkyW3tju9pFovcJAap_jxw8/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_360.png", 
+                "id": "F3CD1H743", 
+                "ims": [
+                    "D3B3X4X5L"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_800.png", 
+                "timestamp": 1481228184, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_1024.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_960.png", 
+                "is_public": false, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Employee Contact List", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [], 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F3CD1H743/employee_contact_list", 
+                "is_external": true, 
+                "created": 1481228184, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": false, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3CD1H743-8e21ea0e2b/employee_contact_list_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<http://local.8i.com:8080/>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1481167681.000002"
+        }, 
+        {
+            "text": "enable_test = True\nenable_cardboard = True\n# enable_new_player = False\nSQLALCHEMY_ECHO = True\nsuper_users = [\"<mailto:y@8i.com|y@8i.com>\", \"<mailto:michael@8i.com|michael@8i.com>\"]\n\nBASE_URL = \"<http://mudge.dev.8i.com>\"\nAPI_URL = \"<http://api-mudge.dev.8i.com>\"\nSECURE_API_URL = \"<https://api-mudge.dev.8i.com>\"\n\nANALYTICS_LOGGING = True\n\nDRAG_CARDBOARD_PERCENT = 50\n\nTHREED_TEXT = True\n\n# Show cards on the main page.\nSHOW_PORTAL_BANNER = True\n\n# Auto respond to emails recieved via the contact us form.\nEMAIL_AUTO_RESPOND = True\n\n# will only send mails to this address through the contact us form.\nDEBUG_MAIL_ADDRESS = \"<mailto:michael@8i.com|michael@8i.com>\"\n\nFEEDBACK_MAIL_ADDRESSES = {\n    'holoSlackCommunity': '<mailto:michael+holoSlackCommunity@8i.com|michael+holoSlackCommunity@8i.com>',\n    'holo/feedback': '<mailto:michael+tango@8i.com|michael+tango@8i.com>',\n    'director': '<mailto:michael+director@8i.com|michael+director@8i.com>'\n}\nDEFAULT_MAIL_ADDRESS = '<mailto:michael+feedback@8i.com|michael+feedback@8i.com>'\n\nTEST_DB_FILE = '../WebPlatform/local_tests.sqlite'\n\ns3_new_bucket_prefix = \"mudge_stage_\"\n# mudge Api keys\n# s3_access_key = \"AKIAJ2ZSF5RMHBN2ZUKA\"\n# s3_secret_key = \"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\"\n\n# Dev api keys\ns3_access_key = \"AKIAIOUQFUBGG22AOAHA\"\ns3_secret_key = \"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\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481144110.000002"
+        }, 
+        {
+            "text": "Michael Mudge | Software Engineer at 8i | <http://8i.com|8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480997934.000003"
+        }, 
+        {
+            "text": "<https://google.github.io/styleguide/jsguide.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480980259.000002"
+        }, 
+        {
+            "text": "libncurses5-dev", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1480907314.000002"
+        }, 
+        {
+            "text": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDdJfW+fCba18EUO0bopUHiNs6hF8yjyY01PsQfFr/spQmMFOP1oXDxiXcoLyj5x/lYzvERJLFQyTVu2guuqfwiwjbIEFP0dfqHYx6CfZ9AhBpsgTkIqOMKo4xyhl3TUx0V6n+UgwDFOPelFjVFPkUmAgGHS0YCd8xmyW+7kJKJCmVhoIb/DvIHalPE/yNI6gIjQCAdoNiP+jPISFWi1da2v8MBKf0/tYndkDRoNuXIhePAJPB8WW48Vv5+2BA2nX0INOFdwLx8UJdBYTHTBYTK+UzvtMK92hbbEdFzgdnoYVhcU27DsDCzC9e31gByCPbYZELvQCIR7SJD8awdzq1Njmogj0yx9x2ucTNzZ+T2lg1qW/pEW594QSqHcV2KiONijA0Sr4KRyGVwyeFRaUklxFy2lRlv09wj9ylHzVTJQ6h4pYw4UXeqmm++ghYmZOOG7t19upmTdJIcRF/w+6U8q1wY9yQ6w9GY/Frau0OdNy4Am9MFmMEGKIabK0QTyadsYVbRC/mz+QI1zD/h9Yoc7ho/dWZm0TXNlFh1ZPdRKCEAdpiEj79FiujH2L2ZYKfA9zIFwhctOI0K/8/6X0tn0/IW+DgUQCmNt0kEBPWaBvRzJXzY3lQmsM4DgW8YO/ZTnMM4pte1QDRo9qg920bYzEo3PonLolvCF44c/T4Lww== <mailto:dcartwright@8i.com|dcartwright@8i.com>", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1480887135.000003"
+        }, 
+        {
+            "text": "HitDaCa", 
+            "type": "message", 
+            "user": "U3AF7DXEY", 
+            "ts": "1480886262.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3AF7DXEY", 
+            "U0C90MHEH"
+        ]
+    }
+}

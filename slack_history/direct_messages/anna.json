@@ -1,0 +1,134 @@
+{
+    "messages": [
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U08M3UXC7", 
+            "ts": "1482263936.000003"
+        }, 
+        {
+            "text": "<http://8i.com/admin/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482263930.000002"
+        }, 
+        {
+            "text": "ok thanks Mudge", 
+            "type": "message", 
+            "user": "U08M3UXC7", 
+            "ts": "1478030530.000003"
+        }, 
+        {
+            "text": "Hey, I can\u2019t really find out much on <http://8i.com|8i.com>. \nLooks like the domain is owned through an Amazon account and was updated in August of this year but thats all I can find.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478030512.000002"
+        }, 
+        {
+            "text": "<http://8i.com/s/LnP>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475806031.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "HOLO07_110_taos", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/LnP", 
+                    "text": "HOLO07_110_taos - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: HOLO07_110_taos", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/LnP/scene_LnP.png?time=1475805623947", 
+                    "from_url": "http://8i.com/s/LnP"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://mudge.dev.8i.com/holo/terms>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473891198.000002"
+        }, 
+        {
+            "text": "Hey I was still interested in that age thing so I was looking around a bit and It seems that on Google Play\u2019s terms they say you must be 13 to use their app.\n<https://play.google.com/intl/en/about/play-terms.html>\nOur app should only be available to be installed by using Google Play so that may b1e enough?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471917136.000002"
+        }, 
+        {
+            "text": "pretty cool VR director tool on Daydream <http://mashable.com/2016/06/28/daydream-vr-animation/#thWIhhMoAiq5>", 
+            "type": "message", 
+            "user": "U08M3UXC7", 
+            "ts": "1467248687.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 630, 
+                    "service_icon": "http://mashable.com/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "Google Daydream tool lets anyone easily create VR animations", 
+                    "service_name": "Mashable", 
+                    "title_link": "http://mashable.com/2016/06/28/daydream-vr-animation/#thWIhhMoAiq5", 
+                    "text": "If you can hold a controller, you can animate in Google's Daydream VR.", 
+                    "id": 1, 
+                    "fallback": "Mashable: Google Daydream tool lets anyone easily create VR animations", 
+                    "thumb_url": "http://a.amz.mshcdn.com/media/ZgkyMDE2LzA2LzI5L2Y5LzU3YTlmZTZiMWFjYjRjNzliYzQ0ZTlmMjlmZDEyNTIzLmM1MzQ4LmpwZwpwCXRodW1iCTEyMDB4NjMwCmUJanBn/06518767/e4f/57a9fe6b1acb4c79bc44e9f29fd12523.jpg", 
+                    "from_url": "http://mashable.com/2016/06/28/daydream-vr-animation/#thWIhhMoAiq5"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://www.telegraph.co.uk/news/2016/06/23/leave-or-remain-eu-referendum-results-and-live-maps/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1466736498.000002", 
+            "attachments": [
+                {
+                    "image_bytes": 50952, 
+                    "title": "Leave or remain? Live EU referendum results and maps", 
+                    "service_name": "The Telegraph", 
+                    "image_width": 400, 
+                    "title_link": "http://www.telegraph.co.uk/news/2016/06/23/leave-or-remain-eu-referendum-results-and-live-maps/", 
+                    "image_height": 250, 
+                    "image_url": "http://www.telegraph.co.uk/content/dam/news/2016/06/24/map-xlarge_trans++qVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpg", 
+                    "text": "Keep checking back for an up-to-date,\u00a0at-a-glance\u00a0breakdown of results to help you find out whether Brexit will become a reality, how each local authority voted\u00a0and how eurosceptic your area is.", 
+                    "id": 1, 
+                    "fallback": "The Telegraph: Leave or remain? Live EU referendum results and maps", 
+                    "service_icon": "http://www.telegraph.co.uk/etc/designs/telegraph/core/clientlibs/themes/cars/img/favicon/apple-touch-icon-57x57.png", 
+                    "from_url": "http://www.telegraph.co.uk/news/2016/06/23/leave-or-remain-eu-referendum-results-and-live-maps/"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/new_site/terms>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456966067.000002"
+        }, 
+        {
+            "text": "Thanks Mike! Have a great weekend!", 
+            "type": "message", 
+            "user": "U08M3UXC7", 
+            "ts": "1452231689.000003"
+        }, 
+        {
+            "text": "Yea holiday is going well thanks. My address is 19 Severn St, Island Bay, Wellington 6023.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452230891.000002"
+        }, 
+        {
+            "text": "Hey Mike! Happy New Year! Hope you had a good holiday. What\u2019s your address? (I need it for option documentation). Thanks :simple_smile:", 
+            "type": "message", 
+            "user": "U08M3UXC7", 
+            "ts": "1452222946.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U08M3UXC7", 
+            "U0C90MHEH"
+        ]
+    }
+}

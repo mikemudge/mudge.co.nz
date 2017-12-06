@@ -1,0 +1,2087 @@
+{
+    "messages": [
+        {
+            "text": "Oh yea, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510709526.000145"
+        }, 
+        {
+            "text": "not sure if this should come to you, but on <http://8i.com|8i.com> some of the pages are missing a fav icon, mainly those on the dev portal", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1510709504.000079"
+        }, 
+        {
+            "text": "Holo is using 8i-content now, dots in the bucket name caused an issue for one of amazons client SDK\u2019s", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503284567.000023"
+        }, 
+        {
+            "text": "or is `8i-content` the one holo is using?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1503284290.000010"
+        }, 
+        {
+            "text": "will there be any issue if I use the `<http://content.8i.com|content.8i.com>` bucket to test on demand streaming over cloudfront?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1503284218.000108"
+        }, 
+        {
+            "text": "Hey, the other thing which we would like to know is which version of hvr the asset used. \nLike 5.3 vs 6 vs new versions which come out in the future.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487716629.000014"
+        }, 
+        {
+            "text": "yea, previously its been in the filename, but it probably makes more sense as metadata", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487709149.000013"
+        }, 
+        {
+            "text": "yeah we should also be able to expose that other information", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1487709077.000012"
+        }, 
+        {
+            "text": "oh yup, perfect", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487709025.000011"
+        }, 
+        {
+            "text": "we will be storing a job id in the files that will be linked back to the studio/farm software", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1487709013.000010"
+        }, 
+        {
+            "text": "And then just framerate, point count, duration etc are nice to have", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487708987.000009"
+        }, 
+        {
+            "text": "I think primarily it would be which bcf's it originated from so we can replace/update files with better compression.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487708950.000008"
+        }, 
+        {
+            "text": "I will try and find out what would be good to have, and let you know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487708911.000007"
+        }, 
+        {
+            "text": "I'm not entirely sure, It just came up at the holo standup. And I wanted to confirm we didn't have anything right now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487708888.000006"
+        }, 
+        {
+            "text": "what information are you after?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1487708848.000005"
+        }, 
+        {
+            "text": "Alright cool.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487708755.000004"
+        }, 
+        {
+            "text": "no, I am working on that for a new file format", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1487708736.000003"
+        }, 
+        {
+            "text": "Hey, is there any kind of metadata stored in an hvrs? Anything which identifies the BCF's or compression settings used?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487708696.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1482184276.000008"
+        }, 
+        {
+            "text": "Alright I\u2019ve added a deploy key and started using it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482184201.000007"
+        }, 
+        {
+            "text": "but probably need to keep it working in the mean time", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482182978.000006"
+        }, 
+        {
+            "text": "Yea, Dave is working on build kite setup now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482182964.000005"
+        }, 
+        {
+            "text": "maybe it would be better to switch to a deploy key or something? though I think Gerred wanted to get it going through build kite or something", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1482182940.000004"
+        }, 
+        {
+            "text": "oh yea we are", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482182856.000003"
+        }, 
+        {
+            "text": "hey are you and yupan still using the \"pusher\" github account for the live website?, just after the 23rd it will be removed from the org unless 2fa is enabled", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1482182799.000002"
+        }, 
+        {
+            "text": "Oh cool, that will be good to get a working update", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481078603.000006"
+        }, 
+        {
+            "text": "just letting you know I have given William the engine team intern access to the WebPlatform repo to work on fixing up the web build", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1481078202.000005"
+        }, 
+        {
+            "text": "ok invite sent", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1480888128.000004"
+        }, 
+        {
+            "text": "Yea WebPlatform is fine for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480888073.000003"
+        }, 
+        {
+            "text": "for the github access which repos does he need access to?, just WebPlatform?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1480887984.000002"
+        }, 
+        {
+            "text": "its not too bad for now, we can rename the hvrs to force the cache to update", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517947.000020"
+        }, 
+        {
+            "text": "I might hold off for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517905.000019"
+        }, 
+        {
+            "text": "all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517885.000018"
+        }, 
+        {
+            "text": "Yea, thats pretty much what I was checking", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517880.000017"
+        }, 
+        {
+            "text": "im currently trying to get some other things out of the way so I can spend some time one it", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477517875.000016"
+        }, 
+        {
+            "text": "i cant really say, the web player really needs some time put aside for profiling and optimisation", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477517834.000015"
+        }, 
+        {
+            "text": "Is it in pretty good shape for public use now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517700.000014"
+        }, 
+        {
+            "text": "Awesome thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517673.000013"
+        }, 
+        {
+            "text": "the latest build on the player branch will fix the issue", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477517663.000012"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517018.000011"
+        }, 
+        {
+            "text": "Oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477517016.000010"
+        }, 
+        {
+            "text": "did find an issue with the page, that middle click doesnt work for the related video links to open in a new tab", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477516974.000009"
+        }, 
+        {
+            "text": "on <http://kieran.dev.8i.com|kieran.dev.8i.com> after pulling to latest is there something extra i need to do to get access to asset?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477516186.000008"
+        }, 
+        {
+            "text": "with 2 ?\u2019s", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477514930.000007"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477514929.000006"
+        }, 
+        {
+            "text": "If you watch the network, you\u2019ll see it loads <https://d7cvc31wlmbhf.cloudfront.net/live_Zx3/HOLO07_110_taos_v05_600K_15_75_85.hvrs?r=382826-11586245?v=2>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477514923.000005"
+        }, 
+        {
+            "text": "<http://8i.com/s/LnP>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477514881.000003", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "HOLO07_110", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/LnP", 
+                    "text": "HOLO07_110 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: HOLO07_110", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/LnP/scene_LnP.png?time=1476150966153", 
+                    "from_url": "http://8i.com/s/LnP"
+                }
+            ]
+        }, 
+        {
+            "text": "hey for the url argument issue you were having, have you got an example of it going wrong?, as I nothing is standing out as being wrong in the code", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1477514752.000002"
+        }, 
+        {
+            "text": "Would you be able to check the 2 hvrs files in <http://clouds.8i.com/LUNA/10FPS|clouds.8i.com/LUNA/10FPS>.\nThey seem too small to me and they play at double speed in the web player <http://mudge-demo.dev.8i.com/test_df/LUNA/10FPS/LUNA_140_200_10_75_85_10_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474596279.000002"
+        }, 
+        {
+            "text": "alright, yea I will only pull it into the branch we are demoing that stuff from for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473309675.000007"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1473309647.000006"
+        }, 
+        {
+            "text": "the build may not be too optimal for public release, the web version needs an optimisation pass after all the engine changes", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1473309643.000005"
+        }, 
+        {
+            "text": "Thanks for getting on to that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473309610.000004"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473309580.000003"
+        }, 
+        {
+            "text": "there is now a new build on the webplatform player branch that should support orthographic projection", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1473309569.000002"
+        }, 
+        {
+            "text": "iv got the issue happening in orthrus", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1473221044.000007"
+        }, 
+        {
+            "text": "with my implementation in Orthrus I have a working orthographical camera", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1473219819.000006"
+        }, 
+        {
+            "text": "That affects the scale at which the assets are rendered. \nBy using a larger x, y it makes the apparent scale of assets smaller.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473217569.000005"
+        }, 
+        {
+            "text": "looking over the code you might want to try change\n```\n  this.cameraScale = 100;\n  var x = this.width / this.cameraScale;\n  var y = this.height / this.cameraScale;\n  this.camera = new THREE.OrthographicCamera(-x, x, y, -y, -5, 50);\n```\nfor\n```\n  this.cameraScale = 1.0;\n  var x = this.width / this.height * this.cameraScale;\n  var y = this.cameraScale;\n  this.camera = new THREE.OrthographicCamera(-x, x, y, -y, -5, 50);\n```", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1473217094.000004"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/geoholoview/?test=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473212222.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://mudge-demo.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "Test Player 2 - Blue Dress quote\\'s", 
+                    "service_name": "8i", 
+                    "title_link": "http://mudge-demo.dev.8i.com/geoholoview/?test=1", 
+                    "text": "Testing Player 2 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Test Player 2 - Blue Dress quote\\'s", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/mudge_stage_zwr/shareImage.png?v=2", 
+                    "from_url": "http://mudge-demo.dev.8i.com/geoholoview/?test=1"
+                }
+            ]
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470886124.000003"
+        }, 
+        {
+            "text": "hey if you get a change, in 8i.controls.js, can we try change\n```\n// pass in distance in world space to move left\n\tthis.panLeft = function ( distance ) {\n\n\t\tvar te = this.object.matrix.elements;\n\n\t\t// get X column of matrix\n\t\tpanOffset.copy(this.panLeftAxis);\n\t\tpanOffset.multiplyScalar( - distance );\n\n\t\tpan.add( panOffset );\n\n\t};\n```\nfor\n```\n// pass in distance in world space to move left\n\tthis.panLeft = function ( distance ) {\n\n\t\tvar te = this.object.matrix.elements;\n\n\t\t// get X column of matrix\n\t\tpanOffset.copy(THREE.Vector3(te[0], te[1], te[2]));\n\t\tpanOffset.multiplyScalar( - distance );\n\n\t\tpan.add( panOffset );\n\n\t};\n```\nso that the panning isnt skrewed when looking from behind", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1470886097.000002"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1468366647.000005"
+        }, 
+        {
+            "text": "I have checked and https hvr\u2019s are working now, thanks for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468366631.000004"
+        }, 
+        {
+            "text": "cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468357451.000003"
+        }, 
+        {
+            "text": "hopefully the latest build on the web platform player branch should have https support", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1468357007.000002"
+        }, 
+        {
+            "text": "yea I\u2019m like Aaron and used to Mac controls", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467676620.000024"
+        }, 
+        {
+            "text": "Yea, that might be a bug actually", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467676584.000023"
+        }, 
+        {
+            "text": "so weird that the mouse scroll zoom is backwards on the web stuff, maybe that is just me though", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467676296.000022"
+        }, 
+        {
+            "text": "<http://teamcity:8111/viewLog.html?buildId=10677&amp;buildTypeId=Chimera_ReleaseWeb&amp;tab=report_project14_Web_Report>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467676204.000021"
+        }, 
+        {
+            "text": "Awesome, hopefully that test page will show you if its fixed :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467675466.000020"
+        }, 
+        {
+            "text": "found what is wrong, ill update the api and push a fix to the player branch", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467675435.000019"
+        }, 
+        {
+            "text": "seems something has changed with the api to not return valid objects", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467673782.000018"
+        }, 
+        {
+            "text": "I get the same result when I test the player branch using the current player.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467673033.000017"
+        }, 
+        {
+            "text": "but it seems to have invalid viewports the whole time.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467672994.000016"
+        }, 
+        {
+            "text": "Yea I believe it would work if the player.js code was working", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467672972.000015"
+        }, 
+        {
+            "text": "nice looks like you are getting close to have it render on teamcity", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467672700.000014"
+        }, 
+        {
+            "text": "<http://teamcity:8111/viewLog.html?buildId=10657&amp;buildTypeId=Chimera_ReleaseWeb&amp;tab=report_project14_Web_Report>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467665258.000013"
+        }, 
+        {
+            "text": "ok I \u201cthink\u201d it is working now, but the player.js code is just not working in the player branch right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467665254.000012"
+        }, 
+        {
+            "text": "awesome, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467608271.000011"
+        }, 
+        {
+            "username": "kieran", 
+            "display_as_bot": false, 
+            "text": "<@U03DPGB9Y> uploaded a file: <https://hvr.slack.com/files/U03DPGB9Y/F1NG5Q76J/teamcity_webtest.hvrs|TeamCity_WebTest.hvrs> and commented: Try this, 10 frames of mom and baby", 
+            "upload": true, 
+            "ts": "1467608255.000010", 
+            "subtype": "file_share", 
+            "user": "U03DPGB9Y", 
+            "file": {
+                "initial_comment": {
+                    "comment": "Try this, 10 frames of mom and baby", 
+                    "created": 1467608254, 
+                    "timestamp": 1467608254, 
+                    "is_intro": true, 
+                    "user": "U03DPGB9Y", 
+                    "id": "Fc1NGE85GD"
+                }, 
+                "filetype": "binary", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F1NG5Q76J", 
+                "size": 2314522, 
+                "title": "TeamCity_WebTest.hvrs", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F1NG5Q76J/teamcity_webtest.hvrs", 
+                "ims": [
+                    "D0D84NVKM"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1467608254, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F1NG5Q76J/download/teamcity_webtest.hvrs", 
+                "user": "U03DPGB9Y", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Binary", 
+                "name": "TeamCity_WebTest.hvrs", 
+                "mimetype": "application/octet-stream", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F1NG5Q76J-7fd1c716c3", 
+                "permalink": "https://hvr.slack.com/files/U03DPGB9Y/F1NG5Q76J/teamcity_webtest.hvrs", 
+                "is_external": false, 
+                "created": 1467608254, 
+                "comments_count": 1, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "cool, no rush though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467607747.000009"
+        }, 
+        {
+            "text": "yeah can do", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467607727.000008"
+        }, 
+        {
+            "text": "<http://teamcity:8111/viewLog.html?buildId=10641&amp;buildTypeId=Chimera_ReleaseWeb&amp;tab=report_project14_Web_Report>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467607636.000007"
+        }, 
+        {
+            "text": "I think i\u2019ve got something close to working but we can\u2019t do a cross origin request to amazon, if you could get a single frame hvr file I can make it use that instead of using amazon.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467607625.000006"
+        }, 
+        {
+            "text": "alright, I\u2019ll try that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467601721.000005"
+        }, 
+        {
+            "text": "yes that should work", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467601712.000004"
+        }, 
+        {
+            "text": "I think adding something like \"WebPlatform\\static =&gt; report.zip\u201d to the artifact paths?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467601666.000003"
+        }, 
+        {
+            "text": "Hey, do you know if its possible to include eight.lib.js and its .mem file along with the index.html in teamcity?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467601540.000002"
+        }, 
+        {
+            "text": "all good I\u2019ll see what happens after I make a new page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467342599.000031"
+        }, 
+        {
+            "text": "that does a full build, the build steps can be updated for testing if needed", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467342566.000030"
+        }, 
+        {
+            "text": "to update the index.html? Or does that do a full rebuild of the player.js?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467342504.000029"
+        }, 
+        {
+            "text": "you should just need to click the run button on the `Chimera/Engine/Release Web` project to update it", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467342449.000028"
+        }, 
+        {
+            "text": "I will have a go at replacing that page with a player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467342362.000027"
+        }, 
+        {
+            "text": "nice one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467342348.000026"
+        }, 
+        {
+            "text": "ok looks like it should work\n<http://teamcity:8111/project.html?projectId=Chimera_Engine&amp;tab=preport_project14_Web_Player_Test&amp;branch_Chimera_Engine=__all_branches__>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467342173.000025"
+        }, 
+        {
+            "text": "nope", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467263770.000024"
+        }, 
+        {
+            "text": "will making a WebPlatform/tests/teamcity/index.html break anything?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467263745.000023"
+        }, 
+        {
+            "text": "Otherwise we can just put it altogether statically, it just may need to get updated from time to time.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467263076.000022"
+        }, 
+        {
+            "text": "im not sure ill see if i can find out", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467263021.000021"
+        }, 
+        {
+            "text": "can the teamcity server make external http requests? for the hvrs file and maybe for the javascript?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262964.000020"
+        }, 
+        {
+            "text": "yea cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262929.000019"
+        }, 
+        {
+            "text": "there is no rush, just if you have some free time", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262923.000018"
+        }, 
+        {
+            "text": "Alright I\u2019ll see if I can get a page like that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262884.000017"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262869.000016"
+        }, 
+        {
+            "text": "hosted on that server as well?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262863.000015"
+        }, 
+        {
+            "text": "yeah, so that it can just be displayed by the teamcity server", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262843.000014"
+        }, 
+        {
+            "text": "do you need something static?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262812.000013"
+        }, 
+        {
+            "text": "it does", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262794.000012"
+        }, 
+        {
+            "text": "doesnt that page get generated by a flask template?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262780.000011"
+        }, 
+        {
+            "text": "something like <http://mudge-demo2.dev.8i.com/test_df/BAND_210_auto_v01/BAND_2015_auto_v01_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262733.000010"
+        }, 
+        {
+            "text": "so what would a report page need to do different to our current test hvrs page?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262704.000009"
+        }, 
+        {
+            "text": "yea, I think the problems I\u2019ve seen often wouldn\u2019t be caught by an automated test anyway", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262664.000008"
+        }, 
+        {
+            "text": "automated tests would probably mean having a test server that teamcity could update", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262631.000007"
+        }, 
+        {
+            "text": "I was more thinking it would be a report page from the build, im not sure how we would do automated tests", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262561.000006"
+        }, 
+        {
+            "text": "easy enough, is that for an automated test?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262490.000005"
+        }, 
+        {
+            "text": "how hard would it be to create a test page to load a hard coded hvrs with minimal requirements?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262433.000004"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467262369.000003"
+        }, 
+        {
+            "text": "hey, so I have finally got automated web player builds that commit to the player branch", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1467262347.000002"
+        }, 
+        {
+            "text": "cool thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463097235.000006"
+        }, 
+        {
+            "text": "```\n    getInfo: function(key) {\n        var info = null;\n        var buffer = Module._malloc(256);\n        if(this.getInfo_(key, buffer, 256)) {\n            info = Pointer_stringify(buffer, 256);\n        }\n        Module._free(buffer);\n        return info;\n    },\n\n```", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1463097229.000005"
+        }, 
+        {
+            "text": "is your getInfo method viewable somewhere?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1463097209.000004"
+        }, 
+        {
+            "text": "<https://github.com/kripken/emscripten/tree/master/src>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1463097067.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 400, 
+                    "thumb_width": 400, 
+                    "title": "kripken/emscripten", 
+                    "service_name": "GitHub", 
+                    "title_link": "https://github.com/kripken/emscripten/tree/master/src", 
+                    "text": "emscripten - Emscripten: An LLVM-to-JavaScript Compiler", 
+                    "id": 1, 
+                    "fallback": "GitHub: kripken/emscripten", 
+                    "thumb_url": "https://avatars3.githubusercontent.com/u/173661?v=3&s=400", 
+                    "from_url": "https://github.com/kripken/emscripten/tree/master/src"
+                }
+            ]
+        }, 
+        {
+            "text": "oh no, I\u2019ll take a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461644094.000003"
+        }, 
+        {
+            "text": "looks like switching cloud resolution on <http://8i.com|8i.com> is breaking playback, also when you open the swich resolution popup it forces you to click an option and cant click else where to cancel", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1461643649.000002"
+        }, 
+        {
+            "text": "and we could probably fallback to showing a shortened version on web if we need to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460932748.000010"
+        }, 
+        {
+            "text": "ok thanks", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1460932724.000009"
+        }, 
+        {
+            "text": "2-3 weeks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460932710.000008"
+        }, 
+        {
+            "text": "good question", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460932624.000007"
+        }, 
+        {
+            "text": "when is IOS going live?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1460932609.000005", 
+            "edited": {
+                "user": "U03DPGB9Y", 
+                "ts": "1460932616.000000"
+            }
+        }, 
+        {
+            "text": "before that we don\u2019t need to have any longer content.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460932582.000004"
+        }, 
+        {
+            "text": "I don\u2019t know of any specific timeframe, I think the only concern is the shared link from iOS when the app goes live.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460932562.000003"
+        }, 
+        {
+            "text": "hey, is there any sort of timeframe you would like to have that web player issue fixed in?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1460932206.000002"
+        }, 
+        {
+            "text": "hey you wanna take a look at this", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1459370459.000005"
+        }, 
+        {
+            "text": "na thats fine, I\u2019ll just push with charles change for now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459308870.000004"
+        }, 
+        {
+            "text": "I can commit a new player at anytime, but we still need to get the compression settings sorted before creating any content", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1459308600.000003"
+        }, 
+        {
+            "text": "Hey, are you still planning to update the player branch with HVR5.3 support? Whats the ETA for that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459306988.000002"
+        }, 
+        {
+            "text": "cool, I\u2019ll test it out, probably will leave it until next weeks version to push to prod though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458782890.000003"
+        }, 
+        {
+            "text": "iv pushed a new player to the player branch, there will most likly be another early next week to add HVR5.3 support", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1458782385.000002"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1458191919.000003"
+        }, 
+        {
+            "username": "kieran", 
+            "display_as_bot": false, 
+            "text": "<@U03DPGB9Y> uploaded a file: <https://hvr.slack.com/files/U03DPGB9Y/F0T9R9VD5/-.js|Untitled> and commented: audio changes have been pushed, here is an example of the dah script", 
+            "upload": true, 
+            "ts": "1458191593.000002", 
+            "subtype": "file_share", 
+            "user": "U03DPGB9Y", 
+            "file": {
+                "initial_comment": {
+                    "comment": "audio changes have been pushed, here is an example of the dah script", 
+                    "created": 1458191592, 
+                    "timestamp": 1458191592, 
+                    "is_intro": true, 
+                    "user": "U03DPGB9Y", 
+                    "id": "Fc0T9J4K4N"
+                }, 
+                "filetype": "javascript", 
+                "lines_more": 28, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0T9R9VD5", 
+                "size": 766, 
+                "title": "Untitled", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0T9R9VD5/-.js", 
+                "ims": [
+                    "D0D84NVKM"
+                ], 
+                "preview": "{  \r\n   \"clips\":[  \r\n      {  \r\n         \"duration\":\"PT2.333333S\",\r\n         \"content_sets\":[  \r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U03DPGB9Y/F0T9R9VD5/-.js/edit", 
+                "username": "", 
+                "timestamp": 1458191592, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": null, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0T9R9VD5/download/-.js", 
+                "user": "U03DPGB9Y", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "JavaScript/JSON", 
+                "name": "-.js", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0T9R9VD5-6de1641278", 
+                "permalink": "https://hvr.slack.com/files/U03DPGB9Y/F0T9R9VD5/-.js", 
+                "is_external": false, 
+                "created": 1458191592, 
+                "lines": 33, 
+                "comments_count": 1, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>{  </pre></div>\n<div><pre>   <span class=\"cm-string\">&quot;clips&quot;</span>:[  </pre></div>\n<div><pre>      {  </pre></div>\n<div><pre>         <span class=\"cm-string cm-property\">&quot;duration&quot;</span>:<span class=\"cm-string\">&quot;PT2.333333S&quot;</span>,</pre></div>\n<div><pre>         <span class=\"cm-string cm-property\">&quot;content_sets&quot;</span>:[  </pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "the images are only 1800 wide", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457380635.000006"
+        }, 
+        {
+            "text": "cool, I\u2019ll see if we can do something about that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457380621.000005"
+        }, 
+        {
+            "text": "well on my 1920 by 1200 the mums elbow is showing on the left of the screen", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1457380593.000004"
+        }, 
+        {
+            "text": "on a really wide screen?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457380544.000003"
+        }, 
+        {
+            "text": "hey, on the new website not sure if this is something we care about fixing, but the top image on the about page and bottom on create page are wrapping", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1457380497.000002"
+        }, 
+        {
+            "text": "is enabling 360 something you do on your end now?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1456965620.000007"
+        }, 
+        {
+            "text": "Its up at <http://8i.com/p/EGv>, and the embed friendly page is at <http://8i.com/e/EGv>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456965199.000005", 
+            "attachments": [
+                {
+                    "title": "Ashlee", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/EGv", 
+                    "text": "Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Ashlee", 
+                    "from_url": "http://8i.com/p/EGv"
+                }
+            ]
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1456963541.000004"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456963527.000003"
+        }, 
+        {
+            "text": "hey there is a demo at `P:\\NAS4\\footage\\ASHLEE\\Hvr\\ASHLEE_S02_T02\\web1` that eugene wants active for a client to embed in thier site, are you able to put it up?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1456963491.000002"
+        }, 
+        {
+            "text": "Awesome, thanks for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456885376.000003", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1456885389.000000"
+            }
+        }, 
+        {
+            "text": "P:\\temp\\kieran\\BAND_PingPong\nyou should be able to access this from the instructions in the <#C03DG1PN7> channel", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1456885134.000002"
+        }, 
+        {
+            "text": "its happening on Scott's nexus 5x when playing a cardboard asset", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456362963.000004"
+        }, 
+        {
+            "text": "Hey, does \"WebGL: INVALID_OPERATION: drawArrays: no valid shader program in use\u201d mean anything to you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456362934.000003"
+        }, 
+        {
+            "text": "<http://clouds.8i.com.s3.amazonaws.com/BAND_210_auto_v01>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1456354122.000002"
+        }, 
+        {
+            "text": "ok thanks ill take a look when I get a chance", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1454014041.000004"
+        }, 
+        {
+            "text": "Nothing appears to be broken, just seeing those warnings in the console.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454012299.000003"
+        }, 
+        {
+            "text": "Hey since that new version of eighti.lib.js I\u2019ve been getting console warnings like \"WebGL: INVALID_VALUE: bindAttribLocation: index out of range\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454012238.000002"
+        }, 
+        {
+            "text": "great", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453938878.000006"
+        }, 
+        {
+            "text": "it should be", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1453938871.000005"
+        }, 
+        {
+            "text": "is it all fixed now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453938855.000004"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453938845.000003"
+        }, 
+        {
+            "text": "there is now an updated version of eighti.lib.js on master", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1453938827.000002"
+        }, 
+        {
+            "text": "not the best quality but: <http://mudge-demo.dev.8i.com/test/2/ASHLEE_S02_T02_bob_v01_400>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1453844998.000002"
+        }, 
+        {
+            "text": "ah alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453341112.000003"
+        }, 
+        {
+            "text": "you might just need to revert my last player update, the web player is currently fairly well broken", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1453341079.000002"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452819394.000003"
+        }, 
+        {
+            "text": "just pushed changes to fix the resource leaks when switching resolution", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452819380.000002"
+        }, 
+        {
+            "text": "yeah but this means we keep the size of  a piece of content around when switching resolution", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452732022.000011"
+        }, 
+        {
+            "text": ":simple_smile: its making it easier by not letting you worry about memory", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452731951.000010"
+        }, 
+        {
+            "text": ":sweat: new level of hate for this language", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452731911.000009"
+        }, 
+        {
+            "text": "javascript doesn\u2019t really do much memory management stuff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452731556.000008"
+        }, 
+        {
+            "text": "I just need to make sure that some code gets called when we are done with an Actor/Asset", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452731527.000006", 
+            "edited": {
+                "user": "U03DPGB9Y", 
+                "ts": "1452731535.000000"
+            }
+        }, 
+        {
+            "text": "Not that I\u2019m aware of", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452731523.000005"
+        }, 
+        {
+            "text": "hey with JavaScript is there a method that gets called when an objects ref count reaches 0 and is about to be deleted?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452731498.000004"
+        }, 
+        {
+            "text": "from my javascript, not yours :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452718556.000003"
+        }, 
+        {
+            "text": "getting TypeError: undefined is not an object (evaluating 'window.performance.now')", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452718545.000002"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452551983.000036"
+        }, 
+        {
+            "text": "not sure if we have any of the kitten data here", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452551967.000035"
+        }, 
+        {
+            "text": "Short (~2 seconds) seems to be best for the cardboard mode as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452551895.000034"
+        }, 
+        {
+            "text": "Hey, talked with Yu Pan and hes keen to get a few other player 2 assets ready, we think a swimsuit and a kittens along with the dress would be good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452551857.000033"
+        }, 
+        {
+            "text": "forgot the api is on a different server", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543978.000032"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543944.000031"
+        }, 
+        {
+            "text": "yea I think I fixed that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543942.000030"
+        }, 
+        {
+            "text": "nvm just needed to pull", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543938.000029"
+        }, 
+        {
+            "text": "should the `test_asset_version` route be workings? as  im getting `KeyError: 's3_key'` from the `play` function", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543826.000028"
+        }, 
+        {
+            "text": "shouldn\u2019t be too much of an ask to be able to switch, just like fullscreen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543533.000027"
+        }, 
+        {
+            "text": "Yea I was going to look at that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543510.000026"
+        }, 
+        {
+            "text": "we should also be able to make a page that can handle both normal and stereo modes", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543439.000025"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543385.000024"
+        }, 
+        {
+            "text": "more of a reason to have a page for setting these things up I guess", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543376.000023"
+        }, 
+        {
+            "text": "they all seem to be located slightly differently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543344.000022"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543326.000021"
+        }, 
+        {
+            "text": "yeah, will take a bit of work as each piece of content needs to be placed correctly", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543314.000020"
+        }, 
+        {
+            "text": "but we probably want it to be dynamic at some point :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543231.000019"
+        }, 
+        {
+            "text": "yea, I mean if its just changing the asset thats fairly easy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543215.000018"
+        }, 
+        {
+            "text": "im not sure, im guessing he just wants them to be able to access the demo", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543188.000017"
+        }, 
+        {
+            "text": "I\u2019m not sure that we have private videos right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543166.000016"
+        }, 
+        {
+            "text": "is private just the actual video content?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452543136.000015"
+        }, 
+        {
+            "text": "also from Linc about the cardboard demo\n\"What we need is a private version of this for Time Inc ASAP, so anything required to have that happen would be great.\"", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452543107.000014"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452542781.000013"
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452542776.000012"
+        }, 
+        {
+            "text": "can you please pull again. forgot to add fix to make it auto loop", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452542751.000011"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452542402.000010"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/cardboard-demo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452542373.000009"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452542267.000008"
+        }, 
+        {
+            "text": "I can host them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452542264.000007"
+        }, 
+        {
+            "text": "master", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452542263.000006"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452542259.000005"
+        }, 
+        {
+            "text": "are they on master or a branch&gt;", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452542258.000004"
+        }, 
+        {
+            "text": "hey iv pushed the changes for the cardboard demo, do you have somewhere they can be hosted for linc can access?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452542242.000002", 
+            "edited": {
+                "user": "U03DPGB9Y", 
+                "ts": "1452542253.000000"
+            }
+        }, 
+        {
+            "text": "I still need to make sure all the settings for player 1 work the same way for player 2 assets, so no real rush", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452478723.000010"
+        }, 
+        {
+            "text": "yea, sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452478689.000009"
+        }, 
+        {
+            "text": "cool, it seems to all be working, ill take a look tomorrow to make sure everything is correct though", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452478680.000008"
+        }, 
+        {
+            "text": "Hey, <http://mudge-demo.dev.8i.com/p/zwr> is up and running with the multiple resolutions", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452478593.000007"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452464161.000006"
+        }, 
+        {
+            "text": "<https://s3.amazonaws.com/content.8i.com/test/SWIMTWO_S06A_T02_bob_v03_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452464142.000005"
+        }, 
+        {
+            "text": "whereabouts is the player 2 content in AWS?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452464102.000004"
+        }, 
+        {
+            "text": "sure can do it now if you like", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1452461188.000003"
+        }, 
+        {
+            "text": "Hey, when you\u2019ve got a minute do you want to have a chat about what we need to do to get player 2 content ready to go live?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452461160.000002"
+        }, 
+        {
+            "text": "It doesn\u2019t seem to be supported by player 2 either", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450237816.000010"
+        }, 
+        {
+            "text": "Eug should be getting you a fixed frame, what one was in a newer format that player one doesnt support", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1450237764.000009"
+        }, 
+        {
+            "text": "\\\\NAS4\\footage\\2015_05_03_BABY_100\\Processed\\HVRs\\NewHomageStillHVR", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450237031.000008"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450236993.000007"
+        }, 
+        {
+            "text": "did he give you the asset?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1450236989.000006"
+        }, 
+        {
+            "text": "trying to change it to use a different asset, which Eug chose.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450236954.000005"
+        }, 
+        {
+            "text": "the old one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450236915.000004"
+        }, 
+        {
+            "text": "which player is that using?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1450236906.000003"
+        }, 
+        {
+            "text": "Hey, is this a player version incompatibility? <http://mudge.dev.8i.com/interactive>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450236852.000002"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450038733.000003"
+        }, 
+        {
+            "text": "I have uploaded a set of player 2 data at 4 different resolutions\n<https://s3.amazonaws.com/content.8i.com/test/SWIMTWO_S03B_T01_bob_v03_part1_50_15_100_100.hvrs>\n<https://s3.amazonaws.com/content.8i.com/test/SWIMTWO_S03B_T01_bob_v03_part1_100_15_100_100.hvrs>\n<https://s3.amazonaws.com/content.8i.com/test/SWIMTWO_S03B_T01_bob_v03_part1_200_15_100_100.hvrs>\n<https://s3.amazonaws.com/content.8i.com/test/SWIMTWO_S03B_T01_bob_v03_part1_400_15_100_100.hvrs>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1450038448.000002"
+        }, 
+        {
+            "text": "yea I\u2019ll look at adding a few basic JS tests on it early next quarter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449718842.000012"
+        }, 
+        {
+            "text": "I just want to think of the player branch as the master branch for the player since it could be quite easy for it to break everything", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449718783.000011"
+        }, 
+        {
+            "text": "alright, its back, currently just the same as master", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449718760.000010"
+        }, 
+        {
+            "text": "get used to cleaning up after myself", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449718647.000009"
+        }, 
+        {
+            "text": "sorry, I\u2019m just used to starting new branches all the time.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449718639.000008"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449718618.000007"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449718596.000006"
+        }, 
+        {
+            "text": "can you please recreate the player branch as I would like to keep it around for testing any player specific changes", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449718548.000005"
+        }, 
+        {
+            "text": "I\u2019m not sure that player2 has any specialised code for it currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449695791.000004"
+        }, 
+        {
+            "text": "that is a good question actually", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449695755.000003"
+        }, 
+        {
+            "text": "how is the 360 camera enabled now?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449695735.000002"
+        }, 
+        {
+            "text": "good work though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449524063.000005"
+        }, 
+        {
+            "text": "to keep giving you stuff to do?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449524053.000004"
+        }, 
+        {
+            "text": ":simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449524037.000003"
+        }, 
+        {
+            "text": "ok iv pushed a fix for iOS, why do they have to do everything differently?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449524023.000002"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449201869.000032"
+        }, 
+        {
+            "text": "get some feedback for monday", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449201862.000031"
+        }, 
+        {
+            "text": "yup, lets do it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449201853.000030"
+        }, 
+        {
+            "text": "ok to put a link on <#C03LFC6K6> then?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449201842.000029"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449201791.000028"
+        }, 
+        {
+            "text": "or <http://mudge-demo.dev.8i.com/test/2/mom_and_baby_long_2?asset_y_position=150&amp;user_eye_height=150> for a well positioned asset :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449201762.000027"
+        }, 
+        {
+            "text": "and made it live at <http://mudge-demo.dev.8i.com/test/2/mom_and_baby_long_2>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449201708.000026"
+        }, 
+        {
+            "text": "ah yea I fixed those 2 things you mentioned", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449201657.000025"
+        }, 
+        {
+            "text": "is player 2 looking good to get the company to test?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449200547.000024"
+        }, 
+        {
+            "text": "Good find", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449192173.000023"
+        }, 
+        {
+            "text": "Ah yea, it probably needs to jump back to 0", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449192165.000022"
+        }, 
+        {
+            "text": "one other thing iv found, if not looping the play button does nothing when at the end of the content", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449192027.000021"
+        }, 
+        {
+            "text": "Yea that sounds sensible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449187413.000020"
+        }, 
+        {
+            "text": "also I noticed in main_app.py  `/test/&lt;version&gt;/&lt;asset&gt;` isnt being enabled if `enable_test` is specified, plus with these test pages should we call `abort(404)` instead of returning an empty page?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449187129.000019"
+        }, 
+        {
+            "text": "I\u2019ve actually got something on my demo server which I\u2019m showing Pan at 12:30, so will upload later this afternoon.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449183890.000018"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449183839.000017"
+        }, 
+        {
+            "text": "ok Iv pushed the new player build", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449183827.000016"
+        }, 
+        {
+            "text": "i removed all params and it is still doing it", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449182714.000015"
+        }, 
+        {
+            "text": "it was bytes=\u2026 before?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449182689.000014"
+        }, 
+        {
+            "text": "really?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449182679.000013"
+        }, 
+        {
+            "text": "seems that adding `?r=0-24` to the XMLHttpRequest isnt causing the OPTION requests", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449182649.000012"
+        }, 
+        {
+            "text": "thats a good point", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449111648.000011"
+        }, 
+        {
+            "text": "yeah i always put dah files on <http://clouds.8i.com|clouds.8i.com> which isnt a cdn so versioning isnt an issue", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449111631.000010"
+        }, 
+        {
+            "text": "but versioning probably doesn\u2019t matter for test", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449111578.000009"
+        }, 
+        {
+            "text": "currently the only time we don\u2019t use server generated dah\u2019s is for /test/\u2026 endpoints which still look up dah files on s3", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449111567.000008"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449111504.000007"
+        }, 
+        {
+            "text": "for player 2 if the dah files are always going to be server generated we can change it a little and add the version param on when it is passing the `.hvrs` url to the player", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449111485.000006"
+        }, 
+        {
+            "text": "cool, I can do the same for player2", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449111378.000005"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449111362.000004"
+        }, 
+        {
+            "text": "so it takes the dah file version as the version of the hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449111351.000003"
+        }, 
+        {
+            "text": "yeah so with player 1 we are loading dah files as `/info/lZ.dah?v=4` and the version param is being added to the frames downloads in the c++ code", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1449111308.000002"
+        }, 
+        {
+            "text": "im also still working on adding versioning support for the hvr streams", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448936469.000008"
+        }, 
+        {
+            "text": "yeah that is looking good, one thing, eighti.min.lib and dahparser.js arnt being versioned", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448936434.000007"
+        }, 
+        {
+            "text": "When you get a chance, do you want to do a quick sync to see whats left", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448927602.000006"
+        }, 
+        {
+            "text": "I pushed my change into the player branch, looping works now, the volume control is not there and resolution lets you choose from the representations available in the dah file.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448927561.000005"
+        }, 
+        {
+            "text": "cool, I\u2019ll update my change", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448919649.000004"
+        }, 
+        {
+            "text": "ill get a simple player testing flask app set up next", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448919627.000003"
+        }, 
+        {
+            "text": "iv pushed a change to the \"player\" branch, so now all the JavaScript source is in the WebPlatform branch", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448919603.000002"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448836095.000011"
+        }, 
+        {
+            "text": "to clear up memory?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448836080.000010"
+        }, 
+        {
+            "text": "that part hasnt really been tested", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448836069.000009"
+        }, 
+        {
+            "text": "we just need to make sure the old asset is destroyed", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448836060.000008"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448836020.000007"
+        }, 
+        {
+            "text": "yep", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448836017.000006"
+        }, 
+        {
+            "text": "just play the different url", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448836013.000005"
+        }, 
+        {
+            "text": "ah right, so the player doesn\u2019t actually need to know the resolution then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448836001.000004"
+        }, 
+        {
+            "text": "it will mean calling the loadAsset function again with a new url from the .dah", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448835972.000003"
+        }, 
+        {
+            "text": "Hey, how do I tell player 2 what resolution to use?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448835865.000002"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448576500.000003"
+        }, 
+        {
+            "text": "iv pushed some changes to the \"player\" branch that fixes up some of the playback issues in player2.js", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448576482.000002"
+        }, 
+        {
+            "text": "what is populating the experience page, for the player-background branch?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448501735.000011"
+        }, 
+        {
+            "text": "I don\u2019t think we have a list of them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448501691.000010"
+        }, 
+        {
+            "text": "the list?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448501678.000009"
+        }, 
+        {
+            "text": "hey where are the list of player 2 demos coming from? is that through the admin panel now?", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448501657.000008"
+        }, 
+        {
+            "text": "yeah, but you will also need the changes in standardPlayer.js, we might need to add another layer of abstraction for the code im going to need to be changing", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448486985.000007"
+        }, 
+        {
+            "text": "did you push the eighti lib to the player branch?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448486900.000006"
+        }, 
+        {
+            "text": "I copied it originally so not to ruin anything you were working on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448486878.000005"
+        }, 
+        {
+            "text": "I have been using a new version of standardPlayer.js", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448486860.000004"
+        }, 
+        {
+            "text": "im not sure if you have been using a modified version of standardPlayer.js, we might need to work on getting that area more organised", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448486091.000003"
+        }, 
+        {
+            "text": "iv pushed a new version of the eighti library and standardPlayer.js", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448486046.000002"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448426649.000003"
+        }, 
+        {
+            "text": "it is looking good for me being able to give you a new build tomorrow, <http://kieran.dev.8i.com/test2/mom_and_baby_long_2>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1448426611.000002"
+        }, 
+        {
+            "text": "Hey you got a minute?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1448312413.000002"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1447379711.000003"
+        }, 
+        {
+            "text": "SEIRYU/Share/Web2_360", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1447379652.000002"
+        }, 
+        {
+            "text": "oh thank you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1447014605.000003"
+        }, 
+        {
+            "text": "iv put a web player build with logging into  //Seiryu/Share/Web/Release", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1447014518.000002"
+        }, 
+        {
+            "text": "yeah that iss fine", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1446500461.000003"
+        }, 
+        {
+            "text": "Hey, do you mind if I update the player branch by merging in the latest master? (assuming its ok with Yu Pan)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1446499440.000002"
+        }, 
+        {
+            "text": "Nvm, got it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1445925554.000003"
+        }, 
+        {
+            "text": "hey whats the alarm at the office?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1445924593.000002"
+        }, 
+        {
+            "text": "<http://kieran.dev.8i.com/test2/mom_and_baby_long>", 
+            "type": "message", 
+            "user": "U03DPGB9Y", 
+            "ts": "1445912614.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03DPGB9Y", 
+            "U0C90MHEH"
+        ]
+    }
+}

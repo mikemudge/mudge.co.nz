@@ -1,0 +1,50 @@
+{
+    "messages": [
+        {
+            "text": "No worries, easy fix :simple_smile:", 
+            "type": "message", 
+            "user": "U03E2106A", 
+            "ts": "1450128578.000008"
+        }, 
+        {
+            "text": "Hah - call.", 
+            "type": "message", 
+            "user": "U03E2106A", 
+            "ts": "1450128574.000007"
+        }, 
+        {
+            "text": "otherwise it would of been an awkward 24th :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450128549.000006"
+        }, 
+        {
+            "text": "you can change the booking, and thanks for the heads up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450128529.000005"
+        }, 
+        {
+            "text": "Oh, yea I think I must of had my days wrong sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450128507.000004"
+        }, 
+        {
+            "text": "Hey dude - just wanted to have a quick chat about your plans over the shutdown. The company is closed from the 24th Dec --&gt; 4 Jan *inclusive*, meaning our last day is the 23rd and first day back is the 5th. I see you've made a booking in iPayroll from the 25th to the 4th, so I just wanted to confirm that you're not planning to work on the 24th and that I should change the booking to reflect this?", 
+            "type": "message", 
+            "user": "U03E2106A", 
+            "ts": "1450128443.000002", 
+            "edited": {
+                "user": "U03E2106A", 
+                "ts": "1450128452.000000"
+            }
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03E2106A", 
+            "U0C90MHEH"
+        ]
+    }
+}

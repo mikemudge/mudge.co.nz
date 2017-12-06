@@ -1,0 +1,261 @@
+{
+    "messages": [
+        {
+            "text": "oh cool, I\u2019ll try that, Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494538792.075902"
+        }, 
+        {
+            "text": "or 8iops", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1494538774.069296"
+        }, 
+        {
+            "text": "8ioperations is the password I believe", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1494538773.068936"
+        }, 
+        {
+            "text": "yep, use a VNC client (I used Jump desktop because it auto-discovers), they're called ceres and eros", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1494538765.066403"
+        }, 
+        {
+            "text": "Hey, do you have the details for connecting to the dashboard TV\u2019s for downstairs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494538741.058835"
+        }, 
+        {
+            "text": "ah thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486520719.000011"
+        }, 
+        {
+            "text": "there's an example. :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1486520709.000010"
+        }, 
+        {
+            "username": "gerred", 
+            "display_as_bot": false, 
+            "text": "<@U2Q13PT1T> uploaded a file: <https://hvr.slack.com/files/U2Q13PT1T/F42DAHTM0/-.yaml|Untitled>", 
+            "upload": true, 
+            "ts": "1486520707.000009", 
+            "subtype": "file_share", 
+            "user": "U2Q13PT1T", 
+            "file": {
+                "filetype": "yaml", 
+                "lines_more": 3, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F42DAHTM0", 
+                "size": 184, 
+                "title": "Untitled", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F42DAHTM0/-.yaml", 
+                "ims": [
+                    "D2TKSKCEQ"
+                ], 
+                "preview": "steps:\r\n  - name: \":docker: Build\"\r\n    plugins:\r\n      docker-compose:\r\n        build: app\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U2Q13PT1T/F42DAHTM0/-.yaml/edit", 
+                "username": "", 
+                "timestamp": 1486520707, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F42DAHTM0/download/-.yaml", 
+                "user": "U2Q13PT1T", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "YAML", 
+                "name": "-.yaml", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F42DAHTM0-b69447c2ee", 
+                "permalink": "https://hvr.slack.com/files/U2Q13PT1T/F42DAHTM0/-.yaml", 
+                "is_external": false, 
+                "created": 1486520707, 
+                "lines": 8, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre><span class=\"cm-atom\">steps</span><span class=\"cm-meta\">:</span></pre></div>\n<div><pre><span class=\"cm-meta\">  - </span><span class=\"cm-atom\">name</span><span class=\"cm-meta\">: </span><span class=\"cm-string\">&quot;:docker: Build&quot;</span></pre></div>\n<div><pre><span class=\"cm-atom\">    plugins</span><span class=\"cm-meta\">:</span></pre></div>\n<div><pre><span class=\"cm-atom\">      docker-compose</span><span class=\"cm-meta\">:</span></pre></div>\n<div><pre><span class=\"cm-atom\">        build</span><span class=\"cm-meta\">: </span>app</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "I don\u2019t have access to the studio repo", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486520693.000008"
+        }, 
+        {
+            "text": "<https://github.com/8i/studio.8i.com/blob/master/.buildkite/pipeline.yml#L7:L8>", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1486520637.000007"
+        }, 
+        {
+            "text": "so I updated the base build, in this repo though: <https://github.com/8i/holo-api/blob/develop/.buildkite/pipeline.yml>", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1486520617.000006"
+        }, 
+        {
+            "text": "Sorry, I don\u2019t really know what I\u2019m doing here. How do I specify a queue?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486520536.000005"
+        }, 
+        {
+            "text": "yep! Switch your builds to the \"build\" queue", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1486520357.000004"
+        }, 
+        {
+            "text": "We seem to be scheduling but not getting run today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486518525.000003"
+        }, 
+        {
+            "text": "Hey, do you know what is going on here, <https://buildkite.com/8i/holo-dot-8i-dot-com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486518504.000002"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477610178.000021"
+        }, 
+        {
+            "text": "this repo yeah?", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477610173.000020"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform>", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477610172.000019"
+        }, 
+        {
+            "text": "that\u2019s fair. :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477610138.000018"
+        }, 
+        {
+            "text": "but if it works I generally leave it alone :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477610126.000017"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477610117.000016"
+        }, 
+        {
+            "text": "and I have taken over most of it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477610114.000015"
+        }, 
+        {
+            "text": "<@U03LE8N9S> did most of the initial setup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477610102.000014"
+        }, 
+        {
+            "text": "nothing that changes soon.", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477610085.000013"
+        }, 
+        {
+            "text": "ok what\u2019s the backend in? who might\u2019ve set that up? i\u2019m just looking at long term unifying our deployment. :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477610077.000012"
+        }, 
+        {
+            "text": "I didn\u2019t set that up though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477610019.000011"
+        }, 
+        {
+            "text": "I think there is something which detects file changes and reloads the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477610012.000010"
+        }, 
+        {
+            "text": "it doesn\u2019t usually need a restart", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477609968.000009"
+        }, 
+        {
+            "text": "SSH -&gt; git pull", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477609951.000008"
+        }, 
+        {
+            "text": "ah so is it going through CI? or are you doing an SSH -&gt; git pull -&gt; restart?", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477609935.000007"
+        }, 
+        {
+            "text": "there is a DB and redis backend", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477609917.000006"
+        }, 
+        {
+            "text": "no", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477609903.000005"
+        }, 
+        {
+            "text": "is it a static site?", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477609884.000004"
+        }, 
+        {
+            "text": "just using git", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477609877.000003"
+        }, 
+        {
+            "text": "hey how are you deploying right now?", 
+            "type": "message", 
+            "user": "U2Q13PT1T", 
+            "ts": "1477609856.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U2Q13PT1T", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -3,7 +3,7 @@ from flask import Flask
 from flask_cors import CORS
 from shared import exceptions
 from shared.database import db
-from shared.marshmallow import ma
+from shared.marshmallow import ma, Session
 
 # Import routes.
 from admin.routes import routes as mudge_admin_routes
@@ -13,6 +13,7 @@ from api.main import main_bp
 from api.routes import routes as api_routes
 from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
+from project_manager.routes import routes as project_routes
 from rock1500.routes import routes as rock_routes
 from tournament_app.routes import routes as tournament_routes
 from trail.routes import routes as trail_routes
@@ -43,6 +44,7 @@ def create_app(config=None):
     api_routes(app)
     admin_routes(app)
     auth_routes(app)
+    project_routes(app)
     rock_routes(app)
     trail_routes(app)
     tournament_routes(app)
@@ -53,6 +55,9 @@ def create_app(config=None):
 
     exceptions.registerHandlers(app)
 
+    # This should be updating the session objects.
+    # But it doesn't seem too?
+    Session.configure(binds=db.get_binds(app))
     ma.init_app(app)
 
     oauth.init_app(app)

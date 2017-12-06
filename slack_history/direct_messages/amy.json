@@ -1,0 +1,599 @@
+{
+    "messages": [
+        {
+            "text": "Hmm, odd. I\u2019ll try removing and adding you again.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500072420.716360"
+        }, 
+        {
+            "text": "Hi Mudge, I'm still not able to access our mixpanel project.  I've been going to Alenni for data, but it would be good to have access and learn to navigate it myself", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1500051451.532095"
+        }, 
+        {
+            "text": "Odd, try clicking the link from the email again. That should link you to our project. Let me know if you need some help tomorrow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498724763.262255"
+        }, 
+        {
+            "text": "thanks Mudge, got it. I don't see any holo data. It just prompts me to create a project. I can try to investigate tomorrow.", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1498724065.090134"
+        }, 
+        {
+            "text": "You should have an invite in your emails now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498723227.885264"
+        }, 
+        {
+            "text": "hi Mudge, can you share the mixpanel login with me when you get a chance?", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1498718675.967026"
+        }, 
+        {
+            "text": "Hey Amy, we don\u2019t currently have that in a CMS, but I can change it as needed for now. \nI\u2019m not sure where the latest messaging is though, would you be able to point me to it?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494885265.516582"
+        }, 
+        {
+            "username": "amy", 
+            "ts": "1494885003.449986", 
+            "display_as_bot": false, 
+            "text": "<@U0B6UQPN0> uploaded a file: <https://hvr.slack.com/files/U0B6UQPN0/F5D9B9873/image_uploaded_from_ios.jpg|Image uploaded from iOS>", 
+            "upload": true, 
+            "upload_reply_to": "70F2B9BE-B9E7-409B-A3E0-E0888C06D2D9", 
+            "subtype": "file_share", 
+            "user": "U0B6UQPN0", 
+            "file": {
+                "thumb_480_w": 270, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5D9B9873-7e7942ca95/image_uploaded_from_ios_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5D9B9873-7e7942ca95/image_uploaded_from_ios_64.jpg", 
+                "size": 107038, 
+                "original_h": 667, 
+                "thumb_360_w": 202, 
+                "title": "Image uploaded from iOS", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5D9B9873/image_uploaded_from_ios.jpg", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5D9B9873-7e7942ca95/image_uploaded_from_ios_360.jpg", 
+                "id": "F5D9B9873", 
+                "ims": [
+                    "D0PKGJ6CS"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5D9B9873-7e7942ca95/image_uploaded_from_ios_80.jpg", 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1494884996, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5D9B9873-7e7942ca95/image_uploaded_from_ios_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5D9B9873/download/image_uploaded_from_ios.jpg", 
+                "user": "U0B6UQPN0", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "Image uploaded from iOS.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5D9B9873-fac271ada9", 
+                "permalink": "https://hvr.slack.com/files/U0B6UQPN0/F5D9B9873/image_uploaded_from_ios.jpg", 
+                "is_external": false, 
+                "created": 1494884996, 
+                "original_w": 375, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hi Mudge, do we have a CMS where we can change the messaging posted when <http://8i.com|8i.com> links are shared? See attached screenshot. The messaging is outdated", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1494884987.445666"
+        }, 
+        {
+            "text": "I don\u2019t know that sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492473466.022709"
+        }, 
+        {
+            "text": "Hey Mudge, do you know if we have the <http://holoapp.com|holoapp.com> domain", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1492473436.016276"
+        }, 
+        {
+            "text": "And the \"Our offices\u201d section might need some new wording", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592868.000007"
+        }, 
+        {
+            "text": "We will need to get profile photos for them first", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592765.000006"
+        }, 
+        {
+            "text": "Also Erica pointed out that we don\u2019t have the full Seattle office, should that become a separate section?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592748.000005"
+        }, 
+        {
+            "text": "Alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592715.000004"
+        }, 
+        {
+            "text": "Yes CEO is great. Steve should be in first position. Please put Pan in the alpha order with the rest of the team.", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1486592698.000003"
+        }, 
+        {
+            "text": "Hey, amy. I think I missed the second part of your last message. \nI haven\u2019t yet moved Steve up to the top line of our about page.\nWith regards to that, should he be in the first spot, and Yu Pan bumped down to the second row?\nAlso should I update his title to CEO or is there another title you would like to see?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486592271.000002"
+        }, 
+        {
+            "text": "Oh sorry, I didn\u2019t hear back from Asher. Will chase him up.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484692689.000003"
+        }, 
+        {
+            "text": "hi Mudge, just wanted to check in on this. Also forgot to ask you to please bump Steve up to the top line.", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1484691624.000002"
+        }, 
+        {
+            "text": "Thanks Mudge :)", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1484195915.000009"
+        }, 
+        {
+            "text": "Cool, I will update that when I can.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484194790.000008"
+        }, 
+        {
+            "text": "Hi Mudge, Sorry for the lag. I think the headline should do the trick here \"8i Appoints New CEO, hints at Holographic Telepresence Research in Seattle\" ", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1484194758.000007"
+        }, 
+        {
+            "text": "I'll have a look. Also please update titles on website for Linc and Steve. Linc is founder ", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1484184835.000006"
+        }, 
+        {
+            "text": "I\u2019ll get Asher to pick a logo to use, but do you want to pick the reduced quote to use in the press section. \nSomething like \"..you're going to be able to go from a two-dimensional screen and actually walk into a website. It's going to change everything.\u201d (For CNN)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484183035.000005"
+        }, 
+        {
+            "text": "Yea cool, will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484182706.000004"
+        }, 
+        {
+            "text": "hi mudge, can you please add this to our site under press: <http://uploadvr.com/8i-new-ceo-hologram-research-seattle/>", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1484182113.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 563, 
+                    "service_icon": "http://cdn.uploadvr.com/wp-content/uploads/2015/10/fav1.png", 
+                    "thumb_width": 1000, 
+                    "title": "8i Appoints New CEO, hints at Holographic Telepresence Research", 
+                    "service_name": "UploadVR", 
+                    "ts": 1484172160, 
+                    "title_link": "http://uploadvr.com/8i-new-ceo-hologram-research-seattle/", 
+                    "text": "In a series of blog posts published today, 8i stormed the Internet with several corporate updates. The first is the appointment of a new CEO.", 
+                    "id": 1, 
+                    "fallback": "UploadVR: 8i Appoints New CEO, hints at Holographic Telepresence Research", 
+                    "thumb_url": "http://uploadvr.com/wp-content/uploads/2017/01/shareImage.jpg", 
+                    "from_url": "http://uploadvr.com/8i-new-ceo-hologram-research-seattle/"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey Amy, I\u2019m at a bit of a loss as to why Pray Tell Strategy can\u2019t access the private content. I have added my email address to the same list which theirs are on and I\u2019m able to access the content.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480967268.000002"
+        }, 
+        {
+            "text": "It\u2019s slacks way of preventing spam :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478122232.000010"
+        }, 
+        {
+            "text": "got it makes sense", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1478122228.000009"
+        }, 
+        {
+            "text": "Its better to make sure they want to join first, as declined/ignored invites reduce the number of members you can have in your community", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478122214.000008"
+        }, 
+        {
+            "text": "right, or if we get people's email when they sign in to the app, can use their email address to invite them to the feedback community?", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1478122167.000007"
+        }, 
+        {
+            "text": "We basically ask users to express interest in receiving an invite, then we will need to manually add their emails", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478122120.000006"
+        }, 
+        {
+            "text": "We were going to add a section to the Feedback part of Holo, but its not hooked up yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478122076.000005"
+        }, 
+        {
+            "text": "I did look, but it seemed like manually inviting people was the only way to add users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478122048.000004"
+        }, 
+        {
+            "text": "I feel like we should populate it with some general/safe feedback from the team so that no beta user feels like they're the first to post", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1478121889.000003"
+        }, 
+        {
+            "text": "hey <@U0C90MHEH> did we ever figure out a way to get people to know about and join the Holo beta slack channel?", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1478121868.000002"
+        }, 
+        {
+            "text": "perfect :+1:", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1471993444.000007"
+        }, 
+        {
+            "text": "Like here? <https://www.google.co.nz/maps/place/34%C2%B001'25.9%22N+118%C2%B023'30.6%22W/@34.0238721,-118.3923702,253m/data=!3m2!1e3!4b1!4m5!3m4!1s0x0:0x0!8m2!3d34.023871!4d-118.391823>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471993388.000006"
+        }, 
+        {
+            "text": "looks great. The entrance we guide people to is the gate off Ince Blvd. -- its the one that looks like a dead end road to the right of the marker", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1471993119.000005"
+        }, 
+        {
+            "text": "I\u2019ve updated it, although I\u2019m not entirely sure on the location on Google Maps. Would you like to have a look and just let me know if I should put the marker in a better spot. <http://8i.com/about>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471987141.000003", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 1920, 
+                    "title": "8i | About", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/about", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | About", 
+                    "thumb_url": "http://8i.com/static/images/shareImage.jpg", 
+                    "from_url": "http://8i.com/about"
+                }
+            ]
+        }, 
+        {
+            "text": "Yea, good idea. Thanks for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471985982.000002"
+        }, 
+        {
+            "text": "Hi Mudge. When you have a moment, please update the LA address on the website as we have moved to:\nThe Culver Studios\n9336 West Washington Boulevard, Building O \u00b7 Culver City, CA 90232", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1471931462.000002"
+        }, 
+        {
+            "text": "Litt ", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1461815751.000004"
+        }, 
+        {
+            "text": "You can also remove Jon Littl", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1461815747.000003"
+        }, 
+        {
+            "text": "Hey Mudge, Guil is going to send you a headshot and title. It would be great if you can upload it today. I didn't realize he wasn't up there already ", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1461815727.000002"
+        }, 
+        {
+            "text": "and Olga in long dress, victoria in red bikini and mom &amp; baby should also have [VR] icon (linked to portal page)", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457332495.000038"
+        }, 
+        {
+            "text": "sounds good. Also, none of the tiles are clickable.  the little screen icon is highlighted when you scroll over it but isn't hyperlinked", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457332433.000037"
+        }, 
+        {
+            "text": "I didn\u2019t get around to ordering the experiences in they way Asher had in his designs but I can fix that tomorrow. The current order (most recent first) doesn\u2019t seem too bad just for a little bit.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457331762.000035"
+        }, 
+        {
+            "text": "Yea, it does feel like a much more cutting edge web experience browsing it now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457331408.000034"
+        }, 
+        {
+            "text": "thank you. Huge congrats on the launch.  So awesome to finally have an awesome website :simple_smile:", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331355.000033"
+        }, 
+        {
+            "text": "yup :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457331289.000032"
+        }, 
+        {
+            "text": "and last little nit (I promise) but can we make \"offices\" lowercase in \"Our Offices\" just to make it consistent with rest of the headings on the page?", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331261.000031"
+        }, 
+        {
+            "text": "Sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457331179.000030"
+        }, 
+        {
+            "text": "Also, not sure if this is a request for you or Asher (just asked him as well) but under advisors only Josh Feast has a title, could we add for Kevin and Ted too?   Kevin Wall - Founder and CEO of Control Room\nTed Schilowitz - Futurist at 20th Century Fox", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331165.000029"
+        }, 
+        {
+            "text": "8i is good", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331101.000028"
+        }, 
+        {
+            "text": "currently just 8i, should I make that 8i Limited or something?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457331080.000027"
+        }, 
+        {
+            "text": "ok, perfect", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331069.000026"
+        }, 
+        {
+            "text": "The company name is public, but not the person\u2019s name", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457331061.000025"
+        }, 
+        {
+            "text": "or 8i updates", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331057.000024"
+        }, 
+        {
+            "text": "ok, if its public. was thinking maybe we make a name up like: Web Support", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457331022.000023"
+        }, 
+        {
+            "text": "you can put me", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330967.000022"
+        }, 
+        {
+            "text": "I don\u2019t think its showing up on the signed up form", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330966.000021"
+        }, 
+        {
+            "text": "can just leave it as me for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330953.000020"
+        }, 
+        {
+            "text": "I\u2019ve got that in the email field but it requires a name as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330941.000019"
+        }, 
+        {
+            "text": "do we have to put a real person? Can it just be <mailto:hi@8i.com|hi@8i.com>", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330920.000018"
+        }, 
+        {
+            "text": "\"Enter the contact information and physical mailing address for the owner of this list.\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330892.000017"
+        }, 
+        {
+            "text": "currently its mine, but I\u2019m probably not best :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330877.000016"
+        }, 
+        {
+            "text": "what contact name should we use?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330867.000015"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330848.000014"
+        }, 
+        {
+            "text": "yea that sounds ok to me.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330791.000013"
+        }, 
+        {
+            "text": "then I think we should put LA for now. I think most inquiries will likely be BD, and very good chance they'll be in US", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330754.000012"
+        }, 
+        {
+            "text": "crud ok, thanks for trying", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330737.000011"
+        }, 
+        {
+            "text": "It makes you enter the address 1 field at a time, eg zip/state etc so I don\u2019t think there is anyway to get away with anything tricky :disappointed:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330559.000010"
+        }, 
+        {
+            "text": "So I got to that by Lists &gt; interested in \u2026 8i &gt; Settings &gt; Required email footer content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330468.000009"
+        }, 
+        {
+            "text": "Mainly I was hoping to see if we can play around with address fields, to either include both or a link to 'contact us' page", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330415.000008"
+        }, 
+        {
+            "text": "It doesn't show me a form/template I can edit", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330310.000007"
+        }, 
+        {
+            "text": "The mail chimp structure is a bit hard to follow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330280.000006"
+        }, 
+        {
+            "text": "for the address settings right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330253.000005"
+        }, 
+        {
+            "text": "I think thats where you mean?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330247.000004"
+        }, 
+        {
+            "text": "<https://us12.admin.mailchimp.com/lists/settings/contact-post>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457330238.000003"
+        }, 
+        {
+            "text": "Hey can you send me a link to the template? I can't find it on mailchimp", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1457330201.000002"
+        }, 
+        {
+            "text": "Yea, cool.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456804073.000005"
+        }, 
+        {
+            "text": "I put it in as a placeholder to discuss with him, but we couldn't think of something better so we're going with official title for now and we can always change it", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1456804050.000004"
+        }, 
+        {
+            "text": "Oh, I thought he must of came up with it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456803889.000003"
+        }, 
+        {
+            "text": "Hey, saw your comment on Fryd. He wasn't a fan of the cute acronym", 
+            "type": "message", 
+            "user": "U0B6UQPN0", 
+            "ts": "1456803516.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0B6UQPN0", 
+            "U0C90MHEH"
+        ]
+    }
+}

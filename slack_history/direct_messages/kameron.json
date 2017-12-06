@@ -1,0 +1,16 @@
+{
+    "messages": [
+        {
+            "text": "Hi", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498213073.110328"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3LPGD3B2", 
+            "U0C90MHEH"
+        ]
+    }
+}

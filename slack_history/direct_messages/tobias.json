@@ -1,0 +1,40 @@
+{
+    "messages": [
+        {
+            "text": ":+1: ", 
+            "type": "message", 
+            "user": "U4U1LTMBR", 
+            "ts": "1502143907.173779"
+        }, 
+        {
+            "text": "I guess I can count that as the start of my win streak :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502143881.164926"
+        }, 
+        {
+            "text": "oh man, thats a shame.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502143866.159769"
+        }, 
+        {
+            "text": "I'm OOO this week - so you win...", 
+            "type": "message", 
+            "user": "U4U1LTMBR", 
+            "ts": "1502143715.107734"
+        }, 
+        {
+            "text": "Yo, we have a game of tabletennis to play. What time suits you?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502142583.674998"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U4U1LTMBR", 
+            "U0C90MHEH"
+        ]
+    }
+}

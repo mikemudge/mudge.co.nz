@@ -1,0 +1,28 @@
+{
+    "messages": [
+        {
+            "text": "<https://github.com/8i/8i-com/blob/master/Dockerfile>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511985952.000056"
+        }, 
+        {
+            "text": "<https://github.com/8i/8i-com/blob/master/.buildkite/build.sh>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511985933.000677"
+        }, 
+        {
+            "text": "<https://github.com/8i/argo-android>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511985856.000036"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U75AGDU1L", 
+            "U0C90MHEH"
+        ]
+    }
+}

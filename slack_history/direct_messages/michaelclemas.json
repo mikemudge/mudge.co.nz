@@ -1,0 +1,85 @@
+{
+    "messages": [
+        {
+            "text": "great gear indicator", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1507858070.000049"
+        }, 
+        {
+            "text": "<https://gfycat.com/meanearlyanura>", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1507858061.000203", 
+            "attachments": [
+                {
+                    "thumb_height": 444, 
+                    "service_icon": "https://assets.gfycat.com/static/apple-touch-icon/apple-touch-icon.png", 
+                    "thumb_width": 250, 
+                    "title": "VID_20171012_140917 - Create, Discover and Share GIFs on Gfycat", 
+                    "service_name": "Gfycat", 
+                    "title_link": "https://gfycat.com/meanearlyanura", 
+                    "text": "Watch VID_20171012_140917 GIF on Gfycat. Discover more GIFS online at Gfycat.", 
+                    "id": 1, 
+                    "fallback": "Gfycat: VID_20171012_140917 - Create, Discover and Share GIFs on Gfycat", 
+                    "thumb_url": "https://thumbs.gfycat.com/MeanEarlyAnura-size_restricted.gif", 
+                    "from_url": "https://gfycat.com/meanearlyanura"
+                }
+            ]
+        }, 
+        {
+            "text": "that's a weird ID", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1502079363.679497"
+        }, 
+        {
+            "text": "`0:1502079334618103%8898cb5f8898cb5f`", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1502079358.678832"
+        }, 
+        {
+            "text": "`message_id(_nmid)=4496634189553983980`", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1502077622.431362"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1501795528.054056"
+        }, 
+        {
+            "text": "There is a task for notification analytics, <https://eighteye.atlassian.net/browse/HOLOALL-838>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501795520.050252"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1501647309.979244"
+        }, 
+        {
+            "text": "Can you view <https://buildkite.com/8i/holo-dot-8i-dot-com/builds/2487>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501647264.971661"
+        }, 
+        {
+            "text": "fn3kupoBJ5E:APA91bG8FLU5QpjKpA7u_e0LILhlV_AlQ5vM9J4ElxbX1yB9KBbJrotoMu4y4jVm1fMYYN6BWok6uH3iOv7UmdMYiz-mRRLne0FXwEGN8YJgSzwIuBRxRnOnuZCvxHkDzY7fvd1ykz9a", 
+            "type": "message", 
+            "user": "U3Z4JATR6", 
+            "ts": "1501646185.788968"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3Z4JATR6", 
+            "U0C90MHEH"
+        ]
+    }
+}

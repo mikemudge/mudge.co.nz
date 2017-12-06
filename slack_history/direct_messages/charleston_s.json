@@ -1,0 +1,501 @@
+{
+    "messages": [
+        {
+            "text": "Awesome thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485992726.000004"
+        }, 
+        {
+            "text": "Yes!  I always delete those but i forgot this time, thanks! ", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1485992688.000003"
+        }, 
+        {
+            "text": "Hey, I noticed there is a few scenes you have created which seem empty, and have no thumbnail. Is it okay to delete those scenes?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485992602.000002"
+        }, 
+        {
+            "text": "Ok, thanks!", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1476215387.000009"
+        }, 
+        {
+            "text": "You could check with isaac.udy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476215350.000008"
+        }, 
+        {
+            "text": "I\u2019m not really sure how the app code works with regards to checking for new content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476215330.000007"
+        }, 
+        {
+            "text": "I'm noticing that the propagation time for assets i upload seems kind of random and i usually have to restart the Tango most of the time to get them to show up.  What should the normal propagation time be for assets uploaded via the web player?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1476215287.000006"
+        }, 
+        {
+            "text": "Ok, thought so, thanks!", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1476215217.000005"
+        }, 
+        {
+            "text": "Any account with an <http://8i.com|8i.com> email has access to private packs.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476214316.000004"
+        }, 
+        {
+            "text": "Hey <@U0C90MHEH> - Which 8i account has access to the non-published packs?  We only have one Tango here right now and it's not logged into the right account.", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1476209150.000002"
+        }, 
+        {
+            "text": "Hmm, ok, thanks!", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475624865.000054"
+        }, 
+        {
+            "text": "I\u2019m not sure why it would only render for only the first and last frames, once you save the scene it should give you an updated link which you can send to me and I\u2019ll have a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475624549.000053"
+        }, 
+        {
+            "text": "There isn\u2019t a great way to make the keyFrame timeline longer yet. You can add an hvrs which will change the timeline length, but that is the only way right now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475624479.000052"
+        }, 
+        {
+            "text": "First off, the animations aren\u2019t supported by the Holo app yet so if thats your target then its not going to work anyway.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475624355.000051"
+        }, 
+        {
+            "text": "Hye <@U0C90MHEH> i lied :slightly_smiling_face:  I have two more questions for you - I am animating in the scene creator (<http://8i.com/d/>) and when i try to animate the XWing i uploaded it only renders in the first frame and last frame and disappears for all frames in between.\n\nAlso - Is there any way to make the keyframe timeline longer?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475624233.000049", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok, thanks!", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475615224.000048"
+        }, 
+        {
+            "text": "Yea, thats cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475615136.000047"
+        }, 
+        {
+            "text": "Just trying not to over clutter things when i am running tests :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475615095.000046"
+        }, 
+        {
+            "text": "Ahhhh, ok, perfect", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475615083.000045"
+        }, 
+        {
+            "text": "Then you can Delete any of the scenes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475615041.000044"
+        }, 
+        {
+            "text": "Yea, you can do that, but not from that page currently. You need to mouse over \u201cWeb Director\u201d in the top right and then click \"Show All\u201d to show all the scenes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475615005.000043"
+        }, 
+        {
+            "text": "And also remove it from the list of *Create a Character* selections", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614934.000042"
+        }, 
+        {
+            "text": "Ah yup, there should be a list of Characters at the top of the page, under \"Private Characters\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614926.000041"
+        }, 
+        {
+            "text": "So i upload a logo for example, create a character from that file, can i delete that *Character*?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614894.000040"
+        }, 
+        {
+            "text": "It's the *Character*", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614873.000039"
+        }, 
+        {
+            "text": "some of the terms we have get reused too much :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614806.000038"
+        }, 
+        {
+            "text": "Sorry, can you clarify what you mean by asset?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614788.000037"
+        }, 
+        {
+            "text": "I know i can delete a pack but individual assets i don't see a delete button for.", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614756.000036"
+        }, 
+        {
+            "text": "One more thing i think i may have asked you already - Is there a way to delete an asset i have created a scene for here? - <http://8i.com/admin/sceneActions>", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614737.000035"
+        }, 
+        {
+            "text": "Sounds good!", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614706.000034"
+        }, 
+        {
+            "text": "and I\u2019m working on the tools to make it easier for you guys to upload the resulting web hvrs file as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614698.000033"
+        }, 
+        {
+            "text": "Ok, cool", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614697.000032"
+        }, 
+        {
+            "text": "I believe there is a plan to move the compression stage to LA", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614671.000031"
+        }, 
+        {
+            "text": "ok, thanks", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614644.000030"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614642.000029"
+        }, 
+        {
+            "text": "or Iaasic?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614642.000028"
+        }, 
+        {
+            "text": "Ok, so i could ask Taos and she should know about the web solving then?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614636.000027"
+        }, 
+        {
+            "text": "but probably a good question", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614614.000026"
+        }, 
+        {
+            "text": "I\u2019m not sure of that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614608.000025"
+        }, 
+        {
+            "text": "Does our solving team here in LA know how to do the web compression for Holo?  I now they do like 3-4 different resolutions when they solve usually - Does the web version just have a lower trim count or is it a different filetype?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614593.000024"
+        }, 
+        {
+            "text": "<@U15894NCC> usually does the compressing, and she has access to the server", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614569.000023"
+        }, 
+        {
+            "text": "So would i just let you know the name of the HVR we want and you can pull it from the server in the correct format or do we need to send you the web compressed HVR", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614530.000022"
+        }, 
+        {
+            "text": "which if it isn\u2019t, we will need to compress from the bcf files again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614515.000021"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614502.000020"
+        }, 
+        {
+            "text": "We also need the hvr in the correct encoding for web", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614495.000019"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614474.000018"
+        }, 
+        {
+            "text": "for now yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614471.000017"
+        }, 
+        {
+            "text": "So if we wanted to add n HVR to the selection we need to send it to you?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614461.000016"
+        }, 
+        {
+            "text": "and we support uploading OBJ\u2019s but not hvrs yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614441.000015"
+        }, 
+        {
+            "text": "but scenes can contain OBJ\u2019s or hvrs's", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614427.000014"
+        }, 
+        {
+            "text": "Ok, she just explained it to me a bit", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614423.000013"
+        }, 
+        {
+            "text": "I\u2019m not sure what Esta was doing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614413.000012"
+        }, 
+        {
+            "text": "So the Tango app that Esta was uploading scenes to is different from the Holo app correct?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614384.000011"
+        }, 
+        {
+            "text": "Yup, you got it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614363.000010"
+        }, 
+        {
+            "text": "The process for adding hvrs is a bit tricky at the moment", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614359.000009"
+        }, 
+        {
+            "text": "Oh, ok so that just lets you add HVRs into the scene from what's already there?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614353.000008"
+        }, 
+        {
+            "text": "Ah, there isn\u2019t a way to upload hvrs using that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614329.000007"
+        }, 
+        {
+            "username": "charleston_s", 
+            "display_as_bot": false, 
+            "text": "<@U1PQUTATF> uploaded a file: <https://hvr.slack.com/files/U1PQUTATF/F2KAYJA87/capture.jpg|Capture.JPG>", 
+            "upload": true, 
+            "ts": "1475614325.000006", 
+            "subtype": "file_share", 
+            "user": "U1PQUTATF", 
+            "file": {
+                "groups": [], 
+                "filetype": "jpg", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F2KAYJA87-700c47f612/capture_64.jpg", 
+                "size": 16475, 
+                "original_h": 276, 
+                "thumb_360_w": 237, 
+                "title": "Capture.JPG", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F2KAYJA87/capture.jpg", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F2KAYJA87-700c47f612/capture_360.jpg", 
+                "id": "F2KAYJA87", 
+                "ims": [
+                    "D2DV5QG3T"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F2KAYJA87-700c47f612/capture_80.jpg", 
+                "thumb_360_h": 276, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1475614324, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F2KAYJA87-700c47f612/capture_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F2KAYJA87/download/capture.jpg", 
+                "user": "U1PQUTATF", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "Capture.JPG", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F2KAYJA87-99f4535860", 
+                "permalink": "https://hvr.slack.com/files/U1PQUTATF/F2KAYJA87/capture.jpg", 
+                "is_external": false, 
+                "created": 1475614324, 
+                "original_w": 237, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "<http://8i.com/d/>", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614305.000004", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Sorry, what do you mean by web uploader? Can you send me the link of the page you are looking at?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475614207.000003"
+        }, 
+        {
+            "text": "Hey Mudge - Quick question.  I see in the web uploader that there is a selection to upload HVR assets but i don't see an actual upload button under there, how can i added HVR assets?\n\nThanks in advance!", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1475614163.000002"
+        }, 
+        {
+            "text": "<http://8i.com/d>\n<http://8i.com/admin/tango>\n<http://8i.com/admin/sceneActions>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474414302.000007", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/d", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/d"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok, let me reconnect again then", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1474413027.000006"
+        }, 
+        {
+            "text": "I can hear you now can yu hear me?", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1474412996.000005"
+        }, 
+        {
+            "text": "Joining now", 
+            "type": "message", 
+            "user": "U1PQUTATF", 
+            "ts": "1474412636.000004"
+        }, 
+        {
+            "text": "Hey, when you are ready <https://hangouts.google.com/hangouts/_/8i.com/charleston-mich?authuser=0>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474412552.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 1024, 
+                    "service_icon": "http://ssl.gstatic.com/chat/hangouts/favicon_17ac8bc99691bdbae5ca5e61fba644f8.ico", 
+                    "thumb_width": 1024, 
+                    "title": "Join this live Google Hangouts video call", 
+                    "service_name": "GOOGLE HANGOUTS", 
+                    "title_link": "https://hangouts.google.com/hangouts/_/8i.com/charleston-mich?authuser=0", 
+                    "text": "Click to join now. If the call is over, invite your friends to a new one or start a chat with text, photos and emoji.", 
+                    "id": 1, 
+                    "fallback": "GOOGLE HANGOUTS: Join this live Google Hangouts video call", 
+                    "thumb_url": "https://www.gstatic.com/images/icons/material/product/2x/hangouts_512dp.png", 
+                    "from_url": "https://hangouts.google.com/hangouts/_/8i.com/charleston-mich?authuser=0"
+                }
+            ]
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U1PQUTATF", 
+            "U0C90MHEH"
+        ]
+    }
+}

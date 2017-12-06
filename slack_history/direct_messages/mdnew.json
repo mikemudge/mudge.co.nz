@@ -1,0 +1,401 @@
+{
+    "messages": [
+        {
+            "text": "awesome. she will be very happy.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506389381.000128"
+        }, 
+        {
+            "text": "Yes, she should have access", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506389367.000232"
+        }, 
+        {
+            "text": "Hey Mudge - just wondering if you had a chance to add Nicole to Firebase.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506389275.000138"
+        }, 
+        {
+            "text": "another thing I'm trying to figure out is an easy way to get app installs out of the App Store and Play Store and also dump that into a BigQuery", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190992.000005"
+        }, 
+        {
+            "text": "so maybe there's a way to dump what we are getting from Firebase into BigQuery and then write reports on top of that", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190733.000010"
+        }, 
+        {
+            "text": "I'm just trying to help with Eugene's concern that we are getting a lot of data from Holo but we're not able to analyze it properly", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190673.000055"
+        }, 
+        {
+            "text": "<https://datastudio.google.com/u/1/>", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190644.000050"
+        }, 
+        {
+            "text": "I think you can add Big Query as a Data Source into Data Studio and start to be able to aggregate the data.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190593.000131"
+        }, 
+        {
+            "text": "So Data Studio is Google's other analytics interface - it's where Tokes is making his dashboards", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190575.000093"
+        }, 
+        {
+            "text": "YES! That!", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506190556.000008"
+        }, 
+        {
+            "text": "I don't know what data studio is, but firebase does have an integration with big query which looks pretty powerful.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506190018.000062"
+        }, 
+        {
+            "text": "a lot of the questions that Nicole has are around how users change over time\u2026 what content do users look at across multiple sessions and time.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506180624.000123"
+        }, 
+        {
+            "text": "at some point, would be curious to know if we can pump the Firebase data into Data Studio so we can do some more detailed analysis on it", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506180570.000047"
+        }, 
+        {
+            "text": "Awesome. I\u2019m in. This is great. Can you add Nicole, too?", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506180230.000043"
+        }, 
+        {
+            "text": "Cool, just added you. Permissions are a little confusing, but added you as a Viewer, so hopefully that lets you do everything you need to. LMK if anything doesn\u2019t work for you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506141936.000029"
+        }, 
+        {
+            "text": "Wanted to show Nicole the demo info", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506141643.000046"
+        }, 
+        {
+            "text": "Thanks Mudge!", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506141629.000063"
+        }, 
+        {
+            "text": "Sure can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506141560.000045"
+        }, 
+        {
+            "text": "hey Mudge - when you have a second, can you invite me into Firebase?", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1506137299.000065"
+        }, 
+        {
+            "text": "right", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1499381707.492291"
+        }, 
+        {
+            "text": "And those don\u2019t get shared when you send a link so her link was only half of the view", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499381700.490305"
+        }, 
+        {
+            "text": "she's being clever!", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1499381698.489777"
+        }, 
+        {
+            "text": "yea I think she was using segments to do it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499381670.481777"
+        }, 
+        {
+            "text": "All good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499381662.479322"
+        }, 
+        {
+            "text": "Sorry - I thought you didn't see cities for the link that Nicole sent out", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1499381631.470218"
+        }, 
+        {
+            "text": "Yea, will think about what we can do down the line.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498861078.917584"
+        }, 
+        {
+            "text": "OK, don't worry too much on it. Just something to be mindful of - we should know if sending push notes annoys our users.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498861055.913984"
+        }, 
+        {
+            "text": "I think we can, I just haven\u2019t actually tried anything like that yet, so not sure how accurate it would be", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498859522.642223"
+        }, 
+        {
+            "text": "that's a good point, we just need to keep track of that", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498859440.626230"
+        }, 
+        {
+            "text": "so we should be able to look at who we can still send notifications too who created their profile before any notification was sent to them.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498858843.497739"
+        }, 
+        {
+            "text": "We can also filter users by the day which they created their profile", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498858791.486897"
+        }, 
+        {
+            "text": "yea thats very true", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498858764.481590"
+        }, 
+        {
+            "text": "The problem is how does that number relate to the over all number of users we have... b/c if we keep growing but people opt out, that number could stay the same...", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498858742.477413"
+        }, 
+        {
+            "text": "Yea it usually says how many users it will send to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498858669.463404"
+        }, 
+        {
+            "text": "I wonder if Mixpanel will tell us the total addressable audience each time", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498858478.424755"
+        }, 
+        {
+            "text": "I did ask the clients to update the profile notifications field with the current state when we do know it though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498858203.365940"
+        }, 
+        {
+            "text": "Yea, fair enough. I'm not sure how accurate our track is on that, and not sure if the operating system even let's us know if the user disables notifications", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498858126.349325"
+        }, 
+        {
+            "text": "Just wanted to be aware of how many people unsub from notifications if we annoy them", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498857923.305767"
+        }, 
+        {
+            "text": "Yeah, I was looking at the reporting in Mixpanel", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498857906.302042"
+        }, 
+        {
+            "text": "I believe we track when a user disables notifications if we get the chance to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498857838.287523", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1498857850.000000"
+            }
+        }, 
+        {
+            "text": "Yea those events must of been mixed up, bit that sounds right. As for notification tracking that was all handled in mix panel profile's", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498857787.276614"
+        }, 
+        {
+            "text": "but I think it's:\nPreview\tSave Video\nPreview\tSave Photo", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498846484.008606"
+        }, 
+        {
+            "text": "in the spreadsheet, I see:\nSave Preview\tVideo\nSave Preview\tPhoto", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498846438.993167"
+        }, 
+        {
+            "text": "also, trying to track the number of events where someone saves a Preview.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498846419.986689"
+        }, 
+        {
+            "text": "and then compare that to how many people opt-ed out after the message, so we can get a good baseline of our unsub rate.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498844578.348095"
+        }, 
+        {
+            "text": "Hey Mudge - wondering if we were able to log how many people had opted in for Push Notes before we sent the message", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498844558.341488"
+        }, 
+        {
+            "text": "Yea, that would be it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498785805.245677"
+        }, 
+        {
+            "text": "Promotion &gt; BannerClick  ?", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498784522.080628"
+        }, 
+        {
+            "text": "where do we track promotion banner clicks? what event is that?", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498784496.077068"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R62P24BQE", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U5W5KSW4V", 
+                    "U0C90MHEH"
+                ], 
+                "date_end": "1498779942", 
+                "date_start": "1498778503", 
+                "created_by": "U5W5KSW4V", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D61MJR0AE"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R62P24BQE", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R62P24BQE|call>.", 
+            "ts": "1498778503.195821", 
+            "subtype": "sh_room_created", 
+            "user": "U5W5KSW4V", 
+            "type": "message", 
+            "channel": "D61MJR0AE"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498778467.189472"
+        }, 
+        {
+            "text": "yeah, we can start there and set up more time if we need it", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498778453.186990"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498778441.184963"
+        }, 
+        {
+            "text": "yea 30 minutes should be enough right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498778439.184744"
+        }, 
+        {
+            "text": "Hey Mudge, you have some time now to talk? Sorry, the afternoon got away from me a bit.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498778421.181348"
+        }, 
+        {
+            "text": "Will do", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498766496.961949"
+        }, 
+        {
+            "text": "Yea sounds good, throw something in my calendar", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498765796.713327"
+        }, 
+        {
+            "text": "You want to try and grab some time to talk about it later today?", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498765580.638650"
+        }, 
+        {
+            "text": "Hey Matt. Yea, I've been doing my best to get the analytics everyone wants. I'd love to hear your thoughts about it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498765516.616046"
+        }, 
+        {
+            "text": "Hey Mudge! My name is Matt New and I'm helping out Tokes on the product side. It seems like you are heading up a lot of the analytics thought. Wanted to reach out to you and give you some thoughts I have.", 
+            "type": "message", 
+            "user": "U5W5KSW4V", 
+            "ts": "1498755055.700045"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U5W5KSW4V", 
+            "U0C90MHEH"
+        ]
+    }
+}

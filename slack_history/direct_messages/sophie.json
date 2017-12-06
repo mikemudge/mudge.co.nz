@@ -1,0 +1,58 @@
+{
+    "messages": [
+        {
+            "text": "lets get it done now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1446673628.000006"
+        }, 
+        {
+            "text": "oh yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1446673618.000005"
+        }, 
+        {
+            "text": "I've cleared off a desk down my end for you :simple_smile: I can help you move down whenever suits you?", 
+            "type": "message", 
+            "user": "U03DRMTPY", 
+            "ts": "1446673597.000004"
+        }, 
+        {
+            "text": "Hi", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1446673580.000003"
+        }, 
+        {
+            "text": "Hey hey", 
+            "type": "message", 
+            "user": "U03DRMTPY", 
+            "ts": "1446673564.000002"
+        }, 
+        {
+            "text": "my phone number is 0273896828, that would be a more reliable way to get hold of me :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1446500109.000004"
+        }, 
+        {
+            "text": "I only use skype at work but its mudge8i", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1446500057.000003"
+        }, 
+        {
+            "text": "Hey hey - what is your Skype address? And do you mind if I add it to our contact list?", 
+            "type": "message", 
+            "user": "U03DRMTPY", 
+            "ts": "1446500013.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03DRMTPY", 
+            "U0C90MHEH"
+        ]
+    }
+}

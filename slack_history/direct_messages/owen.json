@@ -1,0 +1,214 @@
+{
+    "messages": [
+        {
+            "text": "All good, yea just wasn\u2019t sure on priority, but that works for me. Let me know if anything changes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503286531.000001"
+        }, 
+        {
+            "text": "sorry, didn\u2019t realise that had got to your plate", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1503286416.000089"
+        }, 
+        {
+            "text": "don\u2019t spend any cycles on it, I\u2019m not worried till they reply. they have video editing skills and I figured they could sync the audio themselves", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1503286396.000128"
+        }, 
+        {
+            "text": "oh! I didn\u2019t know anyone had got you audio!", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1503286365.000087"
+        }, 
+        {
+            "text": "Hey I have an NZ herald hvrs and audio, but they don\u2019t sync up right now and I don\u2019t think that is an easy thing for me to quickly fix.\nI just wanted to check if we have any rush for getting that working in holo?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503284951.000085"
+        }, 
+        {
+            "text": "All good, I'll check in with Dave once I'm back from lunch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495758225.216355"
+        }, 
+        {
+            "text": "otherwise I\u2019d say go for it", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495758186.209358"
+        }, 
+        {
+            "text": "sorry I don\u2019t have overview of the user setup across AWS at the moment so I\u2019m loath to go into AIM user accounts which is already sprawling.", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495758181.208399"
+        }, 
+        {
+            "text": "Oh yea, I haven't dealt with any of that yet, so he might be better to do that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495758169.206096"
+        }, 
+        {
+            "text": "I don\u2019t mind where they live though so I\u2019ll get you to coordinate with him", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495758147.201773"
+        }, 
+        {
+            "text": "I\u2019d like the zone records to be scripted if possible so maybe Dave can build it into the terraform scripts he has?", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495758053.184613"
+        }, 
+        {
+            "text": "Yup that works too, I already have go Daddy access, but I don't think I have access to the staging AWS yet.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495758009.176409"
+        }, 
+        {
+            "text": "or in the wild west account", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495757889.153935"
+        }, 
+        {
+            "text": "what I\u2019ll do is ask Erica to give you and Dave access to the GoDaddy account and then you can set up the host zones in Staging", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495757874.151111"
+        }, 
+        {
+            "text": "I think Dave might, but I don't currently. Would be good if I could get access and then I can transfer them.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495756932.967413"
+        }, 
+        {
+            "text": "hey, no I didn\u2019t I was going to transfer the domains into AWS, do you want to setup a record set in our AWS account (do you or dave c have access to the production account?) and I can point to the name servers it gives?", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1495756322.841123"
+        }, 
+        {
+            "text": "Hey, did you setup DNS rules for all the holo related domains on Godaddy?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495754979.557754"
+        }, 
+        {
+            "text": "so maybe later this week", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587697.000014"
+        }, 
+        {
+            "text": "but I think USA is on a long weekend right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587693.000013"
+        }, 
+        {
+            "text": "he would probably be a useful person to have a chat too at some point", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587678.000012"
+        }, 
+        {
+            "text": "no. :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467587659.000011"
+        }, 
+        {
+            "text": "Have you talked with Yu Pan, since you have been at 8i?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587650.000010"
+        }, 
+        {
+            "text": "and if <http://api.8i.com|api.8i.com> makes more sense for your usecase maybe we should migrate my stuff somewhere else", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587627.000009"
+        }, 
+        {
+            "text": "happy for cloud stuff to sit on a different domain", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467587626.000008"
+        }, 
+        {
+            "text": "no worries, just raising issues as I think of them :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467587617.000007"
+        }, 
+        {
+            "text": "I wasn\u2019t here when the setup of the domains and https etc happened, and I largely just went along with what was setup before I got here, so it is probably worth doing a bit of a think through about what it should look like going foward", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587598.000006"
+        }, 
+        {
+            "text": "ok thanks", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467587534.000005"
+        }, 
+        {
+            "text": "E.g <http://api.8i.com/api/experience/rwm>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587518.000004"
+        }, 
+        {
+            "text": "Its things like metadata for our experiences", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467587415.000003"
+        }, 
+        {
+            "text": "what\u2019s the API that <http://api.8i.com|api.8i.com> currently serves up?", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467587372.000002"
+        }, 
+        {
+            "text": "no problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467087070.000005"
+        }, 
+        {
+            "text": "awesome, thanks", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467087063.000004"
+        }, 
+        {
+            "text": "angular + jquery", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467087025.000003"
+        }, 
+        {
+            "text": "hey, can I ask if you\u2019re using a front end framework for director? And if so which one?", 
+            "type": "message", 
+            "user": "U1DRXD6HG", 
+            "ts": "1467086942.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U1DRXD6HG", 
+            "U0C90MHEH"
+        ]
+    }
+}

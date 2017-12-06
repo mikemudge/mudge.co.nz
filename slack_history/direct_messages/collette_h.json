@@ -1,0 +1,1229 @@
+{
+    "messages": [
+        {
+            "text": "<https://www.stuff.co.nz/national/98878426/when-hikurangi-subduction-zone-megathrust-triggers-tsunami-think-japan-2011>", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1511741257.000009", 
+            "attachments": [
+                {
+                    "image_bytes": 46630, 
+                    "title": "When Hikurangi subduction zone megathrust triggers tsunami 'think Japan 2011'", 
+                    "service_name": "Stuff", 
+                    "image_width": 443, 
+                    "title_link": "https://www.stuff.co.nz/national/98878426/when-hikurangi-subduction-zone-megathrust-triggers-tsunami-think-japan-2011", 
+                    "image_height": 250, 
+                    "image_url": "https://resources.stuff.co.nz/content/dam/images/1/n/0/l/6/c/image.related.StuffLandscapeSixteenByNine.620x349.1mvb2y.png/1511730842545.jpg", 
+                    "text": "NZ's largest faultline is now moving - and when it snaps it could produce a giant magnitude-9 quake.", 
+                    "id": 1, 
+                    "fallback": "Stuff: When Hikurangi subduction zone megathrust triggers tsunami 'think Japan 2011'", 
+                    "service_icon": "https://www.stuff.co.nz/etc/designs/ffx/nz/stuff/clientlibs-all/images/apple-touch-icon--precomposed.png", 
+                    "from_url": "https://www.stuff.co.nz/national/98878426/when-hikurangi-subduction-zone-megathrust-triggers-tsunami-think-japan-2011"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://touch.trademe.co.nz/listing/view/1439303243>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507791337.000179", 
+            "attachments": [
+                {
+                    "title": "Trade Me", 
+                    "text": "Want to buy or sell? Head to Trade Me, NZ's biggest &amp; most popular auction &amp; classifieds site, with thousands of new &amp; used items in a wide range of categories.", 
+                    "title_link": "https://touch.trademe.co.nz/listing/view/1439303243", 
+                    "service_name": "touch.trademe.co.nz", 
+                    "id": 1, 
+                    "fallback": "Trade Me", 
+                    "service_icon": "http://touch.trademe.co.nz/Content/Images/Home_114x114.png", 
+                    "from_url": "https://touch.trademe.co.nz/listing/view/1439303243"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://touch.trademe.co.nz/listing/view/1439133600>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507791234.000023", 
+            "attachments": [
+                {
+                    "title": "Trade Me", 
+                    "text": "Want to buy or sell? Head to Trade Me, NZ's biggest &amp; most popular auction &amp; classifieds site, with thousands of new &amp; used items in a wide range of categories.", 
+                    "title_link": "https://touch.trademe.co.nz/listing/view/1439133600", 
+                    "service_name": "touch.trademe.co.nz", 
+                    "id": 1, 
+                    "fallback": "Trade Me", 
+                    "service_icon": "http://touch.trademe.co.nz/Content/Images/Home_114x114.png", 
+                    "from_url": "https://touch.trademe.co.nz/listing/view/1439133600"
+                }
+            ]
+        }, 
+        {
+            "text": "Just tried but still seeing same thing - weird! Analytics dislikes me :disappointed: Not to worry not critical just wanted to do that one edit yesterday. Thanks Mudge1", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1501017898.219727"
+        }, 
+        {
+            "text": "Strangely enough when I log in to GA I see all the accounts. Would you be able to try a logout/login cycle and see if it is fixed?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501016856.716280"
+        }, 
+        {
+            "text": "Thanks so much Mudge!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1500960120.064800"
+        }, 
+        {
+            "text": "sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500960092.060214"
+        }, 
+        {
+            "text": "I was added as a user to be able to add remove people from google analytics however for some random reason can't see any users. Scott took a look and agreed it was weird. Anywho in the interim I wonder could I ask you remove JP as a user and I will\nWork with you tomorrow to figure out why it's not allowing me to view the members. BIG Thx if you have five!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1500960046.052373"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500959956.037402"
+        }, 
+        {
+            "text": "Hey Mudge, you still in the office? ", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1500959932.033656"
+        }, 
+        {
+            "text": "You don't wanna win against 14 of us right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499503957.025402"
+        }, 
+        {
+            "text": "Fark!!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499503918.023452"
+        }, 
+        {
+            "text": "Oh I don't like those slowmo replays that make everything look dangerous", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499503871.021160"
+        }, 
+        {
+            "text": "It's still too close for comfort", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499503520.003321"
+        }, 
+        {
+            "text": "Shite sextons off :weary:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499503482.001170"
+        }, 
+        {
+            "text": "If Beauden could just kick some points over.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499502283.934586"
+        }, 
+        {
+            "text": "Both of our try have been. It's an awesome game so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499502119.926209"
+        }, 
+        {
+            "text": "That was an awesome try by the all blacks in fairness", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499502003.919682"
+        }, 
+        {
+            "text": "I wasn't great, lost my voice today. So just watching from home. GO blacks!", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499501845.911520"
+        }, 
+        {
+            "text": "Mudge how you feeling?!!??", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499501671.902614"
+        }, 
+        {
+            "text": "Ya good point!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499414331.672629"
+        }, 
+        {
+            "text": "Hmm might be a tough call. Might need to wander around a few to see if any are less packed than the others.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499414036.577734"
+        }, 
+        {
+            "text": "Or somewhere better?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499413935.545869"
+        }, 
+        {
+            "text": "It's on mudge! Toying with macs brewbar or D4 what you think? ", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499413926.543177"
+        }, 
+        {
+            "text": "Alright, I'll let you know if I head in tomorrow.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499413799.502819"
+        }, 
+        {
+            "text": "Ya epic I reckon! Ya gonna be in city for it but just not sure where yet! Lmk if your not at home and we can watch it somewhere! I'm gonna catch it with an irish couple so your totally outnumbered :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499413741.484637"
+        }, 
+        {
+            "text": "I'll probably watch from my flat though, still not at 100%", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499413630.450170"
+        }, 
+        {
+            "text": "Yea it's going to be big", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499413604.442055"
+        }, 
+        {
+            "text": "Mr! Lol not me :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499413512.413360"
+        }, 
+        {
+            "text": "Me Mudge! Big game tomorrow where you watching it? ", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1499413498.408981"
+        }, 
+        {
+            "text": "Yup shivers and shakes LOL - Fun night though - who said bankers are boring :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498604547.124907"
+        }, 
+        {
+            "text": "I saw you with the hood up at the all hands, looked like I felt", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498604518.119001"
+        }, 
+        {
+            "text": "Oh boy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498604506.116540"
+        }, 
+        {
+            "text": "Mudge I don't know about you but my head hurts a little today. Those beers were coming a little too fast last night :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498604498.114899"
+        }, 
+        {
+            "text": "Said we need to wait for \"fans\"", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556601.666913"
+        }, 
+        {
+            "text": "I was actually on train and they told me to get off!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556576.660655"
+        }, 
+        {
+            "text": "Good stuff!!! I am battling with the trains so glad I left when I did! Have us on platform fighting to get on like what a joke!!!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556555.655608"
+        }, 
+        {
+            "text": "I think we are going out for after drinks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498556500.641858"
+        }, 
+        {
+            "text": "Station is bananas still trying to get on a train glad o have left when I did but place is mad!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556392.614839"
+        }, 
+        {
+            "text": "Want to cry read highlights but keep good :weary:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556352.604905"
+        }, 
+        {
+            "text": "Yea you missed the most exciting minutes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498556323.598025"
+        }, 
+        {
+            "text": "Disgusted I missed last few mins!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556283.588094"
+        }, 
+        {
+            "text": "31-31", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498556254.580942"
+        }, 
+        {
+            "text": "Ya come on fill me in! 30:31!!!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498556235.576440"
+        }, 
+        {
+            "text": "Missed an exciting finish", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498555959.507136"
+        }, 
+        {
+            "text": "yup, I\u2019m just going to put jeans on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498539667.464343"
+        }, 
+        {
+            "text": "Shall we go! And avoid the cameras :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498539637.460579"
+        }, 
+        {
+            "text": "haha, brilliant", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498435183.024356"
+        }, 
+        {
+            "text": "She will receive only the best authentic irish training :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498434906.005722"
+        }, 
+        {
+            "text": "Although her taste in beers isn\u2019t quite what mine is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434880.003956"
+        }, 
+        {
+            "text": "natural progression", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434864.002915"
+        }, 
+        {
+            "text": "Yes next meeting is beers :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498434832.000963"
+        }, 
+        {
+            "text": ":slightly_smiling_face: I thought you would get on with her well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434743.995213"
+        }, 
+        {
+            "text": "I may steal your sister - she is a lovely human!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1498434710.993172"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496963248.353869"
+        }, 
+        {
+            "text": "Just received the invite to the game! Have added you woop!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496961293.979063"
+        }, 
+        {
+            "text": ":wave:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292646.402398"
+        }, 
+        {
+            "text": "see ya.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292564.392583"
+        }, 
+        {
+            "text": "you too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292560.392149"
+        }, 
+        {
+            "text": "Now to figure out my audio lol! Have a great evening!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292556.391726"
+        }, 
+        {
+            "text": "Thank you for the silent support :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292541.390067"
+        }, 
+        {
+            "text": "Great!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292536.389572"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292529.388871"
+        }, 
+        {
+            "text": "it*", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292506.386470"
+        }, 
+        {
+            "text": "that is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292504.386266"
+        }, 
+        {
+            "text": "and the <http://8i.com|8i.com> should be changable", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292487.384179"
+        }, 
+        {
+            "text": "and then just support in the first part", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292468.382128"
+        }, 
+        {
+            "text": "Needs to eliminate the @", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292460.381272"
+        }, 
+        {
+            "text": "the @ should be changed to <http://thisisholo.com|thisisholo.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292459.381229"
+        }, 
+        {
+            "text": "can you still see my screen?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292448.380022"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292431.378002"
+        }, 
+        {
+            "text": "Let me know what the password is once its ready", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292415.376373"
+        }, 
+        {
+            "text": "oh lol sure ya", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292377.372002"
+        }, 
+        {
+            "text": "its a gmail account", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292361.370050"
+        }, 
+        {
+            "text": "I think that uses a different tool though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292349.368645"
+        }, 
+        {
+            "text": "sure!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292334.366873"
+        }, 
+        {
+            "text": "and lastly, could you setup a <mailto:support@thisisholo.com|support@thisisholo.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292328.366210"
+        }, 
+        {
+            "text": "looks ok right?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292317.364940"
+        }, 
+        {
+            "text": "yaya", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292312.364304"
+        }, 
+        {
+            "text": "alright, can you click completed on that now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292266.359354"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292083.339120"
+        }, 
+        {
+            "username": "collette_h", 
+            "display_as_bot": false, 
+            "text": "<@U0HV3AQRG> uploaded a file: <https://hvr.slack.com/files/U0HV3AQRG/F5LU3AX2N/screen_shot_2017-06-01_at_4.40.52_pm.png|Screen Shot 2017-06-01 at 4.40.52 PM.png>", 
+            "upload": true, 
+            "ts": "1496292076.338459", 
+            "subtype": "file_share", 
+            "user": "U0HV3AQRG", 
+            "file": {
+                "groups": [], 
+                "filetype": "png", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5LU3AX2N-e9eafbdd70/screen_shot_2017-06-01_at_4.40.52_pm_64.png", 
+                "size": 36212, 
+                "original_h": 235, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2017-06-01 at 4.40.52 PM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5LU3AX2N/screen_shot_2017-06-01_at_4.40.52_pm.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5LU3AX2N-e9eafbdd70/screen_shot_2017-06-01_at_4.40.52_pm_360.png", 
+                "id": "F5LU3AX2N", 
+                "ims": [
+                    "D0Q6FHW9W"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5LU3AX2N-e9eafbdd70/screen_shot_2017-06-01_at_4.40.52_pm_80.png", 
+                "thumb_360_h": 176, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1496292075, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5LU3AX2N-e9eafbdd70/screen_shot_2017-06-01_at_4.40.52_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5LU3AX2N/download/screen_shot_2017-06-01_at_4.40.52_pm.png", 
+                "user": "U0HV3AQRG", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-01 at 4.40.52 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5LU3AX2N-555db8e2c4", 
+                "permalink": "https://hvr.slack.com/files/U0HV3AQRG/F5LU3AX2N/screen_shot_2017-06-01_at_4.40.52_pm.png", 
+                "is_external": false, 
+                "created": 1496292075, 
+                "original_w": 480, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":stuck_out_tongue: yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292038.334216"
+        }, 
+        {
+            "text": "great what a weird silent convo :joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292029.333097"
+        }, 
+        {
+            "text": "the MX records", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292027.332950"
+        }, 
+        {
+            "text": "but 1 more thing to do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292019.331951"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496292015.331338"
+        }, 
+        {
+            "text": "You can see that right?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292012.330899"
+        }, 
+        {
+            "text": "woohoo! all done!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496292009.330470"
+        }, 
+        {
+            "text": "give that a try now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291967.325828"
+        }, 
+        {
+            "text": "no worries", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291722.298601"
+        }, 
+        {
+            "text": "may take a minute to update that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291717.298108"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291711.297343"
+        }, 
+        {
+            "text": "google-site-verification=itziUfl503l6PwzR-ygcHGEte222FkQtfz7Bgm3lLEo", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291702.296423"
+        }, 
+        {
+            "text": "other?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291688.294815"
+        }, 
+        {
+            "text": "Other will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291686.294697"
+        }, 
+        {
+            "text": "but that doesn\u2019t seem to show", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291675.293386"
+        }, 
+        {
+            "text": "our domain registrar is amazon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291668.292563"
+        }, 
+        {
+            "text": "Domain registrar?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291664.292099"
+        }, 
+        {
+            "text": "I know right!!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291624.287533"
+        }, 
+        {
+            "text": "I can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291620.287082"
+        }, 
+        {
+            "text": "yea this is a bit crazy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291618.286930"
+        }, 
+        {
+            "text": "I'll talk here can you see my screen?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291615.286534"
+        }, 
+        {
+            "text": "I have no idea why?!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291604.285283"
+        }, 
+        {
+            "text": "No audio again?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291589.283393"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R5L8D3X3J", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0C90MHEH", 
+                    "U0HV3AQRG"
+                ], 
+                "date_end": "1496291492", 
+                "date_start": "1496291452", 
+                "created_by": "U0C90MHEH", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D0Q6FHW9W"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R5L8D3X3J", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R5L8D3X3J|call>.", 
+            "ts": "1496291452.267619", 
+            "subtype": "sh_room_created", 
+            "user": "U0C90MHEH", 
+            "type": "message", 
+            "channel": "D0Q6FHW9W"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R5LRV12UB", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0C90MHEH", 
+                    "U0HV3AQRG"
+                ], 
+                "date_end": "1496291420", 
+                "date_start": "1496291370", 
+                "created_by": "U0C90MHEH", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D0Q6FHW9W"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R5LRV12UB", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R5LRV12UB|call>.", 
+            "ts": "1496291370.258203", 
+            "subtype": "sh_room_created", 
+            "user": "U0C90MHEH", 
+            "type": "message", 
+            "channel": "D0Q6FHW9W"
+        }, 
+        {
+            "text": "try a slack call?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291350.255802"
+        }, 
+        {
+            "text": "I can\u2019t hear you either", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291324.252985"
+        }, 
+        {
+            "text": "nope", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291320.252613"
+        }, 
+        {
+            "text": "Are you on mute?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291315.252013"
+        }, 
+        {
+            "text": "collette_h has started a video conference in room: <https://appear.in/lush-caterpillar|lush-caterpillar>", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "ts": "1496291204.239539", 
+            "bot_id": "B0FAFCV2P"
+        }, 
+        {
+            "text": "alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291192.238264"
+        }, 
+        {
+            "text": "yea give me a sec", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496291155.234123"
+        }, 
+        {
+            "text": "If you have a second I'll just screenshare real quick?", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496291065.223590"
+        }, 
+        {
+            "username": "collette_h", 
+            "display_as_bot": false, 
+            "text": "<@U0HV3AQRG> uploaded a file: <https://hvr.slack.com/files/U0HV3AQRG/F5LTZ6N1G/screen_shot_2017-06-01_at_4.23.00_pm.png|Which one here?>", 
+            "upload": true, 
+            "ts": "1496291003.216627", 
+            "subtype": "file_share", 
+            "user": "U0HV3AQRG", 
+            "file": {
+                "thumb_480_w": 474, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5LTZ6N1G-ac35e10628/screen_shot_2017-06-01_at_4.23.00_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5LTZ6N1G-ac35e10628/screen_shot_2017-06-01_at_4.23.00_pm_64.png", 
+                "size": 67934, 
+                "original_h": 517, 
+                "thumb_360_w": 355, 
+                "title": "Which one here?", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5LTZ6N1G/screen_shot_2017-06-01_at_4.23.00_pm.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5LTZ6N1G-ac35e10628/screen_shot_2017-06-01_at_4.23.00_pm_360.png", 
+                "id": "F5LTZ6N1G", 
+                "ims": [
+                    "D0Q6FHW9W"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5LTZ6N1G-ac35e10628/screen_shot_2017-06-01_at_4.23.00_pm_80.png", 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1496291001, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5LTZ6N1G-ac35e10628/screen_shot_2017-06-01_at_4.23.00_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5LTZ6N1G/download/screen_shot_2017-06-01_at_4.23.00_pm.png", 
+                "user": "U0HV3AQRG", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-01 at 4.23.00 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5LTZ6N1G-0558ee4a3c", 
+                "permalink": "https://hvr.slack.com/files/U0HV3AQRG/F5LTZ6N1G/screen_shot_2017-06-01_at_4.23.00_pm.png", 
+                "is_external": false, 
+                "created": 1496291001, 
+                "original_w": 510, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Just domain, not a domain alias", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496290955.210994"
+        }, 
+        {
+            "username": "collette_h", 
+            "display_as_bot": false, 
+            "text": "<@U0HV3AQRG> uploaded a file: <https://hvr.slack.com/files/U0HV3AQRG/F5M1BR3KP/screen_shot_2017-06-01_at_4.21.23_pm.png|Domain right?>", 
+            "upload": true, 
+            "ts": "1496290914.206239", 
+            "subtype": "file_share", 
+            "user": "U0HV3AQRG", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5M1BR3KP-ce7f228e2b/screen_shot_2017-06-01_at_4.21.23_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5M1BR3KP-ce7f228e2b/screen_shot_2017-06-01_at_4.21.23_pm_64.png", 
+                "size": 56911, 
+                "original_h": 369, 
+                "thumb_360_w": 360, 
+                "title": "Domain right?", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5M1BR3KP/screen_shot_2017-06-01_at_4.21.23_pm.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5M1BR3KP-ce7f228e2b/screen_shot_2017-06-01_at_4.21.23_pm_360.png", 
+                "id": "F5M1BR3KP", 
+                "ims": [
+                    "D0Q6FHW9W"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5M1BR3KP-ce7f228e2b/screen_shot_2017-06-01_at_4.21.23_pm_80.png", 
+                "thumb_360_h": 270, 
+                "thumb_480_h": 360, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1496290913, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5M1BR3KP-ce7f228e2b/screen_shot_2017-06-01_at_4.21.23_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5M1BR3KP/download/screen_shot_2017-06-01_at_4.21.23_pm.png", 
+                "user": "U0HV3AQRG", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-01 at 4.21.23 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5M1BR3KP-89f18b870a", 
+                "permalink": "https://hvr.slack.com/files/U0HV3AQRG/F5M1BR3KP/screen_shot_2017-06-01_at_4.21.23_pm.png", 
+                "is_external": false, 
+                "created": 1496290913, 
+                "original_w": 492, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "let me know if there is anything I can help with", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496290264.130275"
+        }, 
+        {
+            "text": "Thank you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496290252.128721"
+        }, 
+        {
+            "text": "Sure give me five and I'll jump on in there :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496290246.128054"
+        }, 
+        {
+            "text": "but for <http://thisisholo.com|thisisholo.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496290232.126297"
+        }, 
+        {
+            "text": "Should be the same instructions as last time, <https://support.google.com/a/answer/53295?hl=en>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496290221.125021", 
+            "attachments": [
+                {
+                    "title": "Add a domain or domain alias - G Suite Administrator Help", 
+                    "text": "If you own multiple domain names that you want to use with Google services, you can add these domains to your Google Cloud account at no extra cost. Users can have an identity at one or more domains.", 
+                    "title_link": "https://support.google.com/a/answer/53295?hl=en", 
+                    "service_name": "support.google.com", 
+                    "id": 1, 
+                    "fallback": "Add a domain or domain alias - G Suite Administrator Help", 
+                    "service_icon": "https://support.google.com/favicon.ico", 
+                    "from_url": "https://support.google.com/a/answer/53295?hl=en"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey Mudge of course!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1496290184.119868"
+        }, 
+        {
+            "text": "Hey Collette, do you think you could help me out with adding another domain to our google apps account?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496289717.059270"
+        }, 
+        {
+            "text": "MX Server address\tPriority\n<http://ASPMX.L.GOOGLE.COM|ASPMX.L.GOOGLE.COM>.\t1\n<http://ALT1.ASPMX.L.GOOGLE.COM|ALT1.ASPMX.L.GOOGLE.COM>.\t5\n<http://ALT2.ASPMX.L.GOOGLE.COM|ALT2.ASPMX.L.GOOGLE.COM>.\t5\n<http://ASPMX2.GOOGLEMAIL.COM|ASPMX2.GOOGLEMAIL.COM>.\t10\n<http://ASPMX3.GOOGLEMAIL.COM|ASPMX3.GOOGLEMAIL.COM>.\t10", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1494892494.398700"
+        }, 
+        {
+            "text": "google-site-verification=G8ePT9rNQYJowEQRiqzQ5xWxxqyb6uvwMq1C7XtWc8U", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1494891965.314029"
+        }, 
+        {
+            "text": "Ready when you are :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1494891728.275285"
+        }, 
+        {
+            "text": "<https://support.google.com/a/answer/53295?hl=en>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494891474.232891", 
+            "attachments": [
+                {
+                    "title": "Add a domain or domain alias - G Suite Administrator Help", 
+                    "text": "If you own multiple domain names that you want to use with Google services, you can add these domains to your Google Cloud account at no extra cost. Users can have an identity at one or more domains.", 
+                    "title_link": "https://support.google.com/a/answer/53295?hl=en", 
+                    "service_name": "support.google.com", 
+                    "id": 1, 
+                    "fallback": "Add a domain or domain alias - G Suite Administrator Help", 
+                    "service_icon": "https://support.google.com/favicon.ico", 
+                    "from_url": "https://support.google.com/a/answer/53295?hl=en"
+                }
+            ]
+        }, 
+        {
+            "text": "Perf thx!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1491780610.382257"
+        }, 
+        {
+            "text": "Needed to be on a paid plan to get IT support with them. $9 was the minimum prepaid amount which I could top up.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491780493.375332"
+        }, 
+        {
+            "text": "Hey Mudge, the $9 mailchimp payment what was that exactly for - just need a note to reconcile thank-you!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1491778147.237291"
+        }, 
+        {
+            "text": "thx mudge!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1484878291.000003"
+        }, 
+        {
+            "text": "I\u2019m working on Monday.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484878208.000002"
+        }, 
+        {
+            "text": "Great thx!", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1478474607.000003"
+        }, 
+        {
+            "text": "Teresa\u2019s photo is fine.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478474094.000002"
+        }, 
+        {
+            "text": "<https://business.google.com/b/104069241809711287034/dashboard/l/14427052302102995888>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476301441.000002", 
+            "attachments": [
+                {
+                    "title": "Google My Business", 
+                    "text": "Get your business on Google for free with Google My Business", 
+                    "title_link": "https://business.google.com/b/104069241809711287034/dashboard/l/14427052302102995888", 
+                    "service_name": "accounts.google.com", 
+                    "id": 1, 
+                    "fallback": "Google My Business", 
+                    "service_icon": "https://accounts.google.com/favicon.ico", 
+                    "from_url": "https://business.google.com/b/104069241809711287034/dashboard/l/14427052302102995888"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://recruit.summeroftech.co.nz/internships>", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1473733859.000002"
+        }, 
+        {
+            "text": "Collettes post it system :joy::joy:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1472200841.000002"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F258H106T/img_20160826_203111.jpg|Thats a good number of post its>", 
+            "upload": true, 
+            "ts": "1472200460.000002", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_64.jpg", 
+                "size": 2014291, 
+                "original_h": 2432, 
+                "thumb_360_w": 360, 
+                "title": "Thats a good number of post its", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F258H106T/img_20160826_203111.jpg", 
+                "thumb_720_h": 533, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_360.jpg", 
+                "id": "F258H106T", 
+                "ims": [
+                    "D0Q6FHW9W"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_80.jpg", 
+                "comments_count": 0, 
+                "thumb_360_h": 266, 
+                "thumb_480_h": 355, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1472200454, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F258H106T/download/img_20160826_203111.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_1024.jpg", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "IMG_20160826_203111.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F258H106T-b39ece4fdc", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F258H106T/img_20160826_203111.jpg", 
+                "is_external": false, 
+                "created": 1472200454, 
+                "thumb_1024_h": 758, 
+                "thumb_960_h": 711, 
+                "original_w": 3286, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F258H106T-565d8954a2/img_20160826_203111_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "awesome, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467342077.000005"
+        }, 
+        {
+            "text": "or <mailto:wellington@8i.com|wellington@8i.com> just for wellie", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1467342072.000004"
+        }, 
+        {
+            "text": "<mailto:global@8i.com|global@8i.com>", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1467342066.000003"
+        }, 
+        {
+            "text": "Hey, what is the 8i email address to reach everyone?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467342054.000002"
+        }, 
+        {
+            "text": "Thanks :blush:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1457076826.000002"
+        }, 
+        {
+            "text": "8i and 8ikitten", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457075219.000002"
+        }, 
+        {
+            "text": "Hey what\u2019s the login to view the site :simple_smile:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1457069780.000004"
+        }, 
+        {
+            "text": ":simple_smile: yay", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457041664.000003"
+        }, 
+        {
+            "text": "I stole your dishes sign idea! Let\u2019s hope it works :simple_smile:", 
+            "type": "message", 
+            "user": "U0HV3AQRG", 
+            "ts": "1457041606.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0HV3AQRG", 
+            "U0C90MHEH"
+        ]
+    }
+}

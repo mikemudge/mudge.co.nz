@@ -1,0 +1,33 @@
+{
+    "messages": [
+        {
+            "attachments": [
+                {
+                    "image_bytes": 98305, 
+                    "title": "Mindful Challenges", 
+                    "service_name": "Google Docs", 
+                    "image_width": 333, 
+                    "title_link": "https://goo.gl/64dasA", 
+                    "image_height": 250, 
+                    "image_url": "https://lh5.googleusercontent.com/oMskRuoMn7pxVUH7lU9tlLROF244PbTD0560q16kYXeO9onub5vzTD0tDy1qH-pRsCw", 
+                    "text": "Thank you for your interest! Mindful Challenges offers a new way to bring emotional well being to the people you work with. With Challenges you can set a mindfulness and meditation goal for your community, and then via a public dashboard your coworkers can track their progress and the progress of the community as a whole towards that goal. Please leave your email so someone from our team can follow-up with you and provide you with additional information about Mindful Challenges.", 
+                    "id": 1, 
+                    "fallback": "Google Docs: Mindful Challenges", 
+                    "service_icon": "http://ssl.gstatic.com/docs/forms/device_home/ios_120.png", 
+                    "from_url": "https://goo.gl/64dasA"
+                }
+            ], 
+            "text": "Hi there! I\u2019d like to share with you our newest product - Mindful Challenges, a new way to bring emotional well being to the people you work with. With Challenges you can set a mindfulness and meditation goal for your community, and then via a public dashboard your coworkers can track their progress and the progress of the community as a whole towards that goal.\n\nClick the link if you would like to learn more about bringing Challenges to your community! <https://goo.gl/64dasA>", 
+            "ts": "1510967877.000104", 
+            "user": "U3182A4CW", 
+            "type": "message", 
+            "bot_id": "B30L6JWS1"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3182A4CW", 
+            "U0C90MHEH"
+        ]
+    }
+}

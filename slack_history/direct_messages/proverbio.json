@@ -1,0 +1,201 @@
+{
+    "messages": [
+        {
+            "text": "<https://firebase.googleblog.com/2017/02/how-do-i-add-firebase-analytics-to-app.html>", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1500868479.037433", 
+            "attachments": [
+                {
+                    "thumb_height": 72, 
+                    "service_icon": "https://firebase.googleblog.com/favicon.ico", 
+                    "thumb_width": 72, 
+                    "title": "\"How do I add Firebase Analytics to an app that's already using Google Analytics?\"", 
+                    "service_name": "The Firebase Blog", 
+                    "title_link": "https://firebase.googleblog.com/2017/02/how-do-i-add-firebase-analytics-to-app.html", 
+                    "text": "Todd Kerpelman Developer Advocate One frequent scenario we encounter with developers is that they like the idea of using ...", 
+                    "id": 1, 
+                    "fallback": "The Firebase Blog: \"How do I add Firebase Analytics to an app that's already using Google Analytics?\"", 
+                    "thumb_url": "https://1.bp.blogspot.com/-9CDTW1fXx0U/V5JD5MgfXtI/AAAAAAAAAJA/EenTdZJxTrwAB94Ha7uFq7b5JZDU2OgxACLcB/s72-c/todd.jpg", 
+                    "from_url": "https://firebase.googleblog.com/2017/02/how-do-i-add-firebase-analytics-to-app.html"
+                }
+            ]
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921157.357530"
+        }, 
+        {
+            "text": "Ok, don't worry I'll see with Dave at some stage to either fix it or disable it :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1499921149.356081"
+        }, 
+        {
+            "text": "I can cancel tasks but don\u2019t know about disabling the builds before they happen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921107.349723"
+        }, 
+        {
+            "text": "I don\u2019t know how it works really", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921081.345587"
+        }, 
+        {
+            "text": "You can disable if you like", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1499921067.343332"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921055.341593"
+        }, 
+        {
+            "text": "BuildKite is not working for us", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1499921046.340164"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921043.339641"
+        }, 
+        {
+            "text": "blocking up the agents", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921041.339283"
+        }, 
+        {
+            "text": "No worries please cancel", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1499921039.338986"
+        }, 
+        {
+            "text": "You mind if I cancel them?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921029.337343"
+        }, 
+        {
+            "text": "Yo, you have a couple of test runs going using buildkite which have been running for 5+ hours", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499921022.336289"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin/holo-characters/details/?url=%2Fflask-admin%2Fholo-characters%2F%3Fsearch%3DFun&amp;id=e1b3382b-0b29-4b4e-b106-b54a2b0c062f>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498612234.538619"
+        }, 
+        {
+            "text": "\"/api/v1/holo-promotions/%s \"", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1497851421.956655"
+        }, 
+        {
+            "text": "{\"data\":[123,10,32,32,34,101,114,114,111,114,34,58,32,123,10,32,32,32,32,34,99,111,100,101,34,58,32,34,101,120,95,53,48,56,53,49,34,44,32,10,32,32,32,32,34,100,101,116,97,105,108,34,58,32,34,74,87,84,32,84,111,107,101,110,32,104,97,115,32,101,120,112,105,114,101,100,34,44,32,10,32,32,32,32,34,115,116,97,116,117,115,34,58,32,52,48,49,10,32,32,125,10,125,10],\"responseCode\":401}", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1497851380.952367"
+        }, 
+        {
+            "text": "Cool. Thanks", 
+            "type": "message", 
+            "user": "U5FGK5ABB", 
+            "ts": "1496371129.625488"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet|Holo - Google Analytics Events and Timing Logging Sheet>", 
+            "upload": false, 
+            "ts": "1496371015.612411", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [
+                    "G4KR129L0", 
+                    "G6UG2M5C5"
+                ], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_64.png", 
+                "size": 57339, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_360.png", 
+                "id": "F3X0XTCG3", 
+                "ims": [
+                    "D12DBF78S", 
+                    "D3X61C9HA", 
+                    "D431QMJ66", 
+                    "D450Y9VNH", 
+                    "D5MK78T28"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_800.png", 
+                "timestamp": 1485462811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5", 
+                    "C3QBYRUKE"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet", 
+                "is_external": true, 
+                "created": 1485462811, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U5FGK5ABB", 
+            "U0C90MHEH"
+        ]
+    }
+}

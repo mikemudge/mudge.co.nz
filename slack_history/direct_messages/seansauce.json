@@ -1,0 +1,170 @@
+{
+    "messages": [
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "raised_hands", 
+                    "users": [
+                        "U6M3K2UKC"
+                    ]
+                }
+            ], 
+            "text": "All good, and I\u2019ll keep my fingers crossed that iOS does work this time. :fingerscrossed:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511386316.000038"
+        }, 
+        {
+            "text": "no worries thanks for looking into it!", 
+            "type": "message", 
+            "user": "U6M3K2UKC", 
+            "ts": "1511386283.000053"
+        }, 
+        {
+            "text": "It looks like I was wrong about the AND thing too, firebase was just only showing an android icon on the main page for me, so I thought there must of been something up.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511386215.000113"
+        }, 
+        {
+            "text": "Thanks for the update, sorry to rain on the parade.\nI was just a little worried about setting false expectations.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511386122.000169"
+        }, 
+        {
+            "text": "That combined with our analytics usage leads me to believe iOS is still not completely working.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511386039.000142"
+        }, 
+        {
+            "text": "Yeah, I don\u2019t really have an explanation for that, however firebase is telling me that the Science notification was sent to ~400K iOS devices and 0 were opened.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511385972.000214"
+        }, 
+        {
+            "username": "seansauce", 
+            "display_as_bot": false, 
+            "text": "<@U6M3K2UKC> uploaded a file: <https://hvr.slack.com/files/U6M3K2UKC/F84CW8WG3/screen_shot_2017-11-22_at_1.23.13_pm.png|Screen Shot 2017-11-22 at 1.23.13 PM.png> and commented: not when i got the world science day notification,  these were the settings when i got that one on iphone", 
+            "upload": true, 
+            "ts": "1511385826.000199", 
+            "subtype": "file_share", 
+            "user": "U6M3K2UKC", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "not when i got the world science day notification,  these were the settings when i got that one on iphone", 
+                    "created": 1511385823, 
+                    "timestamp": 1511385823, 
+                    "is_intro": true, 
+                    "user": "U6M3K2UKC", 
+                    "id": "Fc83VA229F"
+                }, 
+                "filetype": "png", 
+                "thumb_800_h": 240, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_64.png", 
+                "size": 66687, 
+                "original_h": 542, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2017-11-22 at 1.23.13 PM.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F84CW8WG3/screen_shot_2017-11-22_at_1.23.13_pm.png", 
+                "thumb_720_h": 216, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_360.png", 
+                "id": "F84CW8WG3", 
+                "ims": [
+                    "D83V0R38R"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_80.png", 
+                "comments_count": 1, 
+                "thumb_360_h": 108, 
+                "thumb_480_h": 144, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_800.png", 
+                "timestamp": 1511385823, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F84CW8WG3/download/screen_shot_2017-11-22_at_1.23.13_pm.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_1024.png", 
+                "user": "U6M3K2UKC", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-11-22 at 1.23.13 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F84CW8WG3-94667a3702", 
+                "permalink": "https://hvr.slack.com/files/U6M3K2UKC/F84CW8WG3/screen_shot_2017-11-22_at_1.23.13_pm.png", 
+                "is_external": false, 
+                "created": 1511385823, 
+                "thumb_1024_h": 307, 
+                "thumb_960_h": 288, 
+                "original_w": 1808, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F84CW8WG3-e0f463ef23/screen_shot_2017-11-22_at_1.23.13_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Sorry, I mean did you use a device token to target your phone?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511385545.000254"
+        }, 
+        {
+            "text": "not the token, the actual notification was sent to my phone!", 
+            "type": "message", 
+            "user": "U6M3K2UKC", 
+            "ts": "1511385496.000301"
+        }, 
+        {
+            "text": "Which is part of what made it so difficult to figure out what was going wrong", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511385464.000263"
+        }, 
+        {
+            "text": "Was that using the single device token? Unfortunately that has always worked", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511385441.000109"
+        }, 
+        {
+            "text": "I got the push notification 2 weeks ago on my phone on world science day! and i just did a few tests on my phone which worked as well", 
+            "type": "message", 
+            "user": "U6M3K2UKC", 
+            "ts": "1511385405.000148"
+        }, 
+        {
+            "text": "Also I just had a look at the notification in firebase and I think the Target is a little incorrect. \nIt has a target of android AND iOS which will try to only send it to users which have both apps.\nIt should be android OR iOS so it will send to both :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511384965.000013"
+        }, 
+        {
+            "text": "Hey, just wanted to check in about the notification, what makes us think that iOS notifications are working now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511384454.000478"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U6M3K2UKC", 
+            "U0C90MHEH"
+        ]
+    }
+}

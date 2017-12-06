@@ -1,0 +1,906 @@
+{
+    "messages": [
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "laughing", 
+                    "users": [
+                        "U03DQCUT4"
+                    ]
+                }
+            ], 
+            "text": "All good though, I might have to show her how to delete now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503442102.000344"
+        }, 
+        {
+            "text": "ohhh ok", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1503442071.000229"
+        }, 
+        {
+            "text": "Yea I\u2019ll pass that on, Erica has been maintaining those faces for me for a while now :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503442057.000149"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U03DQCUT4"
+                    ]
+                }
+            ], 
+            "text": "Oh thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503442012.000133"
+        }, 
+        {
+            "text": "Heyyy, just want to point out you might want to remove Guilherme, since he already left 8i.", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1503441982.000281"
+        }, 
+        {
+            "text": "thank you :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1490824170.454395"
+        }, 
+        {
+            "text": "Cool, I've updated that for you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490824143.446334"
+        }, 
+        {
+            "text": "Hi Mudge, Could you please do me a favorite? I'm applying an event in LA and they need my name and the \"title\" are included on the 8i website. so could you please help me to update my title to \" VR Engineer\" ?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1490821061.414287"
+        }, 
+        {
+            "text": "Yea, OBJ+MTL is all that we support right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475613257.000006"
+        }, 
+        {
+            "text": "Holo needs a OBJ and MTL format!!", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1475613196.000005"
+        }, 
+        {
+            "text": "I know you have told me before but I forgot :sweat_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1475613123.000004"
+        }, 
+        {
+            "text": ".obj? fbx?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1475613092.000003"
+        }, 
+        {
+            "text": "Hello, which 3D model format should we use for Holo?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1475613059.000002"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1469577717.000012"
+        }, 
+        {
+            "text": "yea I will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577707.000011"
+        }, 
+        {
+            "text": "Taos knows how to make the hvrs public on the web though, and I can take it from there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577701.000010"
+        }, 
+        {
+            "text": "or could you please ask Tao to give you the HVRS?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1469577697.000009"
+        }, 
+        {
+            "text": "I\u2019m not sure if I can access that location though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577667.000008"
+        }, 
+        {
+            "text": "Thank you :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1469577662.000007"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577654.000006"
+        }, 
+        {
+            "text": "Give it fifteen minutes she said she renamed a folder", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1469577645.000005"
+        }, 
+        {
+            "text": "We wish to add LUNA_100_iv_v02 into next Holo update could you please add LUNA_100_iv_v02 online? I have asked Tao to make the hvrs (<http://virginia.8i.com/cloudfarm/la/isilon/Storage/LUNA/hvrs|virginia.8i.com/cloudfarm/la/isilon/Storage/LUNA/hvrs>)", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1469577613.000004"
+        }, 
+        {
+            "text": "Hi", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577610.000003"
+        }, 
+        {
+            "text": "Hello~", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1469577550.000002"
+        }, 
+        {
+            "text": "no problem, glad you enjoyed it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456971915.000004"
+        }, 
+        {
+            "text": "Hey thanks for asking. I do really enjoy the hockey game but I don't think my lower back can handle the bending so I don't think I can join you guys anymore :slightly_frowning_face: Thank you very very much for invite me to the hockey game :simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456971890.000003"
+        }, 
+        {
+            "text": "Do you want to play hockey tonight?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456971473.000002"
+        }, 
+        {
+            "username": "esta", 
+            "display_as_bot": false, 
+            "text": "<@U03DQCUT4> uploaded a file: <https://hvr.slack.com/files/U03DQCUT4/F0PKQKA4Q/_main.mp4|_Main.mp4>", 
+            "upload": true, 
+            "ts": "1456810442.000006", 
+            "subtype": "file_share", 
+            "user": "U03DQCUT4", 
+            "file": {
+                "filetype": "mp4", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0PKQKA4Q", 
+                "size": 27548393, 
+                "title": "_Main.mp4", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0PKQKA4Q/_main.mp4", 
+                "ims": [
+                    "D0GKD3ERL"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1456810439, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0PKQKA4Q/download/_main.mp4", 
+                "user": "U03DQCUT4", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "MPEG 4 Video", 
+                "name": "_Main.mp4", 
+                "mimetype": "video/mp4", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0PKQKA4Q-83c6baa3b1", 
+                "permalink": "https://hvr.slack.com/files/U03DQCUT4/F0PKQKA4Q/_main.mp4", 
+                "is_external": false, 
+                "created": 1456810439, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456804967.000005"
+        }, 
+        {
+            "text": "That model looks really good, thanks for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456804898.000004"
+        }, 
+        {
+            "text": "It's a bit difficult to match the model I create with Guil's UV texture so I change a little bit of Guil's model <https://drive.google.com/a/8i.com/folderview?id=0B51FAzfd6JI8NW9uSlhMVnVmYzQ&amp;usp=sharing>", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456801740.000003"
+        }, 
+        {
+            "text": "We got another new stage from LA :simple_smile: <https://drive.google.com/a/8i.com/file/d/0B51FAzfd6JI8cmVvbjlCS2RaV1E/view?usp=sharing>", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456798722.000002"
+        }, 
+        {
+            "text": "Cool thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456714244.000003"
+        }, 
+        {
+            "text": "New stage model and texture are over here <https://drive.google.com/a/8i.com/folderview?id=0B51FAzfd6JI8b2ppVGhWSkhTU3c&amp;usp=sharing>", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456711645.000002"
+        }, 
+        {
+            "text": "ok thanks", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456438780.000005"
+        }, 
+        {
+            "text": "it would be good to have a nicer texture for Tuesday next week though (board meeting demo)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456438752.000004"
+        }, 
+        {
+            "text": "I can use what we have right now for a while", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456438722.000003"
+        }, 
+        {
+            "text": "When do you need this model? I just realize I don't have Maya installed haha", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456438634.000002"
+        }, 
+        {
+            "text": ":simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456363033.000005"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456362919.000004"
+        }, 
+        {
+            "text": "<https://drive.google.com/open?id=0B51FAzfd6JI8VHFjV3VrdHdtX00>", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456362855.000003"
+        }, 
+        {
+            "text": "Hey here is the stage .obj", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1456362854.000002"
+        }, 
+        {
+            "text": "Cool thanks :spiderman:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1454444476.000003"
+        }, 
+        {
+            "text": "Hey, hockey tomorrow starts at 6:35pm if you want to come along.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454444430.000002"
+        }, 
+        {
+            "text": "cool, thanks :simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1453839018.000003"
+        }, 
+        {
+            "text": "Tomorrows hockey is at 7:10pm if you want to play again.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453838787.000002"
+        }, 
+        {
+            "text": "We will be in the practice area opposite the carpark in between the 2 fields.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453353378.000002"
+        }, 
+        {
+            "text": "I see, thanks", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1453240857.000005"
+        }, 
+        {
+            "text": "so up to you, I personally find them pretty awkward to breath around", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453240840.000004"
+        }, 
+        {
+            "text": "They are not required for summer hockey, but a few of the players wear them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453240817.000003"
+        }, 
+        {
+            "text": "Hey, I wonder do I need to buy a teeth protect thing for tomorrow's hokey game? :thinking_face:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1453240737.000002"
+        }, 
+        {
+            "text": "Cool! thanks for letting me know :simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1452715500.000006"
+        }, 
+        {
+            "text": "will let you know the times as I find out.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452715487.000005"
+        }, 
+        {
+            "text": "No worries, we\u2019ve got games every thursday for the next 7-8 weeks now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452715474.000004"
+        }, 
+        {
+            "text": "awww... I got flat viewing tonight at 7:00pm :disappointed:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1452715431.000003"
+        }, 
+        {
+            "text": "Hey, we have a hockey game tonight at 6:35pm if you want to come along. Sorry about the late notice.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452715311.000002"
+        }, 
+        {
+            "text": "Yea, fair enough. I'm not very excited to play either.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450327131.000018"
+        }, 
+        {
+            "text": "please let me know about next years games :cookiemonster:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450326117.000017"
+        }, 
+        {
+            "text": "Hey sorry it's raining so I decided not to come today", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450326004.000016"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450307015.000015"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/install_new>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450307003.000014"
+        }, 
+        {
+            "text": "Hello~ Can you please put the install page up online so then I can show Asher", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450306923.000013"
+        }, 
+        {
+            "text": "Yup! Thanks :simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450299989.000012"
+        }, 
+        {
+            "text": "is it better now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450299954.000011"
+        }, 
+        {
+            "username": "esta", 
+            "display_as_bot": false, 
+            "text": "<@U03DQCUT4> uploaded a file: <https://hvr.slack.com/files/U03DQCUT4/F0GR54KG8/pasted_image_at_2015_12_17_10_02_am.png|Pasted image at 2015-12-17, 10:02 AM> and commented: Sorry! Just found this steam community link got cut off &gt;___&lt;", 
+            "upload": true, 
+            "ts": "1450299835.000010", 
+            "subtype": "file_share", 
+            "user": "U03DQCUT4", 
+            "file": {
+                "thumb_480_w": 213, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "Sorry! Just found this steam community link got cut off &gt;___&lt;", 
+                    "created": 1450299832, 
+                    "timestamp": 1450299832, 
+                    "is_intro": true, 
+                    "user": "U03DQCUT4", 
+                    "id": "Fc0GR43RPB"
+                }, 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F0GR54KG8-bd632aae43/pasted_image_at_2015_12_17_10_02_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F0GR54KG8-bd632aae43/pasted_image_at_2015_12_17_10_02_am_64.png", 
+                "size": 48046, 
+                "original_h": 754, 
+                "thumb_360_w": 160, 
+                "title": "Pasted image at 2015-12-17, 10:02 AM", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0GR54KG8/pasted_image_at_2015_12_17_10_02_am.png", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F0GR54KG8-bd632aae43/pasted_image_at_2015_12_17_10_02_am_360.png", 
+                "id": "F0GR54KG8", 
+                "ims": [
+                    "D0GKD3ERL"
+                ], 
+                "thumb_720_w": 320, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F0GR54KG8-bd632aae43/pasted_image_at_2015_12_17_10_02_am_80.png", 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1450299832, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F0GR54KG8-bd632aae43/pasted_image_at_2015_12_17_10_02_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0GR54KG8/download/pasted_image_at_2015_12_17_10_02_am.png", 
+                "user": "U03DQCUT4", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Pasted image at 2015_12_17 10_02 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0GR54KG8-326989aeec", 
+                "permalink": "https://hvr.slack.com/files/U03DQCUT4/F0GR54KG8/pasted_image_at_2015_12_17_10_02_am.png", 
+                "is_external": false, 
+                "created": 1450299832, 
+                "original_w": 335, 
+                "comments_count": 1, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F0GR54KG8-bd632aae43/pasted_image_at_2015_12_17_10_02_am_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450299716.000009"
+        }, 
+        {
+            "text": "That's exactly what I want. Many thanks :smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450299710.000008"
+        }, 
+        {
+            "text": "<http://mudge.dev.8i.com/install_new>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450299652.000007"
+        }, 
+        {
+            "text": "Thanks :innocent:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450298394.000006"
+        }, 
+        {
+            "text": "Yea, I\u2019ll fix that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450298380.000005"
+        }, 
+        {
+            "username": "esta", 
+            "display_as_bot": false, 
+            "text": "<@U03DQCUT4> uploaded a file: <https://hvr.slack.com/files/U03DQCUT4/F0GR29R63/pasted_image_at_2015_12_17_09_36_am.png|Pasted image at 2015-12-17, 9:36 AM> and commented: Just one more little thing. Can you please make this image a little bit small (same effect as header image)? Thanks", 
+            "upload": true, 
+            "ts": "1450298299.000004", 
+            "subtype": "file_share", 
+            "user": "U03DQCUT4", 
+            "file": {
+                "thumb_480_w": 191, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "Just one more little thing. Can you please make this image a little bit small (same effect as header image)? Thanks", 
+                    "created": 1450298297, 
+                    "timestamp": 1450298297, 
+                    "is_intro": true, 
+                    "user": "U03DQCUT4", 
+                    "id": "Fc0GR2TZ40"
+                }, 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F0GR29R63-a586f564ee/pasted_image_at_2015_12_17_09_36_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F0GR29R63-a586f564ee/pasted_image_at_2015_12_17_09_36_am_64.png", 
+                "size": 50018, 
+                "original_h": 847, 
+                "thumb_360_w": 143, 
+                "title": "Pasted image at 2015-12-17, 9:36 AM", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0GR29R63/pasted_image_at_2015_12_17_09_36_am.png", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F0GR29R63-a586f564ee/pasted_image_at_2015_12_17_09_36_am_360.png", 
+                "id": "F0GR29R63", 
+                "ims": [
+                    "D0GKD3ERL"
+                ], 
+                "thumb_720_w": 286, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F0GR29R63-a586f564ee/pasted_image_at_2015_12_17_09_36_am_80.png", 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1450298297, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F0GR29R63-a586f564ee/pasted_image_at_2015_12_17_09_36_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0GR29R63/download/pasted_image_at_2015_12_17_09_36_am.png", 
+                "user": "U03DQCUT4", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Pasted image at 2015_12_17 09_36 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0GR29R63-224bfcbf3d", 
+                "permalink": "https://hvr.slack.com/files/U03DQCUT4/F0GR29R63/pasted_image_at_2015_12_17_09_36_am.png", 
+                "is_external": false, 
+                "created": 1450298297, 
+                "original_w": 337, 
+                "comments_count": 1, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F0GR29R63-a586f564ee/pasted_image_at_2015_12_17_09_36_am_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450298273.000003"
+        }, 
+        {
+            "text": "Hola~ I saw your changed and it looks great!! :clap::skin-tone-4:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450298172.000002"
+        }, 
+        {
+            "text": "<http://mudge.dev.8i.com/install>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450241866.000014"
+        }, 
+        {
+            "text": "nows good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450224808.000013"
+        }, 
+        {
+            "text": "should we have a meeting now? or later?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450224794.000012"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450214430.000011"
+        }, 
+        {
+            "text": "Hey, I moved the install page to <http://mudge-demo.dev.8i.com/install> so I can work on other stuff.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450214413.000010"
+        }, 
+        {
+            "text": "This looks great!! :+1:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450211089.000009"
+        }, 
+        {
+            "text": "yea, cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450211055.000008"
+        }, 
+        {
+            "text": "sure, I will talk to Tom about this", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450211039.000007"
+        }, 
+        {
+            "text": "8i 8ikitten", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450211010.000006"
+        }, 
+        {
+            "text": "what is the password?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450211006.000005"
+        }, 
+        {
+            "text": "when you get a chance, do you want to have a look and make a list of mistakes for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450211003.000004"
+        }, 
+        {
+            "text": "cool thanks :smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450210978.000003"
+        }, 
+        {
+            "text": "Hey, I\u2019ve got a first attempt of the new install page here, <http://mudge.dev.8i.com/install>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450210960.000002"
+        }, 
+        {
+            "text": ":simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450152417.000022"
+        }, 
+        {
+            "text": "perfect, thank you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450152409.000021"
+        }, 
+        {
+            "username": "esta", 
+            "display_as_bot": false, 
+            "text": "<@U03DQCUT4> uploaded a file: <https://hvr.slack.com/files/U03DQCUT4/F0GL8AKQ8/portaltext.txt|PortalText.txt>", 
+            "upload": true, 
+            "ts": "1450152383.000020", 
+            "subtype": "file_share", 
+            "user": "U03DQCUT4", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 79, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0GL8AKQ8", 
+                "size": 1615, 
+                "title": "PortalText.txt", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0GL8AKQ8/portaltext.txt", 
+                "ims": [
+                    "D0GKD3ERL"
+                ], 
+                "preview": "8i VR PORTAL\r\n\r\nRelease date:  December 21th, 2015\r\nVersion:  1.03\r\nFilesize:  25MB\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U03DQCUT4/F0GL8AKQ8/portaltext.txt/edit", 
+                "username": "", 
+                "timestamp": 1450152383, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0GL8AKQ8/download/portaltext.txt", 
+                "user": "U03DQCUT4", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "PortalText.txt", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0GL8AKQ8-cc55801ba7", 
+                "permalink": "https://hvr.slack.com/files/U03DQCUT4/F0GL8AKQ8/portaltext.txt", 
+                "is_external": false, 
+                "created": 1450152383, 
+                "lines": 84, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>8i VR PORTAL</pre></div>\n<div><pre></pre></div>\n<div><pre>Release date:  December 21th, 2015</pre></div>\n<div><pre>Version:  1.03</pre></div>\n<div><pre>Filesize:  25MB</pre></div>\n<div><pre></pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450152173.000019"
+        }, 
+        {
+            "text": "yea, if its not too much hassle, it would make my life a bit easier :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450152159.000018"
+        }, 
+        {
+            "text": "I can copy the text into sublime and send it to you", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450152142.000017"
+        }, 
+        {
+            "text": "no", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450152107.000016"
+        }, 
+        {
+            "text": "Do you have installed photoshop ?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450152100.000015"
+        }, 
+        {
+            "text": "hey, do you know if there is a way to copy text from invision? Or do you know of an easier way for me to get hold of the text content for the install page?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450152064.000014"
+        }, 
+        {
+            "text": "Cool, I will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450127475.000013"
+        }, 
+        {
+            "text": "Let me know if you need any other things :simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450127467.000012"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450127459.000011"
+        }, 
+        {
+            "text": "Yea, thats fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450127458.000010"
+        }, 
+        {
+            "text": "I didn't send you the Download installer button. I think we can use the original css version", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450127443.000009"
+        }, 
+        {
+            "username": "esta", 
+            "display_as_bot": false, 
+            "text": "<@U03DQCUT4> uploaded a file: <https://hvr.slack.com/files/U03DQCUT4/F0GKH6WFQ/portalimags.zip|PortalImags.zip>", 
+            "upload": true, 
+            "ts": "1450127364.000008", 
+            "subtype": "file_share", 
+            "user": "U03DQCUT4", 
+            "file": {
+                "filetype": "zip", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0GKH6WFQ", 
+                "size": 410971, 
+                "title": "PortalImags.zip", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0GKH6WFQ/portalimags.zip", 
+                "ims": [
+                    "D0GKD3ERL"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1450127364, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0GKH6WFQ/download/portalimags.zip", 
+                "user": "U03DQCUT4", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Zip", 
+                "name": "PortalImags.zip", 
+                "mimetype": "application/zip", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0GKH6WFQ-ef559f6ab6", 
+                "permalink": "https://hvr.slack.com/files/U03DQCUT4/F0GKH6WFQ/portalimags.zip", 
+                "is_external": false, 
+                "created": 1450127364, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450124691.000007"
+        }, 
+        {
+            "text": "now?", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450124682.000006"
+        }, 
+        {
+            "text": "Yea, happy to meet whenever you want", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450124672.000005"
+        }, 
+        {
+            "text": "btw feel free to leave some feedback :simple_smile:", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450124651.000004"
+        }, 
+        {
+            "text": "Hello Michael, I have finished writing 8i VR Portal install page. Can we please have a small meeting when you are free? Please take a look <https://invis.io/7F5AOU9ZW>", 
+            "type": "message", 
+            "user": "U03DQCUT4", 
+            "ts": "1450124617.000002", 
+            "attachments": [
+                {
+                    "image_bytes": 10016, 
+                    "title": "Click here to view the prototype `8i PORTAL`", 
+                    "service_name": "InVision Share Link", 
+                    "image_width": 250, 
+                    "title_link": "https://invis.io/7F5AOU9ZW", 
+                    "image_height": 250, 
+                    "image_url": "https://invisionapp-cdn.com/storage.invisionapp.com/screens/thumbnails/122383792.jpg?x-amz-meta-ck=a0a4a12373c1c160d147a05a1f6b4b23&response-cache-control=max-age%3D2419200&x-amz-meta-mdi=0&x-amz-meta-iv=7&AWSAccessKeyId=AKIAJFUMDU3L6GTLUDYA&Expires=1451624400&Signature=2Jb98Zd1U8CwnJmEh9gXKWS4TM0%3D", 
+                    "text": "PortalWeb", 
+                    "id": 1, 
+                    "fallback": "InVision Share Link: Click here to view the prototype `8i PORTAL`", 
+                    "from_url": "https://invis.io/7F5AOU9ZW"
+                }
+            ]
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03DQCUT4", 
+            "U0C90MHEH"
+        ]
+    }
+}

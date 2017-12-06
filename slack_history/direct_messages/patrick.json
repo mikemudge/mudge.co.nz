@@ -1,0 +1,281 @@
+{
+    "messages": [
+        {
+            "text": "Champion", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1509054840.000412"
+        }, 
+        {
+            "text": "Done this now, and cc\u2019d you on an email to Florian.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509050907.000511"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U0E3YEV7S"
+                    ]
+                }
+            ], 
+            "text": "Chur, will get on it first thing tomorrow.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508991208.000050"
+        }, 
+        {
+            "text": "<mailto:florianschr@gmail.com|florianschr@gmail.com>\n\nWeb 600's in: storage/users/Patrick/NZfamilies_Web600/For Florian", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1508990614.000082"
+        }, 
+        {
+            "text": "I\u2019ll get you to send me the location of the web600 hvrs\u2019s then as well.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508983445.000012"
+        }, 
+        {
+            "text": "Great", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508983336.000016"
+        }, 
+        {
+            "text": "Awesome, I'll get back to you with that later", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1508983329.000184"
+        }, 
+        {
+            "text": "yes if you can give me his email (or list of emails)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508983298.000059"
+        }, 
+        {
+            "text": "Heya Mudge.\nBefore Florian left 8i we recorded and reconstructed his family and now have the web600 assets we can share in Holo. Do you have the power to upload and grant his private email permission to view those?", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1508983262.000029"
+        }, 
+        {
+            "text": "cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503280282.000067"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\NZHerald\\Audio\\8i_TRISTRAMCLAYTON_AUDIO.wav`\nI had it locally before", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503280239.000056"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503279794.000038"
+        }, 
+        {
+            "text": "Hmm,\nGive me a few and I'll get to you with a path", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503279494.000094"
+        }, 
+        {
+            "text": "folder rather", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503278743.000042"
+        }, 
+        {
+            "text": "I can\u2019t find the Audio file in NZHERALD", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503278738.000016"
+        }, 
+        {
+            "text": "He starts talking properly on the third try", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503278660.000041"
+        }, 
+        {
+            "text": "Cheers", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503278655.000089"
+        }, 
+        {
+            "text": "Pandora/Storage/shows/atrax/NZHERALD/Audio\n\nThen the second file, S02", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503278648.000114"
+        }, 
+        {
+            "text": "Actually do you have the full audio file, I think I need the cut to be a bit earlier than it is currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503278539.000119"
+        }, 
+        {
+            "text": "I\u2019ll check with Asher once he is back at his desk. He may have experience with audio", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277393.000008"
+        }, 
+        {
+            "text": "I don\u2019t really know where the request came from", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277370.000042"
+        }, 
+        {
+            "text": "I can mess with it again tomorrow of this isn't urgent however", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503277275.000006"
+        }, 
+        {
+            "text": "It is, completely free and open source", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503277260.000049"
+        }, 
+        {
+            "text": "I can try it out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503276811.000023"
+        }, 
+        {
+            "text": "Is audacity a sound editing software?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503276803.000034"
+        }, 
+        {
+            "text": "I haven\u2019t really done audio anything at all before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503276790.000100"
+        }, 
+        {
+            "text": "I had to do it by eye, playback in orthrus and then Audacity so that's why it isn't perfect.\nCan you manually delay it?", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503275068.000062"
+        }, 
+        {
+            "text": "<https://8i.com/scene/90a5d96b-829a-4d88-98d1-e51a7afb66a5>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503271412.000051", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "NZ Herald", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/scene/90a5d96b-829a-4d88-98d1-e51a7afb66a5", 
+                    "text": "None - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: NZ Herald", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/production/experience/1ae94905-c28f-408f-b759-7402de70c377/sceneThumb.png?time=1503032724236", 
+                    "from_url": "https://8i.com/scene/90a5d96b-829a-4d88-98d1-e51a7afb66a5"
+                }
+            ]
+        }, 
+        {
+            "text": "Yo I added that audio to the bit, but it doesn\u2019t seem to quite line up.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503271399.000067"
+        }, 
+        {
+            "username": "patrick", 
+            "display_as_bot": false, 
+            "text": "<@U0E3YEV7S> uploaded a file: <https://hvr.slack.com/files/U0E3YEV7S/F6QAZNU2E/8i_tristramclayton_audio_cut.wav|8i_TRISTRAMCLAYTON_AUDIO_cut.wav> and commented: This is for the NZHERALD piece, NZHERALD_S02_T01_v03 I believe", 
+            "upload": true, 
+            "ts": "1503035816.000123", 
+            "subtype": "file_share", 
+            "user": "U0E3YEV7S", 
+            "file": {
+                "initial_comment": {
+                    "comment": "This is for the NZHERALD piece, NZHERALD_S02_T01_v03 I believe", 
+                    "created": 1503035815, 
+                    "timestamp": 1503035815, 
+                    "is_intro": true, 
+                    "user": "U0E3YEV7S", 
+                    "id": "Fc6QAZNWBC"
+                }, 
+                "filetype": "wav", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F6QAZNU2E", 
+                "size": 2354004, 
+                "title": "8i_TRISTRAMCLAYTON_AUDIO_cut.wav", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F6QAZNU2E/8i_tristramclayton_audio_cut.wav", 
+                "ims": [
+                    "D6PHBNMR6"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1503035815, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F6QAZNU2E/download/8i_tristramclayton_audio_cut.wav", 
+                "user": "U0E3YEV7S", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Waveform Audio", 
+                "name": "8i_TRISTRAMCLAYTON_AUDIO_cut.wav", 
+                "mimetype": "audio/vnd.wave", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F6QAZNU2E-df9539a385", 
+                "permalink": "https://hvr.slack.com/files/U0E3YEV7S/F6QAZNU2E/8i_tristramclayton_audio_cut.wav", 
+                "is_external": false, 
+                "created": 1503035815, 
+                "comments_count": 1, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Thats great thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503008089.000131"
+        }, 
+        {
+            "text": "S01 is Jed\nS02 is Charles Vallance\nS03 is Tokes\nS04 is Owen\nS05 is Dave Cartwright\nS06 is Thomas Marshall\nS07 is Isaac Undy\nS08 is Thomas V\nS10 is Tobias Schmidt\nS11 is Pro", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503007218.000085"
+        }, 
+        {
+            "text": "On it now", 
+            "type": "message", 
+            "user": "U0E3YEV7S", 
+            "ts": "1503007077.000229"
+        }, 
+        {
+            "text": "Hey, I\u2019ve just added a bunch of NZ family shoots into holo. Any chance you could help me identify which employee each holo belongs to?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503004990.000357"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0E3YEV7S", 
+            "U0C90MHEH"
+        ]
+    }
+}

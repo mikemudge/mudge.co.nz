@@ -1,0 +1,487 @@
+{
+    "messages": [
+        {
+            "text": "<https://support.google.com/datastudio/answer/6350638>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508443029.000201", 
+            "attachments": [
+                {
+                    "title": "Change the data source for a chart, page, or report - Data Studio (Beta) Help", 
+                    "text": "Learn how to use multiple data sources in a report.You select a default data source when you first create a report. Every chart and control you add to the report gets its data from that data source, u", 
+                    "title_link": "https://support.google.com/datastudio/answer/6350638", 
+                    "service_name": "support.google.com", 
+                    "id": 1, 
+                    "fallback": "Change the data source for a chart, page, or report - Data Studio (Beta) Help", 
+                    "service_icon": "https://support.google.com/favicon.ico", 
+                    "from_url": "https://support.google.com/datastudio/answer/6350638"
+                }
+            ]
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507597981.000208"
+        }, 
+        {
+            "text": "I have things in my calendar until 3:30, but I'll come bug you if something runs short before that.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1507597974.000028"
+        }, 
+        {
+            "text": "Lmk when you have a minute. iOS transparency release has a little oddity which we may need to workaround.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507597926.000082"
+        }, 
+        {
+            "text": "Champion.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1506457977.000351"
+        }, 
+        {
+            "text": "yup, done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506457965.000434"
+        }, 
+        {
+            "text": "Can you add me to the Firebase account please? Either I'm not in there or I don't know how to get in haha", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1506457930.000385"
+        }, 
+        {
+            "text": "Thanks!", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1505172718.000325"
+        }, 
+        {
+            "text": "Different ga property", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505172706.000087"
+        }, 
+        {
+            "text": "Should be under <http://thisisholo.com|thisisholo.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505172687.000175"
+        }, 
+        {
+            "text": "Can you remind me where the Inspiration feed analytics are in GA?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1505172352.000001"
+        }, 
+        {
+            "text": "You're right, I was. I'll do that when I get in shortly. ", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504814585.000141"
+        }, 
+        {
+            "text": "Yo, you were going to make some Jira tickets for Transparency right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504814054.000030"
+        }, 
+        {
+            "text": "Hey, I\u2019m getting asked about pose ordering within promotion and character pages.\nIt\u2019s not something I can do on the server until the clients update to respect the order passed down from the server.\nDo you have any thoughts about if/when we should do this?\nWe have got tickets for both clients, but they haven\u2019t really got any priority.\n<https://eighteye.atlassian.net/browse/HOLOALL-849>\n<https://eighteye.atlassian.net/browse/HOLOALL-850>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504652123.000139"
+        }, 
+        {
+            "text": "Sorry - busy morning. I've only just got to my desk from stand up. I had wondered if it was something to do with the article in press.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504491057.000159"
+        }, 
+        {
+            "text": "And Europe shows an increase, I guess its possibly just the countries which were awake at the time.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504480583.000008"
+        }, 
+        {
+            "text": "India was most significant, but that is our biggest user base", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504480528.000064"
+        }, 
+        {
+            "text": "Cool, initial check of GA doesn\u2019t seem to show a single source country", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504480491.000057"
+        }, 
+        {
+            "text": "Intriguing. I'll see what I can find out.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504480458.000066"
+        }, 
+        {
+            "text": "Hey, Just an FYI, but we saw a ~10x increase in traffic starting at 8:37pm last night. Slowly tailed off after that but not sure of the source.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504480400.000106"
+        }, 
+        {
+            "text": "are you coming to push notifications?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504213471.000479"
+        }, 
+        {
+            "text": "Yea cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135774.000235"
+        }, 
+        {
+            "text": "I'll check if he's good for it tomorrow or next week.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504135728.000201"
+        }, 
+        {
+            "text": "Might be a better plan then.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504135715.000045"
+        }, 
+        {
+            "text": "It might be better to get Michael to show us all how to do it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135681.000103"
+        }, 
+        {
+            "text": "so I\u2019m not sure what I would show you right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135655.000247"
+        }, 
+        {
+            "text": "I guess we can, I haven\u2019t actually done much with it myself yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135644.000026"
+        }, 
+        {
+            "text": "We can't run through with staging builds or something?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504135606.000072"
+        }, 
+        {
+            "text": "Are you wanting to wait until the apps are out to show LA (and I) how to use Firebase then?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504135591.000059"
+        }, 
+        {
+            "text": "both Android and iOS builds are having some issues which are going to slow down their rollout", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135575.000117"
+        }, 
+        {
+            "text": "I\u2019m not really sure when its going to be ready", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135554.000036"
+        }, 
+        {
+            "text": "Yea we might need to just cancel that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504135541.000133"
+        }, 
+        {
+            "text": "Just checking - you're good with 'How to Firebase' tomorrow morning?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504135513.000040"
+        }, 
+        {
+            "text": "All good, that could work if we know the date, suggest that in the ticket if you want.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504063116.000054"
+        }, 
+        {
+            "text": "Sorry for the slow responses - I was thinking if we knew the date of last export then we can just get an export of the period since then. That way we don't need to worry about opt outs because MailChimp already got that sorted. Checking the JIRA now.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1504063035.000032"
+        }, 
+        {
+            "text": "Hey, I made <https://eighteye.atlassian.net/browse/HOLOALL-990> to track the MailChimp email investigate, do you want to check it, or add a comment if it needs more info.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504037449.000499"
+        }, 
+        {
+            "text": "Updating the current list from MixPanel might be possible, but I\u2019m not sure how I would go about skipping those who opted out.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503960912.000054"
+        }, 
+        {
+            "text": "I believe the current emails all came from Mix Panel, and if we stop using that then a new automated solution needs to be thought up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503960858.000228"
+        }, 
+        {
+            "text": "I ask because, 1) we're gonna need the current MailChimp list updated at some point soon, and 2) if we're considering surveys with relative frequency (fortnightly or monthly - which we are) it would be good for your sanity to have a way that is automated.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503957797.000199"
+        }, 
+        {
+            "text": "Short answer, don\u2019t really know. I can look into it though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503957676.000303"
+        }, 
+        {
+            "text": "Finally, would we consider a MailChimp integration?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503957647.000345"
+        }, 
+        {
+            "text": "Unrelated, do you know when you exported the list of emails (without Canada) for import to MailChimp? And what would the best way to update the list in MailChimp without re-adding people that have opted out?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503957638.000098"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U63CUD892"
+                    ]
+                }
+            ], 
+            "text": "A little later would be nice, but could make 2:30 if we had too, just might be sweaty.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503957477.000238"
+        }, 
+        {
+            "text": "How late do we push it? Will the 2:30 start suit you, or is that too soon?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503957427.000217"
+        }, 
+        {
+            "text": "Hey we have another Friday soccer at 1:25, can we move the planning meeting again please?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503951791.000143"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin/users/?flt1_0=0>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503526488.000181"
+        }, 
+        {
+            "text": "Are you able to tell me how many registered users we have?", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503525601.000024"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503465347.000052"
+        }, 
+        {
+            "text": "Pretty sure you should have access to that sheet now ", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503465330.000078"
+        }, 
+        {
+            "text": "Sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503465148.000004"
+        }, 
+        {
+            "text": "Probably deserves another session to get everyone up to speed and/or kickoff because I imagine we should get on it soon as a performance feature", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503465138.000104"
+        }, 
+        {
+            "text": "all good, I wasn\u2019t really involved in thinning until I found out we need to update files on the server", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503465040.000006"
+        }, 
+        {
+            "text": "I think the req doc has been floating around for a bit (since I was away at least) but I've not looked at it too much until the last half hour or so", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503465004.000031"
+        }, 
+        {
+            "text": "I\u2019m not sure I\u2019d seen either of those either actually", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503464633.000018"
+        }, 
+        {
+            "text": "I've added to it the requirements doc link and the spreadsheet I made", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503464606.000061"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503464583.000189"
+        }, 
+        {
+            "text": "Yes, HOLOALL-884", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503464579.000133"
+        }, 
+        {
+            "text": "Do we have a thinning story?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503464561.000012"
+        }, 
+        {
+            "text": "So mean :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503267681.000107"
+        }, 
+        {
+            "text": "Not a chance.", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1503267243.000004"
+        }, 
+        {
+            "text": "Hey Soccer is again conflicting with the holo planning meeting. 1:15-230pm Friday. Do you think we could shift the meeting forwards or back by a bit.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503266274.000004"
+        }, 
+        {
+            "text": "Cool, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502321801.151079"
+        }, 
+        {
+            "text": "Don't see why not! :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1502321789.148003"
+        }, 
+        {
+            "text": "Hey, our soccer game next week(18th) is Friday 1pm, any chance we could push the Holo planning meeting back half an hour so me and Isaac can play?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502321729.133239"
+        }, 
+        {
+            "text": "<https://eighteye.atlassian.net/browse/HOLOALL-947>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502253195.194579"
+        }, 
+        {
+            "text": "Too good - thank you!", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1501047562.195746"
+        }, 
+        {
+            "text": "Cool, thats done. And I added them access to all the \u201cGoogle Pack\u201d content which may or may not be enough. But we can add more if requested.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501047282.150552"
+        }, 
+        {
+            "text": "I have run out of time today. If you could add these emails to that Google group I would be eternally grateful:\n\n<mailto:aksingh@google.com|aksingh@google.com>\n<mailto:cwb@google.com|cwb@google.com>\n<mailto:teddit@google.com|teddit@google.com>\n<mailto:cmarin@google.com|cmarin@google.com>\n<mailto:jpq@google.com|jpq@google.com>", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1501045815.923680"
+        }, 
+        {
+            "text": "How do we go about getting Google employees access to their private content? I have a list of emails...", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1500929981.585164"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500011910.910139"
+        }, 
+        {
+            "text": "Yes thank you :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1500011902.908852"
+        }, 
+        {
+            "text": "You got my email now though?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500011892.907233"
+        }, 
+        {
+            "text": "Me too haha", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1500011876.904510"
+        }, 
+        {
+            "text": "yea, sorry completely forgot about that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500010282.653055"
+        }, 
+        {
+            "text": "I won't do anything with them this evening, but just trying to remind myself for Monday", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1500010273.651672"
+        }, 
+        {
+            "text": "Can you shoot me that list of Google/private content addresses for Tango", 
+            "type": "message", 
+            "user": "U63CUD892", 
+            "ts": "1500010253.648204"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U63CUD892", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -1,0 +1,143 @@
+{
+    "messages": [
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511909177.000449"
+        }, 
+        {
+            "text": "Or reply to it :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511909174.000080"
+        }, 
+        {
+            "text": "Hey, let me know if you got my test email :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511909148.000082"
+        }, 
+        {
+            "text": "thanks! yeah, I was looking at that one I think. And something like pimp my job title", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467157498.000017"
+        }, 
+        {
+            "text": "I used a few sites like this to come up with inspiration, <http://www.forbes.com/sites/joshlinkner/2014/12/04/the-21-most-creative-job-titles/#f95e96a646bb>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467157478.000015", 
+            "attachments": [
+                {
+                    "image_bytes": 170142, 
+                    "title": "The 21 Most Creative Job Titles", 
+                    "service_name": "Forbes", 
+                    "image_width": 250, 
+                    "title_link": "http://www.forbes.com/sites/joshlinkner/2014/12/04/the-21-most-creative-job-titles/#f95e96a646bb", 
+                    "image_height": 250, 
+                    "image_url": "http://i.forbesimg.com/media/assets/forbes_1200x1200.jpg", 
+                    "text": "In today\u2019s era of ruthless competition and continuous innovation, people don\u2019t want stodgy, confining job titles. Rather than calling employees by a traditional moniker, many leading companies opt to use more playful titles for their employees. This energizes team members. Because we\u2019re in a creative economy, your people are your [...]", 
+                    "id": 1, 
+                    "fallback": "Forbes: The 21 Most Creative Job Titles", 
+                    "service_icon": "http://i.forbesimg.com/media/assets/appicons/forbes-app-icon_57x57.png", 
+                    "from_url": "http://www.forbes.com/sites/joshlinkner/2014/12/04/the-21-most-creative-job-titles/#f95e96a646bb"
+                }
+            ]
+        }, 
+        {
+            "text": "pretty much sums up what I do nicely", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467157145.000014"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467157135.000013"
+        }, 
+        {
+            "text": "\"i made this website\"", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467157127.000012"
+        }, 
+        {
+            "text": "I love yours!", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467157123.000011"
+        }, 
+        {
+            "text": "I think I spent half a day just coming up with mine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467157059.000010"
+        }, 
+        {
+            "text": "if you have any fantastic ideas...:stuck_out_tongue_winking_eye:", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467157038.000009"
+        }, 
+        {
+            "text": "haha!", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467157025.000008"
+        }, 
+        {
+            "text": "it's so much pressure~", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467157024.000007"
+        }, 
+        {
+            "text": "I know how hard it can be to think of a good one :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467157013.000006"
+        }, 
+        {
+            "text": "Sure thing, I\u2019m happy for you to change to something else later as well if you like", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467157000.000005"
+        }, 
+        {
+            "text": "Hi Mudge! So sorry I haven't sent yet. I've been trying to think of a clever title. Can I send you something in the next couple of hours?", 
+            "type": "message", 
+            "user": "U1BGWKDCL", 
+            "ts": "1467156963.000004"
+        }, 
+        {
+            "text": "Hi Layne, \nI\u2019m working on updating this page of our website <http://8i.com/about> to add the new 8i team members. \nI haven\u2019t got a job title to put under your name, is there something fun which you would like me to put there?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467156917.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 1920, 
+                    "title": "8i | About", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/about", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | About", 
+                    "thumb_url": "http://8i.com/static/images/shareImage.jpg", 
+                    "from_url": "http://8i.com/about"
+                }
+            ]
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U1BGWKDCL", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -1,0 +1,412 @@
+{
+    "messages": [
+        {
+            "text": "P:\\software\\data\\pipeline_tests\\Preprocesses\\old\\RenderedMasks\\2017_02_08.17_11_11_MaskStatsMultiFrame", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1507605526.000102"
+        }, 
+        {
+            "attachments": [
+                {
+                    "image_bytes": 349984, 
+                    "image_width": 814, 
+                    "image_height": 711, 
+                    "image_url": "http://avteq.net/wp-content/uploads/2015/02/Float-Desk_Red-top-black-frame.gif", 
+                    "fallback": "<http://avteq.net/wp-content/uploads/2015/02/Float-Desk_Red-top-black-frame.gif>", 
+                    "id": 1, 
+                    "is_animated": true
+                }
+            ], 
+            "text": "", 
+            "ts": "1507603679.000120", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "bot_id": "B335DMCP8"
+        }, 
+        {
+            "text": "/gif desk", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1507603679.000039"
+        }, 
+        {
+            "text": "I am!", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1507603672.000021"
+        }, 
+        {
+            "text": "Hey, you at your desk?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507603655.000076"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507077942.000039"
+        }, 
+        {
+            "text": "And yup - no worries on updating. Exciting!!", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1507077259.000084"
+        }, 
+        {
+            "text": "eighti@atrax - same pass as user", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1507077245.000215"
+        }, 
+        {
+            "text": "And can you remind me what the \u201cnormal password\u201d for ssh eight@atrax is", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507077074.000056"
+        }, 
+        {
+            "text": "Any concerns about that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507077000.000018"
+        }, 
+        {
+            "text": "Hey, I\u2019m going to update <http://atrax:8080/> this afternoon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076983.000095"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506650773.000149"
+        }, 
+        {
+            "text": "well, there I did anyway", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506650769.000183"
+        }, 
+        {
+            "text": "at least I stuck to the camelCase :wink:", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506650760.000120"
+        }, 
+        {
+            "text": "haha, all good. I love good documentation :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506650749.000069"
+        }, 
+        {
+            "text": "i forgot about that, sorry", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506650717.000228"
+        }, 
+        {
+            "text": "lol", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506650706.000004"
+        }, 
+        {
+            "text": "this is going to be fun :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506650670.000052"
+        }, 
+        {
+            "text": "I just found the \u201cfuckJS\u201d method", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506650665.000078"
+        }, 
+        {
+            "text": "Alright, yea. Should be able to add things as needed down the track.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506553418.000094"
+        }, 
+        {
+            "text": "Another thing I wanted to mention is that at some point we'll be looking how to get the real-time code into the same framework... which shouldn't be too different as they'll try to output the same type of info.", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506553364.000090"
+        }, 
+        {
+            "text": "<http://10.20.10.64:8084/admin/test-run-admin/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506551620.000089"
+        }, 
+        {
+            "text": "Yea sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506546893.000325"
+        }, 
+        {
+            "text": "Just realised I have a infrastructure meeting at 10:30, can we meet up at 11:30?", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506546619.000096"
+        }, 
+        {
+            "text": "Are you working from home today?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506541301.000269"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1::skin-tone-3", 
+                    "users": [
+                        "U0GNPM0QK"
+                    ]
+                }
+            ], 
+            "text": "Yea, all good. I\u2019ll probably dream up something of an initial schema then sync with you again, to see if there is anything obviously missing.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506309793.000015"
+        }, 
+        {
+            "text": "phew, I think that's all for now - thanks heaps for taking a look at this :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506309756.000013"
+        }, 
+        {
+            "text": "Ah right, good to know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506309754.000134"
+        }, 
+        {
+            "text": "If you work on something to scan/import a bunch of tests, a side utility that would be super useful is reporting tests that are missing data (this is usually due to the test failing to run without crashing)", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506309736.000044"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506309659.000055"
+        }, 
+        {
+            "text": "Some \"good/successful\" tests for playing with:\n- `8i\\2017_09_07-10_05_31_win_automask_v1_with_matte_sep_1_8i`\n- `TerezaDrskova\\2017_08_01.09_56_03_GT_RELEASE_2017-07-28_TD_-_SVO_TerezaDrskova-CustomTest` - ground truth\nYou can use the latter one for both the ground truth details page and the gt compare page (for the gt compare page, you have to use the same test twice, usually we'd two different ones, but I'm struggling to find one that doesn't give an error)", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506309637.000021"
+        }, 
+        {
+            "text": "For ground truth scenes, their test output have `[SCENE]\\analysis` sub-directories. We didn't discuss this but\nthe outputs these are png and csv. One for each combination of each stage in the pipeline, and each rig. The png show the depth error, and the csv has summary statistics", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506309147.000098"
+        }, 
+        {
+            "text": "this is exactly the same structure, but has `*.svo` files instead of `*.bcf`", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506309004.000128"
+        }, 
+        {
+            "text": "I notice David has changed us to using the \"svo\" directory instead of \"bcf\"", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506308966.000161"
+        }, 
+        {
+            "text": "the local site is <http://atrax:8080/>", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506308947.000096"
+        }, 
+        {
+            "text": "going to send a few more tidbits:", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506308945.000097"
+        }, 
+        {
+            "text": "<https://github.com/8i/recon-pipeline-web>", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506304154.000114"
+        }, 
+        {
+            "text": "Now is good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506303941.000023"
+        }, 
+        {
+            "text": "I'm free now or can do later", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506303934.000066"
+        }, 
+        {
+            "text": "Alright, how busy are you this afternoon?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506303906.000092"
+        }, 
+        {
+            "text": "that would probably be me initially", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506303887.000181"
+        }, 
+        {
+            "text": ":tada: amazing!", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1506303859.000010"
+        }, 
+        {
+            "text": "Who is going to be best to talk to about how it works currently?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506302602.000167"
+        }, 
+        {
+            "text": "Hey, so it looks like I\u2019m going to have some time this week to start looking at your test viewer project.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506302560.000113"
+        }, 
+        {
+            "text": "na I will pop up now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505687535.000088"
+        }, 
+        {
+            "text": "Got 10 minutes now, or maybe just before lunch?", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1505687420.000095"
+        }, 
+        {
+            "text": "Na, we can have a chat about it. Not really sure what is coming up on my plate either, but at least I can have some options/suggestions if I talk to Thomas about what I\u2019m going to do next.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505687275.000018"
+        }, 
+        {
+            "text": "I know it was just am idea at Friday drinks, so no pressure if you're swamped with other things", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1505686077.000063"
+        }, 
+        {
+            "text": "Heya Mudge - not sure what's coming up on your plate, but if you're interested in helping with our pipeline test results viewer then it'd be cool to have a quick chat about sometime today/this week.", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1505686032.000067"
+        }, 
+        {
+            "text": "Yea, thanks for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467667722.000003"
+        }, 
+        {
+            "text": "Heya - I added a few UI issues I ran into, but it's looking really nice! Just to confirm, we can only add one actor at the moment right?", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1467667702.000002"
+        }, 
+        {
+            "text": "Nice!", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462498304.000013"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U0GNPM0QK"
+                    ]
+                }
+            ], 
+            "text": "I joined the 8i github Devs team and got access to 17 repositories including Atrax :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462494436.000011"
+        }, 
+        {
+            "text": "yea not sure how useful I can be but should be able to knock off a few easy css issues at the very least", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462493755.000010"
+        }, 
+        {
+            "text": "Cool, thanks for all those links", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462493716.000009"
+        }, 
+        {
+            "text": "will do that after lunch! thanks again for the offer of help. i'd actually been meaning to chat about python/flask with you... just kept getting distracted :simple_smile:", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493681.000008"
+        }, 
+        {
+            "text": "github is <https://github.com/8i/Atrax> but i'll need to find out who has control to add you", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493637.000007"
+        }, 
+        {
+            "text": "our \"farm\" server ip is 10.20.0.10 if you don't have netbios", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493577.000006"
+        }, 
+        {
+            "text": "our atrax - <http://farm:5500/shows>", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493536.000005"
+        }, 
+        {
+            "text": "our local farm - <http://farm:8000/>", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493518.000004"
+        }, 
+        {
+            "text": "cloud farm - <http://farm.cloudfarm1.8i.com:8000/index>", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493505.000003"
+        }, 
+        {
+            "text": "here come a bunch of links...", 
+            "type": "message", 
+            "user": "U0GNPM0QK", 
+            "ts": "1462493497.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0GNPM0QK", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -1,0 +1,302 @@
+{
+    "messages": [
+        {
+            "text": "Also a useful tool for checking how these look is <https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fstaging.8i.com%2Fdevelopers%2F>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511384148.000388"
+        }, 
+        {
+            "text": "Nope that works!!!", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511384145.000531"
+        }, 
+        {
+            "text": "Yup, that was my plan unless you had a better one :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511384104.000097"
+        }, 
+        {
+            "text": "Is it possible to keep the title as the title of the page and the description under?", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511384082.000111"
+        }, 
+        {
+            "text": "Not urgent obviously, you will be able to change them at any point through the CMS. \nI\u2019m just guessing initially as to what should be title and what should be description.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511384053.000095"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U7N34KZJM/F7X2V1Q2K/website_-_latest_news_section_|Website - Latest News Section>", 
+            "upload": false, 
+            "ts": "1511383991.000228", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__64.png", 
+                "size": 54474, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Website - Latest News Section", 
+                "url_private": "https://docs.google.com/spreadsheets/d/1HGp9wzsabFMqOHeAgjewF6Ow8iM0xYF7I3hmYfrYNu4/edit#gid=0", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__360.png", 
+                "id": "F7X2V1Q2K", 
+                "ims": [
+                    "D835YCD51"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__800.png", 
+                "timestamp": 1510023322, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__1024.png", 
+                "user": "U7N34KZJM", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Website - Latest News Section ", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C6UCRGQE5"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U7N34KZJM/F7X2V1Q2K/website_-_latest_news_section_", 
+                "is_external": true, 
+                "created": 1510023322, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F7X2V1Q2K-64811ba16f/website_-_latest_news_section__720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Also worth thinking about the other pages in <https://docs.google.com/spreadsheets/d/1HGp9wzsabFMqOHeAgjewF6Ow8iM0xYF7I3hmYfrYNu4/edit#gid=1531214997>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511383990.000281"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511383880.000434"
+        }, 
+        {
+            "text": "Oh let's remove from the description then ", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511383841.000206"
+        }, 
+        {
+            "text": "I\u2019m not sure if we want to use different copy for both of them, or if you are happy with it being repeated?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511383794.000006"
+        }, 
+        {
+            "text": "When I share <https://staging.8i.com/> it has room for both title and description.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511383715.000235", 
+            "attachments": [
+                {
+                    "image_bytes": 261318, 
+                    "title": "8i - Real human holograms for augmented, virtual and mixed reality \u2014 8i", 
+                    "service_name": "8i", 
+                    "image_width": 385, 
+                    "title_link": "https://staging.8i.com/", 
+                    "image_height": 250, 
+                    "image_url": "https://staging.8i.com/static/img/default_share_image.9fb7bb4f46ad.jpg", 
+                    "text": "Real human holograms for augmented, virtual and mixed reality. Create, distribute and experience volumetric video of real people that look and feel as if they\u2019re in the same room.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i - Real human holograms for augmented, virtual and mixed reality \u2014 8i", 
+                    "service_icon": "https://staging.8i.com/static/img/favicon.22f5cd6f9bc3.ico", 
+                    "from_url": "https://staging.8i.com/"
+                }
+            ]
+        }, 
+        {
+            "text": "Hey again, I have added the SEO content which you made but just wanted to check it with you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511383688.000163"
+        }, 
+        {
+            "text": "Ok cool, yea we can revisit it at anytime down the track too, if it becomes more important", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511379662.000260"
+        }, 
+        {
+            "text": "Honestly I only think it will be relevant for the blog eg. Press release of announcement so I think we'll be okay", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511379601.000232"
+        }, 
+        {
+            "text": "Oh okay, good to know! ", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511379573.000314"
+        }, 
+        {
+            "text": "If that is something which is useful I can look into other options though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511379569.000085"
+        }, 
+        {
+            "text": "Actually that looks like it will only work for entire pages, not for updates to pages.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511379550.000184"
+        }, 
+        {
+            "text": "I think so, haven\u2019t actually tested this though. In settings there is a \u201cGo live date/time\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511379391.000123"
+        }, 
+        {
+            "text": "Is it possible to schedule updates", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511379252.000376"
+        }, 
+        {
+            "text": "Gotcha", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511379214.000227"
+        }, 
+        {
+            "text": "OoO gotchs", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511379212.000014"
+        }, 
+        {
+            "text": "Oh and a caveat which caught me out, the preview button works basically as you would expect, except for that refreshing the preview page doesn\u2019t work. It won\u2019t show any  changes made after it was opened, so you will need to click the preview button again after each change.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378916.000502"
+        }, 
+        {
+            "text": "but it should be enough to get an idea of how it will work everywhere as the home page has a lot of content on it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378647.000340"
+        }, 
+        {
+            "text": "I have only setup the home page with manageable content so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378623.000339"
+        }, 
+        {
+            "text": "Okay great! Will poke around", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511378591.000060"
+        }, 
+        {
+            "text": "And let me know if you have any problems or questions :slightly_smiling_face: Its tricky to know what level of technical detail to explain things in sometimes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378427.000077"
+        }, 
+        {
+            "text": "Alright\n<https://staging.8i.com/admin/>\nusername: genie\npassword: mqPsECZT\nYou can change the password once you are logged in.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378327.000386"
+        }, 
+        {
+            "text": "Oh great!", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511378324.000360"
+        }, 
+        {
+            "text": "because its staging, you can mess around a little bit without worrying.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378170.000244"
+        }, 
+        {
+            "text": "Alright I\u2019m going to set you up with a CMS user for our staging site.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378128.000559"
+        }, 
+        {
+            "text": "Haha yep! Gotta love the Turkey celebrations! ", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511378126.000586"
+        }, 
+        {
+            "text": "Yeah, cool. I figured it would be a shorter day with the long weekend coming up.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378103.000009"
+        }, 
+        {
+            "text": "I am going to be out of pocket starting around 2pm PST ", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511378062.000573"
+        }, 
+        {
+            "text": "Cool, you aren\u2019t too busy today?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511378000.000325"
+        }, 
+        {
+            "text": "Oh sure that'd be great!", 
+            "type": "message", 
+            "user": "U7N34KZJM", 
+            "ts": "1511377980.000230"
+        }, 
+        {
+            "text": "Good morning Genie, I was hoping to have a quick chat with you about <http://8i.com|8i.com>.\nI have started working on adding content to the CMS and was wondering if you want to start learning about it?\nIt would be great to get any feedback early while I\u2019m still working on it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511377714.000280"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U7N34KZJM", 
+            "U0C90MHEH"
+        ]
+    }
+}

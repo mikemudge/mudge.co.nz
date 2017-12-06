@@ -1,0 +1,634 @@
+{
+    "messages": [
+        {
+            "text": "<http://www.cachemonet.com/>", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1505969892.000177", 
+            "attachments": [
+                {
+                    "thumb_height": 200, 
+                    "service_icon": "http://www.cachemonet.com/icon.png", 
+                    "thumb_width": 200, 
+                    "title": "cachemonet.com", 
+                    "text": "cachemonet is an exploration into the serendipitous collisions that occur between two randomly generated arrays.", 
+                    "title_link": "http://www.cachemonet.com/", 
+                    "service_name": "cachemonet.com", 
+                    "id": 1, 
+                    "fallback": "cachemonet.com", 
+                    "thumb_url": "http://cachemonet.com/src/fb.jpg", 
+                    "from_url": "http://www.cachemonet.com/"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok, we are still here. But probably about to leave now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502183180.238887"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "mudgicon", 
+                    "users": [
+                        "U0C90MHEH"
+                    ]
+                }
+            ], 
+            "text": "you guys still at Hop Garden? I\u2019m still programming, likely won\u2019t come out", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1502179019.741561"
+        }, 
+        {
+            "text": "f8cbff8b-ded8-4172-b52b-2d7e0ce2b247", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1501195659.873954"
+        }, 
+        {
+            "text": "f3dfbee5-d872-47d3-929f-a9781d48e964", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1501195587.853195"
+        }, 
+        {
+            "username": "thomverbeek", 
+            "display_as_bot": false, 
+            "text": "<@U3MT4PTNX> uploaded a file: <https://hvr.slack.com/files/U3MT4PTNX/F5QGZ8DU5/mudgicon.png|mudgicon.png>", 
+            "upload": true, 
+            "ts": "1496889505.580234", 
+            "subtype": "file_share", 
+            "user": "U3MT4PTNX", 
+            "file": {
+                "groups": [], 
+                "filetype": "png", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5QGZ8DU5-b7ec7bd647/mudgicon_64.png", 
+                "size": 23364, 
+                "original_h": 128, 
+                "thumb_360_w": 128, 
+                "title": "mudgicon.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5QGZ8DU5/mudgicon.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5QGZ8DU5-b7ec7bd647/mudgicon_360.png", 
+                "id": "F5QGZ8DU5", 
+                "ims": [
+                    "D3X61C9HA"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5QGZ8DU5-b7ec7bd647/mudgicon_80.png", 
+                "thumb_360_h": 128, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1496889505, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5QGZ8DU5-b7ec7bd647/mudgicon_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5QGZ8DU5/download/mudgicon.png", 
+                "user": "U3MT4PTNX", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "mudgicon.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5QGZ8DU5-d88fe9d3d7", 
+                "permalink": "https://hvr.slack.com/files/U3MT4PTNX/F5QGZ8DU5/mudgicon.png", 
+                "is_external": false, 
+                "created": 1496889505, 
+                "original_w": 128, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "i\u2019m back at my desk", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1496790706.779918"
+        }, 
+        {
+            "text": "Remind me when you are back at your desk", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496788776.418867"
+        }, 
+        {
+            "text": "Let me know if you need anything else", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707547.327567"
+        }, 
+        {
+            "text": "cheers mate", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1496707530.324686"
+        }, 
+        {
+            "text": "Now Brizzy\u2019s Character `{\"url\": \"<https://holo.8i.com/app/holo/character/5647746d-a574-499c-b2b3-fa385d1bbca2>\"}`", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707462.314190"
+        }, 
+        {
+            "text": "Nyjah\u2019s promotion", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707394.303994"
+        }, 
+        {
+            "text": "`{\"url\": \"<https://holo.8i.com/app/holo/promotion/ea506ad1-3d8f-43a0-9c9f-69afd77a3358>\"}`", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707384.302442"
+        }, 
+        {
+            "text": "actually, thats not a public one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707305.289884"
+        }, 
+        {
+            "text": "Try that one, should be trump\u2019s promotion", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707271.284366"
+        }, 
+        {
+            "text": "`{\"url\": \"<https://holo.8i.com/app/holo/promotion/7532ac65-5c7d-4147-93b4-253b176a295a>\"}`", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496707248.280642"
+        }, 
+        {
+            "text": "`{\"url\": \"<https://holo.8i.com/app/holo/character/e48dff07-f354-4427-a694-cf953c4afd96>\"}`", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1496040960.077812"
+        }, 
+        {
+            "text": "e48dff07-f354-4427-a694-cf953c4afd96", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496040871.065145"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496029231.935598"
+        }, 
+        {
+            "text": "just removing the pretty quotes for copy paste", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1496029220.934792"
+        }, 
+        {
+            "text": "`{\"url\": \"<https://holo.8i.com/app/holo/promotion/47e3d883-31a6-4825-86d5-49671edc0fab>\"}`", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1496029207.933799"
+        }, 
+        {
+            "text": "{\u201curl\u201d: \u201c<https://holo.8i.com/app/holo/promotion/47e3d883-31a6-4825-86d5-49671edc0fab\u201c>}", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496019691.158498"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494383185.929601"
+        }, 
+        {
+            "text": "i\u2019ve got a game with Scott around 330pm. keen for a :tabletennis: #mudgematch before then?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1494382970.900196"
+        }, 
+        {
+            "text": "Could you try out the signup/email flow again, with and without the app installed.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492746080.680276"
+        }, 
+        {
+            "text": "cool man", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370650.446878"
+        }, 
+        {
+            "text": "cool. i think that\u2019s my questions answered for now. thanks mate", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370643.446163"
+        }, 
+        {
+            "text": "Yea, I'm not sure how valuable that is going to be, but we can do it either way", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370610.442338"
+        }, 
+        {
+            "text": "ah that explains this one:\n`&lt;0=unknown | 1=pre-capture | 2=capture&gt;`", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370574.438197"
+        }, 
+        {
+            "text": "I think thats just Mitch's add on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370551.435551"
+        }, 
+        {
+            "text": "I'll be doing a pass over it later on, and will let you know if anything looks odd", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370538.433952"
+        }, 
+        {
+            "text": "last question(s): purple annotations in excel sheet = ?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370529.432669"
+        }, 
+        {
+            "text": "sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370523.431994"
+        }, 
+        {
+            "text": "i\u2019ll assume nil for anything unstated and let the SDK figure it out", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370513.430914"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370491.428448"
+        }, 
+        {
+            "text": "but that probably depends on the library you are using", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370453.423706"
+        }, 
+        {
+            "text": "Yea, I believe they should be optional anyway", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370444.422624"
+        }, 
+        {
+            "text": "ah.\nregarding the value that we send back for events - are these always 0 unless stated?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370411.418300"
+        }, 
+        {
+            "text": "Basically it will let us see if some poses are better for photos and some are better in videos.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370372.413403"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370295.404317"
+        }, 
+        {
+            "text": "ah, so we\u2019re counting how many times there was a capture of a pose (where capture is video, photo or multiphoto), and only for video we include the length of the recording", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489370279.402609"
+        }, 
+        {
+            "text": "That is the reason we are tracking that number. Capture mode means Video, Photo or Multi Photo", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489370186.392007"
+        }, 
+        {
+            "username": "thomverbeek", 
+            "display_as_bot": false, 
+            "text": "<@U3MT4PTNX> uploaded a file: <https://hvr.slack.com/files/U3MT4PTNX/F4HUK7GMV/screen_shot_2017-03-13_at_2.46.31_pm.png|Analytics - capture> and commented: What does \"count captures per capture mode per pose\" mean?", 
+            "upload": true, 
+            "ts": "1489369671.336197", 
+            "subtype": "file_share", 
+            "user": "U3MT4PTNX", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "What does \"count captures per capture mode per pose\" mean?", 
+                    "created": 1489369669, 
+                    "timestamp": 1489369669, 
+                    "is_intro": true, 
+                    "user": "U3MT4PTNX", 
+                    "id": "Fc4HU84F5L"
+                }, 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F4HUK7GMV-285cf37c00/screen_shot_2017-03-13_at_2.46.31_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F4HUK7GMV-285cf37c00/screen_shot_2017-03-13_at_2.46.31_pm_64.png", 
+                "size": 19911, 
+                "original_h": 65, 
+                "thumb_360_w": 360, 
+                "title": "Analytics - capture", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F4HUK7GMV/screen_shot_2017-03-13_at_2.46.31_pm.png", 
+                "thumb_720_h": 52, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F4HUK7GMV-285cf37c00/screen_shot_2017-03-13_at_2.46.31_pm_360.png", 
+                "id": "F4HUK7GMV", 
+                "ims": [
+                    "D3X61C9HA"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F4HUK7GMV-285cf37c00/screen_shot_2017-03-13_at_2.46.31_pm_80.png", 
+                "thumb_360_h": 26, 
+                "thumb_480_h": 35, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1489369669, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F4HUK7GMV-285cf37c00/screen_shot_2017-03-13_at_2.46.31_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F4HUK7GMV/download/screen_shot_2017-03-13_at_2.46.31_pm.png", 
+                "user": "U3MT4PTNX", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-03-13 at 2.46.31 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F4HUK7GMV-0c85eecd2d", 
+                "permalink": "https://hvr.slack.com/files/U3MT4PTNX/F4HUK7GMV/screen_shot_2017-03-13_at_2.46.31_pm.png", 
+                "is_external": false, 
+                "created": 1489369669, 
+                "original_w": 894, 
+                "comments_count": 1, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F4HUK7GMV-285cf37c00/screen_shot_2017-03-13_at_2.46.31_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "hey bro, analytics question:", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489369630.331883"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121578.836543"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121572.836089"
+        }, 
+        {
+            "text": "as in, staging hits dev-analytics and prod hits prod-analytics?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121567.835606"
+        }, 
+        {
+            "text": "It should ideally be in sync with hitting the staging vs production API's", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121533.832709"
+        }, 
+        {
+            "text": "ok, i\u2019ll coordinate that with Jed", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121521.831824"
+        }, 
+        {
+            "text": "if it is possible to change that value before you build for the beta release it would be preferred", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121455.826305"
+        }, 
+        {
+            "text": "I think thats ok for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121434.824612"
+        }, 
+        {
+            "text": "Actually Mitch has access to the current Tango property", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121404.822228"
+        }, 
+        {
+            "text": "we can currently only create builds wired for 1 GA environment. Would it make sense if it\u2019s the development one for now? i need to spend some time next week configuring deployment builds", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121401.822025"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121341.817239"
+        }, 
+        {
+            "text": "Mitch has no access as far as I'm aware", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121315.815280"
+        }, 
+        {
+            "text": "Tokes has access to all GA properties", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121285.813081"
+        }, 
+        {
+            "text": "do Tokes and Mitch have access to the production one?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121259.811043"
+        }, 
+        {
+            "text": "cheers mate", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121247.810042"
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121211.807262"
+        }, 
+        {
+            "text": "Oh yea for sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489121137.801513"
+        }, 
+        {
+            "text": "hey mate, not sure if you\u2019re still working. If you get a moment, could you please grant me Google Analytics access to UA-60838253-7?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1489121126.800605", 
+            "edited": {
+                "user": "U3MT4PTNX", 
+                "ts": "1489121155.000000"
+            }
+        }, 
+        {
+            "text": "mint, will do", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1487717820.000006"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet|Holo - Google Analytics Events and Timing Logging Sheet>", 
+            "upload": false, 
+            "ts": "1487717762.000004", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [
+                    "G4KR129L0", 
+                    "G6UG2M5C5"
+                ], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_64.png", 
+                "size": 57339, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_360.png", 
+                "id": "F3X0XTCG3", 
+                "ims": [
+                    "D12DBF78S", 
+                    "D3X61C9HA", 
+                    "D431QMJ66", 
+                    "D450Y9VNH", 
+                    "D5MK78T28"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_800.png", 
+                "timestamp": 1485462811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5", 
+                    "C3QBYRUKE"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet", 
+                "is_external": true, 
+                "created": 1485462811, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "That tracking id was set up as a Firebase analytics account, and it doesn't look like it can be changed.\nWhen you get a chance can you update the app to use UA-60838253-10 for development and UA-60838253-9 for prod.\nI've added this info to the spreadsheet as well\n<https://docs.google.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit#gid=1281295015>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487717762.000003"
+        }, 
+        {
+            "text": "tracking id: UA-60838253-8", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1487717330.000002"
+        }, 
+        {
+            "text": "chur", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1487299365.000005"
+        }, 
+        {
+            "text": "Thats where I last saw it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487299362.000004"
+        }, 
+        {
+            "text": "try asher's desk", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487299354.000003"
+        }, 
+        {
+            "text": "hey man, you always have the inside scoop here. Say hypothetically i was looking to sign Dana\u2019s farewell card - would you know where it is?", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1487299330.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1485465829.000003"
+        }, 
+        {
+            "text": "iOS app is added to firebase :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U3MT4PTNX", 
+            "ts": "1485465824.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3MT4PTNX", 
+            "U0C90MHEH"
+        ]
+    }
+}

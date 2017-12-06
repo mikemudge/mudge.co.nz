@@ -1,0 +1,28 @@
+{
+    "messages": [
+        {
+            "text": "Sounds good.  Thanks very much", 
+            "type": "message", 
+            "user": "U3AUL4ZGC", 
+            "ts": "1495584720.429151"
+        }, 
+        {
+            "text": "I\u2019ll get it started, but it\u2019ll need some input from design first. As I\u2019ll need to know how to fit it in with the current layout", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495584454.371104"
+        }, 
+        {
+            "text": "Hey Mudge - hope you're good.  I had a website request.  Could you put my contact info on there for any advertising or brand inquiries for VR and Holo?  The webpage is the first stop for many marketers looking for this info so it'll be helpful within the ad marketplace and drive leads my way.", 
+            "type": "message", 
+            "user": "U3AUL4ZGC", 
+            "ts": "1495583264.095277"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3AUL4ZGC", 
+            "U0C90MHEH"
+        ]
+    }
+}

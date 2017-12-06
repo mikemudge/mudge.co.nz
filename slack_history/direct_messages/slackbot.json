@@ -1,0 +1,1792 @@
+{
+    "messages": [
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C65QGF50C|holo-content-releases>* \u2014 19 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C65QGF50C_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo-content-releases", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C3GRJ6P9B|holo_ci>* \u2014 2 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C3GRJ6P9B_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo_ci", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C7SB742EP|learn>* \u2014 34 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C7SB742EP_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#learn", 
+                    "id": 3
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "4"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "5"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4
+                }
+            ], 
+            "text": "This week, 8i averaged *1,160 messages per day*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say au revoir.", 
+            "ts": "1512004898.000087", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name. ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1510867683.000025"
+        }, 
+        {
+            "text": "<https://staging.8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510867682.000593", 
+            "attachments": [
+                {
+                    "image_bytes": 261318, 
+                    "title": "8i - Real human holograms for augmented, virtual and mixed reality \u2014 8i", 
+                    "service_name": "8i", 
+                    "image_width": 385, 
+                    "title_link": "https://staging.8i.com", 
+                    "image_height": 250, 
+                    "image_url": "https://staging.8i.com/static/img/default_share_image.9fb7bb4f46ad.jpg", 
+                    "text": "8i - Real human holograms for augmented, virtual and mixed reality", 
+                    "id": 1, 
+                    "fallback": "8i: 8i - Real human holograms for augmented, virtual and mixed reality \u2014 8i", 
+                    "service_icon": "https://staging.8i.com/static/img/favicon.22f5cd6f9bc3.ico", 
+                    "from_url": "https://staging.8i.com"
+                }
+            ]
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name. ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1510777189.000377"
+        }, 
+        {
+            "text": "<https://staging.8i.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510777189.000309", 
+            "attachments": [
+                {
+                    "thumb_height": 735, 
+                    "service_icon": "https://staging.8i.com/static/img/favicon.b71d7fe119bc.png", 
+                    "thumb_width": 1131, 
+                    "title": "8i - Real human holograms for augmented, virtual and mixed reality \u2014 8i", 
+                    "service_name": "8i", 
+                    "title_link": "https://staging.8i.com/", 
+                    "text": "8i - Real human holograms for augmented, virtual and mixed reality", 
+                    "id": 1, 
+                    "fallback": "8i: 8i - Real human holograms for augmented, virtual and mixed reality \u2014 8i", 
+                    "thumb_url": "https://staging.8i.com/static/img/default_share_image.9fb7bb4f46ad.jpg", 
+                    "from_url": "https://staging.8i.com/"
+                }
+            ]
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name. ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1510773828.000473"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name. ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1510719247.000099"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C6Q9VNWSY|argo>* \u2014 21 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C6Q9VNWSY_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#argo", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C7TPHU6G1|croc_bike_challenge>* \u2014 27 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C7TPHU6G1_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#croc_bike_challenge", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C602ANT39|holo-stats>* \u2014 35 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C602ANT39_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo-stats", 
+                    "id": 3
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "4"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "5"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4
+                }
+            ], 
+            "text": "This week, 8i averaged *1,668 messages per day*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say au revoir.", 
+            "ts": "1510696989.000064", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "<@U03DG12H5> archived the private channel <https://hvr.slack.com/archives/tech-foundry|tech-foundry>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1509659681.000166"
+        }, 
+        {
+            "attachments": [
+                {
+                    "callback_id": "reminders_snooze_262185709122", 
+                    "id": 1, 
+                    "actions": [
+                        {
+                            "style": "primary", 
+                            "name": "complete", 
+                            "text": "Mark as Complete", 
+                            "value": "262185709122", 
+                            "type": "button", 
+                            "id": "1"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "delete", 
+                            "text": "Delete", 
+                            "value": "262185709122", 
+                            "type": "button", 
+                            "id": "2"
+                        }, 
+                        {
+                            "data_source": "static", 
+                            "name": "snooze_action_menu", 
+                            "text": "Snooze", 
+                            "id": "3", 
+                            "type": "select", 
+                            "options": [
+                                {
+                                    "text": "20 minutes", 
+                                    "value": "20"
+                                }, 
+                                {
+                                    "text": "1 hour", 
+                                    "value": "60"
+                                }, 
+                                {
+                                    "text": "3 hours", 
+                                    "value": "180"
+                                }, 
+                                {
+                                    "text": "Tomorrow at 9 AM", 
+                                    "value": "tomorrow"
+                                }, 
+                                {
+                                    "text": "Next week", 
+                                    "value": "monday"
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "footer": "Direct Message", 
+                    "fallback": "[October 25th, 2017 9:03 PM] patrick: <mailto:florianschr@gmail.com|florianschr@gmail.com>\n\nWeb 600's in: storage/users/Patrick/NZfamilies_Web600/For Florian", 
+                    "channel_name": "Direct Message", 
+                    "text": "<mailto:florianschr@gmail.com|florianschr@gmail.com>\n\nWeb 600's in: storage/users/Patrick/NZfamilies_Web600/For Florian", 
+                    "author_link": "https://hvr.slack.com/team/U0E3YEV7S", 
+                    "ts": "1508990614.000082", 
+                    "author_name": "Patrick Savill", 
+                    "id": 2, 
+                    "channel_id": "D6PHBNMR6", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "author_subname": "Patrick Savill", 
+                    "author_id": "U0E3YEV7S", 
+                    "author_icon": "https://avatars.slack-edge.com/2016-01-22/19135803249_d970028a6160f3f9fcef_48.png", 
+                    "is_msg_unfurl": true, 
+                    "from_url": "https://hvr.slack.com/archives/D6PHBNMR6/p1508990614000082"
+                }
+            ], 
+            "text": "You asked me to remind you about <https://hvr.slack.com/archives/D6PHBNMR6/p1508990614000082|this message> (\"florianschr@gmail.com Web 600's...\").", 
+            "ts": "1509048010.000462", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "<@U1DRXD6HG|owen> archived the private channel <https://hvr.slack.com/archives/radio_nz_shoot|radio_nz_shoot>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1505086869.000084"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C5SQU8170|streaming>* \u2014 26 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C5SQU8170_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#streaming", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C6FP0M2UW|holo-notifications>* \u2014 3 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C6FP0M2UW_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo-notifications", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C4FH60B27|holo_design>* \u2014 14 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C4FH60B27_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo_design", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": ":wave: Howdy! Last week you sent *143 messages*, for a monthly total of *594*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1503532136.000073", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "<@U69DBJQ5R|raf> mentioned you in the <#C2TLLNXM2|infrastructure> channel: <https://hvr.slack.com/archives/C2TLLNXM2/p1502167035551822>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1502167040.068231", 
+            "attachments": [
+                {
+                    "footer": "Posted in #infrastructure", 
+                    "channel_name": "infrastructure", 
+                    "text": "Just got a message from BuildKite that their support team might be able to fix the issues Holo team is having with build caching cc <@U0C90MHEH>", 
+                    "author_link": "https://hvr.slack.com/team/raf", 
+                    "ts": "1502167035.551822", 
+                    "author_name": "Rafael Fonseca", 
+                    "id": 1, 
+                    "channel_id": "C2TLLNXM2", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "author_subname": "raf", 
+                    "from_url": "https://hvr.slack.com/archives/C2TLLNXM2/p1502167035551822", 
+                    "author_icon": "https://avatars.slack-edge.com/2017-07-17/212872467504_df9a334192435c603a1f_48.jpg", 
+                    "is_msg_unfurl": true, 
+                    "fallback": "[August 7th, 2017 9:37 PM] raf: Just got a message from BuildKite that their support team might be able to fix the issues Holo team is having with build caching cc <@U0C90MHEH>"
+                }
+            ]
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C5QE5DR0U|python>* \u2014 16 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C5QE5DR0U_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#python", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C60JED6QG|cms>* \u2014 13 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C60JED6QG_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#cms", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C03DG7DGR|code>* \u2014 58 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C03DG7DGR_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#code", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": "This week, 8i averaged *1,746 messages per day*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1501537864.521664", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "username": "PagerDuty", 
+            "text": "A new PagerDuty integration has been added to your Slack channel <https://8i.slack.com/archives/C6FP0M2UW|#holo-notifications>. To acknowledge and resolve incidents in Slack, <https://eighteye.pagerduty.com/slack/associate/77b638a8d1c443fca20f72b22c2d9018|link your accounts>. \u00b7 <https://eighteye.pagerduty.com/slack/opt_out/77b638a8d1c443fca20f72b22c2d9018|Don't ask me again>", 
+            "ts": "1501213521.660520", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "bot_id": "B6F0Q23B7"
+        }, 
+        {
+            "text": "<@U0PCBCC5C|shane> mentioned you in the <#C03DG1WH5|3dreconstruction> channel: <https://hvr.slack.com/archives/C03DG1WH5/p1499039907967783>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1499039928.225965", 
+            "attachments": [
+                {
+                    "footer": "Posted in #3dreconstruction", 
+                    "channel_name": "3dreconstruction", 
+                    "text": "<@U0C90MHEH> what is the current status of the HVR Web Player?", 
+                    "author_link": "https://hvr.slack.com/team/shane", 
+                    "ts": "1499039907.967783", 
+                    "author_name": "Shane", 
+                    "id": 1, 
+                    "channel_id": "C03DG1WH5", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "author_subname": "shane", 
+                    "from_url": "https://hvr.slack.com/archives/C03DG1WH5/p1499039907967783", 
+                    "author_icon": "https://avatars.slack-edge.com/2016-02-29/23468078864_3819053140e31387f003_48.jpg", 
+                    "is_msg_unfurl": true, 
+                    "fallback": "[July 2nd, 2017 4:58 PM] shane: <@U0C90MHEH> what is the current status of the HVR Web Player?"
+                }
+            ]
+        }, 
+        {
+            "text": "You have been added to the <!subteam^S5XGW5WKD|@holosquad> User Group by <@U1S8KCAV9|brandon>. From now on, you will be notified when someone uses <!subteam^S5XGW5WKD|@holosquad>.", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1498091045.884092"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C22LJN3KK|holoassets>* \u2014 15 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C22LJN3KK_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holoassets", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C5C3ANG3G|engineering>* \u2014 52 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C5C3ANG3G_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#engineering", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C46JLBDR9|space>* \u2014 10 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C46JLBDR9_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#space", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": "This week, 8i averaged *1,583 messages per day*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1497316236.610512", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496374405.513929"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496366943.613765"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496366895.607648"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496366870.604542"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496366199.520037"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496359540.551195"
+        }, 
+        {
+            "text": "<https://thisisholo.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496359540.551144", 
+            "attachments": [
+                {
+                    "title": "Holo - Mix Holograms into Photos &amp; Videos \u2014 Holo", 
+                    "service_name": "Holo", 
+                    "title_link": "https://thisisholo.com/", 
+                    "text": "Welcome to Holo, the app that lets you add holograms into your real-world environment and take videos and photos to share with friends.", 
+                    "id": 1, 
+                    "fallback": "Holo: Holo - Mix Holograms into Photos &amp; Videos \u2014 Holo", 
+                    "from_url": "https://thisisholo.com/"
+                }
+            ]
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496279149.660704"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1496276666.303082"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "EFEF74", 
+                    "text": "*<#C03DG1PN7|wellyoffice>* \u2014 78 members \n:star: *Starred channel*", 
+                    "callback_id": "suggestions_star_C03DG1PN7_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#wellyoffice", 
+                    "id": 1
+                }, 
+                {
+                    "color": "EFEF74", 
+                    "text": "*<#C4BK9HZMW|football>* \u2014 9 members \n:star: *Starred channel*", 
+                    "callback_id": "suggestions_star_C4BK9HZMW_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#football", 
+                    "id": 2
+                }, 
+                {
+                    "color": "EFEF74", 
+                    "text": "*<#C3N7GTTV5|holo-dev>* \u2014 15 members \n:star: *Starred channel*", 
+                    "callback_id": "suggestions_star_C3N7GTTV5_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo-dev", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": ":star2: *Stars* are a great way to tidy up your channel list \u2014 they put your most important conversations right up top. Here are a few channels you check often and might want to *star*:", 
+            "ts": "1493068070.911779", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "<@U03DJ84DC|tom> archived the channel <https://hvr.slack.com/archives/wellyflicks|#wellyflicks>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1492468830.081603"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C48QV5V5K|holo_exceptions>* \u2014 2 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C48QV5V5K_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo_exceptions", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C14MS57HS|boardgamesnights>* \u2014 23 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C14MS57HS_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#boardgamesnights", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C42DSQY4U|holohack_1>* \u2014 39 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C42DSQY4U_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holohack_1", 
+                    "id": 3
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "4"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "5"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4
+                }
+            ], 
+            "text": "This week, 8i averaged *1,545 messages per day*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1488921018.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C1BFSJ7NV|videogames>* \u2014 18 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C1BFSJ7NV_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#videogames", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C03DG6C3B|unityplugin>* \u2014 43 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C03DG6C3B_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#unityplugin", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C3N7GTTV5|holo-dev>* \u2014 9 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C3N7GTTV5_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo-dev", 
+                    "id": 3
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "4"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "5"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4
+                }
+            ], 
+            "text": ":wave: Howdy! Last week you sent *107 messages*, for a monthly total of *331*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1487033235.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1484706880.000019"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/feed/post/09850d56-2919-4200-91ee-24b557ba931e>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484706880.000018", 
+            "attachments": [
+                {
+                    "title": "I found this video...", 
+                    "service_name": "8i", 
+                    "title_link": "https://holo-stage.dev.8i.com/feed/post/09850d56-2919-4200-91ee-24b557ba931e", 
+                    "text": "I think wrestler made this video and I might have the wrestler device....", 
+                    "id": 1, 
+                    "fallback": "8i: I found this video...", 
+                    "service_icon": "https://holo-stage.dev.8i.com/static/favicon.ico", 
+                    "from_url": "https://holo-stage.dev.8i.com/feed/post/09850d56-2919-4200-91ee-24b557ba931e"
+                }
+            ]
+        }, 
+        {
+            "text": "You can keep track of links by sending them to yourself \u2014 just select the plus sign (*+*) next to the direct messages list, and search for your own name! ", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1484706772.000017"
+        }, 
+        {
+            "text": "<https://holo-stage.dev.8i.com/feed/post/f10f772b-5a62-44dd-8d3e-4f5475ada104>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484706772.000016"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C03DG1EFK|demos>* \u2014 44 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C03DG1EFK_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#demos", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C3BGP2XHQ|office_requests>* \u2014 17 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C3BGP2XHQ_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#office_requests", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C3FPDV56G|thanks>* \u2014 69 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C3FPDV56G_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#thanks", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": ":wave: Howdy! Last week you sent *51 messages*, for a monthly total of *187*. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1484619188.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "<@U31U28KBR|erica> archived the channel <https://hvr.slack.com/archives/secretsanta|#secretsanta>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1484085241.000002"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C1FKWT6R5|security>* \u2014 8 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C1FKWT6R5_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#security", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C0NGJV8UW|beer>* \u2014 22 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C0NGJV8UW_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#beer", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C03DJ3Z9A|codec>* \u2014 36 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C03DJ3Z9A_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#codec", 
+                    "id": 3
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "4"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "5"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4
+                }
+            ], 
+            "text": ":wave: Hi there! You sent *68 messages* last week. That's *0.73 percent* of 8i\u2019s collective conversation. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1481679146.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "2AB27B", 
+                    "text": "*<#C03DG1R5K|la-stu8io>* \u2014 54 members\n_Popular with people in <#C03DJ8Y9G|press> and  <#C03DG12JP|random>_", 
+                    "actions": [
+                        {
+                            "style": "primary", 
+                            "name": "join", 
+                            "text": "Join Channel", 
+                            "value": "join", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_join_C03DG1R5K_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#la-stu8io", 
+                    "id": 1
+                }, 
+                {
+                    "color": "2AB27B", 
+                    "text": "*<#C03DG1WH5|3dreconstruction>* \u2014 42 members\n_Popular with people in <#C03DG7DGR|code> and  <#C03DG12JP|random>_", 
+                    "actions": [
+                        {
+                            "style": "primary", 
+                            "name": "join", 
+                            "text": "Join Channel", 
+                            "value": "join", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_join_C03DG1WH5_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#3dreconstruction", 
+                    "id": 2
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "3"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "4"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 3
+                }
+            ], 
+            "text": ":wave: Howdy! Last week you sent *45 messages*, for a monthly total of *493*. Meanwhile, I found a few channels you might be interested in:", 
+            "ts": "1481061235.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C03LFC6K6|dev_website>* \u2014 31 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C03LFC6K6_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#dev_website", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C1PDVMCLR|office-quotes>* \u2014 10 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C1PDVMCLR_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#office-quotes", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C1S00LZCZ|wellie-gokarting>* \u2014 11 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C1S00LZCZ_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#wellie-gokarting", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": ":wave: Hi there! You sent *138 messages* last week. That's *1.92 percent* of 8i\u2019s collective conversation. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1479337558.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C23EBV0VC|tabletennis>* \u2014 10 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C23EBV0VC_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#tabletennis", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C1PS04TJ4|pokemongo>* \u2014 3 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C1PS04TJ4_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#pokemongo", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C12DGKJCC|sceneschema>* \u2014 4 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C12DGKJCC_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#sceneschema", 
+                    "id": 3
+                }, 
+                {
+                    "text": "Would you like more suggestions in a week or so?", 
+                    "actions": [
+                        {
+                            "style": "", 
+                            "name": "enable", 
+                            "text": "Yes, Keep Going", 
+                            "value": "enable", 
+                            "type": "button", 
+                            "id": "4"
+                        }, 
+                        {
+                            "style": "", 
+                            "name": "disable", 
+                            "text": "No, Turn Them Off", 
+                            "value": "disable", 
+                            "type": "button", 
+                            "id": "5"
+                        }
+                    ], 
+                    "callback_id": "suggestions_disable", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4
+                }
+            ], 
+            "text": ":wave: Hi there! You sent *191 messages* last week. That's *2.78 percent* of 8i\u2019s collective conversation. Meanwhile, I found a few channels you rarely use \u2014 it might be time to say _au revoir_.", 
+            "ts": "1477956701.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C0JQEH2D8|welly-health-_-safety>* \u2014 20 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "1"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C0JQEH2D8_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#welly-health-_-safety", 
+                    "id": 1
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C0UD16J3H|wellyflicks>* \u2014 19 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "2"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C0UD16J3H_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#wellyflicks", 
+                    "id": 2
+                }, 
+                {
+                    "color": "F1828C", 
+                    "text": "*<#C1DQLM340|wgtnmtb>* \u2014 6 members ", 
+                    "actions": [
+                        {
+                            "style": "danger", 
+                            "name": "leave", 
+                            "text": "Leave Channel", 
+                            "value": "leave", 
+                            "type": "button", 
+                            "id": "3"
+                        }
+                    ], 
+                    "callback_id": "suggestions_leave_C1DQLM340_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#wgtnmtb", 
+                    "id": 3
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 4, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": "Ready to streamline your channel list? Below are a few channels you rarely interact with \u2014 it might be time to say _au revoir_ :wave:", 
+            "ts": "1476838882.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "<@U03DJ84DC|tom> archived the private channel <https://hvr.slack.com/archives/developer_site|developer_site>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1473981002.000002"
+        }, 
+        {
+            "attachments": [
+                {
+                    "color": "EFEF74", 
+                    "text": "*<#C1CPP949L|holo>* \u2014 31 members\n:star: *Starred channel*", 
+                    "callback_id": "suggestions_star_C1CPP949L_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holo", 
+                    "id": 1
+                }, 
+                {
+                    "color": "EFEF74", 
+                    "text": "*<#C22LJN3KK|holoassets>* \u2014 8 members\n:star: *Starred channel*", 
+                    "callback_id": "suggestions_star_C22LJN3KK_T03DG12GT", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "fallback": "#holoassets", 
+                    "id": 2
+                }, 
+                {
+                    "callback_id": "suggestions_disable", 
+                    "text": ":white_check_mark: *Sounds good!*", 
+                    "fallback": "Don\u2019t want any more channel suggestions? You can disable them in Preferences \u2192 Advanced Options \u2192 Other Options.", 
+                    "id": 3, 
+                    "mrkdwn_in": [
+                        "text"
+                    ]
+                }
+            ], 
+            "text": ":wave: Howdy! Starting today, I\u2019ll occasionally suggest channels to *join*, *star*, or *leave*. The right set of channels will keep you both focused and informed.\n\nTo begin, I\u2019ve rounded up a few channels where you\u2019re especially active. A star will keep them handy, right at the top of your channel list.", 
+            "ts": "1473294482.000002", 
+            "user": "USLACKBOT", 
+            "type": "message", 
+            "bot_id": "B01"
+        }, 
+        {
+            "text": "You asked me to remind you about <https://hvr.slack.com/archives/D1RUVEQ8M/p1473214198000027|this message> from <@U15894NCC|taosmyers>.\n_<slack-action://BSLACKBOT/reminders/complete/D0C8YGASY/76932936070//0/0/1473217843|Mark as complete> or remind me later: <slack-action://BSLACKBOT/reminders/snooze/D0C8YGASY/76932936070//0/0/1473217843/15|15 mins> \u00b7 <slack-action://BSLACKBOT/reminders/snooze/D0C8YGASY/76932936070//0/0/1473217843/60|1 hr> \u00b7 <slack-action://BSLACKBOT/reminders/snooze/D0C8YGASY/76932936070//0/0/1473217843/tomorrow|Tomorrow>_", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1473217843.000002", 
+            "attachments": [
+                {
+                    "footer": "Direct Message", 
+                    "channel_name": "Direct Message", 
+                    "text": "`<http://clouds.8i.com/Foxtrot2|clouds.8i.com/Foxtrot2>`\n*FOXTROT02_210* 600TC", 
+                    "author_link": "https://hvr.slack.com/team/taosmyers", 
+                    "ts": "1473214198.000027", 
+                    "author_name": "Taos Myers", 
+                    "id": 1, 
+                    "channel_id": "D1RUVEQ8M", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "author_subname": "taosmyers", 
+                    "from_url": "https://hvr.slack.com/archives/D1RUVEQ8M/p1473214198000027", 
+                    "author_icon": "https://avatars.slack-edge.com/2016-08-25/72745147255_fc4addf4059eaedcf996_48.jpg", 
+                    "is_msg_unfurl": true, 
+                    "fallback": "[September 6th, 2016 7:09 PM] taosmyers: `<http://clouds.8i.com/Foxtrot2|clouds.8i.com/Foxtrot2>`\n*FOXTROT02_210* 600TC"
+                }
+            ]
+        }, 
+        {
+            "username": "Envoy \ud83c\udf89", 
+            "attachments": [
+                {
+                    "fields": [
+                        {
+                            "short": true, 
+                            "value": "Jethro Carr", 
+                            "title": "Your Full Name"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "<mailto:jethro.carr@jethrocarr.com|jethro.carr@jethrocarr.com>", 
+                            "title": "Your Email Address"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "Null", 
+                            "title": "Your Awesome Company"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "Michael Mudge", 
+                            "title": "Your Host"
+                        }
+                    ], 
+                    "fallback": "NO FALLBACK DEFINED", 
+                    "id": 1
+                }
+            ], 
+            "icons": {
+                "image_48": "https://s3-us-west-2.amazonaws.com/slack-files2/bot_icons/2016-01-13/18457771287_48.png"
+            }, 
+            "text": "Jethro Carr is here to see you at 8i NZ.", 
+            "ts": "1472189388.881036", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "bot_id": "B0VCRG7NC"
+        }, 
+        {
+            "text": "<@U03DJ84DC|tom> archived the channel <https://hvr.slack.com/archives/dev_portal_desktop|#dev_portal_desktop>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1470002951.000003"
+        }, 
+        {
+            "text": "<@U08M3UXC7|anna> archived the private channel <https://hvr.slack.com/archives/irishluck_|irishluck_>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1469777262.000002"
+        }, 
+        {
+            "username": "Envoy \ud83c\udf89", 
+            "attachments": [
+                {
+                    "fields": [
+                        {
+                            "short": true, 
+                            "value": "Beer Monster", 
+                            "title": "Your Full Name"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "<mailto:collette@8i.com|collette@8i.com>", 
+                            "title": "Your Email Address"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "Happy Friday", 
+                            "title": "Your Awesome Company"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "Michael Mudge", 
+                            "title": "Your Host"
+                        }
+                    ], 
+                    "fallback": "NO FALLBACK DEFINED", 
+                    "id": 1
+                }
+            ], 
+            "icons": {
+                "image_48": "https://s3-us-west-2.amazonaws.com/slack-files2/bot_icons/2016-01-13/18457771287_48.png"
+            }, 
+            "text": "Hey Michael! Beer Monster is here for you at the 8i NZ front desk.", 
+            "ts": "1469163380.000003", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "bot_id": "B0VCRG7NC"
+        }, 
+        {
+            "username": "Envoy \ud83c\udf89", 
+            "attachments": [
+                {
+                    "fields": [
+                        {
+                            "short": true, 
+                            "value": "Asher Hutchings", 
+                            "title": "Your Full Name"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "<mailto:asher@8i.com|asher@8i.com>", 
+                            "title": "Your Email Address"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "Na", 
+                            "title": "Your Awesome Company"
+                        }, 
+                        {
+                            "short": true, 
+                            "value": "Michael Mudge", 
+                            "title": "Your Host"
+                        }
+                    ], 
+                    "fallback": "NO FALLBACK DEFINED", 
+                    "id": 1
+                }
+            ], 
+            "icons": {
+                "image_48": "https://s3-us-west-2.amazonaws.com/slack-files2/bot_icons/2016-01-13/18457771287_48.png"
+            }, 
+            "text": "Hey Michael! Asher Hutchings is here for you at the 8i NZ front desk.", 
+            "ts": "1469154711.000002", 
+            "subtype": "bot_message", 
+            "type": "message", 
+            "bot_id": "B0VCRG7NC"
+        }, 
+        {
+            "text": "Did you know you can keep track of links by sending them to yourself? (Just select the plus sign (*+*) next to the direct messages list, and search for your own name!) Messages to me, Slackbot, are most useful for asking about Slack or setting reminders.", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1467331959.000003"
+        }, 
+        {
+            "text": "<https://www.instagram.com/p/BHSQlkcDK8S>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467331958.000002", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1467331963.000000"
+            }
+        }, 
+        {
+            "text": "Announcement! *You can now ask me Slack-related questions \u2014 and I'll respond.* If I don't understand (I'm only a bot, after all), I'll search Slack's <https://get.slack.help/hc/en-us|Help Center>.\n\n*But wait \u2014 there's more!* Wondering where to jot personal notes, if not here? *Now you can send direct messages to yourself.* Lovely for listing to-dos, drafting messages, or pasting important links. Just select the plus sign (*+*) next to the direct messages list, and search for your own name. :tada:", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1466651841.000002"
+        }, 
+        {
+            "text": "<@U0HV3AQRG|collette> archived the channel <https://hvr.slack.com/archives/website-redesign|#website-redesign>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1466379526.000003"
+        }, 
+        {
+            "text": "<@U0HV3AQRG|collette> archived the channel <https://hvr.slack.com/archives/8i-facility-requests|#8i-facility-requests>", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1466378975.000002"
+        }, 
+        {
+            "text": "<http://8i:8ikitten@mudge.dev.8i.com/experience>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457641091.000005", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "thumb_width": 1920, 
+                    "title": "8i | Experience", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i:8ikitten@mudge.dev.8i.com/experience", 
+                    "text": "8i is defining a brand new medium for representing reality in 3d, for everyone to create and watch. Create, experience and share the most immersive 3D video of real peoplei.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Experience", 
+                    "thumb_url": "http://mudge.dev.8i.com/static/images/shareImage.jpg", 
+                    "from_url": "http://8i:8ikitten@mudge.dev.8i.com/experience"
+                }
+            ]
+        }, 
+        {
+            "text": "You're doing admirably. I'll leave you to it! If you'd like some great tips and a deeper understanding of Slack, check out our handy guide to <https://slack.com/getting-started/users#channels|Making Slack work for you>.", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1444622832.000005"
+        }, 
+        {
+            "text": "Pleasure to meet you. Let me show you a couple things about Slack.", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1444622805.000004"
+        }, 
+        {
+            "text": "something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1444622804.000003"
+        }, 
+        {
+            "text": "Hello, I'm Slackbot. I try to be helpful. (But I\u2019m still just a bot. Sorry!) Type *something* to get started.", 
+            "type": "message", 
+            "user": "USLACKBOT", 
+            "ts": "1444622798.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "USLACKBOT", 
+            "U0C90MHEH"
+        ]
+    }
+}

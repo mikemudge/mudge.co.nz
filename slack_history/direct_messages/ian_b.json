@@ -1,0 +1,123 @@
+{
+    "messages": [
+        {
+            "text": "Thanks for letting me know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512436793.000344"
+        }, 
+        {
+            "text": "Oh right interesting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512436731.000070"
+        }, 
+        {
+            "text": "Emphasis on _guess_ of course", 
+            "type": "message", 
+            "user": "U0J4EK58T", 
+            "ts": "1512436699.000026"
+        }, 
+        {
+            "text": "So my guess is you'll be maintaining it.", 
+            "type": "message", 
+            "user": "U0J4EK58T", 
+            "ts": "1512436689.000006"
+        }, 
+        {
+            "text": "It seems Mike and Seb want to use Holo CMS to power part of Salton Sea. They don't want to use the existing cloud platform.", 
+            "type": "message", 
+            "user": "U0J4EK58T", 
+            "ts": "1512436676.000045"
+        }, 
+        {
+            "text": "Oh yeah, I'd be interested to find out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1512436635.000158"
+        }, 
+        {
+            "text": "I think I've figured out why they want you to stay", 
+            "type": "message", 
+            "user": "U0J4EK58T", 
+            "ts": "1512435457.000016"
+        }, 
+        {
+            "username": "ian_b", 
+            "display_as_bot": false, 
+            "text": "<@U0J4EK58T> uploaded a file: <https://hvr.slack.com/files/U0J4EK58T/F38ASLQEM/credentials__1_.csv|credentials (1).csv>", 
+            "upload": true, 
+            "ts": "1480540602.000006", 
+            "subtype": "file_share", 
+            "user": "U0J4EK58T", 
+            "file": {
+                "filetype": "csv", 
+                "lines_more": 0, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F38ASLQEM", 
+                "size": 122, 
+                "title": "credentials (1).csv", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F38ASLQEM/credentials__1_.csv", 
+                "ims": [
+                    "D3936V4FN"
+                ], 
+                "preview": "User name,Password,Access key ID,Secret access key\r\nmudge,,AKIAJMTYGAO37RXHMDNA,fwPbASjMCEergaHGq3jEpiffiCeHu0GbMmLAm9e8\r\n", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0J4EK58T/F38ASLQEM/credentials__1_.csv/edit", 
+                "username": "", 
+                "timestamp": 1480540601, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F38ASLQEM/download/credentials__1_.csv", 
+                "user": "U0J4EK58T", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "CSV", 
+                "name": "credentials (1).csv", 
+                "mimetype": "text/csv", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F38ASLQEM-cd7c5c0e99", 
+                "permalink": "https://hvr.slack.com/files/U0J4EK58T/F38ASLQEM/credentials__1_.csv", 
+                "is_external": false, 
+                "created": 1480540601, 
+                "lines": 3, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>User name,Password,Access key ID,Secret access key</pre></div>\n<div><pre>mudge,,AKIAJMTYGAO37RXHMDNA,fwPbASjMCEergaHGq3jEpiffiCeHu0GbMmLAm9e8</pre></div>\n<div><pre></pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Taos usually does it, but she is going to be away for a week", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480539943.000005"
+        }, 
+        {
+            "text": "I just need to be able to copy some of the hvrs files across to the s3 buckets I use for web so we can make them available to Holo", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480539921.000004"
+        }, 
+        {
+            "text": "What sort of access do you need Mudge?", 
+            "type": "message", 
+            "user": "U0J4EK58T", 
+            "ts": "1480539878.000003"
+        }, 
+        {
+            "text": "Hey Ian, Are you the administrator of our Amazon account? I need to get access to the amazon s3 bucket <http://virgina.8i.com|virgina.8i.com> and I\u2019m not sure who can enable that for me.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480539652.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0J4EK58T", 
+            "U0C90MHEH"
+        ]
+    }
+}

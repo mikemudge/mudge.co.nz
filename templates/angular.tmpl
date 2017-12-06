@@ -25,7 +25,9 @@
   <div ng-include="'{{ angular.include }}'"></div>
 {% else %}
   {# Show the view for the current page #}
-  <div ng-view autoscroll="true"></div>
+  <div ng-view autoscroll="true">
+    Make sure you run <pre>brunch watch --server</pre>
+  </div>
 {% endif %}
 
   {% for script in scripts %}

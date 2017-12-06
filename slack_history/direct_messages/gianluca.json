@@ -1,0 +1,714 @@
+{
+    "messages": [
+        {
+            "text": "all good, I figured it out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832186.000009"
+        }, 
+        {
+            "text": "oh yea, you speak spanish", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832176.000103"
+        }, 
+        {
+            "text": "sorry don't know why it came out like that", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832175.000152", 
+            "edited": {
+                "user": "U0NPMLW6M", 
+                "ts": "1511832185.000000"
+            }
+        }, 
+        {
+            "text": "no actually in spanish", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832163.000172"
+        }, 
+        {
+            "text": "haha in italian?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832146.000068"
+        }, 
+        {
+            "text": "jeje", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832123.000106"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832117.000109"
+        }, 
+        {
+            "text": "stupid hamstrings", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832112.000001", 
+            "edited": {
+                "user": "U0NPMLW6M", 
+                "ts": "1511832117.000000"
+            }
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832102.000195"
+        }, 
+        {
+            "text": "but I want to sort out my hamstrings so I can enjoy all my sports again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832094.000062"
+        }, 
+        {
+            "text": "I would of loved to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832077.000082"
+        }, 
+        {
+            "text": "I bet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832073.000161"
+        }, 
+        {
+            "text": "it was going to be fun", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832069.000197"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832066.000084"
+        }, 
+        {
+            "text": "oh nooo", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832064.000212"
+        }, 
+        {
+            "text": "I can\u2019t sorry, injured", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1511832059.000138"
+        }, 
+        {
+            "text": "want to play football tomorrow?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1511832045.000063"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629801.000189"
+        }, 
+        {
+            "text": "hahahah", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629801.000137"
+        }, 
+        {
+            "text": "it's them", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629800.000312"
+        }, 
+        {
+            "text": "Smuggled", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629798.000035"
+        }, 
+        {
+            "text": "wouldn\u2019t want to accidently join the other team", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629796.000244"
+        }, 
+        {
+            "text": "Smuggled Budgies vs Sullivans, 11:00, Friday 29 September", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629795.000261"
+        }, 
+        {
+            "text": "Which team are they?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629782.000430"
+        }, 
+        {
+            "text": "mentioning Gustavo doesn't harm anyway", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629779.000218"
+        }, 
+        {
+            "text": "yep", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629768.000136"
+        }, 
+        {
+            "text": "I\u2019ll just show up and say are you short a player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629745.000126"
+        }, 
+        {
+            "text": "maybe if you say the italian goalkeepr", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629736.000204"
+        }, 
+        {
+            "text": "they must remember me but probably not my name", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629728.000170"
+        }, 
+        {
+            "text": "Haha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629720.000667"
+        }, 
+        {
+            "text": "they'll know :smile:", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629715.000283"
+        }, 
+        {
+            "text": "my friend is not playing but if you tell that you are a friend of a friend of Gustavo", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629711.000178"
+        }, 
+        {
+            "text": "frustrating when people get lazy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629678.000055"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629671.000031"
+        }, 
+        {
+            "text": ":smile:", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629664.000443"
+        }, 
+        {
+            "text": "but when they get tired they stop running and it's a shit", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629662.000176"
+        }, 
+        {
+            "text": "sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629638.000108"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629634.000025"
+        }, 
+        {
+            "text": "but they move the ball much better", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629633.000188"
+        }, 
+        {
+            "text": "they don;t defend as well as us", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629628.000503"
+        }, 
+        {
+            "text": "not overally better than our league", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629620.000208"
+        }, 
+        {
+            "text": "well the level is better than us", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629613.000057"
+        }, 
+        {
+            "text": "ah", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629606.000621"
+        }, 
+        {
+            "text": "and they get tired quite soon", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629603.000017"
+        }, 
+        {
+            "text": "the team is quite good, the problem they have they are always few people and nearly never changes", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629595.000012"
+        }, 
+        {
+            "text": "Not too much higher than us?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629590.000479"
+        }, 
+        {
+            "text": "I think 10", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629577.000413"
+        }, 
+        {
+            "text": "What grade are they?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629572.000609"
+        }, 
+        {
+            "text": "perfect", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629553.000250"
+        }, 
+        {
+            "text": "Yea sure, I\u2019ll be there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506629547.000171"
+        }, 
+        {
+            "text": "can i confirm?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629528.000394"
+        }, 
+        {
+            "text": "all yours!", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629525.000099"
+        }, 
+        {
+            "text": "spot still free", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629522.000633"
+        }, 
+        {
+            "text": "asking now if they found anybody", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1506629405.000060"
+        }, 
+        {
+            "text": "sweet, ill text you next time", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503105055.000082"
+        }, 
+        {
+            "text": "I know but I get the ones of other people ", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1503104984.000071"
+        }, 
+        {
+            "text": "so slack probably thought you were asleep :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503104982.000026"
+        }, 
+        {
+            "text": "Get my phone. 0273907415", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1503104970.000005"
+        }, 
+        {
+            "text": "Well that message was at midnight", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503104956.000032"
+        }, 
+        {
+            "text": "Slack doesn't want us to hangout", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1503104952.000030"
+        }, 
+        {
+            "text": "Don't understand why I never get notified when you text me", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1503104943.000007"
+        }, 
+        {
+            "text": "Ha, nice one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503104867.000037"
+        }, 
+        {
+            "text": "Haha. Didn't get the notification\nWe were around until 3 am so probably good :)", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1503104847.000098"
+        }, 
+        {
+            "text": "How's that date?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503059149.000105"
+        }, 
+        {
+            "text": "Dave might be  busy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498218466.397977"
+        }, 
+        {
+            "text": "Me a Dave", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498218403.386500"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498218392.384654"
+        }, 
+        {
+            "text": "Want to join?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1498217900.296131"
+        }, 
+        {
+            "text": "Some friends house", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1498217895.295068"
+        }, 
+        {
+            "text": "Where are you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498213492.475621"
+        }, 
+        {
+            "text": "Hey, thanks man. We actually have a stag do to catch-up with after the music. So I will pass this time. Have fun though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488615923.000003"
+        }, 
+        {
+            "text": "Hey man! I'm having few friends coming home for drinks before going out. Do you and your friends want to join?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1488614277.000002"
+        }, 
+        {
+            "text": "7 people would be perfect", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419842.000045"
+        }, 
+        {
+            "text": "i'm sure we can find 6 or 7 people", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419838.000044"
+        }, 
+        {
+            "text": "see if we can get a team in that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419812.000043"
+        }, 
+        {
+            "text": "ok, I remember saying there is a summer thing up at Te Whaea Park", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419800.000042"
+        }, 
+        {
+            "text": "don;t have any shoes here so will need to buy depending on the case", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419774.000041"
+        }, 
+        {
+            "text": "I don't mind honeslty", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419756.000040"
+        }, 
+        {
+            "text": "we didn't specify", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419751.000039"
+        }, 
+        {
+            "text": "did we talk about indoor and outdoor?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419739.000038"
+        }, 
+        {
+            "text": "at that stage I was still fully aware of everything", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419673.000037"
+        }, 
+        {
+            "text": "we can try to organize that soccer thing whenever you want", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419653.000036"
+        }, 
+        {
+            "text": "Jenga was a success", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419637.000035"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419628.000034"
+        }, 
+        {
+            "text": "good I'll let you work man", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419628.000033"
+        }, 
+        {
+            "text": "i remember me doing some great move at jenga anyway! :smile:", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419618.000032"
+        }, 
+        {
+            "text": "me too", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419603.000031"
+        }, 
+        {
+            "text": "I usually remember the standout moments", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419600.000030"
+        }, 
+        {
+            "text": "good :smile:", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419594.000029"
+        }, 
+        {
+            "text": "yea, I don\u2019t think any thing major happened at the bar", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419584.000028"
+        }, 
+        {
+            "text": "that's it...", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419568.000027"
+        }, 
+        {
+            "text": "I remember something of going out from the bar and then i remember me at home", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419566.000026"
+        }, 
+        {
+            "text": "haha, sorry don\u2019t think I can help", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419555.000025"
+        }, 
+        {
+            "text": "ok.. I hope you would have told me the missing parts", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419541.000024"
+        }, 
+        {
+            "text": "but it was probably too late by then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419540.000023"
+        }, 
+        {
+            "text": "but I don\u2019t remember that part", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419525.000022"
+        }, 
+        {
+            "text": "yea, I went home and apparently made something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419518.000021"
+        }, 
+        {
+            "text": "I didn't even remember dinner ever existed...", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419507.000020"
+        }, 
+        {
+            "text": "yes and also we forgot to have dinner", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419489.000019"
+        }, 
+        {
+            "text": "fine you look as me.. so if we did something despicable nobody will never know", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419482.000018"
+        }, 
+        {
+            "text": "Those 9% beers are too much", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419477.000017"
+        }, 
+        {
+            "text": "I don't remember that", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419434.000016"
+        }, 
+        {
+            "text": "I think we went inside to try and find david", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419425.000015"
+        }, 
+        {
+            "text": "i think it happened", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419425.000014"
+        }, 
+        {
+            "text": "I don\u2019t think so", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419413.000013"
+        }, 
+        {
+            "text": "We played it for quite a while though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419400.000012"
+        }, 
+        {
+            "text": "did the watress asked us to go out?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419400.000011"
+        }, 
+        {
+            "text": "yea, I remember Jenga, but not who won", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419379.000010"
+        }, 
+        {
+            "text": "that's probably the last thing", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419372.000009"
+        }, 
+        {
+            "text": "did I crashed the tower?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419345.000008"
+        }, 
+        {
+            "text": "I remember us playing jenga", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419328.000007"
+        }, 
+        {
+            "text": "I was pretty close to black out too though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419314.000006"
+        }, 
+        {
+            "text": "no, I left you after southern cross", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472419297.000005"
+        }, 
+        {
+            "text": "did you bring me home?", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419261.000004"
+        }, 
+        {
+            "text": "I really blacked out on friday", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419252.000003"
+        }, 
+        {
+            "text": "hey man", 
+            "type": "message", 
+            "user": "U0NPMLW6M", 
+            "ts": "1472419238.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0NPMLW6M", 
+            "U0C90MHEH"
+        ]
+    }
+}

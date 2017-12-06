@@ -1,0 +1,4962 @@
+{
+    "messages": [
+        {
+            "text": "Oh cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480543096.000046"
+        }, 
+        {
+            "text": "Can you show me how to do the rotation again?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480542428.000045"
+        }, 
+        {
+            "text": "I went ahead and set up Andrew so you won't need to transfer any data over. However, he may hit you up for assists through <http://8i.com/admin|8i.com/admin>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480542082.000044"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480539266.000043"
+        }, 
+        {
+            "text": "You will have to touch base with Ian to get set up properly.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480539252.000042"
+        }, 
+        {
+            "text": "Alright, I\u2019ll need access to <http://virgina.8i.com|virgina.8i.com> though, do you remember who gave you access to that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480539239.000041"
+        }, 
+        {
+            "text": "Hey Mudge. So I am OOO until next Wednesday. I think it would be a good idea to have you swap over assets to the <http://cloud.8i.com|cloud.8i.com> in case more solves comes through while I am away.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480539129.000040"
+        }, 
+        {
+            "text": "Yea, it goes well with coding", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041727.000039"
+        }, 
+        {
+            "text": "Man i need to get some more of that", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480041712.000038"
+        }, 
+        {
+            "text": "magic", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041688.000037"
+        }, 
+        {
+            "text": "nope", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041679.000036"
+        }, 
+        {
+            "text": "Wait -- it is working now?! You didn't change anything?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480041671.000035"
+        }, 
+        {
+            "text": "it was responding to click and drags so the mouse is working fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041666.000034"
+        }, 
+        {
+            "text": "hmm, I don\u2019t really know what else I can do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041647.000033"
+        }, 
+        {
+            "text": "I did that. Who knows.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480041463.000032"
+        }, 
+        {
+            "text": "Maybe try restarting chrome and/or the PC", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041438.000031"
+        }, 
+        {
+            "text": "Webpages will randomly crash.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480041428.000030"
+        }, 
+        {
+            "text": "Weird. My computer has been acting weird lately.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480041418.000029"
+        }, 
+        {
+            "text": "Not really sure what is going on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041407.000028"
+        }, 
+        {
+            "text": "I just loaded it on my computer and it worked", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480041397.000027"
+        }, 
+        {
+            "text": "it might be, let me get back to you in a bit", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1480039659.000026"
+        }, 
+        {
+            "text": "Is the play function broken when generating images with WD?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1480039630.000025"
+        }, 
+        {
+            "text": "Awesome thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479941833.000024"
+        }, 
+        {
+            "text": "<http://virginia.8i.com/cloudfarm/la/isilon/Storage/HOLO10/Hvr/HOLO10_270/HOLO10_270_andrew_v01|virginia.8i.com/cloudfarm/la/isilon/Storage/HOLO10/Hvr/HOLO10_270/HOLO10_270_andrew_v01>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479941820.000023"
+        }, 
+        {
+            "text": "Hey, can you send me a link to one of the Web600.hvrs files on virgina, I just need an example of where to look for them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479941347.000022"
+        }, 
+        {
+            "text": "alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479870519.000021"
+        }, 
+        {
+            "text": "Yeah man -- ready to go", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479870514.000020"
+        }, 
+        {
+            "text": "Do you want to just ping me when you are ready?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479870503.000019"
+        }, 
+        {
+            "text": "Have you started the reconstruction yet?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479870494.000018"
+        }, 
+        {
+            "text": "Sweet. Hopefully that helps a little", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479865709.000017"
+        }, 
+        {
+            "text": "alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479865692.000016"
+        }, 
+        {
+            "text": "At 4:00", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479865684.000015"
+        }, 
+        {
+            "text": "Yea sure, now?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479865674.000014"
+        }, 
+        {
+            "text": "Hey dude -- I am going to a reconstruction this afternoon if you would like to see how the process is done.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479865626.000013"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479854690.000012"
+        }, 
+        {
+            "text": "Definitely. Does now work?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479854684.000011"
+        }, 
+        {
+            "text": "Would you mind talking me through what you get from who?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479854668.000010"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1479854663.000009"
+        }, 
+        {
+            "text": "Hey, I\u2019ve got the task of moving the HOLO content update process fully over to the LA team. \nSo they will be able to take over uploading hvrs files and then creating the characters and packs.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479854649.000008"
+        }, 
+        {
+            "text": "and wanted to make sure it was a known issue rather than something bad happening", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478123185.000007"
+        }, 
+        {
+            "text": "I wonder if something different happened somewhere during the pipeline", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478123166.000006"
+        }, 
+        {
+            "text": "Yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478123152.000005"
+        }, 
+        {
+            "text": "Like when they were first brought in?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478122665.000004"
+        }, 
+        {
+            "text": "Wha?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478122651.000003"
+        }, 
+        {
+            "text": "Hey, do you know why the Google selects were all slightly off center and off rotation? Just thought it would be interesting to know why that happened for those particular ones.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478121700.000002"
+        }, 
+        {
+            "text": "Rest up. I'll bug you if it is really important.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478047217.000081"
+        }, 
+        {
+            "text": "Yea, I'll concentrate on it. Took my laptop home too just incase.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478047182.000080"
+        }, 
+        {
+            "text": "Ah -- ok bud. I hope you get to feeling better", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478047099.000079"
+        }, 
+        {
+            "text": "Hey, I'm going home early because I'm still not feeling great. I believe I have the fix in for asset rotation. So you can test that out when you do the rest of the Google stuff.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478046947.000078"
+        }, 
+        {
+            "text": "Yep -- just spoke with Tokes", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478035639.000077"
+        }, 
+        {
+            "text": "Alright, lets leave out the extra google solves from the pack for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478035607.000076"
+        }, 
+        {
+            "text": "The rotation request came from the Google VP", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478035275.000075"
+        }, 
+        {
+            "text": "I don\u2019t know, I don\u2019t know where the rotate request came from", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478035260.000074"
+        }, 
+        {
+            "text": "Are the two solves that are in Holo working ok?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478035214.000073"
+        }, 
+        {
+            "text": "If it doesn't rotate is that ok?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478034722.000072"
+        }, 
+        {
+            "text": "I need a minute. I'm updating these thumbnails", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478034292.000071"
+        }, 
+        {
+            "text": "Do you want to pop down here for a minute", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478034277.000070"
+        }, 
+        {
+            "text": "Ok.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478034139.000069"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478034130.000068"
+        }, 
+        {
+            "text": "so we need to make sure they are good to demo before then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478034129.000067"
+        }, 
+        {
+            "text": "11 Am today?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478034125.000066"
+        }, 
+        {
+            "text": "There is a presentation at 11am of the google stuff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478034103.000065"
+        }, 
+        {
+            "text": "I am about to add 6 new google solves", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478034032.000064"
+        }, 
+        {
+            "text": "Definitely.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478034020.000063"
+        }, 
+        {
+            "text": "Can you ensure that the Google pack is always called \"Google pack\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478034013.000062"
+        }, 
+        {
+            "text": "Hey, I\u2019m having to do some hacky things to support google getting access to some of our content as per Tokes request.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478033927.000061"
+        }, 
+        {
+            "text": "Yea, give me a minute", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478032877.000060"
+        }, 
+        {
+            "text": "Can you swing by when you get a moment", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1478032816.000059"
+        }, 
+        {
+            "text": "That's the content which the Google people can see in the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477956119.000058"
+        }, 
+        {
+            "text": "That's different access to /admin", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477956098.000057"
+        }, 
+        {
+            "text": "Looks like Google will want to have access", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477956045.000056"
+        }, 
+        {
+            "text": "No dude in general. Tokes just updated <#C1CPP949L|holo>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477956025.000054", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477956036.000000"
+            }
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477956014.000053"
+        }, 
+        {
+            "text": "Naming convention of hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477956011.000052"
+        }, 
+        {
+            "text": "It seems naming conventions all of a sudden became important", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477955847.000051"
+        }, 
+        {
+            "text": "Ok maybe Asher wasn't very clear then.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477955821.000050"
+        }, 
+        {
+            "text": "He shouldn't even know about it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477955809.000049"
+        }, 
+        {
+            "text": "He shouldn't", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477955795.000048"
+        }, 
+        {
+            "text": "So Justin from Google wouldn't being use this?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477955727.000047"
+        }, 
+        {
+            "text": "Yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477955715.000046"
+        }, 
+        {
+            "text": "Is it just 8i people?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477955691.000045"
+        }, 
+        {
+            "text": "Hey dude. Who has access to <http://8i.com/admin|8i.com/admin>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477955687.000044"
+        }, 
+        {
+            "text": "Thanks. I hope you feel better!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477949311.000043"
+        }, 
+        {
+            "text": "Yea if you click on them and it shows something about endFrame that's a known error.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477949143.000042"
+        }, 
+        {
+            "username": "taos", 
+            "display_as_bot": false, 
+            "text": "<@U15894NCC> uploaded a file: <https://hvr.slack.com/files/U15894NCC/F2WGSL15F/003.jpg|003.JPG>", 
+            "upload": true, 
+            "ts": "1477947138.000041", 
+            "subtype": "file_share", 
+            "user": "U15894NCC", 
+            "file": {
+                "groups": [], 
+                "filetype": "jpg", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F2WGSL15F-e7d0cd1226/003_64.jpg", 
+                "size": 27495, 
+                "original_h": 463, 
+                "thumb_360_w": 201, 
+                "title": "003.JPG", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F2WGSL15F/003.jpg", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F2WGSL15F-e7d0cd1226/003_360.jpg", 
+                "id": "F2WGSL15F", 
+                "ims": [
+                    "D1RUVEQ8M"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F2WGSL15F-e7d0cd1226/003_80.jpg", 
+                "thumb_360_h": 360, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1477947135, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F2WGSL15F-e7d0cd1226/003_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F2WGSL15F/download/003.jpg", 
+                "user": "U15894NCC", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "003.JPG", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F2WGSL15F-8bb7bdf9f6", 
+                "permalink": "https://hvr.slack.com/files/U15894NCC/F2WGSL15F/003.jpg", 
+                "is_external": false, 
+                "created": 1477947135, 
+                "original_w": 259, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Should I ignore this error message:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477947127.000040"
+        }, 
+        {
+            "attachments": [
+                {
+                    "image_bytes": 954872, 
+                    "title": "that was close", 
+                    "image_width": 500, 
+                    "title_link": "http://giphy.com/gifs/dracula-hotel-transylvania-that-was-close-AGf1fZjm4pfMI", 
+                    "image_height": 296, 
+                    "image_url": "http://media4.giphy.com/media/AGf1fZjm4pfMI/giphy.gif", 
+                    "fallback": "giphy: <http://giphy.com/gifs/dracula-hotel-transylvania-that-was-close-AGf1fZjm4pfMI>", 
+                    "id": 1, 
+                    "is_animated": true
+                }
+            ], 
+            "text": "/giphy that was close", 
+            "ts": "1477884923.000039", 
+            "user": "U15894NCC", 
+            "type": "message", 
+            "bot_id": "B0NV066V7"
+        }, 
+        {
+            "text": "Yea, me too", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477884836.000037"
+        }, 
+        {
+            "text": "Thanks for the heads up. Glad it is working now.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477884808.000036"
+        }, 
+        {
+            "text": "Ok cool. I updated Holo with only the rotated solves", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477884761.000035", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477884861.000000"
+            }
+        }, 
+        {
+            "text": "which may have forced it to update", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477884640.000034"
+        }, 
+        {
+            "text": "I moved the rotated ones into a separate character though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477884624.000033"
+        }, 
+        {
+            "text": "Yeah -- I just ran a test and it seems to work", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477884622.000032"
+        }, 
+        {
+            "text": "Ok it seems like its been fixed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477884612.000031"
+        }, 
+        {
+            "text": "No", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477884447.000030"
+        }, 
+        {
+            "text": "Does setting the screen shot influence how the HVRS is brought in?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477884302.000029"
+        }, 
+        {
+            "text": "Yea, its a very strange thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477884249.000027"
+        }, 
+        {
+            "text": "That is odd. That seems like something that  we should be able to do relatively easily.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477884192.000026", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477884252.000000"
+            }
+        }, 
+        {
+            "text": "and now we don\u2019t really have any ideas left", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477883937.000025"
+        }, 
+        {
+            "text": "we thought it might be the scientific notation of the quaternion but changing that doesn\u2019t seem to have fixed the issue", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477883928.000024"
+        }, 
+        {
+            "text": "No", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477883899.000023"
+        }, 
+        {
+            "text": "Do youn know what is causing that? ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477883887.000022"
+        }, 
+        {
+            "text": "Hmmm. ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477883834.000021"
+        }, 
+        {
+            "text": "I\u2019m not sure if the last release version of Holo will do it either", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477883805.000020"
+        }, 
+        {
+            "text": "Hey, it sounds like the current version of Holo is not loading the rotated versions of the INV stuff.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477883781.000019"
+        }, 
+        {
+            "text": "Thanks for that update! ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869764.000018"
+        }, 
+        {
+            "text": "I was just going to tell whoever needs to know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477869516.000017"
+        }, 
+        {
+            "text": "That is also who is using it", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869512.000016"
+        }, 
+        {
+            "text": "Its done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477869508.000015"
+        }, 
+        {
+            "text": "It will be under Google VP", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869501.000014"
+        }, 
+        {
+            "text": "who is using the INV stuff?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477869395.000013"
+        }, 
+        {
+            "text": "Thanks for checking this ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869365.000012"
+        }, 
+        {
+            "text": "Yes go ahead and put them in Holo", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869341.000011"
+        }, 
+        {
+            "text": "I\u2019m not sure what you mean by mirrors", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477869306.000010"
+        }, 
+        {
+            "text": "Mmm... if \nweb director mirrors Holo then no", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869275.000008", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477869290.000000"
+            }
+        }, 
+        {
+            "text": "Thank you Mudge", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477869253.000007"
+        }, 
+        {
+            "text": "What do I need to do, put them in Holo?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477869247.000006"
+        }, 
+        {
+            "text": "I can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477868971.000005"
+        }, 
+        {
+            "text": "I am out of the office. Can you run a test on it? ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477868928.000004"
+        }, 
+        {
+            "text": "You should just be able to rotate him in web director", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477868842.000003"
+        }, 
+        {
+            "text": "LA had a question from the GoogleVP in INV2_120 &amp; INV2_130, would it be possibly to twist his HVR 90degrees to his left? He requested since in their presentation he's not facing the Holo user but instead facing the crowd. Easier if he pops up facing 90deg left instead of them having to twist his HVR to the correct orientation live on stage. Curious to know how much work that would take before we commit to making the change?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477868718.000002"
+        }, 
+        {
+            "text": "Yea, I'll double check, but I have started doing that everywhere for deletion", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700766.000155"
+        }, 
+        {
+            "text": "I am heading out then. See you Monday!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700707.000153", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477700717.000000"
+            }
+        }, 
+        {
+            "text": "Ok -- then I probably didn't. Phew.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700662.000151"
+        }, 
+        {
+            "text": "Can I make a request that delete have a pop up that asks if you are certain?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700648.000150", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477700673.000000"
+            }
+        }, 
+        {
+            "text": "It should actually ask you to confirm before deleting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700639.000149"
+        }, 
+        {
+            "text": "I guess you'll need to wait and see if anyone is missing anything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700617.000148"
+        }, 
+        {
+            "text": "I was scrolling to the right with my mouse and the page refreshed.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700591.000146", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1477700610.000000"
+            }
+        }, 
+        {
+            "text": "Oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700568.000145"
+        }, 
+        {
+            "text": "Idk for sure though", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700561.000144"
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700558.000143"
+        }, 
+        {
+            "text": "Was it private?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700555.000142"
+        }, 
+        {
+            "text": "Oh no", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700538.000141"
+        }, 
+        {
+            "text": "I'm not sure but I think I might have deleted a pack", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477700517.000140"
+        }, 
+        {
+            "text": "Depends what you mean by around", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477700493.000139"
+        }, 
+        {
+            "text": "Are you around?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477699943.000138"
+        }, 
+        {
+            "text": "so you only see the top part", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624610.000137"
+        }, 
+        {
+            "text": "I think landscape has less vertical room", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624601.000136"
+        }, 
+        {
+            "text": "Holo does crop the image a bit when its rotated one way or the other", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624587.000135"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624555.000134"
+        }, 
+        {
+            "text": "Well if I did it wasn't intentionally", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624552.000133"
+        }, 
+        {
+            "text": "ha nah", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624539.000132"
+        }, 
+        {
+            "text": "he looked pretty naked for a while", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624528.000131"
+        }, 
+        {
+            "text": "Did you do the screenshot of MB where you could only see his top half?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624523.000130"
+        }, 
+        {
+            "text": "man -- you are one funny dude.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624506.000129"
+        }, 
+        {
+            "text": "that seems like trump logic", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624491.000128"
+        }, 
+        {
+            "text": "My instincts told me to do it :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624483.000127"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624483.000126"
+        }, 
+        {
+            "text": "I added them to the Trump pack", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624476.000125"
+        }, 
+        {
+            "text": "as long as you added them to the packs which make the most sense I\u2019m sure its fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624450.000124"
+        }, 
+        {
+            "text": "oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624423.000123"
+        }, 
+        {
+            "text": "As in I added some new assets :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624394.000122"
+        }, 
+        {
+            "text": "should always get the latest and greatest scene version of each scene.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624378.000121"
+        }, 
+        {
+            "text": "Yea, the packs/characters is just a grouping mechanism", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624358.000120"
+        }, 
+        {
+            "text": "Should work", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624320.000119"
+        }, 
+        {
+            "text": "Ah - ok. All good. I updated the new MB assets and added it to MB singing.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624318.000118"
+        }, 
+        {
+            "text": "they should be in 3 characters", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624306.000117"
+        }, 
+        {
+            "text": "but it was this morning at some point", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624294.000116"
+        }, 
+        {
+            "text": "Asher did", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477624280.000115"
+        }, 
+        {
+            "text": "Did you change up the MB packs?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477624149.000114"
+        }, 
+        {
+            "text": "It may have been down for 30 seconds while I was updating about 5 minutes ago", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477618778.000113"
+        }, 
+        {
+            "username": "taos", 
+            "display_as_bot": false, 
+            "text": "<@U15894NCC> uploaded a file: <https://hvr.slack.com/files/U15894NCC/F2VAR36DA/001.jpg|001.JPG>", 
+            "upload": true, 
+            "ts": "1477618777.000112", 
+            "subtype": "file_share", 
+            "user": "U15894NCC", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_64.jpg", 
+                "size": 70867, 
+                "original_h": 940, 
+                "thumb_360_w": 360, 
+                "title": "001.JPG", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F2VAR36DA/001.jpg", 
+                "thumb_720_h": 359, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_360.jpg", 
+                "id": "F2VAR36DA", 
+                "ims": [
+                    "D1RUVEQ8M"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_80.jpg", 
+                "comments_count": 0, 
+                "thumb_360_h": 180, 
+                "thumb_480_h": 239, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1477618774, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F2VAR36DA/download/001.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_1024.jpg", 
+                "user": "U15894NCC", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "001.JPG", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F2VAR36DA-adf9f25b94", 
+                "permalink": "https://hvr.slack.com/files/U15894NCC/F2VAR36DA/001.jpg", 
+                "is_external": false, 
+                "created": 1477618774, 
+                "thumb_1024_h": 511, 
+                "thumb_960_h": 479, 
+                "original_w": 1884, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F2VAR36DA-c90113d779/001_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "what do you get?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477618744.000111"
+        }, 
+        {
+            "text": "It appears ok to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477618740.000110"
+        }, 
+        {
+            "text": "<http://8i.com/d/>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477618722.000108", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Is WD down?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477618717.000107"
+        }, 
+        {
+            "text": "LMK if you notice anything not working about it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477618439.000106"
+        }, 
+        {
+            "text": "Hey, just an FYI but I updated the <http://8i.com/admin/sceneActions> page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477618422.000105"
+        }, 
+        {
+            "text": "Sure do", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477600898.000104"
+        }, 
+        {
+            "text": "Yo, you got a minute?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477600886.000103"
+        }, 
+        {
+            "text": "Shank ya", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477542394.000102"
+        }, 
+        {
+            "text": "<http://8i.com/admin/tango?auth=1>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477542208.000101"
+        }, 
+        {
+            "text": "This should take me to the tango look like, right? <http://8i.com/admin/?auth=1>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477542192.000100"
+        }, 
+        {
+            "text": "muuuuudddddgggggeeeeeeee", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477537354.000099"
+        }, 
+        {
+            "text": "Yeah -- it doesn't", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477535147.000098"
+        }, 
+        {
+            "text": "It should do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477535137.000097"
+        }, 
+        {
+            "text": "WB doesn't support basic maya materials like labert", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477535112.000096"
+        }, 
+        {
+            "text": "no file references in there at all is fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477534294.000095"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477534285.000094"
+        }, 
+        {
+            "text": "From an MTL file from Maya", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477534082.000093"
+        }, 
+        {
+            "text": "newmtl chair_Hero:blinn1SG\nillum 4\nKd 0.00 0.00 0.00\nKa 0.00 0.00 0.00\nTf 1.00 1.00 1.00\nNi 1.00\nKs 0.50 0.50 0.50\nnewmtl chair_Hero:phong1SG\nillum 4\nKd 0.47 0.47 0.47\nKa 0.00 0.00 0.00\nTf 1.00 1.00 1.00\nNi 1.00\nKs 0.46 0.46 0.46\nnewmtl initialShadingGroup\nillum 4\nKd 0.50 0.50 0.50\nKa 0.00 0.00 0.00\nTf 1.00 1.00 1.00\nNi 1.00", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477534077.000092"
+        }, 
+        {
+            "text": "This should be ok for the WD:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477534077.000091"
+        }, 
+        {
+            "text": "Hmm -- can you swing by", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477521762.000090"
+        }, 
+        {
+            "text": "then just click director and find the experience you want to add and click it (turns the background red when its selected)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477521674.000089"
+        }, 
+        {
+            "text": "Might need to reload the page to make sure you get the latest version", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477521631.000088"
+        }, 
+        {
+            "text": "Alright, <http://8i.com/admin/related> should be working again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477521586.000087"
+        }, 
+        {
+            "text": "hey back", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477520112.000086"
+        }, 
+        {
+            "text": "LMK when you are at your desk", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477520049.000085"
+        }, 
+        {
+            "text": "All good bud", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477518945.000084"
+        }, 
+        {
+            "text": "Sorry in meeting, be with you when I can.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477518935.000083"
+        }, 
+        {
+            "text": "Next question -- how do I add a solve to a scene", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477518132.000082"
+        }, 
+        {
+            "text": "sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477512515.000081"
+        }, 
+        {
+            "text": "Can you show me how to add an obj to holo?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477512510.000080"
+        }, 
+        {
+            "text": "I was just going to check in with you about the chair thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477512510.000079"
+        }, 
+        {
+            "text": "Hi", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477512497.000078"
+        }, 
+        {
+            "text": "Good morning :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477512490.000077"
+        }, 
+        {
+            "text": "I\u2019d like to do a pass of that ugly page, and any ideas you have of what would make it simpler would be helpful.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449776.000076"
+        }, 
+        {
+            "text": "and I\u2019m happy to field some feedback from you at some stage", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449731.000075"
+        }, 
+        {
+            "text": "I appreciate it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449714.000074"
+        }, 
+        {
+            "text": "Thanks for taking that stuff off my hands", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449709.000073"
+        }, 
+        {
+            "text": "Thanks for showing me how to upload things to Holo, etc. I appreciate it.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477449689.000072"
+        }, 
+        {
+            "text": "Lol -- so kiwi", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477449225.000071"
+        }, 
+        {
+            "text": "no one complained yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449214.000070"
+        }, 
+        {
+            "text": "I was making it up as I went along", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449208.000069"
+        }, 
+        {
+            "text": "I don\u2019t really have a preference on how the packs/characters are organised", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449197.000068"
+        }, 
+        {
+            "text": "Or to Demo pack?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477449165.000067"
+        }, 
+        {
+            "text": "Sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477449155.000066"
+        }, 
+        {
+            "text": "Should I add D'Angelo to NBA private pack?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477449135.000065"
+        }, 
+        {
+            "text": "Cool.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477446794.000064"
+        }, 
+        {
+            "text": "oh ok, that might be a bit of a bug with the download code in the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477446634.000063"
+        }, 
+        {
+            "text": "I did kill the Bolton pack and separate the Sparrow solves from the Blue Shirt/Shower MB solves but what seemed to fix it is when Alenni re downloaded the pack.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477446551.000062"
+        }, 
+        {
+            "text": "was it just the dual characters?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477446462.000061"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477446461.000060"
+        }, 
+        {
+            "text": "Did you sort out what was wrong with Holo getting Holo07?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477446453.000059"
+        }, 
+        {
+            "text": "Mer -- can you come back.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477438842.000058"
+        }, 
+        {
+            "text": "Can you swing by?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477437013.000057"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477365783.000056"
+        }, 
+        {
+            "text": "Sounds good. Are you free now?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477365779.000055"
+        }, 
+        {
+            "text": "Yea, if you\u2019ve got some time", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477365770.000054"
+        }, 
+        {
+            "text": "I vaguely recall a conversation about it last week.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477365751.000053"
+        }, 
+        {
+            "text": "Did you want to show me how to upload assets to Holo?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477365739.000052"
+        }, 
+        {
+            "text": "Ok cool. Thanks Mudge!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477363608.000051"
+        }, 
+        {
+            "text": "and has been updated", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477363571.000050"
+        }, 
+        {
+            "text": "oh yea, that already existed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477363566.000049"
+        }, 
+        {
+            "text": "<http://8i.com/p/ywP>?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477363547.000047", 
+            "attachments": [
+                {
+                    "title": "HOLO07_130", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/ywP", 
+                    "text": "HOLO07_130 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: HOLO07_130", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/p/ywP"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok awesome. It looks like 130 is missing", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477363504.000046"
+        }, 
+        {
+            "text": "it didn\u2019t have an existing experience to update", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477363378.000045"
+        }, 
+        {
+            "text": "160 was just created now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477363352.000044"
+        }, 
+        {
+            "text": "yup <http://8i.com/s/AdM>, <http://8i.com/s/LnP> and <http://8i.com/admin/scene/58G>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477363330.000042", 
+            "attachments": [
+                {
+                    "thumb_height": 960, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 760, 
+                    "title": "HOLO07_100", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/AdM", 
+                    "text": "HOLO07_100 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: HOLO07_100", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/AdM/scene_AdM.png?time=1477296584117", 
+                    "from_url": "http://8i.com/s/AdM"
+                }, 
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "HOLO07_110", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/LnP", 
+                    "text": "HOLO07_110 - Experience in touchable 3D video on 8i.", 
+                    "id": 2, 
+                    "fallback": "8i: HOLO07_110", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/LnP/scene_LnP.png?time=1476150966153", 
+                    "from_url": "http://8i.com/s/LnP"
+                }
+            ]
+        }, 
+        {
+            "text": "Thanks. 100,  110 and 160 have been updated too?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477363185.000041"
+        }, 
+        {
+            "text": "Alright, 140 is <http://8i.com/s/Yl2>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477363151.000039", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "HOLO07_140", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/Yl2", 
+                    "text": "HOLO07_140 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: HOLO07_140", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/Yl2/scene_Yl2.png?time=1477363001706", 
+                    "from_url": "http://8i.com/s/Yl2"
+                }
+            ]
+        }, 
+        {
+            "text": "The reason for the random upload is Bob is revising the solves with some of his temporal passes.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362915.000038"
+        }, 
+        {
+            "text": "It is there now.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362893.000037"
+        }, 
+        {
+            "text": "oh, so 140 was supposed to be there?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362884.000036"
+        }, 
+        {
+            "text": "I just uploaded 140. I changed the HVRS name to match the others.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362858.000035"
+        }, 
+        {
+            "text": "Feel free to revise them", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362769.000034"
+        }, 
+        {
+            "text": "they don\u2019t match the normal pattern", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362754.000033"
+        }, 
+        {
+            "text": "ok, yea those files have funny names", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362744.000032"
+        }, 
+        {
+            "text": "The main file path", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362713.000031"
+        }, 
+        {
+            "text": "No", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362708.000030"
+        }, 
+        {
+            "text": "and not V03?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362704.000029"
+        }, 
+        {
+            "text": "Everything needs to come from the main file path I sent not v02", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362696.000028"
+        }, 
+        {
+            "text": "so I should ignore the subfolder versions?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362692.000027"
+        }, 
+        {
+            "text": "Not in the main file directory I sent.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362666.000026"
+        }, 
+        {
+            "text": "oh yea, 140 isn\u2019t there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362634.000025"
+        }, 
+        {
+            "text": "There is multiple hvrs files for 100 and 110", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362626.000024"
+        }, 
+        {
+            "text": "oh dude actually 140 is meant to say 160", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362624.000023"
+        }, 
+        {
+            "text": "They were ran a bit hacky", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362578.000022"
+        }, 
+        {
+            "text": "More than likely", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362565.000021"
+        }, 
+        {
+            "text": "do the hvrs files have different names?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362559.000020"
+        }, 
+        {
+            "text": "Sweet. Let me know when it has been updated.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362527.000019"
+        }, 
+        {
+            "text": "but I\u2019ll need to update them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362515.000018"
+        }, 
+        {
+            "text": "They will still go to the same experiences", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362504.000017"
+        }, 
+        {
+            "text": "Those are new HVRS", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362487.000016"
+        }, 
+        {
+            "text": "Oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362486.000015"
+        }, 
+        {
+            "text": "I killed the old ones", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362480.000014"
+        }, 
+        {
+            "text": "Those were revised btw", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362476.000013"
+        }, 
+        {
+            "text": "Ok so they have been added then?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362465.000012"
+        }, 
+        {
+            "text": "They were already there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362457.000011"
+        }, 
+        {
+            "text": "Where is 100, 110, and 140?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362440.000010"
+        }, 
+        {
+            "text": "<http://8i.com/s/yGG> <http://8i.com/s/EgY> <http://8i.com/s/Npy> <http://8i.com/s/7VM> <http://8i.com/s/58G> <http://8i.com/s/oY3> <http://8i.com/s/vZB>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477362159.000009"
+        }, 
+        {
+            "text": "Nice! Can you send me the link so I can look at them?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477362031.000008"
+        }, 
+        {
+            "text": "Alright there is a Holo07 character in the DEMO Pack now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477361987.000007"
+        }, 
+        {
+            "text": "It is there now.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477361628.000006"
+        }, 
+        {
+            "text": "All of this sans *HOLO07_150* (because it appears to already be in HOLO) and *HOLO07_180* (because it is finishing up on the farm)is ready: `<http://clouds.8i.com/HOLO07|clouds.8i.com/HOLO07>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477361482.000005"
+        }, 
+        {
+            "text": "sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477360343.000004"
+        }, 
+        {
+            "text": "ETA is in the next 30 mins. After you get them in the pack can you give me a heads up?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477360335.000003"
+        }, 
+        {
+            "text": "I've got some HOLO07 assets coming your way that need to go into the Holo pack today", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1477360309.000002"
+        }, 
+        {
+            "text": "I think HOLO07_120 is still not done, but they also weren\u2019t sure it would be ready today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475797024.000059"
+        }, 
+        {
+            "text": "Am I good to start processing assets?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475796784.000058"
+        }, 
+        {
+            "text": "Ok cool. ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475784280.000057"
+        }, 
+        {
+            "text": "oh, probably just the selects are under 15 seconds", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475783851.000056"
+        }, 
+        {
+            "text": "The BCFs? ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475783818.000055"
+        }, 
+        {
+            "text": "yea, I was talking about total length", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475783801.000054"
+        }, 
+        {
+            "text": "Not the fps", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475783777.000053"
+        }, 
+        {
+            "text": "Thanks. I believe all Holo content is &lt;15 seconds currently.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475783742.000051", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1475783765.000000"
+            }
+        }, 
+        {
+            "text": "Depends on how many frames but I would say 45 mins. ", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475783673.000050"
+        }, 
+        {
+            "text": "Hey about how long does it take you to compress 3 assets? I would like to give LA a deadline on when they need to deliver the Holo07 content if they want it in Holo by the end of today.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475783590.000049"
+        }, 
+        {
+            "text": "Yup, I\u2019m not fussed what it becomes as long as its not s", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726939.000048"
+        }, 
+        {
+            "text": "probably worth it to lessen the confusion", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726909.000047"
+        }, 
+        {
+            "text": "Are you cool with the HVRP switch?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475726901.000046"
+        }, 
+        {
+            "text": "shouldn\u2019t be too bad", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726894.000045"
+        }, 
+        {
+            "text": "Is that difficult?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475726883.000044"
+        }, 
+        {
+            "text": "I\u2019ll just need to make sure to update it if we do change", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726876.000043"
+        }, 
+        {
+            "text": "oh its not defining it just checking for a .hvrs at the end of files etc", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726857.000042"
+        }, 
+        {
+            "text": "Can you direct me to that code?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475726829.000041"
+        }, 
+        {
+            "text": "Kieran would know more", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726798.000040"
+        }, 
+        {
+            "text": "Aaron, or someone around that area I believe", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726790.000039"
+        }, 
+        {
+            "text": "I do have code which uses it though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726767.000038"
+        }, 
+        {
+            "text": "Do you know who is?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475726759.000037"
+        }, 
+        {
+            "text": "Nope", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475726746.000036"
+        }, 
+        {
+            "text": "Are you in control of the naming convention for the HVRS?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475726730.000035"
+        }, 
+        {
+            "text": "Ah right. Na, it was amy, it just came at the same time as all the starwars stuff.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619893.000034"
+        }, 
+        {
+            "text": "I thought it was related to Guil and no longer needed it anymore.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619814.000033"
+        }, 
+        {
+            "text": "Ah! Ok, I went back and read it.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619792.000032"
+        }, 
+        {
+            "text": "it was in <#C1CPP949L|holo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619705.000031"
+        }, 
+        {
+            "text": "That one originated from Amy who wants an AR recording for some PR pieces she is working on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619700.000030"
+        }, 
+        {
+            "text": "Who is making the requests?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619664.000029"
+        }, 
+        {
+            "text": "Alright cool, just making sure it had reached you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619636.000028"
+        }, 
+        {
+            "text": "It was mentioned yesterday. I am processing what Guil sent through this morning.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619545.000027"
+        }, 
+        {
+            "text": "Just wanted to check with you about Logan Paul as the gladiator as well, that is on your radar right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619497.000026"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619466.000025"
+        }, 
+        {
+            "text": "TCS03 is Linc as sith", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619447.000024"
+        }, 
+        {
+            "text": "Threshold is Foots", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619433.000023"
+        }, 
+        {
+            "text": "Cool, are those all star wars hvrs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475619399.000022"
+        }, 
+        {
+            "text": "Latest requested HVRS: \n`<http://clouds.8i.com/THRESHOLD|clouds.8i.com/THRESHOLD>`\n`<http://clouds.8i.com/TCS03/TCS100|clouds.8i.com/TCS03/TCS100>`\n`<http://clouds.8i.com/STARWARS|clouds.8i.com/STARWARS>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619377.000021"
+        }, 
+        {
+            "text": "That comes from working in Post", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475619214.000020"
+        }, 
+        {
+            "text": "I\u2019m getting it all the time with people calling everything an Asset", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475618517.000019"
+        }, 
+        {
+            "text": "I agree, the naming convention needs to be adjusted.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618491.000018"
+        }, 
+        {
+            "text": "When referring to HVR in plural it is HVRs", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618479.000017"
+        }, 
+        {
+            "text": "yup, good call :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475618474.000016"
+        }, 
+        {
+            "text": "and HVRS", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618467.000015"
+        }, 
+        {
+            "text": "That is why I capitalize HVR", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618463.000014"
+        }, 
+        {
+            "text": "hvr and hvrs are too close when you pluralise", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475618451.000013"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618442.000012"
+        }, 
+        {
+            "text": "No, you don't want to compress an HVR.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618433.000011"
+        }, 
+        {
+            "text": "oh multiple hvr files?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475618425.000010"
+        }, 
+        {
+            "text": "anyway we can use those instead?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475618415.000009"
+        }, 
+        {
+            "text": "They are creating HVRs", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618414.000008"
+        }, 
+        {
+            "text": "are they creating hvrs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475618399.000007"
+        }, 
+        {
+            "text": "I talked to Isaac this morning. They have been finalizing the HVRs not the BCFs because they didn't realize I worked off the BCFs. Atleast we are getting there.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475618356.000006"
+        }, 
+        {
+            "text": "It is much easier if we don\u2019t need to use Trello, which is unfamiliar for us.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475530332.000005"
+        }, 
+        {
+            "text": "It sounded about right to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475530280.000004"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1475530261.000003"
+        }, 
+        {
+            "text": "maybe I shouldn't have said shit fight, lol", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1475530251.000002"
+        }, 
+        {
+            "text": "This is done at 10fps `<http://clouds.8i.com/LUNA/10FPS/test02|clouds.8i.com/LUNA/10FPS/test02>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474858374.000116"
+        }, 
+        {
+            "text": "Kieran's script makes more sense to me now.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474855596.000115"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474855591.000114"
+        }, 
+        {
+            "text": "Phew. That is a relief. Ok, I will run some tests with this new format.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474855582.000113"
+        }, 
+        {
+            "text": "They all seem fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474855503.000112"
+        }, 
+        {
+            "text": "let me have another check though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474855289.000111"
+        }, 
+        {
+            "text": "I don\u2019t remember seeing a problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474855283.000110"
+        }, 
+        {
+            "text": "Did the other data I provided play ok? I.e. *FOXTROT*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474855255.000109"
+        }, 
+        {
+            "text": "The second file is half the size of the first", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474855253.000108"
+        }, 
+        {
+            "text": "Yes, big difference", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474855211.000107"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/s/7Nw>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474855188.000106"
+        }, 
+        {
+            "text": "Thanks Mudge", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474854976.000105"
+        }, 
+        {
+            "text": "I can, just need a minute to set it up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474854970.000104"
+        }, 
+        {
+            "text": "but thats expected, its still using the old select", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474854941.000103"
+        }, 
+        {
+            "text": "can you send me the other one? I want to compare", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474854941.000102"
+        }, 
+        {
+            "text": "The audio is out of sync", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474854914.000101"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/s/DeO>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474854900.000100"
+        }, 
+        {
+            "text": "Can you link me?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474854863.000099"
+        }, 
+        {
+            "text": "Yea, that one looks good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474854812.000098"
+        }, 
+        {
+            "text": "Ok, let me know how this one goes `<http://clouds.8i.com/LUNA/15FPSv02|clouds.8i.com/LUNA/15FPSv02>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474854398.000097"
+        }, 
+        {
+            "text": "awesome, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474849353.000096"
+        }, 
+        {
+            "text": "I'm going to re-run it.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474849344.000095"
+        }, 
+        {
+            "text": "but other than that it does play", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474849215.000094"
+        }, 
+        {
+            "text": "Yep, that is what I am after.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474849179.000093"
+        }, 
+        {
+            "text": "he plays back ~2x", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474849170.000092"
+        }, 
+        {
+            "text": "Something seems funny with the frame rate", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474849153.000091"
+        }, 
+        {
+            "text": "Did Luna work for you?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474849135.000090"
+        }, 
+        {
+            "text": "Yea, it would of only been a subtle difference", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474838886.000089"
+        }, 
+        {
+            "text": "Ah that is right ok. Split between too many things", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474838871.000088"
+        }, 
+        {
+            "text": "is v02 the one Asher asked for?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474838868.000087"
+        }, 
+        {
+            "text": "I think we had a bad frame range for the original", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474838856.000086"
+        }, 
+        {
+            "text": "This is ready : `<http://clouds.8i.com/LUNA/15FPSv02|clouds.8i.com/LUNA/15FPSv02>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474838796.000085"
+        }, 
+        {
+            "text": "What was wrong with this 15FPS 200 TC `<http://clouds.8i.com/LUNA/15FPS|clouds.8i.com/LUNA/15FPS>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474838764.000084"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836817.000083"
+        }, 
+        {
+            "text": "Can I swing by to discuss these platforms. I want to fire this off this morning. It's a bit easier for me if I can communicate in person.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836803.000082"
+        }, 
+        {
+            "text": "I don\u2019t know, probably more Tokes.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836750.000081"
+        }, 
+        {
+            "text": "For Pike, the deal Daniel put together, will that come through Wellington? Or is this more of a tokes question?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836632.000080"
+        }, 
+        {
+            "text": "Ok.  Yeah, I think I am getting confused on the different platforms.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836510.000079"
+        }, 
+        {
+            "text": "L\u2019oreal was the last thing we had for web. We used 400k for mobile and 600k for desktop.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836445.000078"
+        }, 
+        {
+            "text": "We haven\u2019t really had any new web content recently, its all been for tango at 600k", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836308.000077"
+        }, 
+        {
+            "text": "Currently web is sitting at 600k?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836284.000076"
+        }, 
+        {
+            "text": "Yea, I\u2019m not sure where those number came from, it used to always be 400 for web", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836242.000075"
+        }, 
+        {
+            "text": "300 and 600 seem to be the sweet spot", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836210.000074"
+        }, 
+        {
+            "text": "We can do different point counts as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836193.000073"
+        }, 
+        {
+            "text": "Sweet. I will come up with various data sets.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836165.000072"
+        }, 
+        {
+            "text": "Yea, I can set that up if you can provide the hvrs for each", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474836116.000071"
+        }, 
+        {
+            "text": "For example, Buzz at 5/10/15/20/23/25/30 FPS", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474836017.000070"
+        }, 
+        {
+            "text": "Right. What I am thinking is having a database with different data sets made up of various FPS.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474835994.000069"
+        }, 
+        {
+            "text": "Not in tango, just in the web player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474835960.000068"
+        }, 
+        {
+            "text": "You mean in Tango?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474835945.000067"
+        }, 
+        {
+            "text": "We kind of support multi frame rates already", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474835923.000066"
+        }, 
+        {
+            "text": ":coffee:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474835901.000065"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474835888.000064"
+        }, 
+        {
+            "text": "Need my Monday coffee", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474835885.000063"
+        }, 
+        {
+            "text": "err Frame rates", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474835878.000062"
+        }, 
+        {
+            "text": "Different frame ranges?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474835866.000061"
+        }, 
+        {
+            "text": "Hi. Re: our conversation from Friday. Is there anyway to build a basic database system that could view the different frame ranges?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474835834.000060"
+        }, 
+        {
+            "text": "Same with:\n *FOXTROT02_470*\n*FOXTROT02_480*\n*FOXTROT02_490*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474486833.000058"
+        }, 
+        {
+            "text": "Oh right, nope I\u2019m probably more unaware than anything, just saw those files and wondered if something odd had happened.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474428301.000057"
+        }, 
+        {
+            "text": "*FOXTROT03_540* and *FOXTROT03_940* aren't being processed. Unless you are aware of something else? I will look into *FOXTROT02* shortly.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474428171.000056"
+        }, 
+        {
+            "text": "Hey I\u2019ve updated all the Foxtrot videos and noticed a couple of odd cases.\nFOXTROT03_540 still has a 30 in the filename even though its in the 15fps folder.\nFOXTROT03_940 has an audio file but no hvrs file.\nThere is no hvrs for FOXTROT02_470,  FOXTROT02_480 and FOXTROT02_490. These originally came through as an update, and I put them in <http://clouds.8i.com/Foxtrot1/Update|clouds.8i.com/Foxtrot1/Update> because most of the update was for Foxtrot 1", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474425870.000055"
+        }, 
+        {
+            "text": "Yay, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474409790.000054"
+        }, 
+        {
+            "text": "Check again `<http://clouds.8i.com/LUNA/LUNA_140|clouds.8i.com/LUNA/LUNA_140>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474409697.000053"
+        }, 
+        {
+            "text": "Hey, have you got the 300K version for that one as well. That does look good, but it would be nice to try out both.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474409673.000052"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/LUNA/LUNA_140|clouds.8i.com/LUNA/LUNA_140>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474406695.000051"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341290.000050"
+        }, 
+        {
+            "text": "So hopefully final request for LUNA_140 is to get WEB encodes of frame range 315-3468 @ 15fps for 300K and 600K", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341285.000049"
+        }, 
+        {
+            "text": "I just talked to Kieran about the file sizes and we opened up the hvrs files in Orthurus, it looks like the WEB compression was done with all the frames and the previous DESKTOP (tango) versions were done with a select of frames.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341186.000048"
+        }, 
+        {
+            "text": "Awesome thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341088.000047"
+        }, 
+        {
+            "text": "All the data that I am aware of is on the cloud now.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474340585.000046"
+        }, 
+        {
+            "text": "I copied *LUNA* over.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474340575.000045"
+        }, 
+        {
+            "text": "Would you mind copying over the LUNA_140 300K@15fps as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474340306.000044"
+        }, 
+        {
+            "text": "awesome, thats all the Foxtrot content done right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474340258.000043"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/Foxtrot1/FOXTROT01_15FPS_600K|clouds.8i.com/Foxtrot1/FOXTROT01_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474339901.000042"
+        }, 
+        {
+            "text": "Alright, I will check in with him, thanks for trying it out.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474338462.000041"
+        }, 
+        {
+            "text": "It might be better if you talk to Kieran about why the compression isn't halfing itself", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474338394.000040"
+        }, 
+        {
+            "text": "Whereas the *DESKTOP* encode type doesn't. So the recent  compression of *LUNA* is a bit bigger.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474338112.000039"
+        }, 
+        {
+            "text": "Regarding *LUNA* the *WEB* encode type actually compresses it a bit more.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474338077.000038"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/LUNA/LUNA_140|clouds.8i.com/LUNA/LUNA_140>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474338061.000037"
+        }, 
+        {
+            "text": "The Fitness instructor, which is the following.\nFoxtrot_220\nFoxtrot_200\nFoxtrot_100\nFoxtrot_160\nFoxtrot_180", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474337488.000036"
+        }, 
+        {
+            "text": "If you could let me know on *FOXTROT01* I can push that out as well", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474337432.000035"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/Foxtrot2/FOXTROT02_15FPS_600K|clouds.8i.com/Foxtrot2/FOXTROT02_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474337422.000034"
+        }, 
+        {
+            "text": "oh, all good then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474334387.000033"
+        }, 
+        {
+            "text": "However it is the Princess who is not being included so you don\u2019t need to worry too much", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474334381.000032"
+        }, 
+        {
+            "text": "Sorted it", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474334375.000031"
+        }, 
+        {
+            "text": "I don\u2019t remember anything special about that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474334352.000030"
+        }, 
+        {
+            "text": "There aren't *BCF* on the cloud, which makes me think it was run from another source with a different frame range", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474334297.000029"
+        }, 
+        {
+            "text": "Do you remember what *FOXTROT_270* was run from?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474334276.000028"
+        }, 
+        {
+            "text": "but for release it will need the smaller file sizes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474333694.000027"
+        }, 
+        {
+            "text": "Then I will kick *LUNA* off", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474333688.000026"
+        }, 
+        {
+            "text": "I'm about to deliver you all of *FOXTROT02*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474333680.000025"
+        }, 
+        {
+            "text": "I can work with what I have for now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474333667.000024"
+        }, 
+        {
+            "text": "Yea, I understand", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474333657.000023"
+        }, 
+        {
+            "text": "Trying to catch it all up", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474333647.000022"
+        }, 
+        {
+            "text": "All good. The bad info I had on the compression's has put me back a bit.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474333640.000021"
+        }, 
+        {
+            "text": "Thanks, and sorry for the hassle", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474333625.000020"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474333614.000019"
+        }, 
+        {
+            "text": "Is it possible to get a version which is the same as tango compression but just at 15fps? We really need something which is &lt;500Mb for the web player.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474333602.000018"
+        }, 
+        {
+            "text": "Because it is compressed with the Webplayer encode type \"WEB\"", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474333376.000017"
+        }, 
+        {
+            "text": "But I\u2019m seeing 972Mb and 677Mb", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474332638.000016"
+        }, 
+        {
+            "text": "Hey, I\u2019m trying to figure out why LUNA_140_600_15 isn\u2019t half the size of LUNA_140_600_30, it seems to me like it should be ~50% if we are just dropping half the frames.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474332619.000015"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/FOXTROT02/FOXTROT02_15FPS_600K|clouds.8i.com/FOXTROT02/FOXTROT02_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474331047.000014"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/FOXTROT03/FOXTROT03_15FPS_600K|clouds.8i.com/FOXTROT03/FOXTROT03_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474331037.000013"
+        }, 
+        {
+            "text": "*LUNA* `<http://clouds.8i.com/LUNA/LUNA_140|clouds.8i.com/LUNA/LUNA_140>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474331019.000012"
+        }, 
+        {
+            "text": "Pirate, Princess, Wrestler and Supergirl are all Fox2", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474330977.000011"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474330950.000010"
+        }, 
+        {
+            "text": "Really, there should be several", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474330944.000009"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/FOXTROT04/FOXTROT04_15FPS_600K|clouds.8i.com/FOXTROT04/FOXTROT04_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474330914.000008"
+        }, 
+        {
+            "text": "I ran one file for *FOXTROT02*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474330912.000007"
+        }, 
+        {
+            "text": "Are there *FOXTROT02* assets being used?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474330871.000006"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/FOXTROT04/FOXTROT04_15FPS_600K|clouds.8i.com/FOXTROT04/FOXTROT04_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474330776.000005"
+        }, 
+        {
+            "text": "Awesome, thanks for that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474330685.000004"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/FOXTROT04/FOXTROT04_15FPS_600K|clouds.8i.com/FOXTROT04/FOXTROT04_15FPS_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474330666.000003"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/LUNA|clouds.8i.com/LUNA>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1474323049.000002"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996600.000013"
+        }, 
+        {
+            "text": "All good, I don\u2019t need it until next week", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473996590.000012"
+        }, 
+        {
+            "text": "I'll send it to you when it's done", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996569.000011"
+        }, 
+        {
+            "text": "It is quite odd but I think it will finish today.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996564.000010"
+        }, 
+        {
+            "text": "The compression is still going on the farm.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996554.000009"
+        }, 
+        {
+            "text": "ha.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996545.000008"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473996544.000007"
+        }, 
+        {
+            "text": "oh phew, I thought I was going blind", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473996536.000006"
+        }, 
+        {
+            "text": "No, I just moved it over.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996527.000005"
+        }, 
+        {
+            "text": "Awesome, was that always there?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473996521.000004"
+        }, 
+        {
+            "text": "Try again: `<http://clouds.8i.com/FOXTROT04/FOXTROT04_600K|clouds.8i.com/FOXTROT04/FOXTROT04_600K>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473996488.000003"
+        }, 
+        {
+            "text": "Hey could you do a quick check for me.\nWe have no audio for Foxtrot04_100 which Andrew said he put in the S3 Sound/Clean folder.\nI\u2019m hoping thats somewhere on the other s3 bucket which I don\u2019t have access to.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473996299.000002"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473221638.000032"
+        }, 
+        {
+            "text": "There now", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473221632.000031"
+        }, 
+        {
+            "text": "Hey, is there any audio for FOXTROT04_160? The others were just updates so I used the existing audio, but there wasn\u2019t any for 160.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473221540.000030"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/FOXTROT04|clouds.8i.com/FOXTROT04>`\n*FOXTROT04_180* TC 600\n*FOXTROT04_160* TC600", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473214481.000029"
+        }, 
+        {
+            "text": "`<http://clouds.8i.com/Foxtrot2|clouds.8i.com/Foxtrot2>`\n*FOXTROT02_210* 600TC", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473214198.000027"
+        }, 
+        {
+            "text": "but it definitely seems like something has gone a bit wrong somewhere along the line", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473139130.000026"
+        }, 
+        {
+            "text": "Thanks Mudge.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473139117.000025"
+        }, 
+        {
+            "text": "<http://8i.com/s/6AL>\n<http://8i.com/s/mOJ>\n<http://8i.com/s/lqD>\nAre centred using web director.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473139106.000023", 
+            "attachments": [
+                {
+                    "thumb_height": 200, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 300, 
+                    "title": "Delete Me 130", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/6AL", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Delete Me 130", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/6AL/scene_6AL.png?time=1473138668629", 
+                    "from_url": "http://8i.com/s/6AL"
+                }, 
+                {
+                    "thumb_height": 200, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 300, 
+                    "title": "Delete Me 3", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/mOJ", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 2, 
+                    "fallback": "8i: Delete Me 3", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/mOJ/scene_mOJ.png?time=1473138493516", 
+                    "from_url": "http://8i.com/s/mOJ"
+                }, 
+                {
+                    "thumb_height": 200, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 300, 
+                    "title": "Delete Me 150", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/lqD", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 3, 
+                    "fallback": "8i: Delete Me 150", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/lqD/scene_lqD.png?time=1473138766127", 
+                    "from_url": "http://8i.com/s/lqD"
+                }
+            ]
+        }, 
+        {
+            "text": "I\u2019m supposed to be going to a movie with a friend tonight", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473138329.000022"
+        }, 
+        {
+            "text": "All good. Are you going to go to the game developer talk?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473138292.000021"
+        }, 
+        {
+            "text": "not sure why, but they all are not centered", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473138270.000020"
+        }, 
+        {
+            "text": "The other 2 are in the Related Videos", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473138247.000019"
+        }, 
+        {
+            "text": "<http://8i.com/p/Dxp>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473138230.000017", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "DELETEME3_130", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/Dxp", 
+                    "text": "DELETEME3_130 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: DELETEME3_130", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/live_Dxp/shareImage.png?time=1473138221752?v=1", 
+                    "from_url": "http://8i.com/p/Dxp"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok, are the others available?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473137930.000016"
+        }, 
+        {
+            "text": "It looks like he is a long way back compared to most solves, but I don\u2019t know if that means anything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137889.000015"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/test_df/DELETEME3/DELETEME3_600_30_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137799.000014"
+        }, 
+        {
+            "text": "either that or they are just lots of frames?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137784.000013"
+        }, 
+        {
+            "text": "not really, something about the solve or compression I imagine.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137773.000012"
+        }, 
+        {
+            "text": "Do you know what would cause them to be so high?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473137738.000011"
+        }, 
+        {
+            "text": "Whatever will play them", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473137443.000010"
+        }, 
+        {
+            "text": "Chrome only allows 500Mb to be cached", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137413.000009"
+        }, 
+        {
+            "text": "And that is quite large for web", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137395.000008"
+        }, 
+        {
+            "text": "because 2 of them are &gt;500Mb", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137370.000007"
+        }, 
+        {
+            "text": "For web playback?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137360.000006"
+        }, 
+        {
+            "text": "Set them in 8i Admin like you did last time", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473137352.000005"
+        }, 
+        {
+            "text": "What do you mean by run?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1473137335.000004"
+        }, 
+        {
+            "text": "Can you Run these: `<http://clouds.8i.com/DELETEME3|clouds.8i.com/DELETEME3>`\n*DELETEME3_600_30_75_85.hvrs*\n*DELETEME3_130_600_30_75_85.hvrs*\n*DELETEME3_150_600_30_75_85.hvrs*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1473137238.000002", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1473137261.000000"
+            }
+        }, 
+        {
+            "text": "ok cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780637.000063"
+        }, 
+        {
+            "text": "No", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780631.000062"
+        }, 
+        {
+            "text": "Is there supposed to be audio&gt;?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780622.000061"
+        }, 
+        {
+            "text": "Web Director is when other stuff gets added to it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780560.000060"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780551.000059"
+        }, 
+        {
+            "text": "Thats the web player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780546.000058"
+        }, 
+        {
+            "text": "Cool. Is this consider WD: <http://8i.com/p/zpl>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780520.000056", 
+            "attachments": [
+                {
+                    "title": "DELETEME3_S11_T01", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/zpl", 
+                    "text": "DELETEME3_S11_T01 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: DELETEME3_S11_T01", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/p/zpl"
+                }
+            ]
+        }, 
+        {
+            "text": "knows*", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780289.000055"
+        }, 
+        {
+            "text": "the app know where to find the content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780282.000054"
+        }, 
+        {
+            "text": "Ok cool", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780272.000053"
+        }, 
+        {
+            "text": "not for tango content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780267.000052"
+        }, 
+        {
+            "text": "they just need to restart the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780258.000051"
+        }, 
+        {
+            "text": "Is there a link to send?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780257.000050"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780249.000049"
+        }, 
+        {
+            "text": "or did you just want web player?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780247.000048"
+        }, 
+        {
+            "text": "Does LA have access to this?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780243.000047"
+        }, 
+        {
+            "text": "its in Tango", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780214.000046"
+        }, 
+        {
+            "text": "Can I access them via 8i Admin?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780213.000045"
+        }, 
+        {
+            "text": "Cool, could you pass me the links?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472780205.000044"
+        }, 
+        {
+            "text": "Alright its in there now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472780193.000043"
+        }, 
+        {
+            "text": "Don't worry about the baltazar directories", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472779510.000042"
+        }, 
+        {
+            "text": "Can you put these in holo as a test: `<http://clouds.8i.com/DELETEME3|clouds.8i.com/DELETEME3>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472779484.000041"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472681222.000040"
+        }, 
+        {
+            "text": "All of *FOXTROT04* that has been made available to WGTN is ready", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472681212.000039"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472679778.000038"
+        }, 
+        {
+            "text": "All assets are available for *FOXTROT03*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472679683.000037"
+        }, 
+        {
+            "text": "600 TC is loaded", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472609879.000036"
+        }, 
+        {
+            "text": "Actually it needs to be the 600TC", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472609823.000035"
+        }, 
+        {
+            "text": "oh is something different?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472609814.000034"
+        }, 
+        {
+            "text": "It's not", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472609811.000033"
+        }, 
+        {
+            "text": "Yes, that needs to be shown to Tokes for comparison", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472609802.000032"
+        }, 
+        {
+            "text": "Hey what is <http://clouds.8i.com/FOXTROT04/FOXTROT04_100_30|clouds.8i.com/FOXTROT04/FOXTROT04_100_30> for? There is only a single hvrs and it looks the same as the file in the folder above it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472609784.000031"
+        }, 
+        {
+            "text": "Ok, sounds good.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472513315.000030"
+        }, 
+        {
+            "text": "but thanks for the offer, and I might take you up on it a bit later on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472513303.000029"
+        }, 
+        {
+            "text": "Its still a bit crazy at the moment, most of the code I have for creating that only half works, and I usually end up having to add fixes while I\u2019m using it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472513265.000028"
+        }, 
+        {
+            "text": "<http://8i.com/s/24W>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472513167.000026", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "LUNA_100_300_30_75_85.hvrs", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/24W", 
+                    "text": "Desktop 300K 30fps - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: LUNA_100_300_30_75_85.hvrs", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/24W/scene_24W.png?time=1472512785199", 
+                    "from_url": "http://8i.com/s/24W"
+                }
+            ]
+        }, 
+        {
+            "text": "sorry, what does that mean?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472513159.000025"
+        }, 
+        {
+            "text": "I don't mind doing it since I basically push everything up to that point anyway", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472513139.000024"
+        }, 
+        {
+            "text": "Hey it occurred to me, would it be easier if I created the Web HVRS", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472513129.000023"
+        }, 
+        {
+            "text": "Try again `<http://clouds.8i.com/LUNA|clouds.8i.com/LUNA>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472512420.000022"
+        }, 
+        {
+            "text": "Is there a 600K point version of LUNA as well? We are using Buzz as a quality check", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472512227.000021"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472512035.000020"
+        }, 
+        {
+            "text": "<http://clouds.8i.com/LUNA|clouds.8i.com/LUNA>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472512021.000019"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472511809.000018"
+        }, 
+        {
+            "text": "We are legit a dynamic duo", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472511797.000017"
+        }, 
+        {
+            "text": "cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472511519.000016"
+        }, 
+        {
+            "text": "Ok, try again `<http://clouds.8i.com/FOXTROT03|clouds.8i.com/FOXTROT03>`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472511511.000015"
+        }, 
+        {
+            "text": "I'll check with LA. Makes it easier since I have to push the Audio to you", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472511442.000014"
+        }, 
+        {
+            "text": "Hey, I don\u2019t have any audio for Foxtrot03_410, was that just a miscopy or should I check with LA?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472511400.000013"
+        }, 
+        {
+            "text": "Alright, cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472508153.000012"
+        }, 
+        {
+            "text": "I'm about to re-launch all of the jobs for Foxtrot that were done without the desktop encode type.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472508116.000011"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472506753.000010"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472506750.000009"
+        }, 
+        {
+            "text": "Yes, I think we will need it to be", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472506743.000008"
+        }, 
+        {
+            "text": "Does it need to be reprocessed?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472506722.000007"
+        }, 
+        {
+            "text": "No it wouldn't have been.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472506717.000006"
+        }, 
+        {
+            "text": "Hey, do you recall if the LUNA_100 was processed with the Desktop setting?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472506699.000005"
+        }, 
+        {
+            "text": "Thank you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472449618.000004"
+        }, 
+        {
+            "text": "Ok ill look intonit", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472449603.000003"
+        }, 
+        {
+            "text": "Hey the HVRS for Foxtrot03_200 doesn\u2019t playback through the web player. I had a look at it and it is only 5.8MB which seems rather small compared to the others.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472447825.000002"
+        }, 
+        {
+            "text": "Yea sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472184506.000027"
+        }, 
+        {
+            "text": "Hey, since we are getting close to beer o'clock I am going to run the 21 Foxtrot jobs available then make them available on Monday morning. Does that suit?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472184338.000026"
+        }, 
+        {
+            "text": "cool, yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472174666.000025"
+        }, 
+        {
+            "text": "Yes it is :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472174661.000024"
+        }, 
+        {
+            "text": "yay!'", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472174656.000023"
+        }, 
+        {
+            "text": "is that what you mean?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472174656.000022"
+        }, 
+        {
+            "text": "Its in the app now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472174650.000021"
+        }, 
+        {
+            "text": "Hey did you pass on the Luna for tokes?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472174626.000020"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472101892.000019"
+        }, 
+        {
+            "text": "Fair enough, I will catch it next time. Sorry for the hastle", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472101880.000018"
+        }, 
+        {
+            "text": "but when the rest of trump and hillary come through it will be a bit of a pain", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472101862.000017"
+        }, 
+        {
+            "text": "all good, not so bad on the one off's", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472101844.000016"
+        }, 
+        {
+            "text": "Also, I forgot to add it to the cloud on your side. I will remember next time. Habit", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472101822.000015"
+        }, 
+        {
+            "text": "It's there now `P:\\shows\\atrax\\LUNA\\Audio`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472101811.000014"
+        }, 
+        {
+            "text": "Hey, It doesn\u2019t look like there is sound for the LUNA asset, there is only data for LUNA_140, not for LUNA_100", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472101726.000013"
+        }, 
+        {
+            "text": "All good", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472100581.000012"
+        }, 
+        {
+            "text": "on it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472100557.000011"
+        }, 
+        {
+            "text": "not yet, was distracted", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472100554.000010"
+        }, 
+        {
+            "text": "Following up on Luna, is it in Tango?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472100407.000009"
+        }, 
+        {
+            "text": "alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472095008.000008"
+        }, 
+        {
+            "text": "Well, it's Tango ready, lol", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472095000.000007"
+        }, 
+        {
+            "text": "I seem to remember getting that actually, but I don\u2019t know what I needed it for", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472094979.000006"
+        }, 
+        {
+            "text": "Nope, it doesn't appear you did. Weird.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472094924.000005"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\LUNA\\HVRS\\LUNA_100_taos_v01`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472094888.000004"
+        }, 
+        {
+            "text": "Did you get that data?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472094817.000003"
+        }, 
+        {
+            "text": "Hey Mudge, I process LUNA on the 10 of August.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1472094809.000002"
+        }, 
+        {
+            "text": "just let me know when the change over happens", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309473.000019"
+        }, 
+        {
+            "text": "Alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309436.000018"
+        }, 
+        {
+            "text": "so we wanted to do a comparison and check if a high point cloud renders acceptably", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309417.000017"
+        }, 
+        {
+            "text": "Gotcha. Ok, yeah he needs some data sets from me first. Which I am getting to. I didn't realize I was suppose to process all the data Alenni sent through so it has been pushed back but will happen today.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471309416.000016"
+        }, 
+        {
+            "text": "I think its supposed to boost render performance", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309375.000015"
+        }, 
+        {
+            "text": "What is going on with that?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471309349.000014"
+        }, 
+        {
+            "text": "alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309341.000013"
+        }, 
+        {
+            "text": "No they aren't", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471309338.000012"
+        }, 
+        {
+            "text": "He did. I am processing that today", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471309332.000011"
+        }, 
+        {
+            "text": "and are these new hvr\u2019s using that setting?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309332.000010"
+        }, 
+        {
+            "text": "Hey, did Charles talk to you about using a desktop setting for compressing tango assets?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471309315.000009"
+        }, 
+        {
+            "text": "*FOXTROT*:\n`P:\\shows\\atrax\\FOXTROT\\HVRs\\FOXTROT_200\\FOXTROT_200_taos_v02`\n`P:\\shows\\atrax\\FOXTROT\\HVRs\\FOXTROT_210\\FOXTROT_210_taos_v02`\n\n*FOXTROT02*\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_100\\FOXTROT02_100_taos_v02`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_350\\FOXTROT02_350_taos_v01`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_360\\FOXTROT02_360_taos_v02`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_370\\FOXTROT02_370_taos_v02`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_380\\FOXTROT02_380_taos_v02`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_470\\FOXTROT02_470_taos_v03`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_480\\FOXTROT02_480_taos_v04`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_490\\FOXTROT02_490_taos_v03`\n\n*FOXTROT AUDIO*\n`P:\\shows\\atrax\\FOXTROT\\Audio\\Clean Audio`\n\n*FOXTROT02 AUDIO*\n`P:\\shows\\atrax\\FOXTROT2\\Sound\\Selects\\Clean_Audio`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471306907.000008"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT2\\Sound\\Selects\\Clean_Audio`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471230918.000007"
+        }, 
+        {
+            "text": "awesome, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471230652.000006"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT\\Audio\\Clean Audio`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471230643.000005"
+        }, 
+        {
+            "text": "Oh yes!,", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471230552.000004"
+        }, 
+        {
+            "text": "Could you grab the audio files for me as well please", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471230541.000003"
+        }, 
+        {
+            "text": "*FOXTROT_220*\n`P:\\shows\\atrax\\FOXTROT\\HVRs\\FOXTROT_220`\n\n*FOXTROT02_500*\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_500\\FOXTROT02_500_taos_v01`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1471230337.000002"
+        }, 
+        {
+            "text": "Bam", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470967900.000017"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT\\HVRs\\FOXTROT_180\\FOXTROT_180_taos_v03`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470967898.000016"
+        }, 
+        {
+            "text": "yea they seem the same length", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470958552.000015"
+        }, 
+        {
+            "text": "Wait. These don't seem different", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470958531.000014"
+        }, 
+        {
+            "text": "nvm, thats 600 vs 300", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470958509.000013"
+        }, 
+        {
+            "text": "The quality does look a little different on the first frame", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470958496.000012"
+        }, 
+        {
+            "text": "Compared to the original <http://mudge-demo2.dev.8i.com/test_df/Foxtrot1/Foxtrot7/FOXTROT_180_600_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470958483.000011"
+        }, 
+        {
+            "text": "Ok, cool.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470958446.000010"
+        }, 
+        {
+            "text": "It seems alright to me <http://mudge-demo2.dev.8i.com/test_df/Foxtrot1/Foxtrot_180_300_30_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470958407.000009"
+        }, 
+        {
+            "text": "Sorry on the slow response. Slack didn't pick up you messaged me", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470958294.000008"
+        }, 
+        {
+            "text": "Current is 428-540", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470958274.000007"
+        }, 
+        {
+            "text": "Original is 428-707", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470958269.000006"
+        }, 
+        {
+            "text": "do you know how long it should be?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470958048.000005"
+        }, 
+        {
+            "text": "Ok, will you test this `P:\\shows\\atrax\\FOXTROT\\HVRs\\FOXTROT_180\\FOXTROT_180_taos_v03`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470958021.000004"
+        }, 
+        {
+            "text": "I don\u2019t know, I don\u2019t really understand the process of converting hvr\u2019s into an hvrs file. But it does sound like it should be possible.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470957241.000003"
+        }, 
+        {
+            "text": "Hey Mudge. For FOXTROT_180, could I delete the not needed frames and the hvrs would work fine?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470957160.000002"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470702102.000008"
+        }, 
+        {
+            "text": "*FOXTROT_160* HVRs: P:\\shows\\atrax\\FOXTROT\\HVRs\\FOXTROT_160\\FOXTROT_110_taos_v01", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470702090.000007"
+        }, 
+        {
+            "text": "oh cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470627643.000006"
+        }, 
+        {
+            "text": "That was helpful. Isaac was able to help me sort through the information.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470627628.000005"
+        }, 
+        {
+            "text": "I still don\u2019t know where I got told to upload the content though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470626503.000004"
+        }, 
+        {
+            "text": "I found this, <https://hvr.slack.com/archives/holo/p1466979672000005>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470626469.000002", 
+            "attachments": [
+                {
+                    "footer": "Posted in #holo", 
+                    "channel_name": "holo", 
+                    "text": "Would someone be able to point me towards the locations of the BCFs of the foxtrot shoot?", 
+                    "author_link": "https://hvr.slack.com/team/isaac.udy", 
+                    "ts": "1466979672.000005", 
+                    "author_name": "Isaac Udy", 
+                    "id": 1, 
+                    "channel_id": "C1CPP949L", 
+                    "mrkdwn_in": [
+                        "text"
+                    ], 
+                    "author_subname": "isaac.udy", 
+                    "from_url": "https://hvr.slack.com/archives/holo/p1466979672000005", 
+                    "author_icon": "https://secure.gravatar.com/avatar/9e0fe50dee88d9875b403596cf796054.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0005-48.png", 
+                    "is_msg_unfurl": true, 
+                    "fallback": "[June 26th, 2016 3:21 PM] isaac.udy: Would someone be able to point me towards the locations of the BCFs of the foxtrot shoot?"
+                }
+            ]
+        }, 
+        {
+            "text": "Beauty", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374556.000140"
+        }, 
+        {
+            "text": "Yea they are", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470374439.000139"
+        }, 
+        {
+            "text": "make sure they are different", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470374399.000138"
+        }, 
+        {
+            "text": "Ok", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374398.000137"
+        }, 
+        {
+            "text": "I\u2019ll check on the web player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470374394.000136"
+        }, 
+        {
+            "text": "Im just beong neurotic", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374391.000135"
+        }, 
+        {
+            "text": "Ok go ahead. It should be ok", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374384.000134"
+        }, 
+        {
+            "text": "or really know what it is for that matter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470374276.000133"
+        }, 
+        {
+            "text": "Um I don\u2019t have orthurus", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470374253.000132"
+        }, 
+        {
+            "text": "In orthurus", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374236.000131"
+        }, 
+        {
+            "text": "Just to be certain can you test this", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374220.000130"
+        }, 
+        {
+            "text": "I\u2019ll rename them to avoid any confusion", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470374074.000129"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470374052.000128"
+        }, 
+        {
+            "text": "Hey the files in folder FOXTROT_120 seem to be called FOXTROT_110\u2026 I believe they are the right files, but just have the wrong name?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470373849.000127"
+        }, 
+        {
+            "text": "Ok cool.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363582.000126"
+        }, 
+        {
+            "text": "Yea, that works", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470363578.000125"
+        }, 
+        {
+            "text": "Beauty. Is it easier if I update Jira?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363565.000124"
+        }, 
+        {
+            "text": "I\u2019ll wait until they are all there before uploading them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470363550.000123"
+        }, 
+        {
+            "text": "Three more coming up in the next ten minutes", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363539.000122"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470363536.000121"
+        }, 
+        {
+            "text": "I'll be drip feeding more through.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363527.000120"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470363513.000119"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT2\\Hvr\\FOXTROT02_490\\FOXTROT02_490_taos_v02`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363417.000118"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT2\\Hvr\\FOXTROT02_480\\FOXTROT02_480_taos_v03`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363394.000116"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT2\\Hvr\\FOXTROT02_470\\FOXTROT02_470_taos_v02`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470363380.000115", 
+            "edited": {
+                "user": "U15894NCC", 
+                "ts": "1470363404.000000"
+            }
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470357144.000114"
+        }, 
+        {
+            "text": "Can I swing by?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470357140.000113"
+        }, 
+        {
+            "text": "yup, its pretty good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470292060.000112"
+        }, 
+        {
+            "text": "Lol, So she doesn't play but her groaning and grunt does.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470292031.000111"
+        }, 
+        {
+            "text": "the video breaks because of the memory problem, but the audio keeps playing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470291449.000110"
+        }, 
+        {
+            "text": "<http://8i.com/p/mRR>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470291425.000108", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "Fitness 2", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/mRR", 
+                    "text": "Fitness 2 - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Fitness 2", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/live_mRR/shareImage.png?v=1", 
+                    "from_url": "http://8i.com/p/mRR"
+                }
+            ]
+        }, 
+        {
+            "text": "Ok, the tango compressor doesn't work?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290845.000107"
+        }, 
+        {
+            "text": "but can be played on the web", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290831.000106"
+        }, 
+        {
+            "text": "They are for tango", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290827.000105"
+        }, 
+        {
+            "text": "Wait, these for the web?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290808.000104"
+        }, 
+        {
+            "text": "so I would have only looked for hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290806.000103"
+        }, 
+        {
+            "text": "It isn't in HVRS either", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290802.000102"
+        }, 
+        {
+            "text": "<http://virginia.8i.com/cloudfarm/la/isilon/Storage/FOXTROT/Bcf|virginia.8i.com/cloudfarm/la/isilon/Storage/FOXTROT/Bcf>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290787.000101"
+        }, 
+        {
+            "text": "I only need hvrs files", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290784.000100"
+        }, 
+        {
+            "text": "I am really confused.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290771.000099"
+        }, 
+        {
+            "text": "P:\\shows\\atrax\\FOXTROT\\HVR\\Hvr", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290768.000098"
+        }, 
+        {
+            "text": "I can\u2019t remember that clearly, but I\u2019m pretty sure it was in there with the others", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290755.000097"
+        }, 
+        {
+            "text": "Did I send you that asset?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290725.000096"
+        }, 
+        {
+            "text": "and was the reason we ended up double checking the assets", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290706.000095"
+        }, 
+        {
+            "text": "It actually has a memory problem when played in the web player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290687.000094"
+        }, 
+        {
+            "text": "this is weird", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290678.000093"
+        }, 
+        {
+            "text": "ok, wtf", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290674.000092"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290670.000091"
+        }, 
+        {
+            "text": "Is it 80's instructor flexing?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290664.000090"
+        }, 
+        {
+            "text": "It's not Foxtrot02?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290651.000089"
+        }, 
+        {
+            "text": "I assume the same place as I got all the others", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290641.000088"
+        }, 
+        {
+            "text": "or HVR", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290632.000087"
+        }, 
+        {
+            "text": "There aren't any BCF's on the cloud", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290629.000086"
+        }, 
+        {
+            "text": "Where did you get it?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290625.000085"
+        }, 
+        {
+            "text": "It looks much nicer than the others though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290618.000084"
+        }, 
+        {
+            "text": "Weird.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290608.000083"
+        }, 
+        {
+            "text": "Really?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290602.000082"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470290594.000081"
+        }, 
+        {
+            "text": "Do you have HVRs for Foxtrot 160?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470290515.000080"
+        }, 
+        {
+            "text": "All good, better to double check these things anyway :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470287378.000079"
+        }, 
+        {
+            "text": "Sweet. Sorry to ask twice, it takes me a second to switch gears.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470287324.000078"
+        }, 
+        {
+            "text": "They are all for tango", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470287312.000077"
+        }, 
+        {
+            "text": "Yes please", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470287307.000076"
+        }, 
+        {
+            "text": "Hey, 300k for the assets from Alenni, right?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470287295.000075"
+        }, 
+        {
+            "text": "Yea I had a play with it. Turns out the loader doesn\u2019t support textures though, so its not very useful right now. I will keep an eye on it though as the project may still be inprogress.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470091978.000074"
+        }, 
+        {
+            "text": "I did. Whew!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470091818.000073"
+        }, 
+        {
+            "text": "Ahhh! Did I ever send you an fbx?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470091799.000072"
+        }, 
+        {
+            "text": "That\u2019s great, thanks for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470090607.000071"
+        }, 
+        {
+            "text": "They are there now :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470090578.000070"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT\\Sound`", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470090523.000069"
+        }, 
+        {
+            "text": "oh, I\u2019m not sure about that one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470090365.000068"
+        }, 
+        {
+            "text": "password?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470090338.000067"
+        }, 
+        {
+            "text": "<https://eighteye.atlassian.net/browse/HOLO-78>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470090325.000066"
+        }, 
+        {
+            "text": "It was bang on and I appreciate you having the exact location", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470090322.000065"
+        }, 
+        {
+            "text": "Jira", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470090315.000064"
+        }, 
+        {
+            "text": "Trello?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470090309.000063"
+        }, 
+        {
+            "text": "Hey, how were you able to find that path?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470090307.000062"
+        }, 
+        {
+            "text": "Ok, cool.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470089507.000061"
+        }, 
+        {
+            "text": "I believe those did work but there was additional audio for the 80\u2019s fitness instructor which we didn\u2019t have", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470089491.000060"
+        }, 
+        {
+            "text": "So these don't work: P:\\shows\\atrax\\FOXTROT2\\Sound\\Selects\\Clean_Audio", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470089460.000059"
+        }, 
+        {
+            "text": "yes, its for the first shoot", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470089432.000058"
+        }, 
+        {
+            "text": "And it is for *FOXTROT* not *FOXTROT02*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470089421.000057"
+        }, 
+        {
+            "text": "whereabouts would they get pulled down to?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470089412.000056"
+        }, 
+        {
+            "text": "They should already be pulled down", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470089388.000055"
+        }, 
+        {
+            "text": "Ok, so you need me to jump on LA to get the sounds?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470089382.000054"
+        }, 
+        {
+            "text": "Not as far as I know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470089297.000053"
+        }, 
+        {
+            "text": "Do you have access to the LA network?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1470089286.000052"
+        }, 
+        {
+            "text": "Hey do you know how to get to LA-NAS2\\FOXTROT\\Sound\\Selects? I need to get the audio from there but don\u2019t know how to find it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1470088700.000051"
+        }, 
+        {
+            "text": "Ok cool", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469678083.000050"
+        }, 
+        {
+            "text": "it needs a username and password to see", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469678064.000049"
+        }, 
+        {
+            "text": "because that is \u201csecure\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469678050.000048"
+        }, 
+        {
+            "text": "I don\u2019t think its a problem from mudge-demo", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469678039.000047"
+        }, 
+        {
+            "text": "I don\u2019t really know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469678000.000046"
+        }, 
+        {
+            "text": "I am getting ready to post it to the welly channel. Is that cool?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469677988.000045"
+        }, 
+        {
+            "text": "Cool, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469677971.000044"
+        }, 
+        {
+            "text": "I forgot to ping you yesterday", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469677752.000043"
+        }, 
+        {
+            "text": "Hey Luna is there", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469677746.000042"
+        }, 
+        {
+            "text": "No problem, just when you can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469578726.000041"
+        }, 
+        {
+            "text": "Ok give me an hour.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469578710.000040"
+        }, 
+        {
+            "text": "LUNA folder is empty", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469578609.000039"
+        }, 
+        {
+            "text": "will do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469578560.000038"
+        }, 
+        {
+            "text": "Cloudberry is freezing on me. I think they are there. Can you check?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469578447.000037"
+        }, 
+        {
+            "text": "Transferring now", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469578391.000036"
+        }, 
+        {
+            "text": "thats it, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469578383.000035"
+        }, 
+        {
+            "text": "Are those the `hvrs` you are requesting?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469578378.000034"
+        }, 
+        {
+            "text": "For *LUNA*, yes.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469578366.000033"
+        }, 
+        {
+            "text": "Would you be able to put it in <http://clouds.8i.com|clouds.8i.com> bucket and then let me know when it is there", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577754.000032"
+        }, 
+        {
+            "text": "Hey, has Esta been talking to you about a new hvrs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577734.000031"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577224.000030"
+        }, 
+        {
+            "text": ":slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469577199.000029"
+        }, 
+        {
+            "username": "taos", 
+            "display_as_bot": false, 
+            "text": "<@U15894NCC> uploaded a file: <https://hvr.slack.com/files/U15894NCC/F1VDU9LAD/pik.fbx|Pik.fbx>", 
+            "upload": true, 
+            "ts": "1469577193.000028", 
+            "subtype": "file_share", 
+            "user": "U15894NCC", 
+            "file": {
+                "filetype": "text", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F1VDU9LAD", 
+                "size": 1132265, 
+                "title": "Pik.fbx", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F1VDU9LAD/pik.fbx", 
+                "ims": [
+                    "D1RUVEQ8M"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1469577193, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F1VDU9LAD/download/pik.fbx", 
+                "user": "U15894NCC", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "Pik.fbx", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F1VDU9LAD-68d419a756", 
+                "permalink": "https://hvr.slack.com/files/U15894NCC/F1VDU9LAD/pik.fbx", 
+                "is_external": false, 
+                "created": 1469577193, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hey, when you get a chance do you want to send me through an example FBX file, I want to see if I can make them work with web director.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469577118.000027"
+        }, 
+        {
+            "text": "I can try", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469492998.000026"
+        }, 
+        {
+            "text": "Hey can you show me how to do that on my computer?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469492979.000025"
+        }, 
+        {
+            "text": "It wasn\u2019t public", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469492928.000024"
+        }, 
+        {
+            "text": "<http://clouds.8i.com/CAPOEIRA001/CAPOEIRA001_S01_T02/web2_hvr53/CAPOEIRA001_S01_T02_taos_v01_400|clouds.8i.com/CAPOEIRA001/CAPOEIRA001_S01_T02/web2_hvr53/CAPOEIRA001_S01_T02_taos_v01_400>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469492606.000023"
+        }, 
+        {
+            "text": "Can you check to see if this is public?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469492602.000022"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420834.000021"
+        }, 
+        {
+            "text": "Thanks bud", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420827.000020"
+        }, 
+        {
+            "text": "I\u2019m going to double check I have everyone now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420738.000019"
+        }, 
+        {
+            "text": "yay!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420725.000018"
+        }, 
+        {
+            "text": "Alright, you are up there now, and sorry about missing you.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420721.000017"
+        }, 
+        {
+            "text": "Assistant Technical Director works", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420655.000016"
+        }, 
+        {
+            "text": "What would you like for your Job title?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420642.000015"
+        }, 
+        {
+            "text": "lol ok cool. yeah the one I provided is good then", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420228.000014"
+        }, 
+        {
+            "text": "Amy or Asher might know more, but I think we are trying to show us being humans :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420090.000013"
+        }, 
+        {
+            "text": "I\u2019m not sure I\u2019m the right person to ask about that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420058.000012"
+        }, 
+        {
+            "text": "if not that is cool.", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420031.000011"
+        }, 
+        {
+            "text": "change*", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420017.000010"
+        }, 
+        {
+            "text": "Would it be possible to check my picture to a stick figure?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469420012.000009"
+        }, 
+        {
+            "text": "I\u2019m sure I remember seeing you there at one point though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469420000.000008"
+        }, 
+        {
+            "text": ":smile:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469419987.000007"
+        }, 
+        {
+            "text": "I\u2019ll check it out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469419983.000006"
+        }, 
+        {
+            "text": "Oh what!", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469419972.000005"
+        }, 
+        {
+            "text": "You missed me :disappointed:", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469419956.000004"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469419941.000003"
+        }, 
+        {
+            "text": "Hey, do you update the website?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469419852.000002"
+        }, 
+        {
+            "text": "Thanks Mudge!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469155830.000021"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/test_df/IANSPUP001/web2_hvr53/IANSPUP001_S01_T07_taos_v01_600_15_75_90.hvrs?start_height=40>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469153996.000020"
+        }, 
+        {
+            "text": "Beauty", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469152653.000019"
+        }, 
+        {
+            "text": "Give me a few minutes and I can make a quick change to fix it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469152559.000018"
+        }, 
+        {
+            "text": "Hmm, that one doesn\u2019t focus on the content very well, because its much lower down than usual", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469152543.000017"
+        }, 
+        {
+            "text": "I'll have to check with Ian to sort that out", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469150984.000016"
+        }, 
+        {
+            "text": "<http://clouds.8i.com/IANSPUP001/web2_hvr53|clouds.8i.com/IANSPUP001/web2_hvr53>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469150975.000015"
+        }, 
+        {
+            "text": "Last one: is this private?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469150974.000014"
+        }, 
+        {
+            "text": "Good idea!", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469150587.000013"
+        }, 
+        {
+            "text": "The way I usually get the link is to copy the link to the hvrs file and then just replace the <https://s3-us-west-2.amazonaws.com/clouds.8i.com> part with <http://mudge-demo.dev.8i.com/test_df>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469150515.000012"
+        }, 
+        {
+            "text": "Or just your favourite channel", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469150415.000011"
+        }, 
+        {
+            "text": "<#C03DG1EFK> is probably good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469150386.000010"
+        }, 
+        {
+            "text": "There doesn\u2019t appear to be hvrs files in the KNIGHT002_110 folder", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469150371.000009"
+        }, 
+        {
+            "text": "Thanks Mudge! What would be a good channel to post these in?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469150370.000008"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test_df/KNIGHT002/KNIGHT002_140/web2_hvr53/KNIGHT002_S01_T03_taos_v03_600_15_75_90.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469150312.000007"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test_df/KNIGHT002/KNIGHT002_130/web2_hvr53/KNIGHT002_S01_T02_taos_v01_600_15_75_90.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469150298.000006"
+        }, 
+        {
+            "text": "Could you look over the other three selects? I can't seem to get them working", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469150207.000005"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test_df/KNIGHT002/KNIGHT002_120/web2_hvr53/KNIGHT002_S01_T01_taos_v04_600_15_75_90.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469141624.000004"
+        }, 
+        {
+            "text": "Kieran showed me but I have forgotten. When you get a free moment would you mind showing me again?", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469141455.000003"
+        }, 
+        {
+            "text": "Can I see this in Web Director: <http://clouds.8i.com/KNIGHT002|clouds.8i.com/KNIGHT002>", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1469141437.000002"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468539673.000003"
+        }, 
+        {
+            "text": "P:\\shows\\atrax\\FOXTROT2\\Sound\\Selects\\Clean_Audio", 
+            "type": "message", 
+            "user": "U15894NCC", 
+            "ts": "1468539315.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U15894NCC", 
+            "U0C90MHEH"
+        ]
+    }
+}

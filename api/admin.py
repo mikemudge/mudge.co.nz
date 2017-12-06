@@ -3,12 +3,13 @@ from auth.custom_flask_admin import CustomAdminIndexView
 from auth.login_manager import login_manager
 from auth.models import Client, Scope, User, Profile
 from flask_admin import Admin
+from project_manager.models import Project, FileUrl
 from rock1500.models import Rock1500Album, Rock1500Song, Rock1500Artist, Rock1500Pick
 from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user
 from jinja2 import Markup
 from shared.database import db
-from tournament_app.models import Tournament, Team, Match, Round
+from tournament_app.models import Tournament, Team, Match, MatchResult, Round
 from trail.models import Trail, TrailProgress, TrailProfile
 
 from wtforms.fields import SelectField, IntegerField
@@ -90,6 +91,9 @@ class TrailView(BaseView):
         # Select Fields don't prefill right.
         form.activity.data = form.activity.object_data.code
 
+class MatchView(BaseView):
+    exclude = ['result']
+    pass
 
 class RockArtistView(BaseView):
     column_exclude_list = ['date_created']
@@ -136,6 +140,9 @@ def routes(app):
         base_template='admin/master.html'
     )
 
+    admin.add_view(BaseView(Project, db.session, category="Project"))
+    admin.add_view(BaseView(FileUrl, db.session, category="Project"))
+
     admin.add_view(ClientView(Client, db.session, category="Auth"))
     admin.add_view(BaseView(Scope, db.session, category="Auth"))
     admin.add_view(UserView(User, db.session, category="Auth"))
@@ -146,9 +153,10 @@ def routes(app):
     admin.add_view(BaseView(TrailProfile, db.session, category="Trail"))
 
     admin.add_view(BaseView(Tournament, db.session, category="Tournament"))
-    admin.add_view(BaseView(Match, db.session, category="Tournament"))
+    admin.add_view(MatchView(Match, db.session, category="Tournament"))
     admin.add_view(BaseView(Round, db.session, category="Tournament"))
     admin.add_view(BaseView(Team, db.session, category="Tournament"))
+    admin.add_view(MatchView(MatchResult, db.session, category="Tournament"))
 
     admin.add_view(BaseView(Walker, db.session, category="Old"))
     admin.add_view(BaseView(Walk, db.session, category="Old"))

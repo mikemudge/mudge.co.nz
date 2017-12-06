@@ -1,0 +1,351 @@
+{
+    "messages": [
+        {
+            "text": "Ok, I will check with them on Monday then", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058877.000126"
+        }, 
+        {
+            "text": "Wish I could be more help.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058866.000157"
+        }, 
+        {
+            "text": "Probably a good question for Charles though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058848.000190"
+        }, 
+        {
+            "text": "I don\u2019t actually know what goes on in iOS, but I think they have a different color spectrum or something.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058702.000292"
+        }, 
+        {
+            "text": "Strange", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058668.000078"
+        }, 
+        {
+            "text": "so in Orthrus the file on the left has more saturation and contrast and file on the right has less saturaiton and cotrast.. in Holo is the opposite", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058652.000366"
+        }, 
+        {
+            "username": "tereza_d", 
+            "display_as_bot": false, 
+            "text": "<@U2Z3DBCH3> uploaded a file: <https://hvr.slack.com/files/U2Z3DBCH3/F7Q2L20P2/ios-display.png|ios-display.png>", 
+            "upload": true, 
+            "ts": "1509058627.000050", 
+            "subtype": "file_share", 
+            "user": "U2Z3DBCH3", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_800_h": 352, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_64.png", 
+                "size": 475319, 
+                "original_h": 685, 
+                "thumb_360_w": 360, 
+                "title": "ios-display.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F7Q2L20P2/ios-display.png", 
+                "thumb_720_h": 317, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_360.png", 
+                "id": "F7Q2L20P2", 
+                "ims": [
+                    "D7QP323AQ"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 158, 
+                "thumb_480_h": 211, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_800.png", 
+                "timestamp": 1509058623, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F7Q2L20P2/download/ios-display.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_1024.png", 
+                "user": "U2Z3DBCH3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "ios-display.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F7Q2L20P2-368d552f03", 
+                "permalink": "https://hvr.slack.com/files/U2Z3DBCH3/F7Q2L20P2/ios-display.png", 
+                "is_external": false, 
+                "created": 1509058623, 
+                "thumb_1024_h": 451, 
+                "thumb_960_h": 423, 
+                "original_w": 1556, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F7Q2L20P2-1360aea9be/ios-display_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "so not sure what happened", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058568.000215"
+        }, 
+        {
+            "text": "strangely the new look looks better in orthrus but worse in iOS", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058565.000108"
+        }, 
+        {
+            "text": "It used to be the case that all @8i.com emails automatically were \u201cstaff\u201d but someone disabled that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058455.000224"
+        }, 
+        {
+            "text": "Your account was not \u201cstaff\u201d enabled", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058423.000262"
+        }, 
+        {
+            "text": "try again now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058412.000243"
+        }, 
+        {
+            "text": "Oh actually I totally forget something", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058396.000172"
+        }, 
+        {
+            "text": "Give it a go", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058371.000128"
+        }, 
+        {
+            "text": "incognito?", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058365.000405"
+        }, 
+        {
+            "text": "doesn't work agian", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058358.000080"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin/holo-poses/?search=COLORCALIB>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058333.000072"
+        }, 
+        {
+            "text": "I think sometimes the redirect page gets lost", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058300.000098"
+        }, 
+        {
+            "text": "Can you try the original link again?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509058292.000086"
+        }, 
+        {
+            "text": "it just refreshes and does nothing", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058260.000061"
+        }, 
+        {
+            "text": "yep", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509058252.000165"
+        }, 
+        {
+            "text": "And using <mailto:terezad@8i.com|terezad@8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057992.000007"
+        }, 
+        {
+            "text": "Using Google login?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057963.000132"
+        }, 
+        {
+            "text": "I can't seem to login to Holo", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057949.000108"
+        }, 
+        {
+            "text": "They are both visible in my search", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057948.000141"
+        }, 
+        {
+            "text": "are you looking into COLORCALIB02 or COLORCALIB?", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057922.000317"
+        }, 
+        {
+            "text": "Where COLORCALIB02_S03 and COLORCALIB02_OLD look more lighter/washed out", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057747.000201"
+        }, 
+        {
+            "text": "and also the same as COLORCALIB02_S02", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057718.000243"
+        }, 
+        {
+            "text": "To my untrained eye it looks the same as COLORCALIB02_CORRECT", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057702.000135"
+        }, 
+        {
+            "text": "the colour should be less saturated than the old one when looking at Orthrus", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057653.000222"
+        }, 
+        {
+            "text": "but it at least shows which look darker and which don\u2019t", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057638.000145"
+        }, 
+        {
+            "text": "The web player doesn\u2019t support the flag, because its still running player code from about a year ago.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057619.000132"
+        }, 
+        {
+            "text": "and a screenshot of each taken using the web player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057613.000209"
+        }, 
+        {
+            "text": "That shows all the uploads", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057600.000207"
+        }, 
+        {
+            "text": "Can you access <https://holo.8i.com/flask-admin/holo-poses/?search=COLORCALIB>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057563.000008"
+        }, 
+        {
+            "text": "let me check the file... Andrew added that but it should look similar like the first one", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057475.000324"
+        }, 
+        {
+            "text": "Actually I don\u2019t really know what I\u2019m talking about :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057461.000250"
+        }, 
+        {
+            "text": "Wouldn\u2019t it makes sense that it appear darker/more saturated if it is using the old color rendering method for new color data?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057419.000020"
+        }, 
+        {
+            "text": "Cool, yea the flag is off for that one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057350.000129"
+        }, 
+        {
+            "text": "the file is called COLORCALIB02_200...", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057319.000306"
+        }, 
+        {
+            "text": "wait", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057300.000400"
+        }, 
+        {
+            "text": "looks much darker and more saturated than before", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057299.000264"
+        }, 
+        {
+            "text": "Do you know what the name of the file was?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057282.000179"
+        }, 
+        {
+            "text": "but I can check if you want", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057237.000247"
+        }, 
+        {
+            "text": "It should be off by default", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509057228.000289"
+        }, 
+        {
+            "text": "Or show me how to do that :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057213.000142"
+        }, 
+        {
+            "text": "Hey, do you think you could turn off the flag for post processing on the new file we added to COLORCALIB? :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Z3DBCH3", 
+            "ts": "1509057204.000197"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U2Z3DBCH3", 
+            "U0C90MHEH"
+        ]
+    }
+}

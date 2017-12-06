@@ -1,0 +1,630 @@
+{
+    "messages": [
+        {
+            "text": "no problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277355.000014"
+        }, 
+        {
+            "text": "thank you", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277349.000092"
+        }, 
+        {
+            "text": "nice", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277342.000064"
+        }, 
+        {
+            "text": "according to my config file", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277338.000064"
+        }, 
+        {
+            "text": "\u201c207.66.202.154\u201d,  # Office LA\n    \u201c216.1.205.34\",  # New LA Office.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277327.000044"
+        }, 
+        {
+            "text": "Actually I have 2", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277325.000105"
+        }, 
+        {
+            "text": "what do Ip do you have?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277313.000049"
+        }, 
+        {
+            "text": "but I don\u2019t know if they have another now, due to the new office.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277302.000121"
+        }, 
+        {
+            "text": "I think I know at least 1 ip address for LA", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277286.000097"
+        }, 
+        {
+            "text": "Im radio silence from everyone", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277267.000099"
+        }, 
+        {
+            "text": "do you know the Ip address for LA", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277258.000109"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277215.000174"
+        }, 
+        {
+            "text": "other than <http://8i.com|8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277209.000119"
+        }, 
+        {
+            "text": "I haven\u2019t done much of the domain name setup stuff", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277204.000038"
+        }, 
+        {
+            "text": "sorry bud", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277181.000152"
+        }, 
+        {
+            "text": "oh", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277178.000042"
+        }, 
+        {
+            "text": "I don\u2019t think I did that setup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503277170.000029"
+        }, 
+        {
+            "text": "the <http://lavpn.8i.com|lavpn.8i.com> is now: unknown (hunting)", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277134.000032"
+        }, 
+        {
+            "text": "the <http://wavpn.8i.com|wavpn.8i.com> is now : 64.125.182.191", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277080.000107"
+        }, 
+        {
+            "text": "remember those host pointers we setup for <http://nzvpn.8i.com|nzvpn.8i.com> <http://wavpn.8i.com|wavpn.8i.com> and <http://lavpn.8i.com|lavpn.8i.com>?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1503277064.000041"
+        }, 
+        {
+            "text": "<https://goo.gl/maps/J6EJSJmZhEF2>", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501656468.966210", 
+            "edited": {
+                "user": "U0PCBCC5C", 
+                "ts": "1501656559.000000"
+            }
+        }, 
+        {
+            "text": "Im dying to see spiderman hvr inside a google map!", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501656466.965657"
+        }, 
+        {
+            "text": "But can see in popular", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038876.197577"
+        }, 
+        {
+            "text": "Yeah no tag in the menu bar after spidey ", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038857.194068"
+        }, 
+        {
+            "text": "Oh yea? All poses should show up there so the private visibility is working right for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501038665.162950"
+        }, 
+        {
+            "text": "It's under popular. Tag access", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038617.154396"
+        }, 
+        {
+            "text": "Hmm I\u2019m not sure what is going on then.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501038514.137045"
+        }, 
+        {
+            "text": "Nada se\u00f1or ", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038466.129481"
+        }, 
+        {
+            "text": "Restarting", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038411.119899"
+        }, 
+        {
+            "text": "Nothing yet", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038398.117743"
+        }, 
+        {
+            "text": "How does it look now, should be the last filter after \u201c#SpiderManHomecoming\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501038375.113758"
+        }, 
+        {
+            "text": "Thai Dancers", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501038218.086281"
+        }, 
+        {
+            "text": "Tag like Thai Dancers. Or do have a user tag. In her case 'kay'", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501038206.084098"
+        }, 
+        {
+            "text": "yea the filter for them was still private, I have now added Kay to see that as well.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501038186.080676"
+        }, 
+        {
+            "text": "It could be that the poses are available, but not easy to find, one second I\u2019ll check the tags etc for finding them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501038093.063760"
+        }, 
+        {
+            "text": "No updates. Logout and restarted the app", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1501037988.043056"
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500615154.036329"
+        }, 
+        {
+            "text": "I will get her to make an account firstly", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1500614339.909659"
+        }, 
+        {
+            "text": "This email will be the account Kay from the coffee shop will signup with <mailto:knakharin@hotmail.com|knakharin@hotmail.com>", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1500614320.906748"
+        }, 
+        {
+            "text": "all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498098057.701726"
+        }, 
+        {
+            "text": "cheers", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1498098049.700770"
+        }, 
+        {
+            "text": "Maybe Ian then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498098033.698985"
+        }, 
+        {
+            "text": "thx, he thought it was you. I will bounce it back to him", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1498098015.697001"
+        }, 
+        {
+            "text": "Not anymore, all that happens in Amazon now. You\u2019ll want to talk to Owen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498097977.692675"
+        }, 
+        {
+            "text": "hey Buddy...\nI want to get these sub-domains SSL Certed:\n<https://nzvpn.8i.com>\n<https://wavpn.8i.com>\n<https://lavpn.8i.com>\n\nIs that your wheelhouse per chance?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1498097941.688556"
+        }, 
+        {
+            "text": "yes, thank you Mudge", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200643.169549"
+        }, 
+        {
+            "text": "all good now though?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200309.146574"
+        }, 
+        {
+            "text": "it did sound like a job title", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200301.146053"
+        }, 
+        {
+            "text": "ther ya go!", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200283.144852"
+        }, 
+        {
+            "text": "yea, I just copy pasted what you had :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200280.144623"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200264.143500"
+        }, 
+        {
+            "text": "make sense", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200263.143461"
+        }, 
+        {
+            "text": "I am IT Manager now", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200261.143280"
+        }, 
+        {
+            "text": "my bad", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200231.141243"
+        }, 
+        {
+            "text": "oh sorry, that was before &gt; after", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200225.140833"
+        }, 
+        {
+            "text": "Just: ITM", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200167.136532"
+        }, 
+        {
+            "text": "hahaha", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200157.135897"
+        }, 
+        {
+            "text": "not lietrally!!", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200155.135738"
+        }, 
+        {
+            "text": "haha!!!", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200147.135065"
+        }, 
+        {
+            "text": "cheers bud!", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494200114.132785"
+        }, 
+        {
+            "text": "Cool, should be there now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200071.129857"
+        }, 
+        {
+            "text": "yes, thanks buddy : )", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494199988.124074", 
+            "edited": {
+                "user": "U0PCBCC5C", 
+                "ts": "1494200012.000000"
+            }
+        }, 
+        {
+            "text": "sure can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494199980.123484"
+        }, 
+        {
+            "text": "for job description right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494199977.123352"
+        }, 
+        {
+            "text": "cool, would you mind changing <https://8i.com/about> &gt; Shane Holloman &gt; Assistant Technical Director to ITM?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494199957.121907", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1920, 
+                    "title": "8i | About", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/about", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | About", 
+                    "thumb_url": "https://8i.com/static/images/shareImage.jpg", 
+                    "from_url": "https://8i.com/about"
+                }
+            ]
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494199874.116050"
+        }, 
+        {
+            "text": "Hey, Mudge are you able to edit <http://8i.com|8i.com> text?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1494199862.115175"
+        }, 
+        {
+            "text": "yup, I have tried that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484177134.000025"
+        }, 
+        {
+            "text": "`sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder; say DNS cache flushed`", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484177106.000024"
+        }, 
+        {
+            "text": "Nope its not going there for me either", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484177075.000023"
+        }, 
+        {
+            "text": "it doesn\u2019t seem to be working for Ye", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484177008.000022"
+        }, 
+        {
+            "text": "Then try", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484176938.000021"
+        }, 
+        {
+            "text": "Flush cache DNS ", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484176934.000020"
+        }, 
+        {
+            "text": "Try that now", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484176913.000019"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R3QCB4UCA", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0PCBCC5C", 
+                    "U0C90MHEH"
+                ], 
+                "date_end": "1484176867", 
+                "date_start": "1484176773", 
+                "created_by": "U0PCBCC5C", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D0QHC3WFL"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R3QCB4UCA", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R3QCB4UCA|call>.", 
+            "ts": "1484176773.000013", 
+            "subtype": "sh_room_created", 
+            "user": "U0PCBCC5C", 
+            "type": "message", 
+            "channel": "D0QHC3WFL"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484176635.000012"
+        }, 
+        {
+            "text": "You good?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484176026.000011"
+        }, 
+        {
+            "text": "Has it fixed everything?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484170254.000010"
+        }, 
+        {
+            "text": "I updated it to not redirect", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484170232.000009"
+        }, 
+        {
+            "text": "Good please send", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484170200.000008"
+        }, 
+        {
+            "text": "I think I have the access you want to the <http://8i.com|8i.com> server config", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484169632.000007"
+        }, 
+        {
+            "text": "I know, very sorry it's literally number one right now", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484167631.000006"
+        }, 
+        {
+            "text": "Cool, its holding up half the holo team from working.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484167596.000005"
+        }, 
+        {
+            "text": "working this particular issue right now", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1484167561.000004"
+        }, 
+        {
+            "text": "Does that sound like something which may have been cause by your changes?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484167164.000003"
+        }, 
+        {
+            "text": "Hey, we are having trouble reaching any of the *.<http://dev.8i.com|dev.8i.com> domains today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1484167136.000002"
+        }, 
+        {
+            "text": "yes, I'm using it pretty all day for work phone call, skype with seb etc... need it back?", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1461740601.000003"
+        }, 
+        {
+            "text": "Hey, did you borrow the test iPhone 6+ last week, do you still have it? Or know where I can find it?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461706058.000002"
+        }, 
+        {
+            "text": "dude, great. my pleasure", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1457304102.000008"
+        }, 
+        {
+            "text": "I\u2019ve got it loading nicely now, thanks for that document :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457301930.000007"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457299127.000006"
+        }, 
+        {
+            "text": "That solution I shared on google docs has worked very well for me... I forgot where I got this but I copied it from my snippets to this doc... it should solve your issue", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1457298533.000005"
+        }, 
+        {
+            "text": "bueno senor! gracias", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1457147743.000004"
+        }, 
+        {
+            "text": " 8i and 8ikitten. That works for all 8i dev sites.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457146054.000003"
+        }, 
+        {
+            "text": "Michael whats the the user and pass to see the site here: <http://mudge-demo.dev.8i.com/>", 
+            "type": "message", 
+            "user": "U0PCBCC5C", 
+            "ts": "1457145852.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0PCBCC5C", 
+            "U0C90MHEH"
+        ]
+    }
+}

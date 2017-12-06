@@ -26,6 +26,20 @@ class Round(TournamentBaseModel):
     tournament_id = db.Column(UUID(), db.ForeignKey('tournament.id', ondelete='CASCADE'))
     tournament = relationship("Tournament", backref=db.backref("rounds", lazy="dynamic"))
 
+class MatchResult(BaseModel):
+    homeScore = db.Column(db.Integer, nullable=False)
+    awayScore = db.Column(db.Integer, nullable=False)
+
+    match_id = db.Column(UUID(), db.ForeignKey('match.id', ondelete='CASCADE'), nullable=False)
+    match = relationship(
+        'Match',
+        # uselist=False,
+        back_populates='result',
+        single_parent=True)
+
+    def __repr__(self):
+        return "%s - %s" % (self.homeScore, self.awayScore)
+
 class Match(BaseModel):
     round_id = db.Column(UUID(), db.ForeignKey('round.id', ondelete='CASCADE'))
     round = relationship("Round", backref="matches")
@@ -34,4 +48,15 @@ class Match(BaseModel):
     homeTeam = relationship("Team", foreign_keys=homeTeam_id)
     awayTeam_id = db.Column(UUID(), db.ForeignKey('team.id'))
     awayTeam = relationship("Team", foreign_keys=awayTeam_id)
-    played = db.Column(db.Boolean, default=False)
+
+    result = relationship(
+        MatchResult,
+        back_populates='match',
+        # Cascade will delete result when a match is deleted.
+        # delete-orphan will delete results if they are removed from a match
+        cascade="all, delete-orphan",
+        # Can only have a single result per match.
+        uselist=False)
+
+    def __repr__(self):
+        return "%s - %s" % (self.homeTeam, self.awayTeam)

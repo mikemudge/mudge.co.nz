@@ -64,8 +64,13 @@ class DBModelView(MethodView):
         return jsonify(data=result)
 
     def edit(self, instance):
-        s = self.schema(session=db.session)
+        print db.session
+        s = self.schema()
         data = self.get_data()
+
+        print data
+
+        # TODO should be a schema method?
         instance, errors = s.load(data, instance=instance)
         if errors:
             return self.errorResponse(errors)

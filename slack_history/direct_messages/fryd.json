@@ -1,0 +1,58 @@
+{
+    "messages": [
+        {
+            "text": "this fucking awesome", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453332483.000009"
+        }, 
+        {
+            "text": "It's 8i and 8ikitten :)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453332311.000008"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453331870.000007"
+        }, 
+        {
+            "text": "how do i access that demo you justposted", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453331869.000006"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453331676.000005"
+        }, 
+        {
+            "text": "whats the kittens password again", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453331675.000004"
+        }, 
+        {
+            "text": ":simple_smile:", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453331666.000003"
+        }, 
+        {
+            "text": "hey!!!", 
+            "type": "message", 
+            "user": "U0F8C4J30", 
+            "ts": "1453331663.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0F8C4J30", 
+            "U0C90MHEH"
+        ]
+    }
+}

@@ -1,0 +1,247 @@
+{
+    "messages": [
+        {
+            "text": "It should be able to play any hvrs file, although it does have memory constraints", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502422672.444453"
+        }, 
+        {
+            "text": "so we have our web player playing hvrses that are labelled web600*.hvrs. any idea if should be able to play other ones?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502420568.134347"
+        }, 
+        {
+            "text": "don't worry: that was something I introduced :smile:", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502420449.115597"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U5RUDGZ0B"
+                    ]
+                }
+            ], 
+            "text": "Not really sure. In a meeting now, but will take a look afterwards", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502419395.956203"
+        }, 
+        {
+            "text": "hmm any idea why assets in the web player would appear at a lower-resolution than they actually are?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502419186.923849"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502408131.811749"
+        }, 
+        {
+            "text": "OK I'll give it a go", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502408126.810577", 
+            "edited": {
+                "user": "U5RUDGZ0B", 
+                "ts": "1502408136.000000"
+            }
+        }, 
+        {
+            "text": "but possibly still quite old", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502408115.807784"
+        }, 
+        {
+            "text": "It should be more up to date than develop", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502408103.804780"
+        }, 
+        {
+            "text": "do you reckon I use the `player` branch for the `src/eighti` code (that gets turned into eighti.min.js)?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502408036.788032"
+        }, 
+        {
+            "text": "Cheers", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502054262.875728"
+        }, 
+        {
+            "text": "anything inside the compiled JS, he knows best about.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502054106.862950"
+        }, 
+        {
+            "text": "<@U03DPGB9Y>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502054056.858291"
+        }, 
+        {
+            "text": "Who was the guy I should ask about the web player?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1502054010.854495"
+        }, 
+        {
+            "text": "sweet", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501725536.866892"
+        }, 
+        {
+            "text": "but the file in the repo is <https://github.com/8i/WebPlatform/blob/develop/tests/teamcity/index.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725528.865053"
+        }, 
+        {
+            "text": "You might just be able to include them using absolute urls", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725516.862526"
+        }, 
+        {
+            "text": "otherwise i'll have to copy all the dependencies out too from that page", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501725496.858237"
+        }, 
+        {
+            "text": "yup. is there a repo on github for it?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501725468.852335"
+        }, 
+        {
+            "text": "basically does some setup and then eventually calls loadScene with a json blob containing an hvrs url.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725362.830652"
+        }, 
+        {
+            "text": "Its just in a &lt;script&gt; tag on that page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725287.814736"
+        }, 
+        {
+            "text": "when you said 'copy the javascript' did you mean from the site you linked? is it on github?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501725260.808947"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501725216.799606"
+        }, 
+        {
+            "text": "But yea, have a stab at that. Let me know if you need any assistance.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725190.794424"
+        }, 
+        {
+            "text": "The actual code which makes the network request for the hvrs is C++ compiled into JS so I\u2019m not really sure about the complexity of adding any auth headers etc.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725094.773444"
+        }, 
+        {
+            "text": "If you include all those sources and then copy the javascript you should be able to play any public hvrs url", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501725025.759066"
+        }, 
+        {
+            "text": "nice. do you reckon just extract what we want from the code of that?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501725015.756779", 
+            "edited": {
+                "user": "U5RUDGZ0B", 
+                "ts": "1501725025.000000"
+            }
+        }, 
+        {
+            "text": "That is probably the most barebones integration of an hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501724964.746007"
+        }, 
+        {
+            "text": "We have this page, which was exposed for testing new builds of the web player. <https://web-stage.dev.8i.com/teamCity>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501724937.739999"
+        }, 
+        {
+            "text": "Actually I don\u2019t know if HVR files are supported currently, I\u2019ve only ever used HVRS files so far in the web player.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501724829.716563"
+        }, 
+        {
+            "text": "I guess we'd want some kind of front-end dependency that can play HVR/S. Maybe CORS won't be an issue since all the sites are under <http://8i.com|8i.com> (?)", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501724754.700992", 
+            "edited": {
+                "user": "U5RUDGZ0B", 
+                "ts": "1501724793.000000"
+            }
+        }, 
+        {
+            "text": "I\u2019m not entirely sure what solution would best fit the needs of the farm team, and don\u2019t really know much about the current tech stack for farm/studio.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501724226.590289"
+        }, 
+        {
+            "text": "Obviously we have a web player which can play hvrs files, but the current version doesn\u2019t really deal with anything like cross origin or authentication or anything like that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501724069.558489"
+        }, 
+        {
+            "text": "So that idea has been brought up in the past but never really gone anywhere.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501724018.548225"
+        }, 
+        {
+            "text": "Hey", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501723979.540299"
+        }, 
+        {
+            "text": "Hey man. We in the farm team are interested in viewing HVRs and HVRSs in our farm websites (e.g. <https://8iwlgtest-sydney-farm1.devfarms.8i.com/>) to help debugging for pipeline people. How difficult do you think this might be?", 
+            "type": "message", 
+            "user": "U5RUDGZ0B", 
+            "ts": "1501723932.530542"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U5RUDGZ0B", 
+            "U0C90MHEH"
+        ]
+    }
+}

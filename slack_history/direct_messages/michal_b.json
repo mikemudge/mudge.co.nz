@@ -1,0 +1,40 @@
+{
+    "messages": [
+        {
+            "text": "Ha :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495073761.175061"
+        }, 
+        {
+            "text": "Always felt bad killing \"you\" there:D", 
+            "type": "message", 
+            "user": "U2Q11PT8X", 
+            "ts": "1495073755.174130"
+        }, 
+        {
+            "text": "Alright alright :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Q11PT8X", 
+            "ts": "1495073743.172154"
+        }, 
+        {
+            "text": "I don\u2019t play that, I wonder who it is. There are a few mudge\u2019s in NZ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495073724.169089"
+        }, 
+        {
+            "text": "Mudge, do you play the game <http://agar.io|agar.io> ? i sometimes meet person called mudge nz there :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U2Q11PT8X", 
+            "ts": "1495073052.056172"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U2Q11PT8X", 
+            "U0C90MHEH"
+        ]
+    }
+}

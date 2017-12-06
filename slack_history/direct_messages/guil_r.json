@@ -1,0 +1,241 @@
+{
+    "messages": [
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F2EFJU42U/mars_sphere.zip|Mars Sphere.zip>", 
+            "upload": true, 
+            "ts": "1474506197.000003", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "zip", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F2EFJU42U", 
+                "size": 312390, 
+                "title": "Mars Sphere.zip", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F2EFJU42U/mars_sphere.zip", 
+                "ims": [
+                    "D14CYFQH2"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1474506197, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F2EFJU42U/download/mars_sphere.zip", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Zip", 
+                "name": "Mars Sphere.zip", 
+                "mimetype": "application/zip", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F2EFJU42U-9ea902240e", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F2EFJU42U/mars_sphere.zip", 
+                "is_external": false, 
+                "created": 1474506197, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hey, here is the example texture + obj which we are using for backgrounds right now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474506189.000002"
+        }, 
+        {
+            "text": "Thanks =)", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461819712.000022"
+        }, 
+        {
+            "text": "but it doesn\u2019t look too bad to me as is :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461819699.000021"
+        }, 
+        {
+            "text": "Asher may update the photo for me when he does the others", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461819688.000020"
+        }, 
+        {
+            "text": "Thanks Mudge", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461819673.000019"
+        }, 
+        {
+            "text": "Cooool =D", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461819669.000018"
+        }, 
+        {
+            "text": "Alright, you are up on the site <http://8i.com/about>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461819653.000015", 
+            "attachments": [
+                {
+                    "thumb_height": 1080, 
+                    "thumb_width": 1920, 
+                    "title": "8i | About", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/about", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | About", 
+                    "thumb_url": "http://8i.com/static/images/shareImage.jpg", 
+                    "from_url": "http://8i.com/about"
+                }
+            ]
+        }, 
+        {
+            "text": "thanks man =D", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461819201.000014"
+        }, 
+        {
+            "text": "would be great to get it asap or we will need to pay to go =(", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461819193.000013"
+        }, 
+        {
+            "text": "thank you Mudge", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461819156.000012"
+        }, 
+        {
+            "text": "Let me chat with Asher, he was supposed to be getting profile pictures of everyone. Should be able to get something though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461819114.000011"
+        }, 
+        {
+            "text": "would that be possible? =]", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461818504.000010"
+        }, 
+        {
+            "text": "Guilherme Rambelli\nPhotogrammetry Artist/ World Builder", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815920.000009"
+        }, 
+        {
+            "username": "guil_r", 
+            "display_as_bot": false, 
+            "text": "<@U0KQMF58S> uploaded a file: <https://hvr.slack.com/files/U0KQMF58S/F14DL1S66/12783620_1229521177075903_3882961295504897678_o.jpg|12783620_1229521177075903_3882961295504897678_o.jpg>", 
+            "upload": true, 
+            "ts": "1461815900.000008", 
+            "subtype": "file_share", 
+            "user": "U0KQMF58S", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_64.jpg", 
+                "size": 60412, 
+                "original_h": 1080, 
+                "thumb_360_w": 360, 
+                "title": "12783620_1229521177075903_3882961295504897678_o.jpg", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F14DL1S66/12783620_1229521177075903_3882961295504897678_o.jpg", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_360.jpg", 
+                "id": "F14DL1S66", 
+                "ims": [
+                    "D14CYFQH2"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_80.jpg", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1461815895, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F14DL1S66/download/12783620_1229521177075903_3882961295504897678_o.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_1024.jpg", 
+                "user": "U0KQMF58S", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "12783620_1229521177075903_3882961295504897678_o.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F14DL1S66-69d3800e3c", 
+                "permalink": "https://hvr.slack.com/files/U0KQMF58S/F14DL1S66/12783620_1229521177075903_3882961295504897678_o.jpg", 
+                "is_external": false, 
+                "created": 1461815895, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1080, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F14DL1S66-a46b3e2110/12783620_1229521177075903_3882961295504897678_o_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "my profiel pic woudl be this one", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815859.000007"
+        }, 
+        {
+            "text": "do you think you have time to do that?\nThe registration closes today =x", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815846.000006"
+        }, 
+        {
+            "text": "having me on the website woudl do it =]", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815829.000005"
+        }, 
+        {
+            "text": "I'm trying to register for E3 and I missing one requirement to be elegible to go through the compnay", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815823.000004"
+        }, 
+        {
+            "text": "I would like to know if you can upload my profile on the website today =]", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815799.000003"
+        }, 
+        {
+            "text": "Hey, how it's going Mudge? =]", 
+            "type": "message", 
+            "user": "U0KQMF58S", 
+            "ts": "1461815747.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0KQMF58S", 
+            "U0C90MHEH"
+        ]
+    }
+}

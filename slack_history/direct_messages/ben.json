@@ -1,0 +1,100 @@
+{
+    "messages": [
+        {
+            "text": "Hey, we're going to call Amazon from Schrodinger", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1495149818.015201"
+        }, 
+        {
+            "text": "Thank you for all the information, I appreciate it.", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1491339838.187607"
+        }, 
+        {
+            "text": "Yea, sounds good. Thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339388.980254"
+        }, 
+        {
+            "text": "Great, I'll speak to her if we can do that locally and I'll get back to you if we have to revert to Tango.", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1491339371.972340"
+        }, 
+        {
+            "text": "Otherwise I can wait for <@U3AF7DXEY> to get in, and check with him.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339358.966399"
+        }, 
+        {
+            "text": "Alenni has been using the new CMS a bit by the sound of it, she may have used that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339312.944780"
+        }, 
+        {
+            "text": "I'm pretty sure its in and working now, but I'm not sure if we have had a successful try out of it yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339278.928838"
+        }, 
+        {
+            "text": "That makes sense.  Thanks for the info.  I'll ask him if he'll be able to use the iOS/android beta instead of the Phab.  If he can, can we make that happen this week or is it more of a future functionality?", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1491339227.905645"
+        }, 
+        {
+            "text": "The Tango build was a bit of a discovery process, and the new CMS should be much improved based on our discoveries.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339141.866397"
+        }, 
+        {
+            "text": "Yes, we have set that up much better to support that use case", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339097.846640"
+        }, 
+        {
+            "text": "Ah, makes sense.  Is it easier to do the same thing in the Android/iOS versions through the CMS?", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1491339070.834047"
+        }, 
+        {
+            "text": "We have done it in the past, and its not all that much work, its just not a well built solution right now because I need to set the email in the code and do a production release.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491339019.811192"
+        }, 
+        {
+            "text": "Curious how much effort is involved taking a Holopack that's already in 8i's internal Tango build of Holo and making that accessible to one user with a specific <http://gmail.com|gmail.com> email address.  I had a request from one of external collaborators who wants to do some BD with a couple specific assets.  But I wanted to see how much work was involved before promising anything.", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1491338899.756657"
+        }, 
+        {
+            "text": "yea?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491337848.273211"
+        }, 
+        {
+            "text": "Hey, quick question for you when you have a moment?", 
+            "type": "message", 
+            "user": "U1EGRF7TP", 
+            "ts": "1491335337.099896"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U1EGRF7TP", 
+            "U0C90MHEH"
+        ]
+    }
+}

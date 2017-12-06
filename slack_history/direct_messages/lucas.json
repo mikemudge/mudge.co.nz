@@ -1,0 +1,351 @@
+{
+    "messages": [
+        {
+            "text": "swt!", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1510798458.000311"
+        }, 
+        {
+            "text": "Going to get out as soon as possible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510798451.000193"
+        }, 
+        {
+            "text": "Freaking meeting sorry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510798436.000076"
+        }, 
+        {
+            "text": "where abouts are you?", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1510797819.000115"
+        }, 
+        {
+            "text": "almost game time buddy", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1510797815.000015"
+        }, 
+        {
+            "text": "Cheers man", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510018019.000256"
+        }, 
+        {
+            "text": "Sweet I'll get started", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1510017985.000025"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U59B4NL65"
+                    ]
+                }
+            ], 
+            "text": "My main concerns would be layout issues, broken hover states or links, and then mobile devices will probably need a bit of work.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510017880.000033"
+        }, 
+        {
+            "text": "You can have a look at this in the meantime, <http://8i-stage.dev.8i.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510017820.000132"
+        }, 
+        {
+            "text": "Oh yea sorry, it has taken soooo much work to get it running. I\u2019m almost there, but need to actually get in and set up the pages still.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1510017786.000048"
+        }, 
+        {
+            "text": "send me the link for testing later if you get the chance", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1510017668.000183"
+        }, 
+        {
+            "text": "hey mudge", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1510017656.000090"
+        }, 
+        {
+            "username": "lucas", 
+            "display_as_bot": false, 
+            "text": "<@U59B4NL65> uploaded a file: <https://hvr.slack.com/files/U59B4NL65/F7K4PCGTS/lucasgoalvsmanuwatu.mov|LucasGoalVSManuwatu.mov>", 
+            "upload": true, 
+            "ts": "1508273522.000594", 
+            "subtype": "file_share", 
+            "user": "U59B4NL65", 
+            "file": {
+                "filetype": "mov", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F7K4PCGTS", 
+                "size": 121595181, 
+                "title": "LucasGoalVSManuwatu.mov", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F7K4PCGTS/lucasgoalvsmanuwatu.mov", 
+                "ims": [
+                    "D5FG43ZHT"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1508273515, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F7K4PCGTS/download/lucasgoalvsmanuwatu.mov", 
+                "user": "U59B4NL65", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "QuickTime Movie", 
+                "name": "LucasGoalVSManuwatu.mov", 
+                "mimetype": "video/quicktime", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F7K4PCGTS-d462b0b8d7", 
+                "permalink": "https://hvr.slack.com/files/U59B4NL65/F7K4PCGTS/lucasgoalvsmanuwatu.mov", 
+                "is_external": false, 
+                "created": 1508273515, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "wow, yea that doesn\u2019t sound like much fun.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508272414.000325"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "astonished", 
+                    "users": [
+                        "U59B4NL65"
+                    ]
+                }
+            ], 
+            "attachments": [
+                {
+                    "image_bytes": 27536, 
+                    "title": "Working at Google seemed like a dream job. The reality is a tedious nightmare", 
+                    "service_name": "Stuff", 
+                    "image_width": 444, 
+                    "title_link": "https://www.stuff.co.nz/technology/digital-living/97990435/working-at-google-seemed-like-a-dream-job-the-reality-is-a-tedious-nightmare", 
+                    "image_height": 250, 
+                    "image_url": "https://resources.stuff.co.nz/content/dam/images/1/b/u/b/5/l/image.related.StuffLandscapeSixteenByNine.620x349.1mc9wj.png/1508267478634.jpg", 
+                    "text": "Working at the tech giant is a special type of hell ruled by the tyranny of positivity.", 
+                    "id": 1, 
+                    "fallback": "Stuff: Working at Google seemed like a dream job. The reality is a tedious nightmare", 
+                    "service_icon": "https://www.stuff.co.nz/etc/designs/ffx/nz/stuff/clientlibs-all/images/apple-touch-icon--precomposed.png", 
+                    "from_url": "https://www.stuff.co.nz/technology/digital-living/97990435/working-at-google-seemed-like-a-dream-job-the-reality-is-a-tedious-nightmare"
+                }
+            ], 
+            "text": "<https://www.stuff.co.nz/technology/digital-living/97990435/working-at-google-seemed-like-a-dream-job-the-reality-is-a-tedious-nightmare>", 
+            "ts": "1508271790.000362", 
+            "user": "U59B4NL65", 
+            "type": "message"
+        }, 
+        {
+            "text": "<https://holo-staging.8i.com/flask-admin/ei-scene-admin/details/?url=%2Fflask-admin%2Fei-scene-admin%2F&amp;id=e9ddf042-267c-473e-a4ee-aff6a95b634b>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506568206.000011"
+        }, 
+        {
+            "text": "<https://console.firebase.google.com/u/0/project/holo-44694840/analytics/app/android:com.eighti.holo.android/overview>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505701025.000064"
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1503442241.000314"
+        }, 
+        {
+            "text": "Hey, can you please make me a staging iOS build", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503441081.000027"
+        }, 
+        {
+            "text": "Drinks at dirty little secret if you want to come.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503133179.000035"
+        }, 
+        {
+            "text": "You up to anything?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1503133137.000042"
+        }, 
+        {
+            "text": "wanna a game :table_tennis_paddle_and_ball: ?", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1503027324.000112"
+        }, 
+        {
+            "text": "<https://holo-staging.8i.com/flask-admin/ei-exp-admin/details/?id=e9a724a4-b875-4876-be61-83c467ac8bf5>", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1502398796.065710"
+        }, 
+        {
+            "text": "My change is in, the grid now should show the actual gap to the shadow in holo.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502325030.567928"
+        }, 
+        {
+            "text": "Lastly I\u2019ve got a change which will locate the grid in web director more accurately", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502323773.284947"
+        }, 
+        {
+            "text": "And I think the assets are floating when we get them. I\u2019ve told Pro and he is going to follow up with LA", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502323709.270448"
+        }, 
+        {
+            "text": "I think I found the difference between director and holo app.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502323675.262123"
+        }, 
+        {
+            "text": "<https://holo.8i.com/flask-admin/holo-poses/edit/?url=%2Fflask-admin%2Fholo-poses%2F&amp;id=1e351e70-2559-4074-a942-6009283ad9cf>", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1502322656.003778"
+        }, 
+        {
+            "text": "<https://www.wellingtonict.ac.nz/programmes/master-of-software-development/>", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1501809789.687451", 
+            "attachments": [
+                {
+                    "thumb_height": 200, 
+                    "service_icon": "https://www.wellingtonict.ac.nz/favicon.ico", 
+                    "thumb_width": 200, 
+                    "title": "Master of Software Development - Wellington ICT Graduate School", 
+                    "service_name": "Wellington ICT Graduate School", 
+                    "title_link": "https://www.wellingtonict.ac.nz/programmes/master-of-software-development/", 
+                    "text": "Get the technical skills you need to work as a Software Developer.", 
+                    "id": 1, 
+                    "fallback": "Wellington ICT Graduate School: Master of Software Development - Wellington ICT Graduate School", 
+                    "thumb_url": "https://www.wellingtonict.ac.nz/opengraph.png", 
+                    "from_url": "https://www.wellingtonict.ac.nz/programmes/master-of-software-development/"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://ladders.pw/tournaments/8i-table-tennis>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501125806.136280"
+        }, 
+        {
+            "text": "<mailto:support@thisisholo.com|support@thisisholo.com>\n#olotesting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497473770.221198"
+        }, 
+        {
+            "text": "Thanks mate!", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1496809986.779235"
+        }, 
+        {
+            "text": "<https://analytics.google.com/analytics/web>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496807708.519937"
+        }, 
+        {
+            "text": "<mailto:ldasilva@8i.com|ldasilva@8i.com> already has access to GA, let me know if you can\u2019t access it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496807556.502734"
+        }, 
+        {
+            "text": "Awesome, thats great", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495584224.459857"
+        }, 
+        {
+            "username": "lucas", 
+            "display_as_bot": false, 
+            "text": "<@U59B4NL65> uploaded a file: <https://hvr.slack.com/files/U59B4NL65/F5H45JKA8/webp_vs_png_vs_tinypng_-_sheet1.pdf|WEBP vs PNG vs TINYPNG - Sheet1.pdf>", 
+            "upload": true, 
+            "ts": "1495583089.309188", 
+            "subtype": "file_share", 
+            "user": "U59B4NL65", 
+            "file": {
+                "filetype": "pdf", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F5H45JKA8", 
+                "size": 31707, 
+                "title": "WEBP vs PNG vs TINYPNG - Sheet1.pdf", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5H45JKA8/webp_vs_png_vs_tinypng_-_sheet1.pdf", 
+                "ims": [
+                    "D5FG43ZHT"
+                ], 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1495583088, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5H45JKA8/download/webp_vs_png_vs_tinypng_-_sheet1.pdf", 
+                "user": "U59B4NL65", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "PDF", 
+                "name": "WEBP vs PNG vs TINYPNG - Sheet1.pdf", 
+                "mimetype": "application/pdf", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5H45JKA8-6bd3d4c124", 
+                "permalink": "https://hvr.slack.com/files/U59B4NL65/F5H45JKA8/webp_vs_png_vs_tinypng_-_sheet1.pdf", 
+                "is_external": false, 
+                "created": 1495583088, 
+                "comments_count": 0, 
+                "mode": "hosted"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "created a case: <https://eighteye.atlassian.net/browse/HOLOALL-336> let me know if I missed out on anything, thanks for your help :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U59B4NL65", 
+            "ts": "1495163845.961632"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U59B4NL65", 
+            "U0C90MHEH"
+        ]
+    }
+}

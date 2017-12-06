@@ -1,0 +1,1022 @@
+{
+    "messages": [
+        {
+            "text": "I knew we couldn\u2019t make it too good, as it would distract people from the content.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1455481313.000005"
+        }, 
+        {
+            "text": "Haha, thats awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1455481278.000004"
+        }, 
+        {
+            "text": "This comment warms my heart <https://www.reddit.com/r/oculus/comments/45as8s/early_8i_cardboard_demo_for_web_browser/czx4lb9>", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1455481249.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 224, 
+                    "thumb_width": 320, 
+                    "title": "Early 8i cardboard demo for web browser \u2022 /r/oculus", 
+                    "service_name": "reddit", 
+                    "title_link": "https://www.reddit.com/r/oculus/comments/45as8s/early_8i_cardboard_demo_for_web_browser/czx4lb9", 
+                    "text": "16 points and 4 comments so far on reddit", 
+                    "id": 1, 
+                    "fallback": "reddit: Early 8i cardboard demo for web browser \u2022 /r/oculus", 
+                    "thumb_url": "https://i.redditmedia.com/4qgyWlvopyJiymI1_50xqEjuksqXWWJr_DMzR42Q42Q.jpg?w=320&s=7c4eed0f284703ac627b37b129fc72eb", 
+                    "from_url": "https://www.reddit.com/r/oculus/comments/45as8s/early_8i_cardboard_demo_for_web_browser/czx4lb9"
+                }
+            ]
+        }, 
+        {
+            "text": "I forgot to make a branch, and fortunately there were no merge conflicts :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472864.000016"
+        }, 
+        {
+            "text": "yea, my stuff isn\u2019t yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454472860.000015"
+        }, 
+        {
+            "text": "It's already in master", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472848.000014"
+        }, 
+        {
+            "text": "see ya tomorrow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454472844.000013"
+        }, 
+        {
+            "text": "cool, yea I\u2019ll merge it in with my stuff shortly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454472838.000012"
+        }, 
+        {
+            "text": "going to head home, later!", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472813.000011"
+        }, 
+        {
+            "text": "it works now, so that's all good :simple_smile: Shaders are really fun to write", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472787.000010"
+        }, 
+        {
+            "text": "oh man", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454472739.000009"
+        }, 
+        {
+            "text": "this is why js needs a better ide", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472730.000008"
+        }, 
+        {
+            "text": "I spent *all day* trying to find out why my shaders weren't working, only to realise it was because I didn't capitalise a couple variables inside an object", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472717.000007"
+        }, 
+        {
+            "text": "nice, thanks.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454472666.000006"
+        }, 
+        {
+            "text": "Cool, it's in the repo", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472657.000005"
+        }, 
+        {
+            "text": "Oh cool, yes please", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454472210.000004"
+        }, 
+        {
+            "text": "Do I push it?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472171.000003"
+        }, 
+        {
+            "text": "Finished the loading bar :simple_smile:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454472166.000002"
+        }, 
+        {
+            "text": "or this.webglRenderer", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454445727.000010"
+        }, 
+        {
+            "text": "it should just be webglRenderer in that file", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454445721.000009"
+        }, 
+        {
+            "text": "yeah", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454445720.000008"
+        }, 
+        {
+            "text": "You mean the webgl renderer I believe", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454445714.000007"
+        }, 
+        {
+            "text": "Cool, I'll look into that", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454445695.000006"
+        }, 
+        {
+            "text": "You\u2019ll have to pass it in from player2cardboard.js when it creates the ProgressController", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454445670.000005"
+        }, 
+        {
+            "text": "need to access the opengl shader compile output", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454445391.000004"
+        }, 
+        {
+            "text": "Hey, do you know how I'd get the three.renderer of the web player?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454445332.000002", 
+            "edited": {
+                "user": "U03DN1LGM", 
+                "ts": "1454445361.000000"
+            }
+        }, 
+        {
+            "text": "but don\u2019t worry about doing anything you consider to be tricky", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372532.000020"
+        }, 
+        {
+            "text": "I'll have to chat with him about it", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372518.000019"
+        }, 
+        {
+            "text": "Yea, I think threeJs design is going to be a bit of back and forward", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372499.000018"
+        }, 
+        {
+            "text": "There's also a very slight purple outline in his design which I don't think I'll be able to add right away... outline shaders are notoriously finicky", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372446.000017"
+        }, 
+        {
+            "text": "if we merge that in first, then at least we have an improvement over the old one to use.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372342.000016"
+        }, 
+        {
+            "text": "sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372316.000015"
+        }, 
+        {
+            "text": "For now, I'll do flat rounded rectangles with the shading", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372310.000014"
+        }, 
+        {
+            "text": "but that was his idea of how it might kind of look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372303.000013"
+        }, 
+        {
+            "text": "so its more of lets get something looking better than what we had before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372291.000012"
+        }, 
+        {
+            "text": "Yea, I don\u2019t think Asher was sure of the possibilties", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372271.000011"
+        }, 
+        {
+            "text": "The different colour palette for the sides is also harder to do", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372269.000010"
+        }, 
+        {
+            "text": "we want it working first, then we can improve it if there is additional time", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372238.000009"
+        }, 
+        {
+            "text": "there's also the issue of rendering order to make sure the bar renders on top of the gray shell", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372234.000008"
+        }, 
+        {
+            "text": "don\u2019t worry if its complex", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372213.000007"
+        }, 
+        {
+            "text": "It means I'll have to extrude it", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372201.000006"
+        }, 
+        {
+            "text": "This changes things somewhat", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372190.000005"
+        }, 
+        {
+            "text": "just his design for it :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454372179.000004"
+        }, 
+        {
+            "text": "ooo, it's 3d?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454372170.000003"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F0L1B1L14/screen_shot_2016-01-29_at_4.23.43_pm.png|Screen Shot 2016-01-29 at 4.23.43 pm.png> and commented: Hey, I just found this from asher for the loading bar, not sure if its useful to you or not.", 
+            "upload": true, 
+            "ts": "1454372151.000002", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "Hey, I just found this from asher for the loading bar, not sure if its useful to you or not.", 
+                    "created": 1454372150, 
+                    "timestamp": 1454372150, 
+                    "is_intro": true, 
+                    "user": "U0C90MHEH", 
+                    "id": "Fc0L14FGJ0"
+                }, 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F0L1B1L14-ff3fc6b3c5/screen_shot_2016-01-29_at_4.23.43_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F0L1B1L14-ff3fc6b3c5/screen_shot_2016-01-29_at_4.23.43_pm_64.png", 
+                "size": 39487, 
+                "original_h": 604, 
+                "thumb_360_w": 360, 
+                "title": "Screen Shot 2016-01-29 at 4.23.43 pm.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0L1B1L14/screen_shot_2016-01-29_at_4.23.43_pm.png", 
+                "thumb_720_h": 569, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F0L1B1L14-ff3fc6b3c5/screen_shot_2016-01-29_at_4.23.43_pm_360.png", 
+                "id": "F0L1B1L14", 
+                "ims": [
+                    "D0KTCPSQH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F0L1B1L14-ff3fc6b3c5/screen_shot_2016-01-29_at_4.23.43_pm_80.png", 
+                "thumb_360_h": 285, 
+                "thumb_480_h": 379, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1454372150, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F0L1B1L14-ff3fc6b3c5/screen_shot_2016-01-29_at_4.23.43_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0L1B1L14/download/screen_shot_2016-01-29_at_4.23.43_pm.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2016-01-29 at 4.23.43 pm.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0L1B1L14-da15e2ebf7", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F0L1B1L14/screen_shot_2016-01-29_at_4.23.43_pm.png", 
+                "is_external": false, 
+                "created": 1454372150, 
+                "original_w": 764, 
+                "comments_count": 1, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F0L1B1L14-ff3fc6b3c5/screen_shot_2016-01-29_at_4.23.43_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "worked, thanks", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454299409.000009"
+        }, 
+        {
+            "text": "try it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454299388.000008"
+        }, 
+        {
+            "text": "It's not giving me editing permissions", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454299272.000007"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454291923.000006"
+        }, 
+        {
+            "text": "makes sense, you'd want the parallax effect so you don't mess with the viewer's eyes", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454291900.000005"
+        }, 
+        {
+            "text": "it should have some depth to it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454291896.000004"
+        }, 
+        {
+            "text": "fixed in space", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454291879.000003"
+        }, 
+        {
+            "text": "Is the progress bar fixed in space or does it always face towards the camera?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454291863.000002"
+        }, 
+        {
+            "text": "he would have had to do similar", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285749.000091"
+        }, 
+        {
+            "text": "Lohit probably can help", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285743.000090"
+        }, 
+        {
+            "text": "they should connect the same way as ssh but allow file operations", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285735.000089"
+        }, 
+        {
+            "text": "but look at scp clients", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285716.000088"
+        }, 
+        {
+            "text": "I don\u2019t use windows, so I\u2019m not all that sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285708.000087"
+        }, 
+        {
+            "text": "Can I open something I've ssh'ed into in windows explorer?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454285673.000086"
+        }, 
+        {
+            "text": "trial and error all the way :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285598.000085"
+        }, 
+        {
+            "text": "oh nice", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285589.000084"
+        }, 
+        {
+            "text": "ooo, the putty one worked", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454285583.000083"
+        }, 
+        {
+            "text": "maybe try both :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285535.000082"
+        }, 
+        {
+            "text": "openssh probably", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285530.000081"
+        }, 
+        {
+            "text": "with putty private key or openssh?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454285498.000080"
+        }, 
+        {
+            "text": "I think I have converted it now, try again for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285469.000079"
+        }, 
+        {
+            "text": "I can convert the private key but not the public key", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454285449.000078"
+        }, 
+        {
+            "text": "sounds like it needs converting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285333.000077"
+        }, 
+        {
+            "text": "can you do ssh-keygen -i -f puttygen_key &gt; openssh_key on the putty public key", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285327.000076"
+        }, 
+        {
+            "text": "still doesn't work :confused:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454285201.000075"
+        }, 
+        {
+            "text": "give it a try now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454285155.000074"
+        }, 
+        {
+            "username": "reiker", 
+            "display_as_bot": false, 
+            "text": "<@U03DN1LGM> uploaded a file: <https://hvr.slack.com/files/U03DN1LGM/F0KTHCG8H/public_key|public_key>", 
+            "upload": true, 
+            "ts": "1454284987.000073", 
+            "subtype": "file_share", 
+            "user": "U03DN1LGM", 
+            "file": {
+                "filetype": "text", 
+                "lines_more": 5, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F0KTHCG8H", 
+                "size": 468, 
+                "title": "public_key", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F0KTHCG8H/public_key", 
+                "ims": [
+                    "D0KTCPSQH"
+                ], 
+                "preview": "---- BEGIN SSH2 PUBLIC KEY ----\nComment: \"rsa-key-20160201\"\nAAAAB3NzaC1yc2EAAAABJQAAAQEAqMxL7yjHLvCBUImKuOy/nR7h6xFjbUjNyyzY\n0e+HuCi9KgWkGS4xojknZYWoVTMCeFDd5lly57gRzdbNcibO8vLUEog00U5qMBa/\ns1t6cs+uW4hjsTMAZk51mPjg90Uqykvn7FB8kvVHUr67o5bdmTi6yKrPKfz1mt9W", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U03DN1LGM/F0KTHCG8H/public_key/edit", 
+                "username": "", 
+                "timestamp": 1454284987, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": false, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F0KTHCG8H/download/public_key", 
+                "user": "U03DN1LGM", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "Plain Text", 
+                "name": "public_key", 
+                "mimetype": "text/plain", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F0KTHCG8H-d98a0ae85a", 
+                "permalink": "https://hvr.slack.com/files/U03DN1LGM/F0KTHCG8H/public_key", 
+                "is_external": false, 
+                "created": 1454284987, 
+                "lines": 10, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>---- BEGIN SSH2 PUBLIC KEY ----</pre></div>\n<div><pre>Comment: &quot;rsa-key-20160201&quot;</pre></div>\n<div><pre>AAAAB3NzaC1yc2EAAAABJQAAAQEAqMxL7yjHLvCBUImKuOy/nR7h6xFjbUjNyyzY</pre></div>\n<div><pre>0e+HuCi9KgWkGS4xojknZYWoVTMCeFDd5lly57gRzdbNcibO8vLUEog00U5qMBa/</pre></div>\n<div><pre>s1t6cs+uW4hjsTMAZk51mPjg90Uqykvn7FB8kvVHUr67o5bdmTi6yKrPKfz1mt9W</pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Still having a bit of trouble with ssh, I've never done it before", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454284781.000072"
+        }, 
+        {
+            "text": "<mailto:reiker@reiker.dev.8i.com|reiker@reiker.dev.8i.com> should work, although I didn\u2019t actually test it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454284291.000071"
+        }, 
+        {
+            "text": "what port/IP do I ssh into?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454284255.000070"
+        }, 
+        {
+            "text": "And <http://reiker.dev.8i.com/c/zwr> will show the cardboard loader for an asset", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454284127.000069"
+        }, 
+        {
+            "text": "then the base folder for your dev site is in /home/reiker/projects/WebPlatform", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454284057.000068"
+        }, 
+        {
+            "text": "and you can ssh in with reiker and 8ireiker, please change your password once you are in :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454284011.000067"
+        }, 
+        {
+            "text": "8i and 8ikitten", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454283960.000066"
+        }, 
+        {
+            "text": "it is up now at <http://reiker.dev.8i.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454283951.000065"
+        }, 
+        {
+            "text": "no worries", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454283938.000064"
+        }, 
+        {
+            "text": "yea sorry, I haven\u2019t had to set an environment up for anyone before, its still a very manual process.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454283927.000063"
+        }, 
+        {
+            "text": "one that looks just like the image you sent", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454283783.000062"
+        }, 
+        {
+            "text": "I'll just write a progress bar shader in the meantime", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454283773.000061"
+        }, 
+        {
+            "text": "thanks :simple_smile:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282726.000060"
+        }, 
+        {
+            "text": "Give me a few minutes and I\u2019ll make a user + setup on our dev server", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282716.000059"
+        }, 
+        {
+            "text": "hopefully aiming towards something a bit more modular", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282581.000058"
+        }, 
+        {
+            "text": "yea, it all needs to run together right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282563.000057"
+        }, 
+        {
+            "text": "the conspicuous lack of something along the lines of player.html had me confused :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282544.000056"
+        }, 
+        {
+            "text": "I may need to set you up with a user on our dev server, I haven\u2019t done it before though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282539.000055"
+        }, 
+        {
+            "text": "yea I thought you might ask that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282502.000054"
+        }, 
+        {
+            "text": "how would I test it?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282490.000053"
+        }, 
+        {
+            "text": "one last question", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282484.000052"
+        }, 
+        {
+            "text": "awesome :simple_smile:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282478.000051"
+        }, 
+        {
+            "text": "a cuboid who\u2019s scale changes :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282466.000050"
+        }, 
+        {
+            "text": "its just ugly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282447.000049"
+        }, 
+        {
+            "text": "the code in that file is actually a 3d progress bar currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282441.000048"
+        }, 
+        {
+            "text": "but if you can make it easily customizable I can use the assets location params to locate it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282416.000047"
+        }, 
+        {
+            "text": "don\u2019t worry too much about the exact location", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282378.000046"
+        }, 
+        {
+            "text": "Above the actor's head?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282360.000045"
+        }, 
+        {
+            "text": "So I'd change that to be inside the renderer, right?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282352.000044"
+        }, 
+        {
+            "text": "in the ProgressController \u201cclass\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282320.000043"
+        }, 
+        {
+            "text": "is where the current progress bar is done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282298.000042"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform/blob/master/static/js/overlay3d.js>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282290.000041"
+        }, 
+        {
+            "text": "its not exactly laid out in a sensible way right now either :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282247.000040"
+        }, 
+        {
+            "text": "(only used three.js and webgl)", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282224.000039"
+        }, 
+        {
+            "text": "one sec, I\u2019ll find it for you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454282221.000038"
+        }, 
+        {
+            "text": "I'm relatively new to web programming, so I'm not quite sure how it all fits together", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282205.000037"
+        }, 
+        {
+            "text": "Where would I find where I'm supposed to add the progress bar?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454282178.000036"
+        }, 
+        {
+            "text": "awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279713.000035"
+        }, 
+        {
+            "text": "should be able to write as well :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279706.000034"
+        }, 
+        {
+            "text": "will clone and get started", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454279702.000033"
+        }, 
+        {
+            "text": "Thanks, I can view it now", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454279691.000032"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279636.000031"
+        }, 
+        {
+            "text": "nvm, I can just add you separately to the project. Try accessing it now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279631.000030"
+        }, 
+        {
+            "text": "yea, you may not need it but at least its there if you do", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279549.000029"
+        }, 
+        {
+            "text": "I'll keep trying to understand all the tech you've listed in that google doc", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454279529.000028"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454279511.000027"
+        }, 
+        {
+            "text": "so I asked again but he hasn\u2019t got back to me yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279501.000026"
+        }, 
+        {
+            "text": "he made me an admin for the project but I still can\u2019t add you to the right team", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279489.000025"
+        }, 
+        {
+            "text": "I\u2019ve pinged him already", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454279471.000024"
+        }, 
+        {
+            "text": "Should I get in touch with Yu Pan to see if he can add me to the project?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454279349.000023"
+        }, 
+        {
+            "text": "yea cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276865.000022"
+        }, 
+        {
+            "text": "Thanks, in the meantime, I'll refresh my knowledge of three.js", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276860.000021"
+        }, 
+        {
+            "text": "you can probably just get going with a local webpage?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276860.000020"
+        }, 
+        {
+            "text": "but not sure how long that will take", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276839.000019"
+        }, 
+        {
+            "text": "I\u2019m not actually an admin for the project, I\u2019ll get Yu Pan to set it up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276827.000018"
+        }, 
+        {
+            "text": "mootshell-8i", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276727.000017"
+        }, 
+        {
+            "text": "what is your github username?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276719.000016"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0C90MHEH/F0KTCTJ1F/onboardingfor8iwebsite|Onboarding for 8i website>", 
+            "upload": false, 
+            "ts": "1454276704.000015", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "gdoc", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "thumb_64": "https://slack.com/img/files/gdoc_64.v.png", 
+                "size": 3360, 
+                "thumb_360_w": 360, 
+                "title": "Onboarding for 8i website", 
+                "url_private": "https://docs.google.com/a/8i.com/document/d/1c5yI3AqviGXJalK-80hrwmB18VW42b23PSTGI3o_ELY/edit?usp=drivesdk", 
+                "thumb_360": "https://a.slack-edge.com/b008f/img/files/gdraw_360.png", 
+                "id": "F0KTCTJ1F", 
+                "ims": [
+                    "D0KTCPSQH"
+                ], 
+                "thumb_360_h": 167, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "timestamp": 1454276704, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "GDocs Document", 
+                "name": "Onboardingfor8iwebsite", 
+                "mimetype": "application/vnd.google-apps.document", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F0KTCTJ1F/onboardingfor8iwebsite", 
+                "is_external": true, 
+                "created": 1454276704, 
+                "comments_count": 0, 
+                "mode": "external"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "I also made <https://docs.google.com/document/d/1c5yI3AqviGXJalK-80hrwmB18VW42b23PSTGI3o_ELY/edit> when I started which may help", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276702.000014"
+        }, 
+        {
+            "text": "I don't have access to view it :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276694.000013"
+        }, 
+        {
+            "text": "cheers", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276625.000012"
+        }, 
+        {
+            "text": "<https://github.com/8i/WebPlatform>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276620.000011"
+        }, 
+        {
+            "text": "Do you know where I can find the source for the web player so I can add it?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276610.000010"
+        }, 
+        {
+            "text": "let me know if you need anything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276593.000009"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276577.000008"
+        }, 
+        {
+            "text": "I'll give it a shot :simple_smile:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276566.000007"
+        }, 
+        {
+            "text": "I haven\u2019t really looked into it but if you think you could build something like that fairly easily it would be awesome.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276556.000006"
+        }, 
+        {
+            "text": "<http://sqb7xm.axshare.com/home.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276502.000005"
+        }, 
+        {
+            "text": "Yea, we want to have a 3D loading bar", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1454276500.000004"
+        }, 
+        {
+            "text": "I have some experience with it (although the last time I touched it was about a year ago) :simple_smile:", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276490.000003"
+        }, 
+        {
+            "text": "Hey, you said you needed help with some three.js stuff?", 
+            "type": "message", 
+            "user": "U03DN1LGM", 
+            "ts": "1454276463.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03DN1LGM", 
+            "U0C90MHEH"
+        ]
+    }
+}

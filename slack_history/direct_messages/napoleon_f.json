@@ -1,0 +1,256 @@
+{
+    "messages": [
+        {
+            "text": "It\u2019s easy enough to change, so let me know. I do think its useful for new staff to figure out whos who, so its probably good to use something which you want people to call you :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502140809.552120"
+        }, 
+        {
+            "text": "Haven't fully decided. So far... 'A man has no name'", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1502140642.481080"
+        }, 
+        {
+            "text": "What would you like it to be?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502138509.474129"
+        }, 
+        {
+            "text": "No not at all", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502138484.462370"
+        }, 
+        {
+            "text": "Would it be a pain to update my name on the website?", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1502138201.326910"
+        }, 
+        {
+            "text": "Yea man sure thing. Whats up?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502137940.200948"
+        }, 
+        {
+            "text": "Yo, when you get in a have a quick question!", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1502137579.017037"
+        }, 
+        {
+            "text": "if it helps", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490058349.481023"
+        }, 
+        {
+            "text": "That is here <https://github.com/8i/WebPlatform/blob/develop/tests/teamcity/index.html>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490058345.480494"
+        }, 
+        {
+            "text": "I'm not sure exactly what that embedding will look like, but I made a simple page for the R&amp;D guys to load from their testing software", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490058254.466697"
+        }, 
+        {
+            "text": "Oh right", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490058201.459264"
+        }, 
+        {
+            "text": "It's production tracking software. Just like how the player is embedded within the web app, I'm hoping to get it embedded within Shotgun.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1490056806.250202"
+        }, 
+        {
+            "text": "The main javascript files you'll need to deal with will most likely be <https://github.com/8i/WebPlatform/blob/develop/static/angular/director/player2Service.js> and <https://github.com/8i/WebPlatform/blob/develop/static/angular/scene/scenePlayer.js>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490056292.174519"
+        }, 
+        {
+            "text": "Hey, sorry I'm not familiar with Shotgun, what is that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1490055982.127373"
+        }, 
+        {
+            "text": "Yo! I'm basically trying to have the hvrs player but on Shotgun. After talking to Yu Pan, I was told to checkout the WebPlatform repo. If you don't mind, where is the player component located?", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1490051754.389770"
+        }, 
+        {
+            "text": "There is a way to enable hvrs for web director after that, but I'm not in the office today so I can't easily do it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489712370.016273"
+        }, 
+        {
+            "text": "I don't know what Phil is. Andrew does upload them to s3 and then updates the database through an admin web page.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489712302.005856"
+        }, 
+        {
+            "text": "Yo! Do the .hvrs files get manually uploaded to S3 to be able to be viewed in Director or does it get automagically uploaded via Phil or something? Thanks.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1489711670.915565"
+        }, 
+        {
+            "text": "Yea cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487025253.000003"
+        }, 
+        {
+            "text": "Yo! I emailed Erica that my name was misspelled on the website. If you can also, can you add the Jr. at the end? So my name will read as \"Napoleon Fulinara Jr\" (No period after Jr). Sorry it's so specific. Thanks Mudge!", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1487024913.000002"
+        }, 
+        {
+            "text": "Oh cool, yea that would probably be alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486431046.000022"
+        }, 
+        {
+            "text": "Oh for sure. I was just wondering how feasible it would be. I'm still working out the details but eventually I would love to have a build of Holo and tinker with it myself.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430926.000021"
+        }, 
+        {
+            "text": "Its one of those things, easy enough to make a little demo, but actually making it a fully fledged feature will be difficult", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430908.000020"
+        }, 
+        {
+            "text": "I don\u2019t think we will be likely to be able to spare the time/effort for the first version at least.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430842.000019"
+        }, 
+        {
+            "text": "You\u2019ll probably need to talk to <@U0E3Y0YJK>. Holo is both ios and android now, so that makes it a bit more work to keep their features in sync", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430809.000018"
+        }, 
+        {
+            "text": "I have only worked on the web player", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430713.000017"
+        }, 
+        {
+            "text": "Cool, who shall I bug?", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430711.000016"
+        }, 
+        {
+            "text": "ok, I might not be the best person to ask about it then :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430693.000015"
+        }, 
+        {
+            "text": "In Holo", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430676.000014"
+        }, 
+        {
+            "text": "do you want the result to be played on a web page, or in holo?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430666.000013"
+        }, 
+        {
+            "text": "It sounds technically doable, but will probably take a bit of effort", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430626.000012"
+        }, 
+        {
+            "text": "Idle pose would be about 1-3 seconds. Any additional pose would be about 1-2 seconds. Doable?", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430583.000011"
+        }, 
+        {
+            "text": "The HVRs would probably be very small.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430536.000010"
+        }, 
+        {
+            "text": "Do you mean in a web context?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430362.000009"
+        }, 
+        {
+            "text": "we can probably preload several though and interchange them", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430352.000008"
+        }, 
+        {
+            "text": "Correct.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430351.000007"
+        }, 
+        {
+            "text": "so each pose would be a different hvrs file which needs to be loaded", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430338.000006"
+        }, 
+        {
+            "text": "Yeah.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430319.000005"
+        }, 
+        {
+            "text": "is this related to a holo pose?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430311.000004"
+        }, 
+        {
+            "text": "I\u2019m not sure I know exactly what you mean", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1486430295.000003"
+        }, 
+        {
+            "text": "Yo Mudge! Quick question. How feasible would it be to have an hvr start out with pose A, and at the touch of a button, it immediately switches to pose B, etc. Smooth transitions wouldn't need to look good.", 
+            "type": "message", 
+            "user": "U1X4E3P09", 
+            "ts": "1486430250.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U1X4E3P09", 
+            "U0C90MHEH"
+        ]
+    }
+}

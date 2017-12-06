@@ -1,0 +1,645 @@
+{
+    "messages": [
+        {
+            "text": "Thanks Mudge!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1500855359.438878"
+        }, 
+        {
+            "text": "{  \n   \u201ccharacter\u201d:{  \n      \u201cdatetime_updated\u201d:\u201c2017-04-03T04:43:17.228766+00:00\u201d,\n      \u201cid\u201d:\u201c53bd700f-01e6-4f99-a7bb-0d804e92289f\u201d,\n      \u201cname\u201d:\u201cTest\u201d,\n      \u201cunique_int\u201d:2862896832849258500,\n      \u201cunique_name\u201d:\u201ctest\u201d\n   },\n   \u201ccharacter_id\u201d:\u201c53bd700f-01e6-4f99-a7bb-0d804e92289f\u201d,\n   \u201cdisplay\u201d:{  \n      \u201cbackground_image\u201d:\u201c\u201d,\n      \u201cbottom_color_int\u201d:205718,\n      \u201cimage\u201d:\u201c<https://d7cvc31wlmbhf.cloudfront.net/staging/experience/e49fda39-b10e-4c8c-8e41-a779ece105ea/sceneThumb.png?time=1500252654404>\u201c,\n      \u201cimage_sprite\u201d:null,\n      \u201ctop_color_int\u201d:58875\n   },\n   \u201cid\u201d:\u201cb7d852e9-f810-4151-81e3-c9fdae24ee44\",\n   \u201clocal\u201d:\u201cen\u201d,\n   \u201cname\u201d:\u201cnew_Vig2 srgb\u201d,\n   \u201cpost_effects\u201d:[  \n\n   ],\n   \u201crelease_version\u201d:\u201c96e57a61-1a69-4059-bea4-a0ea48f06025\u201d,\n   \u201crelease_version_datetime\u201d:\u201c2017-07-20T00:33:37.781414Z\u201d,\n   \u201cscene_wrapper\u201d:{  \n      \u201cdownload_size_bytes\u201d:595526,\n      \u201cduration_ms\u201d:0,\n      \u201cid\u201d:\u201c888e3bf4-5484-49da-a494-750056fb5743\",\n      \u201cscene\u201d:{  \n         \u201csceneObjects\u201d:[  \n            {  \n               \u201ccomponents\u201d:[  \n                  {  \n                     \u201chvrFile\u201d:{  \n                        \u201cetag\u201d:null,\n                        \u201clast_modified\u201d:\u201c2017-07-17T00:11:00.478Z\u201d,\n                        \u201cname\u201d:\u201cnew_VIGNETTECALIBRATION_S02_T03_001043.hvrs\u201d,\n                        \u201cs3_bucket\u201d:\u201c8i-content\u201d,\n                        \u201cs3_key\u201d:\u201cstaging/experience/e49fda39-b10e-4c8c-8e41-a779ece105ea/new_VIGNETTECALIBRATION_S02_T03_001043.hvrs\u201d,\n                        \u201csize\u201d:595526,\n                        \u201curl\u201d:\u201c<https://d7cvc31wlmbhf.cloudfront.net/staging/experience/e49fda39-b10e-4c8c-8e41-a779ece105ea/new_VIGNETTECALIBRATION_S02_T03_001043.hvrs>\u201d\n                     },\n                     \u201chvrURL\u201d:\u201c<https://d7cvc31wlmbhf.cloudfront.net/staging/experience/e49fda39-b10e-4c8c-8e41-a779ece105ea/new_VIGNETTECALIBRATION_S02_T03_001043.hvrs>\u201d,\n                     \u201ctype\u201d:\u201chvr\u201d,\n                     \u201cuses_srgb_pipeline\u201d:true,\n                     \u201cuuid\u201d:\u201ce49fda39-b10e-4c8c-8e41-a779ece105ea\u201d\n                  }\n               ],\n               \u201cname\u201d:\u201cVIGNETTECALIBRATION_S02T03-f1043\u201d,\n               \u201ctransform\u201d:{  \n                  \u201cposition\u201d:{  \n                     \u201cx\u201d:0,\n                     \u201cy\u201d:0,\n                     \u201cz\u201d:0\n                  },\n                  \u201cquaternion\u201d:{  \n                     \u201cw\u201d:1,\n                     \u201cx\u201d:0,\n                     \u201cy\u201d:0,\n                     \u201cz\u201d:0\n                  },\n                  \u201cscale\u201d:{  \n                     \u201cx\u201d:1,\n                     \u201cy\u201d:1,\n                     \u201cz\u201d:1\n                  }\n               }\n            }\n         ]\n      }\n   },\n   \u201ctags\u201d:[  \n      {  \n         \u201cid\u201d:\u201c3af90260-6f0e-47f4-a7d6-fa5eb3cd4c58\"\n      }\n   ],\n   \u201cunique_int\u201d:136174505136811580,\n   \u201cunique_name\u201d:\u201cnew-vig2-srgb\u201d,\n   \u201cvisibility\u201d:\u201cpublic\u201d\n}", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1500855354.438370", 
+            "attachments": [
+                {
+                    "image_bytes": 71399, 
+                    "image_width": 380, 
+                    "id": 1, 
+                    "image_height": 480, 
+                    "image_url": "https://d7cvc31wlmbhf.cloudfront.net/staging/experience/e49fda39-b10e-4c8c-8e41-a779ece105ea/sceneThumb.png?time=1500252654404", 
+                    "from_url": "https://d7cvc31wlmbhf.cloudfront.net/staging/experience/e49fda39-b10e-4c8c-8e41-a779ece105ea/sceneThumb.png?time=1500252654404", 
+                    "fallback": "380x480px image"
+                }
+            ]
+        }, 
+        {
+            "text": "Excuse the interruption again Mudge.  Can you please send me the JSON from the CMS for the `new_Vig2 srgb` pose/scene?  Then I can trace that through on the iOS side.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1500854998.399670"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498451154.974598"
+        }, 
+        {
+            "text": "I only ever talk to you when I want something!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1498451129.972520"
+        }, 
+        {
+            "text": "<https://d7cvc31wlmbhf.cloudfront.net/live_Z5w/FOXTROT02_210_600_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498451090.969038"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497239304.155429"
+        }, 
+        {
+            "text": "Thanks Mudge.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1497239289.154008"
+        }, 
+        {
+            "text": "<https://d7cvc31wlmbhf.cloudfront.net/production/experience/aca0350a-5eff-4c3a-8879-01c6a878c79b/HTRUMP02_220_andrew_v01_600_15_75_85.hvrs?r=20630464-30775976>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497239282.153396"
+        }, 
+        {
+            "text": "No problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014389.434735"
+        }, 
+        {
+            "text": "Thanks Mudge.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1496014382.434296"
+        }, 
+        {
+            "text": "<https://d7cvc31wlmbhf.cloudfront.net/live_39O/HTigerChimp_110_andrew_v01_600_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014370.433575"
+        }, 
+        {
+            "text": "<https://d7cvc31wlmbhf.cloudfront.net/production/experience/7325bf71-d961-47f2-9075-b7d27bdb7aba/HTigerChimp_110thinned_15_100_100.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496014337.431735"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491439160.595971"
+        }, 
+        {
+            "text": "I'll give you a yell just before then.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1491439156.594965"
+        }, 
+        {
+            "text": "Sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491439152.594306"
+        }, 
+        {
+            "text": "Cool.  I'll leave about 2pm.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1491439148.593480"
+        }, 
+        {
+            "text": "I\u2019ll come with", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491439141.592318"
+        }, 
+        {
+            "text": "Yep.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1491439135.591388"
+        }, 
+        {
+            "text": "Are you jogging in to soccer?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491439126.589663"
+        }, 
+        {
+            "text": "Hey, I\u2019m trying something a bit different for Yupan, can you take a look at this with me, <http://mudge.dev.8i.com/holoview/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472176825.000002"
+        }, 
+        {
+            "text": "Awesome, thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471565356.000003"
+        }, 
+        {
+            "text": "`P:\\shows\\atrax\\FOXTROT2\\HVRS\\Desktop`\n\n*FOXTROT02 Web Encoder Data*\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_470\\FOXTROT02_470_taos_v03`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_480\\FOXTROT02_480_taos_v04`\n`P:\\shows\\atrax\\FOXTROT2\\HVRS\\FOXTROT02_490\\FOXTROT02_490_taos_v03` (edited)", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1471562750.000002"
+        }, 
+        {
+            "text": "all good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471382984.000009"
+        }, 
+        {
+            "text": "Sweet.  Thanks!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1471382977.000008"
+        }, 
+        {
+            "text": "try now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471382862.000007"
+        }, 
+        {
+            "text": "I\u2019ll have a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471382797.000006"
+        }, 
+        {
+            "text": "Okay.  I think somebody probably removed me from the users or something.  Cheers.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1471382789.000005"
+        }, 
+        {
+            "text": "I don\u2019t think anything should of changed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471382752.000004"
+        }, 
+        {
+            "text": "I don\u2019t see anything wrong with it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1471382742.000003"
+        }, 
+        {
+            "text": "Morning Mudge.  Hey has anything happened to the WebPlatform repository?  I can't access it anymore on Github or through Git.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1471382715.000002"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1465516439.000003"
+        }, 
+        {
+            "text": "The Web Director looks awesome Mudge.  Nice work!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1465516365.000002"
+        }, 
+        {
+            "text": "and I think this is the reason, <https://wiki.mozilla.org/Blocklisting/Blocked_Graphics_Drivers>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461896384.000003"
+        }, 
+        {
+            "text": "Hey, so this is what I get with Windows Firefox.\n\nError: WebGL: Disallowing antialiased backbuffers due to blacklisting. three.min.js:516:313\nError: WebGL: Error during ANGLE OpenGL init. three.min.js:516:313\nError: WebGL: Refused to create native OpenGL context because of blacklisting. three.min.js:516:313\nError: WebGL: WebGL creation failed. three.min.js:516:313\nError: WebGL: Disallowing antialiased backbuffers due to blacklisting. three.min.js:516:339\nError: WebGL: Error during ANGLE OpenGL init. three.min.js:516:339\nError: WebGL: Refused to create native OpenGL context because of blacklisting. three.min.js:516:339\nError: WebGL: WebGL creation failed. three.min.js:516:339\nError: WebGL: Disallowing antialiased backbuffers due to blacklisting. three.min.js:516:400\nError: WebGL: Error during ANGLE OpenGL init. three.min.js:516:400\nError: WebGL: Refused to create native OpenGL context because of blacklisting. three.min.js:516:400\nError: WebGL: WebGL creation failed.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1461896290.000002"
+        }, 
+        {
+            "text": "Ah yep.  Yeah see if you can grab him before he goes!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459735059.000010"
+        }, 
+        {
+            "text": "still some piles on the floor around his desk", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459735050.000009"
+        }, 
+        {
+            "text": "I don\u2019t think hes left just yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459735040.000008"
+        }, 
+        {
+            "text": "Cool.  I'm pretty sure it is fixed now.  But I will wait until we see it on Scott's phone before I pass that on!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459735037.000007"
+        }, 
+        {
+            "text": "Ta.  I think he's gone to LA for a bit now.  I am going to get Colette to order us a Nexus 5X for testing.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459735018.000006"
+        }, 
+        {
+            "text": "but its working on everything else I can get my hands on", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459735007.000005"
+        }, 
+        {
+            "text": "I\u2019ll grab scotts phone for a test when I get a chance", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459734997.000004"
+        }, 
+        {
+            "text": "Cheers Mudge.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459734974.000003"
+        }, 
+        {
+            "text": "I just pushed the player update.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459734967.000002"
+        }, 
+        {
+            "text": "Choice!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459395890.000028"
+        }, 
+        {
+            "text": "Alright its back up now and everything appears to be working, the fix for N5 is back in.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459395881.000027"
+        }, 
+        {
+            "text": "No worries.  Thanks for your help.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459394381.000026"
+        }, 
+        {
+            "text": "thanks for the effort debugging that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459394373.000025"
+        }, 
+        {
+            "text": "sounds good, I will do that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459394367.000024"
+        }, 
+        {
+            "text": "So I will leave that branch alone for now.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459394363.000023"
+        }, 
+        {
+            "text": "I haven't pushed any changes yet.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459394354.000022"
+        }, 
+        {
+            "text": "I'd go with what Kieran pushed the other day.  That will have had more testing.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459394343.000021"
+        }, 
+        {
+            "text": "once I\u2019ve fixed it should I use the current player branch\u2019s js or do you think your latest js build has more value?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459394298.000020"
+        }, 
+        {
+            "text": "yea the /1000 does fix it :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459394196.000019"
+        }, 
+        {
+            "text": "that shouldn\u2019t happen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459388525.000018"
+        }, 
+        {
+            "text": "I can delete the Javascript files in static/js/eighti and everything still runs okay?  Is that to be expected?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459388509.000017"
+        }, 
+        {
+            "text": "So far everything plays for me?  Checked out WebPlatform/master on the server and WebPlatform/player locally (to get the correct Javascript).", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459387125.000016"
+        }, 
+        {
+            "text": "Choice.  Thanks Mudge.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459387093.000015"
+        }, 
+        {
+            "text": "alright, you have <http://charles.dev.8i.com/experience> up and running now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459387086.000014"
+        }, 
+        {
+            "text": "Sweet. Cheers!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459385709.000013"
+        }, 
+        {
+            "text": "I\u2019ll restart it for you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459385697.000012"
+        }, 
+        {
+            "text": "ah, you may not actually have one for sudo", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459385688.000011"
+        }, 
+        {
+            "text": "What's my password likely to be?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459385674.000010"
+        }, 
+        {
+            "text": "try that for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459385628.000009"
+        }, 
+        {
+            "text": "sudo supervisorctl restart charles_api_8i", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459385622.000008"
+        }, 
+        {
+            "text": "Ah eyp.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459385490.000007"
+        }, 
+        {
+            "text": "might be something missing in your local_config", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459385474.000006"
+        }, 
+        {
+            "text": "What did I do wrong?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459385456.000005"
+        }, 
+        {
+            "text": "Hey I've checked out latest WebPlayer/master and /player but I don't have any content displayed under \"EXPERIENCE\"?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459385450.000004"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/p/R3d>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459378444.000003"
+        }, 
+        {
+            "text": "Hey, there seems to be a bit of a problem with the new player.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459378443.000002"
+        }, 
+        {
+            "text": "Cool.  Thanks heaps!", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459307102.000007"
+        }, 
+        {
+            "text": "I\u2019ll merge in the current player to master now and give it a bit of a test.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459307080.000006"
+        }, 
+        {
+            "text": "I'm just keen to be able to check the Nexus 5X stuff again.  I think that if there will be a push before the end of the week that'll be soon enough.  Not that I'm sure of any external priorities or anything.  Just feels that way.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459307000.000005"
+        }, 
+        {
+            "text": "Ah yep I just talked to him about that.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459306935.000004"
+        }, 
+        {
+            "text": "He mentioned there was going to be a push this week with hvr5.3 in so I was waiting on that. Let me check its progress", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1459306920.000003"
+        }, 
+        {
+            "text": "Hi Mudge.  Hey when do you think Keiran's latest build of the player stuff will make it onto the live website?  I'd like to check that things are rendering on a Nexus 5X again.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1459306276.000002"
+        }, 
+        {
+            "text": "Done.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456971621.000010"
+        }, 
+        {
+            "text": "Will do.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456971387.000009"
+        }, 
+        {
+            "text": "oh cool, awesome. Yea you can merge that back into master if you like.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456971376.000008"
+        }, 
+        {
+            "text": "I can push to master too if you'd like.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456971297.000007"
+        }, 
+        {
+            "text": "Okay.  Fixed now.  Went back to build from master it was broken again.  Found out what I'd changed without realizing and that's the fix.  I think we're changing some OpenGL state that Three.js isn't tracking so I've just taken that part out now.  I've pushed the fixed eighti.lib.js etc to WebPlatform/player.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456971288.000006"
+        }, 
+        {
+            "text": "Sweet.  Cheers... where is the Javascript that sets up that Three.js scene? In player2.js?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456968709.000005"
+        }, 
+        {
+            "text": "I reverted the player js in master as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456968683.000004"
+        }, 
+        {
+            "text": "you might need to pull some new changes but <http://charles.dev.8i.com/new_site/create>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456968660.000003"
+        }, 
+        {
+            "text": "Hey where can I view that problem on my checkout of WebPlatform?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456968524.000002"
+        }, 
+        {
+            "text": "Sweet.  Cheers.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456437332.000010"
+        }, 
+        {
+            "text": "and yes you will need that enable_cardboard", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456437320.000009"
+        }, 
+        {
+            "text": "it should show a selection screen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456437310.000008"
+        }, 
+        {
+            "text": "Do I need to add enable_cardboard = True in local_config.py still?  I probably do.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456437306.000007"
+        }, 
+        {
+            "text": "Ah.  Do I need to add something on the end of that to get an asset?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456437287.000006"
+        }, 
+        {
+            "text": "np :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456437220.000005"
+        }, 
+        {
+            "text": "Cheers.  I think you've told me that already.  I forgot.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456437211.000004"
+        }, 
+        {
+            "text": "should be able to at <http://charles.dev.8i.com/c>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456437197.000003"
+        }, 
+        {
+            "text": "Hey can I view the cardboard render from the browser on my PC?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456437159.000002"
+        }, 
+        {
+            "text": "Sweet.  Cheers.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456102493.000007"
+        }, 
+        {
+            "text": "<http://charles.dev.8i.com/c> works now as well if you need that. Just had to add enable_cardboard = True to your local_config.py.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456102455.000006"
+        }, 
+        {
+            "text": "Ta.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456102323.000005"
+        }, 
+        {
+            "text": "<http://charles.dev.8i.com/p/zwr>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1456102251.000004"
+        }, 
+        {
+            "text": "Are you able to help we with that?", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456102134.000003"
+        }, 
+        {
+            "text": "Hi Michael (Mike?).  Hey I'm just trying to access \"<http://charles.dev.8i.com/cardboard-demo>\" on WebPlatform/master and I'm getting \"TypeError: Cannot read property 'floor_z_offset' of undefined\".", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1456102129.000002"
+        }, 
+        {
+            "text": "Cheers.", 
+            "type": "message", 
+            "user": "U0DHGU0EN", 
+            "ts": "1453842414.000004"
+        }, 
+        {
+            "text": "You can replace the last part with any dah file in the streaming_test folder in the <http://clouds.8i.com|clouds.8i.com> bucket on Amazon AWS", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453841829.000003"
+        }, 
+        {
+            "text": "<http://charles.dev.8i.com/test/2/mom_and_baby_long_2>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453841763.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0DHGU0EN", 
+            "U0C90MHEH"
+        ]
+    }
+}

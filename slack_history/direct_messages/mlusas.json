@@ -1,0 +1,4164 @@
+{
+    "messages": [
+        {
+            "text": "Would it make sense to reduce us enough where we can use MixPanel to send out a Push Notification there as well?  That way, we can reach the majority of users.  But we don't want a single user to get a MixPanel *and* a FireBase notification.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1505343483.000041"
+        }, 
+        {
+            "text": "There probably is, based on the adoption rate of our apps. But I\u2019m not actually sure which build of each app was the one which switched to firebase", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505343330.000029"
+        }, 
+        {
+            "text": "Wonderful.  Is there a way to see how many old clients there are that are still active users?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1505343222.000128"
+        }, 
+        {
+            "text": "We can probably clear the data and return to the smallest possible plan", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505343195.000169"
+        }, 
+        {
+            "text": "for people who don\u2019t auto update", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505343171.000274"
+        }, 
+        {
+            "text": "Um, good question. I think so, but I\u2019m not sure about the old mobile clients", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505343157.000281"
+        }, 
+        {
+            "text": "Hi <@U0C90MHEH>, have we officially stopped using MixPanel now?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1505343097.000029"
+        }, 
+        {
+            "text": "Oh, that's sounds cool.  Hopefully, you're not too banged up.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1505170774.000157"
+        }, 
+        {
+            "text": "Haha, yea I'm still in good spirits. You'll have to look up netball, it's like ultimate Frisbee meets basketball.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1505170608.000273"
+        }, 
+        {
+            "text": "...and what's *netball*?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1505168221.000063"
+        }, 
+        {
+            "text": "I hope everything's okay.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1505168216.000275"
+        }, 
+        {
+            "text": "Thank you.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1504883193.000059"
+        }, 
+        {
+            "text": "<http://portal-stage.dev.8i.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1504840983.000123"
+        }, 
+        {
+            "text": "Hey Mudge, can you share a link to the in-progress Development Portal?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1504836579.000011"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R6P8DAAQ5", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U3ABZ07ME", 
+                    "U0C90MHEH"
+                ], 
+                "date_end": "1502849275", 
+                "date_start": "1502848785", 
+                "created_by": "U3ABZ07ME", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D450Y9VNH"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R6P8DAAQ5", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R6P8DAAQ5|call>.", 
+            "ts": "1502848785.000164", 
+            "subtype": "sh_room_created", 
+            "user": "U3ABZ07ME", 
+            "type": "message", 
+            "channel": "D450Y9VNH"
+        }, 
+        {
+            "text": "Ready when you are", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502848707.000108"
+        }, 
+        {
+            "text": "Awesome.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1502753952.797861"
+        }, 
+        {
+            "text": "anytime", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502753901.785665"
+        }, 
+        {
+            "text": "its empty", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502753897.784766"
+        }, 
+        {
+            "text": "Anything between 1:00p - 2:30p NZ work for you?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1502753896.784476"
+        }, 
+        {
+            "text": "Hey Mudge, how does your tomorrow afternoon look for a 30-minute meeting to discuss analytics on the Inspiration Feed?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1502753874.779265"
+        }, 
+        {
+            "text": "Awesome.  We can call it an extended Firebase trial.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499832292.368799"
+        }, 
+        {
+            "text": "Cool, Scott still thinks Amazon is going to be the best long term solution but he is happy to go with firebase in the meantime.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499823208.766394"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "I will talk to him and Jed in a minute", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499822127.550015"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499822075.539810"
+        }, 
+        {
+            "text": "I know Scott was leaning towards Amazon.  The benefits of FireBase seems to be simplicity, potentially cost, and similarity to current analytics setup.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499822051.535218"
+        }, 
+        {
+            "text": "I haven\u2019t talk to iOS yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499822003.525511"
+        }, 
+        {
+            "text": "Isaac loves it, he has always wanted to use it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499821992.523396"
+        }, 
+        {
+            "text": "How is the team feeling about FireBase as the analytics service we use?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499821968.518744"
+        }, 
+        {
+            "text": "I'll be creating the Story Req docs for a, b, and c tomorrow.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499810557.609043"
+        }, 
+        {
+            "text": "Let me know if there's anything I missed.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499810541.602842"
+        }, 
+        {
+            "text": "Here is the overall Story Req Doc:\n<https://docs.google.com/presentation/d/1sbdOeRjDGatNgvPBn1ilzX4fSwZeftX4gZlD0NQc3iU/edit>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499810507.589692"
+        }, 
+        {
+            "text": "Yea, sounds good. Were you working on a notifications requirement doc?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499806756.946047"
+        }, 
+        {
+            "text": "Can you run FireBase by the team today, and get their thoughts on switching over?  We'll also need to dive into the Push Notification scope for using FireBase.  This will probably break out into three Stories:\n[a] Add FireBase Analytics\n[b] Migrate Push Notifications to FireBase\n[c] Add new Analytics Events and Funnels", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499805268.165671"
+        }, 
+        {
+            "text": "Got it.  That should be fine.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499805092.071942"
+        }, 
+        {
+            "text": "Just can't actually send events/profile updates etc from our server", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804988.014344"
+        }, 
+        {
+            "text": "I think exporting would still be possible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804956.996323"
+        }, 
+        {
+            "text": "Not actually sure but they do offer big query as an extra service you can pay for.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804929.981867"
+        }, 
+        {
+            "text": "It seemed like we could export any data we wanted to run custom reporting.  But that's too bad that it would have to be a manual effort.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804909.971381"
+        }, 
+        {
+            "text": "Are they pushing the event data to a data warehouse that we could access at another time?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804887.959579"
+        }, 
+        {
+            "text": "But I think we can live without that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804862.946529"
+        }, 
+        {
+            "text": "Oh, really!?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804861.945964"
+        }, 
+        {
+            "text": "The only annoyance was that it was lacking a server side api/sdk", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804851.940624"
+        }, 
+        {
+            "text": "Do you see any reason for us not to use FireBase?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804816.922011"
+        }, 
+        {
+            "text": "Agreed.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804805.916611"
+        }, 
+        {
+            "text": "It's tie-in with Push Notifications, and the FireBase platform is great.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804803.914961"
+        }, 
+        {
+            "text": "I thought it was comparable with mix panel initially", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804800.913615"
+        }, 
+        {
+            "text": "Cool, I'd say it's my favorite", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499804775.900196"
+        }, 
+        {
+            "text": "I'm really liking FireBase Analytics.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499804749.885562"
+        }, 
+        {
+            "text": "<https://www.urbanairship.com/urban-airship-pricing>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499643479.112774", 
+            "attachments": [
+                {
+                    "thumb_height": 1667, 
+                    "service_icon": "https://www.urbanairship.com/images/favicon-ua.png", 
+                    "thumb_width": 1667, 
+                    "title": "Urban Airship Pricing | Urban Airship", 
+                    "service_name": "Urban Airship", 
+                    "title_link": "https://www.urbanairship.com/urban-airship-pricing", 
+                    "text": "Learn more about Urban Airship pricing for our mobile app engagement, mobile wallet marketing, mobile analytics and mobile data integration solutions.", 
+                    "id": 1, 
+                    "fallback": "Urban Airship: Urban Airship Pricing | Urban Airship", 
+                    "thumb_url": "https://www.urbanairship.com/images/fb-image.jpg", 
+                    "from_url": "https://www.urbanairship.com/urban-airship-pricing"
+                }
+            ]
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R66S2785U", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0C90MHEH", 
+                    "U3ABZ07ME"
+                ], 
+                "date_end": "1499643662", 
+                "date_start": "1499642708", 
+                "created_by": "U0C90MHEH", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D450Y9VNH"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R66S2785U", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R66S2785U|call>.", 
+            "ts": "1499642708.046038", 
+            "subtype": "sh_room_created", 
+            "user": "U0C90MHEH", 
+            "type": "message", 
+            "channel": "D450Y9VNH"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R66SKH963", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0C90MHEH", 
+                    "U3ABZ07ME"
+                ], 
+                "date_end": "1499642675", 
+                "date_start": "1499642276", 
+                "created_by": "U0C90MHEH", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D450Y9VNH"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R66SKH963", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R66SKH963|call>.", 
+            "ts": "1499642276.009193", 
+            "subtype": "sh_room_created", 
+            "user": "U0C90MHEH", 
+            "type": "message", 
+            "channel": "D450Y9VNH"
+        }, 
+        {
+            "text": "Call me when you're ready.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499642251.007019"
+        }, 
+        {
+            "text": "sure, 2 seconds. I\u2019ll find a quiet spot.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499642221.004280"
+        }, 
+        {
+            "text": "Awesome.  Want to jump onto a Slack call now?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499642198.002373"
+        }, 
+        {
+            "text": "Any time is fine", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499641901.977120"
+        }, 
+        {
+            "text": "Hey Mudge, let me know how your schedule looks to discuss the Analytics Audit and next steps.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499641884.975795"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> shared a file: <https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet|Holo - Google Analytics Events and Timing Logging Sheet>", 
+            "upload": false, 
+            "ts": "1499468484.946540", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [
+                    "G4KR129L0", 
+                    "G6UG2M5C5"
+                ], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_64.png", 
+                "size": 57339, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "url_private": "https://docs.google.com/a/8i.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit?usp=sharing", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_360.png", 
+                "id": "F3X0XTCG3", 
+                "ims": [
+                    "D12DBF78S", 
+                    "D3X61C9HA", 
+                    "D431QMJ66", 
+                    "D450Y9VNH", 
+                    "D5MK78T28"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_800.png", 
+                "timestamp": 1485462811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_1024.png", 
+                "user": "U0G3RRHD3", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo - Google Analytics Events and Timing Logging Sheet", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5", 
+                    "C3QBYRUKE"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U0G3RRHD3/F3X0XTCG3/holo_-_google_analytics_events_and_timing_logging_sheet", 
+                "is_external": true, 
+                "created": 1485462811, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F3X0XTCG3-2a427deb83/holo_-_google_analytics_events_and_timing_logging_sheet_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "I've updated the *Improve for v1.2*, *Funnels*, and *User Segments* tab based on feedback and open items from this past week.\n<https://docs.google.com/spreadsheets/d/1nnrwXCzUZElfnUC8cunNrCcixgsev15BjpMdY5weP7Q/edit#gid=480173955>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499468482.946270"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Hey do we need to upgrade our Mix panel events as well? We are over 800,000 already and only get 1,000,000", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499374304.607745"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "I think we may also be able to have a look at our users and figure out ways to remove unused accounts", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499373118.027241"
+        }, 
+        {
+            "text": "They have volume pricing.  One moment, and I'll start a thread with Thomas.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499373026.981367"
+        }, 
+        {
+            "text": "that was pretty much my conclusion", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372932.933810"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372925.930379"
+        }, 
+        {
+            "text": "and we still need other analytics backends to go with that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372922.929048"
+        }, 
+        {
+            "text": "Yikes, that's more expensive than MixPanel.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499372922.928707"
+        }, 
+        {
+            "text": "Wow...", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499372914.924905"
+        }, 
+        {
+            "text": "so our 150,000 so far would cost $1,500 a month", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372891.913312"
+        }, 
+        {
+            "text": "$10 per 1000 monthly active users", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372867.902008"
+        }, 
+        {
+            "text": "Segment looks good but very expensive", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372843.890042"
+        }, 
+        {
+            "text": "Yea, I have done a bit of research into Analytics so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372835.886113"
+        }, 
+        {
+            "text": "- I'm consolidating some of the analytics feedback I've heard, and putting it into your Google Analytics spreadsheet (tab 1.2).", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499372736.837180"
+        }, 
+        {
+            "text": "A few things:\n - with MixPanel, can you upgrade the account for the user's again?  We're growing at a fast rate.\n - For the Inspiration Feed, Asher should have a design to share today, and we can discuss scope for completing that page.  We're hoping to have that site built next week.\n - Have you been able to work on the Analyltics Audit?  Curious about [a] Segment / AWS option, [b] Flurry as a potential alternative to MixPanel, [c] scope required to move to another Push Notification solution, [d] thoughts on Analytics gaps", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499372698.818231"
+        }, 
+        {
+            "text": "whats up?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372565.751240"
+        }, 
+        {
+            "text": "I'm sorry to hear that.  I hope you're able to get some rest.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499372536.737505"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "biohazard_sign", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "still coughing at a fairly annoying rate", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372536.737311"
+        }, 
+        {
+            "text": "Yea, I\u2019m not going into the office, but I\u2019m working", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499372516.727324"
+        }, 
+        {
+            "text": "Good morning, <@U0C90MHEH> .  Are you in today?  I heard you've been out sick.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499372487.713042"
+        }, 
+        {
+            "text": "Awesome.  Thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499039981.062595"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "I\u2019ll update the ticket with those requirements", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499039965.061128"
+        }, 
+        {
+            "text": "Alright", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1499039956.060241"
+        }, 
+        {
+            "text": "Hey Mudge, with the Analytics Audit, we're looking for a few things:\n - Is there another service like Segment (like AWS's option)?\n - Is there a cheaper solution than MixPanel that offers great User Profile and User Segmentation options?  Potentially look at Flurry and/or Localytics.\n\nTokes will be reaching out with some other items.  But we're hoping to land on the Segment decision by end of week, so we can get the new SDK incorporated into the Clients and start feeding MixPanel and Google Analytics from there by end of next week.  Then we can play around with the other Analytics providers you identify.  And hopefully, within four weeks, we have identified our Analytics Recipe for the app.\n\nHow does that sound?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1499038854.964958", 
+            "edited": {
+                "user": "U3ABZ07ME", 
+                "ts": "1499038992.000000"
+            }
+        }, 
+        {
+            "text": "Awesome", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498790957.585036"
+        }, 
+        {
+            "text": "We're all good.  The account still says we're over, so I've asked the MixPanel contact when the account will show that it is in good standing.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498790826.570463"
+        }, 
+        {
+            "text": "Brandon got it all covered.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498790799.567538"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "I\u2019m going to get Lucas to have a look at the <http://stage.thisisholo.com/> page with a few browsers", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498789794.450066"
+        }, 
+        {
+            "text": "and he might be asleep", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498789577.424494"
+        }, 
+        {
+            "text": "although I think I needed Tokes to sign off on that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498789566.423109"
+        }, 
+        {
+            "text": "I can use the CC here, thats what I did last time", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498789536.419563"
+        }, 
+        {
+            "text": "We still have access to the initial plans, and new plans will still be recorded.  We will not be able to send Push Notifications to the new users until the MixPanel account is upgraded.  So the only potential downside is if we send a Push Notification before upgrading, some new users will not get it.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498789510.416605"
+        }, 
+        {
+            "text": "Also, I tried updating the MixPanel account and it's asking for a Credit Card.  The upgrade is moving the People plan to 100k users for $300/month.  I've Slacked Brandon to help with the credit card.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498789415.405475"
+        }, 
+        {
+            "text": "Ah, what needs to be done to move it to Production?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498789377.400909"
+        }, 
+        {
+            "text": "It is at <http://stage.thisisholo.com/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498774550.182763"
+        }, 
+        {
+            "text": "Its not in production", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498774532.178881"
+        }, 
+        {
+            "text": "Hey Mudge, is this ticket complete:\n<https://eighteye.atlassian.net/browse/HOLOALL-540>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498774514.174579"
+        }, 
+        {
+            "text": "of the 6 days of data we have so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498686548.305667"
+        }, 
+        {
+            "text": "And our DAU and DNU both seem to be flat or slightly downwards trend.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498686509.294887"
+        }, 
+        {
+            "text": "There is a very high chance that events would be higher for new users, as they need to download as well as place holo\u2019s. Although placement is the highest count of total events.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498686433.274315"
+        }, 
+        {
+            "text": "Interesting.  So we're hanging out at ~100k events per day, even though our new user count is going up?  If so, is there a possibility that there is an average event per new daily user rate, and potentially, a much much smaller rate for existing daily users?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498686227.216953"
+        }, 
+        {
+            "text": "I\u2019m fairly sure there should be some trend there but I just can\u2019t see anything in the data we have so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685987.150233"
+        }, 
+        {
+            "text": "Nope, but I don\u2019t see any trend to how new user growth affects total app usage.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685959.142709"
+        }, 
+        {
+            "text": "Agreed.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685841.109405"
+        }, 
+        {
+            "text": "Does that take into account our rate of new user growth?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685839.108927"
+        }, 
+        {
+            "text": "but I believe as part of the audit we should think about which events we need tracked in mix panel", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685827.105345"
+        }, 
+        {
+            "text": "at the current levels of ~100,000 events per day we would be looking at about 3M events per month", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685754.084658"
+        }, 
+        {
+            "text": "That could all change if we become featured on the app stores though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685719.074421"
+        }, 
+        {
+            "text": "looking at daily active users we have been rather consistent, and the mix panel events shows the same", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685704.069936"
+        }, 
+        {
+            "text": "We don\u2019t actually appear to have a rate of increase at this stage", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685674.061185"
+        }, 
+        {
+            "text": "How many events do you think we'll have over the next four weeks, given our current rate of increase?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685498.010013"
+        }, 
+        {
+            "text": "Based on those numbers, it seems that we will be able to address our MixPanel needs over the next month with $750 for User Profiles.  For events, that's a slightly different story.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685452.996469"
+        }, 
+        {
+            "text": "There are yearly business and enterprise plans, but we should only go down that path once [a] we've have 1-2 months of usages to determine yearly forecasts, and [b] have determined that MixPanel is our ideal solution.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685297.949976"
+        }, 
+        {
+            "text": "However, our events are high as well.  We can purchase additional events in 1M increments at $99/month.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685221.927202"
+        }, 
+        {
+            "text": "We can also purge inactive accounts from that count.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685191.918320"
+        }, 
+        {
+            "text": "We can actually get additional increments of 50k users in $150/month charges.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685177.914168"
+        }, 
+        {
+            "text": "After speaking with Tokes, we're looking at doing an interim fix for the next month; but that requires us to do an analytics audit in the next two weeks to determine if MixPanel offers us the best solutions for the cost.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685146.904751"
+        }, 
+        {
+            "text": "I had several meetings with them yesterday; my apologies for not updating you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498685093.888842"
+        }, 
+        {
+            "text": "Hey, hows it going with Mix Panel? We are getting close to their deadline (tomorrow) for when we won\u2019t be able to access our user profiles. We can upgrade to their 50K profiles setup for $150 per month, but we are already at 34,000 so that would be a temporary fix. As far as I can tell, they will charge more for any excess profiles if we are on that plan.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498685030.869175"
+        }, 
+        {
+            "text": "Just for seeing the stats based on a timezone.  It's currently set to NZ time.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498578832.928698"
+        }, 
+        {
+            "text": "do you mean for calculating days/weeks etc?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498532759.209739"
+        }, 
+        {
+            "text": "Hi Mudge, can you update MixPanel analytics Timezone to be based on UTC?  I believe that's the timezone we're aiming to use for the Analytics.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498529769.860299"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Yea sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521850.782489"
+        }, 
+        {
+            "text": "Can you reach out to Peter, and find out when he's sending the next Push?  That will help define the priority.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498521748.766096"
+        }, 
+        {
+            "text": "I can get it in today if that the priority", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521701.758420"
+        }, 
+        {
+            "text": "Ah, how long would it take to set up?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498521666.752757"
+        }, 
+        {
+            "text": "and we use a specific url path for each of the deeplinks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521617.744287"
+        }, 
+        {
+            "text": "Hmm.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498521608.742732"
+        }, 
+        {
+            "text": "Its a bit fiddly because it needs to be a JSON blob when its given to mix panel", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521593.739345"
+        }, 
+        {
+            "text": "Oh, that's nice!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498521579.737156"
+        }, 
+        {
+            "text": "Would you have time to onboard him for Push Notifications over the next day?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498521574.736412"
+        }, 
+        {
+            "text": "I was going to make a JSON data generator to make it very easy to just copy paste the correct value which the app would need for a promotion/character deeplink", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521558.733872"
+        }, 
+        {
+            "text": "No, I didn\u2019t know I needed to", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498521516.727295"
+        }, 
+        {
+            "text": "Hi Mudge, have you had a chance to guide Peter on sending Deeplinked Push Notifications?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498518908.296817"
+        }, 
+        {
+            "text": "not sure how accurate those numbers will be, growth prediction is hard.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498447521.399127"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U0C90MHEH/F5YJK7Q6L/mix_panel_usage|Mix Panel Usage>", 
+            "upload": false, 
+            "ts": "1498447501.397290", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_64.png", 
+                "size": 27910, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Mix Panel Usage", 
+                "url_private": "https://docs.google.com/spreadsheets/d/1rzls1ebpW-FyQi9nVWMMgOo_l9RLqKKI3fY68u6W_uk/edit#gid=0", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_360.png", 
+                "id": "F5YJK7Q6L", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_800.png", 
+                "timestamp": 1498447499, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_1024.png", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_960.png", 
+                "is_public": false, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Mix Panel Usage", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [], 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F5YJK7Q6L/mix_panel_usage", 
+                "is_external": true, 
+                "created": 1498447499, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5YJK7Q6L-e2afca392e/mix_panel_usage_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "I have got <https://docs.google.com/spreadsheets/d/1rzls1ebpW-FyQi9nVWMMgOo_l9RLqKKI3fY68u6W_uk/edit#gid=0>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498447497.396985"
+        }, 
+        {
+            "text": "Wonderful, thank you.  That will help in figuring out the MixPanel cost.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498447348.385346"
+        }, 
+        {
+            "text": "The events do go via our server to Mix panel, but we are not recording them on our server, we don\u2019t really want to due the large amount of write load it would have on our DB which is largely for read only (apart from administration). I\u2019ll try and calculate some estimates for monthly events.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498443485.064572"
+        }, 
+        {
+            "text": "Also, for the our CMS, do we track on our server, the same data that MixPanel is using to send out Target Push Notifications?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498442945.017095"
+        }, 
+        {
+            "text": "Would you be able to come up with Monthly usage estimates, if we have 10x the audience we have today?  And then also 50x what we have today.  We can use those usage estimates to share with MixPanel in determining what our costs will be.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498442909.013955"
+        }, 
+        {
+            "text": "nothing regarding our pricing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434352.334535"
+        }, 
+        {
+            "text": "Yea, although I have only contacted them once for some support", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434334.333440"
+        }, 
+        {
+            "text": "Who has been our primary contact with MixPanel?  Is that you?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498434286.330438"
+        }, 
+        {
+            "text": "And our number of notification profiles is over the limit already as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434186.324576"
+        }, 
+        {
+            "text": "Hmm.  Got it.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498434125.321098"
+        }, 
+        {
+            "text": "We would be able to do some targeting, but not based on the events.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498434090.319048"
+        }, 
+        {
+            "text": "If we stopped tracking events in MixPanel, would we still be able to do Targeted Push Notifications, or are we able to do the Notifications because MixPanel is tracking all of that data?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498433890.307633", 
+            "edited": {
+                "user": "U3ABZ07ME", 
+                "ts": "1498433896.000000"
+            }
+        }, 
+        {
+            "text": "Perfect, thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498433420.279451"
+        }, 
+        {
+            "text": "Invited", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498432514.228059"
+        }, 
+        {
+            "text": "oh yea, sorry. It doesn\u2019t look like you have access", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498432444.223833"
+        }, 
+        {
+            "text": "You may have already done so, but I can't find the login in.  Can you share MixPanel access with me?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498432390.220892"
+        }, 
+        {
+            "text": "Got it.  I'm taking a look at this now.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498432318.216829"
+        }, 
+        {
+            "text": "The main reason we have analytics events in Mix panel is for enabling targeted notifications", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498432114.205194"
+        }, 
+        {
+            "text": "they have a warning on the page which says we need to upgrade within 4 days to continue accessing that report", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498432069.202781"
+        }, 
+        {
+            "text": "It doesn\u2019t seem like it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498432046.201559"
+        }, 
+        {
+            "text": "Also, can we continue using MixPanel's Push Notification if we don't upgrade?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498432005.199181"
+        }, 
+        {
+            "text": "I want to make sure that MixPanel Analytics is giving us something that we aren't getting elsewhere.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498431978.197795"
+        }, 
+        {
+            "text": "So far, all of the metrics we've been looking at have come from either GA or Fabric.  I haven't seen anyone share anything from MixPanel.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498431943.195843"
+        }, 
+        {
+            "text": "Got it.  Hmm.  Would you be able to do a quick re-evaluation on our options?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498431915.194405"
+        }, 
+        {
+            "text": "And after that they have \u201cContact us for more information\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498431772.186812"
+        }, 
+        {
+            "text": "The next tier up doesn\u2019t look like its going to be much better either", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498431742.185166"
+        }, 
+        {
+            "text": "Hey, regarding our mix panel account, the tier we are in isn\u2019t going to be enough for us based on these early numbers.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498431713.183412"
+        }, 
+        {
+            "text": "Wonderful, thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498169596.148944"
+        }, 
+        {
+            "text": "Added you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498169362.097492"
+        }, 
+        {
+            "text": "Hi Mudge, can you give me access to the <http://Thisisholo.com|Thisisholo.com> Google Analytics?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498169292.082302"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498107456.197035"
+        }, 
+        {
+            "text": "Ah perfect.  Under that link, can you add the buttons, as they are on <http://thisisholo.com|thisisholo.com>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498107380.188917"
+        }, 
+        {
+            "text": "just the link", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498106847.131892"
+        }, 
+        {
+            "text": "Last minute request from Amy.  I'm not sure if we just had the <http://thisisholo.com|thisisholo.com> link before, or if we also had those buttons.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498106780.125120"
+        }, 
+        {
+            "text": "Can you also add the iOS and Android download buttons to the <http://8i.com/holo|8i.com/holo> page?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498106748.121703"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R5X3UA3MX", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0C90MHEH", 
+                    "U3ABZ07ME"
+                ], 
+                "date_end": "1498099866", 
+                "date_start": "1498099557", 
+                "created_by": "U0C90MHEH", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D450Y9VNH"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R5X3UA3MX", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R5X3UA3MX|call>.", 
+            "ts": "1498099556.314461", 
+            "subtype": "sh_room_created", 
+            "user": "U0C90MHEH", 
+            "type": "message", 
+            "channel": "D450Y9VNH"
+        }, 
+        {
+            "text": "Slack Call me when you're ready.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498099530.311507"
+        }, 
+        {
+            "text": "2 secs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498099500.307811"
+        }, 
+        {
+            "text": "You up for a Slack Call?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498099488.306323"
+        }, 
+        {
+            "text": "Perfect, I'll Slack shortly.  Just finsihing up with Asher.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498098601.203239"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498098446.185201"
+        }, 
+        {
+            "text": "Are you available to chat in a few minutes about some minor updates to the website?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1498098423.182752"
+        }, 
+        {
+            "text": "Ah, got it.  I'll check with Mark to see if he'll be able to do it again.  Thanks.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497993493.974707"
+        }, 
+        {
+            "text": "I think Mark actually did the filter", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497992493.647155"
+        }, 
+        {
+            "text": "can\u2019t remember why", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497992478.641850"
+        }, 
+        {
+            "text": "It used to be programmatic, but asher wanted it done as part of the video", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497992470.638729"
+        }, 
+        {
+            "text": "Also, who put the video filter on?  We'll have a new video to use from PrayTell by EOD tomorrow PDT.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497992456.633444"
+        }, 
+        {
+            "text": "Ah.  Got it.  Would it be hard to do it programmatically?  If so, we'll keep this as a video filter.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497992433.625155"
+        }, 
+        {
+            "text": "The color effect is part of the video currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497992352.595369"
+        }, 
+        {
+            "text": "Also, for the autoplay video on <http://8i.com/holo|8i.com/holo> site, we will have a new video to share.  Do you want the video to be black-and-white so the programmatic color effect looks better?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497981492.668924"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5WNZU0LC/pasted_image_at_2017_06_20_10_55_am.png|Pasted image at 2017-06-20, 10:55 AM>", 
+            "upload": true, 
+            "ts": "1497981308.597226", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5WNZU0LC-3c3e3f0ef1/pasted_image_at_2017_06_20_10_55_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5WNZU0LC-3c3e3f0ef1/pasted_image_at_2017_06_20_10_55_am_64.png", 
+                "size": 64306, 
+                "original_h": 289, 
+                "thumb_360_w": 360, 
+                "title": "Pasted image at 2017-06-20, 10:55 AM", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5WNZU0LC/pasted_image_at_2017_06_20_10_55_am.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5WNZU0LC-3c3e3f0ef1/pasted_image_at_2017_06_20_10_55_am_360.png", 
+                "id": "F5WNZU0LC", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5WNZU0LC-3c3e3f0ef1/pasted_image_at_2017_06_20_10_55_am_80.png", 
+                "thumb_360_h": 145, 
+                "thumb_480_h": 193, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1497981307, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5WNZU0LC-3c3e3f0ef1/pasted_image_at_2017_06_20_10_55_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5WNZU0LC/download/pasted_image_at_2017_06_20_10_55_am.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Pasted image at 2017_06_20 10_55 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5WNZU0LC-5ff973f127", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5WNZU0LC/pasted_image_at_2017_06_20_10_55_am.png", 
+                "is_external": false, 
+                "created": 1497981307, 
+                "original_w": 720, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hi Mudge, can you update the <http://thisisholo.com|thisisholo.com> site to include font-family for the Emoji to show up on browsers that may not have the font installed on their computers.  See the screenshot example.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497981303.595337"
+        }, 
+        {
+            "text": "Perfect.  I'll make sure Alenni is aware.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497227310.324043"
+        }, 
+        {
+            "text": "yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497227299.323329"
+        }, 
+        {
+            "text": "So, we'll need to do an update the day before we release for Global?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497227285.322450"
+        }, 
+        {
+            "text": "otherwise we pick a day, and split before and after that day", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497227161.314928"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "if its a limited/global split then that makes the most sense", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497227133.313150"
+        }, 
+        {
+            "text": "It just comes down to what time periods we want to be able to track", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497227117.312108"
+        }, 
+        {
+            "text": "Otherwise, it may be difficult to read.  What do you think?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497227088.310108"
+        }, 
+        {
+            "text": "Though...maybe we should wait until Global.  That way all of Limited is using the same values.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497227075.309294"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "It will update the poses as soon as the apps next sync.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497227047.307735"
+        }, 
+        {
+            "text": "(FYI., these _readiness_ tabs will be filled out by Alenni by EOD Tuesday PDT, and we will use these going forward to ensure alignment across teams)", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497227047.307710"
+        }, 
+        {
+            "text": "I'll discuss with Alenni this week.  Is it possible to update these values, but not have them *go live* until Global Release?  Or will updating in the CMS immediately update any new pulled feeds?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497227013.305656"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497227003.304942"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> shared a file: <https://hvr.slack.com/files/U3ABZ07ME/F5P1PQZ7C/daily_holo_project_sync|Holo Project Sync Dashboard>", 
+            "upload": false, 
+            "ts": "1497226964.302623", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_64.png", 
+                "size": 166707, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo Project Sync Dashboard", 
+                "url_private": "https://docs.google.com/spreadsheets/d/1c8UgQZGk7J5Y9qticqCU1OlTcPKCeShwoBfsJU-iEiM/edit#gid=0", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_360.png", 
+                "id": "F5P1PQZ7C", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_800.png", 
+                "timestamp": 1496701831, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_960.png", 
+                "is_public": true, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Daily holo project sync", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [
+                    "C3N7GTTV5"
+                ], 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5P1PQZ7C/daily_holo_project_sync", 
+                "is_external": true, 
+                "created": 1496701831, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5P1PQZ7C-8120f744c8/daily_holo_project_sync_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "I've added it to the *Holo Project Sync Dashboard: Pose Readiness* as a task to be completed for Pose Readiness.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497226963.302537"
+        }, 
+        {
+            "text": "Ok, that is already possible with the CMS, so can be done at any time.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497226869.296843"
+        }, 
+        {
+            "text": "Agreed.  The change would be updating the names for the current poses with obfuscated id's.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497226834.294701"
+        }, 
+        {
+            "text": "I think we just need to make sure that a \u201cgood\u201d analytics ID is used before poses are published/made public", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497225176.195861"
+        }, 
+        {
+            "text": "What change are you proposing?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497225106.192130"
+        }, 
+        {
+            "text": "Got it.  What do you think if we make this change for Global Release?  That way we have a new standard that's set, and we use from then on.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497224288.148890"
+        }, 
+        {
+            "text": "Every character and pose has an analytics ID which is used by the client for google analytics. These can be set to anything we like but there is no way to retroactively change those in GA so if we do change it, it will only apply to future events.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497224164.142730"
+        }, 
+        {
+            "text": "Good morning, Mudge.  I was wondering if we could use more descriptive pose names for the Analytics.  Currently, they are called names like *anderson-silva/handersonsilva-390* or *anderson-silva/handersonsilva-110*, which requires cross-reference with our CMS to determine useable data.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1497218997.870757"
+        }, 
+        {
+            "text": "Ha ha, agreed.  I'm sure he'll be able to 8i-ify it.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496969692.877338"
+        }, 
+        {
+            "text": "Cool, I think its good then, will just run it by asher, see if he wants more style", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496969499.853994"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5R3N2890/screen_shot_2017-06-08_at_5.50.39_pm.png|Confirmed to be working!>", 
+            "upload": true, 
+            "ts": "1496969474.850914", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_800_h": 600, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_64.png", 
+                "size": 3659210, 
+                "original_h": 2270, 
+                "thumb_360_w": 360, 
+                "title": "Confirmed to be working!", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5R3N2890/screen_shot_2017-06-08_at_5.50.39_pm.png", 
+                "thumb_720_h": 540, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_360.png", 
+                "id": "F5R3N2890", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 270, 
+                "thumb_480_h": 360, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_800.png", 
+                "timestamp": 1496969467, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5R3N2890/download/screen_shot_2017-06-08_at_5.50.39_pm.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-08 at 5.50.39 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5R3N2890-0e97e98f81", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5R3N2890/screen_shot_2017-06-08_at_5.50.39_pm.png", 
+                "is_external": false, 
+                "created": 1496969467, 
+                "thumb_1024_h": 768, 
+                "thumb_960_h": 720, 
+                "original_w": 3028, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5R3N2890-4eee2ac611/screen_shot_2017-06-08_at_5.50.39_pm_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "or I can put in a request for flights to Hawaii :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496968064.666498"
+        }, 
+        {
+            "text": "confirm it\u2019s working from outside NZ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496968034.662270"
+        }, 
+        {
+            "text": "Can you hit <https://web-stage.dev.8i.com/holo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496968017.659788", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://web-stage.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://web-stage.dev.8i.com/holo", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://web-stage.dev.8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://web-stage.dev.8i.com/holo"
+                }
+            ]
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "but as its only going to have to work for a couple of weeks I don\u2019t think we need to worry", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496967797.630390"
+        }, 
+        {
+            "text": "not sure how much better the paid one would be", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496967779.627769"
+        }, 
+        {
+            "text": "there is a free version", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496967768.626328"
+        }, 
+        {
+            "text": "Ah, I just saw your note about needing to pay for geoip.  Does your other solution use something else?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496967749.623675"
+        }, 
+        {
+            "text": "Woohoo!!!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496966829.497720"
+        }, 
+        {
+            "text": "I think I may have a solution", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496966159.395608"
+        }, 
+        {
+            "text": "Let me know if you want to discuss.  I'm available now for a 30-minutes; catching up on everything after a day of back-to-back meetings.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496966138.392601"
+        }, 
+        {
+            "text": "EOD NZ.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496966083.384370"
+        }, 
+        {
+            "text": "Staging version is at <https://web-stage.dev.8i.com/holo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496956827.479303", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://web-stage.dev.8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://web-stage.dev.8i.com/holo", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://web-stage.dev.8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://web-stage.dev.8i.com/holo"
+                }
+            ]
+        }, 
+        {
+            "text": "I can push out the first 2 items of <https://eighteye.atlassian.net/browse/HOLOALL-535> first (now) if you want", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496956779.464998"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "I think we can use <https://dev.maxmind.com/geoip/> but it could be some work", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496956743.454509"
+        }, 
+        {
+            "text": "EOD PT? or NZ?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496956734.451829"
+        }, 
+        {
+            "text": "We're hoping to have the change implemented by EOD; let me know what you think would be possible.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496955616.110025"
+        }, 
+        {
+            "text": "Not off the top of my head, but I previously we used an IP Territory Lookup table of some sort to determine country location, and use that to switch the content.\n\nLet me know if you think the changes would take more than a day to implement.  If so, we can adjust our strategy.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496942568.531921"
+        }, 
+        {
+            "text": "Hey, for geolocating user\u2019s countries, is there an easy solution which you are aware of? So far it all looks rather complex for a simple 1 line content change.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496895274.385225"
+        }, 
+        {
+            "text": "ok cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496878827.338461"
+        }, 
+        {
+            "text": "No worries, I entered it in late.  Let me know if you have any questions.  Asher and I discussed with Amy on Friday PDT, so he should be able to help out as well.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496878674.314679"
+        }, 
+        {
+            "text": "oh yea it was in my inbox, I just didn\u2019t see it before going to standup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496876643.968485"
+        }, 
+        {
+            "text": "FYI for the JIRA ticket I created today for the 8i Website:\n<https://eighteye.atlassian.net/browse/HOLOALL-535>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496874945.644384"
+        }, 
+        {
+            "text": "Perfect!  Thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496698311.268670"
+        }, 
+        {
+            "text": "That is possible", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496698297.263703"
+        }, 
+        {
+            "text": "Hi Mudge, with the Push Notifications, are we able to do geo-specified Push Notifications (ie., just in Australia)?  Nicole wants to do a content update that would relate specifically with Australia for the weekend.  No worries if it's not possible, just looking into options.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496697956.163025"
+        }, 
+        {
+            "text": "Ha ha ha, nice!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496443642.700287"
+        }, 
+        {
+            "text": "haha yea, slept in pretty good this morning", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496443505.681317"
+        }, 
+        {
+            "text": "Anyway, I hope you're enjoying a much deserved weekend.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496443488.678735"
+        }, 
+        {
+            "text": "That's probably what happened.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496443475.676983"
+        }, 
+        {
+            "text": "but it must have been for them to get the cached version", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496443448.673098"
+        }, 
+        {
+            "text": "But the site looks really good.  Great work.  It's awesome to see the progress from a week ago.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496443442.672283"
+        }, 
+        {
+            "text": "Yea I wasn\u2019t actually aware it had been shared before I set up the share image", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496443438.671586"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496443414.668109"
+        }, 
+        {
+            "text": "Yeah, it had cached from 19 hours ago (based on Facebook's data).  In the future, if we update the image we'll want to do the following:\n*Facebook*\nRe-scape the URL twice using this <https://developers.facebook.com/tools/debug/>\n\n*LinkedIn*\nStart a post (it does not need to submit) for &lt;domain&gt;/?&lt;somethingunique&gt; (ex., <http://www.thisisholo.com/?1|www.thisisholo.com/?1>) to trick LinkedIn to revisit the URL and pull in new data.  I had to do this twice before seeing the cache update.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496443394.665142", 
+            "attachments": [
+                {
+                    "title": "Log into Facebook | Facebook", 
+                    "service_name": "Facebook", 
+                    "title_link": "https://developers.facebook.com/tools/debug/", 
+                    "text": "Log into Facebook to start sharing and connecting with your friends, family, and people you know.", 
+                    "id": 1, 
+                    "fallback": "Facebook: Log into Facebook | Facebook", 
+                    "service_icon": "https://static.xx.fbcdn.net/rsrc.php/yV/r/hzMapiNYYpW.ico", 
+                    "from_url": "https://developers.facebook.com/tools/debug/"
+                }
+            ]
+        }, 
+        {
+            "text": "oh phew, yea I thought I had set that up properly, but facebook/linkedin must have cached something.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496443249.644059"
+        }, 
+        {
+            "text": "Nevermind.  Asher told me that the images were changed, so I re-scraped the pages on Facebook and LinkedIn, and the right image is now showing.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496443102.622277"
+        }, 
+        {
+            "text": "Since it's your weekend, do you know anyone in LA that could update this?  If not, and if it's possible to give me permissions, I can jump in there and update the metadata fields.  It would be good to have this fixed today.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496429177.048367"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5MAWD532/screen_shot_2017-06-02_at_11.38.46_am.png|Great Apple Messages image>", 
+            "upload": true, 
+            "ts": "1496428814.927870", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5MAWD532-59402696be/screen_shot_2017-06-02_at_11.38.46_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5MAWD532-59402696be/screen_shot_2017-06-02_at_11.38.46_am_64.png", 
+                "size": 293514, 
+                "original_h": 428, 
+                "thumb_360_w": 360, 
+                "title": "Great Apple Messages image", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5MAWD532/screen_shot_2017-06-02_at_11.38.46_am.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5MAWD532-59402696be/screen_shot_2017-06-02_at_11.38.46_am_360.png", 
+                "id": "F5MAWD532", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5MAWD532-59402696be/screen_shot_2017-06-02_at_11.38.46_am_80.png", 
+                "thumb_360_h": 247, 
+                "thumb_480_h": 329, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1496428811, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5MAWD532-59402696be/screen_shot_2017-06-02_at_11.38.46_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5MAWD532/download/screen_shot_2017-06-02_at_11.38.46_am.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-02 at 11.38.46 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5MAWD532-bdacad792a", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5MAWD532/screen_shot_2017-06-02_at_11.38.46_am.png", 
+                "is_external": false, 
+                "created": 1496428811, 
+                "original_w": 624, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5NQT5EQN/screen_shot_2017-06-02_at_11.38.31_am.png|From Facebook>", 
+            "upload": true, 
+            "ts": "1496428798.922463", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 423, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_800_h": 908, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_64.png", 
+                "size": 264870, 
+                "original_h": 1194, 
+                "thumb_360_w": 317, 
+                "title": "From Facebook", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5NQT5EQN/screen_shot_2017-06-02_at_11.38.31_am.png", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_360.png", 
+                "id": "F5NQT5EQN", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 634, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_800.png", 
+                "timestamp": 1496428795, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5NQT5EQN/download/screen_shot_2017-06-02_at_11.38.31_am.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-02 at 11.38.31 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5NQT5EQN-7cb959dce1", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5NQT5EQN/screen_shot_2017-06-02_at_11.38.31_am.png", 
+                "is_external": false, 
+                "created": 1496428795, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1052, 
+                "thumb_960_w": 846, 
+                "thumb_1024_w": 902, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5NQT5EQN-c6e1a911d9/screen_shot_2017-06-02_at_11.38.31_am_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5NRBJJCX/screen_shot_2017-06-02_at_11.37.05_am.png|LinkedIn Sharing shows this> and commented: Hi Mudge, LinkedIn and Facebook are showing the wrong images on sharing.  Apple Messages is showing the correct image.  Is this something we can fix quickly, so everyone see the image of the girls with the guitar playing gorilla?", 
+            "upload": true, 
+            "ts": "1496428784.917907", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "Hi Mudge, LinkedIn and Facebook are showing the wrong images on sharing.  Apple Messages is showing the correct image.  Is this something we can fix quickly, so everyone see the image of the girls with the guitar playing gorilla?", 
+                    "created": 1496428780, 
+                    "timestamp": 1496428780, 
+                    "is_intro": true, 
+                    "user": "U3ABZ07ME", 
+                    "id": "Fc5N13FGSE"
+                }, 
+                "filetype": "png", 
+                "thumb_800_h": 717, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_64.png", 
+                "size": 279224, 
+                "original_h": 1024, 
+                "thumb_360_w": 360, 
+                "title": "LinkedIn Sharing shows this", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5NRBJJCX/screen_shot_2017-06-02_at_11.37.05_am.png", 
+                "thumb_720_h": 646, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_360.png", 
+                "id": "F5NRBJJCX", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_80.png", 
+                "comments_count": 1, 
+                "thumb_360_h": 323, 
+                "thumb_480_h": 430, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_800.png", 
+                "timestamp": 1496428780, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5NRBJJCX/download/screen_shot_2017-06-02_at_11.37.05_am.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-06-02 at 11.37.05 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5NRBJJCX-52ee86720f", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5NRBJJCX/screen_shot_2017-06-02_at_11.37.05_am.png", 
+                "is_external": false, 
+                "created": 1496428780, 
+                "thumb_1024_h": 918, 
+                "thumb_960_h": 861, 
+                "original_w": 1142, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5NRBJJCX-0e904766af/screen_shot_2017-06-02_at_11.37.05_am_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Facebook App should be mostly set up now.  Once we go live, we'll need to re-enter the app ID's.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496265557.297326", 
+            "edited": {
+                "user": "U3ABZ07ME", 
+                "ts": "1496265567.000000"
+            }
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496264602.007353"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5LQZ4TDJ/pasted_image_at_2017_05_31_02_02_pm.png|Going crazy....>", 
+            "upload": true, 
+            "ts": "1496264589.002971", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5LQZ4TDJ-48e018e374/pasted_image_at_2017_05_31_02_02_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5LQZ4TDJ-48e018e374/pasted_image_at_2017_05_31_02_02_pm_64.png", 
+                "size": 308699, 
+                "original_h": 500, 
+                "thumb_360_w": 360, 
+                "title": "Going crazy....", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5LQZ4TDJ/pasted_image_at_2017_05_31_02_02_pm.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5LQZ4TDJ-48e018e374/pasted_image_at_2017_05_31_02_02_pm_360.png", 
+                "id": "F5LQZ4TDJ", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5LQZ4TDJ-48e018e374/pasted_image_at_2017_05_31_02_02_pm_80.png", 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1496264588, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5LQZ4TDJ-48e018e374/pasted_image_at_2017_05_31_02_02_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5LQZ4TDJ/download/pasted_image_at_2017_05_31_02_02_pm.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Pasted image at 2017_05_31 02_02 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5LQZ4TDJ-1a2c89bbdf", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5LQZ4TDJ/pasted_image_at_2017_05_31_02_02_pm.png", 
+                "is_external": false, 
+                "created": 1496264588, 
+                "original_w": 500, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Nope, go crazy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496264058.820659"
+        }, 
+        {
+            "text": "I'm updating some of the items, and confirming that the Package Names / Bundle ID's are accurate with Isaac and Jed.  You don't mind if I go in and make some changes?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496264044.815798"
+        }, 
+        {
+            "text": "Got it.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496263992.798740"
+        }, 
+        {
+            "text": "but its since been removed", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496263514.638169"
+        }, 
+        {
+            "text": "and I think we did have a facebook login for the website when I started", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496263507.635866"
+        }, 
+        {
+            "text": "Yu pan would of set it up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496263492.630512"
+        }, 
+        {
+            "text": "Do you know who could verify?  Though, since we've already attached it to Holo in the clients, I think we can go all the way.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496263475.625059"
+        }, 
+        {
+            "text": "Ah, I was thinking we had one specifically for Holo.  I doubt it is being used anywhere, since this page was on hold.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496263450.616634"
+        }, 
+        {
+            "text": "I\u2019m not sure its even used anywhere eles", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496263410.603178"
+        }, 
+        {
+            "text": "I\u2019m not really familar with how its been used tbh", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496263392.596613"
+        }, 
+        {
+            "text": "Perfect, thank you.  Should we update this to be Holo based instead of 8i based?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496263369.589308"
+        }, 
+        {
+            "text": "mitchlusas", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496263247.548340"
+        }, 
+        {
+            "text": "cool, what is your facebook username, I can add you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496263161.519749"
+        }, 
+        {
+            "text": "I've updated the Ad Tracking JIRA Ticket to include the Account ID PrayTell would like to use:\n<https://eighteye.atlassian.net/browse/HOLOALL-452>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496251182.252399"
+        }, 
+        {
+            "text": "Good progress over the past few days!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496215263.672404"
+        }, 
+        {
+            "text": "Perfect!  I saw that they're redirecting, and that the links are working in the app.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496215251.670135"
+        }, 
+        {
+            "text": "will move the terms and privacy onto the new domain when I can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496215111.643394"
+        }, 
+        {
+            "text": "Yup cool, the apps links are all working now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496215095.640447"
+        }, 
+        {
+            "text": "Perfect, I'll add some details on that.  For now, we're thinking support would just trigger an email open for *support@thisisholo.com*.  And the Open Source Libraries can be a placeholder page.  I'll sync with Zach to see what he wants to do; Memorial Day Holiday, and the Board Meeting consumed his early week.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496214957.614829"
+        }, 
+        {
+            "text": "I have assigned a couple of tickets back on to you as I\u2019m not sure what the action is for them any more.\n/support and /open-source both are lacking content/design so I\u2019m not sure what I can do.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496214646.558775"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "I think they are pretty straight forwards", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496214418.518089"
+        }, 
+        {
+            "text": "yea I saw", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496214402.515086"
+        }, 
+        {
+            "text": "Great work on the initial version of the consumer facing site.  I've added two more subtasks for [a] sharing metadata, and [b] analytics.  Let me know if you have questions, concerns, or additional thoughts.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496214388.512543"
+        }, 
+        {
+            "text": "Hi Mudge, I just setup the Ad Tracking JIRA ticket:\n<https://eighteye.atlassian.net/browse/HOLOALL-452>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496185131.752034"
+        }, 
+        {
+            "text": "I'll add a JIRA ticket for one additional Facebook App Admin item we need to complete for Ad Tracking.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496181500.013309"
+        }, 
+        {
+            "text": "Perfect.  Thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496181455.002467"
+        }, 
+        {
+            "text": "874686599264731 for production", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496181374.982537"
+        }, 
+        {
+            "text": "Good morning, Mudge.  When you have a moment, I was wondering if you could share the Facebook App Id we've associated with the Client apps.  I want to send that to PrayTell so they can associated their ads.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496181254.953279"
+        }, 
+        {
+            "text": "no problem", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496103983.673340"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> shared a file: <https://hvr.slack.com/files/U3ABZ07ME/F5LAU1MK8/holo_beta_email_stats|Holo Beta Email Stats>", 
+            "upload": false, 
+            "ts": "1496103969.672296", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 339, 
+                "groups": [], 
+                "filetype": "gsheet", 
+                "thumb_800_h": 1132, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_64.png", 
+                "size": 27497, 
+                "original_h": 1449, 
+                "thumb_360_w": 254, 
+                "title": "Holo Beta Email Stats", 
+                "url_private": "https://docs.google.com/spreadsheets/d/1MJPz5kOEVwxvY-jiW-NCg5bipdDaUvcZCE1XQ6yNBIU/edit?ts=592c9bb0#gid=0", 
+                "thumb_720_h": 720, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_360.png", 
+                "id": "F5LAU1MK8", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 509, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 360, 
+                "thumb_480_h": 480, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_800.png", 
+                "timestamp": 1496103967, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_160.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_960.png", 
+                "is_public": false, 
+                "pretty_type": "GDocs Spreadsheet", 
+                "name": "Holo Beta Email Stats", 
+                "mimetype": "application/vnd.google-apps.spreadsheet", 
+                "channels": [], 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5LAU1MK8/holo_beta_email_stats", 
+                "is_external": true, 
+                "created": 1496103967, 
+                "thumb_1024_h": 1024, 
+                "thumb_960_h": 960, 
+                "original_w": 1024, 
+                "thumb_960_w": 678, 
+                "thumb_1024_w": 724, 
+                "mode": "external", 
+                "has_rich_preview": true, 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5LAU1MK8-e4ad6ac392/holo_beta_email_stats_720.png"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Also, thank you for creating and sharing the email stats:\n<https://docs.google.com/spreadsheets/d/1MJPz5kOEVwxvY-jiW-NCg5bipdDaUvcZCE1XQ6yNBIU/edit?ts=592c9bb0#gid=0>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496103965.672039"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496101175.454503"
+        }, 
+        {
+            "text": "I'll check with Dave, on a thread with you.  One moment.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496101169.454075"
+        }, 
+        {
+            "text": "Ah, perfect, I thought someone had said that.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496101159.453300"
+        }, 
+        {
+            "text": "afaik", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496101158.453236"
+        }, 
+        {
+            "text": "none of those are sent from the CMS", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496101151.452688"
+        }, 
+        {
+            "text": "nope", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496101145.452264"
+        }, 
+        {
+            "text": "Hi Mudge, I wanted to confirm that the TOU, PP, and Open Source Library URL's were all being sent from the CMS.  Is that correct?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1496101130.451140"
+        }, 
+        {
+            "text": "perhaps just sending them the activation email again would work?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495761304.677920"
+        }, 
+        {
+            "text": "but we might be able to handle a forgot password request better if the user is not activated", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495761290.675645"
+        }, 
+        {
+            "text": "I don\u2019t think we can track who this affects", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495761272.673098"
+        }, 
+        {
+            "text": "It sounds like the issue is users ignoring the instructions in our activate email and then just trying to use test flight to install the app", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495760968.628529"
+        }, 
+        {
+            "text": "oh sorry, checked slack before emails", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495760932.623129"
+        }, 
+        {
+            "text": "you mean avoid making people login?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495760805.604044"
+        }, 
+        {
+            "text": "Any thoughts on how we can get around the Beta Login issue?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495759605.421140"
+        }, 
+        {
+            "text": "Hi <@U0C90MHEH>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495759591.419128"
+        }, 
+        {
+            "text": "Yes, that's from seeing a difference between the CMS analytics and the Google Analytics.  However, this is probably already accounted for with the new user filtering you've created in Google Analytics.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495733468.902290"
+        }, 
+        {
+            "text": "Hey, could you give me an example of \u201cUsage discrepancies\u201d for tracking in analytics. I\u2019m not sure I understand.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495681664.446016"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "yea, I\u2019ll make sure we have enough tracking steps for that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495672606.056569"
+        }, 
+        {
+            "text": "Hi Mudge, one additional flow we want to ensure we track is the Registration flow.  It's not imperative for Limited Release, but definitely for Global.  We want to ensure we have analytics for each step to help identify any problematic items in the flow.  In particular, I want to ensure we do not have significant drop-off from the Email Verification steps.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495671004.784320"
+        }, 
+        {
+            "text": "Oh, and we need to make sure we have pertinent analytics for Spider-man.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495584699.137828"
+        }, 
+        {
+            "text": "Key questions:\n- Filtering out 8i / signature / partner accounts\n- Ideal dashboards for team review\n- Screen titles\n- Usage discrepancies (edited)", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495583176.845487"
+        }, 
+        {
+            "text": "One moment, and I'll update the meeting with a Google Video invite.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495582244.663273"
+        }, 
+        {
+            "text": "I'm available after 1:30p NZ if you want to chat then.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495486704.521204"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Yea, I\u2019ll do a pass over it today", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495486680.512712"
+        }, 
+        {
+            "text": "Let me know if you have some time to discuss.  One thing I'm noticing is that we're tracking the same event with different titles (probably iOS and Android discrepancies).", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495486662.506145"
+        }, 
+        {
+            "text": "Hi Mudge, there are a lot of discussions around analytics, and I think it may be good to ensure we are all aligned.  Key questions:\n- Filtering out 8i / signature / partner accounts\n- Ideal dashboards for team review\n- Screen titles\n- Usage discrepancies", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495486330.380270", 
+            "edited": {
+                "user": "U3ABZ07ME", 
+                "ts": "1495486371.000000"
+            }
+        }, 
+        {
+            "text": "I'll check with him.  One moment.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495418101.558103"
+        }, 
+        {
+            "text": "Do you want to check with Jed, but I'm pretty sure that latest version should use analytics.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495418036.550725"
+        }, 
+        {
+            "text": "I realized why it may be happening: I'm using a Testflight build.  Can you send a Beta Test email to me at <mailto:mitch@signaturecreative.com|mitch@signaturecreative.com>?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495417899.535786"
+        }, 
+        {
+            "text": "Hmm.  Interesting.  I'll try again after the stand-up.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495405264.493195"
+        }, 
+        {
+            "text": "We just tested it and Jed\u2019s phone does show up within about 15 seconds. Seems to be working correctly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495401844.277787"
+        }, 
+        {
+            "text": "That is the correct one, I don\u2019t know why you wouldn\u2019t be able to see your iPhone in that. Will check in with Jed to see if something is up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495401648.265847"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F5F500LD7/screen_shot_2017-05-19_at_10.27.21_am.png|Screenshot - Google Analytics> and commented: This is what I currently have selected.", 
+            "upload": true, 
+            "ts": "1495214876.943602", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "initial_comment": {
+                    "comment": "This is what I currently have selected.", 
+                    "created": 1495214869, 
+                    "timestamp": 1495214869, 
+                    "is_intro": true, 
+                    "user": "U3ABZ07ME", 
+                    "id": "Fc5F21E00Y"
+                }, 
+                "filetype": "png", 
+                "thumb_800_h": 116, 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_480.png", 
+                "display_as_bot": false, 
+                "thumb_800_w": 800, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_64.png", 
+                "size": 38874, 
+                "original_h": 222, 
+                "thumb_360_w": 360, 
+                "title": "Screenshot - Google Analytics", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5F500LD7/screen_shot_2017-05-19_at_10.27.21_am.png", 
+                "thumb_720_h": 104, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_360.png", 
+                "id": "F5F500LD7", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_80.png", 
+                "comments_count": 1, 
+                "thumb_360_h": 52, 
+                "thumb_480_h": 69, 
+                "external_type": "", 
+                "username": "", 
+                "thumb_800": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_800.png", 
+                "timestamp": 1495214869, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5F500LD7/download/screen_shot_2017-05-19_at_10.27.21_am.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Screen Shot 2017-05-19 at 10.27.21 AM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5F500LD7-bd6fcaddab", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5F500LD7/screen_shot_2017-05-19_at_10.27.21_am.png", 
+                "is_external": false, 
+                "created": 1495214869, 
+                "thumb_1024_h": 148, 
+                "thumb_960_h": 139, 
+                "original_w": 1534, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F5F500LD7-536e3e3539/screen_shot_2017-05-19_at_10.27.21_am_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Also, are we using a new Google Analytics code for the current app?  The real time data is not tracking my iPhone (but is tracking two other users), and I'm not able to do the breakout of Internal and External beta testers.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495214822.920976"
+        }, 
+        {
+            "text": "Absolutely.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1495214777.903043"
+        }, 
+        {
+            "text": "If you are happy with the HoloBeta stats sheet you have been working on, would you mind sharing it with <mailto:amy@8i.com|amy@8i.com>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495170513.421489"
+        }, 
+        {
+            "text": "Hey, you there?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1495170310.394652"
+        }, 
+        {
+            "text": "Perfect.  Thank you.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494540681.505362"
+        }, 
+        {
+            "text": "just thought I may have missed some email chain", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494540455.443790"
+        }, 
+        {
+            "text": "He did, but I have since updated them and added the holo beta activation one. I\u2019ll grab them and put them in the doc", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494540441.440039"
+        }, 
+        {
+            "text": "I'm just trying to get a listing of current copy in the emails that are going out to users right now.  Did Dave set those emails up (password reset, email confirmation, etc)?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494538773.929107"
+        }, 
+        {
+            "text": "Hey Mitch, I\u2019m not sure I know what you mean by \u201creview the copy from the various emails\u201d? \nWas I supposed to have received some emails or are you referring to the email templates which we send out to holo users?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494537986.668298"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> shared a file: <https://hvr.slack.com/files/U3ABZ07ME/F5C6UCSUA/holo_copy_doc|Holo Copy Doc>", 
+            "upload": false, 
+            "ts": "1494521761.719477", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "filetype": "gdoc", 
+                "channels": [], 
+                "display_as_bot": false, 
+                "has_rich_preview": false, 
+                "thumb_64": "https://slack.com/img/files/gdoc_64.v.png", 
+                "size": 121, 
+                "thumb_360_w": 360, 
+                "title": "Holo Copy Doc", 
+                "url_private": "https://docs.google.com/document/d/1eYu0IppZ9ggwBnBhFmjLnq3K2egA1Rfa7ZsaFIZ2Yw0/edit#heading=h.ok1bv2imksd6", 
+                "thumb_360": "https://a.slack-edge.com/b008f/img/files/gdraw_360.png", 
+                "id": "F5C6UCSUA", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_360_h": 167, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "timestamp": 1494521762, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "user": "U3ABZ07ME", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "GDocs Document", 
+                "name": "Holo Copy Doc", 
+                "mimetype": "application/vnd.google-apps.document", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F5C6UCSUA/holo_copy_doc", 
+                "is_external": true, 
+                "created": 1494521762, 
+                "comments_count": 0, 
+                "mode": "external"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Hi Mudge, can you review the copy from the various emails with Amy, Nicole, and myself?  If you have a Google doc you're working from, could you share that?  Otherwise, we can use:\n<https://docs.google.com/document/d/1eYu0IppZ9ggwBnBhFmjLnq3K2egA1Rfa7ZsaFIZ2Yw0/edit#heading=h.ok1bv2imksd6>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494521761.719068"
+        }, 
+        {
+            "text": "No I can\u2019t tell that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494389186.053498"
+        }, 
+        {
+            "text": "Can we see if they get to the page to enter a password?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494388606.788655"
+        }, 
+        {
+            "text": "We can see who has clicked on that if they set a password on the page", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494388381.761486"
+        }, 
+        {
+            "text": "And then the download links for the iOS and Android after the user has confirmed their email.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494388380.761423"
+        }, 
+        {
+            "text": "Which, I guess could be directly in our Google Analytics.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494388361.759115"
+        }, 
+        {
+            "text": "Sorry, I meant the confirmation link.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494388343.756895"
+        }, 
+        {
+            "text": "what download link?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494388327.755072"
+        }, 
+        {
+            "text": "Sounds good.  What if we put the download links in <http://bit.ly|bit.ly>  (or some other tracking method), to get analytics on clicks?  The purpose is to better determine where the drop-off is from mail delivery to app open.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494388249.745827"
+        }, 
+        {
+            "text": "I\u2019m not sure if we will get it in for closed Beta", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494388171.736540"
+        }, 
+        {
+            "text": "I already created a ticket for it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494388133.732171"
+        }, 
+        {
+            "text": "but will take some work to setup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494388123.730822"
+        }, 
+        {
+            "text": "Yea, it does look like we can", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494388116.729955"
+        }, 
+        {
+            "text": "Also, in speaking with Amy and Nicole, they were wondering if we could tie MailChimp in with the CMS auto email to sign users up for the app.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494388094.727176"
+        }, 
+        {
+            "text": "Perfect, thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494387983.714382"
+        }, 
+        {
+            "text": "but will make it next on his list", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494387201.619682"
+        }, 
+        {
+            "text": "No, sorry notifications has been a bit tricky to implement and has occupied Isaac all day so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494387190.618460"
+        }, 
+        {
+            "text": "Were you able to get an ETA on the Analytics filtering?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494387045.600159"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/holo/beta", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://8i.com/holo/beta"
+                }
+            ], 
+            "text": "<https://8i.com/holo/beta> has been updated", 
+            "ts": "1494374865.770246", 
+            "user": "U0C90MHEH", 
+            "type": "message"
+        }, 
+        {
+            "text": "Perfect, thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494374056.614952"
+        }, 
+        {
+            "text": "Tokes told me to switch it, so I\u2019ll get on it shortly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494373930.591499"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371659.139233"
+        }, 
+        {
+            "text": "Perfect.  I'll confirm with you shortly.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494371648.136855"
+        }, 
+        {
+            "text": "but I can make the change", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371568.120194"
+        }, 
+        {
+            "text": "Probably just make sure Tokes is ok with that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371543.114704"
+        }, 
+        {
+            "text": "Also, I'm wondering if we should switch over the Beta Sign up on <http://www.8i.com/holo/beta|www.8i.com/holo/beta> to point to <http://bit.ly/HoloBeta> .  This is the one we've been using in US, and have vetted the legal language with 8i Legal (Zach).  Who should I chat with about switching the form over?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494371512.108350", 
+            "attachments": [
+                {
+                    "image_bytes": 235939, 
+                    "title": "Beta Tester Sign Up", 
+                    "service_name": "Google Docs", 
+                    "image_width": 333, 
+                    "title_link": "http://bit.ly/HoloBeta", 
+                    "image_height": 250, 
+                    "image_url": "https://lh4.googleusercontent.com/aWPtBwpYYpgDQWpOPIwFFlw05zmeBpBe5l3DHcMSNFpKSHmaWywqPwUM-M-i-79OIcs", 
+                    "text": "Thank you for your interest in becoming a Holo Beta Tester! We've had a lot of fun creating Holo and are looking forward to getting your feedback before we let the rest of the world have a look. To become a tester, we have a few questions. Once you send these in, we'll be in touch within a few days and let you know what's next. We will contact you via the email address you enter below. Thanks again! Holo Team If you have any questions: <mailto:holotesting@8i.com|holotesting@8i.com>", 
+                    "id": 1, 
+                    "fallback": "Google Docs: Beta Tester Sign Up", 
+                    "service_icon": "http://ssl.gstatic.com/docs/forms/device_home/ios_120.png", 
+                    "from_url": "http://bit.ly/HoloBeta"
+                }
+            ]
+        }, 
+        {
+            "text": "its got a few other bits of info in there as well, if we need to do further filtering", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371278.058927"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371258.054543"
+        }, 
+        {
+            "text": "This is great, thank you!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494371168.034811"
+        }, 
+        {
+            "text": "Let me know if that is good for what you need.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371084.015621"
+        }, 
+        {
+            "text": "That is our current default csv export filtered by users who were added for holo beta.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494371065.011525"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F5AE44BBJ/all_users_2017-05-09_23-02-21.csv|All_users_2017-05-09_23-02-21.csv>", 
+            "upload": true, 
+            "ts": "1494371013.999510", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "csv", 
+                "lines_more": 108, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F5AE44BBJ", 
+                "size": 19044, 
+                "title": "All_users_2017-05-09_23-02-21.csv", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F5AE44BBJ/all_users_2017-05-09_23-02-21.csv", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "preview": "Anonymous,Email,Username,Group,Beta activation sent,First name,Last name,Age,Gender,Ethnicity,City,Model,OS,Total Downloads,Dropped Poses,Photos taken,Videos taken,Shares,Last Authentication Ip,Last Authenticated,Datetime Created\r\nFalse,kman596@gmail.com,KeeganE,HoloBeta,2017-04-24 05:04:42.694151+00:00,,,18,Male,European,Wellington,Galaxy s6,Android,0,0,0,0,0,,,2017-04-24 05:00 UTC\r\nFalse,Djchristianjackson@gmail.com,Christian,HoloBeta,2017-05-03 00:39:30.830770+00:00,,,24,Male,n/a,,LG v20,Android,0,0,0,0,0,,,2017-05-02 22:48 UTC\r\nFalse,hit.dave.cartwright+test20@gmail.com,TestMeTestYou,HoloBeta,2017-04-19 21:39:56.350254+00:00,,,31,Male,European,Welliongton,Nexus 5x,Android,0,0,0,0,0,,,2017-04-19 03:18 UTC\r\nFalse,jordanjule@gmail.com,jordanjule,HoloBeta,2017-04-28 03:08:34.858659+00:00,,,,,,,,,0,0,0,0,0,,,2017-04-28 03:07 UTC\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U0C90MHEH/F5AE44BBJ/all_users_2017-05-09_23-02-21.csv/edit", 
+                "username": "", 
+                "timestamp": 1494371010, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F5AE44BBJ/download/all_users_2017-05-09_23-02-21.csv", 
+                "user": "U0C90MHEH", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "CSV", 
+                "name": "All_users_2017-05-09_23-02-21.csv", 
+                "mimetype": "text/csv", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F5AE44BBJ-d7ed8fa481", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F5AE44BBJ/all_users_2017-05-09_23-02-21.csv", 
+                "is_external": false, 
+                "created": 1494371010, 
+                "lines": 113, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>Anonymous,Email,Username,Group,Beta activation sent,First name,Last name,Age,Gender,Ethnicity,City,Model,OS,Total Downloads,Dropped Poses,Photos taken,Videos taken,Shares,Last Authentication Ip,Last Authenticated,Datetime Created</pre></div>\n<div><pre>False,kman596@gmail.com,KeeganE,HoloBeta,2017-04-24 05:04:42.694151+00:00,,,18,Male,European,Wellington,Galaxy s6,Android,0,0,0,0,0,,,2017-04-24 05:00 UTC</pre></div>\n<div><pre>False,Djchristianjackson@gmail.com,Christian,HoloBeta,2017-05-03 00:39:30.830770+00:00,,,24,Male,n/a,,LG v20,Android,0,0,0,0,0,,,2017-05-02 22:48 UTC</pre></div>\n<div><pre>False,hit.dave.cartwright+test20@gmail.com,TestMeTestYou,HoloBeta,2017-04-19 21:39:56.350254+00:00,,,31,Male,European,Welliongton,Nexus 5x,Android,0,0,0,0,0,,,2017-04-19 03:18 UTC</pre></div>\n<div><pre>False,jordanjule@gmail.com,jordanjule,HoloBeta,2017-04-28 03:08:34.858659+00:00,,,,,,,,,0,0,0,0,0,,,2017-04-28 03:07 UTC</pre></div>\n<div><pre></pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494370730.929263"
+        }, 
+        {
+            "text": "Hi Mudge, we will *not* include download links in the MailChimp email blast.  We are relying on the CMS to deliver those emails.  The purpose of this email is to try and remind users about the App, let them know that we're progressing, let them know they can invite their friends, and show them some Holo videos to try and inspire them to come back into the app.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494370185.802247"
+        }, 
+        {
+            "text": "I can get a csv of the testers, \nhowever I believe we may encounter an issue in that if a user has not validated their email in our authentication system they will not be able to login.\nWe may have to add to the csv a tokenized link which will validate the email and allow them to set a password.\nI\u2019m not sure on the technicalities of that just yet though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494363333.664877"
+        }, 
+        {
+            "text": "I remembered what I was supposed to ask: we're planning on sending out a MailChimp blast tomorrow (Wednesday PDT) to all of our beta testers.  Would you be able to get a CSV of all testers in our system?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494354262.788840"
+        }, 
+        {
+            "text": "Jumping on now. ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494293712.870878"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494292297.659135"
+        }, 
+        {
+            "text": "I'm still in another meeting, but I'll reach out when I'm out.  I may need to take the meeting on the road, if that's okay", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494292291.658221"
+        }, 
+        {
+            "text": "can go earlier if you are free?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494292269.654950"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494285968.591999"
+        }, 
+        {
+            "text": "Let's do after lunch, as I'm about to jump into a meeting.  Feel free to send an invite when you'll be back.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494285960.590561"
+        }, 
+        {
+            "text": "or after lunch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494285523.504382"
+        }, 
+        {
+            "text": "I could do half an hour now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494285515.502661"
+        }, 
+        {
+            "text": "Hey Mudge, how does your schedule look today to review the Google Analytics stats?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494285500.499930"
+        }, 
+        {
+            "text": "yea, I guess it could of just been a typo, because it certainly looks like a gmail account, which would automatically have a google account.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494201998.259563"
+        }, 
+        {
+            "text": "We'll reach out to moterratcarmona29 to find out what happened.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494201959.256448"
+        }, 
+        {
+            "text": "Wonderful, thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494201945.255402"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Except for <mailto:monterratcarmona29@gmail.com|monterratcarmona29@gmail.com> which Google says is not a valid account.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494201900.251717"
+        }, 
+        {
+            "text": "Alright, its all sorted out now, and I have sent them the activation email.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494201888.250802"
+        }, 
+        {
+            "text": "Perfect, thank you.  I'm hoping to get final approval from Tokes on the ErliBird integration.  Though, in all honesty, with the Closed Beta so condensed and Global Release only a few weeks away, I'm thinking we simplify the ErliBird custom integration.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494200339.134193"
+        }, 
+        {
+            "text": "Trying to figure out what I can do to get them in though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200189.123901"
+        }, 
+        {
+            "text": "Ah, got it.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494200186.123698"
+        }, 
+        {
+            "text": "yea, I\u2019m a little blocked on that actually, Isaac usually adds the emails to the android whitelist and he is out for a couple of days.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494200176.123075"
+        }, 
+        {
+            "text": "It would be great if students got the message today.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494200157.121754"
+        }, 
+        {
+            "text": "Hi Mudge, can you confirm when the batch from Rachel (on Saturday NZ) is uploaded?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1494200135.120084"
+        }, 
+        {
+            "text": "Here is Christian's Gmail account: <mailto:Djchristianjackson@gmail.com|Djchristianjackson@gmail.com>", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493765201.393728"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493763655.020190"
+        }, 
+        {
+            "text": "Thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493763651.019031"
+        }, 
+        {
+            "text": "We'll see if he has a gmail account he can use.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493763649.018497"
+        }, 
+        {
+            "text": "I think the common reason is its not associated with a google account.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493763631.014205"
+        }, 
+        {
+            "text": "Wonderful, thank you.  We'll look into Christian's email to see what the issue may be.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493763594.004495"
+        }, 
+        {
+            "text": "Hey, I have sent the activation emails to all the UAT testers except <mailto:christian@christian-jackson.com|christian@christian-jackson.com> which is not a valid email for whitelisting with Google Play.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493763566.997347"
+        }, 
+        {
+            "text": "Ha ha, sounds good.  I'm trying to corner him, but I know he's on an offsite.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758844.452763"
+        }, 
+        {
+            "text": "I\u2019ll go with which ever Tokes thinks is best. No strong opinion either way really.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758816.440863"
+        }, 
+        {
+            "text": "Yea, thats pretty much how I see it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758779.424499"
+        }, 
+        {
+            "text": "I'm concerned that continuing to manually support beta sign up would become a nuisance at best, and a distraction at worst.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758765.418668"
+        }, 
+        {
+            "text": "Good point on the level demographic data for future testers...no, we will not that level of effort.  Good call...hmm.  The question is, will the streamlined tester sign up (removing the _whitelisting_ on Android and iOS) be worth the initial setup?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758726.402616"
+        }, 
+        {
+            "text": "np", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758662.376707"
+        }, 
+        {
+            "text": "That'll be a good start.  Thanks for driving this.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758654.373331"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Oh I was thinking about the GA filtering as well. I\u2019ve put out JIRA tickets to each client to start segmenting on user types. \nbut as a short term solution I believe you should be able to use \u201cApp Version\u201d to segment to at least just those on the beta version \u201c2.0.17-beta\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758562.336614"
+        }, 
+        {
+            "text": "Will we need the same level of demographic data for all future closed beta users as well?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758230.199759"
+        }, 
+        {
+            "text": "After we get out of Closed Beta, I'm assuming we'll probably want to have a testing process to test new features before A/B testing with the public.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758191.184223"
+        }, 
+        {
+            "text": "once we are in open beta what will happen with these closed beta flows?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758157.170437"
+        }, 
+        {
+            "text": "I\u2019m not sure how long we will need to do this?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758126.157914"
+        }, 
+        {
+            "text": "After the call with ErliBird, do you feel that custom process with them will help simplify ongoing testing?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758103.148409"
+        }, 
+        {
+            "text": "I think Isaac can upload a list of emails in a \u201cCSV\u201d as well so its not too manual really", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758092.144219"
+        }, 
+        {
+            "text": "so we can add them to that which ever way is easiest", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758066.133573"
+        }, 
+        {
+            "text": "Ha ha ha, yes.  Thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493758050.127193"
+        }, 
+        {
+            "text": "The CMS allows for manual user creation and also has import CSV", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758049.126555"
+        }, 
+        {
+            "text": "Is that ideal enough?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758019.114402"
+        }, 
+        {
+            "text": "I\u2019ll ask Isaac to add them when he gets in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493758013.111824"
+        }, 
+        {
+            "text": "They have not been whitelisted.  Until we get ErliBird set up, what is the ideal process for getting users signed up in the CMS and whitelisted for the app?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493757943.082949"
+        }, 
+        {
+            "text": "Hey, I\u2019ve got those UAT-AndroidTesters in the CMS now. Have they already been whitelisted for the beta app? or do I need to wait for Isaac to get in and whitelist them?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493757264.806556"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Awesome thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684520.486325"
+        }, 
+        {
+            "text": "No, I'm just getting into JIRA now and putting in tickets for UX and UI, and will put that in for analytics.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493684510.484664"
+        }, 
+        {
+            "text": "probably good to track that as its going to require a few people doing some work", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684494.482043"
+        }, 
+        {
+            "text": "Have you created a Jira card for the analytics filtering?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684474.479115"
+        }, 
+        {
+            "text": "Perfect, thank you.  No worries about them not going in last week, just as long as we can get them in this week.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493684461.476977"
+        }, 
+        {
+            "text": "Sorry I haven\u2019t actually got to it yet. On the list for today though.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493684434.472625"
+        }, 
+        {
+            "text": "Hey Mudge, were you able to process the UAT-AndroidTesters above, and get them access to the app?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493684314.453049"
+        }, 
+        {
+            "text": "Let's discuss in/after the standup and add to this week's agenda if possible.  It'll be important to break out the various metrics.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493675638.647935"
+        }, 
+        {
+            "text": "I believe that was something which they did on the android side. I\u2019m sure its possible to replicate but I think it will only apply to data after the change goes in.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493670862.085762"
+        }, 
+        {
+            "text": "Good morning, <@U0C90MHEH> .  With the analytics for the Beta, is there a way to filter out 8i &amp; Signature email addresses, much like we're doing for the Tango build?  That would help ensure we have accurate analytics on our beta users.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493664952.934602"
+        }, 
+        {
+            "text": "Sounds good.  I hope you can get some rest and feel better.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493244205.545574"
+        }, 
+        {
+            "text": "Hey Mitch, it shouldn't be a problem to import from that CSV as well, will only need a small code change to map the columns to the right places. However I'm out sick today so will tackle it tomorrow.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493241592.657808"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F55R1D630/uat-android_testers.csv|UAT-Android Testers.csv>", 
+            "upload": true, 
+            "ts": "1493232680.881272", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "filetype": "csv", 
+                "lines_more": 23, 
+                "channels": [], 
+                "display_as_bot": false, 
+                "id": "F55R1D630", 
+                "size": 1517, 
+                "title": "UAT-Android Testers.csv", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F55R1D630/uat-android_testers.csv", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "preview": "Timestamp,Email Address,Name,referral_code,Age,City,Ethnicity,What type of phone do you have?,What model is your phone?,What username would you like to have?,Gender\r\n3/7/17 18:55,scott3espi@sbcglobal.net,Logan Avery,UATParticipant,13,\"Los Angeles, CA\",n/a,Android,GalaxyS5,Logan,Male\r\n3/9/17 13:12,christian@christian-jackson.com,Christian,UATParticipant,24,\"Los Angeles, CA\",n/a,Android,LG v20,Christian,Male\r\n3/9/17 16:16,averyskytoys@gmail.com,Skylynn Avery,UATParticipant,16,\"Los Angeles, CA\",n/a,Android,Samsung s5,Skylynn ,Female\r\n3/13/17 14:07,OllySho@gmail.com,Olly Sholotan,UATParticipant,18,\"Los Angeles, CA\",n/a,Android,Nexus 5,Ollysho,Male\r", 
+                "external_type": "", 
+                "edit_link": "https://hvr.slack.com/files/U3ABZ07ME/F55R1D630/uat-android_testers.csv/edit", 
+                "username": "", 
+                "timestamp": 1493232680, 
+                "public_url_shared": false, 
+                "editable": true, 
+                "preview_is_truncated": true, 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F55R1D630/download/uat-android_testers.csv", 
+                "user": "U3ABZ07ME", 
+                "groups": [], 
+                "is_public": false, 
+                "pretty_type": "CSV", 
+                "name": "UAT-Android Testers.csv", 
+                "mimetype": "text/csv", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F55R1D630-b94448bb4f", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F55R1D630/uat-android_testers.csv", 
+                "is_external": false, 
+                "created": 1493232680, 
+                "lines": 28, 
+                "comments_count": 0, 
+                "mode": "snippet", 
+                "preview_highlight": "<div class=\"CodeMirror cm-s-default CodeMirrorServer\" oncopy=\"if(event.clipboardData){event.clipboardData.setData('text/plain',window.getSelection().toString().replace(/\\u200b/g,''));event.preventDefault();event.stopPropagation();}\">\n<div class=\"CodeMirror-code\">\n<div><pre>Timestamp,Email Address,Name,referral_code,Age,City,Ethnicity,What type of phone do you have?,What model is your phone?,What username would you like to have?,Gender</pre></div>\n<div><pre>3/7/17 18:55,scott3espi@sbcglobal.net,Logan Avery,UATParticipant,13,&quot;Los Angeles, CA&quot;,n/a,Android,GalaxyS5,Logan,Male</pre></div>\n<div><pre>3/9/17 13:12,christian@christian-jackson.com,Christian,UATParticipant,24,&quot;Los Angeles, CA&quot;,n/a,Android,LG v20,Christian,Male</pre></div>\n<div><pre>3/9/17 16:16,averyskytoys@gmail.com,Skylynn Avery,UATParticipant,16,&quot;Los Angeles, CA&quot;,n/a,Android,Samsung s5,Skylynn ,Female</pre></div>\n<div><pre>3/13/17 14:07,OllySho@gmail.com,Olly Sholotan,UATParticipant,18,&quot;Los Angeles, CA&quot;,n/a,Android,Nexus 5,Ollysho,Male</pre></div>\n<div><pre></pre></div>\n</div>\n</div>\n"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Here is the csv we have.  Let me know what changes we should make to ensure it is compatible with the CMS import.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493232674.878176"
+        }, 
+        {
+            "text": "Hey Mudge, we have another form for beta testers that we're hoping to import into the CMS.  It's from before the NZ form went out.  Can you let me know what we need to change in order for you to be able to import this into the Beta Test program?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493231663.414765"
+        }, 
+        {
+            "text": "Oh, and thank you for the GA access.  It's working now.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493176250.470756"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493176114.452485"
+        }, 
+        {
+            "text": "Perfect.  That should be plenty for us to do the push notifications we're considering.  The session tokens are perfect as they'll let us know when they last used  the app!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493176087.448755"
+        }, 
+        {
+            "text": "Oh yes. That is just stored in another table.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493175977.433513"
+        }, 
+        {
+            "text": "Are we tracking Pose download as well?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493175912.424081"
+        }, 
+        {
+            "text": "We don\u2019t have a list, but there isn\u2019t a lot of events being tracked on our server.\nFor each user/pose we are tracking events for the following, drop, photo, video and share.\nWe also track when a user requests an authentication token, these expire every 20 minutes so for a session longer than this we will track multiple events.\nYou should have access to analytics now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1493170337.608241"
+        }, 
+        {
+            "text": "- Do we have a list of analytical items we're currently tracking in the CMS?\n - Would you be able to give me access to the Google Analytics for the Beta builds?  I only have access to the Tango build.\n - Tokes and I are going to be reviewing possibilities of hacking Google Analytics for A/B testing content.  This may mean that we will need to update the API's (I'll let know Dave know, but wanted to ensure you had the context)", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493166867.049756"
+        }, 
+        {
+            "text": "Hey Mudge, I just got off a call with Nicole and Tokes about Push Notifications, and I was wondering if you could help me out with a couple items.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1493166642.012278"
+        }, 
+        {
+            "text": "Good call.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492648559.013148"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "Alright cool, was just making sure we would have something for that as well :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492647632.862760"
+        }, 
+        {
+            "text": "I've consolidated all of the copy for one final review from the team.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492647600.857217"
+        }, 
+        {
+            "text": "Tentatively, that may be *Holo Beta now on Android*", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492647586.855059"
+        }, 
+        {
+            "text": "The design I was working from also has a headline for that section", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492646836.727430"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492646822.724935"
+        }, 
+        {
+            "text": "It's still being finalized, but I wanted to get it infront of you just in case it's what we land on.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492646806.722228"
+        }, 
+        {
+            "text": "Here's the App Description we have for the Beta Page:\n\nMix Holo characters into your real world using a smartphone, and create fun videos and photos you can post on social or message to friends.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492646791.719615"
+        }, 
+        {
+            "text": "Hmm.  So am I.  One moment.  Let me restart.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492644974.377770"
+        }, 
+        {
+            "text": "I\u2019m in the google hangout", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492644959.374938"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492644778.339646"
+        }, 
+        {
+            "text": "Jumping on now.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492644747.333634"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492640204.321589"
+        }, 
+        {
+            "text": "I won't be able to make the Standup (meeting with Hayes and Toni on scheduling and status).  How does 11:30a NZ work for you?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492640037.278208"
+        }, 
+        {
+            "reactions": [
+                {
+                    "count": 1, 
+                    "name": "+1", 
+                    "users": [
+                        "U3ABZ07ME"
+                    ]
+                }
+            ], 
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492633722.084127"
+        }, 
+        {
+            "text": "Got it.  Maybe after the standup, we can sync on what you've built, and review next steps.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492633711.079760"
+        }, 
+        {
+            "text": "It is easy to update users in the CMS though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492633541.011900"
+        }, 
+        {
+            "text": "It doesn\u2019t right now, we only keep that in the spread sheet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492633524.004951"
+        }, 
+        {
+            "text": "Awesome.  Thank you.  Will the site utilize the referral id in the URL to help with cohort / segment tracking in the CMS?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492633489.991421"
+        }, 
+        {
+            "text": "It was probably quite late over there then. I\u2019m still fiddling with some of the UI changes I was given but I\u2019ll aim to get the emails out before standup.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492633449.975251"
+        }, 
+        {
+            "text": "My apologies, <@U0C90MHEH> , I totally missed your replies.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492629714.457657"
+        }, 
+        {
+            "text": "Actually looks like I\u2019ve already found a bug, its not importing the username from the sheet currently, so I\u2019ll put a quick fix in for that and then send out the email.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492572048.746352"
+        }, 
+        {
+            "text": "I\u2019ll get on to that now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492571666.697637"
+        }, 
+        {
+            "text": "I think its already complete. I just need to do the manual step of exporting csv and importing it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492571659.696702"
+        }, 
+        {
+            "text": "Hey Mudge, when do you think you'll have a first pass completed on the Beta Sign up implementation?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1492570838.587571"
+        }, 
+        {
+            "text": "Perfect!  I didn't know it automated things so nicely.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1491539995.657003"
+        }, 
+        {
+            "text": "Jed said <https://fastlane.tools/> looks like a good option for iOS, maybe android as well.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491534212.950552"
+        }, 
+        {
+            "text": "Hey Mudge, I hope you're enjoying the time off.  If you see this before you get in, please *ignore it*.\n\nWhen you get back in, I wanted to double-check to see if you had any additional questions or thoughts regarding analytics.  I'll be reviewing the analytics once more early next week, to see if any of our new recommendations have adjusted our questions/assumptions.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1490295691.556517"
+        }, 
+        {
+            "text": "Ha ha ha, sometimes I am, and then it's like a Holiday :tada:", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1489959739.496496"
+        }, 
+        {
+            "text": "We can do it tomorrow at any rate, you are allowed to have your Sunday :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489959696.493479"
+        }, 
+        {
+            "text": "Let me know once you've finished, and I'll take a look.  Thanks.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1489959681.492511"
+        }, 
+        {
+            "text": "See if we still need to have a proper chat after that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489959663.491284"
+        }, 
+        {
+            "text": "Sounds good.  Thank you.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1489959657.490915"
+        }, 
+        {
+            "text": "I'll go through the spreadsheet and add some comments for now. Then you can get to them as it suits you", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489959649.490371"
+        }, 
+        {
+            "text": "Hey <@U0C90MHEH> , my ideal availability today is between 4:30p - 7:00p PDT for a sync on analytics.  However, if you would like, I can meet after 7:00p PDT as well.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1489959611.487703"
+        }, 
+        {
+            "username": "mlusas", 
+            "display_as_bot": false, 
+            "text": "<@U3ABZ07ME> uploaded a file: <https://hvr.slack.com/files/U3ABZ07ME/F4CCW6TSN/cms_-_sprite_detail.png|CMS - Sprite Detail.png>", 
+            "upload": true, 
+            "ts": "1488409595.000003", 
+            "subtype": "file_share", 
+            "user": "U3ABZ07ME", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_64.png", 
+                "size": 135308, 
+                "original_h": 1440, 
+                "thumb_360_w": 360, 
+                "title": "CMS - Sprite Detail.png", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F4CCW6TSN/cms_-_sprite_detail.png", 
+                "thumb_720_h": 425, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_360.png", 
+                "id": "F4CCW6TSN", 
+                "ims": [
+                    "D450Y9VNH"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_80.png", 
+                "comments_count": 0, 
+                "thumb_360_h": 212, 
+                "thumb_480_h": 283, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1488409592, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F4CCW6TSN/download/cms_-_sprite_detail.png", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_1024.png", 
+                "user": "U3ABZ07ME", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_960.png", 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "CMS - Sprite Detail.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F4CCW6TSN-8c6aec7a9f", 
+                "permalink": "https://hvr.slack.com/files/U3ABZ07ME/F4CCW6TSN/cms_-_sprite_detail.png", 
+                "is_external": false, 
+                "created": 1488409592, 
+                "thumb_1024_h": 604, 
+                "thumb_960_h": 567, 
+                "original_w": 2440, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F4CCW6TSN-25956c84a9/cms_-_sprite_detail_720.png", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "We have some curves calculations we're testing now, and a few HMTL5 canvas frameworks we found as well.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488400225.000002"
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488252487.000016"
+        }, 
+        {
+            "text": "We'll take a look tomorrow.  The calculations we would have to use for ImageMagik may work.  ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488252465.000015"
+        }, 
+        {
+            "text": "If there is a function which takes rgb in and returns rgb out I think I can implement it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488252236.000014"
+        }, 
+        {
+            "text": "We could break that into individual elements, but I'm not sure how e could convert that to the HTML filter. ", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488252205.000013"
+        }, 
+        {
+            "text": "Ah.  Hmm.  Do you know how we could use the HTML filter to apply a curves type adjustment for luminosity, hue, and saturation?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488252170.000012"
+        }, 
+        {
+            "text": "Currently the sprite image never goes to our server so I think changing that so that we can use ImageMagik would be more complicated", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488252081.000011"
+        }, 
+        {
+            "text": "Hmm.  That may be more complicated.  What if we used your implementation to create a lossless PNG, and then used ImageMagik to apply the filter and export a webp?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488252023.000010"
+        }, 
+        {
+            "text": "Ah.  Interesting.  Hmm.  Let me take a look.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488251926.000009"
+        }, 
+        {
+            "text": "because all the sprite creation stuff is happening in a canvas currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488249083.000008"
+        }, 
+        {
+            "text": "Hey mitch, would something like this <https://www.html5rocks.com/en/tutorials/canvas/imagefilters/> work for the color grading stuff?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488249063.000006", 
+            "attachments": [
+                {
+                    "thumb_height": 96, 
+                    "service_icon": "https://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png", 
+                    "thumb_width": 96, 
+                    "title": "Image Filters with Canvas - HTML5 Rocks", 
+                    "service_name": "HTML5 Rocks - A resource for open web HTML5 developers", 
+                    "title_link": "https://www.html5rocks.com/en/tutorials/canvas/imagefilters/", 
+                    "text": "A quick guide to writing custom image filters with &lt;canvas&gt;.", 
+                    "id": 1, 
+                    "fallback": "HTML5 Rocks - A resource for open web HTML5 developers: Image Filters with Canvas - HTML5 Rocks", 
+                    "thumb_url": "https://www.html5rocks.com/static/images/profiles/ilmari.png", 
+                    "from_url": "https://www.html5rocks.com/en/tutorials/canvas/imagefilters/"
+                }
+            ]
+        }, 
+        {
+            "text": "Oh, and I just got access!", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488234984.000005"
+        }, 
+        {
+            "text": "Awesome!  I'm still waiting for Dave to get me access to the Production CMS, so I haven't been able to check.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488234953.000004"
+        }, 
+        {
+            "text": "Its possible now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1488234809.000003"
+        }, 
+        {
+            "text": "Hey Mudge, do you think we'll be able to manually re-upload Sprites by tomorrow morning?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1488234781.000002"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487730670.000005"
+        }, 
+        {
+            "text": "Awesome.  NZT Friday may work best for me.  I'll discuss with Tokes tomorrow, and we can lock a time.", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1487730659.000004"
+        }, 
+        {
+            "text": "Yea, I'm pretty flexible. So whenever it suits.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487715539.000003"
+        }, 
+        {
+            "text": "Hey Mudge, how's your schedule looking this week to have an analytics strategy sync / discussion?", 
+            "type": "message", 
+            "user": "U3ABZ07ME", 
+            "ts": "1487714128.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U3ABZ07ME", 
+            "U0C90MHEH"
+        ]
+    }
+}

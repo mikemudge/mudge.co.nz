@@ -1,0 +1,1850 @@
+{
+    "messages": [
+        {
+            "text": "<https://analytics.google.com/analytics/web/#report/app-content-event-events/a60838253w136816607p141056408/%3Fexplorer-table.plotKeys%3D%5B%5D%26explorer-table.secSegmentId%3Danalytics.operatingSystem%26_r.drilldown%3Danalytics.eventCategory%3AShared%20Video/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1502924368.000145"
+        }, 
+        {
+            "text": "I\u2019m not sure that\u2019s how GA goals work. They are more like combinations/flows of events which you would like to see individual users performing.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1501712686.188226"
+        }, 
+        {
+            "text": "Hey can we set up a Goal in GA for WAU&gt;80000?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1501710141.219573"
+        }, 
+        {
+            "text": "ok, thanks", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1498455335.058348"
+        }, 
+        {
+            "text": "I believe its finished, clients send it to our server to determine popularity and it has total download time taken as a part of it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498455322.057261"
+        }, 
+        {
+            "text": "hey is the Mixpanel downloaded event, the Started or Finished event?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1498455254.050738"
+        }, 
+        {
+            "text": "thought so :disappointed:", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1498080910.209402"
+        }, 
+        {
+            "text": "Driven by workable", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498080894.204717"
+        }, 
+        {
+            "text": "hey - do you have the power to take one of the job adds off the site, or is that driven dynamically from Workable?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1498080875.199315"
+        }, 
+        {
+            "text": "Great thanks ", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1497299290.728458"
+        }, 
+        {
+            "text": "Galactic Greg (27th May)\n281 sends\niOS 217 - iOS did not have notification open tracking at this point.\nAndroid 64, 34 received/opened\n\nAnderson Silva &amp; Nautical Limited Release (June 7th)\n876 sends.\n587 iOS - ? Looks like tracking still wasn\u2019t in, I will check this with Thomas as I thought it should have been by this point.\n289 Android - 168 received/opened\n\nJeffrey Notification for Australia only (June 9th)\nMix panel failure?, I reached out to their support team on Friday, but have not heard back yet.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497218392.835495"
+        }, 
+        {
+            "text": "thanks man", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1497217048.759760"
+        }, 
+        {
+            "text": "yup, ill just gather the data", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1497216566.732733"
+        }, 
+        {
+            "text": "...and the dates we sent them?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1497216233.714377"
+        }, 
+        {
+            "text": "hey Mudge - can you get me the send and open rates of the notifications we've sent out for Holo?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1497216226.713987"
+        }, 
+        {
+            "text": "alright cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494374408.183929"
+        }, 
+        {
+            "text": "Do per month for now, cc me on email to erica who can help with purchase", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1494374400.182065"
+        }, 
+        {
+            "text": "Hey, what do I need to do to upgrade mix panel to a paid account? $99 per month or $999 per year are the choices.\nIs that something you need to approve or can I just talk to Collette?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494374341.174699"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494373907.120973"
+        }, 
+        {
+            "text": "Yes please a let Mitch know when it's done ", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1494373901.120086"
+        }, 
+        {
+            "text": "Nope, you just want to replace the link to the old form with that new international form right?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1494373398.057766"
+        }, 
+        {
+            "text": "hey Mudge, we have another version of the sign up form at <http://bit.ly/HoloBeta> - will this cause many issues to swap in?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1494372793.978622", 
+            "attachments": [
+                {
+                    "image_bytes": 235939, 
+                    "title": "Beta Tester Sign Up", 
+                    "service_name": "Google Docs", 
+                    "image_width": 333, 
+                    "title_link": "http://bit.ly/HoloBeta", 
+                    "image_height": 250, 
+                    "image_url": "https://lh4.googleusercontent.com/aWPtBwpYYpgDQWpOPIwFFlw05zmeBpBe5l3DHcMSNFpKSHmaWywqPwUM-M-i-79OIcs", 
+                    "text": "Thank you for your interest in becoming a Holo Beta Tester! We've had a lot of fun creating Holo and are looking forward to getting your feedback before we let the rest of the world have a look. To become a tester, we have a few questions. Once you send these in, we'll be in touch within a few days and let you know what's next. We will contact you via the email address you enter below. Thanks again! Holo Team If you have any questions: <mailto:holotesting@8i.com|holotesting@8i.com>", 
+                    "id": 1, 
+                    "fallback": "Google Docs: Beta Tester Sign Up", 
+                    "service_icon": "http://ssl.gstatic.com/docs/forms/device_home/ios_120.png", 
+                    "from_url": "http://bit.ly/HoloBeta"
+                }
+            ]
+        }, 
+        {
+            "text": "<mailto:bryanwoods@google.com|bryanwoods@google.com>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1494218675.576747"
+        }, 
+        {
+            "text": ":thumbsup::skin-tone-3:", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1492991596.349723"
+        }, 
+        {
+            "text": "sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492991583.349102"
+        }, 
+        {
+            "text": "don't do anything with this until after we've sent out the invites today. Then, can you please swap it out and modify the web links/scripts as required?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1492991573.348646"
+        }, 
+        {
+            "text": "Hey - Mudge and I have created a universal and slightly shortened version of the beta sign-up form (<https://docs.google.com/a/signaturecreative.com/forms/d/1PTI99TMaufjrapXHAQpNRuc9dOkJPz4nWMbjtlFzzPE/edit?usp=sharing>)", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1492991534.346511"
+        }, 
+        {
+            "text": "cheesr", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1492466794.785551"
+        }, 
+        {
+            "text": "I\u2019ll take a look", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492466734.774984"
+        }, 
+        {
+            "text": "hey can you do something to make <https://8i.com/holo/beta/> resolve to <https://8i.com/holo/beta> (no trailing slash)?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1492466709.770463", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/holo/beta", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://8i.com/holo/beta"
+                }
+            ]
+        }, 
+        {
+            "text": "Cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1492058983.654979"
+        }, 
+        {
+            "text": "<https://tinyurl.com/getholo>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1492057671.551832", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://tinyurl.com/getholo", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://tinyurl.com/getholo"
+                }
+            ]
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491802706.011414"
+        }, 
+        {
+            "text": "I think it\u2019s fine for now", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491802698.010754"
+        }, 
+        {
+            "text": "its a bit made up, but it doesn\u2019t seem too bad for the target audience", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491802451.993430"
+        }, 
+        {
+            "text": "Are you happy with the copy \u201cYou\u2019ve found our super secret Holo beta signup page! Sign up now to get in on the action early, for iOS and Android.\u201c?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491802418.991204"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491802403.990139"
+        }, 
+        {
+            "text": "Looks great on phone - nice", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491802015.962686"
+        }, 
+        {
+            "text": "Wahoo!", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491801928.956693"
+        }, 
+        {
+            "text": "<https://tinyurl.com/tryholo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801922.956266", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://tinyurl.com/tryholo", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://tinyurl.com/tryholo"
+                }
+            ]
+        }, 
+        {
+            "text": "oh yup, thats good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801921.956213"
+        }, 
+        {
+            "text": "tryholo ?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491801895.954361"
+        }, 
+        {
+            "text": "<https://tinyurl.com/holosignup> worked", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801882.953462", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://tinyurl.com/holosignup", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://tinyurl.com/holosignup"
+                }
+            ]
+        }, 
+        {
+            "text": "Aaaaargh!", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491801863.952071"
+        }, 
+        {
+            "text": "Nope, its taken", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801846.950856"
+        }, 
+        {
+            "text": "Don't have form URL can you try holopreview?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491801765.945384"
+        }, 
+        {
+            "text": "On the phone/move, will try", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491801476.925347"
+        }, 
+        {
+            "text": "otherwise <https://tinyurl.com/betaholo> works", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801389.919209"
+        }, 
+        {
+            "text": "You should be able to try a few yourself if you want, see if there is something you like.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801375.918128"
+        }, 
+        {
+            "text": "Nope, neither worked.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801262.910249"
+        }, 
+        {
+            "text": "What about holo-beta or holo_beta ?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491801216.907208"
+        }, 
+        {
+            "text": "<https://tinyurl.com/betaholo> works though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801190.905436", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://tinyurl.com/betaholo", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://tinyurl.com/betaholo"
+                }
+            ]
+        }, 
+        {
+            "text": "<https://tinyurl.com/holobeta> already goes somewhere", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801138.902122"
+        }, 
+        {
+            "text": "<https://8i.com/holo/beta?source=WGTNSOD> is the main link.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491801116.900709", 
+            "attachments": [
+                {
+                    "thumb_height": 955, 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "thumb_width": 1200, 
+                    "title": "8i | Holo App", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/holo/beta?source=WGTNSOD", 
+                    "text": "8i - Making Virtual Reality Human. Our technology brings virtual experiences to life with the highest fidelity, most realistic volumetric video recordings of real people.", 
+                    "id": 1, 
+                    "fallback": "8i: 8i | Holo App", 
+                    "thumb_url": "https://8i.com/static/img/new_site/holo/holoShareImage.jpg", 
+                    "from_url": "https://8i.com/holo/beta?source=WGTNSOD"
+                }
+            ]
+        }, 
+        {
+            "text": "ah, forgot to hit send on my response!", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491797048.626116"
+        }, 
+        {
+            "text": "but between me him and Asher we picked on and will create it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491797028.624772"
+        }, 
+        {
+            "text": "Mark had sent you a few options and was waiting to hear back", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491797012.623666"
+        }, 
+        {
+            "text": "ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491796648.595402"
+        }, 
+        {
+            "text": "I guess worse case we can tiny url the form itself and bypass the landing page if we have to - let me know how you get on. Just creating a presentation for tomorrow and need to know the url we\u2019re going to share", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491796607.592472"
+        }, 
+        {
+            "text": "can you talk to Mark - think he has something", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491796528.586703"
+        }, 
+        {
+            "text": "I copied the /holo page and added a button", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491796528.586695"
+        }, 
+        {
+            "text": "I haven\u2019t seen a design yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491796507.585086"
+        }, 
+        {
+            "text": "hey am presenting to some university students at 9:15am tomorrow morning - you still feeling good about having the landing page ready?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491796488.583677"
+        }, 
+        {
+            "text": "Hey, can you point me to the Holo Beta user sign up sheet in google docs?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491428962.857681"
+        }, 
+        {
+            "no_notifications": true, 
+            "permalink": "https://hvr.slack.com/call/R4V9B17ST", 
+            "room": {
+                "name": "", 
+                "was_accepted": true, 
+                "participants_screenshare_off": [], 
+                "participant_history": [
+                    "U0E3Y0YJK", 
+                    "U0C90MHEH"
+                ], 
+                "date_end": "1491357339", 
+                "date_start": "1491357182", 
+                "created_by": "U0E3Y0YJK", 
+                "is_dm_call": true, 
+                "channels": [
+                    "D0E41CA06"
+                ], 
+                "participants_camera_off": [], 
+                "participants": [], 
+                "participants_screenshare_on": [], 
+                "was_missed": false, 
+                "was_rejected": false, 
+                "id": "R4V9B17ST", 
+                "participants_camera_on": []
+            }, 
+            "text": "Started a <https://hvr.slack.com/call/R4V9B17ST|call>.", 
+            "ts": "1491357182.499701", 
+            "subtype": "sh_room_created", 
+            "user": "U0E3Y0YJK", 
+            "type": "message", 
+            "channel": "D0E41CA06"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491357144.495994"
+        }, 
+        {
+            "text": "hey - you got a couple of minutes to talk? Will call you over slack if you're mic'd up?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1491356897.472025"
+        }, 
+        {
+            "text": "I have renamed the properties in GA now. It does appear that both teams have been using the (test) property for their releases, The traffic does seem to have increased since Monday.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489097208.849447"
+        }, 
+        {
+            "text": "I think I would be good as you'll pick up differences that shouldn't exist between teams ", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1489095021.502540"
+        }, 
+        {
+            "text": "They should use the same project when they do a release (beta or otherwise) but it doesn't appear like that is happening right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489095015.501526"
+        }, 
+        {
+            "text": "I guess we can do that for testing as well, but I thought it would be easier for them to look at seperate projects while integrating", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489094969.493977"
+        }, 
+        {
+            "text": "Ok thanks. We only want them to send to common project - we don't need separate ones right?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1489094742.458170"
+        }, 
+        {
+            "text": "It doesn't look like anyone is sending to the common project yet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489092626.119797"
+        }, 
+        {
+            "text": "I created a Project Holo Android(test) and Project Holo Ios(test) for the teams to start integrating against. And then there is a common project for them to use when they go live.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489092536.105337"
+        }, 
+        {
+            "text": "hey - which project should I be looking at for iOS/Android Holo analytics?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1489092450.092008"
+        }, 
+        {
+            "text": "She was already in there, but upgrade her so she can see all properties", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489011288.000004", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1489011298.000000"
+            }
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489011262.000003"
+        }, 
+        {
+            "text": "hey, can you please invite Nicole to Google Analytics (<mailto:nstjean@8i.com|nstjean@8i.com>)?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1489011000.000002"
+        }, 
+        {
+            "text": "I'm in Babbage for the analytics talk", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487887252.000002"
+        }, 
+        {
+            "text": "yep - works now - thanks", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1487032646.000007"
+        }, 
+        {
+            "text": "Alright it should be working again now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487032617.000006"
+        }, 
+        {
+            "text": "<http://holo.8i.com|holo.8i.com> is a new domain name, so its not used by the public", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487032485.000005"
+        }, 
+        {
+            "text": "looks like a bad ssl certificate, 1 second I\u2019ll see whats happening", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1487032441.000004"
+        }, 
+        {
+            "username": "andrew_tokeley", 
+            "display_as_bot": false, 
+            "text": "<@U0E3Y0YJK> uploaded a file: <https://hvr.slack.com/files/U0E3Y0YJK/F45LBEMAS/pasted_image_at_2017_02_14_01_24_pm.png|Pasted image at 2017 02 14 01 24 PM>", 
+            "upload": true, 
+            "ts": "1487031899.000003", 
+            "subtype": "file_share", 
+            "user": "U0E3Y0YJK", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "png", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F45LBEMAS-c20a72d760/pasted_image_at_2017_02_14_01_24_pm_480.png", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F45LBEMAS-c20a72d760/pasted_image_at_2017_02_14_01_24_pm_64.png", 
+                "size": 11748, 
+                "original_h": 23, 
+                "thumb_360_w": 360, 
+                "title": "Pasted image at 2017 02 14 01 24 PM", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F45LBEMAS/pasted_image_at_2017_02_14_01_24_pm.png", 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F45LBEMAS-c20a72d760/pasted_image_at_2017_02_14_01_24_pm_360.png", 
+                "id": "F45LBEMAS", 
+                "ims": [
+                    "D0E41CA06"
+                ], 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F45LBEMAS-c20a72d760/pasted_image_at_2017_02_14_01_24_pm_80.png", 
+                "thumb_360_h": 15, 
+                "thumb_480_h": 20, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1487031898, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F45LBEMAS-c20a72d760/pasted_image_at_2017_02_14_01_24_pm_160.png", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F45LBEMAS/download/pasted_image_at_2017_02_14_01_24_pm.png", 
+                "user": "U0E3Y0YJK", 
+                "image_exif_rotation": 1, 
+                "is_public": false, 
+                "pretty_type": "PNG", 
+                "name": "Pasted image at 2017_02_14 01_24 PM.png", 
+                "mimetype": "image/png", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F45LBEMAS-35aa957946", 
+                "permalink": "https://hvr.slack.com/files/U0E3Y0YJK/F45LBEMAS/pasted_image_at_2017_02_14_01_24_pm.png", 
+                "is_external": false, 
+                "created": 1487031898, 
+                "original_w": 563, 
+                "comments_count": 0, 
+                "mode": "hosted", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "hey - do you know why I'm not seeing any content on <http://holo.8i.com/admin/tango>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1487031894.000002"
+        }, 
+        {
+            "text": "Checked with Amy - ok to give the praytell crowd access to all content ", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1480551781.000002"
+        }, 
+        {
+            "text": "Do we have a holo email address yet?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479262995.000005"
+        }, 
+        {
+            "text": "Hi Jan,\n\nAppreciate you taking the time to give some feedback - can you give us more details about the bugs you're seeing? \n\nWe are currently saving any videos/pictures you take to your phone's Gallery (under and Album called \"Holo\"). You can share directly from there if you wish. \n\nThanks \nHolo Team", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1479262959.000003", 
+            "edited": {
+                "user": "U0E3Y0YJK", 
+                "ts": "1479262991.000000"
+            }
+        }, 
+        {
+            "text": "hey can you respond to that feedback with...", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1479262958.000002"
+        }, 
+        {
+            "text": "I\u2019m not sure what the original request was, I only heard it second hand through Taos", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066736.000031"
+        }, 
+        {
+            "text": "yes, we did rotate him 90 degrees to the left", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066652.000030"
+        }, 
+        {
+            "text": "maybe ask them to screenshot what the problem is?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066636.000029"
+        }, 
+        {
+            "text": "so you're saying he's been rotated 90 degrees - so when he's dropped you see him from the side?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478066633.000028"
+        }, 
+        {
+            "text": "yea, I\u2019m not sure what they want either", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066625.000027"
+        }, 
+        {
+            "text": "they're still asking for a rotation - now a 180 rotation - so I'm confused what effect that want", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478066599.000026"
+        }, 
+        {
+            "text": "I thought thats what you meant by \"rotation stuff\"", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066587.000025"
+        }, 
+        {
+            "text": "because the Json parser which holo uses doesn\u2019t handle scientific notation for floats", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066564.000024"
+        }, 
+        {
+            "text": "rotating the asset 90 degrees was causing the app to not download it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066540.000023"
+        }, 
+        {
+            "text": "oh, you weren\u2019t part of that", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066525.000022"
+        }, 
+        {
+            "text": "don't think what will happen?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478066512.000021"
+        }, 
+        {
+            "text": "so I\u2019ve updated the save method for web director so that I don\u2019t think it will happen again", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066496.000020"
+        }, 
+        {
+            "text": "I'm guessing they want him to be facing away from the camera when he gets dropped but I'm trying to get confirmation", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478066469.000019"
+        }, 
+        {
+            "text": "It was a specific value set in a scene", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478066464.000018"
+        }, 
+        {
+            "text": "hey for the rotation stuff - do you do something your end to rotate or is a new solve?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478066439.000017"
+        }, 
+        {
+            "text": "Yes, that should work as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065760.000016"
+        }, 
+        {
+            "text": "should they test logging in to the same phone? If one sees the right data on a phone the other should too right?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478065735.000015"
+        }, 
+        {
+            "text": "for the <mailto:coconut2ff9@gmail.com|coconut2ff9@gmail.com> account", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065689.000014"
+        }, 
+        {
+            "text": "so it seems like this hasn\u2019t been sync\u2019d with the server correctly", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065672.000013"
+        }, 
+        {
+            "text": "then it filters the private content if you aren't *@8i.com", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065635.000012"
+        }, 
+        {
+            "text": "first it decides if you get public or private access", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065595.000011"
+        }, 
+        {
+            "text": "the check happens in 2 stages", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065583.000010"
+        }, 
+        {
+            "text": "right", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478065564.000009"
+        }, 
+        {
+            "text": "Na if the email didn\u2019t match they would not get private content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065554.000008"
+        }, 
+        {
+            "text": "seems strange that one's getting it and the other not", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478065546.000007"
+        }, 
+        {
+            "text": "i can ask them to do that - it's not something silly like misspelling his email???", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478065531.000006"
+        }, 
+        {
+            "text": "They may need to just clear app data and redownload", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065390.000005"
+        }, 
+        {
+            "text": "That sounds to me like there is a problem updating the content.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065369.000004"
+        }, 
+        {
+            "text": "I can\u2019t see any reason why the server would do anything differently for the different accounts", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478065213.000003"
+        }, 
+        {
+            "text": "hey - they're saying the content is fine for <mailto:jpq@google.com|jpq@google.com> but not for <mailto:coconut2ff9@gmail.com|coconut2ff9@gmail.com> - the latter sees all the private content still", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478064967.000002"
+        }, 
+        {
+            "text": "OK, I'll get them to try", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035774.000023"
+        }, 
+        {
+            "text": "Yea, it should be", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478035767.000022"
+        }, 
+        {
+            "text": "is the hack in now?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035682.000021"
+        }, 
+        {
+            "text": "sounds good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478035665.000020"
+        }, 
+        {
+            "text": "we can decide to put the other ones in tomorrow, if we want", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035653.000019"
+        }, 
+        {
+            "text": "leave those new ones out and stay with the two that were there already", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035643.000018"
+        }, 
+        {
+            "text": "yea, just too many things happening right now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478035628.000017"
+        }, 
+        {
+            "text": "especially if it's screwing with your hack", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035604.000016"
+        }, 
+        {
+            "text": "we don't need the extra solves for the demo, no.", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035578.000015"
+        }, 
+        {
+            "text": "not sure - just checking with Taos. I think they're optional extras not for the demo", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478035478.000014"
+        }, 
+        {
+            "text": "Taos has some new google solves, are they supposed to be ready for this 11am/3pm PT presentation?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478034367.000013"
+        }, 
+        {
+            "text": "Ok - man that IS a hack! Fine to get us over the line though.  Let's start thinking about a way to target content to groups of users. We'll need it for catalogue soon enough.", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478034178.000012"
+        }, 
+        {
+            "text": "Also the public packs will both still be visible, so Google will still see the ELECTION PACK", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478033828.000011"
+        }, 
+        {
+            "text": "Alright, the only easy way to do this is to show whitelisted emails only private packs which contain \u201cGoogle\u201d in the pack name.\nThis will work for now as we only have 2 whitelisted emails (<mailto:coconut2ff9@gmail.com|coconut2ff9@gmail.com> and <mailto:jpq@google.com|jpq@google.com>), but will not scale well until we do the more robust thing.\n\n<http://8i.com|8i.com> emails addresses will continue working as before and show all private content.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478032868.000010"
+        }, 
+        {
+            "text": "Sure, I think that makes sense", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478029582.000009"
+        }, 
+        {
+            "text": "ok. I think it's worth it for this case. Ultimately I want us to create a more robust way to target content to users. We'll need to do this when we get catalogue going", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478029555.000008"
+        }, 
+        {
+            "text": "but that code will be messy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478029504.000007"
+        }, 
+        {
+            "text": "Yea, I can hack it in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478029492.000006"
+        }, 
+        {
+            "text": "all good - is it a pain, or something we can turn around reasonably quickly? Can be a one off approach.", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478029481.000005"
+        }, 
+        {
+            "text": "Asher just talked to me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478029316.000004"
+        }, 
+        {
+            "text": "Yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1478029302.000003"
+        }, 
+        {
+            "text": "hey - are you in the office?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1478029249.000002"
+        }, 
+        {
+            "text": "Awesome, thanks ", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1477702900.000002"
+        }, 
+        {
+            "text": "He should be good to access private content now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477694313.000003"
+        }, 
+        {
+            "text": "Oh yup, will do.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477693600.000002"
+        }, 
+        {
+            "text": "Hey - we need to add <mailto:coconut2ff9@gmail.com|coconut2ff9@gmail.com> (Google exec's private address) to the externals who see private content - just like we did for Justin. Can you sort that first thing Monday? Thanks ", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1477690985.000002"
+        }, 
+        {
+            "text": "cool - stay tuned.", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476844192.000006"
+        }, 
+        {
+            "text": "should only be a few minutes", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476844181.000005"
+        }, 
+        {
+            "text": "Yes", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476844143.000004"
+        }, 
+        {
+            "text": "All private content?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476844130.000003"
+        }, 
+        {
+            "text": "hey - we\u2019re going to add a specific email to the private content - how long do you need once we give you the green light?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476844114.000002"
+        }, 
+        {
+            "text": "Is it not working?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476828169.000011"
+        }, 
+        {
+            "text": "No, that should be fine to access that.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476828156.000010"
+        }, 
+        {
+            "text": "amy trying to access (<mailto:amy@8i.com|amy@8i.com>)", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476826972.000009"
+        }, 
+        {
+            "text": "hey - do you need to add a user to access <http://8i.com/admin/tango>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476826965.000008"
+        }, 
+        {
+            "text": "I\u2019d just want to know a timeline so I could remove the hack at some point", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476824883.000007"
+        }, 
+        {
+            "text": "but it is also possible to do something hacky to return a certain set", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476824864.000006"
+        }, 
+        {
+            "text": "It would be much easier to give those email addresses all private content", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476824843.000005"
+        }, 
+        {
+            "text": "if i gave you an email address (or two) would it be relatively straightforward to give them the public content + MB and Starwars packs? Or is that a pain and giving them all the private content easier", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476824809.000004"
+        }, 
+        {
+            "text": "yup?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476824717.000003"
+        }, 
+        {
+            "text": "hey - quick question", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476824710.000002"
+        }, 
+        {
+            "text": "Cool, let me know if you want to ask me some questions then", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476246921.000004"
+        }, 
+        {
+            "text": "cool - will have a look tomorrow", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476246898.000003"
+        }, 
+        {
+            "text": "Hey, I just asked Pan all of the questions I had written down since this mornings meeting.\nI think I have a much better idea of what he is thinking now for version 1.\nI have updated your flow diagram for holostomp with the new info I have.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1476245980.000002"
+        }, 
+        {
+            "text": "<http://8i.com/nasa/lifevr>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1476158091.000002"
+        }, 
+        {
+            "text": "great thanks", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1474341586.000013"
+        }, 
+        {
+            "text": "I will update it and remove the other one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341581.000012"
+        }, 
+        {
+            "text": "ah ok", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341566.000011"
+        }, 
+        {
+            "text": "it\u2019s the one from Holo - still no sound in app", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1474341560.000010"
+        }, 
+        {
+            "text": "Where did you get your link from?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341545.000009"
+        }, 
+        {
+            "text": "I don\u2019t know how or why we have two copies of it uploaded though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341486.000008"
+        }, 
+        {
+            "text": "That is the same as this one, <http://8i.com/s/o9D>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341470.000006", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "Foxtrot04_100_300_30_75_85.hvrs", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/o9D", 
+                    "text": "Feast - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Foxtrot04_100_300_30_75_85.hvrs", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/o9D/scene_o9D.png?time=1472440698676", 
+                    "from_url": "http://8i.com/s/o9D"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://8i.com/s/nzD>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1474341320.000004", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "FOXTROT04_100", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/nzD", 
+                    "text": "Feast - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: FOXTROT04_100", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/nzD/scene_nzD.png?time=1472610122177", 
+                    "from_url": "http://8i.com/s/nzD"
+                }
+            ]
+        }, 
+        {
+            "text": "Which one?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1474341311.000003"
+        }, 
+        {
+            "text": "hey Mudge - did you track down the audio for this one?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1474341156.000002"
+        }, 
+        {
+            "text": "The latest assets for foxtrot04 are all 600K@30fps", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472679196.000005"
+        }, 
+        {
+            "text": "ok, cool. getting Taos on to Trump (U look incredible) then I can redo my scene from yesterday - let me know when you get it", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1472679167.000004"
+        }, 
+        {
+            "text": "The error with the admin tango page happens if you click a pack too quickly, I will fix it at some point, but for now you can just click the pack again (after a short delay) to fix it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472679001.000003"
+        }, 
+        {
+            "text": "The 600K zombie, (just above) is already part of the private pack.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472678875.000002"
+        }, 
+        {
+            "text": "here\u2019s another 600@30FPS for the private demo folder - <http://8i.com/s/nzD>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1472614675.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 480, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 380, 
+                    "title": "FOXTROT04_100", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/s/nzD", 
+                    "text": "600 TC/ 30 FPS - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: FOXTROT04_100", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/Director/live_8i_prod/thumbnails/nzD/scene_nzD.png?time=1472610122177", 
+                    "from_url": "http://8i.com/s/nzD"
+                }
+            ]
+        }, 
+        {
+            "text": "yes", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1472443175.000003"
+        }, 
+        {
+            "text": "Hey, are Trump and Hillary ok to go in the public pack? Or should they be private only?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472442457.000002"
+        }, 
+        {
+            "text": "hey - before US goes to sleep, do you want to give an update on <#C1CPP949L|holo> about when the next content update will arrive in the app?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1472180524.000004"
+        }, 
+        {
+            "text": "nice", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1472169145.000003"
+        }, 
+        {
+            "text": "<http://8i.com/admin/tango?auth=1> will show you private packs as well", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472167285.000002"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> uploaded a file: <https://hvr.slack.com/files/U0C90MHEH/F20ANRAKX/img_0048.jpg|IMG_0048.jpg>", 
+            "upload": true, 
+            "ts": "1470890282.000005", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "thumb_480_w": 480, 
+                "groups": [], 
+                "filetype": "jpg", 
+                "thumb_480": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_480.jpg", 
+                "display_as_bot": false, 
+                "thumb_64": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_64.jpg", 
+                "size": 1300458, 
+                "original_h": 2448, 
+                "thumb_360_w": 360, 
+                "title": "IMG_0048.jpg", 
+                "url_private": "https://files.slack.com/files-pri/T03DG12GT-F20ANRAKX/img_0048.jpg", 
+                "thumb_720_h": 540, 
+                "thumb_360": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_360.jpg", 
+                "id": "F20ANRAKX", 
+                "ims": [
+                    "D0E41CA06"
+                ], 
+                "thumb_720_w": 720, 
+                "thumb_80": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_80.jpg", 
+                "comments_count": 0, 
+                "thumb_360_h": 270, 
+                "thumb_480_h": 360, 
+                "external_type": "", 
+                "username": "", 
+                "timestamp": 1470890278, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "thumb_160": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_160.jpg", 
+                "url_private_download": "https://files.slack.com/files-pri/T03DG12GT-F20ANRAKX/download/img_0048.jpg", 
+                "thumb_1024": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_1024.jpg", 
+                "user": "U0C90MHEH", 
+                "image_exif_rotation": 1, 
+                "thumb_960": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_960.jpg", 
+                "is_public": false, 
+                "pretty_type": "JPEG", 
+                "name": "IMG_0048.jpg", 
+                "mimetype": "image/jpeg", 
+                "permalink_public": "https://slack-files.com/T03DG12GT-F20ANRAKX-500d86e1af", 
+                "permalink": "https://hvr.slack.com/files/U0C90MHEH/F20ANRAKX/img_0048.jpg", 
+                "is_external": false, 
+                "created": 1470890278, 
+                "thumb_1024_h": 768, 
+                "thumb_960_h": 720, 
+                "original_w": 3264, 
+                "thumb_960_w": 960, 
+                "thumb_1024_w": 1024, 
+                "mode": "hosted", 
+                "thumb_720": "https://files.slack.com/files-tmb/T03DG12GT-F20ANRAKX-a741dbb379/img_0048_720.jpg", 
+                "channels": []
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }, 
+        {
+            "text": "Give him the name \u201cTEST - NOT FOR LIVE\u201d!", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1470864341.000004"
+        }, 
+        {
+            "text": "<http://8i.com/p/boW>", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1470864329.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "thumb_width": 548, 
+                    "title": "Foxtrot2/FOXTROT02_130_300_30_75_85.hvrs", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/boW", 
+                    "text": "Foxtrot2/FOXTROT02_130_300_30_75_85.hvrs - Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Foxtrot2/FOXTROT02_130_300_30_75_85.hvrs", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/live_boW/shareImage.png?v=1", 
+                    "from_url": "http://8i.com/p/boW"
+                }
+            ]
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/p/92p> is in 300K along with all the other tango content.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469142449.000004"
+        }, 
+        {
+            "text": "<http://mudge-demo2.dev.8i.com/p/zwr> Is the only current asset which has more than one resolution but its 400, 200, 100 and 50K", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1469142407.000003"
+        }, 
+        {
+            "text": "hey, do we have examples of 300K and 400K web player solves?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1469142330.000002"
+        }, 
+        {
+            "text": "could you do me a favour - am in an interview but need my power cable!\n\n[11:37]  \nin first meeting room from kictchen!", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1468539526.000002"
+        }, 
+        {
+            "text": "Thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464665545.000006"
+        }, 
+        {
+            "text": "cool - will lock it in", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1464665539.000005"
+        }, 
+        {
+            "text": "Yea, that would be good", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1464665485.000004"
+        }, 
+        {
+            "text": "hey - I have some free tickets to <http://www.wdcnz.com/> - keen?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1464665360.000002", 
+            "attachments": [
+                {
+                    "title": "WDCNZ: Tech Talks for Web Devs", 
+                    "service_name": "WDCNZ", 
+                    "title_link": "http://www.wdcnz.com/", 
+                    "text": "WDCNZ is the best place to learn cutting edge and practical tools and techniques from the best in the Web. If you work in delivering software over the web WDCNZ is for you.", 
+                    "id": 1, 
+                    "fallback": "WDCNZ: WDCNZ: Tech Talks for Web Devs", 
+                    "service_icon": "http://www.wdcnz.com/images/favicon.ico", 
+                    "from_url": "http://www.wdcnz.com/"
+                }
+            ]
+        }, 
+        {
+            "text": "just in the first meeting room.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462486705.000002"
+        }, 
+        {
+            "text": "cheers", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1462314676.000005"
+        }, 
+        {
+            "text": "but it is a seperate file to the hvrs", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462314447.000004"
+        }, 
+        {
+            "text": "opps sorry, I didn\u2019t have slack open this morning. Yup we have audio for player 2", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1462314432.000003"
+        }, 
+        {
+            "text": "hey - do we do audio on web player 2?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1462312094.000002"
+        }, 
+        {
+            "text": "Awesome! How about \"Daan in Virtual Reality\" or just \"Daan\" if that's too long", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1460442514.000002"
+        }, 
+        {
+            "text": "Should I title it something better?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460435626.000004"
+        }, 
+        {
+            "text": "<http://8i.com/p/l0Z>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1460435610.000002", 
+            "attachments": [
+                {
+                    "thumb_height": 274, 
+                    "thumb_width": 548, 
+                    "title": "Tokes Kid", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/p/l0Z", 
+                    "text": "Tokes Kid Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Tokes Kid", 
+                    "thumb_url": "https://d7cvc31wlmbhf.cloudfront.net/live_l0Z/shareImage.png?v=1", 
+                    "from_url": "http://8i.com/p/l0Z"
+                }
+            ]
+        }, 
+        {
+            "text": "if you want to use the new asset which kieran created.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453845486.000005"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/cardboard-demo/ASHLEE_S02_T02_bob_v01_400?sphere=green_room&amp;asset_y_position=75&amp;user_eye_height=150>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453845472.000004"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/cardboard/zwr?sphere=green_room>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453842440.000003"
+        }, 
+        {
+            "text": "Hey, I chatted with Pan yesterday about cardboard, just want to run the plan by you if you have a couple of minutes at some point.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453840913.000002"
+        }, 
+        {
+            "text": "Yep, will come over in a sec", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1453408184.000003"
+        }, 
+        {
+            "text": "Hey, if you\u2019ve got a free minute at some point, can we have a quick chat about cardboard?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1453408150.000002"
+        }, 
+        {
+            "text": "ok, cheers", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1452025954.000004"
+        }, 
+        {
+            "text": "No sorry, I'm not around this week, will be back next Monday.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1452025910.000003"
+        }, 
+        {
+            "text": "hey Michael - not sure if you\u2019re online yet\u2026 are you in this week? No drama, just have a couple of requests coming in from Linc that you\u2019ll be able to rattle off pretty easily I reckon...", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1452023815.000002"
+        }, 
+        {
+            "text": "New install page can be viewed here <http://mudge-demo.dev.8i.com/install_new>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450646608.000002"
+        }, 
+        {
+            "text": "Hey, I\u2019ve set up my cardboard demo so it should always be available at <http://mudge-demo.dev.8i.com/cardboard-demo>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450382689.000002"
+        }, 
+        {
+            "text": "all good - no hurry", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450318377.000011"
+        }, 
+        {
+            "text": "but each one takes some setup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450317530.000010"
+        }, 
+        {
+            "text": "I am in the process of making another demo location for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450317523.000009"
+        }, 
+        {
+            "text": "Its not easy", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450317511.000008"
+        }, 
+        {
+            "text": "cool - can we make it \u201cpermanent\u201d - or is that a hassle?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450317499.000007"
+        }, 
+        {
+            "text": "Just let me know when you are finished with it :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450317445.000006"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test/2/mom_and_baby_long_2?asset_y_position=150&amp;user_eye_height=150>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450317432.000005"
+        }, 
+        {
+            "text": "thanks mate", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450317418.000004"
+        }, 
+        {
+            "text": "sure thing", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450317401.000003"
+        }, 
+        {
+            "text": "hey - any chance of redeploying the cardboard test?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450317381.000002"
+        }, 
+        {
+            "text": "fast! awesome, thanks Michael", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450232885.000009"
+        }, 
+        {
+            "text": "<http://mudge-demo.dev.8i.com/test/2/mom_and_baby_long_2?asset_y_position=150&amp;user_eye_height=150>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450232688.000008"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450232645.000007"
+        }, 
+        {
+            "text": "yeah. if it\u2019s not too much hassle\u2026 want to show Fryd and others", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450232635.000006"
+        }, 
+        {
+            "text": "I can deploy it if you like though", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450232613.000005"
+        }, 
+        {
+            "text": "Not currently", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1450232603.000004"
+        }, 
+        {
+            "text": "sorry - \u201ccardboard\u201d - it\u2019s late!", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450232596.000003"
+        }, 
+        {
+            "text": "hey michael - do you have the calendar example deployed somewhere that I can see from LA?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1450232571.000002"
+        }, 
+        {
+            "text": "same as all our dev servers :simple_smile:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692240.000012"
+        }, 
+        {
+            "text": "the creds should just be 8i 8ikitten", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692231.000011"
+        }, 
+        {
+            "text": "would be keen to see it if it\u2019s easy to set up", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1449692220.000010"
+        }, 
+        {
+            "text": "just using JS so it worked on android and ios", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692190.000009"
+        }, 
+        {
+            "text": "web player for cardboard", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692175.000008"
+        }, 
+        {
+            "text": "curious is all", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1449692160.000007"
+        }, 
+        {
+            "text": "what was it?", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1449692154.000006"
+        }, 
+        {
+            "text": "do you want me to host it again?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692148.000005"
+        }, 
+        {
+            "text": "in*", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692137.000004"
+        }, 
+        {
+            "text": "Oh it was just in my dev server, which runs whatever git branch I happen to be it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1449692135.000003"
+        }, 
+        {
+            "text": "hey - trying to look at the stuff you were showing off yesterday - link asks for creds...", 
+            "type": "message", 
+            "user": "U0E3Y0YJK", 
+            "ts": "1449690593.000002"
+        }, 
+        {
+            "username": "mudge", 
+            "display_as_bot": false, 
+            "text": "<@U0C90MHEH> shared a file: <https://hvr.slack.com/files/U03DJ84DC/F06NMQFGR/8ibugtrackingstyleguide|8i Bug Tracking and Feature Request Guide>", 
+            "upload": false, 
+            "ts": "1447027267.000003", 
+            "subtype": "file_share", 
+            "user": "U0C90MHEH", 
+            "file": {
+                "filetype": "gdoc", 
+                "channels": [
+                    "C03DG6C3B", 
+                    "C03DG7DGR", 
+                    "C04TFK2FK"
+                ], 
+                "display_as_bot": false, 
+                "thumb_64": "https://slack.com/img/files/gdoc_64.v.png", 
+                "size": 3237, 
+                "thumb_360_w": 360, 
+                "title": "8i Bug Tracking and Feature Request Guide", 
+                "url_private": "https://docs.google.com/a/8i.com/document/d/1XE5Sdh3FrpznZJ-cWNOAqZEnt8RwAVE1EguyyRmsSsQ/edit?usp=drivesdk", 
+                "thumb_360": "https://a.slack-edge.com/b008f/img/files/gdraw_360.png", 
+                "id": "F06NMQFGR", 
+                "ims": [
+                    "D0CAFMNJG", 
+                    "D0CAS85J4", 
+                    "D0E41CA06"
+                ], 
+                "thumb_360_h": 167, 
+                "external_type": "gdrive", 
+                "username": "", 
+                "timestamp": 1435104488, 
+                "public_url_shared": false, 
+                "editable": false, 
+                "user": "U03DJ84DC", 
+                "groups": [], 
+                "is_public": true, 
+                "pretty_type": "GDocs Document", 
+                "name": "8iBugTrackingStyleGuide", 
+                "mimetype": "application/vnd.google-apps.document", 
+                "permalink": "https://hvr.slack.com/files/U03DJ84DC/F06NMQFGR/8ibugtrackingstyleguide", 
+                "is_external": true, 
+                "created": 1435104488, 
+                "pinned_to": [
+                    "C03DG6C3B"
+                ], 
+                "comments_count": 0, 
+                "mode": "external"
+            }, 
+            "type": "message", 
+            "bot_id": null
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0E3Y0YJK", 
+            "U0C90MHEH"
+        ]
+    }
+}

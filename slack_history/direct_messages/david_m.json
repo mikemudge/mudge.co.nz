@@ -1,0 +1,911 @@
+{
+    "messages": [
+        {
+            "text": "Cool, yea I checked with Joel :relaxed:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507077974.000101"
+        }, 
+        {
+            "text": "hvr? eighti?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1507077558.000073"
+        }, 
+        {
+            "text": "hmmmm", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1507077520.000092"
+        }, 
+        {
+            "text": "github says \u201cnormal password.\u201d", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076919.000106"
+        }, 
+        {
+            "text": "Do you know the password for ssh eight@atrax?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076901.000209"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076802.000170"
+        }, 
+        {
+            "text": "go for it!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1507076794.000088"
+        }, 
+        {
+            "text": "but will be easy to fix/revert back to what is there now once I\u2019m done.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076663.000094"
+        }, 
+        {
+            "text": "Might be down for a little while as I do it.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076639.000005"
+        }, 
+        {
+            "text": "Any concerns from you about me doing that?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076624.000139"
+        }, 
+        {
+            "text": "Yo I was thinking about updating <http://atrax:8080/> to use my code this afternoon", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1507076610.000212"
+        }, 
+        {
+            "text": "yes, even if I felt I had more beer than my interlocutors, I recall making sense...", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449976.640309", 
+            "edited": {
+                "user": "U0KT826R0", 
+                "ts": "1498449996.000000"
+            }
+        }, 
+        {
+            "text": "It was pretty funny, that we decided to join that random group and then I ended up knowing Ashley", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449896.633477"
+        }, 
+        {
+            "text": "definitely", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449861.630568"
+        }, 
+        {
+            "text": "yea, lets do the same but maybe grab a slice of pizza or a burger on our way towards anywhere next time", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449847.629276", 
+            "edited": {
+                "user": "U0KT826R0", 
+                "ts": "1498449855.000000"
+            }
+        }, 
+        {
+            "text": "haha, that was pretty much dinner", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449787.624034"
+        }, 
+        {
+            "text": "chippies!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449774.622889"
+        }, 
+        {
+            "text": "I don\u2019t think I ate nearly enough", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449724.618130"
+        }, 
+        {
+            "text": "It was fun for the parts I do remember", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449712.617096"
+        }, 
+        {
+            "text": "but good beer :smile:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449702.616000"
+        }, 
+        {
+            "text": "yea me neither, that was lot of beer", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449698.615661"
+        }, 
+        {
+            "text": "I can\u2019t remember a heck of a lot of that evening", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449687.614541"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449677.613467"
+        }, 
+        {
+            "text": "I am not even sure how I got to give it to her", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449668.612425"
+        }, 
+        {
+            "text": "gave her your number :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449652.610904"
+        }, 
+        {
+            "text": "I don\u2019t know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449645.610270"
+        }, 
+        {
+            "text": "what did I do? :scream:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449635.609250"
+        }, 
+        {
+            "text": "yea, that does seem a bit annoying", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449630.608695"
+        }, 
+        {
+            "text": "text is fine, but multi calling", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449625.608141"
+        }, 
+        {
+            "text": "Seems weird to me to call someone at that hour when you are not hanging out", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449610.606361"
+        }, 
+        {
+            "text": "oh yea, thats not ideal", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449593.604240"
+        }, 
+        {
+            "text": "she called the next day", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449588.603768"
+        }, 
+        {
+            "text": "oh wait Saturday", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449584.603452"
+        }, 
+        {
+            "text": "So she didn't called that day", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449581.603219"
+        }, 
+        {
+            "text": "what time did we leave the bar?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449567.602005"
+        }, 
+        {
+            "text": "Not as far as I know", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1498449557.601220"
+        }, 
+        {
+            "text": "Your friend Ashley called me twice on Saturday ~1am (actually Sunday). Is she crazy?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1498449527.598892"
+        }, 
+        {
+            "text": "See if that link works directly.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496369905.890489"
+        }, 
+        {
+            "text": "<https://play.google.com/store/apps/details?id=com.eighti.holo.android>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496369877.887065", 
+            "attachments": [
+                {
+                    "title": "Holo - Android Apps on Google Play", 
+                    "text": "Mix Holograms into Photos &amp; Videos in Augmented Reality", 
+                    "title_link": "https://play.google.com/store/apps/details?id=com.eighti.holo.android", 
+                    "service_name": "play.google.com", 
+                    "id": 1, 
+                    "fallback": "Holo - Android Apps on Google Play", 
+                    "from_url": "https://play.google.com/store/apps/details?id=com.eighti.holo.android"
+                }
+            ]
+        }, 
+        {
+            "text": "Oh no", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496369831.881824"
+        }, 
+        {
+            "text": "Oh, only Holo Tango seems to shop up on google play canada", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1496369809.879243", 
+            "edited": {
+                "user": "U0KT826R0", 
+                "ts": "1496369824.000000"
+            }
+        }, 
+        {
+            "text": "What how come?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1496369791.877111"
+        }, 
+        {
+            "text": ":stuck_out_tongue_winking_eye:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1496369786.876558"
+        }, 
+        {
+            "text": "Your fault, obviously!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1496369777.875568"
+        }, 
+        {
+            "text": "I look like a fool now, none of my friends cand find Holo :open_mouth:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1496369771.874750"
+        }, 
+        {
+            "text": "Nicole might have told you", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1496369757.873016"
+        }, 
+        {
+            "text": "alright!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1491369025.474576"
+        }, 
+        {
+            "text": "Double Brimstone for me and ye please", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491369016.473293"
+        }, 
+        {
+            "text": ":+1:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1491368959.466984"
+        }, 
+        {
+            "text": "Yup, just looking now, let you know in a minute", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1491368951.465966"
+        }, 
+        {
+            "text": "ordering pizza?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1491368935.464441"
+        }, 
+        {
+            "text": "haha exactly", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482278867.000017"
+        }, 
+        {
+            "text": "meh probably more urgent stuff to do :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482278862.000016"
+        }, 
+        {
+            "text": "Maybe 2018 :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482278860.000015"
+        }, 
+        {
+            "text": "I think I\u2019m going to redo it when I get a chance", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482278839.000014"
+        }, 
+        {
+            "text": "Yea, the whole concept of signup vs login is a bit of a problem area", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482278829.000013"
+        }, 
+        {
+            "text": "yea signing with my @8i.com was just saying something like \"id not found\"", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482278773.000012"
+        }, 
+        {
+            "text": "although that should show a warning message", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482278602.000010"
+        }, 
+        {
+            "text": "It could of be a problem with trying to login without signing up", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482278593.000009", 
+            "edited": {
+                "user": "U0C90MHEH", 
+                "ts": "1482278621.000000"
+            }
+        }, 
+        {
+            "text": ":grin:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482278564.000008"
+        }, 
+        {
+            "text": "oh it works now", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482278555.000007"
+        }, 
+        {
+            "text": "you may need to enter a username and then signup with google", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482277953.000006"
+        }, 
+        {
+            "text": "have you signed up before?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1482277936.000005"
+        }, 
+        {
+            "text": "and <mailto:david@8i.com|david@8i.com> is not working?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482276271.000004"
+        }, 
+        {
+            "text": "I want to access <http://8i.com/d|8i.com/d>", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482276259.000003"
+        }, 
+        {
+            "text": "Hello Mudge!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1482276251.000002"
+        }, 
+        {
+            "text": "thanks", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481485759.000025"
+        }, 
+        {
+            "text": "ah I got confused by the liquid restriction thing", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481485747.000024"
+        }, 
+        {
+            "text": "and food is still probably ok either way", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481485573.000023"
+        }, 
+        {
+            "text": "I thought it was in checked in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481485557.000022"
+        }, 
+        {
+            "text": "I thought it was not going to be in the checked in luggage?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481485417.000021"
+        }, 
+        {
+            "text": "I have already got a present. I\u2019m not really sure about other ideas, but I guess you could go for something yummy (maybe an NZ specific item)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481485364.000020"
+        }, 
+        {
+            "text": "Hello! I couldn't find anywhere a place that could guarantee me that I would get the mousepad by Friday :disappointed: Have you bought your present already? Anymore ideas? If you haven't bought it yet and have an idea ~50$, I don't mind buying a joint thing :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481485194.000019"
+        }, 
+        {
+            "text": "I haven\u2019t actually ever had a custom mouse pad made before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481238210.000018"
+        }, 
+        {
+            "text": "I can\u2019t think of anything", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481238186.000017"
+        }, 
+        {
+            "text": "if you know of any place in Welli that I can show up and hopefully have it in 2-3 days, no delivery, would be great!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481238131.000016"
+        }, 
+        {
+            "text": "Nice idea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481238090.000015"
+        }, 
+        {
+            "text": "thanks for the pics! My plan was to make a funny mousepad with him and the 8i logo, but I fear it can't arrive in time :disappointed:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481238075.000014"
+        }, 
+        {
+            "text": "ok thanks!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481231647.000013"
+        }, 
+        {
+            "text": "I don\u2019t think I actually have the high resolution image of Hayes, his profile picture was a bit unorthodox, and didn\u2019t come through the usual method. I\u2019ll check with Asher though as I think he did the cropping/resize.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481231616.000012"
+        }, 
+        {
+            "text": "soooo unfair hahaha", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481230532.000011"
+        }, 
+        {
+            "text": "Ask Erica!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481230459.000010"
+        }, 
+        {
+            "text": ":scream_cat:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481230436.000009"
+        }, 
+        {
+            "text": "Is he getting 2 presents because we have more people in wellington?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481230407.000008"
+        }, 
+        {
+            "text": "Wait, I was assigned Hayes for secret santa", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481230376.000007"
+        }, 
+        {
+            "text": "But chuuuuut, it's a secret!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481229940.000006"
+        }, 
+        {
+            "text": "Ok! I was assigned Hayes for Secret Santa, and I might want to do a funny gift. Could you send me his picture please? :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481229930.000005"
+        }, 
+        {
+            "text": "Most of them, but only as email attachments.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1481181787.000004"
+        }, 
+        {
+            "text": "Do you have the original, higher resolution images of the people on <http://8i.com/about|8i.com/about> ?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481180435.000003"
+        }, 
+        {
+            "text": "Hey Mudge! You there?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1481180103.000002"
+        }, 
+        {
+            "text": "yea, and peeps might want to work a little more... I'll wait for next week :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1479173636.000008"
+        }, 
+        {
+            "text": "it has been pretty crazy this week, I know I haven\u2019t had a very normal sleep pattern so far", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479173610.000007"
+        }, 
+        {
+            "text": "I\u2019m alright if we put it off a week", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479173568.000006"
+        }, 
+        {
+            "text": "oh yea, I had forgotten it was already Wednesday tomorrow", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1479173561.000005"
+        }, 
+        {
+            "text": "hey man, think I should call for boardgame night tomorrow, or people might want to sort things out after the earthquake?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1479173518.000004"
+        }, 
+        {
+            "text": "oh yea", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1477455983.000003"
+        }, 
+        {
+            "text": "will you order pizza?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1477455975.000002"
+        }, 
+        {
+            "text": "?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472202153.000003"
+        }, 
+        {
+            "text": "Where are you sitting", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1472202150.000002"
+        }, 
+        {
+            "text": "haha, get the exterminator in", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941251.000049"
+        }, 
+        {
+            "text": "Should we tell Collette? Might be an infestation...", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467941239.000048"
+        }, 
+        {
+            "text": "wonder if they were travelling together", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941234.000047"
+        }, 
+        {
+            "text": "yup", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941222.000046"
+        }, 
+        {
+            "text": "In the office?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467941218.000045"
+        }, 
+        {
+            "text": "Probably, he was quite hostile, like I bothered him...", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467941203.000044"
+        }, 
+        {
+            "text": "I actually just found a Nidoran female before", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941202.000043"
+        }, 
+        {
+            "text": ":stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941179.000042"
+        }, 
+        {
+            "text": "was it occupied?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941174.000041"
+        }, 
+        {
+            "text": "Ha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467941166.000040"
+        }, 
+        {
+            "text": "There was a Nidoran male in front of the toilets xD", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467941154.000039"
+        }, 
+        {
+            "text": "haha", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932391.000038"
+        }, 
+        {
+            "text": "in the \"game\"", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467932374.000037"
+        }, 
+        {
+            "text": "yea but you are still cheating, you shouldn't get the bike that early :stuck_out_tongue:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467932348.000036"
+        }, 
+        {
+            "text": "although there was a bicycle in the original gameboy version", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932324.000035"
+        }, 
+        {
+            "text": "particularly biking for me", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932307.000034"
+        }, 
+        {
+            "text": "I\u2019m not sure", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932294.000033"
+        }, 
+        {
+            "text": "Does it realizes when you are actually not walking, but in a car for example?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467932281.000032"
+        }, 
+        {
+            "text": "and the server is down so it doesn\u2019t even count my commute to work and home", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932230.000031"
+        }, 
+        {
+            "text": "To hatch the egg I need to walk 5km", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932211.000030"
+        }, 
+        {
+            "text": "yea I know the feeling", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467932189.000029"
+        }, 
+        {
+            "text": "The servers are down quite often! Yesterday it was down half way to my home, and all the way this morning. What's the point of going to work if I can't catch pokemons on my way? xD", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467932122.000028"
+        }, 
+        {
+            "text": "11/150", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854636.000027"
+        }, 
+        {
+            "text": "right, so how many /150?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467854502.000026"
+        }, 
+        {
+            "text": "but I think its just first gen", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854488.000025"
+        }, 
+        {
+            "text": "haaaaa okok", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467854481.000024"
+        }, 
+        {
+            "text": "he is super common", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854473.000023"
+        }, 
+        {
+            "text": "because I have dupes of zubat", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854465.000022"
+        }, 
+        {
+            "text": "I think that might be just how many you can hold", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854458.000021"
+        }, 
+        {
+            "text": "or its a big mix?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467854442.000020"
+        }, 
+        {
+            "text": "250, so they went to 2 generations?", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467854434.000019"
+        }, 
+        {
+            "text": ":scream_cat::scream_cat::scream_cat:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467854422.000018"
+        }, 
+        {
+            "text": "25/250 already", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854412.000017"
+        }, 
+        {
+            "text": "Yea, I just caught a few on my lunch", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467854395.000016"
+        }, 
+        {
+            "text": "I already can't wait to go out for a walk xD", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467854106.000015"
+        }, 
+        {
+            "text": "Nice, best starting Pokemon ", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467853027.000014"
+        }, 
+        {
+            "text": "I got in! Got myself a Charmander!!! (Had to change the language on my phone to get the english version)", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467852981.000013"
+        }, 
+        {
+            "text": "cool", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467329529.000012"
+        }, 
+        {
+            "text": "Oh, and it's a BYO, but they charge 5$/bottle (if they can keep track)", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467329511.000011"
+        }, 
+        {
+            "text": "Maybe a chicken Chettinadu or Kadai", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467329023.000010"
+        }, 
+        {
+            "text": "I imagine those will be popular choices, so as long as there is a little of of safety in there I\u2019m happy to try any/all of the others :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467328884.000009"
+        }, 
+        {
+            "text": "noted! but yea, get wild :wink:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467328833.000008"
+        }, 
+        {
+            "text": "Sharing sounds good, I\u2019m not usually very adventurous with my curry selection. I like Korma or Butter Chicken usually.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467328801.000007"
+        }, 
+        {
+            "text": "**Copy-pasted message**\n\nHello!\n\nThe dinner will be at Curry Pot Newtown @ 8pm Tomorrow. In order to make everything faster, and since it is an Indian restaurant, a lot of dishes will be put on the table for people to share! If everybody can write me back one or two dishes among the menu, I'll select and put the order in for that food orgy on Saturday am. (You can also just order your own thing on site if you don't want to share, let me know).\n\nMenu: <https://www.zomato.com/wellington/the-curry-pot-newtown-wellington-city/menu>\n\nThanks!", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467328538.000004", 
+            "edited": {
+                "user": "U0KT826R0", 
+                "ts": "1467328542.000000"
+            }
+        }, 
+        {
+            "text": "Awesome, no problem :wink:", 
+            "type": "message", 
+            "user": "U0KT826R0", 
+            "ts": "1467246189.000003"
+        }, 
+        {
+            "text": "Hey, I will come for dinner on Saturday.\nWon\u2019t go out after that though, I have hockey the next morning, and its too difficult to play hungover :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1467246068.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U0KT826R0", 
+            "U0C90MHEH"
+        ]
+    }
+}

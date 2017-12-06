@@ -1,0 +1,292 @@
+{
+    "messages": [
+        {
+            "text": "cool, heading outside", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1509399018.000109"
+        }, 
+        {
+            "text": "yea let\u2019s do it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1509399010.000165"
+        }, 
+        {
+            "text": "time for a coffee now?", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1509398985.000219"
+        }, 
+        {
+            "text": "Sweet", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508471590.000072"
+        }, 
+        {
+            "text": "I'll grab you at beer o'clock ", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1508471583.000159"
+        }, 
+        {
+            "text": "Haha, nice one", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508471580.000067"
+        }, 
+        {
+            "text": "Sorry, still at lunch.", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1508471570.000017"
+        }, 
+        {
+            "text": "Thanks. Yeah I just have the mobile planning meeting at 2:30-3 so either side of that would work.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1508454237.000255"
+        }, 
+        {
+            "text": "congrats on 2 years.  got time for a coffee this afternoon?", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1508454046.000188"
+        }, 
+        {
+            "text": "You can check login status at <https://8i.com/login>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506459439.000390"
+        }, 
+        {
+            "text": "Are you in the office today?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506459333.000344"
+        }, 
+        {
+            "text": "That sounds like you are not logged in (or logged in with a non <http://8i.com|8i.com> user)", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506459314.000246"
+        }, 
+        {
+            "text": "there is no content to play with", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1506459267.000412"
+        }, 
+        {
+            "text": "<https://8i.com/d/> should work if you login with an <http://8i.com|8i.com> email", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1506459243.000191", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "https://8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "https://8i.com/static/favicon.ico", 
+                    "from_url": "https://8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Do we have a link to a working web director anywhere?", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1506459131.000505"
+        }, 
+        {
+            "text": "It's fantastic!", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1489125056.583425"
+        }, 
+        {
+            "text": "Yea I was pretty happy when that worked out as good as I was hoping it would", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489125025.580551"
+        }, 
+        {
+            "text": "oh thanks", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1489124997.578590"
+        }, 
+        {
+            "text": "Nice work on the sigmoid color correct! Bad ass.", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1489124978.577421"
+        }, 
+        {
+            "text": "I wasn\u2019t sure how to name them all though, so just used the T0* numbers :slightly_smiling_face:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468278871.000011"
+        }, 
+        {
+            "text": "They are up now", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468278836.000010"
+        }, 
+        {
+            "text": "cool, uploading them now.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468277618.000009"
+        }, 
+        {
+            "text": "done", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1468277257.000008"
+        }, 
+        {
+            "text": "actually, don't do T08, I'll split that up into 3 short ones", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1468276891.000007"
+        }, 
+        {
+            "text": "thx for that.  could I please also get the other 4 hvrs in the same dir:\n\\\\pandora\\storage\\shows\\atrax\\VIVEHEADSET\\HVR\\", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1468276711.000006"
+        }, 
+        {
+            "text": "Alright its in there now, <http://8i.com/d/>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468204594.000004", 
+            "attachments": [
+                {
+                    "title": "Web Director", 
+                    "service_name": "8i", 
+                    "title_link": "http://8i.com/d/", 
+                    "text": "- Experience in touchable 3D video on 8i.", 
+                    "id": 1, 
+                    "fallback": "8i: Web Director", 
+                    "service_icon": "http://8i.com/static/favicon.ico", 
+                    "from_url": "http://8i.com/d/"
+                }
+            ]
+        }, 
+        {
+            "text": "Sure, let me put it up on the site", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1468204047.000003"
+        }, 
+        {
+            "text": "can I test this with director?\n\\\\pandora\\storage\\shows\\atrax\\VIVEHEADSET\\HVR\\VIVEHEADSET_S01_T03_v01_600_15_100_100.hvrs", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1468204029.000002"
+        }, 
+        {
+            "text": "e.g <http://mudge.dev.8i.com/test_df/BAND_210_auto_v01/BAND_2015_auto_v01_400_15_75_85.hvrs>", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457487918.000006"
+        }, 
+        {
+            "text": "/test_df/&lt;clouds path&gt;", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457487906.000005"
+        }, 
+        {
+            "text": "yea one sec I\u2019ll get it", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457487816.000004"
+        }, 
+        {
+            "text": "is there still a link i can point at a .hvrs file on <http://clouds.8i.com|clouds.8i.com> to test player2?", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1457487792.000003"
+        }, 
+        {
+            "text": "Can you try these steps?\nOpen Safari's Preferences by selecting 'Safari, Preferences' from the menu.\nClick the 'Advanced' tab.\nPlace a check mark next to 'Show Develop menu in menu bar.'", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1457307851.000002"
+        }, 
+        {
+            "text": "If you are available then.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1447371109.000004"
+        }, 
+        {
+            "text": "I moved the meeting to 1pm, which pan said worked for him.", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1447371097.000003"
+        }, 
+        {
+            "text": "Have you heard from Pan yet?", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1447369344.000002"
+        }, 
+        {
+            "text": "no worries!", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1445924990.000008"
+        }, 
+        {
+            "text": "thanks, I\u2019ll try not to do that again :wink:", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1445924850.000007"
+        }, 
+        {
+            "text": "i'll call it in.  don't worry.", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1445924833.000006"
+        }, 
+        {
+            "text": "do I need to do anything?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1445924817.000005"
+        }, 
+        {
+            "text": "thanks, I stopped it now but it did go off", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1445924807.000004"
+        }, 
+        {
+            "text": "1312", 
+            "type": "message", 
+            "user": "U03DG12H5", 
+            "ts": "1445924793.000003"
+        }, 
+        {
+            "text": "hey whats the alarm at the office?", 
+            "type": "message", 
+            "user": "U0C90MHEH", 
+            "ts": "1445924701.000002"
+        }
+    ], 
+    "channel_info": {
+        "members": [
+            "U03DG12H5", 
+            "U0C90MHEH"
+        ]
+    }
+}

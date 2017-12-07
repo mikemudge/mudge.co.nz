@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db:
+    image: mdillon/postgis:9.5
+    volumes:
+      - ./.local_postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    ports:
+      - 5000:5000
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - APP_SETTINGS=settings.dev
+      - ENVIRONMENT=dev
+    command: /app/docker/run_dev.sh

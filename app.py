@@ -15,6 +15,7 @@ from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
 from project_manager.routes import routes as project_routes
 from rock1500.routes import routes as rock_routes
+from slack_history.routes import routes as slack_routes
 from tournament_app.routes import routes as tournament_routes
 from trail.routes import routes as trail_routes
 from shared.exceptions import sentry
@@ -46,6 +47,7 @@ def create_app(config=None):
     auth_routes(app)
     project_routes(app)
     rock_routes(app)
+    slack_routes(app)
     trail_routes(app)
     tournament_routes(app)
     # mudge_admin_routes(app)

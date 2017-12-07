@@ -66,6 +66,9 @@ target/
 # sqlite DB files
 *.db
 
+# local docker postgres files.
+.local_postgres/
+
 # Https stuff
 key.key
 key.crt

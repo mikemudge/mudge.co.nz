@@ -7,7 +7,7 @@ FAVICON = 'favicon.png'
 SENTRY_DSN = None
 
 # Configuration
-SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconz:xXBE3RcJi1ULfeo3LKENqdBZqmtzLI@localhost/mudgeconz'
+SQLALCHEMY_DATABASE_URI = 'postgres://postgres:postgres@db/postgres'
 SQLALCHEMY_BINDS = {
     # Used for trails.
     'old_sqlite': 'sqlite:///firstproject.db',
@@ -34,5 +34,6 @@ RESTRICT_FLASK_ADMIN = [
     '118.93.240.57',  # My Flat
     '111.69.37.178',  # 8i Office.
     '121.75.113.25',  # Hugh and Adelle's
+    '172.23.0.1',  # for docker
     '127.0.0.1',
 ]

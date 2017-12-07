@@ -1,8 +1,7 @@
-import json
 import os
 
 from flask import Blueprint
-from flask import request, send_from_directory, url_for
+from flask import send_from_directory, url_for
 from flask import abort, current_app
 from shared.helpers.angular import Angular
 
@@ -30,10 +29,6 @@ def main_page():
 @main_bp.route('/error')
 def error_test():
     abort(500, 'Error message here')
-
-@main_bp.route('/slack_history/<name>.json')
-def slack_history(name):
-    return send_from_directory('slack_history/direct_messages', name + '.json')
 
 @main_bp.route('/jack')
 def jack():

@@ -12,11 +12,9 @@ def create_user(email, password=None):
     if not user:
         print "Create new user"
         user = User.create(email=email, password=password)
-        db.session.add(user)
     else:
         print "Already exists, will update password"
-
-    user.set_password(password)
+        user.set_password(password)
 
     # Make sure the user is usable.
     user.is_active = True

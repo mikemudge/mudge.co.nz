@@ -11,6 +11,6 @@ def load_user(user_id):
         'mike.mudge.test@gmail.com'
     ]
 
-    if user.email in emails:
+    if user and user.email in emails:
         return user
     return None

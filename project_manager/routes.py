@@ -52,6 +52,8 @@ def get_project(name):
     print(project)
 
     app = Angular(name)
+    app.base = '/projects/%s/' % name
+
     app.styles = [
         # Login + login templates.
         '%slogin/app.css' % brunchServer,
@@ -73,6 +75,10 @@ def get_project(name):
     ]
 
     # Handle project
+    for f in project.css_files:
+        app.styles.append(f.name)
+    for f in project.js_files:
+        app.scripts.append(f.name)
 
     return app.render()
 

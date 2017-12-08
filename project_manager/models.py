@@ -20,3 +20,15 @@ class FileUrl(BaseModel):
         backref=db.backref("css_files", lazy="dynamic"))
 
     name = db.Column(db.String)
+
+    @classmethod
+    def get(cls, name):
+        file = FileUrl.query.filter_by(name=name).first()
+        if not file:
+            file = FileUrl(name=name)
+            db.session.add(file)
+
+        return file
+
+    def __repr__(self):
+        return self.name

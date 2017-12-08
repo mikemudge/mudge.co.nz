@@ -1,5 +1,6 @@
 from flask import current_app
 from flask import render_template, url_for
+from flask import request
 
 class Angular():
 
@@ -24,6 +25,7 @@ class Angular():
             'CLIENT_ID': current_app.config.get('CLIENT_ID'),
             'CLIENT_SECRET': current_app.config.get('CLIENT_SECRET'),
         }
+        self.config['LOGIN_URL'] = request.url_root
         self.favicon = url_for('static', filename='favicon-dev.png')
         if not self.favicon:
             self.favicon = url_for('static', filename='favicon.ico')

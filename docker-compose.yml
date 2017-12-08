@@ -14,6 +14,7 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - .:/app
+      - ../Website/public:/app/public
     depends_on:
       - db
     ports:

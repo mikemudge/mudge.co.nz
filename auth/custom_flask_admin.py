@@ -98,7 +98,6 @@ class CustomAdminIndexView(AdminIndexView):
         if not user or user.email not in emails:
             raise AuthenticationException('INSUFFICIENT_ACCESS')
 
-        print user.is_active
         # If a user isn't active this will not work.
         login_user(user)
 

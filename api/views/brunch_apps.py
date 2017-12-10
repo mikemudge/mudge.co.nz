@@ -2,9 +2,6 @@ from flask import request, url_for
 from flask import current_app
 from flask.views import MethodView
 from shared.helpers.angular import Angular
-from sqlalchemy import func
-
-from project_manager.models import Project
 
 # Brunch endpoints.
 class BrunchAppsListView(MethodView):
@@ -35,12 +32,6 @@ class BrunchAppView(MethodView):
 
         brunchServer = current_app.config.get('STATIC_URL')
 
-        # Try and find a project for this app?
-        project = Project.query.filter(
-            func.lower(Project.name) == app_name
-        ).first()
-
-        print(project)
         # TODO should include js and css files for this project???
         # Maybe add the other things as well?
 

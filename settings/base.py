@@ -35,5 +35,6 @@ RESTRICT_FLASK_ADMIN = [
     '111.69.37.178',  # 8i Office.
     '121.75.113.25',  # Hugh and Adelle's
     '172.23.0.1',  # for docker
+    '172.18.0.1',  # for docker
     '127.0.0.1',
 ]

@@ -34,6 +34,7 @@ def get_projects():
         '%sjs/api-templates.js' % brunchServer,
     ]
     app.styles = [
+        '%slogin/app.css' % brunchServer,
         '%sprojects/app.css' % (brunchServer),
     ]
 

@@ -37,13 +37,20 @@ def import_projects(path):
 
         # CSS too
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css",
+
+        # Material JS + CSS
+        "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css",
     ]
+
+    # TODO does it make sense to have different files for JS and CSS?
     for path in files:
         FileUrl.get(path)
 
-    projects['rock'].css_files = [
-        FileUrl.get('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css')
-    ]
+    if 'rock' in projects:
+        projects['rock'].css_files = [
+            FileUrl.get('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css')
+        ]
 
     # Important that three.js is first.
     # TODO need to be able to set and order on these.

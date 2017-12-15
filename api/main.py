@@ -30,6 +30,17 @@ def main_page():
 def error_test():
     abort(500, 'Error message here')
 
+
+@main_bp.route('/web-director')
+def web_director():
+    app = Angular('director')
+    app.require = 'director'
+
+    app.addLoginApi()
+    app.addProject('director')
+
+    return app.render()
+
 @main_bp.route('/jack')
 def jack():
 

@@ -81,6 +81,13 @@ def get_project(name):
     for f in project.js_files:
         app.scripts.append(f.name)
 
+    if name in ['8i']:
+        app.require = 'websites/8i/8i'
+        app.scripts += [
+            '%sjs/eighti/eighti.min.js' % brunchServer,
+            '%sjs/eighti/eighti.lib.js' % brunchServer,
+        ]
+
     return app.render()
 
 def routes(app):

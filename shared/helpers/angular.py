@@ -48,6 +48,33 @@ class Angular():
             # TODO support embedded templates?
         })
 
+    def addLoginApi(self):
+        brunchServer = current_app.config.get('STATIC_URL')
+
+        self.scripts += [
+            # Add login and api js.
+            '%slogin/app.js' % brunchServer,
+            '%slogin/templates.js' % brunchServer,
+            '%sjs/api.js' % brunchServer,
+            '%sjs/api-templates.js' % brunchServer,
+        ]
+
+        self.styles = [
+            '%slogin/app.css' % brunchServer,
+        ]
+
+    def addProject(self, name):
+
+        brunchServer = current_app.config.get('STATIC_URL')
+
+        self.scripts += [
+            '%s%s/app.js' % (brunchServer, name),
+            '%s%s/templates.js' % (brunchServer, name),
+        ]
+        self.styles = [
+            '%s/app.css' % (brunchServer, name),
+        ]
+
     @classmethod
     def basicAngular(cls, appName):
         app = Angular(appName)

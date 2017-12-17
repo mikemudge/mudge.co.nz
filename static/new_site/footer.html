@@ -1,0 +1,37 @@
+<div class="footer" ng-controller="FooterController as footer">
+  <div class="container">
+    <div class="navbar">
+      <!-- TODO update links to real pages? -->
+      <a class="nav-item" ng-click="footer.click('about')" href="/about">About</a>
+      <a class="nav-item" ng-click="footer.socialClick('Blog', 'https://medium.com/@8iReality')" href="https://medium.com/@8iReality">Blog</a>
+      <a class="nav-item" ng-click="footer.click('contact')" href="/about#contact">Contact Us</a>
+    </div>
+    <div class="bottom">
+      <div class="social" ng-controller="SocialController as social">
+        <a class="nav-item" ng-click="social.click('facebook', 'https://www.facebook.com/8iReality')">
+          <img src='/static/img/new_site/social/facebook.png' />
+        </a>
+        <a class="nav-item" ng-click="social.click('twitter', 'https://twitter.com/8ireality')">
+          <img src='/static/img/new_site/social/twitter.png' />
+        </a>
+        <a class="nav-item" ng-click="social.click('instagram', 'https://www.instagram.com/8ireality')">
+          <img src='/static/img/new_site/social/insta.png' />
+        </a>
+        <a class="nav-item" ng-click="social.click('youtube', 'https://www.youtube.com/channel/UCwJLcfJreyhTdQaBCzBNA_Q')">
+          <img src='/static/img/new_site/social/youtube.png' />
+        </a>
+        <a class="nav-item" ng-click="social.click('medium', 'https://medium.com/@8iReality')">
+          <img src='/static/img/new_site/social/medium.png' />
+        </a>
+      </div>
+      <div class="copyright">
+        Copyright &copy;2016 8i. All rights reserved.
+        <div class="lawyer">
+          <a ng-click="footer.click('terms')" href="/terms">Terms</a>
+          |
+          <a ng-click="footer.click('privacy')" href="/privacy">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

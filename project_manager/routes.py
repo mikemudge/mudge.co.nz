@@ -40,7 +40,7 @@ def get_projects():
 
     return app.render()
 
-@projects_bp.route('/<name>')
+@projects_bp.route('/<name>/')
 def get_project(name):
     brunchServer = current_app.config.get('STATIC_URL')
 

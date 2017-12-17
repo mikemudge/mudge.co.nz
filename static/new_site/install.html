@@ -1,0 +1,166 @@
+<div class="install-wrap">
+  <header class="white-page" ng-include="'/static/new_site/header.html'"></header>
+
+  <div ng-app="install" class="page install" ng-controller="InstallController as ctrl">
+    <div class="fold">
+      <div class="main-title">
+        Install 8i Portal
+      </div>
+      <p class="subheading">
+        Experience true 3D volumetric video of real people in virtual reality.
+      </p>
+      <div class="buttons">
+        <div class="button-wrapper">
+          <a class="btn btn-lg"
+              target="_blank"
+              href="http://store.steampowered.com/about/"
+              onclick="ga('send','event','download','/downloads/browser/GetSteam')">
+            1. GET STEAM
+          </a>
+          <p class="small">
+            FOR
+            <span class="stronger">HTC VIVE</span>
+            AND
+            <span class="stronger">OCULUS DK2</span>
+          </p>
+          <p>
+            <span ng-click="ctrl.showLightbox(1)" class="instruction-lightbox">
+              Why you need Steam
+            </span>
+          </p>
+        </div>
+        <div class="arrow separator">
+          <img width="34" height="30" src="/static/img/arrow.png" />
+        </div>
+        <div class="button-wrapper">
+          <a class="btn btn-lg"
+              href="https://s3.amazonaws.com/public.8i.com/downloads/portal/8i%20Portal%20Setup.exe?v=1"
+              onclick="ga('send','event','download','/downloads/portal/8i+Portal+Setup.exe')">
+            2. DOWNLOAD 8i PORTAL
+          </a>
+          <p class="small">
+            FOR
+            <span class="stronger">WINDOWS-ONLY</span>
+          </p>
+          <p>
+            <span ng-click="ctrl.showLightbox(2)" class="instruction-lightbox">
+              System Requirements</span>
+            &nbsp
+            <span ng-click="ctrl.showLightbox(3)" class="instruction-lightbox">
+              Release Notes
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <div class="screenshot-wrapper">
+          <img class="screenshot" src="/static/img/install-portal-screenshot.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <div ng-cloak ng-hide="!ctrl.lightbox" class="overlay"></div>
+    <div ng-cloak ng-hide="!ctrl.lightbox" class="lightbox">
+      <div ng-click="ctrl.hideLightbox()" class="exit">
+        <img width="15" height="15" src="/static/img/close.png" />
+      </div>
+      <div class="inner-lightbox">
+        <div ng-show="ctrl.lightbox == 1">
+          <div class="main-instruction">
+            The 8i Portal requires the use of SteamVR
+          </div>
+          <ol>
+            <li>
+              Install the latest version of Steam on your computer
+            </li>
+            <li>
+              Open Steam and select Library > Tools > Steam VR
+            </li>
+            <li>
+              Right click on SteamVR and select Install Game
+            </li>
+            <li>
+              Set up your VR headset and at least 1 controller
+            </li>
+            <li>
+              Launch SteamVR
+            </li>
+            <li>
+              Right click VR Monitor window > Run Room Setup
+            </li>
+            <li>
+              Follow on-screen instructions
+            </li>
+          </ol>
+          <div class="moreinfo">
+            For more information please visit<br>
+            <a class="longlink" href="http://steamcommunity.com/app/250820">http://steamcommunity.com/app/250820</a>
+          </div>
+        </div>
+        <div ng-show="ctrl.lightbox == 2">
+          <div class="title">
+            Recommended System Requirements
+          </div>
+          <div class="detail">
+            <span class="key">OS:</span>
+            <span class="value">Windows 7 or later</span>
+          </div>
+          <div class="detail">
+            <span class="key">Graphics:</span>
+            <span class="value">NVIDIA GTX 970 / AMD 290 equivalent or greater</span>
+          </div>
+          <div class="detail">
+            <span class="key">Processor:</span>
+            <span class="value">Intel i5-4590 equivalent or greater</span>
+          </div>
+          <div class="detail">
+            <span class="key">Storage:</span>
+            <span class="value">8GB+ RAM</span>
+          </div>
+          <div class="detail">
+            <span class="key">Program installed:</span>
+            <span class="value">SteamVR</span>
+          </div>
+        </div>
+        <div ng-show="ctrl.lightbox == 3">
+          <div class="title">
+            8i Portal Release Notes
+          </div>
+          <div class="detail">
+            <span class="key">Release date:</span>
+            <span class="value">23rd December 2015</span>
+          </div>
+          <div class="detail">
+            <span class="key">Version:</span>
+            <span class="value">2.0</span>
+          </div>
+          <div class="detail">
+            <span class="key">Filesize:</span>
+            <span class="value">26.4MB</span>
+          </div>
+          <div class="detail">
+            <span class="key">Platform:</span>
+            <span class="value">Windows</span>
+          </div>
+
+          <div class="title">
+            Changes
+          </div>
+          <ul>
+            <li class="detail">
+              New application design
+            </li>
+            <li class="detail">
+              Name change from Browser to Portal.
+            </li>
+            <li class="detail">
+              Added support for SteamVR
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /.install-8i -->
+
+  <footer ng-include="'/static/new_site/footer.html'"></footer>
+</div>

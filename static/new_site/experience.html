@@ -1,0 +1,74 @@
+<header ng-include="'/static/new_site/header.html'"></header>
+
+<div class="experience-page" ng-controller="ExperienceController as experienceCtrl">
+  <div class="main">
+    <img ng-if="!mobile" src="/static/img/new_site/exp_main.jpg">
+    <img ng-if="mobile" src="/static/img/new_site/exp_main_mobile.jpg">
+    <div class="text">
+      <div class="icons">
+        <img src="/static/img/new_site/exp_screen-icon.png" />
+        <img src="/static/img/new_site/exp_cardboard-icon.png" />
+        <img src="/static/img/new_site/exp_headset-icon.svg" />
+      </div>
+      <h2>Experience Volumetric Video</h2>
+      <p>View on virtual reality headset, mobile and on the web</p>
+    </div>
+  </div>
+  <div class="portal section">
+    <img class="mom" src="/static/img/new_site/exp_mom_baby.png">
+    <div class="text">
+      <h3>Volumetric VR player</h3>
+      <p>Download the 8i Virtual Reality Player for the most immersive experience</p>
+      <div class="logos">
+        <img src="/static/img/new_site/exp_oculus@2x.png">
+        <img src="/static/img/new_site/exp_vive@2x.png">
+      </div>
+      <div class="button pink" ng-click="goto('/install')">
+        GET IT NOW
+      </div>
+    </div>
+  </div>
+  <div class="cardboard section">
+    <img class="device" src='/static/img/new_site/exp_cardboard.png' />
+    <div ng-if="!ctrl.app_store_link">
+      <img class="coming_soon" src="/static/img/new_site/coming_soon.png" />
+    </div>
+    <div class="text overlay">
+      <h3>Google Cardboard App</h3>
+      <p>View fully volumetric VR recordings on mobile</p>
+      <div ng-if="ctrl.app_store_link" class="app_store">
+        <a href="{{ ctrl.app_store_link }}">
+          <img width="157px" height="89px" src="/static/img/new_site/App_Store.svg" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="experiences container section">
+    <div class="text overlay">
+      <h3>Preview on web or mobile</h3>
+      <p>Play interactive volumetric video on any device</p>
+    </div>
+    <div class="frames">
+      <div class="frame" ng-repeat="scene in experienceCtrl.scenes">
+        <div class="experience">
+          <a target="_self" href='/scene/{{ scene.id }}'>
+            <img class="image" ng-src="{{ scene.thumbnailStatic }}" />
+            <div class="info">
+              <p class="title">{{ scene.name }}</p>
+              <div class="icons">
+                <img src="/static/img/new_site/exp_cardboard-icon.png" }} />
+                <img src="/static/img/new_site/exp_screen-icon.png" }} />
+              </div>
+              <div style="clear: both;"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="view_more link pink" ng-click="experienceCtrl.showMore()">
+        VIEW MORE
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer ng-include="'/static/new_site/footer.html'"></footer>

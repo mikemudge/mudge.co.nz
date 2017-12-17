@@ -1,0 +1,19 @@
+<div class="header" ng-controller="HeaderController as header"
+    ng-class="{scrolled: scrollPos > 0}">
+  <div class="container">
+    <a class="logo" ng-click="header.click('logo')" href=".">
+      <img src='/static/img/new_site/logo.png' />
+    </a>
+    <div class="hamburger" ng-click="open = !open">
+      <div class="pattie"></div>
+      <div class="pattie"></div>
+      <div class="pattie"></div>
+    </div>
+    <div class="navbar" ng-class="{open: open}">
+      <a class="nav-item" ng-click="header.click('holo')" href="holo">HOLO</a>
+      <a class="nav-item" ng-click="header.click('create')" href="create">CREATE</a>
+      <a class="nav-item" ng-click="header.click('jobs')" href="jobs">CAREERS</a>
+      <a class="nav-item" ng-click="header.click('about')" href="about">ABOUT</a>
+    </div>
+  </div>
+</div>

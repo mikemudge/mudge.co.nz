@@ -1,0 +1,8 @@
+<div class="player" ng-controller="PlayerController as playCtrl">
+
+  <div style="position: absolute; color: white;">
+    {{ playCtrl.playerService.progress }}
+  </div>
+  <img ng-show="!playCtrl.playerService.progress" id="loading" src="/static/img/new_site/loader@2x.png" />
+</div>
+

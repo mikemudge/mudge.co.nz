@@ -1,0 +1,78 @@
+<header ng-include="'/static/new_site/header.html'"></header>
+<div class="holoPage" ng-controller="HoloController as ctrl">
+  <div class="background">
+    <div ng-if="backgroundVideo">
+      <video class="video" autoplay loop>
+        <source ng-src="{{ backgroundVideoSrc | trusted }}" type="video/mp4">
+        Video not supported
+      </video>
+    </div>
+
+    <div ng-if="!backgroundVideo">
+      <!-- TODO transitioning png's -->
+      <img class="backImage" src="/static/img/new_site/holo/holo_bg3.jpg" />
+    </div>
+  </div>
+
+  <div class="hero">
+    <!-- Overlay logo + text -->
+    <div class="heroInfo">
+      <div class="logo">
+        <img src="/static/img/new_site/holo/holo_h.svg" />
+      </div>
+      <div class="holoText">
+        Mix your world with holograms
+      </div>
+      <span>
+        <a href="https://thisisholo.com">
+          <div class="play-button button">
+            Get it Now
+          </div>
+        </a>
+      </span>
+      <div class="play-button button" ng-click="ctrl.playVideoFullscreen()">
+        Play Video
+      </div>
+    </div>
+
+    <!-- Overlay bottom section of the hero part -->
+    <div class="bottomSection">
+      <div class="app_links">
+        <div class="apple_link">
+          <a onclick="trackOutboundLink(this.href)" href="https://itunes.apple.com/app/id1194175772">
+            <img src="/static/img/new_site/holo/app_store.svg" />
+          </a>
+        </div>
+        <div class="google_link">
+          <a onclick="trackOutboundLink(this.href)" href='https://play.google.com/store/apps/details?id=com.eighti.holo.android'>
+            <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+          </a>
+        </div>
+      </div>
+      <div class="bottomBar" ng-show="backgroundVideo">
+        <div class="create">
+          Have an idea for Holo?
+        </div>
+        <a ng-click="ctrl.trackGA('partners')" href="create" class="button partnerButton">
+          Let's be partners
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile" ng-show="!backgroundVideo">
+    <div class="bottomBar">
+      <div class="create">
+        Have an idea for Holo?
+      </div>
+      <a ng-click="ctrl.trackGA('partners')" href="create" class="button partnerButton">
+        Let's be partners
+      </a>
+    </div>
+  </div>
+  <video class="fullVideo" id="mainVideo">
+    <!-- TODO change source. -->
+    <source ng-src="{{ mainVideoSrc | trusted }}" type="video/mp4">
+  </video>
+</div>
+
+<footer class="light" ng-include="'/static/new_site/footer.html'"></footer>

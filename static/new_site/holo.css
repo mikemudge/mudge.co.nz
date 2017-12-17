@@ -1,0 +1,284 @@
+
+/* Background video */
+.holoPage {
+  width: 100%;
+  overflow: hidden;
+
+  font-family: Roboto-Regular, Roboto, Arial, sans-serif;
+  color: #FFFFFF;
+}
+
+.holoPage .hero {
+  min-height: 650px;
+  overflow: hidden;
+  position: relative;  height: 100%;
+  width: 100%;
+}
+
+.holoPage .backImage {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 100%;
+}
+
+.holoPage .background {
+  height: 100%;
+  background-color: rgba(51, 51, 51, 1);
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}
+
+.holoPage .background-cover {
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  height: 100%;
+}
+
+/* Hero section */
+.heroInfo {
+  margin: 200px 16px 100px;
+  text-align: center;
+}
+
+.holoPage .heroInfo .logo img {
+  width: 88px;
+}
+
+.holoPage .holoText {
+  font-size: 26px;
+  margin: 16px 0;
+}
+
+
+.holoPage .play-button {
+  text-transform: uppercase;
+  margin: 0 8px;
+}
+
+.holoPage .betaSignup {
+  max-width: 390px;
+  margin: 16px auto;
+  font-size: 14px;
+  font-weight: 100;
+  font-family: Roboto-Regular, sans-serif;
+}
+
+/* Promo image for holo/beta */
+.holoPage .promo {
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+.holoPage .promo_bg {
+  position: absolute;
+  background: white;
+  top: 50%;
+  bottom: 0px;
+  width: 100%;
+  z-index: -1;
+}
+
+.holoPage .promo img {
+  max-width: 100%;
+}
+
+.holoPage .section {
+  background-color: white;
+  color: #9b9b9b;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 50px;
+}
+.holoPage .section h2 {
+  color: #00b9f3;
+  font-size: 34px;
+  margin-top: 28px;
+  margin-bottom: 20px;
+}
+.holoPage .betaInfo {
+  margin: 24px auto;
+  width: 600px;
+  max-width: 80%;
+}
+
+.holoPage .second_button {
+  display: inline-block;
+  text-transform: uppercase;
+  border-color: #9b9b9b;
+}
+.holoPage .second_button:hover {
+  /* #9b9b9b; */
+  background-color: rgba(155, 155, 155, 0.2)
+}
+
+.logos-section {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 40px;
+}
+.logos-section .logo {
+  width: 210px;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+.logos-section .logo:hover {
+  opacity: .8;
+}
+
+.signup-section {
+  background-color: #484848;
+  display: inline-block;
+  padding: 50px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.holoPage .bottomSection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.holoPage .app_links {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.holoPage .google_link,
+.holoPage .apple_link {
+  display: inline-block;
+  vertical-align: middle;
+  height: 80px;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.holoPage .apple_link img {
+  /* Add padding to match the google play image. */
+  height: 53px;
+  padding: 14px;
+}
+
+.holoPage .google_link:hover,
+.holoPage .apple_link:hover {
+  opacity: 0.7;
+}
+
+.holoPage .app_links img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.holoPage .regionContent {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.holoPage .googleApp {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.holoPage .bottomBar {
+  background-color: #263238;
+  opacity: 0.9;
+
+  display: inline-block;
+  padding: 32px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.holoPage .create {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 30px;
+  line-height: 36px;
+  margin: 20px 50px;
+}
+
+.holoPage .partnerButton {
+  border-color: #2286dd;
+  vertical-align: middle;
+  color: #2286dd;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.holoPage .partnerButton:hover {
+  background-color: rgba(34, 134, 221, 0.2)
+}
+
+.holoPage .fullVideo {
+  /* Firefox doesn't support display:none for this.
+     Instead use an off page position to hide it.
+  */
+  position: absolute;
+  top: -100%;
+
+  width: 100%;
+  height: 100%;
+}
+/* Generic Google App layout */
+.googleApp img {
+  border-right: 2px solid #FFFFFF;
+  display: inline-block;
+  height: 41px;
+  margin: 8px;
+  padding: 0px 20px;
+  vertical-align: middle;
+}
+
+/* video full screen. */
+.googleApp .tango {
+  text-align: left;
+  display: inline-block;
+  font-size: 18px;
+  padding: 0px 10px;
+  line-height: 1.2;
+  vertical-align: middle;
+  max-width: 200px;
+}
+
+/* Mobile site changes */
+@media (max-width: 600px) {
+  .holoPage .hero .heroInfo .logo img {
+    width: 88px;
+  }
+  .holoPage .holoText {
+    font-size: 22px;
+  }
+
+  .googleApp img {
+    border: 0;
+    padding: 0;
+  }
+  .googleApp .tango {
+    max-width: initial;
+    text-align: center;
+    font-size: 16px;
+  }
+  .bottomSection .create {
+    font-size: 24px;
+  }
+}
+
+/* hacks to remove download button on chrome default video controls. */
+video::-internal-media-controls-download-button {
+    display:none;
+}
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); /* Adjust as needed */
+}

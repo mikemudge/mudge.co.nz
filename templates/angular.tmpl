@@ -16,6 +16,12 @@
     var config = {{ angular.config | tojson }};
     angular.module('config', []).constant('config', config);
   </script>
+  <script>
+    // Fake ga
+    ga = function() {
+      console.log('GA', arguments);
+    };
+  </script>
   {% for style in styles %}
   <link rel="stylesheet" type="text/css" href="{{ style }}" />
   {% endfor %}

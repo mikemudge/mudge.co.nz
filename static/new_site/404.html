@@ -1,0 +1,12 @@
+<header ng-include="'/static/new_site/header.html'"></header>
+
+<!-- Avoid the header, TODO not ideal -->
+<div style="height: 96px;"></div>
+
+<div class="container content" ng-controller="NotFoundController as ctrl">
+  <h1>The page for {{ path }} was not found</h1>
+</div>
+
+<div style="height: 96px;"></div>
+
+<footer ng-include="'/static/new_site/footer.html'"></footer>

@@ -1,0 +1,79 @@
+<header ng-include="'/static/new_site/header.html'"></header>
+
+<div class="create" ng-controller="CreateController as ctrl">
+  <div class="main section">
+    <div class="fade-in show">
+      <img src="/static/img/new_site/create_main.jpg">
+      <div class="gradient-over"></div>
+    </div>
+    <div class="text overlay">
+      <h2>Empowering Creators</h2>
+      <p>
+        We make it simple to connect with your audience on a whole new level
+        through human holograms
+      </p>
+      <a target="_blank" href="mailto:hi@8i.com">
+        <div class="button">
+          GET IN TOUCH
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="record section">
+    <div class="fade-in" ng-class="{'show': ctrl.selected >= 0}">
+      <img src="/static/img/new_site/create_green_room.jpg" />
+      <div class="gradient-over"></div>
+    </div>
+    <div class="text overlay">
+      <h3>Capture human performances</h3>
+      <p>
+        Record video from an array of cameras on our volumetric capture stage
+      </p>
+    </div>
+  </div>
+
+  <div class="transform section">
+    <div class="player" ng-controller="PlayerController as playCtrl">
+      <img ng-show="!playCtrl.playerService.progress" id="loading" src="/static/img/new_site/loader@2x.png" />
+    </div>
+    <div class="text overlay" ng-show="ctrl.selected == 1 || ctrl.smallScreen">
+      <h3>Transform video into a 3D hologram</h3>
+      <p>
+        Seamlessly create a fully volumetric human hologram that looks as real as video
+      </p>
+    </div>
+    <div class="gradient"></div>
+    <div class="part2 text overlay" ng-show="ctrl.selected == 2 || ctrl.smallScreen">
+      <h3>Bring your vision <span style="white-space: nowrap;">to life</span></h3>
+      <p>
+        Easily integrate holograms into your virtual, augmented or mixed reality experience
+        using a simple Unity plugin
+      </p>
+    </div>
+    <div class="move_mouse" ng-show="!ctrl.smallScreen">
+      <img src="/static/img/new_site/move_icon@2x.png" />
+    </div>
+  </div>
+
+  <div class="play-everywhere section">
+    <!-- Show devices etc -->
+    <div class="shrink">
+      <img src="/static/img/new_site/create_view_anywhere.png" />
+    </div>
+    <div class="white">
+      <div class="text">
+        <h3>Play it everywhere</h3>
+        <p>
+          Distribute across devices and platforms in virtual reality, augmented reality and the web
+        </p>
+        <a target="_blank" href="mailto:hi@8i.com">
+          <div class="button pink">
+            CREATE WITH US
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer ng-include="'/static/new_site/footer.html'"></footer>

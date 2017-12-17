@@ -1,0 +1,1560 @@
+.main {
+  height: 750px;
+}
+
+@media (max-width: 600px) {
+  .main {
+    height: initial;
+    overflow: hidden;
+  }
+}
+
+.main .text {
+  color: white;
+  position: absolute;
+  text-align: center;
+  top: 36%;
+  width: 90%;
+  left: 5%;
+}
+
+.text h1,h2,h3,h4 {
+  font-weight: 100;
+  margin: 24px auto;
+}
+
+.text h2 {
+  font-size: 56px;
+}
+
+.text h3 {
+  font-size: 44px;
+  line-height: 54px;
+}
+
+.text h4 {
+  font-size: 24px;
+  line-height: 38px;
+  max-width: 800px;
+}
+
+.text p {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* Text styles for small screens < 600px */
+@media (max-width: 600px) {
+  .overlay.text {
+    min-width: 0%;
+  }
+
+  .text h1,h2,h3,h4 {
+    font-weight: 100;
+    margin: 20px 0;
+  }
+
+  .text h2 {
+    font-size: 34px;
+    line-height: 38px
+  }
+
+  .text h3 {
+    font-size: 34px;
+    line-height: 38px;
+  }
+
+  .text h4 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .text p {
+    font-size: 18px;
+    line-height: 26px;
+/*
+    Made this slightly smaller as it wasn't fitting on mobile screens.
+    font-size: 20px;
+    line-height: 28px;
+*/
+  }
+
+}
+
+/* Carousel styles */
+.carousel {
+  position: relative;
+  height: 100%;
+}
+.carousel img {
+  width: 100%;
+}
+.carousel .item {
+  position: absolute;
+  width: 100%;
+  transition-duration: 1s;
+  opacity: 0;
+}
+.carousel .active {
+  opacity: 1;
+}
+
+/* Index page styles */
+.hero-message {
+  margin: 25% 0 0 10%;
+}
+
+.home {
+  width: 100%;
+  overflow: hidden;
+}
+
+.home .main {
+  height: 100%;
+}
+
+.home .mobile {
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+  position: fixed;
+  top: 0;
+  bottom: -100px;
+}
+
+.home .social {
+  position: absolute;
+  left: 60px;
+  bottom: 24px;
+}
+
+.home .social img {
+  cursor: pointer;
+  width: 43px;
+  margin: 8px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.home .social img:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+@media (max-width: 800px) {
+  .home .social {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .gradient-over {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0px;
+    left: 0;
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)); /* Safari 5.1-6, Chrome 10+ */
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));  /* Opera 12 */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)); /* Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+ */
+  }
+}
+
+.image-swap {
+  position: relative;
+  height: 100%;
+  min-height: 600px;
+}
+
+.home .fade-in {
+  background-color: black;
+  left: 0;
+  position: fixed;
+  pointer-events: none;
+  bottom: -100px;
+  right: 0;
+  opacity: 0;
+  top: 0;
+  -webkit-transition: opacity 1s ease-in-out; /* Safari */
+  transition: opacity 1s ease-in-out;
+}
+.home .fade-in.show {
+  opacity: 1;
+}
+
+.home .fade-in img {
+  pointer-events: none;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.home .record .text {
+  left: 5%;
+  top: 15%;
+  max-width: 630px;
+}
+
+.home .movement .text {
+  left: 5%;
+  top: 15%;
+}
+
+.home .playback .text {
+  top: 15%;
+  left: 5%;
+}
+
+.home .main .text,
+.home .record .text,
+.home .movement .text,
+.home .playback .text {
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .image-swap {
+    /* Need more space with the image and the text. */
+    /* ~ 200%, not using % as mobile changes height when the address bar disappears */
+    height: 1200px
+  }
+  .home.portrait .fade-in img {
+    /* Remove the right edge of the image */
+    right: -100px;
+  }
+  .home .record .text,
+  .home .movement .text,
+  .home .playback .text {
+    width: 90%;
+    min-width: 0%;
+    left: 0%;
+    padding: 20px 5% 20px 5%;
+/*    background: rgba(38, 38, 48, 0.9); */
+    top: 35%;
+  }
+}
+
+.home .dots {
+  height: 100px;
+  margin-top: -50px;
+  position: fixed;
+  right: 50px;
+  top: 50%;
+  width: 20px;
+}
+
+.home .dots img {
+  padding: 5px;
+  width: 10px;
+  height: 10px;
+}
+.home .dots img.inactive {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+@media (max-width: 600px) {
+  .home .dots {
+    display: none;
+  }
+}
+
+.last-section {
+  background-color: white;
+  position: relative;
+}
+
+.quotes {
+  position: relative;
+  padding-top: 30px;
+}
+
+.quotes .text {
+  text-align: center;
+}
+
+.quotes .slider {
+  height: 300px;
+  min-width: 400px;
+  max-width: 990px;
+  width: 100%;
+  padding: 20px 0;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.quotes .left,
+.quotes .right {
+  float: left;
+  background-color: #FFF;
+  position: absolute;
+  height: 100%;
+  padding: 0 20px;
+  top: 0;
+  vertical-align: middle;
+  width: 40px;
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
+}
+.quotes .left {
+  left: 0;
+}
+.quotes .right {
+  right: 0;
+}
+.quotes .arrow {
+  position: absolute;
+  top: 140px;
+}
+.quotes .right svg{
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.quotes .st0 {
+  opacity:0.3;
+  fill:#666666;
+}
+.quotes .arrow:hover .st0 {
+  opacity: 0.5
+}
+
+/* Show 3 quotes at a time. */
+.quotes .inner {
+  /* 3 * 290px */
+  width: 870px;
+  height: 300px;
+  padding: 0 60px;
+}
+
+.quotes .quote {
+  float: left;
+  font-size: 20px;
+  line-height: 28px;
+  padding: 20px;
+  text-align: center;
+  width: 250px;
+  height: 300px;
+}
+
+.quotes .quote p {
+  margin: 40px 0 20px;
+}
+
+.quotes .quotee {
+  width: 200px;
+  margin: 0 25px;
+  height: 60px;
+}
+.quotes .quotee img {
+  max-width: 200px;
+  max-height: 60px;
+}
+
+@media (max-width: 1005px) {
+  /* Show 2 quotes at a time. */
+  .quotes .slider {
+    /* 290 * 2 + 60 * 2 padding */
+    width: 700px;
+  }
+}
+@media (max-width: 715px) {
+  /* Show only one quote at a time. */
+  .quotes .slider {
+    /* 290 + 60 * 2 padding */
+    width: 410px;
+  }
+}
+
+@media (max-width: 425px) {
+  /* Show only one (reduced) quote at a time. */
+  .quotes .quote {
+    padding: 0;
+    width: 240px;
+  }
+  .quotes .slider {
+    min-width: 0;
+    width: 320px;
+  }
+  .quotes .inner {
+    padding: 0 40px;
+  }
+  .quotes .left,
+  .quotes .right {
+    width: 20px;
+    padding: 0 10px;
+  }
+  .quotes .arrow svg {
+    width: 20px;
+  }
+}
+
+.agree {
+  line-height: 1.5;
+}
+
+.contact {
+  border-top: 1px solid #CCC;
+  padding: 40px 10%;
+  /* Prevent shrinking and wrapping of the button and inputs */
+  min-width: 588px;
+}
+
+.contact .form {
+  margin: 0 auto;
+  max-width: 750px;
+  width: 100%;
+  text-align: center;
+}
+
+.contact .name,
+.contact .email {
+  border: 2px solid #AAA;
+  border-radius: 3px;
+  color: #666;
+  font-size: 18px;
+  height: 45px;
+  margin: 8px;
+  padding: 8px;
+  font-family: DIN-Regular, Helvetica, Arial, sans-serif;
+}
+
+.contact .name {
+  width: 160px;
+}
+
+.contact .email {
+  width: 320px;
+}
+
+.contact .button {
+  margin: 8px;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .contact {
+    min-width: 0;
+    padding: 40px 5%;
+  }
+  .contact .name,
+  .contact .email {
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+
+.modal-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal .modal-dialog {
+  /* width/height and half negative margin need to be set dynamically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+/* Web Experience(all) page styles */
+.experience-web {
+  margin: 90px auto 50px;
+}
+
+/* Experience page styles */
+.experience-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.experience-page .main img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.experience-page .main .text {
+  top: 30%;
+}
+
+.experience-page .icons img {
+  display: inline;
+  width: 56px;
+  height: 38px;
+  padding: 8px 24px;
+}
+
+@media (max-width: 600px) {
+.experience-page .icons img {
+  display: inline;
+  width: 28px;
+  height: 19px;
+  padding: 4px 12px;
+}
+}
+
+.experience-page .text h2 {
+  margin: 20px 0;
+}
+
+.experience-page .section {
+  position: relative;
+}
+
+.portal {
+  min-height: 600px;
+  background-color: white;
+}
+
+.portal .mom {
+  position: absolute;
+  margin-top: 54px;
+  left: 25%;
+  margin-left: -195;
+}
+
+.portal .text {
+  color: black;
+  margin-left: 50%;
+  padding: 150px 0;
+  position: relative;
+  top: 30%;
+  width: 50%;
+}
+@media (max-width: 600px) {
+  .portal .text {
+    padding: 0px;
+    margin: 0px;
+    width: 90%;
+    margin-left: 5%;
+    text-align: center;
+  }
+  .portal .mom {
+    position: static;
+    height: initial;
+    width: 100%;
+    margin-left: 0;
+  }
+  .portal {
+    padding-bottom: 80px;
+  }
+}
+
+.portal .logos {
+  padding-bottom: 20px;
+}
+
+.portal .logos img {
+  display: inline;
+  width: 77px;
+  padding: 8px 24px;
+  vertical-align: middle;
+}
+
+.cardboard {
+  background-color: #262731;
+  height: 500px;
+}
+
+.cardboard .device {
+  position: absolute;
+  top: -40px;
+  right: -200px;
+  max-width: 100%;
+}
+
+.cardboard .text {
+  top: 34.5%;
+  width: 90%;
+  margin-left: 5%;
+  min-width: 440px;
+}
+@media (max-width: 900px) {
+  .cardboard {
+    height: initial;
+  }
+  .cardboard .device {
+    width: 150%;
+    max-width: initial;
+    margin-left: -27%;
+    margin-top: -20px;
+    position: static;
+  }
+  .cardboard .text {
+    min-width: 0;
+    position: static;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+}
+.experiences .text {
+  padding: 60px 0 40px;
+  color: black;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .experiences .text {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+.experiences .frames {
+  overflow: hidden;
+  /* Wide enough for 1 frame */
+  max-width: 242px;
+  margin: 0 auto;
+}
+
+.experiences .frame {
+  display: block;
+  float: left;
+  overflow: hidden;
+  padding: 5px;
+  width: 232px;
+  height: 280px;
+}
+@media (min-width: 544px) {
+.experiences .frames {
+  /* Just big enough for 2 */
+  max-width: 484px;
+}
+}
+@media (min-width: 768px) {
+.experiences .frames {
+  /* Just big enough for 3 */
+  max-width: 726px;
+}
+}
+@media (min-width: 992px) {
+.experiences .frames {
+  /* big enough for 4 */
+  max-width: 968px;
+}
+}
+
+@media (max-width: 600px) {
+  .experiences .frames {
+    max-width: 90%;
+  }
+  .experiences .frame {
+    padding: 5%;
+    width: 90%;
+    height: 350px;
+  }
+}
+
+.experiences .experience {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.experience .image {
+  object-fit: cover;
+  height: 100%;
+  max-width: 100%;
+}
+
+.experience .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(51, 51, 51, 0.8);
+  color: white;
+}
+
+.experience .info .title {
+  height: 18px;
+  line-height: 18px;
+  margin: 13px 16px 11px;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.experience .info .icons {
+  border-top: 1px solid #535353;
+  height: 32px;
+  /* Decides how much of the border above will be visible. */
+  margin: 0 30px;
+  text-align: center;
+}
+
+.experience .info .icons img {
+  height: 16px;
+  width: 24px;
+  padding: 8px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.experience .info .icons img:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.experiences .view_more {
+  margin: 0 5px 80px;
+  padding: 10px 0 0;
+  clear: both;
+  display: block;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+.experiences .view_more {
+  margin-left: 5%;
+}
+}
+
+/* Create page styles */
+.create .main {
+  overflow: hidden;
+}
+
+.create .main .text {
+  text-align: right;
+  top: 36%;
+  left: initial;
+  right: 5%;
+  width: 50%;
+  max-width: 590px;
+}
+
+.create .section {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.create .fade-in {
+  position: fixed;
+  background-color: black;
+  pointer-events: none;
+  opacity: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  -webkit-transition: opacity 1s ease-in-out; /* Safari */
+  transition: opacity 1s ease-in-out;
+}
+.create .fade-in.show {
+  opacity: 1;
+}
+
+.create .fade-in img {
+  pointer-events: none;
+  height: 100%;
+}
+
+.create .record .text {
+  text-align: right;
+  top: 15%;
+  right: 5%;
+  width: 50%;
+}
+
+.create .transform .text {
+  color: black;
+  /* This would interfere with mouse move controls */
+  pointer-events: none;
+  left: 5%;
+  top: 36%;
+  width: 30%;
+}
+
+.create .transform .text.part2 {
+  color: white;
+}
+
+.create .transform .gradient {
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-linear-gradient(top left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); /* Safari 5.1-6, Chrome 10+ */
+  background-image: -o-linear-gradient(top left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));  /* Opera 12 */
+  background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); /* Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+ */
+}
+
+.create .transform .move_mouse {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+}
+
+.create .transform .move_mouse img {
+  width: 136px;
+  height: 61px;
+}
+
+.create .player {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.create .player canvas {
+  width: 100%;
+  height: 100%;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.create .play-everywhere {
+  background: url('/static/img/new_site/create_stereo.jpg');
+  background-size: auto 900px;
+  background-repeat: none;
+  background-position: 50% top;
+  overflow: hidden;
+  max-width: 100%;
+  height: initial;
+}
+.create .play-everywhere .shrink {
+  height: 672px;
+  overflow: hidden;
+  position: relative;
+}
+.create .play-everywhere img {
+  left: 50%;
+  top: 121px;
+  margin-left: -900px;
+  position: absolute;
+}
+.create .play-everywhere .white {
+  background-color: white;
+  padding-bottom: 40px;
+  display: inline-block;
+  width: 100%;
+  /* To make the white background display 100% width even with a smaller image. */
+  margin-top: -184px;
+  padding-top: 184px;
+}
+.create .play-everywhere .text {
+  text-align: center;
+  color: black;
+  width: 56%;
+  max-width: 525px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .create .main .section,
+  .create .record .section {
+    /* Fixed height to avoid mobile resizing when address bar disappears */
+    height: 630px;
+  }
+  .create .transform {
+    height: initial;
+    background: black;
+  }
+  .create .player {
+    height: inherit;
+    padding-top: 100px;
+  }
+  .create .transform .text {
+    top: 0;
+  }
+  .create .transform .text.part2 {
+    /*top: 600px;*/
+    position: static;
+  }
+
+  .create .play-everywhere {
+    background-size: auto 450px;
+  }
+  .create .play-everywhere .shrink {
+    height: 372px;
+  }
+  .create .play-everywhere img {
+    top: initial;
+    bottom: 20px;
+    margin-left: -85%;
+    width: 170%;
+  }
+  .create .play-everywhere .white {
+    margin-top: -84px;
+    padding-top: 84px;
+  }
+  .create .main .text,
+  .create .record .text,
+  .create .transform .text.part2 {
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  }
+  .create .record .text,
+  .create .transform .text,
+  .create .play-everywhere .text {
+    margin-left: 5%;
+    width: 90%;
+    left: 0;
+    text-align: center;
+    min-width: 0;
+  }
+}
+
+.invent {
+  margin: 50px 25%;
+}
+
+.reach-us {
+  margin-top: 48px;
+  text-align: center;
+}
+
+/* Team page styles */
+.team .main.background {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-image: url('/static/img/new_site/about_mom.jpg');
+  background-position: right top;
+}
+
+.team .mom {
+  min-height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+.team .mom {
+  width: 200%;
+  margin-left: -50%
+}
+}
+
+.team .mobile .text {
+  color: black;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #CCC;
+}
+
+.team .text {
+  text-align: center;
+}
+
+.team .main .text {
+  text-align: left;
+  left: 5%;
+  width: 45%;
+  top: 25%;
+}
+@media (max-width: 1100px) {
+  .team .main {
+    height: initial;
+  }
+
+  .team .main .text {
+    text-align: center;
+    position: static;
+    min-width: 0;
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+
+.team .locations {
+  margin-top: 64px;
+}
+
+.team .our_team {
+  margin-top: 80px;
+}
+
+.team .text p {
+  margin: 20px 10% 64px;
+}
+
+.team .main .text p {
+  /* Overriding the default for this page */
+  margin: 20px 0;
+}
+
+.team .locations .map {
+  width: 40%;
+  margin: 20px 3%;
+  height: 40%;
+  display: inline-block;
+}
+@media (max-width: 600px) {
+  .team .locations .map {
+    width: 94%;
+    display: block;
+  }
+}
+
+.team .inquiries {
+  text-align: center;
+  padding: 50px 0;
+  border-bottom: 1px solid #CCC;
+  line-height: 1.5;
+}
+
+.team .inquiries a {
+  text-decoration: none;
+  color: #D43A65;
+}
+
+.team .investors {
+  padding: 50px 0;
+}
+
+.team .investors .text {
+  padding: 0 15%;
+}
+
+.team .investor {
+  width: 28%;
+  height: 110px;
+  float: left;
+  margin: 40px 2%;
+  text-align: center;
+}
+.team .investor.extra_padding {
+  padding: 0 7%;
+  width: 14%;
+}
+
+@media (max-width: 600px) {
+  .team .investor {
+    width: 45%;
+    margin: 0px 2%;
+  }
+}
+.team .investor img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.team .photos {
+  width: 290px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+.team .photos {
+  /* Just big enough for 2 */
+  width: 580px;
+}
+}
+@media (min-width: 990px) {
+.team .photos {
+  /* Just big enough for 3 */
+  width: 870px;
+}
+}
+@media (min-width: 1200px) {
+.team .photos {
+  /* big enough for 4 */
+  width: 1160px;
+}
+}
+
+.photo {
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  float: left;
+  margin: 5px;
+  position: relative;
+}
+
+.photo .face {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.photo .info {
+  background-color: rgba(38, 38, 48, .5);
+  bottom: 0;
+  color: #FFF;
+  font-size: 18px;
+  max-height: 0px;
+  line-height: 28px;
+  position: absolute;
+  text-align: center;
+  transition: max-height .5s ease-in-out;
+  width: 100%;
+}
+.photo .info .name {
+  margin-top: 18px;
+}
+
+.photo .info .job {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0 12px;
+  margin-bottom: 10px;
+}
+
+.photo:hover .info {
+  max-height: 100px;
+}
+
+.photo:hover .eugene_special {
+  max-height: 150px;
+}
+
+.photo .eugene_special img {
+  width: 250px;
+  margin: 15px 0;
+}
+@media (max-width: 600px) {
+  .photo {
+    width: 135px;
+    height: 135px;
+  }
+  .photo .info {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .photo .info .name {
+    margin-top: 10px;
+  }
+  .photo .info .job {
+    font-size: 11px;
+    padding: 0 9px;
+  }
+  .photo .eugene_special img {
+    height: 21px;
+    margin: 10px 0;
+  }
+}
+
+.our_team {
+  margin-bottom: 50px;
+}
+
+
+/* Install page styles */
+.install-wrap {
+  background-color: rgba(51, 51, 51, 1);
+  min-height: 100%;
+}
+.install .fold {
+  color: #FFF; /* On the dark background */
+  text-align: center;
+  background: #B72F4D; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#B72F4D, #5F1827); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#B72F4D, #5F1827); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#B72F4D, #5F1827); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#B72F4D, #5F1827); /* Standard syntax */
+}
+
+.install .main-title {
+  display: inline-block;
+  font-size: 40px;
+  /* Also accounts for the header section (initially 85px) */
+  margin-top: 125px;
+}
+
+.install .subheading {
+  /* A bit of space before the install button */
+  margin-bottom: 40px;
+  font-size: 22px;
+}
+
+.install .button-wrapper {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.install a.btn {
+  padding: 0.8em 4.3em 0.6em;
+  border-color: #FFFFFF;
+  border-width: 2px;
+  color: #FFFFFF;
+}
+
+.install a.btn:hover {
+  /* background-color: rgba(255,255,255,0.1); */
+  border-color: rgba(255, 255, 255, 0.8);
+  border-width: 2px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.install .separator {
+  vertical-align: top;
+  display: inline-block;
+  margin: 7px 32px;
+  height: 30px;
+  width: 34px;
+}
+
+.install .small {
+  margin: 10px 0;
+}
+.install .stronger {
+  font-family: DIN-Black;
+}
+
+.install .screenshot-container {
+  margin: 0 10%;
+  margin-top: 40px;
+}
+
+.install .screenshot {
+  color: rgba(0,0,0,.5);
+  box-shadow: 0 -2px 5px -2px;
+  max-width: 100%;
+}
+
+.install .instruction-lightbox {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.install .instruction-lightbox:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.install.page {
+  position: relative;
+}
+
+.install .overlay {
+  background: black;
+  bottom: 0;
+  filter: alpha(opacity=60);
+  left: 0;
+  opacity: 0.6;
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* More than 1030 which the header has */
+  z-index: 1050;
+}
+
+.install .lightbox {
+  background-color: rgba(255, 255, 255, 1.0);
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  width: 480px;
+  margin-left: -240px;
+  /* Same as .overlay, this will be on top as it is defined second */
+  z-index: 1050;
+}
+
+.install .lightbox .exit {
+  float: right;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.install .lightbox .exit:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+
+.install .inner-lightbox {
+  padding: 30px 40px;
+}
+
+.install .detail .key {
+  color: #777;
+}
+.install .detail .value {
+  color: #000;
+}
+
+.install .main-instruction,
+.install .lightbox .title {
+  font-size: 16px;
+  font-family: DIN-Bold;
+  color: #606060;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.install ol,
+.install ul {
+  /* Align numbers with other text. */
+  list-style-position: inside;
+  padding: 0;
+}
+
+.install li {
+  line-height: 1.4;
+}
+
+.install .moreinfo {
+  text-align: center;
+}
+
+/* Job page styles */
+.jobs .main img {
+  width: 100%;
+  height: 750px;
+  object-fit: cover;
+}
+.jobs .main .text {
+  text-align: center;
+  top: 30%;
+  margin: 0;
+}
+
+.jobs .text {
+  margin: auto;
+  text-align: center;
+  margin: 40px auto;
+}
+.jobs .text h3 {
+  font-size: 36px;
+}
+
+.jobs .passion {
+  margin: 40px auto;
+}
+
+.jobs .passion .text {
+  max-width: 770px; /* with 10% margin */
+  padding: 0 10%;
+}
+
+.jobs-8i {
+  border-top: 1px solid #CCC;
+  text-align: center;
+  padding: 60px 0 100px;
+  color: #1E1E1E;
+}
+
+.whr-title a {
+  color: #bd304f;
+  font-size: 24px;
+  text-decoration: none;
+}
+.whr-title {
+  margin-bottom: 30px 0 10px;
+}
+.whr-items,
+.whr-info {
+  list-style: none;
+  padding: 0;
+}
+.whr-date {
+  display: none;
+}
+
+.jobs .get_in_touch {
+  margin-top: 60px;
+}
+
+/* List cards page styles */
+.experience-8i {
+  margin-top: 100px;
+}
+
+.experience-8i .heading {
+  float: left;
+  color: #7c1478;
+  font-size: 30px;
+  font-family: DIN-Bold, DIN-Regular, Helvetica, Arial, sans-serif;
+}
+
+.create-card-button {
+  float: right;
+  /* 10px is to align right with the cards which have 25px and -15px */
+  margin: 16px 10px;
+}
+
+.create_card {
+  font-family: DIN-Regular;
+  font-size: 14px;
+  color: #FFF;
+  padding: 12px 24px 8px;
+  background-color: #3cAc1B;
+  border-color: #3cAc1B;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.create_card:hover,
+.create_card:focus {
+  color: #FFF;
+  background-color: #4cBc2B;
+  border-color: #4cBc2B;
+}
+
+.cards {
+  clear: both;
+}
+
+.img-container {
+  position: relative;
+  color: #FFF;
+  font-size: 16px;
+}
+.mtext_top {
+  position: absolute;
+  top: 5px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  color: white;
+}
+.mtext_bottom {
+  position: absolute;
+  bottom: 75px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  color: white;
+}
+
+
+/* Candidates for sharing */
+.button,
+.link {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 12px 20px 10px;
+  /* Don't select text on buttons and links */
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+  user-select: none;
+}
+
+.link {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+.button {
+  /* Making this massive means it will always be a circular button. */
+  border-radius: 250px;
+  border: 2px solid #FFF;
+  padding: 12px 30px 10px;
+  font-family: DIN-Bold, DIN-Regular, Helvetica, Arial, sans-serif;
+}
+.button:focus {
+  outline: none;
+}
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+input.button {
+  /* Remove button defaults for input buttons. */
+  background: initial;
+}
+
+.play-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 4px;
+}
+
+.pink {
+  color: #D43A65;
+  border-color: #D43A65;
+  fill: #D43A65;
+}
+.button.pink:hover {
+  background-color: rgba(212, 58, 101, 0.1);
+}
+
+/*Icons*/
+#loading {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -40px;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  -webkit-animation: spin 1s infinite steps(8);
+  animation: spin 1s infinite steps(8)
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform:rotate(0deg);
+  }
+
+  to {
+    -webkit-transform:rotate(360deg);
+  }
+}
+
+.coming_soon {
+  max-width: 221px;
+  position: absolute;
+  top: 0;
+}
+@media (max-width: 600px) {
+  .coming_soon {
+    width: 33%;
+  }
+}
+/* Video background page */
+.video-wrapper {
+  height: 100%;
+  background-color: rgba(51, 51, 51, 1);
+  position: fixed;
+  width: 100%;
+}
+
+.video {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 100%;
+}
+
+.experience .content {
+  color: white;
+  margin: 25%;
+  position: relative;
+}
+
+/* Terms of Use and Privacy Policy page styles */
+.content {
+  margin: 120px auto 80px;
+  max-width: 800px;
+  width: 80%;
+}

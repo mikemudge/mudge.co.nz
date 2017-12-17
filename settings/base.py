@@ -25,6 +25,8 @@ AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 STATIC_URL = 'http://localhost:3333/'
 API_URL = 'http://localhost:5000/'
 
+AMAZON_S3_URL = 'https://d7cvc31wlmbhf.cloudfront.net/'
+
 # JWT
 JWT_TOKEN_SECRET_KEY = "Random Secret Token string"
 JWT_TOKEN_ALGORITHM = "HS512"

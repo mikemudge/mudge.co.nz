@@ -40,8 +40,8 @@ def get_projects():
 
     return app.render()
 
-@projects_bp.route('/<name>/')
-def get_project(name):
+@projects_bp.route('/<name>/<path:path>')
+def get_project(name, path=None):
     brunchServer = current_app.config.get('STATIC_URL')
 
     name = name.lower()
@@ -84,8 +84,13 @@ def get_project(name):
     if name in ['8i']:
         app.require = 'websites/8i/8i'
         app.scripts += [
-            '%sjs/eighti/eighti.min.js' % brunchServer,
-            '%sjs/eighti/eighti.lib.js' % brunchServer,
+            '/static/js/three.js/84/three.min.js',
+            '/static/js/three.js/OBJLoader.js',
+            '/static/js/eighti/eighti.min.js',
+        ]
+        app.async = [
+            # TODO load the lib
+            '/static/js/eighti/eighti.lib.js',
         ]
 
     return app.render()

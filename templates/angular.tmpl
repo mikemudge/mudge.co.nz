@@ -47,5 +47,8 @@
       require('{{ brunch.require }}');
     }
   </script>
+  {% for script in async %}
+  <script async src="{{ script }}" type="text/javascript"></script>
+  {% endfor %}
 </body>
 </html>

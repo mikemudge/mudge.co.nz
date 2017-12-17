@@ -24,6 +24,7 @@ class Angular():
             'AUTH_COOKIE_ID': current_app.config.get('AUTH_COOKIE_ID'),
             'CLIENT_ID': current_app.config.get('CLIENT_ID'),
             'CLIENT_SECRET': current_app.config.get('CLIENT_SECRET'),
+            'AMAZON_S3_URL': current_app.config.get('AMAZON_S3_URL'),
         }
         self.config['LOGIN_URL'] = request.url_root
         self.favicon = url_for('static', filename='favicon-dev.png')
@@ -45,6 +46,7 @@ class Angular():
             },
             'scripts': self.scripts,
             'styles': self.styles,
+            'async': self.async,
             # TODO support embedded templates?
         })
 

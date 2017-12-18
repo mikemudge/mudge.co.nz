@@ -36,22 +36,8 @@ class BrunchAppView(MethodView):
         # Maybe add the other things as well?
 
         app = Angular(app_name)
-        app.config['baseUrl'] = request.url_root
-        app.config['LOGIN_URL'] = request.url_root
-        app.base = '/brunch/%s/' % app_name
-        app.styles = [
-            # Login + login templates.
-            '%slogin/app.css' % brunchServer,
-            '%s%s/app.css' % (brunchServer, app_name),
-        ]
-        app.scripts = [
-            # Login + login templates.
-            '%slogin/app.js' % brunchServer,
-            '%slogin/templates.js' % brunchServer,
+        app.setupBrunch()
 
-            # Include pieces from the app.
-            '%s%s/app.js' % (brunchServer, app_name),
-        ]
         if app_name not in ['breakout']:
             app.scripts += ['%s%s/templates.js' % (brunchServer, app_name)]
 
@@ -60,9 +46,7 @@ class BrunchAppView(MethodView):
             app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
             app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
 
-        # Include common libs and templates.
-        app.scripts += ['%sjs/api.js' % brunchServer]
-        app.scripts += ['%sjs/api-templates.js' % brunchServer]
+        app.addLoginApi()
 
         if app_name == 'rock':
             # Add rock styles and scripts

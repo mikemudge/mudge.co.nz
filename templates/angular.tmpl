@@ -32,7 +32,7 @@
 {% else %}
   {# Show the view for the current page #}
   <div ng-view autoscroll="true">
-    {% if angular.config.DEBUG %}
+    {% if angular.config.DEBUG and brunch.require %}
     Make sure you run <pre>brunch watch --server</pre>
     {% endif %}
   </div>
@@ -41,12 +41,14 @@
   {% for script in scripts %}
   <script src="{{ script }}" type="text/javascript"></script>
   {% endfor %}
+  {% if brunch.require %}
   <script type="text/javascript">
     if (typeof require !== 'undefined') {
       // When using brunch load the required modules.
       require('{{ brunch.require }}');
     }
   </script>
+  {% endif %}
   {% for script in async %}
   <script async src="{{ script }}" type="text/javascript"></script>
   {% endfor %}

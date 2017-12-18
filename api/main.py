@@ -26,6 +26,15 @@ def robots():
 def main_page():
     return "Welcome"
 
+@main_bp.route('/cv')
+def my_cv():
+    app = Angular('cv')
+
+    app.setupBrunch()
+    app.base = '/'
+
+    return app.render()
+
 @main_bp.route('/error')
 def error_test():
     abort(500, 'Error message here')

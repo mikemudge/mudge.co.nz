@@ -6,11 +6,13 @@ class Angular():
 
     def __init__(self, name):
         self.appName = name
-        self.require = self.appName + '/' + self.appName
+        self.require = None
+        self.include = None
         self.base = '/'
         self.scripts = [
             url_for('static', filename='%s/%s.js' % (name, name))
         ]
+        self.async = []
         self.styles = [
             # I removed this, it had button styles in.
             # url_for('static', filename='common/styles.css'),
@@ -40,6 +42,7 @@ class Angular():
                 'base': self.base,
                 'config': self.config,
                 'favicon': self.favicon,
+                'include': self.include,
             },
             'brunch': {
                 'require': self.require,
@@ -75,6 +78,25 @@ class Angular():
         ]
         self.styles = [
             '%s/app.css' % (brunchServer, name),
+        ]
+
+    def setupBrunch(self):
+        brunchServer = current_app.config.get('STATIC_URL')
+
+        self.require = self.appName + '/' + self.appName
+
+        self.config['baseUrl'] = request.url_root
+        self.config['LOGIN_URL'] = request.url_root
+        self.base = '/brunch/%s/' % self.appName
+        self.styles = [
+            # Login + login templates.
+            '%slogin/app.css' % brunchServer,
+            '%s%s/app.css' % (brunchServer, self.appName),
+        ]
+        self.scripts = [
+            # Include pieces from the app.
+            '%s%s/app.js' % (brunchServer, self.appName),
+            '%s%s/templates.js' % (brunchServer, self.appName),
         ]
 
     @classmethod

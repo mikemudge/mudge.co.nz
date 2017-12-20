@@ -64,7 +64,7 @@ class Angular():
             '%sjs/api-templates.js' % brunchServer,
         ]
 
-        self.styles = [
+        self.styles += [
             '%slogin/app.css' % brunchServer,
         ]
 
@@ -88,13 +88,11 @@ class Angular():
         self.config['baseUrl'] = request.url_root
         self.config['LOGIN_URL'] = request.url_root
         self.base = '/brunch/%s/' % self.appName
+        # Include pieces from the app.
         self.styles = [
-            # Login + login templates.
-            '%slogin/app.css' % brunchServer,
             '%s%s/app.css' % (brunchServer, self.appName),
         ]
         self.scripts = [
-            # Include pieces from the app.
             '%s%s/app.js' % (brunchServer, self.appName),
             '%s%s/templates.js' % (brunchServer, self.appName),
         ]

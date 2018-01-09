@@ -69,6 +69,9 @@ class Angular():
             '%slogin/app.css' % brunchServer,
         ]
 
+    def addStyle(self, href):
+        self.styles += href
+
     def addProject(self, name):
 
         brunchServer = current_app.config.get('STATIC_URL')

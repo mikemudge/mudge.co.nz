@@ -31,6 +31,7 @@ def my_cv():
     app = Angular('cv')
 
     app.setupBrunch()
+    app.addStyle("https://fonts.googleapis.com/css?family=Roboto")
     app.base = '/'
 
     return app.render()

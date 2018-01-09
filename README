@@ -15,7 +15,7 @@ Restart nginx
 sudo service nginx restart
 
 Logs location on server.
-/var/log/upstart/webserver.log
+sudo tail -f /var/log/upstart/webserver.log
 
 See setup here.
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04

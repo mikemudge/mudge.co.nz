@@ -70,7 +70,7 @@ class Angular():
         ]
 
     def addStyle(self, href):
-        self.styles += href
+        self.styles += [href]
 
     def addProject(self, name):
 

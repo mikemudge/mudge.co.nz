@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+}
+
+.menu {
+  height: 50px;
+  overflow: hidden;
+}
+
+.menu .button {
+  cursor: pointer;
+  border-radius: 1000px;
+  border: 1px solid #CCCCCC;
+  padding: 4px 24px;
+  display: inline-block;
+}
+.menu .button:hover {
+  background-color: #EEEEEE;
+}
+
+.table {
+  display: table;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  border: 1px solid #000000;
+  display: table-cell;
+}
+
+.cell.title {
+  padding: 2px 4px;
+}
+
+.cell input {
+  border: none;
+  /* TODO would be nice to resize these */
+  width: 100px;
+  padding: 4px;
+}
+
+.cell.title {
+  background-color: #DDDDDD;
+}
+
+.cell.bold input {
+  font-weight: 700;
+}
+
+.cell.italic input {
+  font-style: italic;
+}
+
+.cell.underline input {
+  text-decoration: underline;
+}

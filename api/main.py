@@ -2,6 +2,7 @@ import os
 
 from flask import Blueprint
 from flask import send_from_directory, url_for
+from flask import render_template
 from flask import abort, current_app
 from shared.helpers.angular import Angular
 

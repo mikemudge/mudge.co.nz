@@ -1,23 +1,55 @@
-from flask import request, url_for
-from flask import current_app
 from flask.views import MethodView
 from shared.helpers.angular import Angular
+
+scripts = {
+    'threejs': [
+        '/static/js/three.js/84/three.min.js',
+        '/static/js/three.js/OrbitControls.js'
+    ],
+    'gmaps': [
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry"
+    ]
+}
+
+apps = {}
+apps['soccer'] = {}
+apps['ar'] = {
+    'scripts': scripts['threejs']
+}
+apps['rts'] = {
+    'scripts': scripts['threejs']
+}
+apps['tournament'] = {}
+apps['breakout'] = {
+    'scripts': scripts['threejs']
+}
+apps['poker'] = {}
+apps['racer'] = {
+    'scripts': scripts['threejs'] + [
+        '/static/js/three.js/BinaryLoader.js'
+    ]
+}
+apps['rock'] = {
+    'scripts': [
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+    ],
+    'styles': [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
+    ]
+}
+apps['bike'] = {
+    'scripts': scripts['gmaps']
+}
+apps['trail'] = {
+    'scripts': scripts['gmaps']
+}
 
 # Brunch endpoints.
 class BrunchAppsListView(MethodView):
     def get(self):
         # TODO should be able to auto create this?
-        links = [
-            'soccer',
-            'rts',
-            'tournament',
-            'breakout',
-            'poker',
-            'racer',
-            'rock',
-            'bike',
-            'trail',
-        ]
+        print apps.keys()
+        links = apps.keys()
 
         result = [
             '<p><a href="/brunch/%s">%s</a></p>' % (link, link) for link in links
@@ -30,40 +62,17 @@ class BrunchAppView(MethodView):
         # TODO keep track of which deps each app needs?
         # E.g jquery, threejs.
 
-        brunchServer = current_app.config.get('STATIC_URL')
-
         # TODO should include js and css files for this project???
         # Maybe add the other things as well?
 
         app = Angular(app_name)
         app.setupBrunch()
 
-        if app_name not in ['breakout']:
-            app.scripts += ['%s%s/templates.js' % (brunchServer, app_name)]
-
-        # TODO better way to include dependencies.
-        if app_name in ['breakout', 'racer', 'rts', 'ar']:
-            app.scripts += [url_for('static', filename="js/three.js/84/three.min.js")]
-            app.scripts += [url_for('static', filename="js/three.js/OrbitControls.js")]
+        conf = apps.get(app_name)
+        if conf:
+            app.scripts += conf.get('scripts', [])
+            app.styles += conf.get('styles', [])
 
         app.addLoginApi()
-
-        if app_name == 'rock':
-            # Add rock styles and scripts
-            app.styles += [
-                # 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
-                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
-            ]
-            app.scripts += [
-                'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
-                # 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.js',
-            ]
-
-        if app_name == 'bike' or app_name == 'trail':
-            app.scripts += ["https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry"]
-
-        if app_name == 'racer':
-            # Special case.
-            app.scripts += [url_for('static', filename="js/three.js/BinaryLoader.js")]
 
         return app.render()

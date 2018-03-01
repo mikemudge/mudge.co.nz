@@ -1,6 +1,10 @@
 import base64
 
 from tests.base.base_test_case import BaseTestCase
+from shared.database import db
+from auth.models import Profile, User
+
+import sqlalchemy
 
 class TestLogin(BaseTestCase):
 
@@ -17,15 +21,29 @@ class TestLogin(BaseTestCase):
     #         'email': 'me@test.mudge.co.nz'
     #     })
 
+    def test_no_orphan_profile(self):
+        p = Profile()
+        db.session.add(p)
+        # message = 'null value in column "user_id" violates not-null constraint'
+        # with self.assertRaisesRegexp(sqlalchemy.exc.IntegrityError, message):
+        db.session.commit()
+
+    def test_no_user_without_profile(self):
+        u = User()
+        db.session.add(u)
+        message = 'null value in column "profile_id" violates not-null constraint'
+        with self.assertRaisesRegexp(sqlalchemy.exc.IntegrityError, message):
+            db.session.commit()
+
     def test_login(self):
         user = self.jsonClient.createUser('loginUser')
 
         clientApp = self.jsonClient.clientApp
 
         # To talk to the API you must identify a client.
-        auth = base64.b64encode(clientApp.client_id + ':' + clientApp.client_secret)
+        auth = base64.b64encode((clientApp.client_id + ':' + clientApp.client_secret).encode('ascii'))
         headers = {
-            'Authorization': 'Basic ' + auth
+            'Authorization': 'Basic ' + auth.decode("utf-8")
         }
 
         response = self.client.post(
@@ -38,14 +56,19 @@ class TestLogin(BaseTestCase):
             content_type='application/x-www-form-urlencoded',
             headers=headers)
 
+        if response.status_code != 200:
+            print(response.status_code, 'for /auth/token')
+            print(response.json)
+
         result = response.json
+        print(result)
         self.assertContains(response.json, {
             'access_token': result['access_token'],
             'expires_in': 3600,
             'refresh_token': result['refresh_token'],
             'token_type': 'Bearer'
         })
-        print result['access_token']
+        print(result['access_token'])
         claims = self.parseJwt(result['access_token'])
         self.assertContains(claims, {
             'aud': 'mudge.co.nz',
@@ -68,6 +91,7 @@ class TestLogin(BaseTestCase):
         })
 
     def test_access(self):
+        self.jsonClient.add_scope('user')
         user = self.jsonClient.createLoggedInUser('test_auth')
 
         response = self.jsonClient.get('/api/user/%s' % user.id)
@@ -78,7 +102,7 @@ class TestLogin(BaseTestCase):
             'firstname': 'Test',
             'lastname': 'User',
             'image': None,
-            'username': None,
+            'username': 'test_auth',
         }
         self.assertEqual(response.json['data']['profile'], profile)
         self.assertEqual(response.json['data'], {

@@ -51,7 +51,7 @@ class AuthenticationConnectorView(MethodView):
         try:
             valid = self.check_client(request)
         except Exception as e:
-            print e.message
+            print(e.message)
             raise AuthenticationException('failed to authenticate client', error_code=ErrorCodes.MALFORMED_OR_MISSING_BASIC_AUTH)
 
         if not valid:

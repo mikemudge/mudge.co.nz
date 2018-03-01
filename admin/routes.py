@@ -15,7 +15,7 @@ def routes(app):
 
 def adminCrud(app, cls):
     modelName = str(cls.__name__).lower()
-    print 'Creating insecure crud routes for %s' % modelName
+    print('Creating insecure crud routes for %s' % modelName)
 
     class Schema(BaseSchema):
         class Meta:

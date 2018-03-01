@@ -2,7 +2,7 @@ import bcrypt
 import pytz
 
 from shared.database import db, BaseModel, UUID
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from werkzeug.security import gen_salt
 
 api_client_scope = db.Table(
@@ -56,8 +56,8 @@ class Scope(BaseModel):
         return self.name
 
 class User(BaseModel):
-    profile_id = db.Column(UUID(), db.ForeignKey('profile.id', ondelete='CASCADE'))
-    profile = relationship("Profile", backref="user")
+    profile_id = db.Column(UUID(), db.ForeignKey('profile.id', ondelete='CASCADE'), nullable=False)
+    profile = relationship("Profile", backref=backref("user", uselist=False))
 
     email = db.Column(db.String)
     password_hash = db.Column(db.String)
@@ -69,8 +69,13 @@ class User(BaseModel):
 
     @classmethod
     def create(cls, email, password=None):
+        username = email.split('@')[0]
+        profile = Profile(
+            username=username
+        )
         user = User(
             email=email,
+            profile=profile,
         )
 
         user.set_password(password)
@@ -81,15 +86,20 @@ class User(BaseModel):
     def set_password(self, password):
         if not password:
             # Generate a random password for social users.
-            print "Generating random password for %s" % self.email
-            password = bcrypt.gensalt()
-            print 'Password length', len(password)
+            print("Generating random password for %s" % self.email)
+            password = bcrypt.gensalt().decode('utf-8')
+            print('Password length', len(password))
 
         hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-        self.password_hash = hashed
+        # This needs to be stored as a string, not bytes.
+        self.password_hash = hashed.decode('utf-8')
 
     def check_password(self, password_attempt):
-        return bcrypt.hashpw(password_attempt.encode('utf-8'), self.password_hash.encode('utf-8')) == self.password_hash
+        match = bcrypt.hashpw(password_attempt.encode('utf-8'), self.password_hash.encode('utf-8')) == self.password_hash.encode('utf-8')
+        if match:
+            return True
+        print('Password check failed')
+        return False
 
     # For flask login
     @property

@@ -9,7 +9,7 @@ InitCommand = Manager(usage='Perform initialization tasks.')
 def tournaments(reset=False):
 
     if reset:
-        print "Removing all Tournament models"
+        print("Removing all Tournament models")
         Round.query.delete()
         Match.query.delete()
         Team.query.delete()
@@ -17,11 +17,11 @@ def tournaments(reset=False):
     tournament = Tournament.query.filter_by(name="Test Tournament").first()
 
     if not tournament:
-        print "Create tournament"
+        print("Create tournament")
         tournament = Tournament(name="Test Tournament")
         db.session.add(tournament)
     else:
-        print "Already exists"
+        print("Already exists")
         # Clear rounds/matches and teams and recreate.
         tournament.rounds.delete()
         tournament.teams.delete()

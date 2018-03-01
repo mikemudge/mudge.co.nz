@@ -72,5 +72,5 @@ def import2016():
                     rank2015=row[3],
                 )
                 db.session.add(song)
-        print 'found %d new songs' % count
+        print('found %d new songs' % count)
         db.session.commit()

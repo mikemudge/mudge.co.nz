@@ -26,7 +26,7 @@ def import_projects(path):
         for file in os.listdir(os.path.join(path, folder)):
             # Add file to this project?
             pass
-            # print file
+            # print(file)
 
     # Import a bunch of vendor libraries here.
     files = [

@@ -28,4 +28,4 @@ def calculateValue():
         'value': 1, 'suit': Suit.CLUBS
     }]
 
-    print cards
+    print(cards)

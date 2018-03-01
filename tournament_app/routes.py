@@ -42,7 +42,7 @@ class MatchView(DBModelView):
         # Edit or Create.
         if pk:
             instance = Match.query.get(pk)
-            print instance
+            print(instance)
             return self.edit(instance=instance)
         else:
             return self.create()

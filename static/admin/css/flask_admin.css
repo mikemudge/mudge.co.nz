@@ -1,4 +1,9 @@
 
+.col-image img {
+  max-height: 30px;
+  border-radius: 1000px;
+}
+
 @media (min-width: 768px) {
     .admin_row-sm-offset-3 div:first-child[class*="col-"] {
         margin-left: 25%;
@@ -22,7 +27,6 @@
     text-align: center;
     margin-top: 3.2em;
 }
-
 
 .admin_login .admin_socialButtons a {
 	color: white;

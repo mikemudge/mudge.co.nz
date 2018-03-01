@@ -25,4 +25,10 @@ services:
       - PGPASSWORD=postgres
       - APP_SETTINGS=settings.dev
       - ENVIRONMENT=dev
+      - PYTHONIOENCODING=utf-8
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
+      - FLASK_APP=manage.py
+      - FLASK_DEBUG=1
     command: /app/docker/run_dev.sh
+    # command: sleep infinity

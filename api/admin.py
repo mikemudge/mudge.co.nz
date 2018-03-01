@@ -91,6 +91,9 @@ class TrailView(BaseView):
         # Select Fields don't prefill right.
         form.activity.data = form.activity.object_data.code
 
+class TrailProgressView(BaseView):
+    column_filters = ['trail_profile.user.email']
+
 class MatchView(BaseView):
     exclude = ['result']
     pass
@@ -149,7 +152,7 @@ def routes(app):
     admin.add_view(ProfileView(Profile, db.session, category="Auth"))
 
     admin.add_view(TrailView(Trail, db.session, category="Trail"))
-    admin.add_view(BaseView(TrailProgress, db.session, category="Trail"))
+    admin.add_view(TrailProgressView(TrailProgress, db.session, category="Trail"))
     admin.add_view(BaseView(TrailProfile, db.session, category="Trail"))
 
     admin.add_view(BaseView(Tournament, db.session, category="Tournament"))

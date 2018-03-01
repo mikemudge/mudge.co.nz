@@ -1,6 +1,4 @@
-from base import *
-
-ENV = 'production'
+from settings.base import *
 
 FAVICON = 'favicon-dev.png'
 

@@ -19,7 +19,7 @@ def makeFromTeams(tournament, teams):
         random.shuffle(matches)
         rnd.matches = matches
         # Rotate teams except the first team.
-        print [t.name for t in teams]
+        print([t.name for t in teams])
         teams.append(teams.pop(1))
         rounds.append(rnd)
 

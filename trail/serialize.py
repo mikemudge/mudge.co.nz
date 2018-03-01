@@ -1,3 +1,5 @@
+from flask import current_app
+
 from marshmallow import fields
 from shared.marshmallow import BaseSchema
 from trail.models import Trail, TrailProgress, TrailProfile
@@ -20,18 +22,23 @@ class TrailProfileSchema(BaseSchema):
         model = TrailProfile
         exclude = ['date_created', 'user']
 
+    # Adds nested list fields.
+    progress = fields.Nested(TrailProgressSchema, dump_only=True, many=True)
+
     user_id = fields.Str()
     trail_id = fields.Str()
-
-    progress = fields.Nested(TrailProgressSchema, dump_only=True, many=True)
-    name = fields.Method('get_name')
+    name = fields.Method('get_name', dump_only=True)
 
     color = fields.Method('get_color', 'set_color')
 
-    trail = fields.Nested('TrailSchema', dump_only=True, only=('id', 'name'))
+    trail = fields.Nested('TrailSchema', dump_only=True, only=('id', 'name', 'activity'))
 
     def get_name(self, obj):
-        return obj.user.profile.firstname + ' ' + obj.user.profile.lastname
+        if obj.user.profile:
+            return obj.user.profile.firstname + ' ' + obj.user.profile.lastname
+        else:
+            # There is no profile for the user???
+            return obj.user.email
 
     def get_color(self, obj):
         # Convert to hex
@@ -42,9 +49,27 @@ class TrailProfileSchema(BaseSchema):
         value = int(value.lstrip('#'), 16)
         return value
 
+class ListTrailProfileSchema(TrailProfileSchema):
+    class Meta:
+        model = TrailProfile
+        exclude = TrailProfileSchema.Meta.exclude + ['progress']
+
 class TrailSchema(BaseSchema):
     class Meta:
         model = Trail
         exclude = ['date_created']
 
+    activity = fields.Method('get_activity')
+
     trail_profiles = fields.Nested(TrailProfileSchema, many=True)
+
+    def get_activity(self, obj):
+        # Sometimes we only get a str code?
+        code = obj.activity
+        if hasattr(obj.activity, 'value'):
+            code = obj.activity.code
+
+        return {
+            'code': code,
+            'value': Trail.ACTIVITY_MAP[code],
+        }

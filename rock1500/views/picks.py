@@ -37,7 +37,7 @@ class RockPicksView(MethodView):
             ))
 
         # TODO verify no duplicate songs?
-        print picks
+        print(picks)
 
         request.oauth.user.rock_picks = picks
         db.session.commit()

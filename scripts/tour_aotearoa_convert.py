@@ -1,7 +1,7 @@
 import json
 
 if __name__ == '__main__':
-    with open('static/trail/tour-aotearoa.json') as data_file:
+    with open('static/tour-aotearoa.json') as data_file:
         data = json.load(data_file)
         data = data['AllPaths']['Folder']
         paths = []
@@ -18,7 +18,6 @@ if __name__ == '__main__':
                 newpoints = []
                 for p in points['coordinates'].strip().split(' '):
                     values = p.split(',')
-                    # TODO double check these are right lat and lng?
                     newpoints.append({
                         'lat': values[0],
                         'lng': values[1],

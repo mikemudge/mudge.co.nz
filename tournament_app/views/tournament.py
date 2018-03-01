@@ -30,7 +30,7 @@ def generateRoundRobin(tournament):
 
     for r in range(1):
         roundA = Round(name="Round 1")
-        for m in range(numTeams / 2):
+        for m in range(int(numTeams / 2)):
             match = Match(
                 homeTeam=teams[m],
                 awayTeam=teams[numTeams - m - 1],

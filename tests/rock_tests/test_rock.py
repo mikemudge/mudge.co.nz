@@ -9,19 +9,21 @@ class TestRock(BaseTestCase):
 
     def test_songs(self):
         metallica = Rock1500Artist(name="Metallica")
-        one = Rock1500Song(title="One", artist=metallica)
+        justice_for_all = Rock1500Album(name='...And Justice for All', year=1988, artist=metallica)
+        one = Rock1500Song(title="One", artist=metallica, album=justice_for_all)
 
         db.session.add(one)
         db.session.commit()
 
     def test_duplicate_songs(self):
         metallica = Rock1500Artist(name="Metallica")
-        one = Rock1500Song(title="One", artist=metallica)
+        justice_for_all = Rock1500Album(name='...And Justice for All', year=1988, artist=metallica)
+        one = Rock1500Song(title="One", artist=metallica, album=justice_for_all)
 
         db.session.add(one)
         db.session.commit()
 
-        one2 = Rock1500Song(title="One", artist=metallica)
+        one2 = Rock1500Song(title="One", artist=metallica, album=justice_for_all)
         db.session.add(one2)
         try:
             db.session.commit()
@@ -30,23 +32,27 @@ class TestRock(BaseTestCase):
 
     def test_picks(self):
         a = Rock1500Artist(name="Test Artist")
+        album = Rock1500Album(name='Test Album', artist=a)
+
         # Add several songs.
         for i in range(1, 10):
-            db.session.add(Rock1500Song(title='Song %s' % i, artist=a))
+            db.session.add(Rock1500Song(title='Song %s' % i, artist=a, album=album))
 
         db.session.commit()
 
-        rock_picker = User(email="Rocker")
-        rock_picker.rock_picks = [
+        rock_picker = User.create("rocker")
+        for i in range(4):
             Rock1500Pick(
-                song=Rock1500Song.find_by_name('Song %s' % i),
+                song=Rock1500Song.find_by_name('Song %s' % (i + 1), artist=a),
                 position=i,
-            ) for i in range(1, 4 + 1)]
+                user=rock_picker,
+            )
 
         db.session.add(rock_picker)
         db.session.commit()
 
         user = User.query.get(rock_picker.id)
+        print(user)
 
         self.assertEqual(len(user.rock_picks), 4)
         self.assertEqual(user.rock_picks[0].song.title, "Song 1")
@@ -76,7 +82,7 @@ class TestRock(BaseTestCase):
 
         pinkerton = Rock1500Album.find_by_name('Pinkerton')
         weezer = Rock1500Artist.find_by_name('Weezer')
-        scorcho = Rock1500Song.find_by_name('El Scorcho')
+        scorcho = Rock1500Song.find_by_name('El Scorcho', artist=weezer)
 
         self.assertEqual(weezer.name, 'Weezer')
         self.assertEqual(scorcho.title, 'El Scorcho')

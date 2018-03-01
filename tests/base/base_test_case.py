@@ -1,6 +1,7 @@
 import base64
 import json
 import logging
+import urllib.parse
 
 from app import create_app
 from auth.models import Client, Scope, User
@@ -33,9 +34,9 @@ class BaseTestCase(TestCase):
         db.drop_all()
 
     def assertContains(self, got, expected):
-        for k, expect in expected.iteritems():
+        for k, expect in expected.items():
             if k not in got:
-                raise AssertionError('missing ' + k)
+                raise AssertionError('Expected %s=%s but it was missing' % (k, expect))
             self.assertEquals(got[k], expect)
 
     def assertEqual(self, got, expected):
@@ -43,16 +44,16 @@ class BaseTestCase(TestCase):
             if type(got) is not dict:
                 raise AssertionError('Expected dict but got %s' % got)
 
-            for k, v in expected.iteritems():
+            for k, v in expected.items():
                 if k not in got:
                     raise AssertionError('Expected %s but it was missing' % k)
                 try:
                     self.assertEqual(got[k], v)
                 except AssertionError as e:
-                    raise AssertionError("%s.%s" % (k, e.message))
+                    raise AssertionError("%s.%s" % (k, str(e)))
 
             # All things were as expected. Now check for extras.
-            for k, v in got.iteritems():
+            for k, v in got.items():
                 if k not in expected:
                     raise AssertionError('Unexpected %s=%s' % (k, v))
 
@@ -95,8 +96,9 @@ class JsonClient():
         user = User.create(
             username + '@test.mudge.co.nz',
             password='1234abcd')
+        user.profile.firstname = 'Test'
+        user.profile.lastname = 'User'
         user.is_active = True
-        db.session.add(user)
         db.session.commit()
 
         self.users[username] = {
@@ -109,9 +111,9 @@ class JsonClient():
         user = self.users[username]
 
         # To talk to the API you must identify a client.
-        auth = base64.b64encode(self.clientApp.client_id + ':' + self.clientApp.client_secret)
+        auth = base64.b64encode((self.clientApp.client_id + ':' + self.clientApp.client_secret).encode('ascii'))
         headers = {
-            'Authorization': 'Basic ' + auth
+            'Authorization': 'Basic ' + auth.decode("utf-8")
         }
 
         response = self.client.post(
@@ -125,8 +127,8 @@ class JsonClient():
             headers=headers)
 
         if response.status_code != 200:
-            print 'login failed'
-            print response.json
+            print('login failed')
+            print(response.json)
 
         # Save this to auth with in future.
         self.userJwt = response.json['access_token']
@@ -147,38 +149,41 @@ class JsonClient():
         try:
             response.json
         except ValueError:
-            print 'Not JSON'
-            print response.status_code, 'for', url
-            print response.data
+            print('Not JSON')
+            print(response.status_code, 'for', url)
+            print(response.data)
 
         if response.status_code != 200:
-            print response.status_code, 'for', url
-            print response.json
+            print(response.status_code, 'for', url)
+            print(response.json)
 
         return response
 
-    def get(self, url, extraHeaders=None):
+    def get(self, url, data=None, extraHeaders=None):
         headers = {}
         if extraHeaders:
             headers.update(extraHeaders)
         if self.userJwt:
             headers['Authorization'] = 'Bearer %s' % self.userJwt
 
+        if data:
+            url = url + '?' + urllib.parse.urlencode(data)
+            print(url)
+
         response = self.client.get(url, headers=headers)
 
         try:
             data = response.json
         except ValueError:
-            print 'Not JSON'
-            print response.status_code, 'for', url
-            print response.data
+            print('Not JSON')
+            print(response.status_code, 'for', url)
+            print(response.data)
 
         if response.status_code != 200:
-            print response.status_code, 'for', url
-            print data
+            print(response.status_code, 'for', url)
+            print(data)
 
         return response
-
 
 class Expectation:
     def __init__(self, value):

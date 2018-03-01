@@ -11,6 +11,7 @@ class TestTrail(BaseTestCase):
         # Requires a trail to log walks against.
         self.trail = Trail(name='Test Trail', activity=Trail.ACTIVITY_WALK)
         db.session.add(self.trail)
+        db.session.commit()
 
     def test_get_trails(self):
         self.jsonClient.createLoggedInUser('get_trails')
@@ -19,7 +20,28 @@ class TestTrail(BaseTestCase):
         self.assertContains(response.json['data'][0], {
             'id': response.json['data'][0]['id'],
             'name': 'Test Trail',
-            'activity': 'Walking Trail',
+            'activity': {'value': 'Walking Trail', 'code': 'walk'},
+        })
+
+    def test_get_unstarted_trails(self):
+        user = self.jsonClient.createLoggedInUser('get_trails')
+
+        # Add another trail which hasn't been started by the current user.
+        trail = Trail(name='Trail 2', activity=Trail.ACTIVITY_WALK)
+        db.session.add(trail)
+
+        # Add a trail profile for the first trail so it shouldn't show up.trail        TrailProfile.get_or_create(user=user, trail=self.trail)
+        TrailProfile.get_or_create(user=user, trail=self.trail)
+
+        response = self.jsonClient.get('/api/trail/v1/trail', {
+            'started': False
+        })
+        self.assertEquals(len(response.json['data']), 1)
+        print(response.json['data'][0])
+        self.assertContains(response.json['data'][0], {
+            'id': response.json['data'][0]['id'],
+            'name': 'Trail 2',
+            'activity': {'value': 'Walking Trail', 'code': 'walk'},
         })
 
     def test_get_trail(self):
@@ -30,11 +52,12 @@ class TestTrail(BaseTestCase):
             'id': response.json['data']['id'],
             'name': 'Test Trail',
             'trail_profiles': [],
-            'activity': 'Walking Trail',
+            'activity': {'value': 'Walking Trail', 'code': 'walk'},
         })
 
     def test_add_walk(self):
-        self.jsonClient.createLoggedInUser('trail_create_user')
+        user = self.jsonClient.createLoggedInUser('trail_create_user')
+        TrailProfile.get_or_create(user=user, trail=self.trail)
 
         response = self.jsonClient.post('/api/trail/v1/progress', {
             'distance': 100,
@@ -42,38 +65,35 @@ class TestTrail(BaseTestCase):
             'trail_id': str(self.trail.id),
         })
         add_walk = response.json['data']
-        self.assertEqual(add_walk, {
-            'date_created': add_walk['date_created'],
+        print(add_walk)
+        self.assertContains(add_walk, {
             'distance': 100,
             'id': add_walk['id'],
         })
 
     def test_get_profiles_for_trail(self):
-        self.jsonClient.createLoggedInUser('trail_get_profiles_on_trail')
-
-        response = self.jsonClient.post('/api/trail/v1/progress', {
-            'distance': 100,
-            'trail_id': str(self.trail.id),
-        })
-        walk = response.json['data']
+        user = self.jsonClient.createLoggedInUser('trail_get_profiles_on_trail')
+        trail_profile = TrailProfile.get_or_create(user=user, trail=self.trail)
 
         response = self.jsonClient.get('/api/trail/v1/trail/%s' % str(self.trail.id))
-        self.assertEqual(response.json['data'], {
-            'activity': 'Walking Trail',
+        self.assertContains(response.json['data'], {
+            'activity': {'value': 'Walking Trail', 'code': 'walk'},
             'id': response.json['data']['id'],
             'name': 'Test Trail',
-            'trail_profiles': [{
-                'color': None,
-                'progress': [walk],
-            }]
+        })
+        self.assertContains(response.json['data']['trail_profiles'][0], {
+            'id': str(trail_profile.id),
+            'name': 'Test User',
+            'trail_id': str(self.trail.id),
+            'user_id': str(user.id),
         })
 
     def test_delete_profile(self):
         user = self.jsonClient.createLoggedInUser('delete_profile')
 
-        profile = TrailProfile(user=user, trail=self.trail)
+        profile = TrailProfile.get_or_create(user=user, trail=self.trail)
         db.session.add(profile)
-        TrailProgress(trail_profile=profile)
+        TrailProgress(trail_profile=profile, distance=1.0)
         db.session.commit()
 
         self.assertEquals(TrailProgress.query.count(), 1)

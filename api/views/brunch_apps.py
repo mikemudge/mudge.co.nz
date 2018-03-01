@@ -48,7 +48,7 @@ apps['trail'] = {
 class BrunchAppsListView(MethodView):
     def get(self):
         # TODO should be able to auto create this?
-        print apps.keys()
+        print(apps.keys())
         links = apps.keys()
 
         result = [

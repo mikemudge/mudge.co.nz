@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from app import create_app
 from flask_migrate import MigrateCommand
@@ -7,13 +7,13 @@ from rock1500.command import Command as RockCommand
 from shared.init_command import InitCommand
 from auth.init_command import InitAuthCommand
 from project_manager.command import ProjectCommand
-# from trail.commands import TrailCommand
+from trail.commands import TrailCommand
 
 app = create_app()
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-# manager.add_command('trail', TrailCommand)
+manager.add_command('trail', TrailCommand)
 manager.add_command('init', InitCommand)
 manager.add_command('auth', InitAuthCommand)
 manager.add_command('rock1500', RockCommand)

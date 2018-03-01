@@ -1,9 +1,9 @@
-from base import *
+from settings.base import *
 
 ENV = 'test'
 
 TESTING = True
-SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@localhost/mudgeconzTest'
+SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@db/mudgeconzTest'
 SQLALCHEMY_BINDS = {
     # Used for trails.
     'old_sqlite': 'sqlite:///firstproject-test.db',

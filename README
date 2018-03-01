@@ -4,6 +4,20 @@ Learning about python, flask, sqlalchemy etc.
 Uses the FirstProject virtualenv.
 https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-environments
 
+###Development###
+Uses docker.
+
+To build:
+docker-compose build
+
+To run the built image:
+docker-compose up -d
+Then see the logs:
+docker-compose logs -f app
+
+To connect with a shell
+docker-compose exec app /bin/bash
+
 lsvirtualenv
 mkvirtualenv
 workon

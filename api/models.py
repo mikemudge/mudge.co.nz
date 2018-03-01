@@ -42,14 +42,15 @@ class Ride(db.Model):
 
 def simpleSerialize(value):
     result = {}
-    for k, v in vars(value).iteritems():
+    for k, v in vars(value).items():
         if type(v) is datetime.datetime:
             result[k] = v.isoformat()
-        if type(v) in [unicode, int, str]:
+        if type(v) in [int, str]:
             result[k] = v
+        # TODO python 3 doesn't have unicode?
         # elif v is None:
         #     result[k] = None
         # else:
-        #     print type(v), k
+        #     print(type(v), k)
 
     return result

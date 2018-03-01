@@ -40,7 +40,7 @@ class Token():
         self.expires = datetime.utcfromtimestamp(data.get('exp'))
 
     def delete(self):
-        print 'delete', self.scopes
+        print('delete', self.scopes)
         # TODO can this work?
         pass
 
@@ -61,7 +61,7 @@ def load_token(access_token=None, refresh_token=None):
         token = Token(data, access_token)
         return token
     elif refresh_token:
-        print 'Unsupported refresh token?'
+        print('Unsupported refresh token?')
     else:
         raise AuthenticationException(['No token found'])
 
@@ -83,6 +83,8 @@ def save_grant(client_id, code, request, *args, **kwargs):
 def invalid_require_oauth(req):
     # TODO throw exceptions which get handled with the default handler?
     # Get better error messages than the default abort(401)
+    print(req.auth)
+
     response = jsonify({
         'message': req.error_message,
         'detail': 'Missing the scope required for this endpoint',

@@ -41,7 +41,7 @@ def rest_response(cls, extras=[]):
             result = cls()
             db.session.add(result)
 
-        for key, value in newdata.iteritems():
+        for key, value in newdata.items():
             setattr(result, key, value)
 
         db.session.commit()

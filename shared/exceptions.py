@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from flask import current_app
 import traceback
 
 from raven.contrib.flask import Sentry
@@ -64,10 +65,12 @@ def registerHandlers(app):
         # Unknown errors should always be 500's
         traceback.print_exc()
         sentry.captureException()
-        print error
-        print 'Unknown Exception for route: %s' % request.url
+        print(error)
+        print('Unknown Exception for route: %s' % request.url)
+        if current_app.config.get('DEBUG', False):
+            raise error
         response = jsonify({
-            'message': error.message,
+            'message': str(error),
             'status_code': 500
         })
         response.status_code = 500
@@ -78,7 +81,7 @@ def registerHandlers(app):
         if error.code != 404:
             # So many 404's for random urls.
             sentry.captureException()
-        print 'abort for route: %s' % request.url
+        print('abort for route: %s' % request.url)
         message = 'Unknown Error'
         if error.code in status_code_messages:
             message = status_code_messages[error.code]

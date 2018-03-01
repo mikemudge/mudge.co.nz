@@ -10,15 +10,23 @@ sleep 10
 if [ "$( psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='local_dev'" )" = '1' ]; then
   echo "Using existing database"
 else
-  # Create test database
+  # Create local database
   psql -U postgres < /app/docker/local_dev.sql
+fi
+
+# Make database for running tests against.
+if [ "$( psql -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='mudgeconzTest'" )" = '1' ]; then
+  echo "Using existing database"
+else
+  psql -f tests/test_db.sql
 fi
 
 # Run migrations
 /app/manage.py db upgrade
 
 # Start app in development mode
-/app/manage.py runserver -p 5000 -h 0.0.0.0
+# /app/manage.py runserver -dr -p 5000 -h 0.0.0.0
+flask run -p 5000 -h 0.0.0.0
 
 # Keep alive the container for testing.
 # sleep infinity

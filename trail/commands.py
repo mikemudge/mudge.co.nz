@@ -1,65 +1,122 @@
+from dateutil import parser
+
 from api.models import Walker, Biker
-from trail.models import TrailBiker, TrailRide, TrailWalker, TrailWalk
+from auth.models import Profile, User
+from trail.models import Trail, TrailProfile, TrailProgress
 from flask_script import Manager
 from shared.database import db
+from flask import current_app
+
 TrailCommand = Manager(usage='Migrate Trail and Biking data')
 
 @TrailCommand.command
-def clear_walks():
-    # Delete all.
-    TrailWalker.query.delete()
+def clear():
+    if current_app.config.get('ENV') == 'dev':
+        # Delete all.
+        Trail.query.delete()
+        # Should auto delete all profiles and progresses.
+        db.session.commit()
+        print('Removed all Trail\'s.')
+    else:
+        print('Unable to delete all data from none development environment.')
+
+@TrailCommand.command
+def init():
+    # Ensure there are Trail's for each of the known trails.
+
+    Trail.query.delete()
+
+    db.session.add(Trail(activity=Trail.ACTIVITY_WALK, name='Te Araroa Trail'))
+    db.session.add(Trail(activity=Trail.ACTIVITY_BIKE, name='Tour Aotearoa'))
     db.session.commit()
 
 @TrailCommand.command
-def migrate_walks():
+def migrate():
 
-    # Delete all.
-    TrailWalker.query.delete()
+    # Delete all existing profiles?
+    TrailProfile.query.delete()
+    walkTrail = Trail.query.filter(Trail.name == 'Te Araroa Trail').first()
+    bikeTrail = Trail.query.filter(Trail.name == 'Tour Aotearoa').first()
 
     walkers = Walker.query.all()
     for walker in walkers:
-        print walker.name, walker.color, int(walker.color, 16)
-        newWalker = TrailWalker(
-            name=walker.name,
+        print('Existing walker', walker.name, walker.color, int(walker.color, 16))
+
+        user = get_user_for(walker.name)
+
+        # profile
+        newWalker = TrailProfile.get_or_create(
+            user=user,
+            trail=walkTrail,
             color=int(walker.color, 16)
         )
-        db.session.add(newWalker)
+        newWalker.progress = []
         for walk in walker.walks:
-            newWalk = TrailWalk(
+            dt = parser.parse(walk.date)
+
+            newWalk = TrailProgress(
                 distance=float(walk.distance),
-                date_created=walk.date
+                date_created=dt,
+                date=dt.date(),
             )
-            newWalker.walks.append(newWalk)
+            newWalker.progress.append(newWalk)
 
-    db.session.commit()
-    print 'Done'
-
-@TrailCommand.command
-def clear_rides():
-    # Delete all.
-    TrailBiker.query.delete()
-    db.session.commit()
-
-@TrailCommand.command
-def migrate_rides():
-
-    # Delete all.
-    TrailBiker.query.delete()
+    print('Migrated walkers')
 
     bikers = Biker.query.all()
     for biker in bikers:
-        print biker.name, biker.color, int(biker.color, 16)
-        newBiker = TrailBiker(
-            name=biker.name,
+        print('Existing biker', biker.name, biker.color, int(biker.color, 16))
+
+        user = get_user_for(biker.name)
+
+        newBiker = TrailProfile.get_or_create(
+            user=user,
+            trail=bikeTrail,
             color=int(biker.color, 16)
         )
+        newBiker.progress = []
         db.session.add(newBiker)
         for ride in biker.rides:
-            newRide = TrailRide(
+            dt = parser.parse(ride.date)
+
+            newRide = TrailProgress(
                 distance=float(ride.distance),
-                date_created=ride.date
+                date_created=dt,
+                date=dt.date(),
             )
-            newBiker.rides.append(newRide)
+            newBiker.progress.append(newRide)
 
     db.session.commit()
-    print 'Done'
+    print('Migrated bikers')
+    print('Done')
+
+def get_user_for(full_name):
+    names = full_name.split(' ')
+    firstname = names[0]
+
+    nameMap = {
+        'Julie': 'reddishbaby@gmail.com',
+        'Pete': 'melrosemudges@gmail.com',
+        'Neil': 'mudge12@gmail.com',
+        'Marg': 'marg@mudge.co.nz',
+        'Mike': 'mike.mudge@gmail.com',
+        'Michael': 'mike.mudge@gmail.com',
+    }
+
+    profile = Profile.query.filter(Profile.firstname == firstname).first()
+    if not profile:
+        if full_name in nameMap:
+            lastname = 'Mudge'
+            if len(names) > 1:
+                lastname = names[1]
+            user = User.create(email=nameMap[full_name])
+            user.profile.firstname = firstname
+            user.profile.lastname = lastname
+        else:
+            raise Exception('Unknown name ' + full_name)
+    else:
+        print('Found existing user', profile.user)
+        print('Profile', profile)
+        return profile.user
+
+    return user

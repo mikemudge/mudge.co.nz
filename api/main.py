@@ -2,7 +2,6 @@ import os
 
 from flask import Blueprint
 from flask import send_from_directory, url_for
-from flask import render_template
 from flask import abort, current_app
 from shared.helpers.angular import Angular
 
@@ -68,9 +67,10 @@ def jack():
 def stuff():
     return ''.join([
         "You made it to my home page<br>",
-        "<a href='/stuff/trail'> Te Araroa Trail Walk </a><br>",
-        "<a href='/stuff/bike'> Tour Aotearoa MTB </a><br>"])
+        "<a href='/brunch/trail'> Try out the new Trail site here </a><br>"
+    ])
 
+# Legacy
 @main_bp.route('/stuff/trail')
 def trail():
     app = Angular('trail')
@@ -82,6 +82,7 @@ def trail():
     ]
     return app.render()
 
+# Legacy
 @main_bp.route('/stuff/bike')
 def bike():
     app = Angular('bike')

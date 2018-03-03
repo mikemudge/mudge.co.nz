@@ -13,9 +13,6 @@ scripts = {
 
 apps = {}
 apps['soccer'] = {}
-apps['ar'] = {
-    'scripts': scripts['threejs']
-}
 apps['rts'] = {
     'scripts': scripts['threejs']
 }
@@ -36,9 +33,6 @@ apps['rock'] = {
     'styles': [
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
     ]
-}
-apps['bike'] = {
-    'scripts': scripts['gmaps']
 }
 apps['trail'] = {
     'scripts': scripts['gmaps']

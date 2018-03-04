@@ -1,6 +1,6 @@
 jack = {};
 /**
- * The angular module for Project Manager.
+ * The angular module for Jacks gatherer.
  */
 jack.App = angular.module('jack', [
   'MainController',
@@ -40,6 +40,7 @@ jack.MainController = function($location, $resource, $routeParams, $scope, confi
   $scope.basePath = config.basePath;
   $scope.baseUrl = config.basePath;
   this.tracks = [];
+  this.existingLoaded = false;
 
   // Start loading data.
   this.myFirebaseRef = new Firebase("https://boiling-heat-371.firebaseio.com/JacksGatherer");

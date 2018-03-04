@@ -1,5 +1,8 @@
 <div>
   <h4>Welcome</h4>
+  <div ng-hide="ctrl.existingLoaded">
+    Loading tracks.
+  </div>
   <div class="track" ng-repeat="track in ctrl.tracks">
     <span class="id" ng-click='ctrl.showTrack(track.key)'>
       Track: {{ track.trackName ? track.trackName : track.data_key }}

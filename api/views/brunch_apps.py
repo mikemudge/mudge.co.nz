@@ -13,9 +13,6 @@ scripts = {
 
 apps = {}
 apps['soccer'] = {}
-apps['rts'] = {
-    'scripts': scripts['threejs']
-}
 apps['tournament'] = {}
 apps['breakout'] = {
     'scripts': scripts['threejs']

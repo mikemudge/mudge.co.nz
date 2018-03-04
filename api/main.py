@@ -109,8 +109,9 @@ def at_test():
         url_for('static', filename="js/three.js/OrbitControls.js"),
         url_for('static', filename="js/three.js/DeviceOrientationControls.js"),
         # Include pieces from RTS.
-        current_app.config.get('STATIC_URL') + 'rts/templates.js',
-        current_app.config.get('STATIC_URL') + 'rts/app.js',
+        url_for('static', filename='rts/rts.js'),
+        url_for('static', filename='rts/units.js'),
+        url_for('static', filename='rts/game.js'),
         url_for('static', filename='ar/ar.js'),
     ]
     return app.render()

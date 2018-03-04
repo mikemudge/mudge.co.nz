@@ -54,6 +54,7 @@ class Angular():
             # TODO support embedded templates?
         })
 
+    # TODO should be more generic and use a config lookup???
     def addLoginApi(self):
         brunchServer = current_app.config.get('STATIC_URL')
 
@@ -72,6 +73,7 @@ class Angular():
     def addStyle(self, href):
         self.styles += [href]
 
+    # Deprecated
     def addProject(self, name):
 
         brunchServer = current_app.config.get('STATIC_URL')
@@ -100,15 +102,3 @@ class Angular():
             '%s%s/app.js' % (brunchServer, self.appName),
             '%s%s/templates.js' % (brunchServer, self.appName),
         ]
-
-    @classmethod
-    def basicAngular(cls, appName):
-        app = Angular(appName)
-        app.base = '/a/%s/' % appName
-        app.scripts += [
-            url_for('static', filename="common/user.js"),
-            url_for('static', filename="js/three.min.js"),
-            url_for('static', filename="js/three.js/OrbitControls.js"),
-        ]
-
-        return app

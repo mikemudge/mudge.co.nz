@@ -19,6 +19,8 @@ services:
       - db
     ports:
       - 5000:5000
+      # For local https testing.
+      - 5001:5001
     environment:
       - PGHOST=db
       - PGUSER=postgres

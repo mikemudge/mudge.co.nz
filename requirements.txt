@@ -22,6 +22,9 @@ blinker>=1.4
 psycopg2-binary>=2.6.2
 pytz==2017.2,<2018
 
+# Local development https
+pyopenssl>=17.5.0,<18
+
 # Local testing
 nose>=1.3.7
 Flask-Testing>=0.7.1

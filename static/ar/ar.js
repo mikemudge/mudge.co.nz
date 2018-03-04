@@ -23,7 +23,14 @@ var MyController = function() {
 
   if (window.orientation !== undefined) {
     // Mobile detection.
-    this.controls = new THREE.DeviceOrientationControls(this.camera);
+
+    // TODO needs a target to work???
+    var mesh = new THREE.CubeGeometry( 20, 20, 20 );
+    var material = new THREE.MeshNormalMaterial();
+    this.cube = new THREE.Mesh(mesh, material);
+    this.cube.position.y = 15;
+
+    this.controls = new THREE.DeviceOrientationControls(this.camera, this.cube);
     this.setupVideo();
   } else {
     this.controls = new THREE.OrbitControls(this.camera);
@@ -123,8 +130,6 @@ MyController.prototype.updateVideoFeed = function(cameraSource) {
     console.log('Reeeejected!', e);
   });
 };
-
-require('rts/rts.js');
 
 angular.module('ar', [
   'ngRoute'

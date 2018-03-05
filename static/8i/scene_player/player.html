@@ -1,0 +1,152 @@
+<div class="page" ng-controller="PlayController as ctrl">
+  <header class="white-page" ng-include="'/static/8i/new_site/header.html'"></header>
+  <div class="container">
+    <div class="left_column">
+      <div class="video_wrapper">
+        <div class="video_player">
+          <div class="player">
+            <canvas id="canvas"></canvas>
+            <div class="unsupported" ng-hide="!ctrl.playerService.unsupported" class="ng-hide">
+              <p>
+                It looks like WebGL isn't working for your browser.
+              </p>
+              <p>
+                Are you sure its enabled and up to date?
+              </p>
+              <p>
+                You can try opening this page in another browser.
+              </p>
+            </div>
+            <!-- TODO only show this if mobile and not using the best browser -->
+            <div class="unsupported" ng-hide="!userAgent.unsupported" class="ng-hide">
+              <p>
+                8i.com requires high performance webgl which work best in the native browser for your device.
+              </p>
+              <p>
+              <span ng-if="userAgent.android">
+                Use Chrome on Android devices.
+              </span>
+              <span ng-if="userAgent.iOS">
+                Use Safari on iOS devices.
+              </p>
+            </div>
+          </div>
+          <div class="collapsing" ng-class="{hidden: ctrl.hiddenControls}">
+            <div class="player_help" ng-show="ctrl.player_help">
+              <img src='/static/img/new_site/move_icon@2x.png' />
+            </div>
+            <div class="player_help touch" ng-show="ctrl.device_controls" ng-click="ctrl.toggleTouch()"/>
+              <img ng-show="ctrl.touchAllowed" src='/static/8i/img/scene_player/touch_on.png' />
+              <img ng-hide="ctrl.touchAllowed" src='/static/8i/img/scene_player/touch_off.png' />
+            </div>
+            <div class="controls">
+              <!-- TODO special case ctrl.totalLength of 0 which means there is no play. -->
+              <div class="bar progress" ng-click="ctrl.seek($event)">
+                <div class="download" style="width: {{ ctrl.progress }}%"></div>
+                <div class="played" style="width: {{ ctrl.currentTime * 100 / ctrl.totalLength }}%"></div>
+              </div>
+              <div class="left">
+                <span class="icon control-play" ng-click="ctrl.play()" ng-show="!ctrl.playerService.isPlaying">
+                </span>
+                <span class="icon control-pause" ng-click="ctrl.pause()" ng-show="ctrl.playerService.isPlaying">
+                </span>
+                <span class="icon control-loop" ng-click="ctrl.loop()"
+                    ng-class="{inactive: !ctrl.looping}"></span>
+                <span class="icon" ng-click="ctrl.toggleMute()"
+                    ng-class="{'icon-volume-2': !ctrl.muted, 'icon-volume-off': ctrl.muted}">
+                <!-- ng-if="audio"  -->
+                </span>
+              </div>
+              <div class="right">
+                <span class="icon control-settings" ng-click="ctrl.onClickSettings()" ng-show="ctrl.representations.length > 1"></span>
+                <span class="icon cardboard" ng-click="ctrl.enableCardboard()" ng-show="!ctrl.playerService.cardboard">
+                  <img src='/static/8i/img/cardboard/cardboard.svg' />
+                </span>
+                <span class="icon size-fullscreen" ng-click="ctrl.fullscreen()" ng-show="!ctrl.isFullscreen"></span>
+                <span class="icon size-actual" ng-click="ctrl.exitFullscreen()" ng-show="ctrl.isFullscreen"></span>
+              </div>
+            </div>
+          </div>
+          <div class="cardboard_warning" ng-hide="!ctrl.showCardboardWarning">
+            <div class="desktop-help">
+              <p>To view this on cardboard open this page on your mobile.</p>
+              <p class="showAnyway" ng-click="ctrl.enableCardboard(true)">show anyway</p>
+              <div>
+                <input onClick="this.setSelectionRange(0, this.value.length)" readonly class="url"
+                    value="{{ ctrl.url }}" />
+              </div>
+            </div>
+          </div>
+          <div class="cover" ng-show="ctrl.selectRepresentation"
+              ng-click="ctrl.selectRepresentation = false">
+          </div>
+          <div class="representations" ng-hide="!ctrl.selectRepresentation">
+            <h3>RESOLUTION</h3>
+            <button class="HDButton" disabled="disabled">HD Coming Soon</button>
+            <button ng-repeat="representation in ctrl.representations"
+                ng-click="ctrl.onClickRepresentation(representation)"
+                ng-class="{selected: representation == ctrl.currentRepresentation}">
+              {{ representation.params.resolution || 'unknown resolution' }}
+            </button>
+            <a class="cd-popup-close" ng-click="ctrl.selectRepresentation = false"></a>
+          </div>
+        </div>
+      </div>
+      <div class="watching" ng-show="ctrl.video">
+        <h2 class="title">{{ ctrl.video.title || ctrl.video.name }}</h2>
+        <div ng-show="ctrl.video.views" class="views">Views: {{ ctrl.video.views }}</div>
+        <div class="share">
+          <div class="fb-share-button" data-layout="button">
+          </div>
+          <a href="https://twitter.com/share"
+              class="twitter-share-button"
+              data-show-count="false"
+              data-text="{{ ctrl.video.title || ctrl.video.name }}">
+            <!-- Tweet -->
+          </a>
+        </div>
+        <div class="info">
+          <p ng-bind-html="ctrl.video.description | linky"></p>
+          <p ng-bind-html="ctrl.video.extra_description | linky"></p>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+    <div class="right_column">
+      <div class="play_list" ng-controller="PlaylistController as playlist">
+        <div>
+          <h2>Related Videos</h2>
+        </div>
+        <div ng-show="playlist.videos">
+          <div class='video' ng-repeat="video in playlist.videos"
+              ng-if="playlist.current != video.eid"
+              ng-click="playlist.playNow(video)">
+            <div class="image">
+              <img ng-src="{{ video.web_image_url }}" />
+            </div>
+            <div class="info">
+              <h4>{{ video.title }}</h4>
+              <p>{{ video.description }}</p>
+              <p>Views: {{ video.views }}</p>
+            </div>
+          </div>
+        </div>
+        <div ng-hide="playlist.videos">
+          <div class='video' ng-repeat="scene in playlist.scenes"
+              ng-if="playlist.current != scene.id"
+              ng-click="playlist.playNow(scene)">
+            <div class="image">
+              <img ng-src="{{ scene.thumbnailStatic }}" />
+            </div>
+            <div class="info">
+              <h4>{{ scene.name }}</h4>
+              <p>{{ scene.description }}</p>
+              <p ng-show="scene.views">Views: {{ scene.views }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer ng-include="'/static/8i/new_site/footer.html'"></footer>
+</div>

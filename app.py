@@ -9,7 +9,6 @@ from shared.marshmallow import ma, Session
 from admin.routes import routes as mudge_admin_routes
 from api.admin import routes as admin_routes
 from api.api_app import api_bp
-from api.main import main_bp
 from api.routes import routes as api_routes
 from auth.routes import routes as auth_routes
 from flask_migrate import Migrate
@@ -35,7 +34,6 @@ def create_app(config=None):
             raise Exception('Can\'t determine which config file to use. Specify via argument or environment variable APP_SETTINGS')
 
     app.config.from_object(config)
-    app.register_blueprint(main_bp, url_prefix='')
     app.register_blueprint(api_bp, url_prefix='/api')
 
     setup_auth(app)

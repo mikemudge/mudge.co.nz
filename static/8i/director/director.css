@@ -1,0 +1,994 @@
+body {
+  margin: 0px;
+  font-family: DIN-Regular, Helvetica, Arial, sans-serif;
+  color: #CFD8DC;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Header styles */
+.header {
+  height: 60px;
+  background-color: #263238;
+  color: #999999;
+}
+
+.header .logo {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  padding: 13px;
+  vertical-align: middle;
+}
+
+.header .title {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header .title .name {
+  margin-left: 20px;
+  font-size: 19px;
+}
+
+.header .title .name input {
+  width: 300px;
+}
+
+.header .description {
+  color: #05AAC0;
+  margin-left: 20px;
+  display: inline-block;
+  padding-top: 3px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.header .description textarea {
+  height: 246px;
+  width: 406px;
+}
+
+.absolute {
+  position: absolute;
+  /* Needs to be above the sidebar */
+  z-index: 2;
+}
+
+.right_buttons {
+  float: right;
+  line-height: 24px;
+}
+
+.header .icon {
+  display: inline-block;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-size: 14px;
+  height: 24px;
+  margin: 18px 32px;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.header .icon:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+.header .icon span {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 2px;
+  padding-left: 10px;
+}
+
+.header .icon img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sharing .url {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin: 8px 0 8px 0;
+  font-family: DIN-Bold;
+  width: 100%;
+  text-align: center;
+}
+.sharing .fb-share {
+  background: linear-gradient(#4c69ba, #3b55a0);
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  height: 12px;
+  overflow: hidden;
+  padding: 8px;
+  margin-right: 24px;
+}
+.sharing .fb-share svg {
+  display: inline-block;
+  height: 12px;
+  vertical-align: middle;
+  width: 12px;
+}
+.sharing .fb-share span.text {
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0px 4px;
+  vertical-align: top;
+}
+
+.sharing #tweet-container {
+  display: inline-block;
+}
+
+.user {
+  display: inline-block;
+  vertical-align: middle;
+  height: 48px;
+  margin: 6px;
+}
+
+.user img {
+  /* make the image a circle */
+  border-radius: 24px;
+  width: 48px;
+}
+
+.user .options {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  width: 150px;
+  z-index: 1;
+  background: #CCC;
+}
+.user .options p {
+  padding: 8px;
+}
+
+/* Sidebar styles */
+.sidebar {
+  top: 60px;
+  bottom: 25%;
+  position: absolute;
+  width: 60px;
+  /* Everything in the side bar should be on top of the player */
+  z-index: 1;
+}
+
+.sidebar .tabs {
+  background-color: #37474F;
+  height: 100%;
+  width: 60px;
+  /* This needs to be absolute and z-index: 1 to be on top of the tab_content's */
+  position: absolute;
+  z-index: 1;
+}
+
+.sidebar .toggles {
+  bottom: 0px;
+  margin: 20px 12px;
+  position: absolute;
+  width: 36px;
+}
+
+.sidebar .toggles .grid {
+  cursor: pointer;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.sidebar .toggles .grid:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+.sidebar .tab {
+  cursor: pointer;
+  padding: 16px 13px;
+  height: 34px;
+  text-align: center;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.sidebar .tab:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+.sidebar .tab.text {
+  /* horizontally center these */
+  margin: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #78909C;
+}
+
+.tab_content {
+  background-color: #455A64;
+  bottom: 0;
+  left: -180px;
+  position: absolute;
+  top: 0px;
+  width: 180px;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+.tab_content.open {
+  left: 100%;
+}
+
+.hide_tabs {
+  position: absolute;
+  right: 16px;
+  top: 24px;
+  width: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+.hide_tabs:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+.tab_content h4 {
+  font-size: 14px;
+  margin: 24px 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.tab_content .line {
+  background-color: #5B7583;
+  margin: 8px 16px;
+  height: 1px;
+}
+.tab_content .tab_scroll {
+  width: 180px;
+  overflow: hidden;
+  overflow-y: auto;
+  top: 70px;
+  bottom: 0;
+  position: absolute;
+}
+.tab_content .experience,
+.tab_content .background,
+.tab_content .object {
+  cursor: pointer;
+  margin: 12px 16px;
+}
+
+.experience img {
+  height: 70px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.experience .description,
+.object .description {
+  background-color: #CFD8DC;
+  color: #263238;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.experience .description .title,
+.object .description .title {
+  padding: 8px 8px;
+  display: inline-block;
+}
+
+.sidebar .tab_content .text label.color {
+  font-size: 14px;
+}
+
+.sidebar .tab_content .text input {
+  background: #607D8B;
+  border-radius: 2px;
+  border-width: 0px;
+  margin-bottom: 8px;
+}
+
+.sidebar .help {
+  font-size: 12px;
+  margin: -6px 16px 8px;
+  text-align: right;
+}
+.sidebar .help img {
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+}
+
+.helper {
+  background: #CFD8DC;
+  border-radius: 2px;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+  color: #607D8B;
+  font-size: 14px;
+  max-width: 300px;
+  padding: 16px;
+  position: absolute;
+  z-index: 100;
+}
+
+.helper .triangle {
+  border-bottom: 5px solid transparent;
+  border-right: 10px solid #CFD8DC;
+  border-top: 5px solid transparent;
+  height: 0;
+  position: absolute;
+  right: 100%;
+  top: 25px;
+  width: 0;
+}
+
+.tab_content .button {
+  background: rgba(0,0,0,0.20);
+  border: 2px solid #00BCD4;
+  border-radius: 2px;
+
+  text-align: center;
+  font-size: 11px;
+  color: #00BCD4;
+  letter-spacing: 0px;
+  margin: 8px 0px;
+}
+
+.sky,
+.floor {
+  /* Temp styles for background sky */
+  font-size: 14px;
+  margin: 8px;
+  padding: 7px;
+}
+
+.sky label {
+  display: block;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.sky .hex {
+  font-size: 10px;
+  width: 43px;
+  display: inline-block;
+}
+
+.camera .button {
+  margin: 12px 16px;
+}
+
+/* Part of file upload directive.
+  Not sure if there is a way to keep these together?
+*/
+.file {
+  position: relative;
+}
+
+.file .progress {
+  /* width is dynamic w.r.t progress. */
+  background-color: green;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+}
+
+.uploadLocation {
+  display: none;
+}
+
+/* player wrapper styles */
+.player_wrapper {
+  top: 60px;
+  left: 60px;
+  bottom: 25%;
+  right: 0px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.player {
+  height: 100%;
+  width: 100%;
+  cursor: grab;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+.pointer.slide {
+  cursor: url('/static/img/director/pointers/slide.png'), auto;
+}
+.pointer.translate {
+  cursor: url('/static/img/director/pointers/translate.png'), auto;
+}
+.pointer.rotate {
+  cursor: url('/static/img/director/pointers/rotate.png'), auto;
+}
+.pointer.roll {
+  cursor: url('/static/img/director/pointers/roll.png'), auto;
+}
+.pointer.scale {
+  cursor: url('/static/img/director/pointers/scale.png'), auto;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Needed for going fullscreen with some overlays. */
+.fullScreener {
+  height: 100%;
+  width: 100%;
+}
+
+.fullscreen_hack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000000;
+}
+
+.properties {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 12px 16px;
+}
+
+.properties .section {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  font-size: 14px;
+}
+
+.properties input {
+  width: 50px;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+  background: none;
+  color: #CFD8DC;
+  height: 20px;
+  text-align: right;
+}
+
+.properties .reset,
+.properties .delete {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  font-size: 10px;
+  color: #00BCD4;
+  text-transform: uppercase;
+}
+.properties .delete {
+  top: 12px;
+  right: 16px;
+}
+
+.properties .name {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.properties .line {
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+  margin-top: 4px;
+}
+
+.properties .scale input {
+  width: 80px;
+  text-align: center;
+}
+
+/* Bottom timeline panel styles */
+.timeline_panel {
+  width: 100%;
+  height: 25%;
+  position: absolute;
+  bottom: 0px;
+  background-color: #182429;
+  /* Prevent an outline when this is selected. */
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The first row of the timeline is seperate from the rest. */
+.timeline_panel .top {
+  width: 100%;
+  /* So when the objects "scroll" nothing is shown on top of the first row */
+  z-index: 1;
+}
+
+.timeline_panel .controls {
+  color: #656565;
+  background-color: #263238;
+  border-bottom: #000000 solid 4px;
+  height: 39px;
+  width: 20%;
+  pointer-events: all;
+  z-index: 2;
+  position: absolute;
+}
+
+.timeline_panel .timeScale {
+  width: 80px;
+  padding: 11px 8px;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.timeline_panel .timeScale input {
+  width: 100%;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+.timeline_panel .times {
+  line-height: 39px;
+  font-size: 10px;
+  position: absolute;
+  width: 80%;
+  overflow: hidden;
+  left: 20%;
+  top: 0;
+  /* Actually only uses 40px of height but this allows time indicator to be 100% tall */
+  height: 100%;
+  pointer-events: none;
+}
+.timeline_panel .times .numbers {
+  top: 0;
+  height: 39px;
+  background-color: #263238;
+  z-index: 1;
+  pointer-events: all;
+  padding-right: 10px;
+}
+
+/* This is the rest of the timeline after the first row */
+.timeline_panel .scroll_outer {
+  overflow: auto;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  /* because we want the horizontal scroll bar at the bottom */
+  bottom: 0px;
+}
+
+.timeline_panel .left {
+  width: 20%;
+  float: left;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline_panel .right {
+  width: 80%;
+  float: left;
+  position: relative;
+}
+
+.objects {
+  padding-right: 1px;
+  background-color: #182429;
+  position: relative;
+}
+.row {
+  /*background-color: #263238;*/
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 4px;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  /* Ensure that timeline objects only occupy a single line. */
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Extra styles for timeline panel - non layout */
+.controls .icon {
+  height: 16px;
+  padding: 12px 8px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.controls .icon:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+.controls .icon.loop {
+  float: right;
+  width: 18px;
+  height: 24px;
+  padding: 4px 8px;
+  margin: 4px;
+}
+
+.times .time {
+  /* left should be set dynamically based on the time */
+  position: absolute;
+  margin-left: -10px;
+  width: 20px;
+  text-align: center;
+  top: -1px;
+  color: #999999;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.timeline_panel .object {
+  background-color: #263238;
+}
+.timeline_panel .object.selected {
+  background-color: #37474F;
+}
+
+.timeline_panel .object .icon {
+  height: 18px;
+  width: 22px;
+  float: left;
+  padding: 6px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.timeline_panel .object .icon img {
+  height: 100%;
+  width: 100%;
+  object-position: 50% 50%;
+  object-fit: contain;
+}
+
+.timeline_panel .object .name {
+  font-size: 14px;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.timeline_panel .object .delete {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.timeline_panel .object.selected .name {
+  color:#DEE3E2;
+}
+
+.timeline {
+  color: #999;
+  position: relative;
+  margin-left: 1px;
+}
+
+/*.timeline::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+}*/ /* the new scrollbar will have a flat appearance with the set background color */
+
+.timeline::-webkit-scrollbar {
+  /* this needs to exist for any scroll bar styles to have effect */
+/*  width: 12px;*/
+}
+
+.timeline::-webkit-scrollbar-thumb {
+/*  border-radius: 10px;
+  background-color: gray;*/
+}
+
+.timeline .inner {
+  /* width is set dynamically based on the totalLength */
+  padding-right: 50px;
+}
+
+.timeline .video {
+  position: absolute;
+  top: 0;
+}
+
+.timeline .startTime {
+  position: absolute;
+  top: 0;
+  /*background-color: #00BCD4;*/
+  width: 10px;
+  margin-left: -4px;
+  line-height: 35px;
+  letter-spacing: -1px;
+  cursor: col-resize;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  padding-left: 1px;
+  height: 100%;
+}
+
+.timeline .endTime {
+  position: absolute;
+  top: 0;
+  /*background-color: #00BCD4;*/
+  width: 10px;
+  line-height: 35px;
+  letter-spacing: -1px;
+  cursor: col-resize;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  margin-left: -10px;
+  padding-left: 1px;
+  height: 100%;
+}
+
+.timeline .aliveTime {
+  height: 100%;
+  background: #263238;
+  right: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.timeline_panel .row.selected .aliveTime {
+  background-color: #37474F;
+}
+
+.keyFrame {
+  position: absolute;
+  top: 0;
+  background-color: #00BCD4;
+  cursor: col-resize;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  width: 10px;
+  line-height: 35px;
+  letter-spacing: -1px;
+  /* To align the right hand edge.*/
+  margin-left: -5px;
+  padding-left: 1px;
+  height: 100%;
+}
+
+.keyFrame.selected {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.videoLength {
+  position: absolute;
+  /* Will be overridden by dynamic left based on "scroll" */
+  left: 0;
+  top: 39px;
+  height: 3px;
+  background-color: #D43A65;
+  z-index: 1;
+}
+
+.timeIndicator {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #01CCFF;
+  margin-left: -1px;
+  /* 15px leaves room for a scroll bar. TODO all browsers/OS's? */
+  bottom: 15px;
+  position: absolute;
+  top: 36px;
+  width: 3px;
+  z-index: 2;
+  pointer-events: none;
+}
+.timeIndicator.hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.timeIndicator .top {
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid #01CCFF;
+}
+
+.timeFinish {
+  border-right: 1px solid black;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Error info. */
+.errors {
+  color: red;
+}
+.error {
+  color: red;
+}
+.error input {
+  border: 1px solid red;
+}
+
+.obsureBack {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.popup {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  border: 1px solid white;
+  color: #CCC;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow: hidden;
+  padding: 20px 10px;
+  position: absolute;
+  text-align: center;
+  top: 30%;
+
+  /* Display in the middle */
+  left: 50%;
+  width: 320px;
+  margin-left: -160px;
+}
+
+.popup a {
+  color: #CCC;
+  font-weight: bold;
+}
+
+.debug {
+  text-align: initial;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: black;
+  background: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.myScenes {
+  overflow-y: auto;
+  height: 490px;
+  margin-top: 10px;
+}
+
+.myScenes .myScene {
+  float: left;
+  font-size: 14px;
+  height: 55px;
+  position: relative;
+  width: 50%;
+}
+
+.myScenes .thumb {
+  height: 30px;
+  width: 30px;
+}
+
+.myScenes .right {
+  position: absolute;
+  text-align: left;
+  left: 30px;
+  top: 0px;
+}
+
+.myScenes .description {
+  background: black;
+  border: 1px #886655 solid;
+  display: none;
+  padding: 8px;
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  z-index: 1;
+}
+.myScenes .right:hover .description {
+  display: block;
+}
+
+.position {
+  margin: 8px;
+}
+.scale {
+  margin: 8px;
+}
+.rotation {
+  margin: 8px;
+}
+.edit {
+  margin: 8px;
+}
+
+.edit input {
+  width: 50px;
+}
+
+/* Generic styles */
+input[type='text'] {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  width: 100%;
+}
+
+input[type='color'] {
+  border: 0px;
+  background: none;
+  width: 36px;
+  height: 32px;
+}
+
+.button {
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.close {
+  -webkit-transform: rotate(315deg);
+  -moz-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+
+  background-image: url('/static/img/director/close_popout.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+
+  position: absolute;
+  padding: 8px;
+  cursor: pointer;
+  top: 0px;
+  right: 0px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.close:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}

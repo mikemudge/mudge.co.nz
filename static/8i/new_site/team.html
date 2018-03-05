@@ -1,0 +1,126 @@
+<header ng-include="'/static/8i/new_site/header.html'"></header>
+
+<div class="team" ng-controller="TeamController as teamCtrl">
+  <div class="main" ng-class="{'background': !mobile, 'mobile': mobile}">
+    <img ng-if="mobile" class="mom" src="/static/img/new_site/about_mom_mobile.jpg" />
+    <div class="text">
+      <h3>
+        We're on a mission to give people the best way to connect with each other and express themselves through holograms.
+      </h3>
+      <p>
+        8i provides the easiest way to create, mix and experience human holograms that look real
+        and feel as if they were in the same room. Our proprietary technology transforms video
+        from an array of cameras into a photo-realistic 3D hologram of a human that can be viewed
+        from any angle, on any device for virtual, augmented or mixed reality.
+      </p>
+    </div>
+  </div>
+  <div class="container our_team">
+    <div class="text">
+      <h3>Our team</h3>
+      <p>
+        Our team brings decades of experience from Weta Digital, YouTube, NVIDIA, Google,
+        Valve, Microsoft Research, PayPal, Sony Computer Entertainment, DreamWorks, Pixar,
+        Bell Laboratories, Viacom, Twitter, Yahoo!, and Zynga.
+      </p>
+    </div>
+    <div class="photos">
+      <div class="photo" ng-repeat="teamMember in teamCtrl.teamMembers">
+        <img class="face" ng-src="{{ teamMember.photo }}" />
+        <div class="info" ng-class="{eugene_special: teamMember.name == 'Eugene d\'Eon'} ">
+          <div class="name">{{ teamMember.name }}</div>
+          <div class="job">{{ teamMember.job_title }}
+          <div ng-if="teamMember.name == 'Eugene d\'Eon'">
+            <img src="https://s3-us-west-2.amazonaws.com/content.8i.com/8i+Website/Team+Photos/Eugene&#x27;s Role.png" />
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Advisors -->
+  <div class="container advisors">
+    <div class="text">
+      <h3>Our advisors</h3>
+      <p>
+      <!-- Something -->
+      </p>
+    </div>
+    <div class="photos">
+      <div class="photo">
+        <img class="face" ng-src="https://s3-us-west-2.amazonaws.com/content.8i.com/8i+Website/Team+Photos/_0016_Kevin Wall.jpg" />
+        <div class="info">
+          <div class="name">Kevin Wall</div>
+          <div class="job">Founder and CEO of Control Room</div>
+        </div>
+      </div>
+      <div class="photo">
+        <img class="face" ng-src="https://s3-us-west-2.amazonaws.com/content.8i.com/8i+Website/Team+Photos/_0004_Ted Schilowitz.jpg" />
+        <div class="info">
+          <div class="name">Ted Schilowitz</div>
+          <div class="job">Futurist at 20th Century Fox</div>
+        </div>
+      </div>
+      <div class="photo">
+        <img class="face" ng-src="https://s3-us-west-2.amazonaws.com/content.8i.com/8i+Website/Team+Photos/Joshua-Feast.jpg" />
+        <div class="info">
+          <div class="name">Joshua Feast</div>
+          <div class="job">Cofounder of 8i and CEO of Cogito</div>
+        </div>
+      </div>
+      <div class="photo">
+        <img class="face" ng-src="https://s3-us-west-2.amazonaws.com/content.8i.com/8i+Website/Team+Photos/Sam Wick.jpg" />
+        <div class="info">
+          <div class="name">Sam Wick</div>
+          <div class="job">Digital Media Executive, United Talent Agency</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="investors container">
+    <div class="text">
+      <h3>Some of our investors</h3>
+      <p>
+        We’re backed by some of the leading investors in technology and media.
+        A few of them are included here.
+      </p>
+    </div>
+    <div class="investor {{ investor.class }}" ng-repeat="investor in teamCtrl.investors">
+      <a href="{{ investor.link }}">
+        <img ng-src="{{ investor.img }}" />
+      </a>
+    </div>
+  </div>
+
+  <div class="locations">
+    <div class="text">
+      <h3>Our offices</h3>
+      <p>
+        We were founded in Wellington, NZ, home to our growing R&D hub,
+        and have since expanded to our studio in Los Angeles.
+      </p>
+      <div class="map" id="wellington">
+      </div>
+      <div class="map" id="los-angeles">
+      </div>
+    </div>
+  </div>
+  <div class="inquiries container">
+    <span class="nowrap">
+      Media inquiries: <a href="mailto:press@8i.com">press@8i.com</a>
+    </span>
+    |
+    <span class="nowrap">
+      Advertising inquiries: <a href="mailto:advertising@8i.com">advertising@8i.com</a>
+    </span>
+    |
+    <span class="nowrap">
+      Other inquiries: <a href="mailto:hi@8i.com">hi@8i.com</a>
+    </span>
+  </div>
+
+</div>
+
+<footer ng-include="'/static/8i/new_site/footer.html'"></footer>

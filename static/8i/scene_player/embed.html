@@ -1,0 +1,66 @@
+<div class="page" ng-controller="PlayController as ctrl">
+  <div class="player video_player">
+    <canvas id="canvas"></canvas>
+    <div class="collapsing" ng-class="{hidden: ctrl.hiddenControls}">
+      <div class="controls">
+        <div class="bar progress" ng-click="ctrl.seek($event)">
+          <div class="download" style="width: {{ ctrl.progress }}%"></div>
+          <div class="played" style="width: {{ ctrl.currentTime * 100 / ctrl.totalLength }}%"></div>
+        </div>
+        <div class="left">
+          <span class="icon control-play" ng-click="ctrl.play()" ng-show="!ctrl.playerService.isPlaying">
+          </span>
+          <span class="icon control-pause" ng-click="ctrl.pause()" ng-show="ctrl.playerService.isPlaying">
+          </span>
+          <span class="icon control-loop" ng-click="ctrl.loop()"
+              ng-class="{inactive: !ctrl.looping}"></span>
+<!--           <span class="icon" ng-click="ctrl.toggleMute()"
+              ng-class="{'icon-volume-2': !ctrl.muted, 'icon-volume-off': ctrl.muted}">
+          </span>
+ -->        </div>
+        <div class="right">
+          <span class="icon control-settings" ng-click="ctrl.onClickSettings()" ng-show="ctrl.representations.length > 1"></span>
+          <span class="icon cardboard" ng-click="ctrl.enableCardboard()" ng-show="!ctrl.playerService.cardboard">
+            <img src='/static/img/cardboard/cardboard.svg' />
+          </span>
+          <span class="icon size-fullscreen" ng-click="ctrl.fullscreen()" ng-show="!ctrl.isFullscreen"></span>
+          <span class="icon size-actual" ng-click="ctrl.exitFullscreen()" ng-show="ctrl.isFullscreen"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="unsupported" ng-hide="!ctrl.playerService.unsupported" class="ng-hide">
+    <p>
+      It looks like WebGL isn't working for your browser.
+    </p>
+    <p>
+      Are you sure its enabled and up to date?
+    </p>
+    <p>
+      You can try opening this page in another browser.
+    </p>
+  </div>
+  <!-- TODO only show this if mobile and not using the best browser -->
+  <div class="unsupported" ng-hide="!userAgent.unsupported" class="ng-hide">
+    <p>
+      8i.com requires high performance webgl which work best in the native browser for your device.
+    </p>
+    <p>
+    <span ng-if="userAgent.android">
+      Use Chrome on Android devices.
+    </span>
+    <span ng-if="userAgent.iOS">
+      Use Safari on iOS devices.
+    </p>
+  </div>
+  <div class="cardboard_warning" ng-hide="!ctrl.showCardboardWarning">
+    <div class="desktop-help">
+      <p>To view this on cardboard open this page on your mobile.</p>
+      <p class="showAnyway" ng-click="ctrl.enableCardboard(true)">show anyway</p>
+      <div>
+        <input onClick="this.setSelectionRange(0, this.value.length)" readonly class="url"
+            value="{{ ctrl.url }}" />
+      </div>
+    </div>
+  </div>
+</div>

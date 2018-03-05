@@ -1,0 +1,266 @@
+body {
+  margin: 0;
+  font-family: DIN-Regular, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.player {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#canvas {
+  width: 100%;
+  height: 100%;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+#video {
+  object-fit: cover;
+}
+
+#canvas:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
+
+/* Browse Styles */
+@keyframes playDynamic {
+  100% {
+    /* 200 * 7 */
+    margin-left: -700%;
+  }
+}
+
+.user {
+  position: absolute;
+  left: 16px;
+  top: 8px;
+  display: inline-block;
+}
+.profile_image {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 1000px;
+  overflow: hidden;
+}
+.user .email {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user .full_json {
+  display: none;
+}
+
+.promotions {
+  white-space: nowrap;
+  width: 1400px;
+  display: inline-block;
+
+  animation-name: playDynamic;
+  animation-iteration-count: infinite;
+}
+
+.carosel {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  overflow: hidden;
+
+  /* Center the thing */
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.promotion {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  max-width: 400px;
+  display: inline-block;
+  height: 200px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filters {
+  display: block;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-top: 0px;
+}
+
+.filter {
+  display: inline-block;
+  padding: 8px 20px;
+  border-bottom: 2px solid white;
+}
+.filter:hover {
+  border-bottom: 2px solid black;
+}
+
+/* Selected filter gets style applied from angular */
+
+.characters .character {
+  border-radius: 5px;
+  /* TODO should we have a default color here? */
+  background-image: linear-gradient(to right, #00dbf6, #03259a);
+  color: white;
+  height: 80px;
+  margin: 8px 20px;
+  padding: 8px 20px;
+  position: relative;
+  width: 300px;
+}
+
+.character .origin {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1000px;
+  display: inline-block;
+  font-size: 8px;
+  padding: 2px 8px;
+  margin: 2px 0;
+  text-transform: uppercase;
+}
+.character .name {
+  font-size: 16px;
+}
+.character .description {
+  font-size: 10px;
+  width: 50%;
+}
+.character .overview_image {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  width: 70px;
+  object-fit: cover;
+}
+.pose .thumbnail {
+  overflow: hidden;
+}
+
+.pose .character {
+  height: initial;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.browse .pose {
+  position: relative;
+  height: 180px;
+  width: 180px;
+  overflow: hidden;
+  float: left;
+  margin: 8px;
+  border: 1px solid black;
+}
+
+.browse .pose .thumbnail img{
+  object-position: 50% 0%;
+  height: 360px;
+}
+
+/* Admin extras */
+.admin {
+  position: absolute;
+  right: 0px;
+  text-align: right;
+}
+
+.admin .open {
+  cursor: pointer;
+}
+
+.admin ul {
+  background: white;
+  padding: 10px;
+}
+
+.admin li {
+  list-style: none;
+}
+
+/* Camera styles */
+.drawer {
+  position: absolute;
+  bottom: 20px;
+  height: 80px;
+  left: 20px;
+  right: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.drawer .pose {
+  display: inline-block;
+  margin: 4px;
+  width: 100px;
+  height: 100px;
+}
+
+.drawer .button {
+  border-radius: 1000px;
+  border: 1px solid white;
+  background: none;
+  height: 50px;
+  width: 50px;
+}
+
+.drawer .more {
+  color: white;
+  line-height: 50px;
+  text-align: center;
+  font-size: 50px;
+}
+
+/* Holo Thumbnails */
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.holoThumb {
+  border-radius: 1000px;
+  border: 2px solid #FFF;
+  background-color: #10CFCA;
+  overflow: hidden;
+}
+.holoThumb img {
+  /* The border on holo actually insets the image. This simulates that. */
+  width: 110%;
+  height: 110%;
+  max-width: 110%;
+  max-height: 110%;
+  object-fit: cover;
+  margin: -5%;
+}

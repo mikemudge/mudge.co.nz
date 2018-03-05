@@ -1,0 +1,39 @@
+
+.button {
+  background-color: #FFF;
+  border-radius: 2px;
+  color: #47B0D8;
+  border: 1px solid #3CA0D6;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  padding: 10px;
+}
+.button:hover {
+  background-color: #DDD;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid gray;
+  box-shadow: 0 5px 28px 0 rgba(0, 0, 0, 0.15);
+  background-color: #FFFFFF;
+
+  padding: 16px;
+}
+.modal .close {
+  position: absolute;
+  top: 5;
+  right: 5;
+}
+.modal_back_overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,72 @@
+<header ng-include="'/static/8i/new_site/header.html'"></header>
+<div class="holoPage holoBetaPage" ng-controller="HoloController as ctrl">
+  <div class="background">
+    <div ng-if="backgroundVideo">
+      <video class="video" autoplay loop>
+        <source ng-src="{{ backgroundVideoSrc | trusted }}" type="video/mp4">
+        Video not supported
+      </video>
+    </div>
+
+    <div ng-if="!backgroundVideo">
+      <!-- TODO transitioning png's -->
+      <img class="backImage" src="/static/img/new_site/holo/holo_bg3.jpg" />
+    </div>
+  </div>
+
+  <div class="heroInfo">
+    <div class="logo">
+      <img src="/static/img/new_site/holo/holo_h.svg" />
+    </div>
+    <div class="holoText">
+      Mix your world with holograms
+    </div>
+    <div class="betaSignup">
+      You've found our super secret Holo beta signup page!
+      <span class="nowrap">Sign up</span> now to get early access for iOS and Android.
+    </div>
+    <a target="_blank" href="http://bit.ly/HoloBeta">
+      <div class="button">
+        SIGN UP FOR BETA
+      </div>
+    </a>
+  </div>
+
+  <div class="promo">
+    <div class="promo_bg"></div>
+    <img src="/static/img/new_site/holo/promo.png?v=1" />
+  </div>
+  <div class="section">
+    <h2>Holo Beta now on Android</h2>
+    <div class="betaInfo">
+      Mix Holo characters into your real world using a smartphone, and create fun videos and photos you can share with your friends.
+    </div>
+    <div class="button second_button" ng-click="ctrl.playVideoFullscreen()">
+      View Video
+    </div>
+  </div>
+  <div class="logos-section">
+    <div class="logo" ng-repeat="logo in ctrl.logos">
+      <a target="_blank" href="{{ logo.link }}">
+        <img ng-src="{{ logo.imgSrc }}"/>
+      </a>
+    </div>
+  </div>
+
+  <div class="signup-section">
+    <div class="create">
+      Ready to mix your world with holograms?
+    </div>
+    <a target="_blank" href="http://bit.ly/HoloBeta">
+      <div class="button">
+        SIGN UP FOR BETA
+      </div>
+    </a>
+  </div>
+  <video class="fullVideo" id="mainVideo">
+    <!-- TODO change source. -->
+    <source ng-src="{{ mainVideoSrc | trusted }}" type="video/mp4">
+  </video>
+</div>
+
+<footer class="light" ng-include="'/static/8i/new_site/footer.html'"></footer>

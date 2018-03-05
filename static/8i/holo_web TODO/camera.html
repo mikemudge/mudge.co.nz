@@ -1,0 +1,33 @@
+<div class="page" ng-controller="CameraController as ctrl">
+  <div class="player">
+    <video id="video" style="position: absolute; width: 100%; height: 100%;"></video>
+    <div style="position: absolute; width: 100%; height: 100%;" class="player">
+      <canvas id="canvas"></canvas>
+      <div class="unsupported" ng-hide="!ctrl.playerService.unsupported" class="ng-hide">
+        <p>
+          It looks like WebGL isn't working for your browser.
+        </p>
+        <p>
+          Are you sure its enabled and up to date?
+        </p>
+        <p>
+          You can try opening this page in another browser.
+        </p>
+      </div>
+      <!-- TODO only show this if mobile and not using the best browser -->
+      <div class="unsupported" ng-hide="!userAgent.unsupported" class="ng-hide">
+        <p>
+          8i.com requires high performance webgl which work best in the native browser for your device.
+        </p>
+        <p>
+        <span ng-if="userAgent.android">
+          Use Chrome on Android devices.
+        </span>
+        <span ng-if="userAgent.iOS">
+          Use Safari on iOS devices.
+        </p>
+      </div>
+    </span>
+  </div>
+  <div ng-include="'/static/angular/holo_web/drawer.html'"></div>
+</div>

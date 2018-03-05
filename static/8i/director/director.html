@@ -1,0 +1,564 @@
+<div ng-controller="DirectorController as director" ng-show="director.scene.$resolved">
+  <div class="header">
+    <a class="logo" href="/" title="8i home">
+      <img title="8i logo" alt="8i logo" src="/static/img/logo-8i.png">
+    </a>
+    <div class="title">
+      <div class="name" ng-class="{error: director.errors.name}">
+        <div ng-hide="edit" ng-click="edit=true; director.editSceneName()">
+          {{ director.scene.name || "Untitled Scene" }}
+        </div>
+        <div ng-show="edit">
+          <input id="sceneName" ng-model="director.scene.name" ng-blur="edit=false; director.autoSave(); director.errors.name = null"
+              ng-keypress="edit = $event.keyCode != 13" />
+        </div>
+      </div>
+      <div class="description">
+        <div ng-click="edit2=true">
+          Edit Description
+        </div>
+        <div ng-show="edit2" class="absolute">
+          <textarea ng-model="director.scene.description" ng-blur="edit2=false; director.autoSave()"
+              ng-keypress="edit2 = $event.keyCode != 13">
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="right_buttons">
+      <div class="share icon" ng-show="director.scene.key" ng-click="director.sharing.show = true">
+        <img title="Share" alt="Share this scene" src="/static/img/director/header/share@2x.png" width="20" height="17" />
+        <span>Share</span>
+      </div>
+      <div ng-if="director.currentUser.id && director.scene.key" class="new icon"
+          ng-click="director.startNewScene()">
+        <img title="Create new scene" alt="Create new scene" src="/static/img/director/header/new icon@2x.png" width="26" height="22" />
+        <span>New</span>
+      </div>
+      <div ng-if="director.currentUser.id" class="save icon">
+        <!-- TODO move this logic into the controller? -->
+        <img title="Save scene" alt="Save scene" ng-hide="director.scene.id && director.currentUser.id != director.scene.created_by.id" src="/static/img/director/header/save@2x.png" width="16" height="16" />
+        <img title="Save scene" alt="Save scene" ng-show="director.scene.id && director.currentUser.id != director.scene.created_by.id" src="/static/img/director/header/copy@2x.png" width="27" height="18" />
+        <span ng-if="!director.scene.id" class="clickable" ng-click="director.clickCreateScene()">Create Scene</span>
+        <span ng-if="director.scene.id && !director.autoSaving" style="display: inline-block;" ng-click="director.clickSave()">
+          <div class="clickable">
+            <span ng-show="director.autoSaveChanged">*</span>Save
+          </div>
+        </span>
+        <span ng-show="director.saveInProgress" style="display: inline-block;">Saving...</span>
+        <span ng-show="!director.saveInProgress && director.autoSaving" style="display: inline-block;"> Saved at {{ director.lastSaveTime | date:'h:mm:ss' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame sidebar">
+    <div class="tabs" ng-init="director.changeToTab('Experience')">
+      <div ng-click="director.changeToTab('Experience')" class="tab">
+        <img ng-show="tab=='Experience'" title="Add volumetric video characters" alt="Add volumetric videos tab" src="/static/img/director/sidebar/characters sele@2x.png" width="14" height="30"/>
+        <img ng-hide="tab=='Experience'" title="Add volumetric video characters" alt="Add volumetric videos tab" src="/static/img/director/sidebar/characters@2x.png" width="14" height="30"/>
+      </div>
+      <div ng-click="director.changeToTab('Objects')" class="tab">
+        <img ng-show="tab=='Objects'" title="Add 3d model object's" alt="Add 3d model objects tab" src="/static/img/director/sidebar/objects sele@2x.png" width="28" height="29" />
+        <img ng-hide="tab=='Objects'" title="Add 3d model object's" alt="Add 3d model objects tab" src="/static/img/director/sidebar/objects@2x.png" width="28" height="29" />
+      </div>
+      <div ng-click="director.changeToTab('Background')" class="tab">
+        <img ng-show="tab=='Background'" title="Add 3d background object's" alt="Add 3d background objects tab"src="/static/img/director/sidebar/photosphere sele@2x.png" width="34" height="24" />
+        <img ng-hide="tab=='Background'" title="Add 3d background object's" alt="Add 3d background objects tab"src="/static/img/director/sidebar/photosphere@2x.png" width="34" height="24" />
+      </div>
+      <div ng-click="director.changeToTab('Camera')" class="tab">
+        <img ng-hide="tab=='Camera'" title="Setup Camera" alt="Update camera settings tab" src='/static/img/director/sidebar/camera@2x.png' width="33" height="20" />
+        <img ng-show="tab=='Camera'" title="Setup Camera" alt="Update camera settings tab" src='/static/img/director/sidebar/camera sele@2x.png' width="33" height="20" />
+      </div>
+      <!-- Bottom toggle switches -->
+      <div class="toggles">
+        <div class="grid" ng-click="director.toggleGrid()">
+          <img title="Show grid" alt="Show ground level grid" ng-hide="director.grid.visible" src='/static/img/director/sidebar/grid button@2x.png' width="36" height="36" />
+          <img title="Hide grid" alt="Hide ground level grid" ng-show="director.grid.visible" src='/static/img/director/sidebar/grid button sele@2x.png' width="36" height="36" />
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" ng-class="{open: tab=='Experience'}">
+      <div class="tab_header">
+        <span ng-click="director.changeToTab('')" class="hide_tabs">
+          <img src="/static/img/director/sidebar/back@2x.png" title="Hide tab" alt="Hide tab" />
+        </span>
+        <h4>Characters</h4>
+        <div class="line"></div>
+      </div>
+      <div class="tab_scroll">
+        <div class="experience" ng-repeat="experience in director.experiences"
+            ng-click="director.selectAsset(experience)">
+          <img title="{{ experience.title }}" alt="Add {{ experience.title }}"
+              ng-src="{{ experience.scene.thumbnailStatic }}" />
+          <div class="description">
+            <span class="title">{{ experience.title }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" ng-class="{open: tab=='Objects'}">
+      <div class="tab_header">
+        <span ng-click="director.changeToTab('')" class="hide_tabs">
+          <img src="/static/img/director/sidebar/back@2x.png" title="Hide tab" alt="Hide tab" />
+        </span>
+        <h4>Objects</h4>
+        <div class="line"></div>
+      </div>
+      <div class="tab_scroll">
+        <div class="object" ng-repeat="obj in director.objs"
+            title="{{ obj.name }}" ng-click="director.addOBJ(obj)">
+          <div class="description">
+            <div class="title">{{ obj.name }}</div>
+          </div>
+        </div>
+        <!-- TODO would be nice to reuse a file uploader here. -->
+        <div class="object">
+          <label>
+            <div ei-file multiple ei-change="director.objReady($event, files)">
+            </div>
+            <div class="file button">
+              Upload OBJ folder
+              <div ng-show="director.objUploadProgress" class="progress" style="width: {{ director.objUploadProgress }}%"></div>
+            </div>
+          </label>
+          <span> {{ error }} </span>
+        </div>
+        <div class="help">
+          * .mtl and .obj file
+          <img src="/static/img/director/help@2x.png"
+              ng-click="director.showUploadHelper();" />
+        </div>
+        <div class="line"></div>
+        <div class="object text">
+          <input type="text" placeholder="My text..." ng-model="text"/>
+          <label class="color">
+            Text color
+            <input type="color" ng-model="director.textureColor" ng-change="director.updateTexture()">
+          </label>
+          <div class="button" ng-click="director.addText(text); text = null">Add Text</div>
+        </div>
+        <div class="object" ng-if="director.cognitoInfo">
+          <h4> 2d Image </h4>
+          <div ei-cognito-token='director.cognitoInfo'
+              ei-file-path='{{ director.scene.s3_base_key }}plane/'
+              ei-file-upload-v2="director.uploadPlane(args)">
+            Upload 2d plane image
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" ng-class="{open: tab=='Background'}">
+      <div class="tab_header">
+        <span ng-click="director.changeToTab('')" class="hide_tabs">
+          <img src="/static/img/director/sidebar/back@2x.png" title="Hide tab" alt="Hide tab" />
+        </span>
+        <h4>Backgrounds</h4>
+        <div class="line"></div>
+      </div>
+      <div class="tab_scroll">
+        <div class="background" ng-click="director.setBackground(null);">
+          <img title="Remove background" alt="Remove all background objects" src="/static/img/director/sidebar/remove@2x.png" width='14' height='14' />
+          Remove
+        </div>
+        <div class="background" ng-repeat="background in director.backgrounds">
+          <div ng-click="director.setBackground(background)">
+            <!-- Chrome has a bug which is marked won't fix. So we need to declare images which we want to use in the canvas as cross origin.
+                 https://bugs.chromium.org/p/chromium/issues/detail?id=409090 -->
+            <!-- TODO use downsampled thumbnails? -->
+            <img crossorigin="" ng-src="{{ background.textureFile.url }}?v={{ background.version || 1 }}" />
+          </div>
+        </div>
+        <div class="background" ng-if="director.cognitoInfo"
+            ei-cognito-token='director.cognitoInfo'
+            ei-file-path='{{ director.scene.s3_base_key }}background/'
+            ei-file-upload-v2="director.uploadBackground(args)">
+          Upload background
+        </div>
+        <div class="sky">
+          <div ng-if="director.sky">
+            <label>
+              sky <input type="color" ng-model="director.sky.skyColor" ng-change="director.updateSky()">
+              <span class="hex">{{ director.sky.skyColor }}</span>
+            </label>
+            <label>
+              horizon <input type="color" ng-model="director.sky.horizonColor" ng-change="director.updateSky()">
+              <span class="hex">{{ director.sky.horizonColor }}</span>
+            </label>
+            <label>
+              ground <input type="color" ng-model="director.sky.floorColor" ng-change="director.updateSky()">
+              <span class="hex">{{ director.sky.floorColor }}</span>
+            </label>
+          </div>
+          <div class="button" ng-click="director.addSkyBackground()">
+            Add Sky
+          </div>
+        </div>
+        <div class="background" ng-if="director.cognitoInfo">
+          <div ei-cognito-token='director.cognitoInfo'
+              ei-file-path='{{ director.scene.s3_base_key }}audio/'
+              ei-file-upload-v2="director.uploadAudio(args)">
+            Upload audio file
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content camera" ng-class="{open: tab=='Camera'}">
+      <div class="tab_header">
+        <span ng-click="director.changeToTab('')" class="hide_tabs">
+          <img src="/static/img/director/sidebar/back@2x.png" title="Hide tab" alt="Hide tab" />
+        </span>
+        <h4>Camera</h4>
+        <div class="line"></div>
+      </div>
+      <div class="tab_scroll">
+        <div class="button" ng-click="director.toggleAxes()">
+          <span ng-hide="director.axes.visible">Show camera target</span>
+          <span ng-show="director.axes.visible">Hide camera target</span>
+        </div>
+        <p class="help"> Right mouse button will move the camera target.</p>
+        <div class="button" ng-click="director.setCamera()">Set Initial Camera Position</div>
+        <p ng-show="director.cameraSet" class="help">Camera position set.</p>
+        <div class="button" ng-click="director.saveScreenshot()">Take screenshot</div>
+        <div class="object" ng-show="director.lastScreenshot">
+          <img width="300" ng-src="{{ director.lastScreenshot }}" /><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="helper" ng-show="director.helper.show"
+      ng-style='director.helper.where'>
+    <div class="triangle"></div>
+    {{ director.helper.text }}
+  </div>
+
+  <div class="player_wrapper">
+    <!-- popup panels -->
+    <div class="obsureBack" ng-if="!director.currentUser.email">
+      <div class="popup" ng-controller="LoginController as login">
+        <div>
+          {{ login.loginService.loginStatus }}
+        </div>
+        <p>You must be logged in as an admin to use this page.</p>
+        <p><a class="clickable" ng-click="login.loginUsingGoogle()">
+          Log in using google
+        </a></p>
+        No account? <a href="signup?nextPage={{ director.currentPage }}">Sign up</a> instead
+      </div>
+    </div>
+
+    <div class="obsureBack" ng-if="director.showFeedback">
+      <div class="feedback popup" ng-controller="FeedbackController as ctrl">
+        <!-- TODO should use user info to fill in name and email? -->
+        <div class="close" ng-click="director.showFeedback = false"></div>
+        <h4>Tell us what you think</h4>
+        <div ng-show="result">
+          {{ result }}
+        </div>
+        <div class="error" ng-show="error">
+          {{ error }}
+        </div>
+        <form ng-show="!result" ng-submit="ctrl.submit('director')">
+          <label class="field name">
+            <input type="text" ng-model="feedback.name" placeholder="Your name">
+          </label>
+          <label class="field email">
+            <input type="text" ng-model="feedback.email" placeholder="Email">
+          </label>
+          <label class="field message">
+            <textarea ng-model="feedback.message" placeholder="Your suggestion/feedback">
+            </textarea>
+          </label>
+          <button type="submit" class="button">
+            Send feedback
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="obsureBack" ng-show="director.showScenes">
+      <div class="popup">
+        <div class="close" ng-click="director.showScenes = false"></div>
+        <div class="myScenes">
+          <div class="myScene" ng-repeat="scene in director.myScenes">
+            <div class="thumb">
+              <img ng-src="{{ scene.thumbnail.default }}" />
+            </div>
+            <div class="right">
+              <div class="name">{{ scene.name }}</div>
+              <div ng-if="scene.description" class="description">
+                {{ scene.description }}
+              </div>
+              <div>
+                <a href='{{ scene.key }}'>Edit {{ scene.key }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show properties of the currently selected object/keyFrame -->
+    <div class="properties"
+        ng-hide="!director.directorControl.selectedObj.selectedKeyFrame">
+      <div>
+        <span class="name"> {{ director.directorControl.selectedObj.name }}</span>
+        <span class="frame"> - frame @ {{ director.directorControl.selectedObj.selectedKeyFrame.frameIndex }}</span>
+      </div>
+      <div class="delete"
+          ng-click="director.deleteKeyFrame(director.directorControl.selectedObj, director.directorControl.selectedObj.selectedKeyFrame)">
+        DELETE KEY FRAME
+      </div>
+      <div class="line"></div>
+      <div class="position section">
+        <div>
+          <div>Position</div>
+          <div class="reset" ng-click="director.clickPositionReset()">Reset</div>
+        </div>
+        <input type="number" ng-model="director.directorControl.selectedObj.selectedKeyFrame.position.x" step="0.01" ng-change="director.objectChange()"/>
+        <input type="number" ng-model="director.directorControl.selectedObj.selectedKeyFrame.position.y" step="0.01" ng-change="director.objectChange()" />
+        <input type="number" ng-model="director.directorControl.selectedObj.selectedKeyFrame.position.z" step="0.01" ng-change="director.objectChange()" />
+      </div>
+      <div class="scale section">
+        <div>
+          <div>Scale</div>
+          <div class="reset" ng-click="director.clickScaleReset()">Reset</div>
+        </div>
+        <input type="number" ng-model="director.directorControl.selectedObj.selectedKeyFrame.scale.x" step="0.01" ng-change="director.objectChange()"/>
+      </div>
+      <div ng-show="false" class="rotation section">
+        <!-- TODO support rotation setting? Quaternions are bad for this (hard to understand). -->
+        <div>
+          <div>Quaternion</div>
+          <div class="reset" ng-click="director.clearRotation(director.directorControl.selectedObj.selectedKeyFrame)">
+            Reset
+          </div>
+        </div>
+        {{ director.directorControl.selectedObj.selectedKeyFrame.quaternion.x | number:2 }},
+        {{ director.directorControl.selectedObj.selectedKeyFrame.quaternion.y | number:2 }},
+        {{ director.directorControl.selectedObj.selectedKeyFrame.quaternion.z | number:2 }}
+        {{ director.directorControl.selectedObj.selectedKeyFrame.quaternion.w | number:2 }},
+      </div>
+    </div>
+
+    <div ng-if="config.debug" class="debug">
+      <!-- Show some debug information -->
+      Debug<br>
+      <div>
+        <a target="blank" href="{{ config.API_URL }}/admin/eighti/s/{{ director.scene.id }}?tab=Scene">
+          Admin
+        </a>
+      </div>
+      <div class="amazon">
+<!--         <a target="_blank" href="https://console.aws.amazon.com/s3/buckets/{{ config.S3_BUCKET }}/{{ director.scene.s3_base_key }}?region=us-west-2&tab=overview">
+          Scene Files
+        </a>
+ -->      </div>
+      Length: {{ director.director.totalLength }}s<br>
+      Current Time: {{ director.director.currentTime | number : 1 }}s<br>
+      Frame count: {{ director.director.totalFrames }}<br>
+      Mouse action: {{ director.what }}
+      <div ng-show="director.directorControl.selectedObj">
+        <p>Selected Object</p>
+        Length: {{ director.directorControl.selectedObj.getTotalLength() }}s<br>
+        Frames: {{ director.directorControl.selectedObj.totalFrames }}<br>
+        start: {{ director.directorControl.selectedObj.startFrame }}<br>
+        end: {{ director.directorControl.selectedObj.endFrame }}<br>
+      </div>
+    </div>
+
+    <div class="fullScreener">
+      <div class="player"
+          ng-mousemove="director.directorControl.onMouseMove($event)"
+          ng-mousedown="director.directorControl.onMouseDown($event)"
+          ng-mouseup="director.directorControl.onMouseUp($event)"
+          ng-mouseleave="director.directorControl.onMouseLeave($event)"
+          id="focus" tabindex="-1" ng-keydown="director.keyDown($event)">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div ng-show="director.errors && director.showErrors" class="popup errors">
+        <div class="close" ng-click="director.showErrors = false">
+        </div>
+        <div ng-if="director.errors.responseError">
+          {{ director.errors.responseError }}
+        </div>
+        <div ng-if="director.errors.sceneObjects">
+          There is nothing in your scene, add an object from the panels on the left.
+        </div>
+        <div ng-if="!director.errors.sceneObjects">
+          <p ng-if="director.errors.name">
+            Give your scene a name:
+            <input id="sceneName" ng-model="director.scene.name"
+                ng-keypress="edit = $event.keyCode != 13" />
+          </p>
+          <div ng-if="director.errors.thumbnail">
+            <p> Your scene needs a thumbnail.</p>
+            <div> Use the camera panel on the left to create and view thumbnails.</div>
+            <div class="button" ng-click="director.saveScreenshot()">
+              Take a screenshot now
+            </div>
+          </div>
+        </div>
+        <div class="error">
+          {{ director.errors | json }}
+        </div>
+        <div class="button" ng-click="director.clickCreateScene();">
+          Save again.
+        </div>
+      </div>
+      <div ng-show="director.sharing.show" class="popup">
+        <div class="close" ng-click="director.sharing.show = false">
+        </div>
+        <div class="sharing">
+          <div>
+            Share this url to allow others to view your scene.
+            <input onClick="this.setSelectionRange(0, this.value.length)" readonly class="url" value="{{ director.sharing.url }}" />
+          </div>
+          <!-- Custom facebook button which is bigger to match the twitter button -->
+          <div class="fb-share" ng-click="director.shareFacebook()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" class="pluginButtonIconSVG">
+              <path fill="white"
+                  d="M204.1 0H11.9C5.3 0 0 5.3 0 11.9v192.2c0 6.6 5.3 11.9 11.9
+                  11.9h103.5v-83.6H87.2V99.8h28.1v-24c0-27.9 17-43.1 41.9-43.1
+                  11.9 0 22.2.9 25.2 1.3v29.2h-17.3c-13.5 0-16.2 6.4-16.2
+                  15.9v20.8h32.3l-4.2 32.6h-28V216h55c6.6 0 11.9-5.3
+                  11.9-11.9V11.9C216 5.3 210.7 0 204.1 0z">
+              </path>
+            </svg>
+            <span class="text">
+              Share
+            </span>
+          </div>
+          <div id="tweet-container">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel timeline_panel"
+      ng-mouseleave="director.endMouse()"
+      ng-mouseup="director.endMouse()"
+      tabindex="-1" ng-keydown="director.keyDown($event)">
+
+    <div class="top" style="top: {{ director.timeline.timesTop }}px">
+      <div class="controls">
+        <span class="icon" ng-click="director.onPreviousClicked()">
+          <img title="previous frame" alt="previous frame" src="/static/img/director/controls/skip b@2x.png" width="16" height="16">
+        </span>
+        <span class="icon" ng-hide="director.director.isPlaying" ng-click="director.onPlayClicked()">
+          <img title="play" alt="play" src="/static/img/director/controls/play@2x.png" width="13" width="16">
+        </span>
+        <span class="icon" ng-show="director.director.isPlaying" ng-click="director.onPauseClicked()">
+          <img title="pause" alt="pause" src="/static/img/director/controls/pause@2x.png" width="14" width="16">
+        </span>
+        <span class="icon" ng-click="director.onNextClicked()">
+          <img title="next frame" alt="next frame" src="/static/img/director/controls/skip f@2x.png" width="16" height="16">
+        </span>
+        <span class="timeScale">
+          <input type="range" min="0" max="{{ director.timeline.timeScales.length - 1 }}" ng-model="director.timeline.scaleLevel" ng-change="director.timeline.update()" />
+        </span>
+        <span>
+          f: {{ director.frame }}
+        </span>
+        <span class="icon loop" ng-click="director.onLoopClicked()">
+          <img title="Enable looping" alt="Enable looping" ng-hide="director.director.looping" src="/static/img/director/controls/loop@2x.png" width="18" height="24">
+          <img title="Disable looping" alt="Disable looping" ng-show="director.director.looping" src="/static/img/director/controls/loop sele@2x.png" width="18" height="24">
+        </span>
+      </div>
+      <div class="times"
+          ng-mousemove="director.mouseMove($event)">
+        <div class="videoLength"
+            ng-style="{'width': director.director.downloadedLength * director.timeline.timeScale + 'px',
+                'left': -director.timeline.timesStart + 'px'}">
+        </div>
+        <div class="timeIndicator"
+            style="left: {{ director.playbackTime * director.timeline.timeScale - director.timeline.timesStart }}px">
+            <div class="top"></div>
+        </div>
+        <div ng-show="director.hoveringFrame != null" class="hover timeIndicator"
+            style="left: {{ director.hoveringFrame * director.timeline.frameScale - director.timeline.timesStart }}px">
+            <div class="top"></div>
+        </div>
+        <div class="numbers" ng-mousedown="director.startSeekNumbers($event)"
+            ng-style="{'width': director.timeline.length + 'px'}">
+          <div ng-show="director.totalLength" class="timeFinish"
+              style="left: {{ director.totalLength * director.timeline.timeScale - director.timeline.timesStart }}px">
+          </div>
+          <div class="time" ng-repeat="time in director.timeline.times"
+              style="left: {{ 100 * $index - director.timeline.timesStart }}px">
+            <span ng-if="time">{{ (time | number: 2) * 1 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll_outer">
+      <div class="left" style="left: {{ director.timeline.timesStart }}">
+
+        <div class="objects">
+          <div class="object row" ng-repeat="object in director.director.objects"
+              ng-click="director.selectObject(object)"
+              ng-class="{selected: director.directorControl.selectedObj == object}">
+            <div class="icon" ng-show="director.directorControl.selectedObj == object">
+              <img title="OBJ Object" alt="OBJ type object" ng-if="object.type == 'obj'" src="/static/img/director/timeline/objects sele sm@2x.png" />
+              <img title="Background Object" alt="Background object" ng-if="object.type == 'background'" src="/static/img/director/timeline/photosphere sele sm@2x.png" />
+              <img title="8i volumetric video object" alt="8i volumetric video object" ng-if="object.type == 'hvr'" src="/static/img/director/timeline/character sele sm@2x.png" />
+              <!-- Text icon? -->
+            </div>
+            <div class="icon" ng-hide="director.directorControl.selectedObj == object">
+              <img title="OBJ Object" alt="OBJ type object" ng-if="object.type == 'obj'" src="/static/img/director/timeline/objects sm@2x.png" />
+              <img title="Background Object" alt="Background object" ng-if="object.type == 'background'" src="/static/img/director/timeline/photosphere sm@2x.png" />
+              <img title="8i volumetric video object" alt="8i volumetric video object" ng-if="object.type == 'hvr'" src="/static/img/director/timeline/character sm@2x.png" />
+            </div>
+            <div class="name">
+              {{ object.name }}
+            </div>
+            <span class="delete" ng-click="director.deleteObject(object)">
+              <img alt="Delete" title="Delete" ng-show="director.directorControl.selectedObj != object"
+                  src="/static/img/director/timeline/delete@2x.png" width="16" height="16" />
+              <img alt="Delete" title="Delete" ng-show="director.directorControl.selectedObj == object"
+                  src="/static/img/director/timeline/delete sele@2x.png" width="16" height="16" />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="timeline"
+            ng-mousemove="director.mouseMove($event)">
+          <!-- This sets up a div with the width of the whole scene. Means we can use % inside of this. -->
+          <div class="inner" ng-mousedown="director.startSeek($event)"
+              ng-style="{'width': director.timeline.length + 'px'}">
+            <div class="objects">
+              <div class="row" ng-repeat="object in director.director.objects"
+                  ng-class="{selected: director.directorControl.selectedObj == object}">
+                <div class="aliveTime" style="left: {{ object.startFrame * director.timeline.frameScale }}px; right: {{ (director.totalFrames + 20 - object.endFrame) * director.timeline.frameScale }}px;">
+                </div>
+                <div ng-if="object.hideable">
+                  <div class="startTime" ng-mousedown="director.startTimeMove(object, $event)"
+                      ng-class="{selected: director.what == 'startTime'}"
+                      style="left: {{ object.startFrame * director.timeline.frameScale + 5}}px;">
+                    ||
+                  </div>
+                  <div class="endTime" ng-mousedown="director.endTimeMove(object, $event)"
+                      ng-class="{selected: director.what == 'endTime'}"
+                      style="left: {{ (object.endFrame < director.totalFrames + 20 ? (object.endFrame * director.timeline.frameScale) : director.timeline.length) - 5 }}px">
+                    ||
+                  </div>
+                </div>
+                <div class="video" ng-show="object.playableLength < object.totalLength">
+                  Loading: {{ object.downloadedLength * 100 / object.totalLength | number: 2 }}%
+                </div>
+                <div class="keyFrame" ng-repeat="keyFrame in object.keyFrames"
+                    style="left: {{ keyFrame.frameIndex * director.timeline.frameScale }}px;"
+                    ng-class="{selected: director.currentKeyFrame == keyFrame}"
+                    ng-mousedown="director.selectKeyFrameForMove(object, keyFrame); $event.stopPropagation();">
+                  ||
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

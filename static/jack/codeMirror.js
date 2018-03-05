@@ -39,7 +39,7 @@ jack.MainController.prototype.changeFile = function(file) {
 }
 
 /**
- * The angular module for Project Manager.
+ * The angular module for Code Mirror Test.
  */
 jack.App = angular.module('jack', [
   'config',

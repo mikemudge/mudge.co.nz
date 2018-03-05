@@ -1,0 +1,66 @@
+<div class="container" ng-controller="LoginController as ctrl">
+
+  <div class="error">
+    {{ ctrl.error }}
+  </div>
+
+  <div class="page">
+    <!-- TODO support other login options? -->
+    <div>{{ ctrl.loginService.googleStatus }}</div>
+    <div ng-hide="ctrl.loginService.googleUser.data">
+      <div class="button google" ng-click="ctrl.loginUsingGoogle()">
+        Log in with Google
+      </div>
+    </div>
+    <div ng-show="ctrl.loginService.user8i.email">
+      <p>
+        Logged in to 8i as {{ ctrl.loginService.user8i.email }}
+      </p>
+      <div class="button" ng-click="ctrl.logout()">
+        Logout from 8i
+      </div>
+      <p></p>
+      <div ng-show="ctrl.nextPage" class="button" ng-click=ctrl.continueToNextPage(true)>
+        Continue to {{ ctrl.nextPage }}
+      </div>
+      <div ng-show="ctrl.debug">
+        <pre>{{ ctrl.loginService.currentAccess | json }}</pre>
+      </div>
+    </div>
+    <div ng-hide="ctrl.loginService.user8i.email">
+      <div class="button" ng-click="ctrl.showModal = true">
+        Show login modal
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="ctrl.showModal">
+    <!-- Example usage of the 8i login -->
+    <div ng-hide="ctrl.current_user.email">
+      <ei-login></ei-login>
+    </div>
+  </div>
+
+  <div ng-show="ctrl.debug">
+    <p>Google user state</p>
+    <pre>{{ ctrl.loginService.googleUser.data | json }}</pre>
+  </div>
+
+  <div ng-show="ctrl.debug">
+    <p>8i user state</p>
+    <div class="button" ng-click="ctrl.loginService.forceNewLogin()">
+      Force new access jwt using Google auth. (requires google logged in)
+    </div>
+    <div class="button" ng-click="ctrl.logout()">
+      Logout from 8i
+    </div>
+    <pre>{{ ctrl.loginService.user8i | json }}</pre>
+  </div>
+
+  <div ng-show="ctrl.debug">
+    <div>Login Events</div>
+    <div ng-repeat="event in ctrl.loginEvents track by $index">
+      {{ event }}
+    </div>
+  </div>
+</div>

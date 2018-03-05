@@ -11,10 +11,11 @@
   <script type="text/javascript" src="/static/js/angular/angular-cookies.js"></script>
   <script type="text/javascript" src="/static/js/angular/angular-resource.min.js"></script>
   <script type="text/javascript" src="/static/js/angular/angular-route.min.js"></script>
+  <script type="text/javascript" src="/static/js/angular/angular-sanitize.js"></script>
   <script>
     // make client_config available to the angular app through a module called config.
     var config = {{ angular.config | tojson }};
-    angular.module('config', []).constant('config', config);
+    angular.module('config', ['ngSanitize']).constant('config', config);
   </script>
   <script>
     // Fake ga

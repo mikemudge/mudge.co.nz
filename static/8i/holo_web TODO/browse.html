@@ -1,0 +1,111 @@
+<div class="browse" ng-controller="BrowseController as ctrl">
+  <div class="user" ng-controller="LoginController as loginCtrl">
+    <div class="profile_image" ng-show="loginCtrl.current_user.profile.image">
+      <img title="Profile picture" alt="Profile picture" ng-src="{{ loginCtrl.current_user.profile.image }}" />
+    </div>
+    <div class="anonymous" ng-show="loginCtrl.current_user.is_anonymous">
+      Anon: {{ loginCtrl.current_user.username }}
+      <div ng-show="loginCtrl.loginService.googleUser" class="button" ng-click="loginCtrl.loginUsingGoogle()">
+        Login
+      </div>
+    </div>
+    <div class="email" ng-show="loginCtrl.current_user.email">
+      {{ loginCtrl.current_user.email }}
+      <div class="button" ng-click="loginCtrl.logout()">
+        Logout
+      </div>
+    </div>
+    <!-- TODO allow logout/login as anon etc -->
+    <!-- TODO show anonymous username? -->
+    <pre class="full_json"> {{ loginCtrl.current_user | json }} </pre>
+  </div>
+  <div>
+    <div class="carosel">
+      <style id="promoStyle"></style>
+      <div class="promotions">
+        <div class="promotion" ng-repeat="promotion in ctrl.promotions | orderBy : 'order'"
+            ng-style="ctrl.verticalGradientFor(promotion.color_theme)"
+            ng-click="ctrl.promotionClicked(promotion)">
+          <img ng-if="promotion.carousel_image" ng-src="{{ promotion.carousel_image }}" />
+          <div ng-hide="promotion.carousel_image">
+            {{ promotion.name }}
+          </div>
+          <div class="overlay">
+            {{ promotion.carousel_title }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filters">
+    <div class="filter" ng-repeat="filter in ctrl.filters | orderBy: 'order'"
+        ng-class="{selected: ctrl.selected.filter == filter}"
+        ng-style="ctrl.filterStyles(filter)"
+        ng-click="ctrl.filterClicked(filter)">
+      {{ filter.name }}
+    </div>
+  </div>
+  <div ng-show="ctrl.show_characters" class="characters">
+    <div>Characters:</div>
+    <div class="character" ng-repeat="character in ctrl.characters | filter: {show_in_filter: true} | orderBy: 'name'"
+        ng-style="ctrl.horizontalGradientFor(character.color_theme)"
+        ng-click="ctrl.characterClicked(character)">
+      <div class="name">
+        <div>
+          <div class="origin">
+            {{ character.origin || 'unknown' }}
+          </div>
+        </div>
+        <div class="name">
+          {{ character.name }}
+        </div>
+        <!-- ({{ character.poses.length }}) -->
+        <div class="description">
+          {{ character.description }}
+        </div>
+      </div>
+      <div class="overview_image" ng-show="character.overview_image">
+        <img ng-src="{{ character.overview_image }}" />
+      </div>
+      <!-- show_in_filter? -->
+      <!-- Images etc -->
+    </div>
+  </div>
+
+  <div ng-show="ctrl.poses && ctrl.poses.length==0">
+    No poses
+  </div>
+  <div class="pose" ng-repeat="pose in ctrl.poses | filter: {missingData : '!true'} | limitTo:20"
+      ng-style="ctrl.verticalGradientFor(pose.display)">
+    <div class="admin" ng-show="ctrl.current_user.staff">
+      <div class="open" ng-click="open=!open">
+        ---
+      </div>
+      <div ng-show="open">
+        <ul>
+          <li>
+            <a href="{{ config.BASE_URL }}/scene/{{ pose.scene_wrapper.id }}">Play scene</a>
+          </li>
+          <li>
+            <a href="{{ config.API_URL }}/flask-admin/holo-poses/edit/?id={{ pose.id }}">Admin edit</a>
+          </li>
+          <li>
+            <a href="{{ config.API_URL }}/admin/s/{{ pose.scene_wrapper.id }}">Sprite edit</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a href="pose/{{ pose.id }}">
+      <div class="thumbnail" ng-show="pose.display.image">
+        <img ng-src="{{ pose.display.image }}" />
+      </div>
+      <div title="{{ pose.id }}" ng-hide="pose.display.image">
+        {{ pose.name }}
+      </div>
+    </a>
+    <div class="character" ng-click="ctrl.poseCharacterClicked(pose)">
+      <!-- TODO click should show character page. -->
+      {{ pose.character.name }}
+    </div>
+  </div>
+</div>

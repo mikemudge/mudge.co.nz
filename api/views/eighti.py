@@ -4,6 +4,16 @@ from shared.helpers.angular import Angular
 
 eighti_bp = Blueprint('8i', __name__)
 
+@eighti_bp.route('')
+def eighti():
+    return ''.join([
+        "Projects I worked on for 8i<br>",
+        "Caveat these are only partially working<br>",
+        "<a href='new_site'> 8i Website</a><br>"
+        "<a href='scene_player'> Scene Player</a><br>"
+        "<a href='web-director'> Web Director</a><br>"
+    ])
+
 @eighti_bp.route('web-director/')
 def web_director():
     app = Angular('director')

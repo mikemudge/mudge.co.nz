@@ -28,15 +28,9 @@ class TrailProfileView(DBModelView):
     def post(self, pk=None):
         # Edit or Create.
         if pk is None:
+            # Just make a new profile for this trail?
             self.get_data()
             self.data['user_id'] = str(request.oauth.user.id)
-            profile = TrailProfile.query.filter_by(
-                user_id=self.data['user_id'],
-                trail_id=self.data['trail_id']
-            ).first()
-            if profile:
-                raise BadRequestException('Already exists')
-
             self.data['color'] = random.randint(0, 16777215)
             return self.create()
         else:

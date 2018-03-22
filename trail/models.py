@@ -30,7 +30,6 @@ class Trail(BaseModel):
 
 # Allows custom profile for users on each Trail.
 # Connects a user to a trail.
-# TODO probably doesn't need id, could use user_id/trail_id
 class TrailProfile(BaseModel):
     user_id = db.Column(UUID(), db.ForeignKey('user.id'), nullable=False)
     user = relationship(User, backref=db.backref('trail_profiles', lazy='dynamic'))
@@ -40,10 +39,8 @@ class TrailProfile(BaseModel):
 
     color = db.Column(db.Integer, nullable=False)
 
-    # unique user_id trail_id pairs
-    __table_args__ = (
-        UniqueConstraint('trail_id', 'user_id'),
-    )
+    # TODO activity should be connected to a profile, not a trail.
+    # That would allow walking and biking any trail.
 
     def __repr__(self):
         return "<TrailProfile: %s on %s>" % (self.user.email, self.trail.name)

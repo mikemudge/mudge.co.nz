@@ -7,6 +7,10 @@ class TeamSchema(BaseSchema):
         model = Team
         exclude = ['date_created', 'tournament']
 
+class MatchResultSchema(BaseSchema):
+    class Meta:
+        model = MatchResult
+
 class MatchSchema(BaseSchema):
     class Meta:
         model = Match
@@ -14,9 +18,7 @@ class MatchSchema(BaseSchema):
     awayTeam = fields.Nested(TeamSchema)
     homeTeam = fields.Nested(TeamSchema)
 
-class MatchResultSchema(BaseSchema):
-    class Meta:
-        model = MatchResult
+    result = fields.Nested(MatchResultSchema)
 
 class RoundSchema(BaseSchema):
     class Meta:

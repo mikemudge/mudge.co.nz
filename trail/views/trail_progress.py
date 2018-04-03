@@ -1,7 +1,7 @@
 from auth.provider import oauth
 from flask import request
 
-from trail.models import Trail, TrailProgress
+from trail.models import TrailProgress, TrailProfile
 from trail.serialize import TrailProgressSchema
 from shared.database import db
 from shared.exceptions import BadRequestException
@@ -34,14 +34,13 @@ class TrailProgressView(DBModelView):
 
     def create(self):
         self.data = request.json
-        if 'trail_id' not in self.data:
-            raise BadRequestException('No trail_id or trail_profile specified')
+        if 'trail_profile_id' not in self.data:
+            raise BadRequestException('No trail_profile_id specified')
 
-        trail = Trail.query.get(self.data.pop('trail_id'))
-        current_trail_profile = request.oauth.user.trail_profiles.filter_by(trail_id=trail.id).first()
+        current_trail_profile = TrailProfile.query.get(self.data.pop('trail_profile_id'))
 
         if not current_trail_profile:
-            raise BadRequestException('No trail_profile available')
+            raise BadRequestException('No trail_profile found')
 
         schema = TrailProgressSchema(session=db.session)
         instance, errors = schema.load(self.data)

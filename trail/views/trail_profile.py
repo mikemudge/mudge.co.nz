@@ -6,7 +6,6 @@ from flask import request
 from trail.models import TrailProfile
 from trail.serialize import TrailProfileSchema
 from trail.serialize import ListTrailProfileSchema
-from shared.exceptions import BadRequestException
 from shared.views.crud import DBModelView
 
 class TrailProfileView(DBModelView):
@@ -39,4 +38,7 @@ class TrailProfileView(DBModelView):
 
     @oauth.require_oauth('trail')
     def delete(self, pk=None):
+        instance = TrailProfile.query.get(pk)
+        if instance.user_id != request.oauth.user.id:
+            raise BadRequestException('Not the owner of %s' % progress)
         return self.remove(pk)

@@ -82,14 +82,17 @@ class ProfileView(BaseView):
         'image': BaseView.format_image,
     }
 
-class TrailView(BaseView):
+class TrailProfileView(BaseView):
     form_extra_fields = {
-        'activity': SelectField(label='Activity', choices=Trail.ACTIVITIES),
+        'activity': SelectField(label='Activity', choices=TrailProfile.ACTIVITIES),
     }
 
     def on_form_prefill(self, form, id):
         # Select Fields don't prefill right.
         form.activity.data = form.activity.object_data.code
+
+class TrailView(BaseView):
+    pass
 
 class TrailProgressView(BaseView):
     column_filters = ['trail_profile.user.email']
@@ -153,7 +156,7 @@ def routes(app):
 
     admin.add_view(TrailView(Trail, db.session, category="Trail"))
     admin.add_view(TrailProgressView(TrailProgress, db.session, category="Trail"))
-    admin.add_view(BaseView(TrailProfile, db.session, category="Trail"))
+    admin.add_view(TrailProfileView(TrailProfile, db.session, category="Trail"))
 
     admin.add_view(BaseView(Tournament, db.session, category="Tournament"))
     admin.add_view(MatchView(Match, db.session, category="Tournament"))

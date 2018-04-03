@@ -27,18 +27,21 @@ class TrailProfileSchema(BaseSchema):
 
     user_id = fields.Str()
     trail_id = fields.Str()
-    name = fields.Method('get_name', dump_only=True)
+    name = fields.Str()
 
     color = fields.Method('get_color', 'set_color')
 
-    trail = fields.Nested('TrailSchema', dump_only=True, only=('id', 'name', 'activity'))
+    trail = fields.Nested('TrailSchema', dump_only=True, only=('id', 'name'))
 
-    def get_name(self, obj):
-        if obj.user.profile:
-            return obj.user.profile.firstname + ' ' + obj.user.profile.lastname
-        else:
-            # There is no profile for the user???
-            return obj.user.email
+    activity = fields.Method('get_activity')
+
+    def get_activity(self, obj):
+        # Sometimes we only get a str code?
+        code = obj.activity
+        if hasattr(obj.activity, 'value'):
+            code = obj.activity.code
+
+        return TrailProfile.ACTIVITY_MAP[code]
 
     def get_color(self, obj):
         # Convert to hex
@@ -59,17 +62,4 @@ class TrailSchema(BaseSchema):
         model = Trail
         exclude = ['date_created']
 
-    activity = fields.Method('get_activity')
-
     trail_profiles = fields.Nested(TrailProfileSchema, many=True)
-
-    def get_activity(self, obj):
-        # Sometimes we only get a str code?
-        code = obj.activity
-        if hasattr(obj.activity, 'value'):
-            code = obj.activity.code
-
-        return {
-            'code': code,
-            'value': Trail.ACTIVITY_MAP[code],
-        }

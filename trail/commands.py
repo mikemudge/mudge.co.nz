@@ -31,6 +31,13 @@ def init():
     db.session.commit()
 
 @TrailCommand.command
+def set_names():
+    profiles = TrailProfile.query.all()
+    for tp in profiles:
+        tp.name = "%s %s" % (tp.user.profile.firstname, tp.user.profile.lastname)
+    db.session.commit()
+
+@TrailCommand.command
 def migrate():
 
     # Delete all existing profiles?

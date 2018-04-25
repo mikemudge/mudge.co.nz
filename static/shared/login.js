@@ -293,7 +293,7 @@ var LoginController = function(loginService, $location) {
 
 LoginController.prototype.loginWithGoogle = function() {
   this.loginService.loginWithGoogle().then(function() {
-    console.log('login complete, reloading?');
+    console.log('login complete, reloading the app at .');
     // Do we need to do anything here?
     // Redirect to app?
     this.$location.path('.');
@@ -312,7 +312,7 @@ angular.module('mmLogin', [
 .config(function($routeProvider) {
   $routeProvider
     .when('/login', {
-      templateUrl: 'login/login.tpl.html'
+      templateUrl: '/static/shared/login.tpl.html'
     });
 })
 .service('loginService', LoginService)
@@ -320,15 +320,13 @@ angular.module('mmLogin', [
 
 // Used when this is treated as a standalone project.
 angular.module('login', [
-  'api',
   'mmLogin',
-  'login/login.tpl.html',
   'ngRoute',
 ])
 .config(function($routeProvider) {
   $routeProvider
     .otherwise({
-      templateUrl: 'login/login.tpl.html'
+      templateUrl: '/static/shared/login.tpl.html'
     });
 })
 ;

@@ -1,12 +1,14 @@
 
 from flask import current_app
 from shared.exceptions import AuthenticationException
+from shared.exceptions import sentry
 import requests
 
 def googleAuth(id_token):
     if not id_token:
         raise AuthenticationException('You did not provide a token')
-    r = requests.get("https://www.googleapis.com/oauth2/v3/tokeninfo", params={"id_token": id_token})
+    sentry.captureMessage('Unsafe googleapis call')
+    r = requests.get("https://www.googleapis.com/oauth2/v3/tokeninfo", params={"id_token": id_token}, verify=False)
     data = r.json()
     if "iss" not in data or "aud" not in data or not data["iss"].endswith("accounts.google.com"):
         print('google response', data)

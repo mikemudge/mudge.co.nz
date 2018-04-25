@@ -37,6 +37,9 @@ class TrailView(MethodView):
                         TrailProfile.user_id == request.oauth.user.id
                     )
                 )
+            # Order by created date.
+            query = query.order_by(Trail.date_created.desc())
+
             results = query.all()
             # TODO coerce activity into a choice???
             # It currently returns as a str???

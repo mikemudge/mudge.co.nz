@@ -26,7 +26,7 @@ def robots():
 def main_page():
     return "Welcome"
 
-@main_bp.route('/cv')
+@main_bp.route('/cv/')
 def my_cv():
     app = Angular('cv')
 
@@ -36,12 +36,12 @@ def my_cv():
 
     return app.render()
 
-@main_bp.route('/error')
+@main_bp.route('/error/')
 def error_test():
     abort(500, 'Error message here')
 
 
-@main_bp.route('/jack')
+@main_bp.route('/jack/')
 def jack():
 
     app = Angular('jack')
@@ -53,7 +53,7 @@ def jack():
     ]
     return app.render()
 
-@main_bp.route('/stuff')
+@main_bp.route('/stuff/')
 def stuff():
     return ''.join([
         "You made it to my home page<br>",
@@ -61,30 +61,31 @@ def stuff():
     ])
 
 # Legacy
-@main_bp.route('/stuff/trail')
+@main_bp.route('/stuff/trailold')
 def trail():
     app = Angular('trail')
-    app.base = '/stuff/trail'
+    app.base = '/stuff/trailold'
     app.config['baseUrl'] = '/'
+    app.config['basePath'] = '/static/trailold/'
     app.scripts = [
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-        url_for('static', filename='trail/main.js'),
+        url_for('static', filename='trailold/main.js'),
     ]
     return app.render()
 
 # Legacy
-@main_bp.route('/stuff/bike')
+@main_bp.route('/stuff/bikeold')
 def bike():
     app = Angular('bike')
     app.base = '/stuff/bike'
     app.config['baseUrl'] = '/'
-    app.config['basePath'] = '/static/trail/'
+    app.config['basePath'] = '/static/trailold/'
     app.scripts = [
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-        url_for('static', filename='trail/bike.js'),
+        url_for('static', filename='trailold/bike.js'),
     ]
     app.styles = [
-        url_for('static', filename='trail/bike.css'),
+        url_for('static', filename='trailold/bike.css'),
     ]
     return app.render()
 

@@ -73,6 +73,9 @@ class Angular():
     def addStyle(self, href):
         self.styles += [href]
 
+    def addScript(self, src):
+        self.scripts += [src]
+
     # Deprecated
     def addProject(self, name):
 
@@ -84,6 +87,14 @@ class Angular():
         ]
         self.styles = [
             '%s/app.css' % (brunchServer, name),
+        ]
+
+    def setupFolder(self, path):
+        self.styles = [
+            '%s/%s.css' % (path, self.appName)
+        ]
+        self.scripts = [
+            '%s/%s.js' % (path, self.appName)
         ]
 
     def setupBrunch(self):

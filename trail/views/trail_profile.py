@@ -6,6 +6,7 @@ from flask import request
 from trail.models import TrailProfile
 from trail.serialize import TrailProfileSchema
 from trail.serialize import ListTrailProfileSchema
+from shared.exceptions import BadRequestException
 from shared.views.crud import DBModelView
 
 class TrailProfileView(DBModelView):
@@ -20,7 +21,11 @@ class TrailProfileView(DBModelView):
             return schema.response(instance)
         else:
             schema = ListTrailProfileSchema(many=True)
-            results = TrailProfile.query.filter_by(user_id=request.oauth.user.id).all()
+            query = TrailProfile.query
+            query = query.filter_by(user_id=request.oauth.user.id)
+            # Order by created date.
+            query = query.order_by(TrailProfile.date_created.desc())
+            results = query.all()
             return schema.response(results)
 
     @oauth.require_oauth('trail')

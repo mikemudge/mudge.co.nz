@@ -6,17 +6,23 @@ from shared.database import db
 from shared.marshmallow import ma, Session
 
 # Import routes.
-from admin.routes import routes as mudge_admin_routes
-from api.admin import routes as admin_routes
+# from admin.routes import routes as mudge_admin_routes
+from api.views import api_admin
 from api.api_app import api_bp
 from api.routes import routes as api_routes
+from auth.login_manager import login_manager
 from auth.routes import routes as auth_routes
+from auth.views import auth_admin
 from flask_migrate import Migrate
 from project_manager.routes import routes as project_routes
 from rock1500.routes import routes as rock_routes
+from rock1500.views import rock_admin
 from slack_history.routes import routes as slack_routes
 from tournament_app.routes import routes as tournament_routes
+from tournament_app.views import tournament_admin
 from trail.routes import routes as trail_routes
+from trail.views import trail_admin
+from shared.admin import admin
 from shared.exceptions import sentry
 
 import os
@@ -40,8 +46,10 @@ def create_app(config=None):
 
     sentry.init_app(app, logging=True)
 
+    login_manager.init_app(app)
+    admin.init_app(app)
+
     api_routes(app)
-    admin_routes(app)
     auth_routes(app)
     project_routes(app)
     rock_routes(app)
@@ -49,6 +57,15 @@ def create_app(config=None):
     trail_routes(app)
     tournament_routes(app)
     # mudge_admin_routes(app)
+
+    # Add flask admin for each app.
+    auth_admin.admin_routes()
+    rock_admin.admin_routes()
+    trail_admin.admin_routes()
+    tournament_admin.admin_routes()
+
+    # Older Admin routes, @deprecated.
+    api_admin.admin_routes(app)
 
     db.init_app(app)
     migrate.init_app(app, db)

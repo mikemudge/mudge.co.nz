@@ -42,7 +42,10 @@ class TrailProfile(BaseModel):
     activity = db.Column(ChoiceType(ACTIVITIES), nullable=False, server_default=u'walk', default=u'walk')
 
     user_id = db.Column(UUID(), db.ForeignKey('user.id'), nullable=False)
-    user = relationship(User, backref=db.backref('trail_profiles', lazy='dynamic'))
+    user = relationship(
+        User,
+        backref=db.backref('trail_profiles', lazy='dynamic'),
+    )
 
     name = db.Column(db.String)
 

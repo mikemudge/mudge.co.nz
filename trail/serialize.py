@@ -33,7 +33,11 @@ class TrailProfileSchema(BaseSchema):
 
     trail = fields.Nested('TrailSchema', dump_only=True, only=('id', 'name'))
 
-    activity = fields.Method('get_activity')
+    activity = fields.Method('get_activity', 'parse_activity')
+
+    def parse_activity(self, obj):
+        # Use the code of the activity to store it in the DB.
+        return obj['code']
 
     def get_activity(self, obj):
         # Sometimes we only get a str code?

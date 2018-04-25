@@ -1,3 +1,4 @@
+from flask import current_app
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
@@ -65,5 +66,29 @@ class BrunchAppView(MethodView):
             app.styles += conf.get('styles', [])
 
         app.addLoginApi()
+
+        return app.render()
+
+class ProjectAppView(MethodView):
+    def get(self, app_name, path=None):
+
+        # TODO keep track of which deps each app needs?
+        # E.g jquery, threejs.
+
+        # TODO should include js and css files for this project???
+        # Maybe add the other things as well?
+
+        app = Angular(app_name)
+        app.base = '/projects/%s/' % app_name
+
+        app.setupFolder('/static/%s' % app_name)
+
+        app.addStyle('/static/shared/common.css')
+        app.addScript('/static/shared/login.js')
+
+        conf = apps.get(app_name)
+        if conf:
+            app.scripts += conf.get('scripts', [])
+            app.styles += conf.get('styles', [])
 
         return app.render()

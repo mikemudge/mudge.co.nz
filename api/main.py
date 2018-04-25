@@ -57,37 +57,8 @@ def jack():
 def stuff():
     return ''.join([
         "You made it to my home page<br>",
-        "<a href='/brunch/trail'> Try out the new Trail site here </a><br>"
+        "<a href='/projects/trail'> Try out the new Trail site here </a><br>"
     ])
-
-# Legacy
-@main_bp.route('/stuff/trailold')
-def trail():
-    app = Angular('trail')
-    app.base = '/stuff/trailold'
-    app.config['baseUrl'] = '/'
-    app.config['basePath'] = '/static/trailold/'
-    app.scripts = [
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-        url_for('static', filename='trailold/main.js'),
-    ]
-    return app.render()
-
-# Legacy
-@main_bp.route('/stuff/bikeold')
-def bike():
-    app = Angular('bike')
-    app.base = '/stuff/bike'
-    app.config['baseUrl'] = '/'
-    app.config['basePath'] = '/static/trailold/'
-    app.scripts = [
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
-        url_for('static', filename='trailold/bike.js'),
-    ]
-    app.styles = [
-        url_for('static', filename='trailold/bike.css'),
-    ]
-    return app.render()
 
 @main_bp.route('/ar/')
 def at_test():

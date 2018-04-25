@@ -1,0 +1,15 @@
+.button {
+  border-radius: 100px;
+  border: 2px solid black;
+  padding: 4px 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, .2)
+}
+
+.clickable {
+  cursor: pointer;
+}

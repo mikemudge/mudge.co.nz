@@ -1,0 +1,59 @@
+<div class="home">
+  <a ng-hide="ctrl.home" href=".">
+    Back
+  </a>
+</div>
+<div class="title">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+
+<!-- TODO should use trail profiles here? -->
+<div class="user">
+  <div class="clickable" ng-show="ctrl.currentProfile"
+      ng-click="ctrl.showChangeProfile = !ctrl.showChangeProfile">
+    {{ ctrl.currentProfile.name }}
+    <div class="activity">
+      {{ ctrl.currentProfile.activity.profile }}
+    </div>
+  </div>
+  <!-- TODO single profile? -->
+  <div class="dropdown" ng-show="ctrl.showChangeProfile">
+    <div class="options">
+      <ul>
+        <li ng-repeat="profile in ctrl.profiles"
+            ng-click="ctrl.changeProfile(profile)">
+          {{ profile.name }} - {{ profile.activity.profile }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Just show the user if there is no profile. -->
+  <div ng-hide="ctrl.currentProfile">
+    <!-- /auth/user? -->
+    <!-- TODO allow redirect to a user/profile update page? -->
+    <div class="image">
+      <img ng-src="{{ ctrl.currentUser.profile.image }}" />
+    </div>
+    <div class="username">
+      {{ ctrl.currentUser.profile.username }}
+    </div>
+  </div>
+</div>
+
+<!-- TODO not complete, example only, not visible. -->
+<div ng-show="ctrl.header.hamburger" class="dropdown hamburger"
+    ng-click="expand = !expand; ctrl.whosStats=null;">
+  <div class="pattie"></div>
+  <div class="pattie"></div>
+  <div class="pattie"></div>
+  <div ng-show="expand">
+    <div class="options">
+      <ul>
+        <li ng-click="ctrl.showBeginTrail = true">Start this trail</li>
+      </ul>
+    </div>
+  </div>
+</div>

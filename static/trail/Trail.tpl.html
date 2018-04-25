@@ -1,0 +1,128 @@
+<div ng-controller="MainController as ctrl">
+  <div class="header" ng-include="'/static/trail/templates/header.tpl.html'">
+  </div>
+
+  <div class="add dropdown" ng-show="ctrl.profiles.$resolved"
+      ng-click="expand = !expand; ctrl.whosStats=null;">
+    <div class="inner">+</div>
+
+    <!-- The content for add -->
+    <div ng-show="expand">
+      <div ng-show="ctrl.profiles.length" class="options">
+        <!-- Logged in user options. -->
+        <ul>
+          <li ng-click="ctrl.showProgressPopup = true;">Add Progress</li>
+          <li ng-click="ctrl.showWalks = true;">Show Your Progress</li>
+          <li ng-click="ctrl.showBeginTrail = true">Start this trail again</li>
+        </ul>
+      </div>
+      <div ng-hide="ctrl.profiles.length" class="options">
+        <ul>
+          <li ng-click="ctrl.showBeginTrail = true">Start this trail</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="map">
+  <!-- will be filled with a google map via javascript -->
+  </div>
+
+  <div class="overlay">
+
+  <!-- TODO this should be in a popup -->
+    <div class="walks" ng-show="ctrl.showWalks">
+      <!-- TODO needs work before we show it again. -->
+      <div class="close" ng-click="ctrl.showWalks=false">X</div>
+      <div ng-class="{selected: ctrl.selectedWalker == person}" class="tab"
+          ng-repeat="person in ctrl.people" ng-click="ctrl.selectWalker(person)">
+        <span style="color: {{ person.color }}">{{person.name}}'s {{ person.activity.plural }}</span>
+      </div>
+      <div ng-if="ctrl.selectedWalker">
+        {{ ctrl.selectedWalker.progress.length }} {{ ctrl.trail_data.activity.plural }}
+        <div ng-init="limit = -5">
+          <span ng-show="ctrl.selectedWalker.progress.length > 5 && limit != Infinity" ng-click="limit = Infinity">
+            Showing last 5 walks, click here to show all.
+          </span>
+          <div ng-repeat="walk in ctrl.selectedWalker.progress | limitTo: limit">
+            Walked {{ walk.distance }}km <span ng-if="walk.date">on {{ walk.date | date:'mediumDate'}}</span>
+            <span ng-show="ctrl.selectedWalker.user_id == ctrl.currentUser.id && !walk.editDate">
+              <button ng-click="walk.editDate = true">Edit</button>
+            </span>
+            <div ng-show="walk.editDate">
+              <input placeholder="yyyy-MM-dd" type="date" ng-model="walk.date" />
+              <button ng-click="ctrl.saveWalk(walk); walk.editDate=false">Save</button>
+              <button class="delete" ng-click="ctrl.deleteWalk(ctrl.selectedWalker, walk)">Delete</button>
+            </div>
+          </div>
+        </div>
+        <button ng-click="ctrl.showPerson(ctrl.selectedWalker)">show this person</button>
+        <div ng-hide="ctrl.currentProfile == ctrl.selectedWalker">
+          <div ng-if="ctrl.selectedWalker.progress.length == 0">
+            This user has no walks yet.
+          </div>
+        </div>
+        <div ng-show="ctrl.currentProfile == ctrl.selectedWalker">
+          <div ng-if="ctrl.selectedWalker.progress.length == 0">
+            You have no walks yet, you can add one by filling in the distance walked.
+          </div>
+          Add a walk
+          <form ng-submit="ctrl.addWalk()">
+            <label>distance(km): <input type="number" ng-model="ctrl.addProgress.distance" /></label>
+            <button type="submit">Add Walk</button>
+          </form>
+        </div>
+      </div>
+      <div class="list" ng-show="!ctrl.selectedWalker">
+        Click a name above to show/edit the walks for that person.<br>
+      </div>
+    </div>
+
+    <div class="stats" ng-show="ctrl.showStats">
+      <div class="close" ng-click="ctrl.showStats=false">X</div>
+      <p>{{ connectsTrail | json }}</p>
+      <p>Info About the {{ totalLength / 1000 | number : 1 }}km Walk.</p>
+      <div class="person" ng-repeat="person in ctrl.people">
+        <div class="name"> {{ person.name }}</div>
+        <span> has walked {{ person.dis | number : 1 }}km </span>
+        <div class="description">
+          {{ person.trackWalkedMeters / 1000 | number : 1 }}km into the {{ person.track.name }} trail with {{ (person.track.length - person.trackWalkedMeters) /1000 | number : 1 }}km remaining.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="ctrl.showBeginTrail">
+    <div class="close_popup"
+        ng-click="ctrl.showBeginTrail = false">
+      X
+    </div>
+    <p>
+      <!-- TODO Name isn't saved, just pulled from user. -->
+      Name: <input ng-model="ctrl.newProfile.name">
+    </p>
+    <label>
+      Color: <input type="color" ng-model="ctrl.newProfile.color" />
+    </label>
+    <button ng-click="ctrl.beginTrail()">
+      beginTrail
+    </button>
+  </div>
+
+  <div class="popup" ng-show="ctrl.showProgressPopup">
+    <div class="close_popup"
+        ng-click="ctrl.showProgressPopup = false">
+      X
+    </div>
+    <p>
+      Add a {{ ctrl.currentProfile.activity.code }} for
+      {{ ctrl.currentProfile.name }}
+    </p>
+    <label>
+      <input type="number" step="0.1" ng-model="ctrl.addProgress.distance" placeholder="distance">
+    </label>
+    <button ng-click="ctrl.addWalk();">
+      Add progress
+    </button>
+  </div>
+</div>

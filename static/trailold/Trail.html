@@ -1,0 +1,70 @@
+<div ng-controller="MainController as ctrl">
+  <div id="map">
+  <!-- will be filled with a google map via javascript -->
+  </div>
+  <div class="hamburger" ng-click="expand = !expand; ctrl.whosStats=null;">
+    <div class="pattie"></div>
+    <div class="pattie"></div>
+    <div class="pattie"></div>
+    <div class="options" ng-show="expand">
+      <ul>
+        <li ng-click="ctrl.showWalks=true;">Walks</li>
+        <li ng-click="ctrl.showStats=true;">Walk stats</li>
+      </ul>
+    </div>
+  </div>
+  <div class="overlay">
+    <div class="walks" ng-show="ctrl.showWalks">
+      <div class="close" ng-click="ctrl.showWalks=false">X</div>
+      <div ng-class="{selected: ctrl.selectedWalker == name}" class="tab"
+          ng-repeat="(name, person) in ctrl.people" ng-click="ctrl.selectedWalker = name">
+        <span style="color: #{{ person.color | toColor }}">{{name}}'s walks</span>
+      </div>
+      <div ng-repeat="(name, person) in ctrl.people" class="list" ng-show="ctrl.selectedWalker == name">
+        <div ng-init="limit = person.walks.length > 5 ? -5 : Infinity">
+          <span ng-show = "limit != Infinity" ng-click="limit = Infinity">
+            Showing last 5 walks, click here to show all.
+          </span>
+          <div ng-repeat="walk in person.walks | limitTo: limit">
+            Walked {{ walk.distance }}km <span ng-if="walk.date">on {{ walk.date | date:'mediumDate'}}</span>
+            <span ng-show="!walk.editDate">
+              <button ng-click="walk.editDate = true">Edit</button>
+            </span>
+            <div ng-show="walk.editDate">
+              <input placeholder="yyyy-MM-dd" type="date" ng-model="walk.date" />
+              <button ng-click="ctrl.saveWalk(walk); walk.editDate=false">Save</button>
+              <button class="delete" ng-click="ctrl.deleteWalk(person, walk)">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div ng-if="person.walks.length == 0">
+          There are no walks yet, you can add one by filling in the distance walked.
+        </div>
+        <button ng-click="ctrl.showPerson(person)">show this person</button>
+        <div>
+          Add a walk
+          <form ng-submit="ctrl.addWalk(person)">
+            <label>distance(km): <input type="tel" ng-model="ctrl.addingWalk.distance" /></label>
+            <button type="submit">Add Walk</button>
+          </form>
+        </div>
+      </div>
+      <div class="list" ng-show="!ctrl.selectedWalker">
+        Click a name above to show/edit the walks for that person.<br>
+      </div>
+    </div>
+
+    <div class="stats" ng-show="ctrl.showStats">
+      <div class="close" ng-click="ctrl.showStats=false">X</div>
+      <p>{{ connectsTrail | json }}</p>
+      <p>Info About the {{ totalLength / 1000 | number : 1 }}km Walk.</p>
+      <div class="person" ng-repeat="person in ctrl.people">
+        <div class="name"> {{ person.name }}</div>
+        <span> has walked {{ person.dis | number : 1 }}km </span>
+        <div class="description">
+          {{ person.trackWalkedMeters / 1000 | number : 1 }}km into the {{ person.track.name }} trail with {{ (person.track.length - person.trackWalkedMeters) /1000 | number : 1 }}km remaining.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

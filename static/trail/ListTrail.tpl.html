@@ -1,0 +1,66 @@
+<div ng-controller="ListTrailController as ctrl">
+
+  <div class="header" ng-include="'/static/trail/templates/header.tpl.html'">
+  </div>
+
+  <div class='welcome'>
+    Hi {{ ctrl.currentUser.email }}
+  </div>
+
+  <div class="popup profile" ng-show="ctrl.editProfile">
+    <form ng-submit="ctrl.saveProfile()">
+      <div>Who:
+        <input type="text" ng-model="ctrl.editProfile.name" />
+      </div>
+      <a href='t/{{ ctrl.editProfile.trail.id }}/'>
+        <div>Trail: {{ ctrl.editProfile.trail.name }}</div>
+      </a>
+      <!-- Need to remove this completely to prevent warnings about color format -->
+      <div ng-if="ctrl.editProfile.color">
+        <label>
+          Color: <input type="color" ng-model="ctrl.editProfile.color" />
+        </label>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+  <div class="profiles" ng-show="ctrl.profiles.length">
+    <h4> Here are the trails you have already made progress on </h4>
+    <div class="profile" ng-repeat="profile in ctrl.profiles">
+      <a href="t/{{ profile.trail.id }}">
+        {{ profile.name }}
+        {{ profile.activity.action }}
+        on
+        {{ profile.trail.name }}
+      </a>
+
+      -
+      <!-- TODO should make it clear this allows edit? -->
+      <span class="clickable" ng-click="ctrl.editProfile = profile"
+          ng-style="{color: '#000', 'background-color': profile.color }">
+        Colour
+      </span>
+      -
+      <span class="clickable" ng-click="ctrl.deleteProfile(profile)">
+        Delete
+      </span>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="trails" ng-show="ctrl.trails.length">
+    <h4>Start a new Trail</h4>
+    <div class="trail" ng-repeat="trail in ctrl.trails">
+      <a href="t/{{ trail.id }}">
+        <span class="name">
+          {{ trail.name }}
+        </span>
+        <span class="trail_profiles">
+          ({{ trail.trail_profiles.length }} users on this trail)
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -22,17 +22,19 @@ lsvirtualenv
 mkvirtualenv
 workon
 
+###Production###
+
 Restart the python app.
-sudo restart webserver
+sudo systemctl restart gunicorn.service
 
 Restart nginx
 sudo service nginx restart
 
 Logs location on server.
-sudo tail -f /var/log/upstart/webserver.log
+sudo systemctl status gunicorn.service
 
 See setup here.
-https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
 
 SSL Certificate
 /etc/letsencrypt/live/mudge.co.nz/fullchain.pem

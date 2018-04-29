@@ -8,11 +8,6 @@ SENTRY_DSN = None
 
 # Configuration
 SQLALCHEMY_DATABASE_URI = 'postgres://postgres:postgres@db/postgres'
-SQLALCHEMY_BINDS = {
-    # Used for trails.
-    'old_sqlite': 'sqlite:///firstproject.db',
-}
-
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 DEBUG = False
 SECRET_KEY = 'development key mike rocks ^U8f)PpGhyf"ECf/'

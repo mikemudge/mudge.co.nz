@@ -1,7 +1,7 @@
 from flask_script import Manager
 from shared.database import db
-from tournament_app.models import Tournament, Team, Match, Round
-from tournament_app.helpers import tournament as tournament_helper
+from apps.tournament_app.models import Tournament, Team, Match, Round
+from apps.tournament_app.helpers import tournament as tournament_helper
 
 InitCommand = Manager(usage='Perform initialization tasks.')
 

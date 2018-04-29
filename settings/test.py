@@ -4,10 +4,6 @@ ENV = 'test'
 
 TESTING = True
 SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@db/mudgeconzTest'
-SQLALCHEMY_BINDS = {
-    # Used for trails.
-    'old_sqlite': 'sqlite:///firstproject-test.db',
-}
 PRESERVE_CONTEXT_ON_EXCEPTION = False
 SECRET_KEY = "Testing Secret"
 

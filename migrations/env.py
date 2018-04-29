@@ -70,11 +70,6 @@ def run_migrations_online():
                 logger.info('No changes in schema detected.')
 
     def include_object(object, name, type_, reflected, compare_to):
-        # TODO clean up this after Trail migration is complete.
-        if object.info.get('bind_key'):
-            print('Skipping', object.name, 'due to bind_key', object.info.get('bind_key'))
-            return False
-
         # Only consider tables which are not already existing.
         if type_ == 'table' and compare_to is None:
             # Ignore spatial_ref_sys table which is used for postgis.

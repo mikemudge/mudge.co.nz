@@ -15,7 +15,7 @@ import app
 import sqlalchemy as sa
 import shared
 import sqlalchemy_utils
-from trail.models import TrailProfile
+from apps.trail.models import TrailProfile
 
 
 def upgrade():

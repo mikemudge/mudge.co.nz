@@ -8,20 +8,19 @@ from shared.marshmallow import ma, Session
 # Import routes.
 # from admin.routes import routes as mudge_admin_routes
 from api.views import api_admin
-from api.api_app import api_bp
 from api.routes import routes as api_routes
 from auth.login_manager import login_manager
 from auth.routes import routes as auth_routes
 from auth.views import auth_admin
 from flask_migrate import Migrate
-from project_manager.routes import routes as project_routes
-from rock1500.routes import routes as rock_routes
-from rock1500.views import rock_admin
-from slack_history.routes import routes as slack_routes
-from tournament_app.routes import routes as tournament_routes
-from tournament_app.views import tournament_admin
-from trail.routes import routes as trail_routes
-from trail.views import trail_admin
+from apps.project_manager.routes import routes as project_routes
+from apps.rock1500.routes import routes as rock_routes
+from apps.rock1500.views import rock_admin
+from apps.slack_history.routes import routes as slack_routes
+from apps.tournament_app.routes import routes as tournament_routes
+from apps.tournament_app.views import tournament_admin
+from apps.trail.routes import routes as trail_routes
+from apps.trail.views import trail_admin
 from shared.admin import admin
 from shared.exceptions import sentry
 
@@ -40,7 +39,6 @@ def create_app(config=None):
             raise Exception('Can\'t determine which config file to use. Specify via argument or environment variable APP_SETTINGS')
 
     app.config.from_object(config)
-    app.register_blueprint(api_bp, url_prefix='/api')
 
     setup_auth(app)
 

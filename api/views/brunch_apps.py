@@ -1,4 +1,3 @@
-from flask import current_app
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
@@ -14,18 +13,25 @@ scripts = {
 
 apps = {}
 apps['soccer'] = {}
-apps['tournament'] = {}
+apps['tournament'] = {
+    'scripts': [
+        '/static/shared/api.js',
+    ]
+}
 apps['breakout'] = {
     'scripts': scripts['threejs']
 }
 apps['poker'] = {}
 apps['racer'] = {
     'scripts': scripts['threejs'] + [
-        '/static/js/three.js/BinaryLoader.js'
+        '/static/js/three.js/BinaryLoader.js',
+        '/static/racer/cars.js'
     ]
 }
 apps['rock'] = {
     'scripts': [
+        '/static/rock/dashboard.js',
+        '/static/shared/api.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
     ],
     'styles': [
@@ -68,6 +74,16 @@ class BrunchAppView(MethodView):
         app.addLoginApi()
 
         return app.render()
+
+# Project endpoints.
+class ProjectAppsListView(MethodView):
+    def get(self):
+        links = sorted(apps.keys())
+
+        result = [
+            '<p><a href="/projects/%s/">%s</a></p>' % (link, link) for link in links
+        ]
+        return ''.join(result)
 
 class ProjectAppView(MethodView):
     def get(self, app_name, path=None):

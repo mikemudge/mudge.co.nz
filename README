@@ -25,13 +25,13 @@ workon
 ###Production###
 
 Restart the python app.
-sudo systemctl restart gunicorn.service
+sudo systemctl restart webserver.service
 
 Restart nginx
 sudo service nginx restart
 
 Logs location on server.
-sudo systemctl status gunicorn.service
+sudo systemctl status webserver.service
 
 See setup here.
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04

@@ -1,0 +1,28 @@
+<div ng-include="'tournament/header.tpl.html'">
+</div>
+
+<div class="tournament" ng-controller="TableController as ctrl">
+  <h4>{{ ctrl.tournament.name }}</h4>
+  <div class="table">
+    <div class="row header">
+      <div class="cell">Name</div>
+      <div class="cell">P</div>
+      <div class="cell">W</div>
+      <div class="cell">D</div>
+      <div class="cell">L</div>
+      <div class="cell">GF</div>
+      <div class="cell">GA</div>
+      <div class="cell">Pnts</div>
+    </div>
+    <div class="row" ng-repeat="team in ctrl.teamMap" ng-class-odd="'odd'">
+      <div class="cell">{{ team.name }}</div>
+      <div class="cell">{{ team.played }}</div>
+      <div class="cell">{{ team.wins }}</div>
+      <div class="cell">{{ team.draws }}</div>
+      <div class="cell">{{ team.losses }}</div>
+      <div class="cell">{{ team.gf }}</div>
+      <div class="cell">{{ team.ga }}</div>
+      <div class="cell">{{ team.pnts }}</div>
+    </div>
+  </div>
+</div>

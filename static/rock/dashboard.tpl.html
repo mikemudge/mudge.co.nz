@@ -1,0 +1,49 @@
+<div ng-controller="DashboardController as ctrl">
+  <div ng-hide="ctrl.songs.$resolved">
+    Loading all the songs...
+  </div>
+  <div ng-show="ctrl.songs.$resolved">
+    <div>
+      <div class="songs">
+        {{ ctrl.songs.length }} songs loaded
+      </div>
+    </div>
+    <div class="prediction">
+      <div>
+        Prediction for the remaining {{ ctrl.highest_rank }} songs
+      </div>
+      <div class="song"
+          ng-repeat="song in ctrl.filtered_songs | orderBy: 'rank2017' : true">
+        <div class="rank">
+          {{ song.rank2017 }}
+          <div ng-hide="song.rank2017" class="estimated">
+            {{ ctrl.filtered_songs.length - $index }}.
+          </div>
+        </div>
+        <div>{{ song.title }}</div>
+        <div class="artist">{{ song.artist.name }}</div>
+        Previously {{ song.rank2016 }}, {{ song.rank2015 }}
+        <div class="album">
+          <img ng-src="{{ song.album.cover_art_url }}" />
+        </div>
+      </div>
+    </div>
+    <div class="recent">
+      <div>
+        Recently played
+      </div>
+      <div class="song"
+          ng-repeat="song in ctrl.recent | orderBy: 'rank2017'">
+        <div class="rank">
+          {{ song.rank2017 }}.
+        </div>
+        <div>{{ song.title }}</div>
+        <div class="artist">{{ song.artist.name }}</div>
+        Previously {{ song.rank2016 }}, {{ song.rank2015 }}
+        <div class="album">
+          <img ng-src="{{ song.album.cover_art_url }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

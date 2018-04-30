@@ -1,0 +1,34 @@
+<div ng-controller="TournamentListController as ctrl">
+  <div ng-repeat="tournament in ctrl.tournaments">
+  	<a href="tournament/{{ tournament.id }}">
+      {{ tournament.name }}
+    </a>
+  </div>
+</div>
+<div ng-controller="TournamentCreateController as ctrl">
+  <!-- TODO this should go on a new page. -->
+  <h4> Make a new Tournament</h4>
+  <form class="tournament">
+    <div class="name">
+      Name: <input ng-model="ctrl.newTournament.name" />
+    </div>
+    <div class="teams">
+      Teams: {{ ctrl.newTournament.teams }}
+      <!-- Handle list create? -->
+      <div ng-repeat="team in ctrl.newTournament.teams">
+        {{ team.name }}
+      </div>
+
+      <form class="newTeam">
+        <input ng-model="ctrl.newTeam.name" />
+        <button type="submit" class="button"
+            ng-click="ctrl.newTournamentTeam()">
+          Add Team
+        </button>
+      </form>
+    </div>
+    <button ng-click="ctrl.save(ctrl.newTournament)">
+      Create Tournament
+    </button>
+  </form>
+</div>

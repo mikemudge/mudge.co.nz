@@ -1,0 +1,20 @@
+<div ng-include="'tournament/header.tpl.html'">
+</div>
+
+<div class="tournament" ng-controller="MatchController as ctrl">
+  <form>
+    <div class="cell">{{ ctrl.match.homeTeam.name }}</div>
+    <div class="cell">
+      <input ng-model="ctrl.match.result.homeScore">
+    </div>
+    <div class="cell"> v </div>
+
+    <div class="cell">{{ ctrl.match.awayTeam.name }}</div>
+    <div class="cell">
+      <input ng-model="ctrl.match.result.awayScore" />
+    </div>
+    <button type="submit" class="button" ng-click="ctrl.submit()">
+      Submit score
+    </button>
+  </form>
+</div>

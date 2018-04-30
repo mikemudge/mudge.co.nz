@@ -1,0 +1,43 @@
+<div ng-include="'tournament/header.tpl.html'">
+</div>
+
+<div class="tournament" ng-controller="RoundController as ctrl">
+  <h4>{{ ctrl.tournament.name }}</h4>
+  <div>
+    <span ng-repeat="round in ctrl.tournament.rounds"
+        ng-class="{active: round==ctrl.currentRound}"
+        ng-click="ctrl.selectRound(round)">
+      {{ round.name }}
+    </span>
+  </div>
+
+  Choose a round:
+  <div class="mdl-selectfield">
+    <select class="mdl-selectfield" ng-options="round as round.name for round in ctrl.tournament.rounds"
+        ng-model="ctrl.currentRound">
+    </select>
+  </div>
+
+  <div ng-show="ctrl.currentRound">
+    <div class="table">
+      <div class="row header">
+        <div class="cell">Home Team</div>
+        <div class="cell"></div>
+        <div class="cell">V</div>
+        <div class="cell">Away Team</div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+      <div class="row" ng-repeat="match in ctrl.currentRound.matches" ng-class-odd="'odd'">
+        <div class="cell">{{ match.homeTeam.name }}</div>
+        <div class="cell">{{ match.result.homeScore }}</div>
+        <div class="cell"> v </div>
+        <div class="cell">{{ match.awayTeam.name }}</div>
+        <div class="cell">{{ match.result.awayScore }}</div>
+        <div class="cell">
+          <a href="tournament/{{ ctrl.tournament.id }}/match/{{ match.id }}"> Add score </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

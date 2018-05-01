@@ -7,7 +7,9 @@ import requests
 def googleAuth(id_token):
     if not id_token:
         raise AuthenticationException('You did not provide a token')
-    sentry.captureMessage('Unsafe googleapis call')
+
+    if not current_app.config.get('VERIFY_GOOGLE_AUTH'):
+        sentry.captureMessage('Unsafe googleapis call')
     r = requests.get(
         "https://www.googleapis.com/oauth2/v3/tokeninfo",
         params={"id_token": id_token},

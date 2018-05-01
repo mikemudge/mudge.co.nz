@@ -8,6 +8,7 @@ class Angular():
         self.appName = name
         self.require = None
         self.include = None
+        self.sentry = False
         self.base = '/'
         self.scripts = [
             url_for('static', filename='%s/%s.js' % (name, name))
@@ -23,6 +24,7 @@ class Angular():
             'API_URL': current_app.config.get('API_URL'),
             'STATIC_URL': current_app.config.get('STATIC_URL'),
             'DEBUG': current_app.config.get('DEBUG'),
+            'ENV': current_app.config.get('ENV'),
             'GOOGLE_CLIENT_ID': current_app.config.get('GOOGLE_CLIENT_ID'),
             'AUTH_COOKIE_ID': current_app.config.get('AUTH_COOKIE_ID'),
             'CLIENT_ID': current_app.config.get('CLIENT_ID'),
@@ -44,6 +46,7 @@ class Angular():
                 'config': self.config,
                 'favicon': self.favicon,
                 'include': self.include,
+                'sentry': self.sentry,
             },
             'brunch': {
                 'require': self.require,

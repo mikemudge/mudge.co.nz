@@ -41,6 +41,7 @@ var AuthInterceptor = function ($injector, $q, $templateCache) {
           message = response.data;
         }
         alert("Something went wrong: " + message);
+        console.error(message)
         console.log('response', response);
         return $q.reject(response);
       }

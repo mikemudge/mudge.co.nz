@@ -1,0 +1,42 @@
+<div ng-controller="LoginController as ctrl">
+
+  <div>
+    <h4>Status</h4>
+    <p>{{ ctrl.loginService.currentStatus }}</p>
+  </div>
+
+  <div ng-show="ctrl.googleLoginButton">
+    <div class="button" ng-click="ctrl.loginWithGoogle()">
+      Login with Google
+    </div>
+  </div>
+
+  <div class="clickable" ng-click="ctrl.advanced=!ctrl.advanced">
+    <span ng-hide="ctrl.advanced">Show</span>
+    <span ng-show="ctrl.advanced">Hide</span>
+    debug information
+  </div>
+
+  <div ng-show="ctrl.advanced">
+    <hr>
+    <div> Actions </div>
+    <div class="button" ng-click="ctrl.logout()">
+      Logout
+    </div>
+    <div class="button" ng-click="ctrl.loginWithGoogle()">
+      Login using Google
+    </div>
+    <hr>
+    <div>
+      Google login: {{ ctrl.loginService.googleStatus }}
+      <div ng-show="ctrl.loginService.googleUser">
+        <div class="clickable" ng-click="debug=true">Show google data</div>
+        <pre ng-show="debug">{{ ctrl.loginService.googleUser | json }}</pre>
+      </div>
+    </div>
+
+    <div>
+      <pre>Mudge.co.nz user = {{ ctrl.loginService.user | json }}</pre>
+    </div>
+  </div>
+</div>

@@ -39,7 +39,9 @@ apps['rock'] = {
     ]
 }
 apps['trail'] = {
-    'scripts': scripts['gmaps']
+    'scripts': scripts['gmaps'] + [
+        '/static/shared/api.js',
+    ]
 }
 
 # Brunch endpoints.
@@ -98,6 +100,9 @@ class ProjectAppView(MethodView):
         app.base = '/projects/%s/' % app_name
 
         app.setupFolder('/static/%s' % app_name)
+
+        if app_name == 'trail':
+            app.sentry = True
 
         app.addStyle('/static/shared/common.css')
         app.addScript('/static/shared/login.js')

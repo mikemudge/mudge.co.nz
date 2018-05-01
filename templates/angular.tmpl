@@ -12,6 +12,14 @@
   <script type="text/javascript" src="/static/js/angular/angular-resource.min.js"></script>
   <script type="text/javascript" src="/static/js/angular/angular-route.min.js"></script>
   <script type="text/javascript" src="/static/js/angular/angular-sanitize.js"></script>
+  {% if angular.sentry %}
+  <script src="https://cdn.ravenjs.com/3.24.2/angular/raven.min.js" crossorigin="anonymous"></script>
+  <script>
+    Raven.config('https://5a1e9200050345e4bbd726e89659cd3c@sentry.io/1199076', {
+      environment: '{{ angular.config.ENV }}'
+    }).install();
+  </script>
+  {% endif %}
   <script>
     // make client_config available to the angular app through a module called config.
     var config = {{ angular.config | tojson }};

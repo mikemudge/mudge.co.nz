@@ -68,7 +68,7 @@
           </div>
           Add a walk
           <form ng-submit="ctrl.addWalk()">
-            <label>distance(km): <input type="number" ng-model="ctrl.addProgress.distance" /></label>
+            <label>distance(km): <input type="number" step="0.1" ng-model="ctrl.addProgress.distance" placeholder="distance" /></label>
             <button type="submit">Add Walk</button>
           </form>
         </div>

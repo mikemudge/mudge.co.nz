@@ -15,7 +15,7 @@ USERNAME = 'admin'
 PASSWORD = 'default'
 
 # From https://console.developers.google.com/apis/credentials?project=mikemudge
-# TODO should replace.
+# TODO should replace, and restrict more.
 GOOGLE_CLIENT_ID = '872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com'
 AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 VERIFY_GOOGLE_AUTH = True

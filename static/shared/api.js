@@ -35,10 +35,11 @@ var AuthInterceptor = function ($injector, $q, $templateCache) {
         console.error('Error for response', response.status, response);
         // TODO show human friendly message in alert.
         var message = "Unknown error"
+        if (response.data) {
+          message = response.data;
+        }
         if (response.data.message) {
           message = response.data.message;
-        } else if (response.data) {
-          message = response.data;
         }
         alert("Something went wrong: " + message);
         console.error(message)

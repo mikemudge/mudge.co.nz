@@ -276,6 +276,10 @@ MainController.prototype.updateEveryone = function() {
 }
 
 MainController.prototype.updatePerson = function(person) {
+  if (!this.trail.tracks) {
+    // The trail hasn't loaded yet
+    return;
+  }
   person.dis = 0;
   angular.forEach(person.progress, angular.bind(this, function(walk) {
     person.dis += parseFloat(walk.distance);

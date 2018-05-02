@@ -18,6 +18,7 @@
       </div>
       <div ng-hide="ctrl.profiles.length" class="options">
         <ul>
+          <li ng-click="ctrl.showWalks = true;">Show Progress</li>
           <li ng-click="ctrl.showBeginTrail = true">Start this trail</li>
         </ul>
       </div>
@@ -39,7 +40,7 @@
         <span style="color: {{ person.color }}">{{person.name}}'s {{ person.activity.plural }}</span>
       </div>
       <div ng-if="ctrl.selectedWalker">
-        {{ ctrl.selectedWalker.progress.length }} {{ ctrl.trail_data.activity.plural }}
+        {{ ctrl.selectedWalker.progress.length }} {{ ctrl.selectedWalker.activity.plural }}
         <div ng-init="limit = -5">
           <span ng-show="ctrl.selectedWalker.progress.length > 5 && limit != Infinity" ng-click="limit = Infinity">
             Showing last 5 walks, click here to show all.
@@ -56,7 +57,6 @@
             </div>
           </div>
         </div>
-        <button ng-click="ctrl.showPerson(ctrl.selectedWalker)">show this person</button>
         <div ng-hide="ctrl.currentProfile == ctrl.selectedWalker">
           <div ng-if="ctrl.selectedWalker.progress.length == 0">
             This user has no walks yet.

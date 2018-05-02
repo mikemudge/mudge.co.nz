@@ -13,9 +13,18 @@ DEBUG = False
 SECRET_KEY = 'development key mike rocks ^U8f)PpGhyf"ECf/'
 USERNAME = 'admin'
 PASSWORD = 'default'
+
+# From https://console.developers.google.com/apis/credentials?project=mikemudge
+# TODO should replace.
 GOOGLE_CLIENT_ID = '872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com'
 AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 VERIFY_GOOGLE_AUTH = True
+
+# From Flask local test
+# https://console.developers.google.com/apis/credentials?project=flask-local-test
+GOOGLE_MAPS_API_KEY = 'AIzaSyDQUXJbx4w1Tks0LrYInpKlmPXlWnM6fmY'
+# TODO should use this Flask local test.
+# GOOGLE_CLIENT_ID = '617413556283-u2glkds0e166eghg3b9l60cu8j3fevcv.apps.googleusercontent.com'
 
 # Used to locate static files, aka brunch server.
 STATIC_URL = 'http://localhost:3333/'

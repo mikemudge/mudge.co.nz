@@ -33,7 +33,6 @@ def import_projects(path):
         "static/js/three.js/84/three.min.js",
         "static/js/three.js/OrbitControls.js",
         "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
 
         # CSS too
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css",

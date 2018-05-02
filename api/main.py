@@ -47,7 +47,7 @@ def jack():
     app = Angular('jack')
 
     app.scripts += [
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry",
+        "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY'),
         "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
     ]

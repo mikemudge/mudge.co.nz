@@ -392,12 +392,30 @@ ListTrailController.prototype.beginTrail = function(trail_id) {
 ListTrailController.prototype.deleteProfile = function(profile) {
   // TODO delete should update walkerService?
   // So the number of walkers on each trail can be updated as well???
-  profile.$remove().then(function() {
-    var idx = this.profiles.indexOf(profile);
-    if (idx != -1) {
-      this.profiles.splice(idx, 1);
-    }
+  profile_id = profile.id;
+  profile.$remove().then(function(response) {
+    this.removeFromList(profile, this.profiles);
+    // Remove profile from each trail so the trail.trail_profile counts change.
+    this.trails.forEach(function(trail) {
+      this.removeFromListById(profile_id, trail.trail_profiles);
+    }.bind(this));
   }.bind(this));
+}
+
+ListTrailController.prototype.removeFromList = function(item, list) {
+  var idx = list.indexOf(item);
+  if (idx != -1) {
+    list.splice(idx, 1);
+  }
+}
+ListTrailController.prototype.removeFromListById = function(item_id, list) {
+  // Find item by matching id.
+  var idx = list.findIndex(function(list_item) {
+    return list_item.id === item_id;
+  });
+  if (idx != -1) {
+    list.splice(idx, 1);
+  }
 }
 
 /**

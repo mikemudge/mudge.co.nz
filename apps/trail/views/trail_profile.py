@@ -35,7 +35,9 @@ class TrailProfileView(DBModelView):
             # Just make a new profile for this trail?
             self.get_data()
             self.data['user_id'] = str(request.oauth.user.id)
-            self.data['color'] = random.randint(0, 16777215)
+            if not self.data.get('color'):
+                # TODO should we error if color isn't set?
+                self.data['color'] = random.randint(0, 16777215)
             return self.create()
         else:
             profile = TrailProfile.query.get(pk)

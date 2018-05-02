@@ -1,3 +1,4 @@
+from flask import current_app
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
@@ -5,9 +6,6 @@ scripts = {
     'threejs': [
         '/static/js/three.js/84/three.min.js',
         '/static/js/three.js/OrbitControls.js'
-    ],
-    'gmaps': [
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy2s0-af1yNUHYf8eWVpqXvIgF-lKgyU4&v=3.exp&amp;libraries=geometry"
     ]
 }
 
@@ -39,10 +37,13 @@ apps['rock'] = {
     ]
 }
 apps['trail'] = {
-    'scripts': scripts['gmaps'] + [
+    'scripts': [
         '/static/shared/api.js',
     ]
 }
+
+def gmaps():
+    return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
 
 # Brunch endpoints.
 class BrunchAppsListView(MethodView):
@@ -102,6 +103,9 @@ class ProjectAppView(MethodView):
         app.setupFolder('/static/%s' % app_name)
 
         if app_name == 'trail':
+            # Need a better way than this.
+            app.scripts += [gmaps()]
+
             app.sentry = True
 
         app.addStyle('/static/shared/common.css')

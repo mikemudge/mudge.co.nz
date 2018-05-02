@@ -20,8 +20,10 @@ var auth2 = {
 
 // Called when the google auth script is downloaded.
 function initGoogle() {
+  // This seems to clear the console???
   gapi.load('auth2', auth2.load.bind(auth2));
 }
+
 window.initGoogle = initGoogle;
 (function() {
   var js = document.createElement('script');
@@ -138,8 +140,8 @@ LoginService.prototype.badResponse = function(first_argument) {
   this.already_know = true;
   this.google.promise.then(function() {
     return this.loginWithGoogle();
-  }.bind(this)).then(function(error) {
-    console.log(error);
+  }.bind(this)).then(function(user) {
+    console.log('user', user);
     console.log('Now logged in after bad response.');
     // TODO can we just re send the request?
     // window.location.reload();

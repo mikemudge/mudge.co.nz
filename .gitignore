@@ -75,3 +75,6 @@ key.crt
 
 # The local_config should stay local.
 local_config.py
+
+# The git commit hash when deploy was last run.
+.commithash

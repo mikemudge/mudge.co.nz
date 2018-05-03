@@ -26,6 +26,10 @@ GOOGLE_MAPS_API_KEY = 'AIzaSyDQUXJbx4w1Tks0LrYInpKlmPXlWnM6fmY'
 # TODO should use this Flask local test.
 # GOOGLE_CLIENT_ID = '617413556283-u2glkds0e166eghg3b9l60cu8j3fevcv.apps.googleusercontent.com'
 
+# TODO test this for prod?
+# From https://console.developers.google.com/apis/credentials?project=mikemudge
+# GOOGLE_MAPS_API_KEY = 'AIzaSyDBZVc0PEO69o_tefArBGUUvj-v5ntRYd0'
+
 # Used to locate static files, aka brunch server.
 STATIC_URL = 'http://localhost:3333/'
 API_URL = 'http://localhost:5000/'

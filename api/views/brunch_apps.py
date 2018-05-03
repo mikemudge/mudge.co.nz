@@ -98,6 +98,10 @@ class ProjectAppView(MethodView):
         # Maybe add the other things as well?
 
         app = Angular(app_name)
+        with open(".commithash", "r") as myfile:
+            lines = myfile.readlines()
+            app.version = ''.join(lines)
+
         app.base = '/projects/%s/' % app_name
 
         app.setupFolder('/static/%s' % app_name)

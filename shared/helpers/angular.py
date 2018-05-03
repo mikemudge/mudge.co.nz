@@ -75,10 +75,14 @@ class Angular():
             '%slogin/app.css' % brunchServer,
         ]
 
-    def addStyle(self, href):
+    def addStyle(self, href, version=True):
+        if version:
+            href += '?v=%s' % self.version
         self.styles += [href]
 
-    def addScript(self, src):
+    def addScript(self, src, version=True):
+        if version:
+            src += '?v=%s' % self.version
         self.scripts += [src]
 
     # Deprecated
@@ -96,10 +100,10 @@ class Angular():
 
     def setupFolder(self, path):
         self.styles = [
-            '%s/%s.css' % (path, self.appName)
+            '%s/%s.css?v=%s' % (path, self.appName, self.version)
         ]
         self.scripts = [
-            '%s/%s.js' % (path, self.appName)
+            '%s/%s.js?v=%s' % (path, self.appName, self.version)
         ]
 
     def setupBrunch(self):

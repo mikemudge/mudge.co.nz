@@ -32,7 +32,7 @@
     };
   </script>
   {% for style in styles %}
-  <link rel="stylesheet" type="text/css" href="{{ style }}?v={{ angular.version }}" />
+  <link rel="stylesheet" type="text/css" href="{{ style }}" />
   {% endfor %}
 </head>
 <body>
@@ -48,7 +48,7 @@
 {% endif %}
 
   {% for script in scripts %}
-  <script src="{{ script }}?v={{ angular.version }}" type="text/javascript"></script>
+  <script src="{{ script }}" type="text/javascript"></script>
   {% endfor %}
   {% if brunch.require %}
   <script type="text/javascript">
@@ -59,7 +59,7 @@
   </script>
   {% endif %}
   {% for script in async %}
-  <script async src="{{ script }}?v={{ angular.version }}" type="text/javascript"></script>
+  <script async src="{{ script }}" type="text/javascript"></script>
   {% endfor %}
 </body>
 </html>

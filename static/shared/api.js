@@ -25,7 +25,8 @@ var AuthInterceptor = function ($injector, $q, $templateCache) {
     responseError: function (response) {
       if (response.status == 0) {
         console.error('Weird 0 error', response);
-        return;
+        // Not sure what causes this, but it happens.
+        return $q.reject(response);
       } else if (response.status == 403 || response.status == 401) {
         // Need to lazy inject this to avoid a dependency cycle.
         var loginService = $injector.get('loginService');

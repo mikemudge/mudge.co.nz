@@ -28,25 +28,7 @@ import os
 
 migrate = Migrate()
 
-def create_app(config=None):
-
-    app = Flask(__name__)
-
-    if not config:
-        if os.environ.get('APP_SETTINGS'):
-            config = os.environ.get('APP_SETTINGS')
-        else:
-            raise Exception('Can\'t determine which config file to use. Specify via argument or environment variable APP_SETTINGS')
-
-    app.config.from_object(config)
-
-    setup_auth(app)
-
-    sentry.init_app(app, logging=True)
-
-    login_manager.init_app(app)
-    admin.init_app(app)
-
+def routes(app):
     api_routes(app)
     auth_routes(app)
     project_routes(app)
@@ -64,6 +46,31 @@ def create_app(config=None):
 
     # Older Admin routes, @deprecated.
     api_admin.admin_routes(app)
+
+def create_test_app():
+    return create_app('settings.test')
+
+def create_app(config=None):
+
+    app = Flask(__name__)
+
+    if not config:
+        if os.environ.get('APP_SETTINGS'):
+            config = os.environ.get('APP_SETTINGS')
+        else:
+            raise Exception('Can\'t determine which config file to use. Specify via argument or environment variable APP_SETTINGS')
+
+    app.config.from_object(config)
+
+    setup_auth(app)
+
+    sentry.init_app(app, logging=True)
+
+    login_manager.init_app(app)
+    # This guy does too much trick stuff???
+    # admin.init_app(app)
+
+    routes(app)
 
     db.init_app(app)
     migrate.init_app(app, db)

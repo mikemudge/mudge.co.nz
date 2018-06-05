@@ -1,7 +1,7 @@
 from tests.base.base_test_case import BaseTestCase
 
 from flask import current_app
-from project_manager.models import Project, FileUrl
+from apps.project_manager.models import Project, FileUrl
 from shared.database import db
 
 class TestProject(BaseTestCase):

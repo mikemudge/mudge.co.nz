@@ -70,7 +70,7 @@ class TrailProfile(BaseModel):
         if not newWalker:
             if not color:
                 color = random.randint(0, 16777215)
-            newWalker = TrailProfile(user=user, trail=trail, color=color, activity=activity)
+            newWalker = TrailProfile(user=user, trail=trail, color=color, activity=activity, name=str(user.profile))
             db.session.add(newWalker)
         return newWalker
 

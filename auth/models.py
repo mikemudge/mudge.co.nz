@@ -1,5 +1,6 @@
 import bcrypt
 import pytz
+import uuid
 
 from shared.database import db, BaseModel, UUID
 from sqlalchemy.orm import relationship, backref
@@ -55,6 +56,15 @@ class Scope(BaseModel):
     def __repr__(self):
         return self.name
 
+
+friendships = db.Table(
+    'friendships',
+    BaseModel.metadata,
+    db.Column('user_id', UUID, db.ForeignKey('user.id'), index=True),
+    db.Column('friend_id', UUID, db.ForeignKey('user.id')),
+    db.UniqueConstraint('user_id', 'friend_id', name='unique_friendships')
+)
+
 class User(BaseModel):
     profile_id = db.Column(UUID(), db.ForeignKey('profile.id', ondelete='CASCADE'), nullable=False)
     profile = relationship("Profile", backref=backref("user", uselist=False))
@@ -63,6 +73,12 @@ class User(BaseModel):
     password_hash = db.Column(db.String)
 
     is_active = db.Column(db.Boolean, default=False)
+
+    friends = relationship(
+        "User",
+        secondary=friendships,
+        primaryjoin="User.id == friendships.c.user_id",
+        secondaryjoin="User.id == friendships.c.friend_id")
 
     def __repr__(self):
         return self.email

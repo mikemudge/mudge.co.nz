@@ -3,7 +3,7 @@ import json
 import logging
 import urllib.parse
 
-from app import create_app
+from app import create_test_app
 from auth.models import Client, Scope, User
 from flask_testing import TestCase
 from jose import jwt
@@ -18,8 +18,7 @@ class BaseTestCase(TestCase):
     render_templates = False
 
     def create_app(self):
-        app = create_app('settings.test')
-        return app
+        return create_test_app()
 
     def setUp(self):
         db.session.remove()

@@ -1,6 +1,6 @@
-from rock1500.models import Rock1500Song, Rock1500Artist
-from rock1500.models import Rock1500Album, Rock1500Pick
-from rock1500.views import importer
+from apps.rock1500.models import Rock1500Song, Rock1500Artist
+from apps.rock1500.models import Rock1500Album, Rock1500Pick
+from apps.rock1500.views import importer
 from auth.models import User
 from shared.database import db
 from tests.base.base_test_case import BaseTestCase

@@ -1,6 +1,6 @@
 from tests.base.base_test_case import BaseTestCase
 
-from tournament_app.models import Team, Match, MatchResult
+from apps.tournament_app.models import Team, Match, MatchResult
 from shared.database import db
 
 class TestTournament(BaseTestCase):

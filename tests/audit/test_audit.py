@@ -1,6 +1,6 @@
-from audit.models import AuditEvent
+from apps.audit.models import AuditEvent
 from shared.database import db
-from trail.models import TrailProgress, TrailProfile, Trail
+from apps.trail.models import TrailProgress, TrailProfile, Trail
 
 from tests.base.base_test_case import BaseTestCase
 
@@ -8,7 +8,7 @@ class TestTournament(BaseTestCase):
 
     def testCreateAuditEvent(self):
         user = self.jsonClient.createLoggedInUser('createAuditEvent')
-        trail = Trail(name='Test Trail', activity=Trail.ACTIVITY_WALK)
+        trail = Trail(name='Test Trail')
         trail_profile = TrailProfile.get_or_create(user=user, trail=trail)
 
         ride = TrailProgress(distance=3, trail_profile=trail_profile)

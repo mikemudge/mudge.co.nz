@@ -1,6 +1,6 @@
 from shared.database import db
 from tests.base.base_test_case import BaseTestCase
-from trail.models import Trail, TrailProfile, TrailProgress
+from apps.trail.models import Trail, TrailProfile, TrailProgress
 
 class TestTrail(BaseTestCase):
 
@@ -77,7 +77,10 @@ class TestTrail(BaseTestCase):
 
     def test_get_profiles_for_trail(self):
         user = self.jsonClient.createLoggedInUser('trail_get_profiles_on_trail')
-        trail_profile = TrailProfile.get_or_create(user=user, trail=self.trail)
+        trail_profile = TrailProfile.get_or_create(
+            user=user,
+            trail=self.trail
+        )
 
         response = self.jsonClient.get('/api/trail/v1/trail/%s' % str(self.trail.id))
         self.assertContains(response.json['data'], {

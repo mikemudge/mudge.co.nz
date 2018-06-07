@@ -1,0 +1,49 @@
+.message {
+  padding: 2px 0;
+}
+
+.message:hover {
+  background-color: #F7F7F7;
+}
+
+.message .date {
+  text-align: right;
+  position: absolute;
+  white-space: nowrap;
+  font-size: 13px;
+  padding-right: 16px;
+}
+
+.message .content {
+  white-space: normal;
+  position: relative;
+  margin-left: 78px;
+}
+
+.message .user {
+  /* Indent user less than the rest of the message text */
+  margin-left: -8px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.message .text {
+  display: inline;
+  /* For long urls */
+  word-wrap: break-word;
+}
+
+.message .expand {
+  font-size: 13px;
+  padding: 3px;
+}
+.message .expand span {
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 20px;
+  border: red 1px solid;
+  padding: 8px;
+}

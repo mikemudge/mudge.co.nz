@@ -31,6 +31,7 @@ a {
   position: absolute;
   top: 5px;
   right: 20px;
+  margin: 0;
 }
 .user .image img {
   border-radius: 1000px;

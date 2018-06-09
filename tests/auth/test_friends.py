@@ -15,9 +15,9 @@ class TestFriends(BaseTestCase):
             'friend_id': str(u2.id),
         })
 
-        self.assertEqual(response.json['data'].get('friends'), [
-            {'id': str(u2.id)}
-        ])
+        friend = response.json['data'].get('friends')[0]
+        self.assertEqual(friend['id'], str(u2.id))
+        self.assertEqual(friend['email'], 'friend@test.mudge.co.nz')
 
     def test_get_friend(self):
         u2 = self.jsonClient.createUser('friend')

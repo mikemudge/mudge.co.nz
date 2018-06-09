@@ -1,3 +1,13 @@
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .button {
   border-radius: 100px;
   border: 2px solid black;
@@ -12,4 +22,30 @@
 
 .clickable {
   cursor: pointer;
+}
+
+.column {
+  display: inline-block;
+}
+
+/* A nice default way to display a user object */
+.user {
+  margin: 16px 0;
+}
+
+.user .image {
+  width: 40px;
+  overflow: hidden;
+  border-radius: 1000px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user .column {
+  vertical-align: middle;
+}
+
+.user .username {
+  font-size: 12px;
 }

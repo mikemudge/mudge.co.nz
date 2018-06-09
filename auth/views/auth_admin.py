@@ -1,5 +1,5 @@
 from auth.models import Client, Profile, Scope, User
-from shared.admin import admin
+from shared.admin import get_admin
 from shared.admin import BaseView
 from shared.database import db
 
@@ -16,7 +16,7 @@ class UserView(BaseView):
 class ScopeView(BaseView):
     pass
 
-class ClientView(BaseView):
+class ClientAdminView(BaseView):
     form_excluded_columns = ['date_created', 'client_id', 'client_secret']
 
 class ProfileView(BaseView):
@@ -25,8 +25,9 @@ class ProfileView(BaseView):
         'image': BaseView.format_image,
     }
 
-def admin_routes():
-    admin.add_view(ClientView(Client, db.session, category="Auth"))
+def admin_routes(app):
+    admin = get_admin(app)
+    admin.add_view(ClientAdminView(Client, db.session, category="Auth"))
     admin.add_view(ProfileView(Profile, db.session, category="Auth"))
     admin.add_view(ScopeView(Scope, db.session, category="Auth"))
     admin.add_view(UserView(User, db.session, category="Auth"))

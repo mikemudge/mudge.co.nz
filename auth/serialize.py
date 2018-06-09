@@ -17,4 +17,4 @@ class FriendsSchema(UserSchema):
     class Meta:
         model = User
         fields = UserSchema.Meta.fields + ['friends']
-    friends = fields.Nested(UserSchema, many=True, only=['id'])
+    friends = fields.Nested(UserSchema, many=True)

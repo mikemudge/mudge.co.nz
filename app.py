@@ -1,5 +1,6 @@
 from auth.provider import oauth, setup as setup_auth
 from flask import Flask
+from flask_admin import Admin
 from flask_cors import CORS
 from shared import exceptions
 from shared.database import db
@@ -9,6 +10,7 @@ from shared.marshmallow import ma, Session
 # from admin.routes import routes as mudge_admin_routes
 from api.views import api_admin
 from api.routes import routes as api_routes
+from auth.custom_flask_admin import CustomAdminIndexView
 from auth.login_manager import login_manager
 from auth.routes import routes as auth_routes
 from auth.views import auth_admin
@@ -16,12 +18,11 @@ from flask_migrate import Migrate
 from apps.project_manager.routes import routes as project_routes
 from apps.rock1500.routes import routes as rock_routes
 from apps.rock1500.views import rock_admin
-from apps.slack_history.routes import routes as slack_routes
 from apps.tournament_app.routes import routes as tournament_routes
 from apps.tournament_app.views import tournament_admin
 from apps.trail.routes import routes as trail_routes
 from apps.trail.views import trail_admin
-from shared.admin import admin
+
 from shared.exceptions import sentry
 
 import os
@@ -33,16 +34,15 @@ def routes(app):
     auth_routes(app)
     project_routes(app)
     rock_routes(app)
-    slack_routes(app)
     trail_routes(app)
     tournament_routes(app)
     # mudge_admin_routes(app)
 
     # Add flask admin for each app.
-    auth_admin.admin_routes()
-    rock_admin.admin_routes()
-    trail_admin.admin_routes()
-    tournament_admin.admin_routes()
+    auth_admin.admin_routes(app)
+    rock_admin.admin_routes(app)
+    trail_admin.admin_routes(app)
+    tournament_admin.admin_routes(app)
 
     # Older Admin routes, @deprecated.
     api_admin.admin_routes(app)
@@ -67,8 +67,19 @@ def create_app(config=None):
     sentry.init_app(app, logging=True)
 
     login_manager.init_app(app)
-    # This guy does too much trick stuff???
-    # admin.init_app(app)
+
+    # If we don't create this each time here we get duplicate Blueprint errors in tests.
+    Admin(
+        app=app,
+        name='Mudge.co.nz',
+        index_view=CustomAdminIndexView(
+            url='/flask-admin',
+            endpoint='admin'
+        ),
+        template_mode='bootstrap3',
+        static_url_path="static",
+        base_template='admin/master.html'
+    )
 
     routes(app)
 

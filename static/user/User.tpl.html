@@ -1,0 +1,61 @@
+<div ng-controller="MainController as ctrl">
+  <div>
+    Hi {{ ctrl.user.email }}
+    <div class="user">
+      <img ng-show="ctrl.user.profile.image" class="image" ng-src="{{ctrl.user.profile.image}}"/>
+      <div class="column">
+        <div class="name">
+          {{ ctrl.user.profile.firstname }}
+          {{ ctrl.user.profile.lastname }}
+        </div>
+        <div class="username">
+          {{ ctrl.user.profile.username }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4>
+    Your friends
+  </h4>
+  <div class="user" ng-repeat="friend in ctrl.friends">
+    <div class="clickable" ng-click="ctrl.removeFriend(friend)">
+      <i class="fa fa-minus"></i>
+    </div>
+    <div class="image">
+      <img ng-show="friend.profile.image" class="image" ng-src="{{friend.profile.image}}"/>
+    </div>
+    <div class="column">
+      <div class="name">
+        {{friend.profile.firstname}} {{friend.profile.lastname}}
+      </div>
+      <div class="username">
+        {{ friend.profile.username }}
+      </div>
+    </div>
+    <hr>
+  </div>
+
+  <div> Search for a friend </div>
+  <form ng-submit="ctrl.handleSearch()">
+    <input ng-model="ctrl.friend.search" \>
+    <button type="submit">Search</button>
+  </form>
+
+  <div class="user" ng-repeat="friend in ctrl.search_results">
+    <div class="clickable" ng-click="ctrl.addFriend(friend)">
+      <i class="fa fa-plus"></i>
+    </div>
+    <div class="image">
+      <img ng-show="friend.profile.image" class="image" ng-src="{{friend.profile.image}}"/>
+    </div>
+    <div class="column">
+      <div class="name">
+        {{friend.profile.firstname}} {{friend.profile.lastname}}
+      </div>
+      <div class="username">
+        {{ friend.profile.username }}
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>

@@ -77,6 +77,8 @@ class TestTrail(BaseTestCase):
 
     def test_get_profiles_for_trail(self):
         user = self.jsonClient.createLoggedInUser('trail_get_profiles_on_trail')
+        db.session.commit()
+
         trail_profile = TrailProfile.get_or_create(
             user=user,
             trail=self.trail

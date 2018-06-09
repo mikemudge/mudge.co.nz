@@ -1,21 +1,14 @@
-from auth.custom_flask_admin import CustomAdminIndexView
 from flask_admin.contrib.sqla import ModelView
-from flask_admin import Admin
 from flask_login import current_user
 from jinja2 import Markup
 
 
-admin = Admin(
-    name='Mudge.co.nz',
-    # name='Home',
-    index_view=CustomAdminIndexView(
-        url='/flask-admin',
-        endpoint='admin'
-    ),
-    template_mode='bootstrap3',
-    static_url_path="static",
-    base_template='admin/master.html'
-)
+def get_admin(app):
+    if hasattr(app, 'extensions'):
+        if app.extensions.get('admin'):
+            admin = app.extensions.get('admin')[0]
+            return admin
+    return None
 
 class BaseView(ModelView):
     form_excluded_columns = ['date_created']

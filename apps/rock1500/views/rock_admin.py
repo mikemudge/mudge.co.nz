@@ -1,4 +1,4 @@
-from shared.admin import admin
+from shared.admin import get_admin
 from shared.admin import BaseView
 from shared.database import db
 
@@ -33,7 +33,8 @@ class RockPickView(BaseView):
 
     column_searchable_list = ['song.title']
 
-def admin_routes():
+def admin_routes(app):
+    admin = get_admin(app)
     admin.add_view(RockAlbumView(Rock1500Album, db.session, category="Rock 1500"))
     admin.add_view(RockArtistView(Rock1500Artist, db.session, category="Rock 1500"))
     admin.add_view(RockSongView(Rock1500Song, db.session, category="Rock 1500"))

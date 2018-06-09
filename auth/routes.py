@@ -25,5 +25,6 @@ def routes(app):
     app.add_url_rule('/auth/connector-token', view_func=AuthenticationConnectorView.as_view('connector-token'))
 
     app.add_url_rule('/auth/friends', view_func=FriendsView.as_view('auth-friends'))
+
     # Auth these though?
     crud(app, 'user', UserView)

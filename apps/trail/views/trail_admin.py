@@ -1,4 +1,4 @@
-from shared.admin import admin
+from shared.admin import get_admin
 from shared.admin import BaseView
 from shared.database import db
 
@@ -40,7 +40,8 @@ class TrailProgressView(BaseView):
 
     column_searchable_list = ['trail_profile.user.email']
 
-def admin_routes():
+def admin_routes(app):
+    admin = get_admin(app)
 
     admin.add_view(TrailView(Trail, db.session, category="Trail"))
     admin.add_view(TrailProgressView(TrailProgress, db.session, category="Trail"))

@@ -2,7 +2,7 @@
 
 from app import create_app
 from flask_migrate import MigrateCommand
-from flask_script import Manager
+from flask_script import Manager, Server
 from apps.rock1500.command import Command as RockCommand
 from shared.init_command import InitCommand
 from auth.init_command import InitAuthCommand
@@ -16,6 +16,8 @@ manager.add_command('init', InitCommand)
 manager.add_command('auth', InitAuthCommand)
 manager.add_command('rock1500', RockCommand)
 manager.add_command('project', ProjectCommand)
+manager.add_command("runserver", Server(threaded=True))
+
 
 if __name__ == '__main__':
     manager.run()

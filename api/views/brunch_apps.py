@@ -19,6 +19,15 @@ apps['tournament'] = {
 apps['breakout'] = {
     'scripts': scripts['threejs']
 }
+apps['slack_history'] = {}
+apps['user'] = {
+    'scripts': [
+        '/static/shared/api.js',
+    ],
+    'styles': [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
+    ]
+}
 apps['poker'] = {}
 apps['racer'] = {
     'scripts': scripts['threejs'] + [
@@ -112,7 +121,7 @@ class ProjectAppView(MethodView):
 
             app.sentry = True
 
-        app.addStyle('/static/shared/common.css')
+        app.styles = ['/static/shared/common.css'] + app.styles
         app.addScript('/static/shared/login.js')
 
         conf = apps.get(app_name)

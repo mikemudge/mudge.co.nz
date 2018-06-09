@@ -100,6 +100,7 @@ class DBModelView(MethodView):
 # But it will register a CRUD set of urls to a single view.
 def crud(app, path, viewCls):
     view = viewCls.as_view(path + '_crud')
+    print('endpoint' + '/api/%s' % path)
     # List/Create url
     app.add_url_rule(
         '/api/%s' % path,

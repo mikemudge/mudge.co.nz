@@ -2,7 +2,7 @@
 
 set -e
 
-workon mudgeconz
+source ~/virtualenvs/mudgeconz/bin/activate
 
 cd ~/projects/pyauto
 

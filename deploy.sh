@@ -1,10 +1,10 @@
 # Run all the things which are needed to deploy this code in production.
 
+set -e
+
 workon mudgeconz
 
 cd ~/projects/pyauto
-
-set -e
 
 # put the git hash in a file, used for caching.
 # TODO is there a better version id we can use?
@@ -20,8 +20,8 @@ echo 'Restarting webserver.'
 sudo systemctl restart webserver.service
 
 # TODO this needs to change.
-echo 'Compiling static files.'
-brunch build --production
+# echo 'Compiling static files.'
+# brunch build --production
 
 echo 'Restart nginx to serve the new static files.'
 sudo service nginx restart

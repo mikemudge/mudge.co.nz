@@ -1,11 +1,11 @@
 import random
 
 from auth.provider import oauth
+from auth.models import User
 from flask import request
 
 from ..models import TrailProfile
 from ..serialize import TrailProfileSchema
-from ..serialize import ListTrailProfileSchema
 from shared.exceptions import BadRequestException
 from shared.views.crud import DBModelView
 
@@ -20,13 +20,37 @@ class TrailProfileView(DBModelView):
             instance = TrailProfile.query.get(pk)
             return schema.response(instance)
         else:
-            schema = ListTrailProfileSchema(many=True)
             query = TrailProfile.query
-            query = query.filter_by(user_id=request.oauth.user.id)
+            data = request.args
+
+            query = self.filter(query, data)
+
+            if data.get('friends'):
+                # Make sure the profiles user is friends with this user.
+                # Query the backref here because we are looking for TrailProfiles which have a relation back to your user id.
+                query = query.join(User) \
+                    .join(User.friended_you, aliased=True) \
+                    .filter(User.id == request.oauth.user.id)
+
             # Order by created date.
             query = query.order_by(TrailProfile.date_created.desc())
             results = query.all()
+            # TODO using non List schema so each will load its progress
+            exclude = []
+            if not data.get('progress'):
+                # Exclude progress if its not asked for.
+                # TODO should be able to use this to do query joins etc?
+                exclude.append('progress')
+
+            schema = TrailProfileSchema(many=True, exclude=exclude)
             return schema.response(results)
+
+    def filter(self, query, data):
+        if data.get('user_id'):
+            query = query.filter_by(user_id=data.get('user_id'))
+        if data.get('trail_id'):
+            query = query.filter_by(trail_id=data.get('trail_id'))
+        return query
 
     @oauth.require_oauth('trail')
     def post(self, pk=None):
@@ -47,5 +71,5 @@ class TrailProfileView(DBModelView):
     def delete(self, pk=None):
         instance = TrailProfile.query.get(pk)
         if instance.user_id != request.oauth.user.id:
-            raise BadRequestException('Not the owner of %s' % progress)
+            raise BadRequestException('Not the owner of %s' % instance)
         return self.remove(pk)

@@ -1,6 +1,5 @@
 import bcrypt
 import pytz
-import uuid
 
 from shared.database import db, BaseModel, UUID
 from sqlalchemy.orm import relationship, backref
@@ -78,7 +77,8 @@ class User(BaseModel):
         "User",
         secondary=friendships,
         primaryjoin="User.id == friendships.c.user_id",
-        secondaryjoin="User.id == friendships.c.friend_id")
+        secondaryjoin="User.id == friendships.c.friend_id",
+        backref="friended_you")
 
     def __repr__(self):
         return self.email

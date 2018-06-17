@@ -5,7 +5,7 @@ from shared.database import db
 
 class UserView(BaseView):
     column_exclude_list = ['password_hash']
-    form_excluded_columns = ['date_created', 'password_hash']
+    form_excluded_columns = ['date_created', 'password_hash', 'friended_you']
     can_create = False
 
     column_formatters = {

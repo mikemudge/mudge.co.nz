@@ -10,10 +10,10 @@ class TrailProgressSchema(BaseSchema):
     # Identify the trail which the progress was made on.
     trail_id = fields.Str(load_only=True)
 
-    date = fields.Date()
+    # Identify the profile the progress was for.
+    trail_profile_id = fields.Str(load_only=True)
 
-    # Maybe useful?
-    # trail_profile = fields.Nested('TrailProfileSchema')
+    date = fields.Date()
 
 class TrailProfileSchema(BaseSchema):
     class Meta:
@@ -54,14 +54,7 @@ class TrailProfileSchema(BaseSchema):
         value = int(value.lstrip('#'), 16)
         return value
 
-class ListTrailProfileSchema(TrailProfileSchema):
-    class Meta:
-        model = TrailProfile
-        exclude = TrailProfileSchema.Meta.exclude + ['progress']
-
 class TrailSchema(BaseSchema):
     class Meta:
         model = Trail
         exclude = ['date_created']
-
-    trail_profiles = fields.Nested(TrailProfileSchema, many=True)

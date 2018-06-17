@@ -14,10 +14,15 @@ from wtforms.fields import SelectField
 # Trail admin views.
 class TrailProfileView(BaseView):
     column_searchable_list = ['name', 'user.email', 'trail.name']
+    form_excluded_columns = ['progress']
 
     column_labels = {
         'user.email': 'User Email',
         'trail.name': 'Trail Name'
+    }
+    column_formatters = {
+        'color': BaseView.format_color,
+        'date_created': BaseView.format_datetime,
     }
 
     form_extra_fields = {

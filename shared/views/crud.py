@@ -14,7 +14,7 @@ class DBModelView(MethodView):
             # model should extend database.BaseModel
             raise Exception('Must specify model and schema')
 
-        self.data = None
+        self.data = {}
         return super(DBModelView, self).__init__()
 
     def get(self, pk=None):
@@ -47,6 +47,8 @@ class DBModelView(MethodView):
         if not self.data:
             # Set self.data so it can be accessed by subclasses.
             self.data = request.json
+        if not self.data:
+            self.data = request.args
 
         return self.data
 
@@ -100,7 +102,8 @@ class DBModelView(MethodView):
 # But it will register a CRUD set of urls to a single view.
 def crud(app, path, viewCls):
     view = viewCls.as_view(path + '_crud')
-    print('endpoint' + '/api/%s' % path)
+    if app.config.get('ENV') == 'DEV':
+        print('endpoint' + '/api/%s' % path)
     # List/Create url
     app.add_url_rule(
         '/api/%s' % path,

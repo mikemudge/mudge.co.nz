@@ -119,7 +119,9 @@ class ProjectAppView(MethodView):
             # Need a better way than this.
             app.scripts += [gmaps()]
 
-            app.sentry = True
+            if current_app.config.get('ENV') != 'dev':
+                # Enable sentry.
+                app.sentry = True
 
         app.styles = ['/static/shared/common.css'] + app.styles
         app.addScript('/static/shared/login.js')

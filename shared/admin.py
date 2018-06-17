@@ -30,6 +30,14 @@ class BaseView(ModelView):
 
         return Markup('<img class="img-admin-list-view" src="%s">' % getattr(model, name))
 
+    def format_color(view, context, model, name):
+        value = getattr(model, name)
+        if not value:
+            return ''
+
+        color = "#%06x" % int(value)
+        return Markup('<div style="color: %s">%s</div>' % (color, color))
+
     def format_datetime(view, context, model, name):
         date = getattr(model, name)
         if not date:

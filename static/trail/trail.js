@@ -1,4 +1,5 @@
 var WalkerService = function(config, $resource) {
+  this.$resource = $resource;
   this.Trail = $resource('/api/trail/v1/trail/:id', {
     'id': '@id'
   });
@@ -7,6 +8,15 @@ var WalkerService = function(config, $resource) {
   });
   this.TrailProgress = $resource('/api/trail/v1/progress/:id', {
     'id': '@id'
+  });
+}
+
+// For a trail specific resource use this method.
+WalkerService.prototype.getTrailProfile = function(trail_id) {
+  return this.$resource('/api/trail/v1/profile/:id', {
+    id: '@id',
+    trail_id: trail_id,
+    progress: true,
   });
 }
 
@@ -114,14 +124,17 @@ var MainController = function(loginService, trailService, walkerService, config,
   this.walkerService = walkerService;
   this.user = loginService.user;
   this.currentUser = this.user;
-  this.person = {};
+  // A map of profile_id to profile.
+  this.people = {};
 
   var trail_id = $routeParams['trail_id'];
   if (!trail_id) {
     this.error = 'No Trail selected';
     return;
   }
-  this.newProfile = new this.walkerService.TrailProfile({
+  // TODO should set trail_id on TrailProfile as a default?
+  this.TrailProfile = this.walkerService.getTrailProfile(trail_id);
+  this.newProfile = new this.TrailProfile({
     trail_id: trail_id,
     color: this.randomColor()
   });
@@ -137,7 +150,47 @@ var MainController = function(loginService, trailService, walkerService, config,
 
   this.trail_data.$promise.then(this.trailLoaded.bind(this));
 
+  this.loadProfiles(trail_id);
+
   this.addProgress = new walkerService.TrailProgress();
+}
+
+// Requests profiles for this trail/user.
+// TODO not logged in users will not see any?
+MainController.prototype.loadProfiles = function(trail_id) {
+  // Load the profiles+progress for friends of the current user on this trail.
+  // If you are not friends with yourself this doesn't return your profiles.
+  var trail_profiles = this.TrailProfile.query({
+    friends: true,
+  });
+  trail_profiles.$promise.then(this.profilesLoaded.bind(this));
+
+  if (this.user.id) {
+    // Load the profiles which you own (can add progress).
+    this.profiles = this.TrailProfile.query({
+      user_id: this.user.id
+    });
+    this.profiles.$promise.then(
+      this.profilesLoaded.bind(this)
+    ).then(function() {
+      if (this.profiles.length > 0) {
+        // TODO should cache which profile was selected?
+        this.currentProfile = this.profiles[0];
+        this.selectedWalker = this.currentProfile;
+      }
+    }.bind(this));
+  }
+}
+
+MainController.prototype.profilesLoaded = function(response) {
+  // Map people by id, and load their map features.
+  response.forEach(function(person) {
+    if (this.people[person.id]) {
+      // Already loaded this person before.
+    }
+    this.people[person.id] = person;
+    this.walkerService.loadPerson(this.map, person)
+  }.bind(this));
 }
 
 MainController.prototype.randomColor = function() {
@@ -150,9 +203,7 @@ MainController.prototype.randomColor = function() {
 }
 
 MainController.prototype.changeProfile = function(profile) {
-  // TODO should only be able to select profiles you own.
   this.currentProfile = profile;
-  // update the selected walker to this profile as well.
   this.selectedWalker = this.currentProfile;
 
   // Hide the choose profile UI.
@@ -171,24 +222,7 @@ MainController.prototype.trailLoaded = function(response) {
   // Load the trail data.
   this.trail = this.trailService.loadTrail(response.trail_url, this.map);
 
-  // Map people by id, and load their map features.
-  this.people = {};
-  response.trail_profiles.forEach(function(person) {
-    this.people[person.id] = person;
-    this.walkerService.loadPerson(this.map, person)
-  }.bind(this));
-
-  console.log('finding your profile.')
-  this.profiles = response.trail_profiles.filter(function(tp) {
-    return tp.user_id == this.user.id;
-  }.bind(this));
-  if (this.profiles.length > 0) {
-    // TODO should cache which profile was selected?
-    this.currentProfile = this.profiles[0];
-  }
-  this.selectedWalker = this.currentProfile;
-  this.profiles.$resolved = true;
-
+  console.log(response.trail_url);
   // Once the trail data is loaded, we need to update everyone's
   // current location based on distance along the trail.
   this.trail.$promise.then(function() {
@@ -350,7 +384,7 @@ MainController.prototype.beginTrail = function() {
 
     // Reset the UI for this.
     this.showBeginTrail = false;
-    this.newProfile = new this.walkerService.TrailProfile({
+    this.newProfile = new this.TrailProfile({
       trail_id: this.trail_data.id,
       color: this.randomColor()
     });
@@ -366,7 +400,10 @@ var ListTrailController = function(walkerService, $rootScope, loginService, $loc
   this.$location = $location;
   this.walkerService = walkerService;
   this.trails = walkerService.Trail.query();
-  this.profiles = walkerService.TrailProfile.query();
+  // Load this users profiles.
+  this.profiles = walkerService.TrailProfile.query({
+    user_id: this.currentUser.id
+  });
 }
 
 ListTrailController.prototype.saveProfile = function(profile) {
@@ -377,18 +414,6 @@ ListTrailController.prototype.saveProfile = function(profile) {
   }.bind(this));
 }
 
-ListTrailController.prototype.beginTrail = function(trail_id) {
-  // Create a profile on this trail.
-  var newProfile = new this.walkerService.TrailProfile({
-    trail_id: trail_id
-  });
-  newProfile.$save().then(function(response) {
-    console.log('new profile', response);
-    // Load the trail?
-    this.$location.path('t/' + response.trail_id)
-  }.bind(this));
-}
-
 ListTrailController.prototype.deleteProfile = function(profile) {
   // TODO delete should update walkerService?
   // So the number of walkers on each trail can be updated as well???
@@ -396,8 +421,9 @@ ListTrailController.prototype.deleteProfile = function(profile) {
   profile.$remove().then(function(response) {
     this.removeFromList(profile, this.profiles);
     // Remove profile from each trail so the trail.trail_profile counts change.
+    // TODO only actually need to remove from profile.trail_id trail.
     this.trails.forEach(function(trail) {
-      this.removeFromListById(profile_id, trail.trail_profiles);
+      this.removeFromList(profile_id, trail.trail_profiles);
     }.bind(this));
   }.bind(this));
 }
@@ -408,16 +434,12 @@ ListTrailController.prototype.removeFromList = function(item, list) {
     list.splice(idx, 1);
   }
 }
-ListTrailController.prototype.removeFromListById = function(item_id, list) {
-  // Find item by matching id.
-  var idx = list.findIndex(function(list_item) {
-    return list_item.id === item_id;
-  });
-  if (idx != -1) {
-    list.splice(idx, 1);
-  }
-}
 
+extras = [];
+
+if (window.Raven) {
+  extras.push('ngRaven')
+}
 /**
  * The angular module
  */
@@ -425,10 +447,9 @@ angular.module('trail', [
   'api',
   'config',
   'mmLogin',
-  'ngRaven',
   'ngResource',
   'ngRoute',
-])
+].concat(extras))
 .run(function(loginService) {
   // You must be logged in to use this app.
   loginService.ensureLoggedIn();

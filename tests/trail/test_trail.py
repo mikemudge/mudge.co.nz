@@ -16,34 +16,19 @@ class TestTrail(BaseTestCase):
     def test_get_trails(self):
         self.jsonClient.createLoggedInUser('get_trails')
 
-        response = self.jsonClient.get('/api/trail/v1/trail')
-        self.assertContains(response.json['data'][0], {
-            'id': response.json['data'][0]['id'],
-            'name': 'Test Trail',
-            'trail_url': 'test_trail.json',
-            # 'activity': {'value': 'Walking Trail', 'code': 'walk'},
-        })
-
-    def test_get_unstarted_trails(self):
-        user = self.jsonClient.createLoggedInUser('get_trails')
-
-        # Add another trail which hasn't been started by the current user.
+        # Add another trail so there is multiple.
         trail = Trail(name='Trail 2', trail_url='another.json')
         db.session.add(trail)
 
-        # Add a trail profile for the first trail so it shouldn't show up.trail
-        TrailProfile.get_or_create(user=user, trail=self.trail, activity=TrailProfile.ACTIVITY_WALK)
-
-        response = self.jsonClient.get('/api/trail/v1/trail', {
-            'started': False
-        })
-        self.assertEquals(len(response.json['data']), 1)
-        print(response.json['data'][0])
+        response = self.jsonClient.get('/api/trail/v1/trail')
+        self.assertEquals(len(response.json['data']), 2)
         self.assertContains(response.json['data'][0], {
-            'id': response.json['data'][0]['id'],
             'name': 'Trail 2',
             'trail_url': 'another.json',
-            # 'activity': {'value': 'Walking Trail', 'code': 'walk'},
+        })
+        self.assertContains(response.json['data'][1], {
+            'name': 'Test Trail',
+            'trail_url': 'test_trail.json',
         })
 
     def test_get_trail(self):
@@ -55,7 +40,6 @@ class TestTrail(BaseTestCase):
             'name': 'Test Trail',
             'trail_url': 'test_trail.json',
             'trail_profiles': [],
-            # 'activity': {'value': 'Walking Trail', 'code': 'walk'},
         })
 
     def test_add_walk(self):
@@ -84,13 +68,8 @@ class TestTrail(BaseTestCase):
             trail=self.trail
         )
 
-        response = self.jsonClient.get('/api/trail/v1/trail/%s' % str(self.trail.id))
-        self.assertContains(response.json['data'], {
-            # 'activity': {'value': 'Walking Trail', 'code': 'walk'},
-            'id': response.json['data']['id'],
-            'name': 'Test Trail',
-        })
-        self.assertContains(response.json['data']['trail_profiles'][0], {
+        response = self.jsonClient.get('/api/trail/v1/profile?trail_id=%s' % str(self.trail.id))
+        self.assertContains(response.json['data'][0], {
             'id': str(trail_profile.id),
             'name': 'Test User',
             'trail_id': str(self.trail.id),

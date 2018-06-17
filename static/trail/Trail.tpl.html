@@ -35,9 +35,13 @@
     <div class="walks" ng-show="ctrl.showWalks">
       <!-- TODO needs work before we show it again. -->
       <div class="close" ng-click="ctrl.showWalks=false">X</div>
-      <div ng-class="{selected: ctrl.selectedWalker == person}" class="tab"
-          ng-repeat="person in ctrl.people" ng-click="ctrl.selectWalker(person)">
-        <span style="color: {{ person.color }}">{{person.name}}'s {{ person.activity.plural }}</span>
+      <div ng-class="{selected: ctrl.selectedWalker == person}"
+          class="tab"
+          ng-repeat="person in ctrl.people"
+          ng-click="ctrl.selectWalker(person)">
+        <span style="color: {{ person.color }}">
+          {{person.name}}'s {{ person.activity.plural }}
+        </span>
       </div>
       <div ng-if="ctrl.selectedWalker">
         {{ ctrl.selectedWalker.progress.length }} {{ ctrl.selectedWalker.activity.plural }}

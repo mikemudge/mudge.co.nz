@@ -44,7 +44,7 @@ JWT_TOKEN_ALGORITHM = "HS512"
 RESTRICT_FLASK_ADMIN = [
     '118.93.240.57',  # My Flat
     '111.69.37.178',  # 8i Office.
-    '121.75.113.25',  # Hugh and Adelle's
+    '118.92.208.31',  # Hugh and Adelle's
     '172.23.0.1',  # for docker
     '172.18.0.1',  # for docker
     '127.0.0.1',

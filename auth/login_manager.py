@@ -5,6 +5,9 @@ login_manager = LoginManager()
 
 @login_manager.user_loader
 def load_user(user_id):
+    if type(user_id) is not str:
+        user_id = user_id.decode('utf-8')
+
     user = User.query.get(user_id)
     emails = [
         'mike.mudge@gmail.com',

@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 MAINTAINER Michael Mudge "michael@mudge.co.nz"
 
+# Avoid annoying questions when installing.
+ENV DEBIAN_FRONTEND noninteractive
 # Apply updates
 RUN apt-get update -y
 RUN apt-get -y dist-upgrade

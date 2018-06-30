@@ -11,6 +11,8 @@ Better errors when scope or client is bad (invalid basic auth?)
 Better testing that migrations work.
 
 Daily backup of postgres
+backs up into /home/mudge/db-backups.
+https://www.postgresql.org/docs/9.1/static/backup-dump.html
 
 Deploy documentation
 /home/mudge/repos/pyauto.git/hooks

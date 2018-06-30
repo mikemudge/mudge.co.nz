@@ -14,3 +14,6 @@ def load_user(user_id):
     if user and user.email in emails:
         return user
     return None
+
+def get_user(user_id):
+    return load_user(user_id)

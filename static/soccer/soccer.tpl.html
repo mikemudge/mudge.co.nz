@@ -1,19 +1,20 @@
 <div ng-controller='PauseController as pause'>
-  <div class="popup options">
+  <div class="popup options" ng-show="pause.game.pause">
+    <h4> Paused </h4>
     <label class="field">
-      Acceleration: <input step="0.1" ng-model="ctrl.options.acceleration" />
+      Acceleration: <input type="number" step="0.1" ng-model="pause.options.acceleration" />
     </label>
     <label class="field">
-      Friction: <input step="0.1" ng-model="ctrl.options.friction" />
+      Friction: <input type="number" step="0.1" ng-model="pause.options.friction" />
     </label>
     <label class="field">
-      Bounce: <input step="0.1" ng-model="ctrl.options.bounce" />
+      Bounce: <input type="number" step="0.1" ng-model="pause.options.bounce" />
     </label>
     <label class="field">
-      Kick Speed: <input step="0.1" ng-model="ctrl.options.kick_speed" />
+      Kick Speed: <input type="number" step="0.1" ng-model="pause.options.kick_speed" />
     </label>
-  </div>
-  <div class="popup pause" ng-show="pause.game.pause" ng-click="pause.start();">
-    <div class="clickable">Start game again</div>
+    <button type="submit" ng-click="pause.start()">
+      Play
+    </button>
   </div>
 </div>

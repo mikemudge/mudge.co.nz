@@ -3,7 +3,7 @@
     {{ ctrl.error }}
   </div>
   <div class="users">
-    <div class="user" ng-repeat="user in ctrl.users">
+    <div class="username" ng-repeat="user in ctrl.users | orderBy: 'username'">
       <a href="?name={{ user.username }}">
         {{ user.username }}
       </a>
@@ -21,7 +21,7 @@
           {{ message.date | date: 'shortTime'}}
         </div>
         <div class="content">
-          <div class="user" ng-style="{color: ctrl.userMap[message.user].color}">
+          <div class="username" ng-style="{color: ctrl.userMap[message.user].color}">
             {{ ctrl.userMap[message.user].username }}:
           </div>
           <div class="text">

@@ -8,18 +8,6 @@ a {
   text-decoration: inherit;
 }
 
-.button {
-  border-radius: 100px;
-  border: 2px solid black;
-  padding: 4px 20px;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.button:hover {
-  background-color: rgba(0, 0, 0, .2)
-}
-
 .clickable {
   cursor: pointer;
 }
@@ -49,3 +37,31 @@ a {
 .user .username {
   font-size: 12px;
 }
+
+/* Form display */
+.field {
+  display: block;
+}
+
+.field input {
+  display: inline-block;
+  width: 100%;
+}
+
+.field select {
+  display: inline-block;
+  width: 100%;
+}
+
+.button {
+  border-radius: 100px;
+  border: 2px solid black;
+  padding: 4px 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, .2)
+}
+

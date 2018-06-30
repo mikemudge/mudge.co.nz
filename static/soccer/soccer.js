@@ -277,6 +277,15 @@ var SoccerGame = function(canvas) {
   // Add controls for each team??
 };
 
+SoccerGame.prototype.updateOptions = function(options) {
+  this.option = options;
+  // This is bad.
+  Player.ACCELERATION = options.acceleration;
+  Player.FRICTION = options.friction;
+  Player.BOUNCE_BACK = options.bounce;
+  Player.KICK_SPEED = options.kick_speed;
+}
+
 SoccerGame.prototype.run = function() {
   // Update the game.
   this.leftTeam.update();
@@ -329,6 +338,13 @@ function init() {
 var PauseController = function(game, $scope) {
   this.game = game;
   $scope.game = game;
+  game.pause = true;
+  this.options = {
+    acceleration: Player.ACCELERATION,
+    friction: Player.FRICTION,
+    bounce: Player.BOUNCE_BACK,
+    kick_speed: Player.KICK_SPEED,
+  }
   window.addEventListener('blur', function() {
     game.pause = true;
     $scope.$apply();
@@ -338,6 +354,7 @@ var PauseController = function(game, $scope) {
 
 PauseController.prototype.start = function() {
   // game.start???
+  this.game.updateOptions(this.options);
   this.game.pause = false;
   this.game.stopped = false;
   this.game.run();

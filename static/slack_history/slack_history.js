@@ -6,13 +6,15 @@ var MainController = function($resource, $location) {
   this.metadata = SlackUser.get(function(metadata) {
     this.users = [];
     this.userMap = {};
+    console.log(metadata);
     Object.keys(metadata.users).forEach(function(k) {
       var user = {
         'id': k,
         'username': metadata.users[k],
-        // This was alenni's color in slack.
-        // TODO should use random for everyone else?
-        'color': '#C938EB'
+        'color': this.randomColor()
+      }
+      if (k == 'U0489AHLU') {
+        user['color'] = '#C938EB'
       };
       if (k == 'U0C90MHEH') {
         // Set my color to what it was in slack.
@@ -38,6 +40,15 @@ var MainController = function($resource, $location) {
       message.date = new Date(parseInt(message.ts.split('.')[0], 10) * 1000);
     }.bind(this));
   }.bind(this));
+}
+
+MainController.prototype.randomColor = function() {
+  // Pick a random hex in the color range.
+  var val = (Math.random() * 16777216).toString(16);
+  // Now pad it with 0's
+  val = ("000000" + val).slice(-6);
+  // And add a # to make it css friendly.
+  return '#' + val;
 }
 
 /**

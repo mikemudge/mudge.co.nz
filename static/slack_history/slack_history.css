@@ -1,3 +1,11 @@
+.users .username {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 4px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
 .message {
   padding: 2px 0;
 }
@@ -20,7 +28,7 @@
   margin-left: 78px;
 }
 
-.message .user {
+.message .username {
   /* Indent user less than the rest of the message text */
   margin-left: -8px;
   font-weight: 600;

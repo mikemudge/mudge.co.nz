@@ -6,39 +6,42 @@ scripts = {
     'threejs': [
         '/static/js/three.js/84/three.min.js',
         '/static/js/three.js/OrbitControls.js'
+    ],
+    'api': [
+        '/static/shared/api.js',
+    ]
+}
+
+styles = {
+    'font-awesome': [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
     ]
 }
 
 apps = {}
 apps['soccer'] = {}
 apps['tournament'] = {
-    'scripts': [
-        '/static/shared/api.js',
-    ]
+    'tags': ['api'],
 }
 apps['breakout'] = {
-    'scripts': scripts['threejs']
+    'tags': ['threejs']
 }
 apps['slack_history'] = {}
 apps['user'] = {
-    'scripts': [
-        '/static/shared/api.js',
-    ],
-    'styles': [
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
-    ]
+    'tags': ['font-awesome', 'api']
 }
 apps['poker'] = {}
 apps['racer'] = {
-    'scripts': scripts['threejs'] + [
+    'tags': ['threejs'],
+    'scripts': [
         '/static/js/three.js/BinaryLoader.js',
         '/static/racer/cars.js'
     ]
 }
 apps['rock'] = {
+    'tags': ['api'],
     'scripts': [
         '/static/rock/dashboard.js',
-        '/static/shared/api.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
     ],
     'styles': [
@@ -46,9 +49,7 @@ apps['rock'] = {
     ]
 }
 apps['trail'] = {
-    'scripts': [
-        '/static/shared/api.js',
-    ]
+    'tags': ['api']
 }
 
 def gmaps():
@@ -90,11 +91,13 @@ class BrunchAppView(MethodView):
 # Project endpoints.
 class ProjectAppsListView(MethodView):
     def get(self):
-        links = sorted(apps.keys())
-
-        result = [
-            '<p><a href="/projects/%s/">%s</a></p>' % (link, link) for link in links
-        ]
+        result = []
+        for key, app in apps.items():
+            result.append(
+                '<p><a href="/projects/%s">%s</a> %s</p>' % (
+                    key, key, ', '.join(app.get('tags', []))
+                )
+            )
         return ''.join(result)
 
 class ProjectAppView(MethodView):
@@ -128,6 +131,12 @@ class ProjectAppView(MethodView):
 
         conf = apps.get(app_name)
         if conf:
+            for tag in conf.get('tags', []):
+                if tag in scripts:
+                    app.scripts += scripts[tag]
+                if tag in styles:
+                    app.styles += styles[tag]
+
             app.scripts += conf.get('scripts', [])
             app.styles += conf.get('styles', [])
 

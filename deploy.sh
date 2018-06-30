@@ -14,6 +14,7 @@ echo 'Installing pip3 dependencies.'
 pip3 install -r requirements.txt
 
 echo 'Updating database.'
+export APP_SETTINGS=settings.production
 ./manage.py db upgrade
 
 echo 'Restarting webserver.'

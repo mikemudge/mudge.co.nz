@@ -1,0 +1,23 @@
+init command to recreate client + scopes.
+could also add my default user.
+
+trail
+read_profile
+basic
+profile
+user
+Better errors when scope or client is bad (invalid basic auth?)
+
+Better testing that migrations work.
+
+Daily backup of postgres
+
+Deploy documentation
+/home/mudge/repos/pyauto.git/hooks
+
+/home/mudge/projects/pyauto
+
+source /home/mudge/virtualenvs/mudgeconz/bin/activate
+
+figure out how to docker run tests???
+Using the postgres db to store test data?

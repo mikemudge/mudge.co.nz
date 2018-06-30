@@ -8,7 +8,7 @@ cd ~/projects/pyauto
 
 # put the git hash in a file, used for caching.
 # TODO is there a better version id we can use?
-git --git-dir=.git --work-dir=. rev-parse HEAD > .commithash
+git --git-dir=.git --work-tree=. rev-parse HEAD > .commithash
 
 echo 'Installing pip3 dependencies.'
 pip3 install -r requirements.txt

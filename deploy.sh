@@ -25,4 +25,5 @@ sudo systemctl restart webserver.service
 # brunch build --production
 
 echo 'Restart nginx to serve the new static files.'
-sudo service nginx restart
+# This command is allowed passwordless due to changes to /etc/sudoers.d/<username>
+sudo /etc/init.d/nginx reload

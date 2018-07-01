@@ -20,6 +20,9 @@ class BaseOpts(ModelSchemaOpts):
         super(BaseOpts, self).__init__(meta)
 
 class BaseSchema(ModelSchema):
+    class Meta:
+        exclude = ['date_updated', 'date_created']
+
     OPTIONS_CLASS = BaseOpts
 
     def response(self, data):

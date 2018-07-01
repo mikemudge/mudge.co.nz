@@ -5,7 +5,7 @@ from .models import Trail, TrailProgress, TrailProfile
 class TrailProgressSchema(BaseSchema):
     class Meta:
         model = TrailProgress
-        exclude = ['trail_profile', 'date_created']
+        exclude = BaseSchema.Meta.exclude + ['trail_profile']
 
     # Identify the trail which the progress was made on.
     trail_id = fields.Str(load_only=True)
@@ -18,7 +18,7 @@ class TrailProgressSchema(BaseSchema):
 class TrailProfileSchema(BaseSchema):
     class Meta:
         model = TrailProfile
-        exclude = ['date_created', 'user']
+        exclude = BaseSchema.Meta.exclude + ['user']
 
     # Adds nested list fields.
     progress = fields.Nested(TrailProgressSchema, dump_only=True, many=True)
@@ -57,4 +57,4 @@ class TrailProfileSchema(BaseSchema):
 class TrailSchema(BaseSchema):
     class Meta:
         model = Trail
-        exclude = ['date_created']
+        exclude = BaseSchema.Meta.exclude

@@ -1,6 +1,7 @@
 from ..models import User, Profile, Client
 from ..utils import googleAuth
 from ..provider import oauth, create_token
+from datetime import datetime
 from flask import request, jsonify
 from flask import Blueprint
 from flask.views import MethodView
@@ -109,6 +110,8 @@ class AuthenticationConnectorView(MethodView):
         if not user.profile.username:
             user.profile.username = email.split('@')[0]
 
+        user.last_login = datetime.now()
+        # Update with the newest data from google
         user.profile.firstname = data.get('given_name')
         user.profile.lastname = data.get('family_name')
         user.profile.image = data.get('picture')

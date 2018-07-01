@@ -69,6 +69,7 @@ class BaseModel(db.Model):
     id = db.Column('id', UUID(), primary_key=True, default=uuid.uuid4)
 
     date_created = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    date_updated = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
     def __repr__(self):
         return "%s: %s" % (type(self).__name__, self.id)

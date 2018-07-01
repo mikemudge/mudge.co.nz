@@ -108,6 +108,10 @@ LoginService.prototype.ensureLoggedIn = function() {
     }
   }
 
+  console.warn('Ensuring login');
+  // Prevent any bad responses from adding more promise listeners.
+  this.already_know = true;
+
   // Otherwise attempt subtle log in and refresh.
   // TODO support worst case show a login modal to open google popup.
   this.google.promise.then(function () {

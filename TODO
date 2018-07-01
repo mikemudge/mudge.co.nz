@@ -8,18 +8,11 @@ profile
 user
 Better errors when scope or client is bad (invalid basic auth?)
 
+Better 404 handling if a trail doesn't exist?
 Better testing that migrations work.
 
-Daily backup of postgres
-backs up into /home/mudge/db-backups.
-https://www.postgresql.org/docs/9.1/static/backup-dump.html
-
-Deploy documentation
-/home/mudge/repos/pyauto.git/hooks
-
-/home/mudge/projects/pyauto
-
-source /home/mudge/virtualenvs/mudgeconz/bin/activate
+Double user creation?
+Make email unique for users?
 
 figure out how to docker run tests???
 Using the postgres db to store test data?

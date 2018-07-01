@@ -3,6 +3,7 @@ import pytz
 
 from shared.database import db, BaseModel, UUID
 from sqlalchemy.orm import relationship, backref
+from sqlalchemy.sql import func
 from werkzeug.security import gen_salt
 
 api_client_scope = db.Table(
@@ -73,6 +74,8 @@ class User(BaseModel):
 
     is_active = db.Column(db.Boolean, default=False)
 
+    last_login = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
     friends = relationship(
         "User",
         secondary=friendships,
@@ -85,6 +88,9 @@ class User(BaseModel):
 
     @classmethod
     def create(cls, email, password=None):
+        user = User.query.filter_by(email=email).first()
+        if user:
+            raise Exception('duplicate user create')
         username = email.split('@')[0]
         profile = Profile(
             username=username

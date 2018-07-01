@@ -2,7 +2,7 @@ import random
 
 from auth.provider import oauth
 from auth.models import User
-from flask import request
+from flask import request, abort
 
 from ..models import TrailProfile
 from ..serialize import TrailProfileSchema
@@ -70,6 +70,8 @@ class TrailProfileView(DBModelView):
     @oauth.require_oauth('trail')
     def delete(self, pk=None):
         instance = TrailProfile.query.get(pk)
+        if not instance:
+            abort(404)
         if instance.user_id != request.oauth.user.id:
             raise BadRequestException('Not the owner of %s' % instance)
         return self.remove(pk)

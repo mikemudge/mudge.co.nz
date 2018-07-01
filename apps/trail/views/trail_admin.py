@@ -20,10 +20,10 @@ class TrailProfileView(BaseView):
         'user.email': 'User Email',
         'trail.name': 'Trail Name'
     }
-    column_formatters = {
+    column_formatters = dict(BaseView.column_formatters, **{
         'color': BaseView.format_color,
         'date_created': BaseView.format_datetime,
-    }
+    })
 
     form_extra_fields = {
         'activity': SelectField(label='Activity', choices=TrailProfile.ACTIVITIES),

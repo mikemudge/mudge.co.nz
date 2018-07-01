@@ -8,10 +8,10 @@ class UserView(BaseView):
     form_excluded_columns = ['date_created', 'password_hash', 'friended_you']
     can_create = False
 
-    column_formatters = {
-        'date_created': BaseView.format_datetime,
+    column_formatters = dict(BaseView.column_formatters, **{
+        'last_login': BaseView.format_datetime,
         'profile': BaseView._to_view_url('profile')
-    }
+    })
 
 class ScopeView(BaseView):
     pass
@@ -20,10 +20,9 @@ class ClientAdminView(BaseView):
     form_excluded_columns = ['date_created', 'client_id', 'client_secret']
 
 class ProfileView(BaseView):
-    column_formatters = {
-        'date_created': BaseView.format_datetime,
+    column_formatters = dict(BaseView.column_formatters, **{
         'image': BaseView.format_image,
-    }
+    })
 
 def admin_routes(app):
     admin = get_admin(app)

@@ -71,7 +71,7 @@ class TrailProfileView(DBModelView):
     def delete(self, pk=None):
         instance = TrailProfile.query.get(pk)
         if not instance:
-            abort(404)
+            abort(404, 'TrailProfile not found')
         if instance.user_id != request.oauth.user.id:
             raise BadRequestException('Not the owner of %s' % instance)
         return self.remove(pk)

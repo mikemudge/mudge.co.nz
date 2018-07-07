@@ -1,6 +1,7 @@
 from shared.database import db
 from flask import jsonify, request
 from flask.views import MethodView
+from sqlalchemy.exc import IntegrityError
 
 # Provides a CRUD view for a DB model.
 class DBModelView(MethodView):
@@ -61,7 +62,16 @@ class DBModelView(MethodView):
         if errors:
             return self.errorResponse(errors)
         db.session.add(instance)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except IntegrityError as e:
+            print("Error creating %s" % self.model)
+            print(e)
+            # TODO should raise an exception here?
+            return jsonify(errors=[{
+                'message': "DB error creating a %s" % self.model.__name__,
+                'debug': str(e),
+            }]), 400
         result, errors = s.dump(instance)
         return jsonify(data=result)
 

@@ -8,6 +8,10 @@ a {
   text-decoration: inherit;
 }
 
+.error {
+  color: red;
+}
+
 .clickable {
   cursor: pointer;
 }

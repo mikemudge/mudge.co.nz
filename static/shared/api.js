@@ -1,5 +1,5 @@
 
-var AuthInterceptor = function ($injector, $q, $templateCache) {
+var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope) {
   return {
     response: function(response) {
       console.debug('request', response.config.url);
@@ -42,6 +42,15 @@ var AuthInterceptor = function ($injector, $q, $templateCache) {
         if (response.data.message) {
           message = response.data.message;
         }
+        // JSON API spec.
+        if (response.data.errors) {
+          // TODO might be more than 1 error?
+          message = response.data.errors[0].message;
+        }
+
+        $rootScope.title = 'Error';
+        $rootScope.error = message;
+
         alert("Something went wrong: " + message);
         console.error(message)
         console.log('response', response);

@@ -2,7 +2,7 @@
   <div class="header" ng-include="'/static/trail/templates/header.tpl.html'">
   </div>
 
-  <div class="add dropdown" ng-show="ctrl.profiles.$resolved"
+  <div class="add dropdown" ng-show="ctrl.trail_data.id"
       ng-click="expand = !expand; ctrl.whosStats=null;">
     <div class="inner">+</div>
 
@@ -128,5 +128,14 @@
     <button ng-click="ctrl.addWalk();">
       Add progress
     </button>
+  </div>
+
+  <!-- TODO could be included from somewhere reusable? -->
+  <div ng-if="error" class="popup">
+    Unfortunately an error was encountered.
+    <!-- TODO feedback? Or try reloading the page? -->
+    <div class="error">
+      {{error}}
+    </div>
   </div>
 </div>

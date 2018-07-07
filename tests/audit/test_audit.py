@@ -4,7 +4,7 @@ from apps.trail.models import TrailProgress, TrailProfile, Trail
 
 from tests.base.base_test_case import BaseTestCase
 
-class TestTournament(BaseTestCase):
+class TestAudit(BaseTestCase):
 
     def testCreateAuditEvent(self):
         user = self.jsonClient.createLoggedInUser('createAuditEvent')

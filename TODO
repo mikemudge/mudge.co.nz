@@ -8,6 +8,7 @@ profile
 user
 Better errors when scope or client is bad (invalid basic auth?)
 
+Should not display a trail when a 404 happens.
 Better 404 handling if a trail doesn't exist?
 Better testing that migrations work.
 

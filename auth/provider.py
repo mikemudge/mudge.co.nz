@@ -83,7 +83,6 @@ def save_grant(client_id, code, request, *args, **kwargs):
 def invalid_require_oauth(req):
     # TODO throw exceptions which get handled with the default handler?
     # Get better error messages than the default abort(401)
-    print(req.auth)
 
     response = jsonify({
         'message': req.error_message,

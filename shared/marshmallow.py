@@ -26,6 +26,10 @@ class BaseSchema(ModelSchema):
     OPTIONS_CLASS = BaseOpts
 
     def response(self, data):
+        if data is None:
+            return jsonify(errors=[{
+                'message': '%s not found' % self.Meta.model.__name__
+            }]), 404
         result, errors = self.dump(data)
         if errors:
             return self.errorResponse(errors)

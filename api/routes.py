@@ -1,12 +1,8 @@
 from api.main import main_bp
 from api.views.eighti import eighti_bp
-from api.views.brunch_apps import BrunchAppView, BrunchAppsListView
 from api.views.brunch_apps import ProjectAppView, ProjectAppsListView
 
 def routes(app):
-    app.add_url_rule('/brunch/', view_func=BrunchAppsListView.as_view('brunch'))
-    app.add_url_rule('/brunch/<app_name>/', view_func=BrunchAppView.as_view('brunch_view'))
-    app.add_url_rule('/brunch/<app_name>/<path:path>', view_func=BrunchAppView.as_view('brunch_view2'))
 
     p_view = ProjectAppView.as_view('project_view')
     app.add_url_rule('/projects/', view_func=ProjectAppsListView.as_view('projects'))

@@ -1,3 +1,5 @@
+import os
+import sys
 from flask import current_app
 from flask import render_template, url_for
 from flask import request
@@ -15,6 +17,7 @@ class Angular():
             url_for('static', filename='%s/%s.js' % (name, name))
         ]
         self.async = []
+        self.templates = []
         self.styles = [
             # I removed this, it had button styles in.
             # url_for('static', filename='common/styles.css'),
@@ -84,6 +87,14 @@ class Angular():
         if version:
             src += '?v=%s' % self.version
         self.scripts += [src]
+
+    def addTemplate(self, src):
+        path = sys.path[0] + src
+        with open(path, 'r') as myfile:
+            self.templates += [{
+                'id': src,
+                'content': myfile.read()
+            }]
 
     # Deprecated
     def addProject(self, name):

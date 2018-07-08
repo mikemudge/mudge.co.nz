@@ -1,0 +1,25 @@
+.table {
+  display: table;
+  width: 100%;
+}
+
+.header {
+  display: table-row;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  height: 100px;
+  line-height: 100px;
+  border: 1px solid black;
+  text-align: center;
+}
+.header .cell {
+  border: none;
+  height: inherit;
+  line-height: inherit;
+}

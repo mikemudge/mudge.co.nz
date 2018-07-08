@@ -1,0 +1,36 @@
+<div class="admin_list" ng-controller="ListController as ctrl">
+  <div ng-include="'/static/admin/header.tpl.html'"></div>
+  <!-- Now show some table row headers -->
+  <table>
+    <tr>
+      <th>
+        Actions
+      </th>
+      <th ng-repeat="field in ctrl.model.fields">
+        {{ field.name }}
+      </th>
+    </tr>
+    <tr ng-repeat="item in ctrl.list" ng-class-odd="'odd'">
+      <td>
+        <span ng-if="item.id">
+          <a class="view" href="model/{{ ctrl.model.name }}/{{ item.id }}">
+            View
+          </a>
+
+          <span class="delete clickable" ng-click="ctrl.deleteItem(item)">
+            Delete
+          </span>
+        </span>
+      </td>
+      <td ng-repeat="field in ctrl.model.fields">
+        <span ng-if="field.model">
+          {{ ctrl.nameFor(field, item) }}
+        </span>
+        <span ng-if="!field.model">
+          {{ item[field.name] }}
+        </span>
+      </td>
+    </tr>
+  </table>
+  <!-- Followed by some row values. -->
+</div>

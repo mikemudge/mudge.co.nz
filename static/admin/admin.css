@@ -1,0 +1,119 @@
+body {
+  color: black;
+}
+
+h2 {
+  text-transform: capitalize;
+}
+
+a {
+  color: inherit;
+}
+
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Header styles */
+.navbar {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  border: 1px solid #e7e7e7;
+  min-height: 60px;
+}
+.navbar .item {
+  padding: 10px;
+  line-height: 40px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.navbar .user {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.navbar .user img {
+  border-radius: 1000px;
+  height: 30px;
+  width: 30px;
+  padding: 10px;
+}
+
+/* Tab styles */
+.tabs {
+  width: 90%;
+  margin: 20px auto 0;
+}
+
+.tabs .tab {
+  background-color: #fff;
+  color: #555;
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 4px;
+}
+.tab.active {
+  border: 1px solid #ddd;
+  border-bottom-width: 0px;
+}
+.tab:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+/* List Table styles */
+.admin_list table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 0 auto;
+}
+.admin_list th,
+.admin_list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.admin_list th {
+  border-bottom-width: 2px;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.admin_list tr.odd {
+  background-color: #F9F9F9;
+}
+
+.admin_list tr:hover,
+.admin_list tr.odd:hover {
+  background-color: #f5f5f5;
+}
+
+.view {
+  display: inline-block;
+}
+.delete {
+  display: inline-block;
+}
+
+/* Edit styles */
+.field {
+  width: 100%;
+  overflow: hidden;
+}
+
+.field label {
+  width: 30%;
+  display: inline-block;
+}
+.field input,
+.field select {
+  width: 65%;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 8px;
+}

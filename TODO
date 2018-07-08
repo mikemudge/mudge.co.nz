@@ -10,3 +10,5 @@ Better errors when scope or client is bad (invalid basic auth?)
 
 Double user creation?
 Make email unique for users?
+
+Make a standalone login section

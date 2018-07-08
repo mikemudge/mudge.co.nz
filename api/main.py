@@ -26,16 +26,6 @@ def robots():
 def main_page():
     return "Welcome"
 
-@main_bp.route('/cv/')
-def my_cv():
-    app = Angular('cv')
-
-    app.setupBrunch()
-    app.addStyle("https://fonts.googleapis.com/css?family=Roboto")
-    app.base = '/'
-
-    return app.render()
-
 @main_bp.route('/error/')
 def error_test():
     abort(500, 'Error message here')
@@ -59,19 +49,3 @@ def stuff():
         "You made it to my home page<br>",
         "<a href='/projects/trail'> Try out the new Trail site here </a><br>"
     ])
-
-# TODO make a standalone login section.
-# @main_bp.route('/login/')
-# def login(path=None):
-#     brunchServer = current_app.config.get('STATIC_URL')
-#     app = Angular('mmLogin')
-#     app.base = '/'
-#     app.scripts = [
-#         '%slogin/app.js' % brunchServer,
-#         '%slogin/templates.js' % brunchServer,
-#     ]
-#     app.styles = [
-#         '%slogin/app.css' % brunchServer
-#     ]
-#     app.require = 'login/login'
-#     return app.render()

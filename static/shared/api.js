@@ -7,7 +7,7 @@ var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope) {
       // Templates should only be requested from /static/...
       // Otherwise they can load the full page recursively and freeze the browser.
       if (response.config.url.endsWith('.tpl.html') && !response.config.url.startsWith('/static/')) {
-        console.error('Loading template from non static location.');
+        console.error('Loading template from non static location.' + response.config.url);
         throw Error('Loading template from non static location.');
       }
 

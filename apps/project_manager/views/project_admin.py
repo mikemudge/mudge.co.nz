@@ -1,4 +1,5 @@
-from apps.project_manager.models import Project, FileUrl
+from ..models import Project, FileUrl
+
 from shared.admin import get_admin
 from shared.admin import BaseView
 from shared.database import db

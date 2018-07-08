@@ -75,4 +75,4 @@ Could add spamassassin?
 
 #Postgres setup
 Requires postgres (uses docker image for dev.)
-See sql/create_db.sql
+See docker/sql/create_db.sql

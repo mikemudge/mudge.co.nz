@@ -1,0 +1,23 @@
+<div ng-include="'templates/admin.tpl.html'"></div>
+
+<div ng-controller="ListController as ctrl">
+  <!-- Needs to know what thing it is looking at. -->
+  <div ng-show="ctrl.welcome">
+    No model selected.
+    <a href="#/admin/tournament"> Tournament</a>
+  </div>
+  <table>
+    <tr>
+      <th ng-repeat="(key, v) in ctrl.items[0]">
+      <!-- Might not know these -->
+        {{ key }}
+      </th>
+    </tr>
+    <tr ng-repeat="item in ctrl.items | orderBy: order">
+      <td ng-repeat="(k, value) in item">
+        {{ value }}
+      </td>
+    </tr>
+  </table>
+</div>
+

@@ -1,0 +1,11 @@
+<div class="admin" ng-controller="AdminController as admin">
+  <h1> Welcome to admin </h1>
+  <div>
+    {{ admin.config.name }}
+  </div>
+  <div ng-repeat="(name, model) in admin.config.models">
+    <a href="admin/{{ name }}">
+      {{ name }}
+    </a>
+  </div>
+</div>

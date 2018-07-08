@@ -58,6 +58,13 @@
     }
   </script>
   {% endif %}
+
+  {% for template in templates %}
+  <script type="text/ng-template" id="{{ template.id }}">
+    {{ template.content }}
+  </script>
+  {% endfor %}
+
   {% for script in async %}
   <script async src="{{ script }}" type="text/javascript"></script>
   {% endfor %}

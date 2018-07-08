@@ -1,0 +1,8 @@
+<div ng-controller='MainController as ctrl'>
+
+  <div class="project" ng-repeat="project in ctrl.projects">
+    <a _target='_self' href="/projects/{{ project.name }}">
+      {{ project.name }}
+    </a>
+  </div>
+</div>

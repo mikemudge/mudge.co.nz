@@ -1,0 +1,29 @@
+<div class="admin_list" ng-controller="HeaderController as head">
+  <div class="navbar">
+    <div class="item">
+      <a href="."> Mudge Admin </a>
+    </div>
+
+    <div class="item" ng-repeat="model in head.models">
+      <a href="model/{{ model.name }}"> {{ model.name }}</a>
+    </div>
+    <div class="user">
+      <img ng-src="{{ head.user.profile.image }}" title="{{ head.user.email }}"/>
+    </div>
+  </div>
+
+  <div class="tabs" ng-show="ctrl.model">
+    <div class="tab">
+      <a href="model/{{ ctrl.model.name }}">List</a>
+    </div>
+    <div class="tab">
+      <a href="model/{{ ctrl.model.name }}/create">Create</a>
+    </div>
+    <div class="tab" ng-show="ctrl.item.id">
+      <a href="model/{{ ctrl.model.name }}/{{ ctrl.item.id }}/edit">Edit</a>
+    </div>
+    <div class="tab" ng-show="ctrl.item.id">
+      <a href="model/{{ ctrl.model.name }}/{{ ctrl.item.id }}">Details</a>
+    </div>
+  </div>
+</div>

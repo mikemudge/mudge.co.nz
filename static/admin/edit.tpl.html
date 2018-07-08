@@ -4,7 +4,7 @@
     Edit/Create a {{ ctrl.model.name }}
   </h2>
 
-    {{ ctrl.item }}
+  <pre>{{ ctrl.item | json }}</pre>
 
   <div class="field" ng-repeat="field in ctrl.model.fields">
     <label>

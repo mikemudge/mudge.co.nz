@@ -11,14 +11,16 @@
       </th>
     </tr>
     <tr ng-repeat="item in ctrl.list" ng-class-odd="'odd'">
-      <td>
+      <td class="actions">
         <span ng-if="item.id">
-          <a class="view" href="model/{{ ctrl.model.name }}/{{ item.id }}">
-            View
+          <a class="view item" href="model/{{ ctrl.model.name }}/{{ item.id }}">
+            <i class="fa fa-eye"></i>
           </a>
-
-          <span class="delete clickable" ng-click="ctrl.deleteItem(item)">
-            Delete
+          <a class="edit item" href="model/{{ ctrl.model.name }}/{{ item.id }}/edit">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <span class="delete item" ng-click="ctrl.deleteItem(item)">
+            <i class="fa fa-trash"></i>
           </span>
         </span>
       </td>

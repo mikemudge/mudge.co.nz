@@ -86,7 +86,7 @@ apps['projects'] = {
     'tags': ['api']
 }
 apps['admin'] = {
-    'tags': ['api'],
+    'tags': ['api', 'font-awesome'],
     'templates': [
         '/static/admin/header.tpl.html'
     ]

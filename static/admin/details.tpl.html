@@ -1,19 +1,11 @@
 <div class="admin_list" ng-controller="DetailsController as ctrl">
+  <div ng-include="'/static/admin/header.tpl.html'"></div>
   <h2>
     View a {{ ctrl.model.name }}
   </h2>
-  <div class="tab">
-    <a href="model/{{ ctrl.model.name }}">List</a>
-  </div>
-  <div class="tab">
-    <a href="model/{{ ctrl.model.name }}/create">Create</a>
-  </div>
-  <div class="tab">
-    <a href="model/{{ ctrl.model.name }}/{{ ctrl.item.id }}/edit">Edit</a>
-  </div>
-  <div class="tab">
-    <a href="model/{{ ctrl.model.name }}/{{ ctrl.item.id }}">Details</a>
-  </div>
+
+  <pre>{{ ctrl.item | json }}</pre>
+
   <div class="field" ng-repeat="field in ctrl.model.fields">
     {{ field.name }}:  {{ ctrl.item[field.name] }}
   </div>

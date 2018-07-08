@@ -205,6 +205,10 @@ angular.module('admin', [
 .controller('HomeController', HomeController)
 .controller('ListController', ListController)
 .service('crudService', CrudService)
+.run(function(loginService) {
+  // You must be logged in to use this app.
+  loginService.ensureLoggedIn();
+})
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.when('/', {

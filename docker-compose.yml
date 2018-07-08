@@ -22,10 +22,13 @@ services:
       # For local https testing.
       - 5001:5001
     environment:
+      # PG* is used as defaults for psql
       - PGHOST=db
       - PGUSER=postgres
       - PGPASSWORD=postgres
+      # default to use the dev enviroment.
       - APP_SETTINGS=settings.dev
+      # Is this used?
       - ENVIRONMENT=dev
       - PYTHONIOENCODING=utf-8
       - LC_ALL=C.UTF-8

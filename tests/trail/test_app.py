@@ -1,20 +1,17 @@
+from app import create_app as create_app
 
 from flask_migrate import upgrade, downgrade
-from tests.base.base_test_case import BaseTestCase
-from apps.audit.models import AuditEvent
-from shared.database import db
+from flask_testing import TestCase
 
-class TestTrail(BaseTestCase):
+# We purposefully dont use BaseTestCase because we don't want a DB for this test.
+class TestTrail(TestCase):
 
-    def setUp(self):
-        super(TestTrail, self).setUp()
+    def create_app(self):
+        return create_app('settings.test')
 
     def test_migrate(self):
-        # Any tables not managed by alembic must be removed here.
-        # Otherwise they can break the migration.
-        # These really should exist in code without a migration?
-        AuditEvent.__table__.drop(db.engine)
-
-        # Test migration downgrade to base and then upgrade.
-        downgrade(revision="base")
+        # run upgrades from initial to head.
         upgrade()
+
+        # run downgrades from head to base.
+        downgrade(revision="base")

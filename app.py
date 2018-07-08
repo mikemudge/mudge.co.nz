@@ -47,9 +47,6 @@ def routes(app):
     # Older Admin routes, @deprecated.
     api_admin.admin_routes(app)
 
-def create_test_app():
-    return create_app('settings.test')
-
 def create_app(config=None):
 
     app = Flask(__name__)
@@ -60,6 +57,7 @@ def create_app(config=None):
         else:
             raise Exception('Can\'t determine which config file to use. Specify via argument or environment variable APP_SETTINGS')
 
+    print("Using config %s" % config)
     app.config.from_object(config)
 
     setup_auth(app)

@@ -19,6 +19,30 @@ styles = {
 }
 
 apps = {}
+apps['ar'] = {
+    'tags': ['threejs'],
+    'scripts': [
+        '/static/js/three.js/OrbitControls.js',
+        '/static/js/three.js/DeviceOrientationControls.js',
+        # RTS pieces
+        '/static/rts/rts.js',
+        '/static/rts/units.js',
+        '/static/rts/game.js',
+        '/static/ar/ar.js',
+    ]
+}
+# TODO ar should just be a plugin for rts.
+apps['rts'] = {
+    'tags': ['threejs'],
+    'scripts': [
+        '/static/js/three.js/OrbitControls.js',
+        # RTS pieces
+        '/static/rts/rts.js',
+        '/static/rts/units.js',
+        '/static/rts/game.js',
+        '/static/rts/device_orientation.js',
+    ]
+}
 apps['soccer'] = {}
 apps['tournament'] = {
     'tags': ['api'],

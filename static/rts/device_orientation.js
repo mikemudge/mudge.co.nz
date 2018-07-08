@@ -88,18 +88,15 @@ OrientationController.prototype.render = function(time) {
   this.renderer.render(this.scene, this.camera);
 }
 
-require('../threejs/device_orientation_controls.js')
-
 angular.module('orientation', [
 	'config',
 	'ngRoute',
-  'rts/rts.tpl.html',
 ])
 .controller('OrientationController', OrientationController)
 .config(function($locationProvider, $routeProvider) {
   $routeProvider.when('/orientation', {
     controller: 'OrientationController',
     controllerAs: 'ctrl',
-    templateUrl: 'rts/rts.tpl.html'
+    templateUrl: '/static/rts/rts.tpl.html'
   })
 })

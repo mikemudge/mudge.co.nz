@@ -1,7 +1,7 @@
 import os
 
 from flask import Blueprint
-from flask import send_from_directory, url_for
+from flask import send_from_directory
 from flask import abort, current_app
 from shared.helpers.angular import Angular
 
@@ -59,24 +59,6 @@ def stuff():
         "You made it to my home page<br>",
         "<a href='/projects/trail'> Try out the new Trail site here </a><br>"
     ])
-
-@main_bp.route('/ar/')
-def at_test():
-    app = Angular('ar')
-    app.base = '/ar/'
-    app.include = '/static/ar/ar.html'
-    app.config['baseUrl'] = '/'
-    app.scripts = [
-        url_for('static', filename="js/three.min.js"),
-        url_for('static', filename="js/three.js/OrbitControls.js"),
-        url_for('static', filename="js/three.js/DeviceOrientationControls.js"),
-        # Include pieces from RTS.
-        url_for('static', filename='rts/rts.js'),
-        url_for('static', filename='rts/units.js'),
-        url_for('static', filename='rts/game.js'),
-        url_for('static', filename='ar/ar.js'),
-    ]
-    return app.render()
 
 # TODO make a standalone login section.
 # @main_bp.route('/login/')

@@ -85,25 +85,19 @@ window.mmRts = {
   units: {}
 }
 // TODO enable brunch on this an ar???
-// require('../threejs/OrbitControls')
-// require('./rts.tpl.html')
-// require('./game.js')
-// require('./units.js')
-
-// require('./device_orientation.js')
+// One off brunch projects would be good.
 
 angular.module('rts', [
 	'config',
 	'ngRoute',
   'orientation',
-  'rts/rts.tpl.html',
 ])
 .controller('MainController', MainController)
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);
-  $routeProvider.when('rts', {
+  $routeProvider.when('/', {
     controller: 'MainController',
     controllerAs: 'ctrl',
-    templateUrl: 'rts/rts.tpl.html'
+    templateUrl: '/static/rts/rts.tpl.html'
   })
 })

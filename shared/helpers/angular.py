@@ -1,4 +1,3 @@
-import os
 import sys
 from flask import current_app
 from flask import render_template, url_for
@@ -8,7 +7,7 @@ class Angular():
 
     def __init__(self, name):
         self.appName = name
-        self.version = 'default'
+        self.version = current_app.version
         self.require = None
         self.include = None
         self.sentry = False

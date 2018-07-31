@@ -45,9 +45,21 @@ def routes(app):
     trail_admin.admin_routes(app)
     tournament_admin.admin_routes(app)
 
+
+def get_version():
+    with open(".commithash", "r") as myfile:
+        lines = myfile.readlines()
+        version = ''.join(lines)
+        print('loading version:', version)
+        return version
+    raise Exception('Couldn\'t read commithash file')
+
 def create_app(config=None):
 
     app = Flask(__name__)
+
+    version = get_version()
+    app.version = version
 
     if not config:
         if os.environ.get('APP_SETTINGS'):
@@ -61,6 +73,7 @@ def create_app(config=None):
     setup_auth(app)
 
     sentry.init_app(app, logging=True)
+    sentry.client.release = version
 
     login_manager.init_app(app)
 

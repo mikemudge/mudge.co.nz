@@ -85,7 +85,7 @@ a {
 
 .admin_list tr:hover,
 .admin_list tr.odd:hover {
-  background-color: #f5f5f5;
+  background-color: #eeeeee;
 }
 
 .actions .item {

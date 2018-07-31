@@ -43,6 +43,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
+            touch .commithash
             nosetests tests
 
       - store_artifacts:

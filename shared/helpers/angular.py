@@ -30,8 +30,10 @@ class Angular():
             'ENV': current_app.config.get('ENV'),
             'GOOGLE_CLIENT_ID': current_app.config.get('GOOGLE_CLIENT_ID'),
             'AUTH_COOKIE_ID': current_app.config.get('AUTH_COOKIE_ID'),
+            # The web client id and secret for basic auth.
             'CLIENT_ID': current_app.config.get('CLIENT_ID'),
             'CLIENT_SECRET': current_app.config.get('CLIENT_SECRET'),
+            # For 8i assets
             'AMAZON_S3_URL': current_app.config.get('AMAZON_S3_URL'),
         }
         self.config['LOGIN_URL'] = request.url_root

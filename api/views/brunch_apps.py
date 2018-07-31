@@ -1,4 +1,4 @@
-from flask import current_app
+from flask import current_app, abort
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
@@ -109,11 +109,8 @@ class ProjectAppsListView(MethodView):
 class ProjectAppView(MethodView):
     def get(self, app_name, path=None):
 
-        # TODO keep track of which deps each app needs?
-        # E.g jquery, threejs.
-
-        # TODO should include js and css files for this project???
-        # Maybe add the other things as well?
+        if not apps.get(app_name):
+            return abort(404)
 
         app = Angular(app_name)
         app.base = '/projects/%s/' % app_name

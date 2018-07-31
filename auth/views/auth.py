@@ -76,23 +76,6 @@ class AuthenticationConnectorView(MethodView):
             raise ValidationException(['No id_token'])
         data = googleAuth(token)
 
-        # {u'picture': u'https://lh6.googleusercontent.com/-H2j2IzGSxdg/AAAAAAAAAAI/AAAAAAAAAbY/0oiKsVRnc5A/s96-c/photo.jpg',
-        # u'aud': u'872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com',
-        # u'family_name': u'Mudge',
-        # u'iss': u'accounts.google.com',
-        #  u'email_verified': u'true',
-        #  u'name': u'Michael Mudge',
-        #  u'at_hash': u'1CvFBd6GwEXRPxHBESgV0w',
-        #  u'given_name': u'Michael',
-        #  u'exp': u'1497664124',
-        #   u'alg': u'RS256',
-        #   u'azp': u'872711897303-6rkqgedhsq6rni9ikt6j6v8rbhkkkd7a.apps.googleusercontent.com',
-        #   u'iat': u'1497660524',
-        #   u'locale': u'en',
-        #   u'kid': u'a298a56b6ac05431253d49030816a5ebf99a13c5',
-        #   u'email': u'mike.mudge@gmail.com',
-        #   u'sub': u'113404678280283320527'
-        # }
         email = data['email']
         if not data.get('email_verified'):
             raise Exception('Email is not verified' + data['email'])

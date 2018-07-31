@@ -71,10 +71,10 @@ def create_app(config=None):
     app.config.from_object(config)
 
     required_settings = [
+        # See settings/base.py
+        'SQLALCHEMY_DATABASE_URI',
         'JWT_TOKEN_SECRET_KEY',
         'SECRET_KEY',
-        'CLIENT_ID',
-        'CLIENT_SECRET'
     ]
     for setting in required_settings:
         if not app.config.get(setting):

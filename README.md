@@ -1,4 +1,4 @@
-###Development###
+### Development
 Uses docker.
 
 To build:
@@ -21,7 +21,7 @@ mkvirtualenv
 workon
 https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-environments
 
-###Production###
+### Production
 
 Restart the python app.
 sudo systemctl restart webserver.service

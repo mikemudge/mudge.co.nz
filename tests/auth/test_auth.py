@@ -135,9 +135,10 @@ class TestLogin(BaseTestCase):
                 'Authorization': 'Bearer a.lies.b'
             })
 
+        print(response)
         # We didn't provide a Bearer token, because no one is logged in.
         self.assertEqual(response.json, {
-            'error_code': 'UNKNOWN_ERROR',
+            'error_code': None,
             'message': ['Invalid jwt'],
-            'status_code': 400
+            'status_code': 401
         })

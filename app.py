@@ -70,6 +70,16 @@ def create_app(config=None):
     print("Using config %s" % config)
     app.config.from_object(config)
 
+    required_settings = [
+        'JWT_TOKEN_SECRET_KEY',
+        'SECRET_KEY',
+        'CLIENT_ID',
+        'CLIENT_SECRET'
+    ]
+    for setting in required_settings:
+        if not app.config.get(setting):
+            raise Exception('Missing required setting in local_config.py ' + setting)
+
     setup_auth(app)
 
     sentry.init_app(app, logging=True)

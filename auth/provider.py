@@ -119,7 +119,8 @@ def validate_token(token):
         raise AuthenticationException(['expired jwt'])
 
     except jwt.JWTError:
-        raise ValidationException(['Invalid jwt'])
+        # JWT can't be verified, maybe signed with a different key?
+        raise AuthenticationException(['Invalid jwt'])
 
 def create_token_generator(request):
     return create_token(request, request.client, request.user)

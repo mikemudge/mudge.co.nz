@@ -1,5 +1,4 @@
-from app import create_app as create_app
-import os
+from tests.base.base_test_case import create_test_app
 
 from flask_migrate import upgrade, downgrade
 from flask_testing import TestCase
@@ -8,10 +7,7 @@ from flask_testing import TestCase
 class TestTrail(TestCase):
 
     def create_app(self):
-        config = 'settings.localtest'
-        if os.environ.get('APP_TEST_SETTINGS'):
-            config = os.environ.get('APP_TEST_SETTINGS')
-        return create_app(config)
+        return create_test_app()
 
     def test_migrate(self):
         # run upgrades from initial to head.

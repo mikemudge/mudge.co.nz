@@ -14,15 +14,18 @@ from shared.database import db
 logging.getLogger('oauthlib').setLevel(logging.WARN)
 logging.getLogger('flask_oauthlib').setLevel(logging.WARN)
 
+def create_test_app():
+    config = 'settings.test'
+    if os.environ.get('APP_TEST_SETTINGS'):
+        config = os.environ.get('APP_TEST_SETTINGS')
+    return create_app(config)
+
 class BaseTestCase(TestCase):
 
     render_templates = False
 
     def create_app(self):
-        config = 'settings.test'
-        if os.environ.get('APP_TEST_SETTINGS'):
-            config = os.environ.get('APP_TEST_SETTINGS')
-        return create_app(config)
+        return create_test_app()
 
     def setUp(self):
         db.session.remove()

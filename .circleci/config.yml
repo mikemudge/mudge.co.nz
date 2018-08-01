@@ -23,11 +23,6 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys
-      - run:
-          name: Keyscan Github (HACK)
-          command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -54,10 +49,39 @@ jobs:
             touch .commithash
             nosetests tests
 
+  deploy:
+    machine:
+        enabled: true
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - add_ssh_keys
+      - run:
+          name: Keyscan Github (HACK)
+          command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
+
+      -deploy:
+        branches:
+          only:
+            - master
+        name: deploy
+        command:
+          git push --quiet ssh://mudge@mudge.co.nz:/home/mudge/repos/pyauto.git master
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
       - deploy:
-          branches:
-            only:
-              - master
-          name: deploy
-          command:
-            git push --quiet ssh://mudge@mudge.co.nz:/home/mudge/repos/pyauto.git master
+          requires:
+            - build
+          filters:
+            branches:

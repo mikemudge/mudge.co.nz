@@ -49,6 +49,7 @@ jobs:
             touch .commithash
             nosetests tests
 
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+      - deploy:
+          name: deploy
+          command:
+            git push https://mudge.co.nz:/home/mudge/repos/pyauto.git

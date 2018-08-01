@@ -42,7 +42,7 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
       - persist_to_workspace:
-          root: .
+          root: ~/repo
 
   test:
     docker:

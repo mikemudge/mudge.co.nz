@@ -55,6 +55,9 @@ jobs:
             nosetests tests
 
       - deploy:
+          branches:
+            only:
+              - master
           name: deploy
           command:
             git push --quiet ssh://mudge@mudge.co.nz:/home/mudge/repos/pyauto.git master

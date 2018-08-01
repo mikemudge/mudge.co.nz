@@ -56,4 +56,4 @@ jobs:
       - deploy:
           name: deploy
           command:
-            git push ssh://mudge@mudge.co.nz:/home/mudge/repos/pyauto.git
+            git push --quiet ssh://mudge@mudge.co.nz:/home/mudge/repos/pyauto.git master

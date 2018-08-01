@@ -25,7 +25,8 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-          -  "c7:c0:a2:32:4b:39:b7:ae:d6:29:38:9f:be:c7:81:17"
+            - "22:a9:1d:05:a9:93:94:4e:15:6a:b9:56:f0:91:e6:69"
+            - "c7:c0:a2:32:4b:39:b7:ae:d6:29:38:9f:be:c7:81:17"
 
       # Download and cache dependencies
       - restore_cache:

@@ -12,6 +12,7 @@ from shared.database import db
 # Turn down logging.
 logging.getLogger('oauthlib').setLevel(logging.WARN)
 logging.getLogger('flask_oauthlib').setLevel(logging.WARN)
+logging.getLogger('alembic.runtime.migration').setLevel(logging.WARN)
 
 class BaseTestCase(TestCase):
 

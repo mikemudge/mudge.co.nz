@@ -23,6 +23,10 @@ jobs:
     steps:
       - checkout
 
+      - add_ssh_keys:
+          fingerprints:
+          -  "c7:c0:a2:32:4b:39:b7:ae:d6:29:38:9f:be:c7:81:17"
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -52,4 +56,4 @@ jobs:
       - deploy:
           name: deploy
           command:
-            git push https://mudge.co.nz:/home/mudge/repos/pyauto.git
+            git push https://mudge.co.nz/home/mudge/repos/pyauto.git

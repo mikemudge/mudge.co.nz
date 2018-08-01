@@ -24,6 +24,9 @@ jobs:
       - checkout
 
       - add_ssh_keys
+      - run:
+          name: Keyscan Github (HACK)
+          command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
 
       # Download and cache dependencies
       - restore_cache:

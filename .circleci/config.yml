@@ -10,14 +10,6 @@ jobs:
         environment:
           APP_SETTINGS: settings.test
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:9.4
-        environment:
-          POSTGRES_USER: mudgeconzTest
-          POSTGRES_DB: mudgeconzTest
-
     working_directory: ~/repo
 
     steps:
@@ -41,6 +33,32 @@ jobs:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+  test:
+    docker:
+      - image: circleci/python:3.6.1
+        environment:
+          APP_SETTINGS: settings.test
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_USER: mudgeconzTest
+          POSTGRES_DB: mudgeconzTest
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
       - run:
           name: run tests
@@ -82,8 +100,11 @@ workflows:
     jobs:
       - build
       - test:
+        requires:
+          - build
+      - deploy:
           requires:
-            - build
+            - test
           filters:
             branches:
               only:

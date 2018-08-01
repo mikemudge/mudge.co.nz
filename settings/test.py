@@ -3,7 +3,6 @@ from settings.base import *
 ENV = 'test'
 
 TESTING = True
-SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest:test_password@db/mudgeconzTest'
 # Using CircleCI (passwordless)
 SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest@localhost/mudgeconzTest'
 

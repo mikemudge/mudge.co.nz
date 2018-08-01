@@ -13,5 +13,4 @@ Make email unique for users?
 
 Make a standalone login section
 
-Fix circleCI build.
 Add deployment step to circleCI?

@@ -28,3 +28,6 @@ pyopenssl>=17.5.0,<18
 # Local testing
 nose>=1.3.7
 Flask-Testing>=0.7.1
+
+# Security warnings.
+cryptography>=2.3

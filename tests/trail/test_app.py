@@ -1,5 +1,5 @@
 from app import create_app as create_app
-import logging
+import os
 
 from flask_migrate import upgrade, downgrade
 from flask_testing import TestCase
@@ -8,14 +8,12 @@ from flask_testing import TestCase
 class TestTrail(TestCase):
 
     def create_app(self):
-        return create_app('settings.test')
+        config = 'settings.localtest'
+        if os.environ.get('APP_TEST_SETTINGS'):
+            config = os.environ.get('APP_TEST_SETTINGS')
+        return create_app(config)
 
     def test_migrate(self):
-        logging.getLogger('alembic').setLevel(logging.WARN)
-
-        # alembic_cfg = alembic.config.Config('alembic.ini')
-        # alembic.command.upgrade(alembic_cfg, 'head')
-
         # run upgrades from initial to head.
         upgrade()
 

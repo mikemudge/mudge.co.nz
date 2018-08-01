@@ -2,6 +2,7 @@ import base64
 import json
 import logging
 import urllib.parse
+import os
 
 from app import create_app
 from auth.models import Client, Scope, User
@@ -18,7 +19,10 @@ class BaseTestCase(TestCase):
     render_templates = False
 
     def create_app(self):
-        return create_app('settings.test')
+        config = 'settings.test'
+        if os.environ.get('APP_TEST_SETTINGS'):
+            config = os.environ.get('APP_TEST_SETTINGS')
+        return create_app(config)
 
     def setUp(self):
         db.session.remove()

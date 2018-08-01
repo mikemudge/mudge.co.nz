@@ -7,7 +7,6 @@ services:
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   app:
     build:
       context: .
@@ -27,6 +26,7 @@ services:
       - PGPASSWORD=postgres
       # default to use the dev enviroment.
       - APP_SETTINGS=settings.dev
+      - APP_TEST_SETTINGS=settings.localtest
       # Is this used?
       - ENVIRONMENT=dev
       - PYTHONIOENCODING=utf-8

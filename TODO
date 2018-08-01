@@ -1,11 +1,5 @@
-init command to recreate client + scopes.
 could also add my default user.
 
-trail
-read_profile
-basic
-profile
-user
 Better errors when scope or client is bad (invalid basic auth?)
 
 Double user creation?

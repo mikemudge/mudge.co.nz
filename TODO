@@ -1,10 +1,7 @@
-could also add my default user.
-
 Better errors when scope or client is bad (invalid basic auth?)
+??? Might be done, handles GOOGLE_CLIENT_ID change now?
 
 Double user creation?
 Make email unique for users?
 
 Make a standalone login section
-
-Add deployment step to circleCI?

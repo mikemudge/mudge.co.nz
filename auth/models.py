@@ -69,7 +69,7 @@ class User(BaseModel):
     profile_id = db.Column(UUID(), db.ForeignKey('profile.id', ondelete='CASCADE'), nullable=False)
     profile = relationship("Profile", backref=backref("user", uselist=False))
 
-    email = db.Column(db.String)
+    email = db.Column(db.String, unique=True)
     password_hash = db.Column(db.String)
 
     is_active = db.Column(db.Boolean, default=False)

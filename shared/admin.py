@@ -1,4 +1,5 @@
 from flask_admin.contrib.sqla import ModelView
+from flask import redirect, url_for, request
 from flask_login import current_user
 from jinja2 import Markup
 
@@ -22,6 +23,10 @@ class BaseView(ModelView):
             return False
 
         return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        return redirect(url_for('login', next=request.url))
 
     def format_image(view, context, model, name):
         value = getattr(model, name)

@@ -3,15 +3,39 @@ from shared.admin import get_admin
 from shared.admin import BaseView
 from shared.database import db
 
+from wtforms.fields import StringField, TextField
+
+from wtforms import validators
+from wtforms import Form
+
+
+class NewUser(Form):
+    email = TextField(u'Email', validators=[validators.required()])
+
+    firstname = StringField(u'First Name', validators=[validators.required()])
+    lastname = StringField(u'Last Name', validators=[validators.required()])
+
 class UserView(BaseView):
     column_exclude_list = ['password_hash']
     form_excluded_columns = ['date_created', 'password_hash', 'friended_you']
-    can_create = False
+    form_columns = ['email']
 
     column_formatters = dict(BaseView.column_formatters, **{
         'last_login': BaseView.format_datetime,
         'profile': BaseView._to_view_url('profile')
     })
+
+    def get_create_form(self):
+        return NewUser
+
+    def create_model(self, form):
+        email = form.email.data
+        user = User.create(email)
+        user.is_active = True
+        user.profile.firstname = form.firstname.data
+        user.profile.lastname = form.lastname.data
+        db.session.commit()
+        return user
 
 class ScopeView(BaseView):
     pass

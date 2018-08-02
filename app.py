@@ -83,7 +83,6 @@ def create_app(config=None):
     setup_auth(app)
 
     sentry.init_app(app, logging=True)
-    sentry.client.release = version
 
     login_manager.init_app(app)
 

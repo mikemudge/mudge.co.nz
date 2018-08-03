@@ -1,5 +1,20 @@
 <div ng-controller="LoginController as ctrl">
 
+  <div class="header">
+    Header
+    <div class="user" ng-show="ctrl.currentUser.id">
+      <div class="image">
+        <img ng-src="{{ ctrl.currentUser.profile.image }}" />
+      </div>
+      <div class="username">
+        {{ ctrl.currentUser.profile.username }}
+      </div>
+    </div>
+    <div class="clickable" ng-hide="ctrl.currentUser.id" ng-click="ctrl.login()">
+      Login
+    </div>
+  </div>
+
   <div>
     <h4>Status</h4>
     <p>{{ ctrl.loginService.currentStatus }}</p>
@@ -37,6 +52,9 @@
 
     <div>
       <pre>Mudge.co.nz user = {{ ctrl.loginService.user | json }}</pre>
+    </div>
+    <div ng-repeat="line in ctrl.debug">
+      {{ line }}
     </div>
   </div>
 </div>

@@ -40,24 +40,12 @@
   <div ng-include="'{{ angular.include }}'"></div>
 {% else %}
   {# Show the view for the current page #}
-  <div ng-view autoscroll="true">
-    {% if angular.config.DEBUG and brunch.require %}
-    Make sure you run <pre>brunch watch --server</pre>
-    {% endif %}
-  </div>
+  <div ng-view autoscroll="true"></div>
 {% endif %}
 
   {% for script in scripts %}
   <script src="{{ script }}" type="text/javascript"></script>
   {% endfor %}
-  {% if brunch.require %}
-  <script type="text/javascript">
-    if (typeof require !== 'undefined') {
-      // When using brunch load the required modules.
-      require('{{ brunch.require }}');
-    }
-  </script>
-  {% endif %}
 
   {% for template in templates %}
   <script type="text/ng-template" id="{{ template.id }}">

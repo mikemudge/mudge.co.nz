@@ -8,7 +8,6 @@ class Angular():
     def __init__(self, name):
         self.appName = name
         self.version = current_app.version
-        self.require = None
         self.include = None
         self.sentry = False
         self.base = '/'
@@ -54,30 +53,11 @@ class Angular():
                 'include': self.include,
                 'sentry': self.sentry,
             },
-            'brunch': {
-                'require': self.require,
-            },
             'scripts': self.scripts,
             'styles': self.styles,
             'async': self.async,
             # TODO support embedded templates?
         })
-
-    # TODO should be more generic and use a config lookup???
-    def addLoginApi(self):
-        brunchServer = current_app.config.get('STATIC_URL')
-
-        self.scripts += [
-            # Add login and api js.
-            '%slogin/app.js' % brunchServer,
-            '%slogin/templates.js' % brunchServer,
-            '%sjs/api.js' % brunchServer,
-            '%sjs/api-templates.js' % brunchServer,
-        ]
-
-        self.styles += [
-            '%slogin/app.css' % brunchServer,
-        ]
 
     def addStyle(self, href, version=True):
         if version:
@@ -97,19 +77,6 @@ class Angular():
                 'content': myfile.read()
             }]
 
-    # Deprecated
-    def addProject(self, name):
-
-        brunchServer = current_app.config.get('STATIC_URL')
-
-        self.scripts += [
-            '%s%s/app.js' % (brunchServer, name),
-            '%s%s/templates.js' % (brunchServer, name),
-        ]
-        self.styles = [
-            '%s/app.css' % (brunchServer, name),
-        ]
-
     def setupFolder(self, path):
         self.styles = [
             '%s/%s.css?v=%s' % (path, self.appName, self.version)
@@ -118,19 +85,7 @@ class Angular():
             '%s/%s.js?v=%s' % (path, self.appName, self.version)
         ]
 
-    def setupBrunch(self):
-        brunchServer = current_app.config.get('STATIC_URL')
-
-        self.require = self.appName + '/' + self.appName
-
-        self.config['baseUrl'] = request.url_root
-        self.config['LOGIN_URL'] = request.url_root
-        self.base = '/brunch/%s/' % self.appName
-        # Include pieces from the app.
-        self.styles = [
-            '%s%s/app.css' % (brunchServer, self.appName),
-        ]
-        self.scripts = [
-            '%s%s/app.js' % (brunchServer, self.appName),
-            '%s%s/templates.js' % (brunchServer, self.appName),
-        ]
+    def addLogin(self):
+        self.addStyle('/static/shared/common.css')
+        self.addScript('/static/shared/login.js')
+        self.addScript('/static/shared/api.js')

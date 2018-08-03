@@ -1,6 +1,9 @@
 version: '2'
 services:
   db:
+    # This might make it faster locally.
+    dns:
+      - 8.8.8.8
     image: mdillon/postgis:9.5
     volumes:
       - ./.local_postgres:/var/lib/postgresql/data
@@ -8,6 +11,9 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
   app:
+    # This might make it faster locally.
+    dns:
+      - 8.8.8.8
     build:
       context: .
       dockerfile: ./Dockerfile

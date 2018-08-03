@@ -1,6 +1,6 @@
 from api.main import main_bp
 from api.views.eighti import eighti_bp
-from api.views.brunch_apps import ProjectAppView, ProjectAppsListView
+from api.views.apps import ProjectAppView, ProjectAppsListView
 
 def routes(app):
 

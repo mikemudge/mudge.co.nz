@@ -26,6 +26,13 @@ def robots():
 def main_page():
     return "Welcome"
 
+@main_bp.route('/login/')
+def login():
+    app = Angular('user')
+    app.setupFolder('static/user')
+    app.addLogin()
+    return app.render()
+
 @main_bp.route('/error/')
 def error_test():
     abort(500, 'Error message here')

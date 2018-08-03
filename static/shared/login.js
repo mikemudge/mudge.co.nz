@@ -197,6 +197,9 @@ LoginService.prototype.loginWithGoogle = function() {
   });
 
   var result = auth.$promise.then(function(response) {
+    if (!response.access_token) {
+      throw new Error('Unexpected response from connector-token');
+    }
     this.currentAccess = this.getValidJwt(response.access_token);
     this.currentStatus = 'Logged in to mudge.co.nz';
     // Jwts are valid, we can store them in sessionStorage.
@@ -289,15 +292,21 @@ LoginService.prototype.parseJwt = function(jwt) {
 }
 
 var LoginController = function(loginService, $location) {
-  window.ctrl = this;
+  // For debugging.
+  window.login = this;
   this.$location = $location;
   this.loginService = loginService;
   this.currentUser = loginService.user;
   // TODO if not logged in make sure to show a modal?
+  this.debug = [
+    "Checking authentication"
+  ];
 
   loginService.google.promise.then(function(gUser) {
+    this.debug.push("Google user available " + gUser.email);
     console.log('Google user arrived', gUser);
-  }, function() {
+  }.bind(this), function() {
+    this.debug.push("No Google user, will need manual login");
     // No google user
     this.googleLoginButton = true;
   }.bind(this));
@@ -310,6 +319,9 @@ LoginController.prototype.loginWithGoogle = function() {
     // Redirect to app?
     this.$location.path('.');
   }.bind(this));
+}
+LoginController.prototype.login = function() {
+  this.loginService.loginWithGoogle();
 }
 LoginController.prototype.logout = function() {
   this.loginService.logout();
@@ -328,17 +340,4 @@ angular.module('mmLogin', [
     });
 })
 .service('loginService', LoginService)
-;
-
-// Used when this is treated as a standalone project.
-angular.module('login', [
-  'mmLogin',
-  'ngRoute',
-])
-.config(function($routeProvider) {
-  $routeProvider
-    .otherwise({
-      templateUrl: '/static/shared/login.tpl.html'
-    });
-})
 ;

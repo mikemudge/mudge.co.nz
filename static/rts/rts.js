@@ -84,8 +84,8 @@ MainController.prototype.render = function(time) {
 window.mmRts = {
   units: {}
 }
-// TODO enable brunch on this an ar???
-// One off brunch projects would be good.
+// TODO enable building on this and ar???
+// A build per projects would be good, could test multiple things.
 
 angular.module('rts', [
 	'config',

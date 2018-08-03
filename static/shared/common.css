@@ -24,6 +24,13 @@ a {
 .user {
   margin: 16px 0;
 }
+.user {
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  margin: 0;
+}
 
 .user .image {
   width: 40px;
@@ -33,12 +40,18 @@ a {
   display: inline-block;
   vertical-align: middle;
 }
+.user .image img {
+  border-radius: 1000px;
+  height: 100%;
+}
 
 .user .column {
   vertical-align: middle;
 }
 
 .user .username {
+  display: inline-block;
+  vertical-align: middle;
   font-size: 12px;
 }
 

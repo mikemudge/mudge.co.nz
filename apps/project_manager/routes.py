@@ -19,30 +19,30 @@ projects_bp = Blueprint('project_manager', __name__)
 
 @projects_bp.route('/')
 def get_projects():
-    brunchServer = current_app.config.get('STATIC_URL')
+    staticFilesUrl = current_app.config.get('STATIC_URL')
     # Build a list of projects?
     app = Angular('projects')
 
     app.scripts = [
-        '%sprojects/app.js' % (brunchServer),
-        '%sprojects/templates.js' % (brunchServer),
+        '%sprojects/app.js' % (staticFilesUrl),
+        '%sprojects/templates.js' % (staticFilesUrl),
 
         # Add login and api js.
-        '%slogin/app.js' % brunchServer,
-        '%slogin/templates.js' % brunchServer,
-        '%sjs/api.js' % brunchServer,
-        '%sjs/api-templates.js' % brunchServer,
+        '%slogin/app.js' % staticFilesUrl,
+        '%slogin/templates.js' % staticFilesUrl,
+        '%sjs/api.js' % staticFilesUrl,
+        '%sjs/api-templates.js' % staticFilesUrl,
     ]
     app.styles = [
-        '%slogin/app.css' % brunchServer,
-        '%sprojects/app.css' % (brunchServer),
+        '%slogin/app.css' % staticFilesUrl,
+        '%sprojects/app.css' % (staticFilesUrl),
     ]
 
     return app.render()
 
 @projects_bp.route('/<name>/<path:path>')
 def get_project(name, path=None):
-    brunchServer = current_app.config.get('STATIC_URL')
+    staticFilesUrl = current_app.config.get('STATIC_URL')
 
     name = name.lower()
     # Try and find a project for this app?
@@ -57,22 +57,22 @@ def get_project(name, path=None):
 
     app.styles = [
         # Login + login templates.
-        '%slogin/app.css' % brunchServer,
-        '%s%s/app.css' % (brunchServer, name),
+        '%slogin/app.css' % staticFilesUrl,
+        '%s%s/app.css' % (staticFilesUrl, name),
     ]
     app.scripts = [
         # Include pieces from the app.
-        '%s%s/app.js' % (brunchServer, name),
-        '%s%s/templates.js' % (brunchServer, name),
+        '%s%s/app.js' % (staticFilesUrl, name),
+        '%s%s/templates.js' % (staticFilesUrl, name),
     ]
 
     # TODO should look at dependencies and add all scripts for those too?
     app.scripts += [
         # Login + login templates.
-        '%slogin/app.js' % brunchServer,
-        '%slogin/templates.js' % brunchServer,
-        '%sjs/api.js' % brunchServer,
-        '%sjs/api-templates.js' % brunchServer,
+        '%slogin/app.js' % staticFilesUrl,
+        '%slogin/templates.js' % staticFilesUrl,
+        '%sjs/api.js' % staticFilesUrl,
+        '%sjs/api-templates.js' % staticFilesUrl,
     ]
 
     # Handle project

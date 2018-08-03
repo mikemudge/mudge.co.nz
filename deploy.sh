@@ -20,10 +20,6 @@ export APP_SETTINGS=settings.production
 echo 'Restarting webserver.'
 sudo systemctl restart webserver.service
 
-# TODO this needs to change.
-# echo 'Compiling static files.'
-# brunch build --production
-
 echo 'Restart nginx to serve the new static files.'
 # This command is allowed passwordless due to changes to /etc/sudoers.d/<username>
 sudo /etc/init.d/nginx reload

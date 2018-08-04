@@ -2,7 +2,9 @@ import base64
 
 from tests.base.base_test_case import BaseTestCase
 from shared.database import db
-from auth.models import Profile, User
+from auth.models import Profile, User, Client, Scope
+from shared import init_command
+from flask import current_app
 
 import sqlalchemy
 
@@ -20,6 +22,21 @@ class TestLogin(BaseTestCase):
     #     self.assertEqual(response.json, {
     #         'email': 'me@test.mudge.co.nz'
     #     })
+
+    def test_delete_scope(self):
+        Scope.query.delete()
+
+        # Still have a client with no scopes.
+        clients = Client.query.all()
+        self.assertEqual(len(clients), 1)
+        self.assertEqual(len(clients[0].scopes), 0)
+
+    def test_init(self):
+        init_command.auth()
+
+        client_id = current_app.config.get('CLIENT_ID')
+        client = Client.query.filter_by(client_id=client_id).one()
+        self.assertEqual(client.name, "Web client")
 
     def test_no_orphan_profile(self):
         p = Profile()

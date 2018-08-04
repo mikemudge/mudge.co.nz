@@ -9,8 +9,8 @@ from werkzeug.security import gen_salt
 api_client_scope = db.Table(
     'api_client_scope',
     BaseModel.metadata,
-    db.Column('client_id', UUID(), db.ForeignKey('client.id')),
-    db.Column('scope_id', UUID(), db.ForeignKey('scope.id')),
+    db.Column('client_id', UUID(), db.ForeignKey('client.id', ondelete="CASCADE")),
+    db.Column('scope_id', UUID(), db.ForeignKey('scope.id', ondelete="CASCADE")),
     db.UniqueConstraint('client_id', 'scope_id', name='client_scope_no_dups')
 )
 
@@ -47,7 +47,7 @@ class Client(BaseModel):
         return self.name
 
 class Scope(BaseModel):
-    name = db.Column(db.String(255))
+    name = db.Column(db.String(255), unique=True)
 
     clients = db.relationship("Client",
                               secondary=api_client_scope,

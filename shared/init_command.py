@@ -10,12 +10,13 @@ InitCommand = Manager(usage='Perform initialization tasks.')
 @InitCommand.command
 def auth():
     client = Client.create("Web client")
+    scopes = {s.name: s for s in Scope.query.all()}
     client.scopes = [
-        Scope(name='user'),
-        Scope(name='basic'),
-        Scope(name='profile'),
-        Scope(name='trail'),
-        Scope(name='read_profile'),
+        scopes.get('user', Scope(name='user')),
+        scopes.get('basic', Scope(name='basic')),
+        scopes.get('profile', Scope(name='profile')),
+        scopes.get('trail', Scope(name='trail')),
+        scopes.get('read_profile', Scope(name='read_profile')),
     ]
 
     if current_app.config.get('CLIENT_ID'):

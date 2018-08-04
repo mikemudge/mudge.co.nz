@@ -95,7 +95,7 @@ workflows:
   build_and_deploy:
     jobs:
       - install_deps
-      - test
+      - test:
           requires:
             - install_deps
       - deploy:

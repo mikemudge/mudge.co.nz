@@ -4,7 +4,7 @@ from flask import current_app
 from shared.database import db
 from apps.tournament_app.models import Tournament, Team, Match, Round
 from apps.tournament_app.helpers import tournament as tournament_helper
-from auth.models import Client, Scope
+from auth.models import Client, Scope, User
 from apps.trail.models import Trail
 
 InitCommand = Manager(usage='Perform initialization tasks.')
@@ -29,6 +29,23 @@ def auth():
     db.session.commit()
 
     print("Make sure you have CLIENT_ID and CLIENT_SECRET set in your local_config")
+
+@InitCommand.command
+def create_user(email, password=None):
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        print("Create new user")
+        user = User.create(email=email, password=password)
+    else:
+        print("Already exists, will update password")
+        user.set_password(password)
+
+    # Make sure the user is usable.
+    user.is_active = True
+
+    db.session.commit()
 
 @InitCommand.command
 def trails():

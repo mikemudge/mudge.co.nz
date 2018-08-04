@@ -24,7 +24,8 @@ a {
 .user {
   margin: 16px 0;
 }
-.user {
+/* User in the header is displayed in the top right corner */
+.header .user {
   height: 40px;
   position: absolute;
   top: 5px;

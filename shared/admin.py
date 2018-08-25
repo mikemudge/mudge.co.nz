@@ -52,7 +52,9 @@ class BaseView(ModelView):
         # Change date into users preferred time.
         date = date.astimezone(timezone)
         result = date.strftime('%Y-%m-%d %H:%M %Z')
-        return result
+        full = date.strftime('%Y-%m-%d %H:%M:%S.%f %Z')
+
+        return Markup('<span title="%s">%s</span>' % (full, result))
 
     # Creates a view formatter which links to a details endpoint.
     @classmethod

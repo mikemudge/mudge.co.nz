@@ -98,7 +98,8 @@ def gmaps():
 class ProjectAppsListView(MethodView):
     def get(self):
         result = []
-        for key, app in apps.items():
+        sorted_apps = sorted(apps.items())
+        for key, app in sorted_apps:
             result.append(
                 '<p><a href="/projects/%s">%s</a> %s</p>' % (
                     key, key, ', '.join(app.get('tags', []))

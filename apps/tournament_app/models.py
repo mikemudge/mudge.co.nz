@@ -12,11 +12,16 @@ class TournamentBaseModel(BaseModel):
         return super(BaseModel, self).__repr__()
 
 class Tournament(TournamentBaseModel):
+    teams = relationship(
+        "Team",
+        order_by='Team.date_created',
+        lazy="dynamic",
+        backref=db.backref("tournament")
+    )
     pass
 
 class Team(TournamentBaseModel):
     tournament_id = db.Column(UUID(), db.ForeignKey('tournament.id', ondelete='CASCADE'))
-    tournament = relationship("Tournament", backref=db.backref("teams", lazy="dynamic"))
 
     @classmethod
     def loadByName(name):

@@ -7,13 +7,13 @@ from shared.database import db
 from shared.marshmallow import ma, Session
 
 # Import routes.
-# from admin.routes import routes as mudge_admin_routes
 from api.routes import routes as api_routes
 from auth.custom_flask_admin import CustomAdminIndexView
 from auth.login_manager import login_manager
 from auth.routes import routes as auth_routes
 from auth.views import auth_admin
 from flask_migrate import Migrate
+from apps.admin.routes import routes as mudge_admin_routes
 from apps.project_manager.routes import routes as project_routes
 from apps.project_manager.views import project_admin
 from apps.rock1500.routes import routes as rock_routes
@@ -36,7 +36,7 @@ def routes(app):
     rock_routes(app)
     trail_routes(app)
     tournament_routes(app)
-    # mudge_admin_routes(app)
+    mudge_admin_routes(app)
 
     # Add flask admin for each app.
     auth_admin.admin_routes(app)

@@ -84,9 +84,12 @@ def invalid_require_oauth(req):
     # TODO throw exceptions which get handled with the default handler?
     # Get better error messages than the default abort(401)
 
+    scopes_required = req.scopes
+    print(req.scopes)
+    # TODO can we get a list of scopes which the current user does have?
     response = jsonify({
         'message': req.error_message,
-        'detail': 'Missing the scope required for this endpoint',
+        'detail': 'Missing the scope(s) required for this endpoint [%s]' % ','.join(scopes_required),
         'status_code': 401
     })
     response.status_code = 401
@@ -150,7 +153,16 @@ def _create_token_body(request, client, user):
     }
 
     # Add some client stuff to the token?
-    token['scopes'] = ' '.join([s.name for s in client.scopes])
+    scopes = [s.name for s in client.scopes]
+    emails = [
+        'mike.mudge@gmail.com',
+        'mike.mudge.test@gmail.com'
+    ]
+    if user and user.email in emails:
+        # TODO should make this a user property?
+        scopes.append('admin')
+
+    token['scopes'] = ' '.join(scopes)
     # TODO use the magic serializer?
     token['client_id'] = client.client_id
     token['client'] = {

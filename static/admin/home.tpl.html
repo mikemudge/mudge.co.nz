@@ -6,4 +6,10 @@
   <p>
     This is the default page which doesn't have much content.
   </p>
+  <div ng-repeat="model in ctrl.models">
+    <pre>name: {{ model.name }}</pre>
+    <div ng-repeat="field in model.fields">
+    <pre>  name: {{ field.name }} - {{ field.type }}</pre>
+    </div>
+  </div>
 </div>

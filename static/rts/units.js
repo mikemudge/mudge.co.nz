@@ -1,8 +1,17 @@
 var cube = function(size, color) {
   var geometry = new THREE.BoxGeometry( size, size, size );
-  var material = new THREE.MeshBasicMaterial( {color: color} );
+  var material = new THREE.MeshPhongMaterial( {color: color} );
   var cube = new THREE.Mesh( geometry, material );
   return cube;
+}
+
+var cylinder = function(size, color) {
+  // How many sections make the circle.
+  var detail = 20;
+  var geometry = new THREE.CylinderGeometry( size, size *.75, size, detail );
+  var material = new THREE.MeshPhongMaterial( {color: color} );
+  var cylinder = new THREE.Mesh( geometry, material );
+  return cylinder;
 }
 
 var units = window.mmRts.units;
@@ -10,6 +19,8 @@ var colors = window.mmRts.colors;
 var Spawner = function(team, x, z) {
   this.game = team.game;
   this.team = team;
+  this.health = 10000;
+  this.attackPower = 500;
   this.buildTime = 50;
   this.mesh = cube(10, team.color);
   this.mesh.position.x = x;
@@ -21,10 +32,57 @@ Spawner.prototype.update = function() {
   if (this.buildTime <= 0) {
     // Complete a unit.
     // TODO generate a position next to this spawner.
-    this.game.addObject(new Carrier(this.team, this.mesh.position));
+    this.generate();
     // 60fps * seconds.
     this.buildTime = 60 * 10;
   }
+
+  var nearbyUnits = this.game.getNearby(this.mesh.position, this.sight);
+  angular.forEach(nearbyUnits, angular.bind(this, function(unit) {
+    if (unit.team != this.team) {
+      // console.log('Found target', this.team, unit.team);
+      this.target = unit;
+    }
+  }));
+
+  if (this.target) {
+    Unit.prototype.attack.bind(this)();
+  }
+}
+
+// Generate a new vector nearby to a source vector.
+Spawner.prototype.nearByLocation = function(vec) {
+  var loc = new THREE.Vector3(
+      Math.random() * 10 - 5,
+      0,
+      Math.random() * 10 - 5);
+  loc.add(vec);
+  return loc;
+}
+
+Spawner.prototype.generate = function() {
+  // go to the opposite position on the map.
+  var targetPos = new THREE.Vector3();
+  targetPos.copy(this.mesh.position).negate();
+
+  for (var i = 0; i < 3; i++) {
+    var position = this.nearByLocation(this.mesh.position)
+    var unit = new Unit(this.team, position, targetPos);
+    // High health but low range.
+    unit.health = 500;
+    unit.range = 5;
+    this.game.addObject(unit);
+  }
+  for (var i = 0; i < 3; i++) {
+    var position = this.nearByLocation(this.mesh.position)
+    position.y = 10;
+    var unit = new Unit(this.team, position, targetPos);
+    unit.canAttackMove = true;
+    this.game.addObject(unit);
+  }
+
+  var spawn_location = this.nearByLocation(this.mesh.position);
+  this.game.addObject(new Carrier(this.team, spawn_location));
 }
 
 var Carrier = function(team, position) {
@@ -32,7 +90,9 @@ var Carrier = function(team, position) {
   this.game = team.game;
   this.team = team;
   this.health = 100;
+  this.sight = 30;
   this.mesh = cube(6, team.color);
+  this.mesh = cylinder(6, team.color);
   this.mesh.scale.z = 2;
   this.mesh.position.copy(position);
 
@@ -48,8 +108,7 @@ Carrier.prototype.update = function() {
 
   if (!this.target) {
     // Look for enemy.
-    // TODO use sight for range.
-    var nearbyUnits = this.game.getNearby(this.mesh.position, 30);
+    var nearbyUnits = this.game.getNearby(this.mesh.position, this.sight);
     angular.forEach(nearbyUnits, angular.bind(this, function(unit) {
       if (unit.team != this.team) {
         // console.log('Found target', this.team, unit.team);
@@ -99,10 +158,12 @@ MoveAction.prototype.update = function() {
   // TODO restrict acceleration more than this?
   // Only foward/back and turn?
   this.acceleration.subVectors(this.targetPosition, this.mesh.position).setLength(this.power);
+  this.acceleration.y = 0;
 
   this.velocity.add(this.acceleration);
   // Apply friction.
   this.velocity.multiplyScalar(this.friction);
+  this.velocity.y = 0;
 
   // This makes the unit look at the direction it wants to go.
   // That is also the direction of acceleration.
@@ -119,9 +180,14 @@ var Unit = function(team, position, targetPosition) {
   this.mesh = cube(1, team.color);
   this.team = team;
   this.health = 100;
+  this.attackPower = 1;
+  // How far the unit can see.
+  this.sight = 25;
+  this.range = 20;
   this.mesh.position.copy(position);
 
   this.speed = 1;
+  targetPosition = targetPosition || this.mesh.position;
   this.goal = targetPosition;
   this.move = new MoveAction(this, targetPosition);
 }
@@ -133,28 +199,25 @@ Unit.prototype.update = function() {
 
   if (!this.target) {
     // Look for enemy.
-    // TODO use sight for range.
-    var nearbyUnits = this.game.getNearby(this.mesh.position, 20);
+    var nearbyUnits = this.game.getNearby(this.mesh.position, this.sight);
     angular.forEach(nearbyUnits, angular.bind(this, function(unit) {
       if (unit.team != this.team) {
         // console.log('Found target', this.team, unit.team);
         this.target = unit;
       }
-    }))
+    }));
   }
   var move = true;
   if (this.target) {
+    // If the target has moved we need to keep up with it.
+    this.move.updateTarget(this.target.mesh.position);
+
     // Fight the target, chasing it down.
-    this.target.health--;
-    if (this.target.health <= 0) {
-      this.target = null;
+    var range = this.target.mesh.position.distanceTo(this.mesh.position);
+    if (range < this.range) {
+      this.attack();
+      move = this.canAttackMove;
     }
-    if (this.target) {
-      this.move.updateTarget(this.target.mesh.position);
-    } else {
-      this.move.updateTarget(this.goal);
-    }
-    move = this.canAttackMove || false;
   }
 
   if (move) {
@@ -162,3 +225,13 @@ Unit.prototype.update = function() {
   }
 }
 
+Unit.prototype.attack = function() {
+  this.target.health -= this.attackPower;
+  if (this.target.health <= 0) {
+    this.target = null;
+  }
+  if (!this.target) {
+    // If the target is gone, go back to the goal.
+    this.move.updateTarget(this.goal);
+  }
+}

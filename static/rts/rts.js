@@ -12,8 +12,18 @@ var MainController = function($scope) {
 
   this.scene = new THREE.Scene();
 
-  var ambient = new THREE.AmbientLight( 0xFFFFFF );
+  var ambient = new THREE.AmbientLight( 0xFFFFFF, 0.7);
   this.scene.add( ambient );
+
+  var light = new THREE.DirectionalLight( 0xFFFFFF, 0.5 );
+  light.position.x = 5;
+  light.position.z = 3;
+  this.scene.add(light);
+
+  var light = new THREE.DirectionalLight( 0xFFFFFF, 0.5 );
+  light.position.x = -3;
+  light.position.z = -5;
+  this.scene.add(light);
 
   this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
   this.camera.position.z = 80;
@@ -54,9 +64,9 @@ var MainController = function($scope) {
 
 MainController.prototype.start = function() {
   // game.start???
-  this.pause = false;
+  this.game.paused = false;
   var render = function() {
-    if (this.pause) {
+    if (this.game.paused) {
       return;
     }
     requestAnimationFrame(render);

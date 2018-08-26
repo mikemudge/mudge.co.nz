@@ -25,7 +25,15 @@ Game.prototype.setup = function() {
   this.addObject(new units.Spawner(team2, 50, 50));
 }
 
+Game.prototype.addObjects = function(objects) {
+  objects.map(this.addObject.bind(this));
+}
+
 Game.prototype.addObject = function(gameObject) {
+  if (!gameObject || !gameObject.mesh) {
+    this.paused = true;
+    throw Error('Bad object added');
+  }
   this.scene.add(gameObject.mesh);
   this.gameObjects.push(gameObject);
 }

@@ -1,8 +1,8 @@
 from flask import jsonify
 from flask_marshmallow import Marshmallow
-# from flask_marshmallow.sqla import ModelSchema
 from marshmallow_sqlalchemy import ModelSchema
 from marshmallow_sqlalchemy import ModelSchemaOpts
+from marshmallow import fields
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 from shared.database import db
@@ -48,3 +48,11 @@ class BaseSchema(ModelSchema):
         })
         response.status_code = 400
         return response
+
+# Should use this for admin stuff shared, good for identifying by computer and human.
+class IdSchema(BaseSchema):
+    id = fields.Str(required=True)
+    name = fields.Method('get_name')
+
+    def get_name(self, data):
+        return str(data)

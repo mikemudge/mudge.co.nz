@@ -49,9 +49,11 @@
         <pre ng-show="debug">{{ ctrl.loginService.googleUser | json }}</pre>
       </div>
     </div>
-
     <div>
       <pre>Mudge.co.nz user = {{ ctrl.loginService.user | json }}</pre>
+    </div>
+    <div>
+      <pre>JWT contents {{ ctrl.loginService.currentAccess | json }}</pre>
     </div>
     <div ng-repeat="line in ctrl.debug">
       {{ line }}

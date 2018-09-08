@@ -103,9 +103,10 @@ LoginService.prototype.ensureLoggedIn = function() {
     var remaining = this.currentAccess.exp - Date.now() / 1000
     console.log('already have access for', remaining.toFixed(0), 'more seconds');
     if (remaining > 300) {
-      // With less than 5 minutes left, we should request a new token.
+      // You are logged in for at least 5 more minutes.
       return true;
     }
+    // Otherwise we should request a new token.
   }
 
   console.warn('Ensuring login');
@@ -133,13 +134,22 @@ LoginService.prototype.ensureLoggedIn = function() {
 };
 
 // Call this when a bad response is recieved by an API call.
-LoginService.prototype.badResponse = function(first_argument) {
+LoginService.prototype.badResponse = function(response) {
   // TODO double check what we do here.
   if (this.already_know) {
     // Nothing else we can do.
     console.warn('Already trying a relogin');
     return;
   }
+
+  if (response.status == 401) {
+    alert('Trying to access a resource which you are not authorized for\n'
+        + response.data.message + '\n' + response.data.detail);
+    // TODO figure out the best action?
+    console.error(this.currentAccess);
+    console.error(response.data);
+  }
+
   console.warn('Attempting relogin');
   this.already_know = true;
   this.google.promise.then(function() {

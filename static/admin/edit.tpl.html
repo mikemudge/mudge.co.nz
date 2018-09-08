@@ -1,31 +1,52 @@
 <div class="admin_list" ng-controller="EditController as ctrl">
   <div ng-include="'/static/admin/header.tpl.html'"></div>
-  <h2>
-    Edit/Create a {{ ctrl.model.name }}
-  </h2>
+  <table>
+    <tr>
+      <th colspan="2">
+        <h2>
+          Edit/Create a {{ ctrl.model.name }}
+        </h2>
+      </th>
+    </tr>
 
-  <pre>{{ ctrl.item | json }}</pre>
-
-  <div class="field" ng-repeat="field in ctrl.model.fields">
-    <label>
-      {{ field.name }}:
-    </label>
-    <span ng-if="field.type=='nested'">
-      <!-- TODO include edit fields for the sub model -->
-      <!-- TODO probably should include a directive? -->
-    </span>
-    <span ng-if="field.type=='select'">
-      <!-- Get options from model? -->
-      <!-- TODO use a better selector thing -->
-      <select ng-options="field.model.name_field(o) for o in field.options track by o.id" ng-model="ctrl.item[field.name]">
-        <option>&lt;None&gt;</option>
-      </select>
-    </span>
-    <span ng-if="field.type!='select'">
-      <input type="{{ field.type || 'text' }}" ng-model="ctrl.item[field.name]" />
-    </span>
-  </div>
-  <div class="button save" ng-click="ctrl.saveItem(ctrl.item)">
-    Save
-  </div>
+    <tr ng-repeat="field in ctrl.model.fields">
+      <td>
+        <label>
+          {{ field.name }}:
+        </label>
+      </td>
+      <td>
+        <span ng-if="field.type=='nested'">
+          <!-- TODO include edit fields for the sub model -->
+          <!-- TODO probably should include a directive? -->
+        </span>
+        <span ng-if="field.type=='readonly'">
+          {{ ctrl.item[field.name]}}
+        </span>
+        <span ng-if="field.type=='select'">
+          <!-- Get options from model? -->
+          <!-- TODO use a better selector thing -->
+          <select ng-if="field.list" multiple ng-options="o.name for o in field.options track by o.id" ng-model="ctrl.item[field.name]">
+            <option>&lt;None&gt;</option>
+          </select>
+          <select ng-if="!field.list" ng-options="o.name for o in field.options track by o.id" ng-model="ctrl.item[field.name]">
+            <option>&lt;None&gt;</option>
+          </select>
+        </span>
+        <span ng-if="field.type!='select'">
+          <input type="{{ field.type || 'text' }}" ng-model="ctrl.item[field.name]" />
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div ng-show="ctrl.item.isSaving" class="button save">
+          Saving
+        </div>
+        <div ng-hide="ctrl.item.isSaving" class="button save" ng-click="ctrl.saveItem(ctrl.item)">
+          Save
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>

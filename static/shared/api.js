@@ -28,9 +28,8 @@ var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope) {
         // Not sure what causes this, but it happens.
         return $q.reject(response);
       } else if (response.status == 403 || response.status == 401) {
-        // Need to lazy inject this to avoid a dependency cycle.
         var loginService = $injector.get('loginService');
-        loginService.badResponse();
+        loginService.badResponse(response);
         return $q.reject(response);
       } else {
         console.error('Error for response', response.status, response);
@@ -51,7 +50,7 @@ var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope) {
         $rootScope.title = 'Error';
         $rootScope.error = message;
 
-        alert("Something went wrong: " + message);
+        alert("Something went wrong:\n" + message);
         console.error(message)
         console.log('response', response);
         return $q.reject(response);
@@ -68,6 +67,9 @@ angular.module('api', [
   // variables on $rootScope will be available for reading from all $scopes
   // through scope inheritance.
   $rootScope.config = config;
+
+  // Make some methods available in expressions.
+  $rootScope.angular = angular;
 })
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');

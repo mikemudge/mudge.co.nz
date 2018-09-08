@@ -41,9 +41,13 @@ def tournaments(reset=False):
 
     # Now fill in the details of the tournament.
     numTeams = 10
-    teams = [
-        Team(name='Team %d' % (i + 1)) for i in range(0, numTeams)
-    ]
+    teams = []
+    for i in range(0, numTeams):
+        t = Team(name='Team %d' % (i + 1))
+        db.session.add(t)
+        db.session.commit()
+        teams.append(t)
+
     tournament_helper.makeFromTeams(tournament, teams)
 
     db.session.commit()

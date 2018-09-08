@@ -1,135 +1,127 @@
 var CrudService = function($resource, config) {
-
-  // TODO should load from admin end points?
-  var models = [{
-    name: 'Tournament',
-    fields: [{
-      name: 'name'
-    }],
-    'endpoints': {
-      'crud': '/api/tournament/tournament/:id'
-    }
-  }, {
-    name: 'Team',
-    name_field: 'name',
-    fields: [{
-      name: 'name'
-    }],
-    'endpoints': {
-      'crud': '/api/tournament/team/:id'
-    }
-  }, {
-    name: 'Round',
-    fields: [{
-      name: 'name'
-    }, {
-      name: 'matches',
-      list: true,
-      model: 'Match'
-    }],
-    'endpoints': {
-      'crud': '/api/tournament/round/:id'
-    }
-  }, {
-    name: 'Match',
-    name_field: function(item) {
-      return item.homeTeam.name + ' v ' + item.awayTeam.name;
-    },
-    fields: [{
-      name: 'homeTeam',
-      type: 'select',
-      model: 'Team',
-    }, {
-    //   name: 'result',
-    //   type: 'nested',
-    //   model: 'MatchResult',
-    // }, {
-      name: 'awayTeam',
-      type: 'select',
-      model: 'Team',
-    }],
-    'endpoints': {
-      'crud': '/api/tournament/match/:id'
-    }
-  }, {
-    name: 'MatchResult',
-    name_field: function(item) {
-      return item.homeScore + ' - ' + item.awayScore;
-    },
-    fields: [{
-      name: 'homeScore',
-      type: 'number',
-    }, {
-      name: 'match',
-      type: 'select',
-      model: 'Match',
-    }, {
-      name: 'awayScore',
-      type: 'number',
-    }],
-    'endpoints': {
-      'crud': '/api/tournament/matchresult/:id'
-    }
-  }];
-
+  this.AdminModels = $resource('/api/admin/project/:projectName');
   this.models = {};
-  models.forEach(function(model) {
-    this.models[model.name.toLowerCase()] = model;
-    model.Resource = $resource(model.endpoints.crud, {
-      'id': '@id'
-    })
-  }.bind(this));
+  this.$resource = $resource;
 }
 
+CrudService.prototype.loadProject = function(projectName) {
+  var loadingModels = this.AdminModels.query({
+    projectName: projectName
+  }).$promise.then(function(response) {
+    console.log('Loaded project: ' + projectName);
+    console.log(response);
+    response.forEach(function(model) {
+      this.models[model.name.toLowerCase()] = model;
+      parseDates = function(model, item) {
+        model.fields.forEach(function(f) {
+          datetype = (
+            f.type == 'datetime-local' ||
+            f.type == 'date'
+          );
+          if (datetype && item[f.name]) {
+            item[f.name] = new Date(item[f.name]);
+          }
+        });
+      }
+
+      model.Resource = this.$resource(model.endpoints.crud, {
+        'id': '@id'
+      }, {
+        query: {
+          isArray: true,
+          interceptor: {
+            response: function(value) {
+              value.resource.forEach(parseDates.bind(null, model));
+              return value;
+            }
+          }
+        },
+        get: {
+          interceptor: {
+            response: function(value) {
+              parseDates(model, value.resource);
+              return value;
+            }
+          }
+        },
+        save: {
+          method: 'POST',
+          interceptor: {
+            response: function(value) {
+              parseDates(model, value.resource);
+              return value;
+            }
+          }
+        }
+      })
+    }.bind(this));
+
+    response.forEach(function(model) {
+      model.fields.forEach(function(f) {
+        // Replace field's model with a reference.
+        // If it isn't already a reference.
+        if (f.model && !f.model.name) {
+          f.model = this.models[f.model.toLowerCase()];
+        }
+      }.bind(this));
+    }.bind(this));
+  }.bind(this));
+  return loadingModels;
+}
+
+// Call after loadProject() has resolved.
 CrudService.prototype.get_model = function(model_name) {
   var model_name = model_name.toLowerCase();
-
   var model = this.models[model_name];
-
-  model.fields.forEach(function(f) {
-    // Replace field's model with a reference.
-    // If it isn't already a reference.
-    if (f.model && !f.model.name) {
-      f.model = this.get_model(f.model.toLowerCase());
-    }
-  }.bind(this));
-
+  if (!model) {
+    throw new Error(model_name + ' not found');
+  }
   return model;
 }
 
 var DetailsController = function(crudService, $routeParams) {
   window.ctrl = this;
-  this.model = crudService.get_model($routeParams.model_name);
-  this.item = this.model.Resource.get({id: $routeParams.id});
+  crudService.loadProject('Tournament').then(function() {
+    this.model = crudService.get_model($routeParams.model_name);
+    this.item = this.model.Resource.get({id: $routeParams.id});
+  }.bind(this));
 }
 
 var EditController = function(crudService, $location, $routeParams) {
   window.ctrl = this;
   this.$location = $location;
-  this.model = crudService.get_model($routeParams.model_name);
 
-  if ($routeParams.id) {
-    this.item = this.model.Resource.get({id: $routeParams.id});
-  } else {
-    // Create new.
-    this.item = new this.model.Resource();
-  }
-  // Load options for models.
-  this.model.fields.forEach(function(f) {
-    if (f.model) {
-      // Get them for options?
-      // TODO this should happen once we attempt to edit the field.
-      // Using some ajax search functionality.
-      f.options = f.model.Resource.query();
+  crudService.loadProject('Tournament').then(function() {
+    this.model = crudService.get_model($routeParams.model_name);
+
+    if ($routeParams.id) {
+      this.item = this.model.Resource.get({id: $routeParams.id});
+    } else {
+      // Create new.
+      this.item = new this.model.Resource();
     }
-  });
+
+    // Load options for models.
+    this.model.fields.forEach(function(f) {
+      if (f.model) {
+        // Get them for options?
+        // TODO this should happen once we attempt to edit the field.
+        // Using some ajax search functionality.
+        f.options = f.model.Resource.query();
+        f.options.$promise.then(function() {
+          console.log(f.options);
+        })
+      }
+    });
+  }.bind(this));
 }
 
 EditController.prototype.saveItem = function(item) {
   // Updates on the server.
+  item.isSaving = true;
   item.$save().then(function() {
     // TODO redirect to list view or stay here?
-    this.$location.path('model/' + this.model.name);
+    // this.$location.path('model/' + this.model.name);
   }.bind(this), function(response) {
     // Handle errors?
     console.error(response);
@@ -139,7 +131,9 @@ EditController.prototype.saveItem = function(item) {
 
 var HomeController = function(crudService) {
   window.ctrl = this;
-  this.models = crudService.models;
+  crudService.loadProject('Tournament').then(function() {
+    this.models = crudService.models;
+  }.bind(this));
 }
 
 var HeaderController = function(crudService, loginService) {
@@ -151,13 +145,15 @@ var HeaderController = function(crudService, loginService) {
 var ListController = function(crudService, $routeParams, $resource) {
   window.ctrl = this;
   this.crudService = crudService;
-  this.model = crudService.get_model($routeParams.model_name);
-  this.list = this.model.Resource.query();
+  crudService.loadProject('Tournament').then(function() {
+    this.model = crudService.get_model($routeParams.model_name);
+    this.list = this.model.Resource.query();
+  }.bind(this));
 }
 
-ListController.prototype.nameFor = function(field, item) {
-  var field_value = item[field.name];
-
+ListController.prototype.valueFor = function(field, item) {
+  var field_value = item[field.name || 'name'];
+  // console.log('valueFor', field.name, field, item);
   if (!field.model) {
     // Just return the value in the field for this item.
     return field_value;
@@ -168,24 +164,15 @@ ListController.prototype.nameFor = function(field, item) {
   }
   // If its a model use the models name field
   var type = field.model;
-  var name_field = type.name_field || 'id';
+  var name_field = type.name_field || 'name';
   var name_func = name_field;
   if (typeof(name_func) != 'function') {
     name_func = function(item) {
-      // Prefix the type of the model to the name of it?
-      return type.name + ": " + item[name_field];
+      return item[name_field];
     };
   }
 
-  if (field.list) {
-    var value = []
-    field_value.forEach(function(item) {
-      value.push(name_func(item))
-    });
-    return value.join(", ");
-  } else {
-    return name_func(field_value);
-  }
+  return name_func(field_value);
 }
 
 ListController.prototype.deleteItem = function(item) {

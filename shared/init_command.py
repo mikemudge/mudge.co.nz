@@ -16,6 +16,7 @@ def auth():
         scopes.get('basic', Scope(name='basic')),
         scopes.get('profile', Scope(name='profile')),
         scopes.get('trail', Scope(name='trail')),
+        scopes.get('tournament', Scope(name='tournament')),
         scopes.get('read_profile', Scope(name='read_profile')),
     ]
 

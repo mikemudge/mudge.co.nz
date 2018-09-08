@@ -1,12 +1,27 @@
 <div class="admin_list" ng-controller="DetailsController as ctrl">
   <div ng-include="'/static/admin/header.tpl.html'"></div>
-  <h2>
-    View a {{ ctrl.model.name }}
-  </h2>
-
-  <pre>{{ ctrl.item | json }}</pre>
-
-  <div class="field" ng-repeat="field in ctrl.model.fields">
-    {{ field.name }}:  {{ ctrl.item[field.name] }}
-  </div>
+  <table>
+    <tr>
+      <th colspan="2">
+        <h2>
+          View a {{ ctrl.model.name }}
+        </h2>
+      </th>
+    </tr>
+    <tr ng-repeat="(k,v) in ctrl.item">
+      <td>
+        {{ k }}
+      </td>
+      <td>
+        <span ng-if="angular.isArray(v)">
+          <span ng-repeat="v2 in v">
+            {{ v2.name ? v2.name : v2 }}
+          </span>
+        </span>
+        <span ng-hide="angular.isArray(v)">
+          {{ v.name ? v.name : v }}
+        </span>
+      </td>
+    </tr>
+  </table>
 </div>

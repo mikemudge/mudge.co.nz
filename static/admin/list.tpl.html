@@ -6,7 +6,7 @@
       <th>
         Actions
       </th>
-      <th ng-repeat="field in ctrl.model.fields">
+      <th ng-repeat="field in ctrl.model.list_fields">
         {{ field.name }}
       </th>
     </tr>
@@ -24,12 +24,25 @@
           </span>
         </span>
       </td>
-      <td ng-repeat="field in ctrl.model.fields">
-        <span ng-if="field.model">
-          {{ ctrl.nameFor(field, item) }}
+      <td ng-repeat="field in ctrl.model.list_fields">
+        <span ng-if="field.list">
+          <span ng-if="field.link" ng-repeat="subitem in item[field.name]">
+            <a href="model/{{ field.model.name }}/{{ subitem.id }}">
+              {{ subitem.name }}
+            </a>
+          </span>
+          <span ng-if="!field.link" ng-repeat="subitem in item[field.name]">
+            {{ subitem.name }}
+          </span>
         </span>
-        <span ng-if="!field.model">
-          {{ item[field.name] }}
+        <span ng-if="!field.list">
+          <span ng-if="field.type == 'date'">
+            {{ ctrl.valueFor(field, item) | date: 'medium' }}
+          </span>
+          <span ng-hide="field.type == 'date'">
+            <!-- TODO should still link? -->
+            {{ ctrl.valueFor(field, item) }}
+          </span>
         </span>
       </td>
     </tr>

@@ -18,7 +18,7 @@ class NewUser(Form):
 class UserView(BaseView):
     column_exclude_list = ['password_hash']
     form_excluded_columns = ['date_created', 'password_hash', 'friended_you']
-    form_columns = ['email']
+    form_columns = ['email', 'is_active', 'admin']
 
     column_formatters = dict(BaseView.column_formatters, **{
         'last_login': BaseView.format_datetime,
@@ -38,6 +38,12 @@ class UserView(BaseView):
         return user
 
 class ScopeView(BaseView):
+    column_exclude_list = ['date_created', 'date_updated']
+    form_excluded_columns = ['date_created', 'date_updated']
+    column_formatters = dict(BaseView.column_formatters, **{
+        'name': BaseView.view_this,
+    })
+    column_formatters_detail = BaseView.column_formatters
     pass
 
 class ClientAdminView(BaseView):

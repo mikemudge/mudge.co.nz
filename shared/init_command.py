@@ -15,6 +15,7 @@ def auth():
         scopes.get('user', Scope(name='user')),
         scopes.get('basic', Scope(name='basic')),
         scopes.get('profile', Scope(name='profile')),
+        scopes.get('rock', Scope(name='rock')),
         scopes.get('trail', Scope(name='trail')),
         scopes.get('tournament', Scope(name='tournament')),
         scopes.get('read_profile', Scope(name='read_profile')),
@@ -31,7 +32,7 @@ def auth():
     print("Make sure you have CLIENT_ID and CLIENT_SECRET set in your local_config")
 
 @InitCommand.command
-def create_user(email, password=None):
+def create_user(email, password=None, admin=False):
 
     user = User.query.filter_by(email=email).first()
 
@@ -44,6 +45,7 @@ def create_user(email, password=None):
 
     # Make sure the user is usable.
     user.is_active = True
+    user.admin = admin
 
     db.session.commit()
 

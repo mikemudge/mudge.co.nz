@@ -90,9 +90,10 @@ def invalid_require_oauth(req):
     response = jsonify({
         'message': req.error_message,
         'detail': 'Missing the scope(s) required for this endpoint [%s]' % ','.join(scopes_required),
-        'status_code': 401
+        'status_code': 403
     })
-    response.status_code = 401
+    # TODO this could probably be a 401 sometimes?
+    response.status_code = 403
     return response
 
 def validate_token(token):
@@ -154,12 +155,7 @@ def _create_token_body(request, client, user):
 
     # Add some client stuff to the token?
     scopes = [s.name for s in client.scopes]
-    emails = [
-        'mike.mudge@gmail.com',
-        'mike.mudge.test@gmail.com'
-    ]
-    if user and user.email in emails:
-        # TODO should make this a user property?
+    if user and user.admin:
         scopes.append('admin')
 
     token['scopes'] = ' '.join(scopes)

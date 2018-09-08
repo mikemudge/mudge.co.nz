@@ -73,6 +73,7 @@ class User(BaseModel):
     password_hash = db.Column(db.String)
 
     is_active = db.Column(db.Boolean, default=False)
+    admin = db.Column(db.Boolean, default=False)
 
     last_login = db.Column(db.DateTime(timezone=True), server_default=func.now())
 

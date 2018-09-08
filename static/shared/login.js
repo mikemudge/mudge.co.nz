@@ -142,10 +142,11 @@ LoginService.prototype.badResponse = function(response) {
     return;
   }
 
-  if (response.status == 401) {
-    alert('Trying to access a resource which you are not authorized for\n'
+  if (response.status == 403) {
+    alert('Trying to access a resource which you are not allowed access\n'
         + response.data.message + '\n' + response.data.detail);
     // TODO figure out the best action?
+    // Relogin shouldn't help but it might if the user logs in as someone else?
     console.error(this.currentAccess);
     console.error(response.data);
   }

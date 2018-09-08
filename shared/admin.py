@@ -28,6 +28,18 @@ class BaseView(ModelView):
         # redirect to login page if user doesn't have access
         return redirect(url_for('login', next=request.url))
 
+    def view_this(view, context, model, name):
+        value = getattr(model, name)
+        if not value:
+            return ''
+        pk = getattr(model, 'id')
+        if pk:
+            print(view)
+            endpoint = view.endpoint
+            url = view.get_url('%s.details_view' % endpoint, id=pk)
+            return Markup('<a href="%s">%s</a>' % (url, value))
+        return value
+
     def format_image(view, context, model, name):
         value = getattr(model, name)
         if not value:

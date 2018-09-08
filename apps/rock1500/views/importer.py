@@ -1,5 +1,6 @@
 import requests
 
+from auth.provider import oauth
 from flask import jsonify
 from flask.views import MethodView
 from ..models import Rock1500Album, Rock1500Artist, Rock1500Song
@@ -25,7 +26,9 @@ class ImportView(MethodView):
             )
             db.session.add(album)
         album.artist = artist
-        album.cover_art_url = item.get('albumArt')
+        albumArt = item.get('albumArt')
+        if len(albumArt) <= 255:
+            album.cover_art_url = item.get('albumArt')
         album.year = item.get('albumYear')
 
         song_name = item.get('title')
@@ -38,11 +41,15 @@ class ImportView(MethodView):
         song.artist = artist
         song.album = album
 
-        song.rank2017 = item.get('rank')
-        song.rank2016 = item.get('rankOneYearAgo')
-        song.rank2015 = item.get('rankTwoYearsAgo')
+        song.rankThisYear = item.get('rank')
+        song.set2017Rank(item.get('rankOneYearAgo'))
+        song.rank2016 = item.get('rankTwoYearsAgo')
 
+    @oauth.require_oauth('admin')
     def get(self):
+        return self.updateDB()
+
+    def updateDB(self):
         # Hit rock API.
         # Steal their songs and artists.
         # Update my DB with that.
@@ -51,6 +58,7 @@ class ImportView(MethodView):
         )
         result = req.json()
 
+        print("Fetched %d songs. Parsing..." % len(result))
         for item in result:
             self.parse_song(item)
             db.session.commit()

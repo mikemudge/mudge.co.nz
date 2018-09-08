@@ -15,38 +15,27 @@ def reset():
     db.session.commit()
 
 @Command.command
-def init(reset_forced=False):
-    if reset_forced:
-        reset()
-        # The order of these is important.
-        Rock1500Pick.query.delete()
-        Rock1500Song.query.delete()
-        Rock1500Album.query.delete()
-        Rock1500Artist.query.delete()
+def importLatest():
+    # Importing this at the start breaks the webserver.
+    # I don't understand the error it gives well though.
+    from .views.importer import ImportView
 
-    # TODO only add if not exists?
-    metallica = Rock1500Artist(name="Metallica")
-    album = Rock1500Album(
-        name='...And Justice for All', artist=metallica
-    )
-    one = Rock1500Song(
-        title="One", artist=metallica, album=album
-    )
-
-    db.session.add(one)
-
-    db.session.commit()
+    result = ImportView().updateDB()
+    if result:
+        return
 
 @Command.command
 def import2016():
     import csv
-    with open('rock1500/data/Rock 1500 - 2016.csv', 'rb') as csvfile:
-        spamreader = csv.reader(csvfile)
+    with open('apps/rock1500/data/Rock 1500 - 2016.csv', 'r') as csvfile:
+        csvdata = csv.reader(csvfile)
         count = 0
-        for row in spamreader:
+        print("Parsing songs from csv...")
+        for row in csvdata:
             if row[0].strip() == '#':
                 # Skip the first row.
                 continue
+
             artist = Rock1500Artist.find_by_name(name=row[1])
             if not artist:
                 artist = Rock1500Artist(name=row[1])
@@ -67,10 +56,10 @@ def import2016():
                     album=album,
                     artist=artist,
                     title=row[2],
-                    rank2017=None,
-                    rank2016=row[0],
-                    rank2015=row[3],
                 )
                 db.session.add(song)
+            song.rank2016 = row[0]
+            song.rank2015 = row[3]
+
         print('found %d new songs' % count)
         db.session.commit()

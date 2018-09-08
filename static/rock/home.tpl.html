@@ -1,44 +1,64 @@
 <div ng-controller="RockController as ctrl">
-  So you want to be a rock superstar?
-  <div class="picks">
-    Pick your top 10<br>
-    Drag and drop them into order.
-    <div class="loading" ng-hide="ctrl.picks.$resolved">
-      Loading your picks...
+  <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
+  </div>
+  <div class="page">
+    <div class="text">
+      <p>
+        So you want to be a rock superstar?
+      </p>
+      <p>
+        Pick your top 10
+      </p>
+      <p>
+        Drag and drop them into order.
+      </p>
     </div>
-    <div class="loading" ng-show="ctrl.picks.picks.length == 0">
-      No picks yet, try finding a song below.
-    </div>
-    <div class="pick" draggable droppable drop="ctrl.handleDrop(pick, $event)"
-        id="{{ pick.id }}"
-        ng-repeat="pick in ctrl.picks.picks">
-      <label>
-        {{ $index + 1 }}: {{ pick.song.title }}
-        <div class="artist">{{ pick.song.artist.name }}</div>
-      </label>
-      <div class="delete" ng-click="ctrl.removePick(pick)">
-        <i class="fa fa-trash-o" aria-hidden="true"></i>
+    <div class="picks">
+      <div class="loading" ng-hide="ctrl.picks.$resolved">
+        Loading your picks...
       </div>
-    </div>
-    <div ng-show="ctrl.picks.picks.length">
-      <div class="button" ng-click="ctrl.savePicks()">
-        Save Picks
+      <div class="loading" ng-show="ctrl.picks.picks.length == 0">
+        No picks yet, try finding a song below.
       </div>
-    </div>
-    <div class="add_pick">
-      <!-- Search for songs, allow add new? -->
-      <label>
-        Search for a song:
-        <input ng-model="ctrl.add_pick" ng-change="ctrl.updateSuggestions()">
-        <div class="options" ng-show="ctrl.suggests.length > 0">
-          <div class="song"
-              ng-repeat="song in ctrl.suggests"
-              ng-click="ctrl.addPick(song)">
-            {{ song.rank2016 }}: {{ song.title }}
-            <div class="artist">{{ song.artist.name }}</div>
-          </div>
+      <div class="pick" draggable droppable drop="ctrl.handleDrop(pick, $event)"
+          id="{{ pick.id }}"
+          ng-repeat="pick in ctrl.picks.picks">
+        <label title="{{ ctrl.getTitle(pick.song) }}">
+          {{ $index + 1 }}: {{ pick.song.title }}
+          <div class="artist">{{ pick.song.artist.name }}</div>
+        </label>
+        <div class="delete" ng-click="ctrl.removePick(pick)">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
         </div>
-      </label>
+      </div>
+
+      <div class="actions" ng-show="ctrl.picks.picks.length">
+        <div class="button" ng-click="ctrl.savePicks()">
+          Save Picks
+        </div>
+        <div ng-show="ctrl.currentUser.admin" class="button" ng-click="ctrl.importSongs()">
+          Import Songs
+        </div>
+      </div>
+      <div class="add_pick">
+        <!-- Search for songs, allow add new? -->
+        <label>
+          Search for a song:
+          <input ng-model="ctrl.add_pick" ng-change="ctrl.updateSuggestions()">
+          <div class="options" ng-show="ctrl.suggests.length > 0">
+            <div class="song"
+                ng-repeat="song in ctrl.suggests"
+                ng-click="ctrl.addPick(song)"
+                title="{{ ctrl.getTitle(song) }}">
+              {{ song.title }} (
+                <span ng-show="song.rank2017" class="last_year">{{ song.rank2017 }} </span>
+                <span ng-hide="song.rank2017" class="last_year">{{ song.rank2016 }} </span>
+              )
+              <div class="artist">{{ song.artist.name }}</div>
+            </div>
+          </div>
+        </label>
+      </div>
     </div>
   </div>
 </div>

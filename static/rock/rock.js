@@ -1,16 +1,34 @@
-function RockController($resource, loginService, config) {
+function RockController($resource, loginService, config, $rootScope, $timeout) {
   window.ctrl = this;
-  this.Songs = $resource(config.API_URL + 'api/rock1500/song');
+  this.$timeout = $timeout;
+  this.Songs = $resource(config.API_URL + 'api/rock1500/song', {}, {
+    import: {
+      url: '/rock1500/import',
+      isArray: true
+    }
+  });
 
   this.Picks = $resource(config.API_URL + 'api/rock1500/picks');
 
-  loginService.ensureLoggedIn();
+  this.currentUser = loginService.user;
+  console.log(this);
+  $rootScope.title = "Rock"
 
   this.picks = this.Picks.get(function(response) {
     response.picks.sort(function(a, b) {
       return a.position - b.position;
     });
   });
+}
+
+RockController.prototype.getTitle = function(song) {
+  result = song.title + " by " + song.artist.name;
+  if (Number.isInteger(song.rank2017)) {
+    result += "\npreviously ranked " + song.rank2017;
+  } else {
+    result += "\npreviously ranked " + song.rank2016;
+  }
+  return result;
 }
 
 RockController.prototype.addPick = function(song) {
@@ -43,7 +61,25 @@ RockController.prototype.savePicks = function() {
   this.picks.$save();
 }
 
+RockController.prototype.importSongs = function() {
+  this.Songs.import().$promise.then(function() {
+    console.log('Import complete');
+    window.location.reload();
+  });
+}
+
 RockController.prototype.updateSuggestions = function() {
+
+  if (this.suggest_timer) {
+    // Cancel the last timer and reset.
+    this.$timeout.cancel(this.suggest_timer);
+  }
+
+  // Only load suggestions after 300 millis without a change to the search.
+  this.suggest_timer = this.$timeout(this.loadSuggestions.bind(this), 300);
+}
+
+RockController.prototype.loadSuggestions = function() {
   this.suggests = [];
   var value = this.add_pick.toLowerCase();
   if (this.add_pick.length < 2) {
@@ -78,6 +114,10 @@ angular.module('rock', [
   'rockDash'
 ])
 .controller('RockController', RockController)
+.run(function(loginService) {
+  // You must be logged in to use this app.
+  loginService.ensureLoggedIn();
+})
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.when('/dashboard', {

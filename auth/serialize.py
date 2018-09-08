@@ -6,7 +6,7 @@ class UserSchema(BaseSchema):
     class Meta:
         model = User
         exclude = BaseSchema.Meta.exclude
-        fields = ['profile', 'id', 'email']
+        fields = ['profile', 'id', 'email', 'admin']
     profile = fields.Nested('ProfileSchema')
 
 class ProfileSchema(BaseSchema):

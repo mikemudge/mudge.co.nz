@@ -42,9 +42,10 @@ class Rock1500Song(BaseModel):
     album = db.relationship(Rock1500Album, backref="songs")
 
     # The important rank, once it is known.
-    rank2017 = db.Column(db.Integer(), index=True)
+    rankThisYear = db.Column(db.Integer(), index=True)
 
     # Previous ranks if known.
+    rank2017 = db.Column(db.Integer(), index=True)
     rank2016 = db.Column(db.String(100))
     rank2015 = db.Column(db.String(100))
 
@@ -58,6 +59,13 @@ class Rock1500Song(BaseModel):
 
     def __repr__(self):
         return self.title
+
+    def set2017Rank(self, value):
+        try:
+            self.rank2017 = int(value)
+        except ValueError:
+            # TODO could map some thing?
+            pass
 
 class Rock1500Pick(BaseModel):
     song_id = db.Column(UUID(), db.ForeignKey('rock1500_song.id'), nullable=False)

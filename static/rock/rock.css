@@ -8,6 +8,7 @@
   display: block;
   border-radius: 1000px;
   border: 1px solid gray;
+  margin-bottom: 4px;
   padding: 8px;
   cursor: pointer;
 }
@@ -40,7 +41,7 @@
   position: absolute;
   max-width: 80%;
   /* Room for ~4.5 options */
-  max-height: 220px;
+  /*max-height: 220px;*/
   overflow-y: auto;
   border: 1px solid #333;
   box-shadow: 2px 2px 5px 0 #777777;
@@ -51,7 +52,7 @@
   display: block;
   padding: 6px 20px 6px 32px;
   cursor: pointer;
-  border: 1px solid #777777;
+  border-bottom: 1px solid #777777;
 }
 
 .song .rank {

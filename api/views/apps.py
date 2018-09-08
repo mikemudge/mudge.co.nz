@@ -18,6 +18,10 @@ styles = {
     ],
     'roboto': [
         'https://fonts.googleapis.com/css?family=Roboto'
+    ],
+    'style1': [
+        '/static/shared/common.css',
+        '/static/shared/theme1.css',
     ]
 }
 
@@ -66,7 +70,7 @@ apps['racer'] = {
     ]
 }
 apps['rock'] = {
-    'tags': ['api'],
+    'tags': ['api', 'style1'],
     'scripts': [
         '/static/rock/dashboard.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
@@ -126,10 +130,14 @@ class ProjectAppView(MethodView):
                 # Enable sentry.
                 app.sentry = True
 
-        app.styles = ['/static/shared/common.css'] + app.styles
         app.addScript('/static/shared/login.js')
 
         conf = apps.get(app_name)
+
+        if not conf or 'style1' not in conf.get('tags', []):
+            # Add common styles by default.
+            app.styles = ['/static/shared/common.css'] + app.styles
+
         if conf:
             for tag in conf.get('tags', []):
                 if tag in scripts:

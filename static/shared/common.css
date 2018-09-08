@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
+  font-size: 16px;
 }
 
 a {
@@ -16,6 +17,10 @@ a {
   cursor: pointer;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .column {
   display: inline-block;
 }
@@ -23,6 +28,26 @@ a {
 /* A nice default way to display a user object */
 .user {
   margin: 16px 0;
+}
+
+/* Header styles */
+.header {
+  background-image: linear-gradient(#FFFFFF, #EEEEEE);
+  height: 50px;
+  /* Forces children to be contained inside this. */
+  padding: 1px;
+}
+
+.header .home {
+  margin: 16px;
+  float: left;
+}
+.header .title {
+  /* Allow space left and right for other header items */
+  margin: 13px 180px 14px 70px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
 }
 /* User in the header is displayed in the top right corner */
 .header .user {
@@ -56,6 +81,10 @@ a {
   font-size: 12px;
 }
 
+.page {
+  padding: 0px 3%;
+}
+
 /* Form display */
 .field {
   display: block;
@@ -69,6 +98,10 @@ a {
 .field select {
   display: inline-block;
   width: 100%;
+}
+
+.actions {
+  margin: 16px 0;
 }
 
 .button {

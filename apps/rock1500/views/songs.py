@@ -27,6 +27,7 @@ class Rock1500SongView(DBModelView):
                 Rock1500Song.title.ilike("%" + search + "%"),
                 Rock1500Artist.name.ilike("%" + search + "%")
             ))
+            query.order_by(Rock1500Song.rank2017)
 
         c = request.args.get('count', 20)
         query = query.limit(c)

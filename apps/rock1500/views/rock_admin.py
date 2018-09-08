@@ -13,11 +13,12 @@ class RockArtistView(BaseView):
 class RockSongView(BaseView):
     column_exclude_list = ['date_created']
 
-    column_searchable_list = ['title', 'rank2017', 'rank2016', 'rank2015', 'artist.name', 'album.name']
+    column_searchable_list = ['title', 'rankThisYear', 'rank2017', 'rank2016', 'rank2015', 'artist.name', 'album.name']
 
-    column_filters = ['rank2017', 'rank2016']
+    column_filters = ['rankThisYear', 'rank2017', 'rank2016']
 
     form_overrides = dict(rank2016=IntegerField)
+    form_overrides = dict(rank2017=IntegerField)
 
 class RockAlbumView(BaseView):
     column_exclude_list = ['date_created']

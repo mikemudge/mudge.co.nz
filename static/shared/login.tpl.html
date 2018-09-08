@@ -1,18 +1,5 @@
 <div ng-controller="LoginController as ctrl">
-
-  <div class="header">
-    Header
-    <div class="user" ng-show="ctrl.currentUser.id">
-      <div class="image">
-        <img ng-src="{{ ctrl.currentUser.profile.image }}" />
-      </div>
-      <div class="username">
-        {{ ctrl.currentUser.profile.username }}
-      </div>
-    </div>
-    <div class="clickable" ng-hide="ctrl.currentUser.id" ng-click="ctrl.login()">
-      Login
-    </div>
+  <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
   </div>
 
   <div>

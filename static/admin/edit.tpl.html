@@ -20,10 +20,16 @@
           <!-- TODO include edit fields for the sub model -->
           <!-- TODO probably should include a directive? -->
         </span>
+        <span ng-if="field.type=='readonly'">
+          {{ ctrl.item[field.name]}}
+        </span>
         <span ng-if="field.type=='select'">
           <!-- Get options from model? -->
           <!-- TODO use a better selector thing -->
-          <select ng-options="field.model.name_field(o) for o in field.options track by o.id" ng-model="ctrl.item[field.name]">
+          <select ng-if="field.list" multiple ng-options="o.name for o in field.options track by o.id" ng-model="ctrl.item[field.name]">
+            <option>&lt;None&gt;</option>
+          </select>
+          <select ng-if="!field.list" ng-options="o.name for o in field.options track by o.id" ng-model="ctrl.item[field.name]">
             <option>&lt;None&gt;</option>
           </select>
         </span>
@@ -34,7 +40,10 @@
     </tr>
     <tr>
       <td colspan="2">
-        <div class="button save" ng-click="ctrl.saveItem(ctrl.item)">
+        <div ng-show="ctrl.item.isSaving" class="button save">
+          Saving
+        </div>
+        <div ng-hide="ctrl.item.isSaving" class="button save" ng-click="ctrl.saveItem(ctrl.item)">
           Save
         </div>
       </td>

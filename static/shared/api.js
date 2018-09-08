@@ -27,15 +27,9 @@ var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope) {
         console.error('Weird 0 error', response);
         // Not sure what causes this, but it happens.
         return $q.reject(response);
-      } else if (response.status == 403) {
-        // Need to lazy inject this to avoid a dependency cycle.
+      } else if (response.status == 403 || response.status == 401) {
         var loginService = $injector.get('loginService');
-        loginService.badResponse();
-        return $q.reject(response);
-      } else if (response.status == 401) {
-        alert('Trying to access a resource which you are not authorized for\n'
-            + response.data.message + '\n' + response.data.detail);
-        console.error(response.data);
+        loginService.badResponse(response);
         return $q.reject(response);
       } else {
         console.error('Error for response', response.status, response);

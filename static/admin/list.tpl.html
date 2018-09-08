@@ -6,7 +6,7 @@
       <th>
         Actions
       </th>
-      <th ng-repeat="field in ctrl.model.fields">
+      <th ng-repeat="field in ctrl.model.list_fields">
         {{ field.name }}
       </th>
     </tr>
@@ -24,7 +24,7 @@
           </span>
         </span>
       </td>
-      <td ng-repeat="field in ctrl.model.fields">
+      <td ng-repeat="field in ctrl.model.list_fields">
         <span ng-if="field.list">
           <span ng-if="field.link" ng-repeat="subitem in item[field.name]">
             <a href="model/{{ field.model.name }}/{{ subitem.id }}">

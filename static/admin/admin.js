@@ -1,19 +1,58 @@
 var CrudService = function($resource, config) {
-  this.AdminModels = $resource('/api/admin/Tournament');
+  this.AdminModels = $resource('/api/admin/project/:projectName');
   this.models = {};
   this.$resource = $resource;
 }
 
 CrudService.prototype.loadProject = function(projectName) {
   var loadingModels = this.AdminModels.query({
-    name: projectName
+    projectName: projectName
   }).$promise.then(function(response) {
     console.log('Loaded project: ' + projectName);
     console.log(response);
     response.forEach(function(model) {
       this.models[model.name.toLowerCase()] = model;
+      parseDates = function(model, item) {
+        model.fields.forEach(function(f) {
+          datetype = (
+            f.type == 'datetime-local' ||
+            f.type == 'date'
+          );
+          if (datetype && item[f.name]) {
+            item[f.name] = new Date(item[f.name]);
+          }
+        });
+      }
+
       model.Resource = this.$resource(model.endpoints.crud, {
         'id': '@id'
+      }, {
+        query: {
+          isArray: true,
+          interceptor: {
+            response: function(value) {
+              value.resource.forEach(parseDates.bind(null, model));
+              return value;
+            }
+          }
+        },
+        get: {
+          interceptor: {
+            response: function(value) {
+              parseDates(model, value.resource);
+              return value;
+            }
+          }
+        },
+        save: {
+          method: 'POST',
+          interceptor: {
+            response: function(value) {
+              parseDates(model, value.resource);
+              return value;
+            }
+          }
+        }
       })
     }.bind(this));
 
@@ -51,30 +90,38 @@ var DetailsController = function(crudService, $routeParams) {
 var EditController = function(crudService, $location, $routeParams) {
   window.ctrl = this;
   this.$location = $location;
-  this.model = crudService.get_model($routeParams.model_name);
 
-  if ($routeParams.id) {
-    this.item = this.model.Resource.get({id: $routeParams.id});
-  } else {
-    // Create new.
-    this.item = new this.model.Resource();
-  }
-  // Load options for models.
-  this.model.fields.forEach(function(f) {
-    if (f.model) {
-      // Get them for options?
-      // TODO this should happen once we attempt to edit the field.
-      // Using some ajax search functionality.
-      f.options = f.model.Resource.query();
+  crudService.loadProject('Tournament').then(function() {
+    this.model = crudService.get_model($routeParams.model_name);
+
+    if ($routeParams.id) {
+      this.item = this.model.Resource.get({id: $routeParams.id});
+    } else {
+      // Create new.
+      this.item = new this.model.Resource();
     }
-  });
+
+    // Load options for models.
+    this.model.fields.forEach(function(f) {
+      if (f.model) {
+        // Get them for options?
+        // TODO this should happen once we attempt to edit the field.
+        // Using some ajax search functionality.
+        f.options = f.model.Resource.query();
+        f.options.$promise.then(function() {
+          console.log(f.options);
+        })
+      }
+    });
+  }.bind(this));
 }
 
 EditController.prototype.saveItem = function(item) {
   // Updates on the server.
+  item.isSaving = true;
   item.$save().then(function() {
     // TODO redirect to list view or stay here?
-    this.$location.path('model/' + this.model.name);
+    // this.$location.path('model/' + this.model.name);
   }.bind(this), function(response) {
     // Handle errors?
     console.error(response);

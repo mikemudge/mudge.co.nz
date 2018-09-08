@@ -1,0 +1,24 @@
+<div class="home">
+  <a ng-hide="ctrl.home" href=".">
+    Back
+  </a>
+</div>
+<div class="title">
+  {{ title }}
+</div>
+
+<div ng-show="!ctrl.currentUser.id" class="user">
+  <a href="./login">
+    Login
+  </a>
+</div>
+<div ng-show="ctrl.currentUser.id" class="user">
+  <!-- /auth/user? -->
+  <!-- TODO allow redirect to a user/profile update page? -->
+  <div class="image">
+    <img ng-src="{{ ctrl.currentUser.profile.image }}" />
+  </div>
+  <div class="username">
+    {{ ctrl.currentUser.profile.username }}
+  </div>
+</div>

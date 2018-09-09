@@ -125,7 +125,8 @@ class TestLogin(BaseTestCase):
         self.assertEqual(response.json['data'], {
             'id': user['id'],
             'email': 'test_auth@test.mudge.co.nz',
-            'profile': profile
+            'profile': profile,
+            'admin': False
         })
 
     def test_no_access(self):

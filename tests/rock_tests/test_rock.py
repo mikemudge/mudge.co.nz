@@ -78,6 +78,7 @@ class TestRock(BaseTestCase):
 
         importer.requests.get = fakeGet
 
+        self.jsonClient.createAdminUser('test_import')
         self.jsonClient.get('rock1500/import')
 
         pinkerton = Rock1500Album.find_by_name('Pinkerton')

@@ -93,6 +93,12 @@ class JsonClient():
     def add_scope(self, scope):
         self.clientApp.scopes.append(Scope(name=scope))
 
+    def createAdminUser(self, username):
+        user = self.createUser(username)
+        user.admin = True
+        db.session.commit()
+        self.loginAs(username)
+
     def createLoggedInUser(self, username):
         user = self.createUser(username)
         self.loginAs(username)

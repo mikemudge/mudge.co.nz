@@ -48,6 +48,8 @@ def jack():
         "https://cdn.firebase.com/js/client/2.2.6/firebase.js",
         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js",
     ]
+
+    app.setupFolder('/static/jack')
     return app.render()
 
 @main_bp.route('/stuff/')

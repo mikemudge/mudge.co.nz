@@ -9,6 +9,9 @@ scripts = {
     ],
     'api': [
         '/static/shared/api.js',
+    ],
+    'login': [
+        '/static/shared/login.js'
     ]
 }
 
@@ -16,10 +19,14 @@ styles = {
     'font-awesome': [
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
     ],
-    'roboto': [
-        'https://fonts.googleapis.com/css?family=Roboto'
+    'common': [
+        'https://fonts.googleapis.com/css?family=Roboto',
+        '/static/shared/common.css',
     ],
+    # Use this or common but not both?
+    # TODO tag deps?
     'style1': [
+        'https://fonts.googleapis.com/css?family=Roboto',
         '/static/shared/common.css',
         '/static/shared/theme1.css',
     ]
@@ -50,14 +57,18 @@ apps['rts'] = {
         '/static/rts/device_orientation.js',
     ]
 }
-apps['soccer'] = {}
+apps['soccer'] = {
+    'tags': ['common']
+}
 apps['tournament'] = {
-    'tags': ['api'],
+    'tags': ['api', 'login', 'style1'],
 }
 apps['breakout'] = {
     'tags': ['threejs']
 }
-apps['slack_history'] = {}
+apps['slack_history'] = {
+    'tags': ['common']
+}
 apps['user'] = {
     'tags': ['font-awesome', 'api']
 }
@@ -80,17 +91,17 @@ apps['rock'] = {
     ]
 }
 apps['trail'] = {
-    'tags': ['api']
+    'tags': ['api', 'gmaps']
 }
 apps['ceo_bingo'] = {}
 apps['cv'] = {
-    'tags': ['roboto'],
+    'tags': ['common'],
 }
-apps['projects'] = {
-    'tags': ['api']
-}
+# apps['projects'] = {
+#     'tags': ['api']
+# }
 apps['admin'] = {
-    'tags': ['api', 'font-awesome'],
+    'tags': ['api', 'login', 'common', 'font-awesome'],
     'templates': [
         '/static/admin/header.tpl.html'
     ]
@@ -114,18 +125,14 @@ class ProjectAppsListView(MethodView):
 class ProjectAppView(MethodView):
     def get(self, app_name, path=None):
 
-        if not apps.get(app_name):
+        if apps.get(app_name) is None:
             return abort(404)
 
         app = Angular(app_name)
         app.base = '/projects/%s/' % app_name
 
-        app.setupFolder('/static/%s' % app_name)
-
         if app_name == 'trail':
-            # Need a better way than this.
-            app.scripts += [gmaps()]
-
+            # Need a better way than this?
             if current_app.config.get('ENV') != 'dev':
                 # Enable sentry.
                 app.sentry = True
@@ -133,13 +140,12 @@ class ProjectAppView(MethodView):
         app.addScript('/static/shared/login.js')
 
         conf = apps.get(app_name)
-
-        if not conf or 'style1' not in conf.get('tags', []):
-            # Add common styles by default.
-            app.styles = ['/static/shared/common.css'] + app.styles
-
         if conf:
-            for tag in conf.get('tags', []):
+            tags = conf.get('tags', [])
+            if 'gmaps' in tags:
+                app.scripts += [gmaps()]
+
+            for tag in tags:
                 if tag in scripts:
                     app.scripts += scripts[tag]
                 if tag in styles:
@@ -149,5 +155,8 @@ class ProjectAppView(MethodView):
             app.styles += conf.get('styles', [])
             for t in conf.get('templates', []):
                 app.addTemplate(t)
+
+        # Add app files last?
+        app.setupFolder('/static/%s' % app_name)
 
         return app.render()

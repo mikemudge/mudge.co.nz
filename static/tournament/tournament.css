@@ -8,41 +8,7 @@ body {
 	background-color: #DDDDDD;
 }
 
-/* Generic stuff */
-.header {
-  background: #CCCCCC;
-  width: 100%;
-  overflow: hidden;
-}
-
-.header .nav-item {
-  display: inline-block;
-}
-
-.left {
-  float: left;
-}
-.right {
- float: right;
-}
-
-.table {
-	display: table;
-  width: 100%;
-}
-.row.header {
-  font-weight: 600;
-}
-.row {
-	display: table-row;
-}
-.cell {
-	display: table-cell;
-}
-.active {
-	color: #00d0e0;
-}
-
+/* Not sure if we use this somewhere in tournament??? */
 .tag {
   border-radius: 5px;
   padding: 2px 8px;
@@ -51,48 +17,8 @@ body {
   display: inline-block;
 }
 
-/* Material Design */
-select {
-  /* Remove default border, must be first. */
-  border: none;
-
-  -webkit-appearance: inherit;
-  background-color: transparent;
-  border-bottom: 2px solid #00d0e0;
-  border-radius: 0px;
+/* TODO is this used??? */
+.active {
   color: #00d0e0;
-  font-family: inherit;
-  font-size: 20px;
-  outline: none;
-  padding: 4px;
-  width: 100%;
 }
 
-.selector {
-  border-left: .25em solid transparent;
-  border-right: .25em solid transparent;
-  border-top: .375em solid #00d0e0;
-  pointer-events: none;
-}
-
-/* Use custom arrow */
-.mdl-selectfield {
-  font-family: 'Roboto','Helvetica','Arial',sans-serif;
-  position: relative;
-  display: inline-block;
-  padding-right: 1em;
-  box-sizing: content-box;
-}
-
-/* After doesn't work on selects, so requires a div wrapper */
-.mdl-selectfield::after {
-  position: absolute;
-  top: 0.75em;
-  right: 0.5em;
-  /* Styling the down arrow */
-  content: '';
-  border-left: .25em solid transparent;
-  border-right: .25em solid transparent;
-  border-top: .375em solid #00d0e0;
-  pointer-events: none;
-}

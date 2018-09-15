@@ -1,42 +1,5 @@
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-}
 
-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
-.table {
-  display: table;
-  width: 100%;
-  border-collapse:collapse;
-}
-
-.row {
-  display: table-row;
-}
-
-.cell {
-  display: table-cell;
-  border: 1px solid black;
-  padding: 8px;
-}
-
-.intro {
-  text-align: center;
-  /* To allow space for the profile image */
-  padding: 48px 160px 48px 10px;
-  margin: 0px auto;
-}
-
+/* General text styles. */
 .title {
   font-size: 20px;
   font-weight: 700;
@@ -50,8 +13,14 @@ img {
   margin: 4px 0;
 }
 
-.header {
+.intro {
   position: relative;
+}
+.intro .info {
+  text-align: center;
+  /* To allow space for the profile image */
+  padding: 48px 160px 48px 10px;
+  margin: 0px auto;
 }
 
 .profile {

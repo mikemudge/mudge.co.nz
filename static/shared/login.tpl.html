@@ -5,6 +5,10 @@
   <div>
     <h4>Status</h4>
     <p>{{ ctrl.loginService.currentStatus }}</p>
+    <p>
+    Current access: {{ ctrl.currentAccess.scopes }}
+    </p>
+    <hr>
   </div>
 
   <div ng-show="ctrl.googleLoginButton">

@@ -307,6 +307,7 @@ var LoginController = function(loginService, $location) {
   window.login = this;
   this.$location = $location;
   this.loginService = loginService;
+  this.currentAccess = loginService.currentAccess;
   this.currentUser = loginService.user;
   // TODO if not logged in make sure to show a modal?
   this.debug = [

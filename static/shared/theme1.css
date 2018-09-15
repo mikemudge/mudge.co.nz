@@ -44,3 +44,132 @@ p {
 }
 
 /* Forms */
+.input-field {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+input, select, textarea {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+
+  -webkit-transition: border .3s, -webkit-box-shadow .3s;
+  transition: border .3s, -webkit-box-shadow .3s;
+  transition: box-shadow .3s, border .3s;
+  transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+
+input:valid {
+  position: relative;
+}
+input[value] {
+  position: relative;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-bottom: 1px solid #26a69a;
+  -webkit-box-shadow: 0 1px 0 0 #26a69a;
+  box-shadow: 0 1px 0 0 #26a69a;
+  outline: none;
+}
+
+label {
+  color: #9e9e9e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1rem;
+  cursor: text;
+  -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out;
+  transition: color .2s ease-out, -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out, color .2s ease-out;
+  transition: transform .2s ease-out, color .2s ease-out, -webkit-transform .2s ease-out;
+  -webkit-transform-origin: 0% 100%;
+  transform-origin: 0% 100%;
+  text-align: initial;
+  /* The transform handles vertical position */
+  padding: 0 12px;
+  -webkit-transform: translateY(12px);
+  transform: translateY(12px);
+}
+/* Location of the label */
+.input-field label {
+  -webkit-transform: translateY(-14px) scale(0.8);
+  transform: translateY(-14px) scale(0.8);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+/* When active this will be highlighted */
+.input-field:focus-within label {
+  color: #26a69a;
+}
+
+/* Buttons */
+button {
+  background-color: #26a69a;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: .5px;
+  -webkit-transition: background-color .2s ease-out;
+  transition: background-color .2s ease-out;
+}
+
+button:hover {
+  background-color: #2bbbad;
+}
+
+/* Material Design Select dropdown */
+select {
+  /* Remove default border, must be first. */
+  border: none;
+
+  -webkit-appearance: inherit;
+  background-color: transparent;
+  border-bottom: 2px solid #00d0e0;
+  border-radius: 0px;
+  color: #00d0e0;
+  font-family: inherit;
+  font-size: 20px;
+  outline: none;
+  padding: 4px;
+  width: 100%;
+}
+
+.selector {
+  border-left: .25em solid transparent;
+  border-right: .25em solid transparent;
+  border-top: .375em solid #00d0e0;
+  pointer-events: none;
+}
+
+/* Use custom arrow */
+.mdl-selectfield {
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+  position: relative;
+  display: inline-block;
+  padding-right: 1em;
+  box-sizing: content-box;
+}
+
+/* After doesn't work on selects, so requires a div wrapper */
+.mdl-selectfield::after {
+  position: absolute;
+  top: 0.75em;
+  right: 0.5em;
+  /* Styling the down arrow */
+  content: '';
+  border-left: .25em solid transparent;
+  border-right: .25em solid transparent;
+  border-top: .375em solid #00d0e0;
+  pointer-events: none;
+}

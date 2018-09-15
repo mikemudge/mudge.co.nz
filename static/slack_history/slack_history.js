@@ -1,8 +1,9 @@
 var MainController = function($resource, $location) {
-  var params = $location.search();
-  var name = params.name;
+  this.$location = $location;
+  this.SlackHistory = $resource('/static/slack_history/direct_messages/:name.json')
 
   var SlackUser = $resource('/static/slack_history/metadata.json')
+
   this.metadata = SlackUser.get(function(metadata) {
     this.users = [];
     this.userMap = {};
@@ -25,14 +26,24 @@ var MainController = function($resource, $location) {
     }.bind(this));
   }.bind(this));
 
+  var params = $location.search();
+  if (params.name) {
+    this.loadMessages(params.name);
+  } else {
+    console.log("Not loading anyone");
+  }
+}
+MainController.prototype.loadMessages = function(name) {
   if (!name) {
     this.error = "No name specified"
     // TODO could load metadata and list names?
     return;
   }
 
-  var SlackHistory = $resource('/static/slack_history/direct_messages/' + name + '.json')
-  this.history = SlackHistory.get();
+  console.log("Loading " + name + ".json");
+  this.history = this.SlackHistory.get({
+    name: name
+  });
 
   this.history.$promise.then(function(history) {
     console.log(history);
@@ -40,6 +51,10 @@ var MainController = function($resource, $location) {
       message.date = new Date(parseInt(message.ts.split('.')[0], 10) * 1000);
     }.bind(this));
   }.bind(this));
+}
+
+MainController.prototype.selectUser = function(user) {
+  this.$location.search('name', user.username);
 }
 
 MainController.prototype.randomColor = function() {

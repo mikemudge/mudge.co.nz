@@ -1,13 +1,31 @@
-.users .username {
-  display: inline-block;
-  padding: 4px 8px;
-  margin: 4px;
-  border: 1px solid;
-  border-radius: 5px;
+body {
+  overflow: hidden
+}
+
+.sidebar {
+  background-color: #3C2B3B;
+  width: 200px;
+  height: 100%;
+  overflow-y: auto;
+  float: left;
+}
+
+.sidebar .username {
+  color: #766C75;
+  margin: 4px 20px;
+}
+
+.page {
+  margin: 0;
+  /* The size of the sidebar */
+  margin-left: 216px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .message {
   padding: 2px 0;
+  position: relative;
 }
 
 .message:hover {

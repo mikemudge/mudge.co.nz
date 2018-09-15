@@ -11,16 +11,10 @@ class Angular():
         self.include = None
         self.sentry = False
         self.base = '/'
-        self.scripts = [
-            url_for('static', filename='%s/%s.js' % (name, name))
-        ]
+        self.scripts = []
         self.async = []
         self.templates = []
-        self.styles = [
-            # I removed this, it had button styles in.
-            # url_for('static', filename='common/styles.css'),
-            url_for('static', filename='%s/%s.css' % (name, name))
-        ]
+        self.styles = []
         self.config = {
             'basePath': '/static/%s/' % self.appName,
             'API_URL': current_app.config.get('API_URL'),
@@ -78,10 +72,10 @@ class Angular():
             }]
 
     def setupFolder(self, path):
-        self.styles = [
+        self.styles += [
             '%s/%s.css?v=%s' % (path, self.appName, self.version)
         ]
-        self.scripts = [
+        self.scripts += [
             '%s/%s.js?v=%s' % (path, self.appName, self.version)
         ]
 

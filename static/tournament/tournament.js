@@ -11,7 +11,6 @@ function TournamentService($resource, loginService) {
     id: '@id'
   });
 
-  loginService.ensureLoggedIn();
   // TODO paginate?
   this.tournaments = this.Tournament.query();
   this.cache = {};
@@ -25,15 +24,20 @@ TournamentService.prototype.loadTournament = function(id) {
   }
   return this.cache[id]
 }
-var TournamentListController = function($scope, tournamentService) {
+var TournamentListController = function(loginService, tournamentService) {
+  this.currentUser = loginService.user;
+  this.ctrl = this;
   this.tournaments = tournamentService.tournaments;
 }
 
-var TournamentCreateController = function(tournamentService) {
+var TournamentCreateController = function(loginService, tournamentService) {
   var Tournament = tournamentService.Tournament;
+  this.currentUser = loginService.user;
+  this.ctrl = this;
   this.tournamentService = tournamentService;
   this.newTournament = new Tournament();
   this.newTournament.teams = [];
+  this.newTeam = {};
 }
 
 TournamentCreateController.prototype.newTournamentTeam = function() {
@@ -42,18 +46,22 @@ TournamentCreateController.prototype.newTournamentTeam = function() {
 }
 
 TournamentCreateController.prototype.save = function(tournament) {
-  if (!tournament.id) {
-    // Add the tournament to the list if it is a newly created one.
-    this.tournamentService.tournaments.push(tournament);
-  }
-  tournament.$save();
+  var created = !tournament.id;
+  tournament.$save().then(function() {
+    if (created) {
+      // Add the tournament to the list if it is a newly created one.
+      this.tournamentService.tournaments.push(tournament);
+    }
+  }.bind(this));
 }
 
-var TournamentController = function($routeParams, $scope, tournamentService) {
+var TournamentController = function($routeParams, $scope, loginService, tournamentService) {
   if (!$routeParams.tournament_id) {
     throw Error('No tournament selected');
   }
 
+  this.currentUser = loginService.user;
+  this.ctrl = this;
   this.tournament = tournamentService
       .loadTournament($routeParams.tournament_id);
 }
@@ -191,6 +199,11 @@ angular.module('tournament', [
 .controller('TournamentController', TournamentController)
 .controller('TournamentCreateController', TournamentCreateController)
 .controller('TournamentListController', TournamentListController)
+.run(function(loginService, $rootScope) {
+  // You must be logged in to use this app.
+  loginService.ensureLoggedIn();
+  $rootScope.title = "Tournament";
+})
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.when('/', {

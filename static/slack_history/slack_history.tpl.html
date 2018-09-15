@@ -1,39 +1,41 @@
 <div ng-controller="MainController as ctrl">
-  <div class="error" ng-show="ctrl.error">
-    {{ ctrl.error }}
-  </div>
-  <div class="users">
+  <div class="sidebar">
     <div class="username" ng-repeat="user in ctrl.users | orderBy: 'username'">
-      <a href="?name={{ user.username }}">
+      <div class="clickable" ng-click="ctrl.selectUser(user)">
         {{ user.username }}
-      </a>
+      </div>
     </div>
   </div>
-  <div class="page" ng-hide="ctrl.history.$resolved">
-    Loading messages...
-  </div>
-  <div class="page" ng-show="ctrl.history.$resolved">
-    <div class="message_count"> {{ ctrl.history.messages.length }} Messages</div>
-    <div class="messages">
-      <div class="message" ng-repeat="message in ctrl.history.messages | reverse"
-          ng-class="{upload: message.upload}">
-        <div class="date">
-          {{ message.date | date: 'shortTime'}}
-        </div>
-        <div class="content">
-          <div class="username" ng-style="{color: ctrl.userMap[message.user].color}">
-            {{ ctrl.userMap[message.user].username }}:
+  <div class="page">
+    <div class="error" ng-show="ctrl.error">
+      {{ ctrl.error }}
+    </div>
+    <div ng-hide="ctrl.history.$resolved">
+      Loading messages...
+    </div>
+    <div ng-show="ctrl.history.$resolved">
+      <div class="message_count"> {{ ctrl.history.messages.length }} Messages</div>
+      <div class="messages">
+        <div class="message" ng-repeat="message in ctrl.history.messages | reverse"
+            ng-class="{upload: message.upload}">
+          <div class="date">
+            {{ message.date | date: 'shortTime'}}
           </div>
-          <div class="text">
-            {{ message.text }}
-          </div>
-          <div ng-show="message.subtype">
-            <div class="expand">
-              <span ng-click="json = !json">
-                Show json for {{ message.subtype }}
-              </span>
+          <div class="content">
+            <div class="username" ng-style="{color: ctrl.userMap[message.user].color}">
+              {{ ctrl.userMap[message.user].username }}:
             </div>
-            <pre ng-show="json" class="json">{{ message | json }}</pre>
+            <div class="text">
+              {{ message.text }}
+            </div>
+            <div ng-show="message.subtype">
+              <div class="expand">
+                <span ng-click="json = !json">
+                  Show json for {{ message.subtype }}
+                </span>
+              </div>
+              <pre ng-show="json" class="json">{{ message | json }}</pre>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,126 @@
+<div ng-controller="MainController as ctrl">
+  <div class="nav">
+    <!-- Probably need some nav styles? -->
+    <div class="tab clickable" ng-repeat="t in ctrl.tabs"
+        ng-click="ctrl.tab = t">
+      {{ t }}
+    </div>
+  </div>
+  <div class="page" ng-show="ctrl.tab == 'Common'">
+    <div class="example">
+      <p> A label and input </p>
+      <label> Label </label>
+      <input name="test1"/>
+    </div>
+
+    <div class="example">
+      <p> A label and color input </p>
+      <label> Color </label>
+      <input type="color" name="test_color"/>
+    </div>
+
+    <div class="example">
+      <p> A label and a number input </p>
+      <label> Label </label>
+      <input type="number" name="test1"/>
+    </div>
+
+    <div class="example">
+      <p> A button </p>
+      <button> Button </button>
+    </div>
+
+    <div class="example">
+      <p> An overridden button </p>
+      <button class="red"> Button </button>
+    </div>
+
+    <div class="example">
+      <p> A popup </p>
+      <div class="clickable" ng-click="ctrl.showing = 'Example1'">
+        Show
+      </div>
+      <div class="popup" ng-show="ctrl.showing == 'Example1'">
+        <div class="close">X</div>
+        <label> Input in a popup </label>
+        <input />
+      </div>
+    </div>
+
+    <div class="example">
+      <p> Narrow form </p>
+      <form style="width: 320px; border: 1px solid;">
+        <label> Label </label>
+        <input />
+        <button type="submit"> Button </button>
+      </form>
+    </div>
+    <div class="example">
+      <label> Field with error</label>
+      <input />
+      <div class="error">Invalid field</div>
+    </div>
+
+    <div class="example">
+      <p> Table </p>
+      <div class="table">
+        <div class="row header">
+          <div class="cell"> Header 1 </div>
+          <div class="cell"> Header 2 </div>
+          <div class="cell"> Header 3 </div>
+          <div class="cell"> Header 4 </div>
+        </div>
+        <div class="row">
+          <div class="cell"> Value 1 </div>
+          <div class="cell"> Value 2 </div>
+          <div class="cell"> Value 3 </div>
+          <div class="cell"> Value 4 </div>
+        </div>
+        <div class="row">
+          <div class="cell"> 1 </div>
+          <div class="cell"> 2 </div>
+          <div class="cell"> 3 </div>
+          <div class="cell"> 4 </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <p> code/json in pre format </p>
+      <pre>{
+    "json": "structure"
+  }</pre>
+  <p> Break between </p>
+      <pre>function(string) {
+    return string;
+  }</pre>
+    </div>
+
+  </div>
+  <div class="page" ng-show="ctrl.tab == 'Style1'">
+    <h2>Theme 1</h2>
+    <div class="example">
+      <p> A label and input </p>
+      <div class="input-field">
+        <label> Label </label>
+        <input name="test1"/>
+      </div>
+    </div>
+
+    <div class="example">
+      <p> A label and color input </p>
+      <div class="input-field">
+        <label> Color </label>
+        <input type="color" name="test_color"/>
+      </div>
+    </div>
+
+    <div class="example">
+      <p> A label and a number input </p>
+      <div class="input-field">
+        <label> Label </label>
+        <input type="number" name="test1"/>
+      </div>
+    </div>
+  </div>
+</div>

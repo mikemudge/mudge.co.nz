@@ -28,6 +28,8 @@ pre {
 }
 
 .clickable {
+  /* TODO added inline-block here for trail? */
+  display: inline-block;
   cursor: pointer;
 }
 
@@ -43,10 +45,35 @@ pre {
   display: inline-block;
 }
 
-/* A nice default way to display a user object */
-.user {
-  /* TODO should this be custom to a region? */
-  /*margin: 16px 0;*/
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 240px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 10px 1px rgba(155,155,155, 0.5);
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 8px;
 }
 
 /* Header styles */
@@ -101,6 +128,11 @@ pre {
   vertical-align: middle;
   font-size: 12px;
 }
+/* Navigation styles */
+/* Very basic, could use work and themes? */
+.nav .tab {
+  padding: 4px 20px;
+}
 
 .page {
   padding: 0px 3%;
@@ -114,8 +146,10 @@ pre {
   border-collapse:collapse;
 }
 
+/* TODO gets the main header styles too? */
 .row.header {
-  font-weight: 600;
+  font-size: 18px;
+  height: inherit;
 }
 .row {
   display: table-row;
@@ -127,42 +161,29 @@ pre {
   padding: 8px;
 }
 
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-/* Floating column for inputs: 75% width */
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75 {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-
 /* Form display */
 input, select, textarea {
   width: 100%;
   max-width: 600px;
-  padding: 12px 8px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
   font-size: inherit;
 }
+input[type="color"] {
+  height: 36px;
+  width: 36px;
+  padding: 4px;
+  vertical-align: middle;
+}
 
 label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
+  padding: 8px 8px 8px 4px;
+  font-size: 14px;
+  color: #666666;
+  vertical-align: middle;
 }
 
 .field {
@@ -183,15 +204,20 @@ label {
   margin: 16px 0;
 }
 
-button {
-  border-radius: 100px;
-  border: 2px solid black;
-  padding: 4px 20px;
+/* Default button style */
+button,
+.button {
+  background-color: #00d0e0;
+  border-radius: 2px;
+  color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  font-size: inherit;
+  padding: 8px 20px;
 }
 
-button:hover {
-  background-color: rgba(0, 0, 0, .2)
+button:hover,
+.button:hover {
+  opacity: 0.8;
 }
 

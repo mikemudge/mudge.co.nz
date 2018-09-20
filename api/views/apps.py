@@ -91,7 +91,7 @@ apps['rock'] = {
     ]
 }
 apps['trail'] = {
-    'tags': ['api', 'gmaps']
+    'tags': ['api', 'common', 'gmaps']
 }
 apps['ceo_bingo'] = {}
 apps['cv'] = {
@@ -105,6 +105,9 @@ apps['admin'] = {
     'templates': [
         '/static/admin/header.tpl.html'
     ]
+}
+apps['test'] = {
+    'tags': ['common', 'style1']
 }
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')

@@ -44,12 +44,6 @@ p {
 }
 
 /* Forms */
-.input-field {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
 input, select, textarea {
   border: none;
   border-bottom: 1px solid #ccc;
@@ -64,9 +58,6 @@ input, select, textarea {
 input:valid {
   position: relative;
 }
-input[value] {
-  position: relative;
-}
 
 input:focus,
 select:focus,
@@ -77,11 +68,18 @@ textarea:focus {
   outline: none;
 }
 
-label {
-  color: #9e9e9e;
+/* Input field is a wrapper div which allows for some extras */
+.input-field {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-field label {
   position: absolute;
   top: 0;
   left: 0;
+  color: #9e9e9e;
   font-size: 1rem;
   cursor: text;
   -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out;
@@ -93,10 +91,9 @@ label {
   text-align: initial;
   /* The transform handles vertical position */
   padding: 0 12px;
-  -webkit-transform: translateY(12px);
-  transform: translateY(12px);
 }
-/* Location of the label */
+
+/* Location of the label (with usable input) */
 .input-field label {
   -webkit-transform: translateY(-14px) scale(0.8);
   transform: translateY(-14px) scale(0.8);
@@ -107,6 +104,16 @@ label {
 .input-field:focus-within label {
   color: #26a69a;
 }
+
+/* Something to try out for inputs with values */
+/*
+input:placeholder-shown {
+  border-color: red;
+}
+label + input[placeholder]:not(:placeholder-shown) {
+  color: blue;
+}
+*/
 
 /* Buttons */
 button {

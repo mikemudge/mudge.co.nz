@@ -206,12 +206,24 @@ MainController.prototype.changeProfile = function(profile) {
   this.currentProfile = profile;
   this.selectedWalker = this.currentProfile;
 
-  // Hide the choose profile UI.
-  this.showChangeProfile = false;
+  // Hide all popups.
+  this.show();
   // Recenter the map on the profile.
   this.showPerson(this.currentProfile);
 }
 
+// Hide all popups, show one if name is provided.
+MainController.prototype.show = function(name) {
+  this.showBeginTrail = false;
+  this.showProgressPopup = false;
+  this.showWalks = false;
+  this.showStats = false;
+  this.showing = null;
+  if (name) {
+    this.showing = name;
+    this['show' + name] = true;
+  }
+}
 MainController.prototype.selectWalker = function(person) {
   this.selectedWalker = person;
   this.showPerson(this.selectedWalker);
@@ -255,7 +267,9 @@ MainController.prototype.addWalk = function() {
     console.log('added progress for ', this.currentProfile.name, walk);
     walk.date = new Date(walk.date);
     this.currentProfile.progress.push(walk);
-    this.showProgressPopup = false;
+    // Hide all popups
+    this.show();
+
     // Updates local UI.
     this.updatePerson(this.currentProfile);
     // Move the map to follow the person.
@@ -382,8 +396,8 @@ MainController.prototype.beginTrail = function() {
     // Will select the new profile as currentProfile
     this.changeProfile(response);
 
-    // Reset the UI for this.
-    this.showBeginTrail = false;
+    // Hide all popups
+    this.show();
     this.newProfile = new this.TrailProfile({
       trail_id: this.trail_data.id,
       color: this.randomColor()

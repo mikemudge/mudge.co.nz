@@ -1,4 +1,4 @@
-from flask import current_app, abort
+from flask import current_app, abort, request
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
@@ -26,8 +26,8 @@ styles = {
     # Use this or common but not both?
     # TODO tag deps?
     'style1': [
-        'https://fonts.googleapis.com/css?family=Roboto',
-        '/static/shared/common.css',
+        # 'https://fonts.googleapis.com/css?family=Roboto',
+        # '/static/shared/common.css',
         '/static/shared/theme1.css',
     ]
 }
@@ -61,7 +61,7 @@ apps['soccer'] = {
     'tags': ['common']
 }
 apps['tournament'] = {
-    'tags': ['api', 'login', 'style1'],
+    'tags': ['api', 'login', 'common', 'style1'],
 }
 apps['breakout'] = {
     'tags': ['threejs']
@@ -81,7 +81,7 @@ apps['racer'] = {
     ]
 }
 apps['rock'] = {
-    'tags': ['api', 'style1'],
+    'tags': ['api', 'common'],
     'scripts': [
         '/static/rock/dashboard.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
@@ -107,7 +107,7 @@ apps['admin'] = {
     ]
 }
 apps['test'] = {
-    'tags': ['common', 'style1']
+    'tags': ['common']
 }
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
@@ -145,6 +145,12 @@ class ProjectAppView(MethodView):
         conf = apps.get(app_name)
         if conf:
             tags = conf.get('tags', [])
+            extra_tags = request.args.get('tags')
+            if extra_tags:
+                extra_tags = ','.split(extra_tags)
+                print(extra_tags)
+                tags += extra_tags
+
             if 'gmaps' in tags:
                 app.scripts += [gmaps()]
 

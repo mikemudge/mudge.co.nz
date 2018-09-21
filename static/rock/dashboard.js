@@ -25,6 +25,11 @@ function DashboardController($resource, loginService, config, $interval) {
 }
 
 DashboardController.prototype.loadSongs = function(response) {
+  // Just update the songs, in the background.
+  this.Songs.import().$promise.then(this.importComplete.bind(this));
+}
+
+DashboardController.prototype.importComplete = function(response) {
   this.songs = this.Songs.query({
     'count': 50,
     'worst_rank': 100,
@@ -34,15 +39,12 @@ DashboardController.prototype.loadSongs = function(response) {
     'count': 10
   });
 
-  // Just update the songs, in the background.
-  this.Songs.import();
-
   this.highest_rank = 1500;
   this.recent.$promise.then(function(response) {
     this.highest_rank = response[0].rankThisYear;
     console.log('recent', response.length);
     if (this.songs) {
-      this.songs.splice(this.highest_rank)
+      this.songs.splice(this.highest_rank - 1)
     }
   }.bind(this));
 

@@ -1,45 +1,62 @@
-function DashboardController($resource, loginService, config, $timeout) {
+function DashboardController($resource, loginService, config, $interval) {
   window.ctrl = this;
-  this.Songs = $resource(config.API_URL + 'api/rock1500/song');
-
-  loginService.ensureLoggedIn();
-
-  this.highest_rank = 1500;
-  this.songs = this.Songs.query({'count': 2000});
-  this.songs.$promise.then(this.songsLoaded.bind(this));
-
-  $timeout(function() {
-    // Reload the songs each minute in case there is new ones.
-    this.songs = this.Songs.query({'count': 2000});
-    this.songs.$promise.then(this.songsLoaded.bind(this));
-  }.bind(this), 60000);
-}
-
-DashboardController.prototype.songsLoaded = function(response) {
-  console.log(this.songs.length);
-  this.showTop100();
-}
-
-DashboardController.prototype.showTop100 = function(response) {
-  this.highest_rank = 2000;
-  this.songs.forEach(function(song) {
-    if (song.rank2017) {
-      this.highest_rank = Math.min(song.rank2017, this.highest_rank);
+  this.Songs = $resource(config.API_URL + 'api/rock1500/next', {}, {
+    recent: {
+      url: config.API_URL + 'api/rock1500/recent',
+      isArray: true
+    },
+    import: {
+      url: '/rock1500/import',
+      isArray: true
     }
-  }.bind(this));
-
-  this.filtered_songs = this.songs.filter(function(song) {
-    if (song.title == 'Nookie'){
-      return true;
-    }
-    return !song.rank2017 && parseInt(song.rank2016) < 300;
   });
 
-  this.recent = this.songs.filter(function(song) {
-    return song.rank2017 && song.rank2017 < this.highest_rank + 10;
+  // Reload the songs each minute in case there is new ones.
+  this.seconds = 60;
+  $interval(function() {
+    this.seconds--;
+    console.log('refresh in ', this.seconds);
+    if (this.seconds == 0) {
+      this.loadSongs();
+      this.seconds = 60;
+    }
+  }.bind(this), 1000);
+  this.loadSongs();
+}
+
+DashboardController.prototype.loadSongs = function(response) {
+  this.songs = this.Songs.query({
+    'count': 50,
+    'worst_rank': 100,
+  });
+
+  this.recent = this.Songs.recent({
+    'count': 10
+  });
+
+  // Just update the songs, in the background.
+  this.Songs.import();
+
+  this.highest_rank = 1500;
+  this.recent.$promise.then(function(response) {
+    this.highest_rank = response[0].rankThisYear;
+    console.log('recent', response.length);
+    if (this.songs) {
+      this.songs.splice(this.highest_rank)
+    }
   }.bind(this));
 
-  this.filtered_songs.splice(this.highest_rank);
+  this.songs.$promise.then(function(response) {
+    console.log('coming', response.length);
+    this.songs.splice(this.highest_rank - 1)
+  }.bind(this));
+}
+
+DashboardController.prototype.importSongs = function() {
+  this.Songs.import().$promise.then(function() {
+    console.log('Import complete');
+    window.location.reload();
+  });
 }
 
 angular.module('rockDash', [

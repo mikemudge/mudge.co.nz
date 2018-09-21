@@ -17,6 +17,7 @@ class RockSongView(BaseView):
 
     column_filters = ['rankThisYear', 'rank2017', 'rank2016']
 
+    form_overrides = dict(rank2015=IntegerField)
     form_overrides = dict(rank2016=IntegerField)
     form_overrides = dict(rank2017=IntegerField)
 

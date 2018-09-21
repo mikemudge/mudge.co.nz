@@ -30,6 +30,7 @@ def import2016():
     with open('apps/rock1500/data/Rock 1500 - 2016.csv', 'r') as csvfile:
         csvdata = csv.reader(csvfile)
         count = 0
+        updated = 0
         print("Parsing songs from csv...")
         for row in csvdata:
             if row[0].strip() == '#':
@@ -58,8 +59,10 @@ def import2016():
                     title=row[2],
                 )
                 db.session.add(song)
-            song.rank2016 = row[0]
-            song.rank2015 = row[3]
+            updated += 1
+            song.set2016Rank(row[0])
+            song.set2015Rank(row[3])
 
         print('found %d new songs' % count)
+        print('updated %d songs' % updated)
         db.session.commit()

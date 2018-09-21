@@ -46,8 +46,8 @@ class Rock1500Song(BaseModel):
 
     # Previous ranks if known.
     rank2017 = db.Column(db.Integer(), index=True)
-    rank2016 = db.Column(db.String(100))
-    rank2015 = db.Column(db.String(100))
+    rank2016 = db.Column(db.Integer())
+    rank2015 = db.Column(db.Integer())
 
     @classmethod
     def find_by_name(cls, title, artist):
@@ -64,8 +64,19 @@ class Rock1500Song(BaseModel):
         try:
             self.rank2017 = int(value)
         except ValueError:
-            # TODO could map some thing?
-            pass
+            self.rank2017 = None
+
+    def set2016Rank(self, value):
+        try:
+            self.rank2016 = int(value)
+        except ValueError:
+            self.rank2016 = None
+
+    def set2015Rank(self, value):
+        try:
+            self.rank2015 = int(value)
+        except ValueError:
+            self.rank2015 = None
 
 class Rock1500Pick(BaseModel):
     song_id = db.Column(UUID(), db.ForeignKey('rock1500_song.id'), nullable=False)

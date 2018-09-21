@@ -32,8 +32,9 @@
         </div>
       </div>
 
-      <div class="actions" ng-show="ctrl.picks.picks.length">
-        <div class="button" ng-click="ctrl.savePicks()">
+      <div class="actions">
+        <div class="button" ng-click="ctrl.savePicks()"
+            ng-show="ctrl.picks.picks.length">
           Save Picks
         </div>
         <div ng-show="ctrl.currentUser.admin" class="button" ng-click="ctrl.importSongs()">

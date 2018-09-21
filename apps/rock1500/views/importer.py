@@ -43,7 +43,7 @@ class ImportView(MethodView):
 
         song.rankThisYear = item.get('rank')
         song.set2017Rank(item.get('rankOneYearAgo'))
-        song.rank2016 = item.get('rankTwoYearsAgo')
+        song.set2016Rank(item.get('rankTwoYearsAgo'))
 
     @oauth.require_oauth('admin')
     def get(self):

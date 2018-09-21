@@ -1,4 +1,6 @@
 <div ng-controller="DashboardController as ctrl">
+  <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
+  </div>
   <div ng-hide="ctrl.songs.$resolved">
     Loading all the songs...
   </div>
@@ -8,41 +10,29 @@
         {{ ctrl.songs.length }} songs loaded
       </div>
     </div>
+    <div ng-show="ctrl.currentUser.admin" class="button" ng-click="ctrl.importSongs()">
+      Import Songs
+    </div>
     <div class="prediction">
       <div>
-        Prediction for the remaining {{ ctrl.highest_rank }} songs
+        Prediction for the next songs
       </div>
-      <div class="song"
-          ng-repeat="song in ctrl.filtered_songs | orderBy: 'rank2017' : true">
+      <div class="song" ng-repeat="song in ctrl.songs"
+          ng-include="'/static/rock/song.tpl.html'">
         <div class="rank">
-          {{ song.rank2017 }}
-          <div ng-hide="song.rank2017" class="estimated">
-            {{ ctrl.filtered_songs.length - $index }}.
+          {{ song.rankThisYear }}
+          <div ng-hide="song.rankThisYear" class="estimated">
+            {{ ctrl.songs.length - $index }}.
           </div>
-        </div>
-        <div>{{ song.title }}</div>
-        <div class="artist">{{ song.artist.name }}</div>
-        Previously {{ song.rank2016 }}, {{ song.rank2015 }}
-        <div class="album">
-          <img ng-src="{{ song.album.cover_art_url }}" />
         </div>
       </div>
     </div>
     <div class="recent">
       <div>
-        Recently played
+        Recently played songs
       </div>
-      <div class="song"
-          ng-repeat="song in ctrl.recent | orderBy: 'rank2017'">
-        <div class="rank">
-          {{ song.rank2017 }}.
-        </div>
-        <div>{{ song.title }}</div>
-        <div class="artist">{{ song.artist.name }}</div>
-        Previously {{ song.rank2016 }}, {{ song.rank2015 }}
-        <div class="album">
-          <img ng-src="{{ song.album.cover_art_url }}" />
-        </div>
+      <div class="song" ng-repeat="song in ctrl.recent"
+          ng-include="'/static/rock/song.tpl.html'">
       </div>
     </div>
   </div>

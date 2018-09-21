@@ -116,7 +116,7 @@ angular.module('rock', [
 .controller('RockController', RockController)
 .run(function(loginService) {
   // You must be logged in to use this app.
-  loginService.ensureLoggedIn();
+  // loginService.ensureLoggedIn();
 })
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);

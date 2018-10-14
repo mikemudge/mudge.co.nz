@@ -1,4 +1,5 @@
 from auth.provider import oauth
+from flask import request
 
 from .models import Tournament, Team, Round, Match, MatchResult
 from .serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema, MatchResultSchema
@@ -19,11 +20,15 @@ class TournamentView(DBModelView):
 
     @oauth.require_oauth('tournament')
     def post(self, pk=None):
+        s = TournamentSchema()
         # Edit or Create.
         if pk:
             return self.edit(Tournament.query.get(pk))
         else:
-            return self.create()
+            instance = self.createNew()
+            instance.creator = request.oauth.user
+            self.save(instance)
+            return s.response(instance)
 
 class TeamView(DBModelView):
     model = Team

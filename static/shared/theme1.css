@@ -131,10 +131,6 @@ button {
   transition: background-color .2s ease-out;
 }
 
-button:hover {
-  background-color: #2bbbad;
-}
-
 /* Material Design Select dropdown */
 select {
   /* Remove default border, must be first. */

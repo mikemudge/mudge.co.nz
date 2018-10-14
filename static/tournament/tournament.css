@@ -2,9 +2,17 @@
 
 }
 
-/* Override colours*/
+/* Override colours, TODO could be easier? */
 button, .button {
   background-color: #d00000;
+}
+select {
+  color: #d00000;
+  border-bottom: #d00000;
+}
+.selector,
+.mdl-selectfield::after {
+  border-top: .375em solid #d00000;
 }
 
 .breadcrumbs {
@@ -47,8 +55,8 @@ button, .button {
   display: inline-block;
 }
 
-/* TODO is this used??? */
+/* Used on selected round tab. */
 .active {
-  color: #00d0e0;
+  color: #d00000;
 }
 

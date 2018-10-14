@@ -2,14 +2,16 @@
   <div class="header">
     <div ng-include="'/static/shared/templates/header.tpl.html'"></div>
   </div>
-  <!-- Specific header -->
-  <div class="tournament_header" ng-include="'/static/tournament/header.tpl.html'"></div>
 
-  <h4> Edit tournament</h4>
+  <h4 ng-if="ctrl.tournament.id"> Edit tournament</h4>
+  <h4 ng-if="!ctrl.tournament.id"> Make a new Tournament</h4>
+
   <form class="tournament">
-    <div class="name">
-      Name: <input ng-model="ctrl.tournament.name" />
+    <div class="name input-field">
+      <label for="name">Name</label>
+      <input id="name" placeholder=" " name="name" ng-model="ctrl.tournament.name" />
     </div>
+
     <div class="teams">
       Teams:
       <!-- Handle list create? -->
@@ -20,24 +22,41 @@
       </div>
 
       <form class="newTeam">
-        <input ng-model="ctrl.newTeam.name" />
+        <div class="input-field">
+          <label>
+            Team Name
+          </label>
+          <input ng-model="ctrl.newTeam.name" />
+        </div>
         <button type="submit" class="button"
             ng-click="ctrl.newTournamentTeam()">
           Add Team
         </button>
       </form>
     </div>
-    <div>
-      Rounds: {{ ctrl.tournament.rounds.length }}
+
+    <!-- Just show a create button for new tournament -->
+    <div ng-hide="ctrl.tournament.id">
+      <button ng-click="ctrl.save()">
+        Create Tournament
+      </button>
     </div>
-    <div>
-      * Regenerating the rounds will clear all results.
+
+    <!-- For editing tournament you can do some additional actions -->
+    <div ng-show="ctrl.tournament.id">
+      <div>
+        Rounds: {{ ctrl.tournament.rounds.length }}
+      </div>
+      <div>
+        * Regenerating the rounds will clear all results.
+      </div>
+      <button ng-click="ctrl.generate_rounds()">
+        Generate Rounds
+      </button>
+
+      <button ng-click="ctrl.save()">
+        Save Changes
+      </button>
     </div>
-    <button ng-click="ctrl.generate_rounds()">
-      Generate Rounds
-    </button>
-    <button ng-click="ctrl.save(ctrl.tournament)">
-      Save Changes
-    </button>
   </form>
 </div>

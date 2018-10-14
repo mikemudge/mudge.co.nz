@@ -1,5 +1,5 @@
+from auth.models import User
 from shared.database import db, BaseModel, UUID
-
 from sqlalchemy.orm import relationship
 
 class TournamentBaseModel(BaseModel):
@@ -18,6 +18,10 @@ class Tournament(TournamentBaseModel):
         lazy="dynamic",
         backref=db.backref("tournament")
     )
+
+    creator_id = db.Column(UUID(), db.ForeignKey('user.id'), nullable=False)
+    creator = db.relationship(User)
+
     pass
 
 class Team(TournamentBaseModel):

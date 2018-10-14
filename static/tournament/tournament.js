@@ -24,47 +24,71 @@ TournamentService.prototype.loadTournament = function(id) {
   }
   return this.cache[id]
 }
+
+TournamentService.prototype.save = function(tournament) {
+  var created = !tournament.id;
+  // TODO make sure the tournament is the same as the cached one?
+  return tournament.$save().then(function() {
+    if (created) {
+      // Add the tournament to the list if it is a newly created one.
+      this.tournaments.push(tournament);
+    }
+  }.bind(this));
+}
+
+TournamentService.prototype.createNew = function() {
+  var t = new this.Tournament();
+  t.teams = [];
+  return t;
+}
+
 var TournamentListController = function(loginService, tournamentService) {
   this.currentUser = loginService.user;
   this.ctrl = this;
   this.tournaments = tournamentService.tournaments;
 }
 
-var TournamentCreateController = function(loginService, tournamentService) {
-  var Tournament = tournamentService.Tournament;
-  this.currentUser = loginService.user;
-  this.ctrl = this;
-  this.tournamentService = tournamentService;
-  this.newTournament = new Tournament();
-  this.newTournament.teams = [];
-  this.newTeam = {};
-}
-
-TournamentCreateController.prototype.newTournamentTeam = function() {
-  this.newTournament.teams.push(this.newTeam);
-  this.newTeam = {}
-}
-
-TournamentCreateController.prototype.save = function(tournament) {
-  var created = !tournament.id;
-  tournament.$save().then(function() {
-    if (created) {
-      // Add the tournament to the list if it is a newly created one.
-      this.tournamentService.tournaments.push(tournament);
-    }
-  }.bind(this));
-}
-
-var TournamentController = function($routeParams, $scope, loginService, tournamentService) {
+var TournamentController = function(
+    $routeParams, $location, loginService, tournamentService) {
   if (!$routeParams.tournament_id) {
     throw Error('No tournament selected');
   }
 
   this.currentUser = loginService.user;
+  this.$location = $location;
+  this.tournamentService = tournamentService;
   this.ctrl = this;
-  this.tournament = tournamentService
-      .loadTournament($routeParams.tournament_id);
-  this.tournament.$promise.then(this.countMatches.bind(this));
+  if ($routeParams.tournament_id == 'new') {
+    this.tournament = tournamentService.createNew();
+    this.newTeam = {};
+  } else {
+    this.tournament = tournamentService
+        .loadTournament($routeParams.tournament_id);
+    this.tournament.$promise.then(this.countMatches.bind(this));
+  }
+}
+
+TournamentController.prototype.newTournamentTeam = function() {
+  if (!this.newTeam.name || this.newTeam.name.length == 0) {
+    // TODO show an error?
+    return;
+  }
+  this.tournament.teams.push(this.newTeam);
+  this.newTeam = {}
+}
+
+// TODO Saving an existing tournament is failing due to team ordering.
+TournamentController.prototype.save = function() {
+  var created = !this.tournament.id;
+  this.tournamentService.save(this.tournament).then(function() {
+    if (created) {
+      // Generate the rounds for the tournament.
+      this.tournament.$generate_rounds().then(function() {
+        // Redirect to the tournament page.
+        this.$location.path('tournament/' + this.tournament.id);
+      }.bind(this));
+    }
+  }.bind(this));
 }
 
 TournamentController.prototype.countMatches = function() {
@@ -230,7 +254,6 @@ angular.module('tournament', [
 .controller('RoundController', RoundController)
 .controller('TableController', TableController)
 .controller('TournamentController', TournamentController)
-.controller('TournamentCreateController', TournamentCreateController)
 .controller('TournamentListController', TournamentListController)
 .run(function(loginService, $rootScope) {
   // You must be logged in to use this app.

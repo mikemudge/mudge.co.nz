@@ -35,8 +35,8 @@ class BaseSchema(ModelSchema):
             return self.errorResponse(errors)
         return jsonify(data=result)
 
-    def parse(self, data):
-        result, errors = self.load(data, session=db.session)
+    def parse(self, data, instance=None):
+        result, errors = self.load(data, session=db.session, instance=instance)
         if errors:
             raise ValidationException(errors)
         return result

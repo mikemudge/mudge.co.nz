@@ -33,4 +33,4 @@ class TournamentSchema(BaseSchema):
 
     name = fields.Str(required=True)
     teams = fields.Nested(TeamSchema, many=True)
-    rounds = fields.Nested(RoundSchema, many=True)
+    rounds = fields.Nested(RoundSchema, many=True, dump_only=True)

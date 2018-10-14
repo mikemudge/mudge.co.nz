@@ -12,42 +12,7 @@
       </a>
     </div>
   </div>
-</div>
-
-<div class="page" ng-controller="TournamentCreateController as ctrl">
-  <div class="button" ng-click="showNewTournament = true">
+  <a href="tournament/new/settings" class="button">
     Create a new Tournament
-  </div>
-  <div ng-show="showNewTournament">
-    <!-- TODO this should go on a new page. -->
-    <h4> Make a new Tournament</h4>
-    <form class="tournament">
-      <div class="name input-field">
-        <label for="name">Name</label>
-        <input id="name" placeholder=" " name="name" ng-model="ctrl.newTournament.name" />
-      </div>
-      <div class="teams">
-        <p>Teams</p>
-        <!-- Handle list create? -->
-        <div ng-repeat="team in ctrl.newTournament.teams">
-          {{ team.name }}
-        </div>
-        <form class="newTeam">
-          <div class="input-field">
-            <label>
-              Team Name
-            </label>
-            <input ng-model="ctrl.newTeam.name"/>
-          </div>
-          <button type="submit" class="button"
-              ng-click="ctrl.newTournamentTeam()">
-            Add Team
-          </button>
-        </form>
-      </div>
-      <button ng-click="ctrl.save(ctrl.newTournament)">
-        Create Tournament
-      </button>
-    </form>
-  </div>
+  </a>
 </div>

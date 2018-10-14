@@ -53,7 +53,11 @@ class DBModelView(MethodView):
 
         return self.data
 
+    # @Deprecated
     def create(self):
+        return self.save(self.createNew())
+
+    def createNew(self):
         # I don't know why but it doesn't seem to know about the session?
         # This was failing during tests, not sure about real requests.
         s = self.schema(session=db.session)
@@ -62,6 +66,9 @@ class DBModelView(MethodView):
         if errors:
             return self.errorResponse(errors)
         db.session.add(instance)
+        return instance
+
+    def save(self, instance):
         try:
             db.session.commit()
         except IntegrityError as e:
@@ -72,8 +79,8 @@ class DBModelView(MethodView):
                 'message': "DB error creating a %s" % self.model.__name__,
                 'debug': str(e),
             }]), 400
-        result, errors = s.dump(instance)
-        return jsonify(data=result)
+        s = self.schema(session=db.session)
+        return s.response(instance)
 
     def edit(self, instance):
         s = self.schema()
@@ -81,12 +88,9 @@ class DBModelView(MethodView):
 
         print(data)
 
-        # TODO should be a schema method?
-        instance, errors = s.load(data, instance=instance)
-        if errors:
-            return self.errorResponse(errors)
+        instance = s.parse(data, instance=instance)
 
-        db.session.commit()
+        self.save(instance)
         return s.response(instance)
 
     def errorResponse(self, errors):

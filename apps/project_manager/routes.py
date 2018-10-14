@@ -19,7 +19,7 @@ projects_bp = Blueprint('project_manager', __name__)
 
 @projects_bp.route('/')
 def get_projects():
-    staticFilesUrl = current_app.config.get('STATIC_URL')
+    staticFilesUrl = current_app.config.get('API_URL')
     # Build a list of projects?
     app = Angular('projects')
 
@@ -42,7 +42,7 @@ def get_projects():
 
 @projects_bp.route('/<name>/<path:path>')
 def get_project(name, path=None):
-    staticFilesUrl = current_app.config.get('STATIC_URL')
+    staticFilesUrl = current_app.config.get('API_URL')
 
     name = name.lower()
     # Try and find a project for this app?

@@ -1,13 +1,13 @@
 function TournamentService($resource, loginService) {
-  this.Tournament = $resource('http://localhost:5000/api/tournament/tournament/:id', {
+  this.Tournament = $resource('/api/tournament/tournament/:id', {
     id: '@id'
   }, {
     'generate_rounds': {
       'method': 'POST',
-      'url': 'http://localhost:5000/api/tournament/tournament/:id/generate_rounds'
+      'url': '/api/tournament/tournament/:id/generate_rounds'
     }
   });
-  this.Match = $resource('http://localhost:5000/api/tournament/match/:id', {
+  this.Match = $resource('/api/tournament/match/:id', {
     id: '@id'
   });
 
@@ -64,6 +64,32 @@ var TournamentController = function($routeParams, $scope, loginService, tourname
   this.ctrl = this;
   this.tournament = tournamentService
       .loadTournament($routeParams.tournament_id);
+  this.tournament.$promise.then(this.countMatches.bind(this));
+}
+
+TournamentController.prototype.countMatches = function() {
+  var total = 0;
+  var completed = 0;
+  var currentRound = null;
+  // Calculate the number of matches and results?
+  this.tournament.rounds.forEach(function(r) {
+    r.matches.forEach(function(m) {
+      total++;
+      if (m.result) {
+        completed++;
+      } else {
+        if (!currentRound) {
+          // This will be set to the first round with a match to play.
+          currentRound = r;
+        }
+      }
+    });
+  });
+
+  this.currentRound = currentRound;
+  this.totalMatches = total;
+  this.completedMatches = completed;
+  this.percent = (100 * completed / total).toFixed(1);
 }
 
 TournamentController.prototype.generate_rounds = function() {
@@ -99,20 +125,27 @@ TableController.prototype.prepTable = function(tournament) {
 
   tournament.rounds.forEach(function(round) {
     round.matches.forEach(function(match) {
-      if (match.played) {
+      if (match.result) {
         var hTeam = teamMap[match.homeTeam.id];
         var aTeam = teamMap[match.awayTeam.id];
+        if (!hTeam) {
+          throw new Error('No team for match.homeTeam');
+        }
+        if (!aTeam) {
+          throw new Error('No team for match.awayTeam');
+        }
+        var result = match.result;
         hTeam.played++;
         aTeam.played++;
-        hTeam.gf += match.homeScore;
-        hTeam.ga += match.awayScore;
-        aTeam.gf += match.awayScore;
-        aTeam.ga += match.homeScore;
-        if (match.homeScore > match.awayScore) {
+        hTeam.gf += result.homeScore;
+        hTeam.ga += result.awayScore;
+        aTeam.gf += result.awayScore;
+        aTeam.ga += result.homeScore;
+        if (result.homeScore > result.awayScore) {
           hTeam.wins++;
           aTeam.losses++;
           hTeam.pnts+=3;
-        } else if (match.homeScore == match.awayScore) {
+        } else if (result.homeScore == result.awayScore) {
           hTeam.draws++;
           aTeam.draws++;
           hTeam.pnts+=1;
@@ -126,7 +159,7 @@ TableController.prototype.prepTable = function(tournament) {
     })
   });
 
-  this.teamMap = teamMap
+  this.teamMap = teamMap;
 }
 
 var RoundController = function($location, $routeParams, $scope, tournamentService) {
@@ -212,10 +245,14 @@ angular.module('tournament', [
   .when('/tournament/:tournament_id', {
     templateUrl: '/static/tournament/tournament.tpl.html'
   })
+  .when('/tournament/:tournament_id/settings', {
+    templateUrl: '/static/tournament/tournament_edit.tpl.html'
+  })
   .when('/tournament/:tournament_id/table', {
     templateUrl: '/static/tournament/table.tpl.html'
   })
   .when('/tournament/:tournament_id/rounds', {
+    reloadOnSearch: false,
     templateUrl: '/static/tournament/rounds.tpl.html'
   })
   .when('/tournament/:tournament_id/match/:match_id', {

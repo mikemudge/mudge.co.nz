@@ -1,19 +1,18 @@
-<div class="header" ng-controller="HeaderController as ctrl">
-  <div class="left">
-    <div class="nav-item">
-      <a href=".">Tournaments</a>
-    </div>
-    &gt;
-    <div class="nav-item">
-      <a href="tournament/{{ ctrl.tournament.id }}">{{ ctrl.tournament.name }}</a>
-    </div>
+<div class="breadcrumbs">
+  <div class="breadcrumb">
+    <a href=".">Tournaments</a>
   </div>
-  <div class="right">
-    <div class="nav-item">
-      <a href="tournament/{{ ctrl.tournament.id }}/rounds">Rounds</a>
-    </div>
-    <div class="nav-item">
-      <a href="tournament/{{ ctrl.tournament.id }}/table">Table</a>
-    </div>
+  &gt;
+  <div class="breadcrumb">
+    <a href="tournament/{{ ctrl.tournament.id }}">{{ ctrl.tournament.name }}</a>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab">
+    <a href="tournament/{{ ctrl.tournament.id }}/rounds">Rounds</a>
+  </div>
+  <div class="tab">
+    <a href="tournament/{{ ctrl.tournament.id }}/table">Table</a>
   </div>
 </div>

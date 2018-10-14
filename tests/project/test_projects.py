@@ -16,7 +16,7 @@ class TestProject(BaseTestCase):
 
         p = Project(
             name="Test Project",
-            base_url=current_app.config.get('STATIC_URL'),
+            base_url=current_app.config.get('API_URL'),
         )
         db.session.add(p)
 
@@ -36,7 +36,6 @@ class TestProject(BaseTestCase):
         project = response.json['data'][0]
         self.assertEqual(project['name'], 'Test Project')
         # This doesn't pass in all environments.
-        # self.assertEqual(project['base_url'], 'http://localhost:3333/')
         self.assertEqual(project['css_files'][0]['name'], 'test.css')
         self.assertEqual(project['js_files'][0]['name'], 'test.js')
 

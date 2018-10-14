@@ -2,36 +2,34 @@
   <div class="header">
     <div ng-include="'/static/shared/templates/header.tpl.html'"></div>
   </div>
-  <h4> Edit tournament</h4>
-  <form class="tournament">
-    <div class="name">
-      Name: <input ng-model="ctrl.tournament.name" />
-    </div>
-    <div class="teams">
-      Teams:
-      <!-- Handle list create? -->
-      <div class="tags">
-        <div class="tag" ng-repeat="team in ctrl.tournament.teams">
-          {{ team.name }}
-        </div>
-      </div>
+  <!-- Specific header -->
+  <div class="tournament_header" ng-include="'/static/tournament/header.tpl.html'"></div>
 
-      <form class="newTeam">
-        <input ng-model="ctrl.newTeam.name" />
-        <button type="submit" class="button"
-            ng-click="ctrl.newTournamentTeam()">
-          Add Team
-        </button>
-      </form>
+  <h2>{{ ctrl.tournament.name }}</h2>
+
+  <p> Between {{ ctrl.tournament.teams.length }} teams. Currently {{ ctrl.completedMatches }}/{{ ctrl.totalMatches }} complete </p>
+
+  <h3> Upcoming matches </h3>
+
+  <div class="row" ng-repeat="match in ctrl.currentRound.matches" ng-class-odd="'odd'">
+    <div class="cell">{{ match.homeTeam.name }}</div>
+    <div class="cell">{{ match.result.homeScore }}</div>
+    <div class="cell"> v </div>
+    <div class="cell">{{ match.awayTeam.name }}</div>
+    <div class="cell">{{ match.result.awayScore }}</div>
+    <div class="cell">
+      <a href="tournament/{{ ctrl.tournament.id }}/match/{{ match.id }}"> Add score </a>
     </div>
-    <div>
-      Rounds: {{ ctrl.tournament.rounds.length }}
-    </div>
-    <button ng-click="ctrl.generate_rounds()">
-      Generate Rounds
-    </button>
-    <button ng-click="ctrl.save(ctrl.tournament)">
-      Save Changes
-    </button>
-  </form>
+  </div>
+
+  <div class="actions">
+    <a href="tournament/{{ ctrl.tournament.id }}/rounds" class="button">
+      See all rounds
+    </a>
+
+    <!-- TODO should be a menu item/ settings cog? -->
+    <a href="tournament/{{ ctrl.tournament.id }}/settings" class="button edit">
+      Edit tournament
+    </a>
+  </div>
 </div>

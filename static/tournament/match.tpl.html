@@ -1,7 +1,9 @@
-<div ng-include="'tournament/header.tpl.html'">
-</div>
-
 <div class="tournament" ng-controller="MatchController as ctrl">
+  <div class="header">
+    <div ng-include="'/static/shared/templates/header.tpl.html'"></div>
+  </div>
+  <!-- Specific header -->
+  <div class="tournament_header" ng-include="'/static/tournament/header.tpl.html'"></div>
   <form>
     <div class="cell">{{ ctrl.match.homeTeam.name }}</div>
     <div class="cell">

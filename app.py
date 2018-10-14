@@ -113,5 +113,5 @@ def create_app(config=None):
 
     oauth.init_app(app)
 
-    CORS(app, origins=['http://localhost:3333'])
+    # CORS(app, origins=['http://localhost:3333'])
     return app

@@ -1,6 +1,36 @@
-body {
-	margin: 0;
+.tournament_header {
+
 }
+
+/* Override colours*/
+button, .button {
+  background-color: #d00000;
+}
+
+.breadcrumbs {
+  overflow: hidden;
+}
+.breadcrumbs .breadcrumb {
+  padding: 4px;
+  display: inline-block;
+}
+
+.tabs {
+  border-bottom: 1px solid #EEEEEE;
+  overflow: hidden;
+}
+
+.tabs .tab {
+  border: 1px solid #EEEEEE;
+  background: #d00000;
+  color: #FFFFFF;
+  float: left;
+  margin: 0;
+  margin-left: -1px;
+  border-bottom: #FFFFFF;
+  padding: 4px 16px;
+}
+
 .tournament .cell {
 	padding: 8px 4px;
 }

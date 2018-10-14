@@ -14,9 +14,6 @@ PASSWORD = 'default'
 AUTH_COOKIE_ID = 'mudgeAuthCookieId'
 VERIFY_GOOGLE_AUTH = True
 
-# Used to locate static files.
-# TODO remove.
-STATIC_URL = 'http://localhost:3333/'
 API_URL = 'http://localhost:5000/'
 
 AMAZON_S3_URL = 'https://d7cvc31wlmbhf.cloudfront.net/'

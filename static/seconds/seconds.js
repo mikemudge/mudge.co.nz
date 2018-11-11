@@ -8,6 +8,7 @@ var MainController = function($interval) {
     if (this.dob) {
       var billion = this.dob.valueOf() + 1000000000 * 1000
       this.billionSecondsOld = new Date(billion);
+      this.twoBillionSecondsOld = new Date(this.dob.valueOf() + 2000000000 * 1000);
       this.ageSeconds = ((this.time - this.dob).valueOf() / 1000).toFixed(0);
     }
   }.bind(this), 50);

@@ -57,6 +57,9 @@ apps['rts'] = {
         '/static/rts/device_orientation.js',
     ]
 }
+apps['seconds'] = {
+    'tags': ['common']
+}
 apps['soccer'] = {
     'tags': ['common']
 }

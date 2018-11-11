@@ -1,0 +1,18 @@
+<div ng-controller="MainController as ctrl">
+  <div>
+    <label>
+      Enter a DOB:
+      <input type="datetime-local" ng-model="ctrl.dob" />
+    </label>
+  </div>
+  <div ng-show="ctrl.dob">
+    DOB timestamp {{ ctrl.dob / 1000 }}
+  </div>
+  <div ng-show="ctrl.dob">
+    Age in seconds {{ ctrl.ageSeconds }}
+  </div>
+  <p ng-show="ctrl.dob">
+    Date of 1 billion seconds<br>
+    {{ ctrl.billionSecondsOld | date: "medium" }}
+  </p>
+</div>

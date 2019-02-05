@@ -1,0 +1,11 @@
+<div ng-controller="MyController as ctrl">
+  <div class="text">
+    You won
+  </div>
+  <div ng-if="ctrl.cards.length > 0" class="card" ng-click="ctrl.removeCard()" ng-touch="ctrl.removeCard()">
+    <img ng-src="{{ ctrl.cards[ctrl.cards.length - 1].img }}" />
+  </div>
+  <div class="undo" ng-click="ctrl.undo()" ng-touch="ctrl.undo()">
+    <i class="fa fa-undo"></i>
+  </div>
+</div>

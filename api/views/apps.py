@@ -76,6 +76,9 @@ apps['user'] = {
     'tags': ['font-awesome', 'api']
 }
 apps['poker'] = {}
+apps['cards-workout'] = {
+    'tags': ['font-awesome']
+}
 apps['racer'] = {
     'tags': ['threejs'],
     'scripts': [

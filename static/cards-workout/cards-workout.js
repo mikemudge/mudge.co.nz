@@ -1,6 +1,6 @@
-var MyController = function($scope, $timeout) {
+var MyController = function($scope, $timeout, $location) {
   var suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
-  var values = [0, '1','2','3','4','5','6','7','8','9','10','j','q','k'];
+  var values = ['0', '1','2','3','4','5','6','7','8','9','10','j','q','k'];
   var cards = [];
   for (var i=0;i<52;i++) {
     var card = {
@@ -9,6 +9,14 @@ var MyController = function($scope, $timeout) {
     }
     card['img'] = '/static/img/cards_png/' + card.suit[0].toLowerCase() + values[card.value] + '.png';
     cards.push(card);
+  }
+  if ($location.search().joker) {
+    cards.push({
+      img: '/static/img/cards_png/jr.png'
+    })
+    cards.push({
+      img: '/static/img/cards_png/jb.png'
+    })
   }
   this.shuffle(cards);
   this.cards = cards;

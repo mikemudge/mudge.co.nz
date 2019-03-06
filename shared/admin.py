@@ -20,13 +20,14 @@ class BaseView(ModelView):
 
     def is_accessible(self):
         if not current_user.is_authenticated:
+            print("current_user not is_authenticated")
             return False
 
         return True
 
     def inaccessible_callback(self, name, **kwargs):
         # redirect to login page if user doesn't have access
-        return redirect(url_for('login', next=request.url))
+        return redirect(url_for('admin.login_view', next=request.url))
 
     def view_this(view, context, model, name):
         value = getattr(model, name)

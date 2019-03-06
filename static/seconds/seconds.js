@@ -1,7 +1,15 @@
-var MainController = function($interval) {
+var MainController = function($interval, $location) {
   this.time = new Date();
+  this.$location = $location;
   // 0 based month, so January.
   this.dob = new Date(1988, 0, 8, 10, 55, 0);
+  var params = $location.search();
+  if (params.dob) {
+    d = new Date(params.dob * 1000);
+    if (d) {
+      this.dob = d;
+    }
+  }
 
   $interval(function() {
     this.time = new Date();
@@ -12,6 +20,11 @@ var MainController = function($interval) {
       this.ageSeconds = ((this.time - this.dob).valueOf() / 1000).toFixed(0);
     }
   }.bind(this), 50);
+}
+
+MainController.prototype.updateDob = function() {
+  this.$location.search('dob', this.dob.getTime() / 1000);
+  this.dob;
 }
 
 angular.module('seconds', [

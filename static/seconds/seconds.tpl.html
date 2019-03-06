@@ -2,13 +2,13 @@
   <div>
     <label>
       Enter a DOB:
-      <input type="datetime-local" ng-model="ctrl.dob" />
+      <input type="datetime-local" ng-model="ctrl.dob" ng-change="ctrl.updateDob()"/>
     </label>
   </div>
   <div ng-show="ctrl.dob">
     DOB timestamp {{ ctrl.dob / 1000 }}
   </div>
-  <div ng-show="ctrl.dob">
+  <div class="seconds" ng-show="ctrl.dob">
     Age in seconds {{ ctrl.ageSeconds }}
   </div>
   <p ng-show="ctrl.dob">

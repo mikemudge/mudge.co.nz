@@ -17,16 +17,29 @@ var MainController = function() {
   this.renderer = new THREE.WebGLRenderer({'canvas': canvas, antialias: true});
   this.renderer.setSize( window.innerWidth, window.innerHeight );
 
-  loadCar(angular.bind(this, function(car) {
-    car.position.y = 0.1;
-    car.rotation.y = Math.PI;
-
-    this.cube = car;
-    this.scene.add(car);
-
-    this.controls.target = this.cube.position;
-    this.controls.update();
-  }));
+  gamepads = navigator.getGamepads();
+  console.log(gamepads);
+  if (gamepads[0]) {
+    this.gamepad = gamepads[0];
+    this.gamepad.vibrationActuator.playEffect("dual-rumble", {
+      startDelay: 0,
+      duration: 1000,
+      weakMagnitude: 1.0,
+      strongMagnitude: 1.0
+    });
+  } else {
+    // Add a listener for gamepad connections.
+    window.addEventListener("gamepadconnected", function(event) {
+      this.gamepad = event.gamepad;
+      console.log("Game Pad connected", this.gamepad);
+      // A little rumble to show you it connected.
+      this.gamepad.vibrationActuator.playEffect("dual-rumble", {
+        duration: 1000,
+        strongMagnitude: 1.0,
+        weakMagnitude: 1.0,
+      });
+    }.bind(this));
+  }
 
   this.scene = new THREE.Scene();
 
@@ -47,15 +60,41 @@ var MainController = function() {
 
   // this.scene.add(this.fractal());
 
-  this.keyControls = new KeyControls({
-    // WASD
-    left: 65,
-    up: 87,
-    right: 68,
-    down: 83
-  });
+  if (this.gamepad) {
+    this.keyControls = new ControllerControls(this.gamepad);
+  } else {
+    this.keyControls = new KeyControls({
+      // WASD
+      left: 65,
+      up: 87,
+      right: 68,
+      down: 83
+    });
+  }
   this.controls = new THREE.OrbitControls(this.camera, canvas);
   this.controls.maxDistance = 3;
+
+  var callback = function(car) {
+    // car.position.y = 0.1;
+    car.rotation.y = Math.PI;
+
+    this.cube = car;
+    this.scene.add(car);
+
+    this.controls.target = this.cube.position;
+    this.controls.update();
+  }.bind(this);
+
+  var mesh = new THREE.CubeGeometry( .4, .2, .8 );
+  var material = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    color: 0xff0000
+  });
+  var cube = new THREE.Mesh(mesh, material);
+
+  callback(cube);
+  // Not working???
+  // loadCar(callback);
 
   window.addEventListener('resize', angular.bind(this, this.resize));
 
@@ -142,6 +181,27 @@ MainController.prototype.getAim = function() {
   // objects needs to contain the floor.
   var intersects = raycaster.intersectObjects( objects, false /* recurse */);
 }
+
+var ControllerControls = function() {
+}
+
+ControllerControls.prototype.get = function() {
+  // Need to re-get each time, values don't change otherwise.
+  var gamepad = navigator.getGamepads()[0];
+  result = {
+    'up': gamepad.buttons[7].value,
+    'down': gamepad.buttons[6].value,
+    'left': gamepad.buttons[14].value,
+    'right': gamepad.buttons[15].value
+  };
+  if (gamepad.axes[0] < 0.1) {
+    result['left'] = -gamepad.axes[0];
+  }
+  if (gamepad.axes[0] > 0.1) {
+    result['right'] = gamepad.axes[0];
+  }
+  return result;
+};
 
 var KeyControls = function(keySettings) {
   this.keys = keySettings;

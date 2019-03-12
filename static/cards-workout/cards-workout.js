@@ -95,17 +95,18 @@ SetupService.prototype.getConfig = function() {
 
 
 angular.module("cards-workout", [
+  'config',
   'ngRoute',
 ])
 .controller('MainController', MainController)
 .controller('SetupController', SetupController)
 .service('setupService', SetupService)
-.config(function($locationProvider, $routeProvider) {
+.config(function($locationProvider, $routeProvider, config) {
   $locationProvider.html5Mode(true);
   $routeProvider.when('/play', {
-    templateUrl: '/static/cards-workout/cards.tpl.html'
+    templateUrl: '/static/cards-workout/cards.tpl.html?v=' + config.version
   }).otherwise({
-    templateUrl: '/static/cards-workout/setup.tpl.html'
+    templateUrl: '/static/cards-workout/setup.tpl.html?v=' + config.version
   })
 })
 ;

@@ -1,4 +1,5 @@
-var MyController = function($scope, $timeout, $location) {
+var MainController = function($scope, $timeout, $location, setupService) {
+  this.config = setupService.getConfig();
   var suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
   var values = ['0', '1','2','3','4','5','6','7','8','9','10','j','q','k'];
   var cards = [];
@@ -11,20 +12,25 @@ var MyController = function($scope, $timeout, $location) {
     cards.push(card);
   }
   if ($location.search().joker) {
+    // Override with the param.
+    this.config.jokers = $location.search().joker;
+  }
+  if (this.config.jokers) {
     cards.push({
       img: '/static/img/cards_png/jr.png'
-    })
+    });
     cards.push({
       img: '/static/img/cards_png/jb.png'
-    })
+    });
   }
   this.shuffle(cards);
   this.cards = cards;
-    cards.pop();
+  // Show the top card.
+  this.card = cards.pop();
   this.removed = [];
 };
 
-MyController.prototype.shuffle = function(array) {
+MainController.prototype.shuffle = function(array) {
   var currentIndex = array.length;
 
   // While there remain elements to shuffle...
@@ -43,28 +49,63 @@ MyController.prototype.shuffle = function(array) {
   return array;
 }
 
-MyController.prototype.removeCard = function() {
-  item = this.cards.pop();
+MainController.prototype.removeCard = function() {
+  this.removed.push(this.card);
+  this.card = this.cards.pop();
+}
+
+MainController.prototype.undo = function() {
+  var item = this.removed.pop();
   if (item) {
-    this.removed.push(item);
+    // Add the current card back onto the deck.
+    this.cards.push(this.card);
+    // Set the current card to the removed one.
+    this.card = item;
   }
 }
 
-MyController.prototype.undo = function() {
-  var item = this.removed.pop();
-  if (item) {
-    this.cards.push(item);
+var SetupController = function(setupService, $location) {
+  this.setupService = setupService;
+  this.config = setupService.getConfig();
+  this.$location = $location;
+  this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
+}
+
+SetupController.prototype.start = function() {
+  this.setupService.setConfig(this.config);
+  this.$location.path("play");
+}
+
+var SetupService = function() {
+  this.config = {};
+  var config = sessionStorage.getItem("cards-workout.config");
+  if (config) {
+    this.config = JSON.parse(config);
   }
 }
+
+SetupService.prototype.setConfig = function(config) {
+  this.config = config;
+  sessionStorage.setItem("cards-workout.config", JSON.stringify(config))
+}
+
+SetupService.prototype.getConfig = function() {
+  return this.config;
+}
+
 
 angular.module("cards-workout", [
   'ngRoute',
 ])
-.controller('MyController', MyController)
+.controller('MainController', MainController)
+.controller('SetupController', SetupController)
+.service('setupService', SetupService)
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true);
-  $routeProvider.when('/', {
+  $routeProvider.when('/play', {
     templateUrl: '/static/cards-workout/cards.tpl.html'
+  }).otherwise({
+    templateUrl: '/static/cards-workout/setup.tpl.html'
   })
 })
 ;

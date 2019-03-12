@@ -1,7 +1,7 @@
 from auth.provider import oauth, setup as setup_auth
+from datetime import datetime
 from flask import Flask
 from flask_admin import Admin
-from flask_cors import CORS
 from shared import exceptions
 from shared.database import db
 from shared.marshmallow import ma, Session
@@ -46,7 +46,9 @@ def routes(app):
     tournament_admin.admin_routes(app)
 
 
-def get_version():
+def get_version(app):
+    if app.config.get("ENV") == "dev":
+        return str(datetime.now().timestamp())
     with open(".commithash", "r") as myfile:
         lines = myfile.readlines()
         version = ''.join(lines)
@@ -57,9 +59,6 @@ def get_version():
 def create_app(config=None):
 
     app = Flask(__name__)
-
-    version = get_version()
-    app.version = version
 
     if not config:
         if os.environ.get('APP_SETTINGS'):
@@ -79,6 +78,9 @@ def create_app(config=None):
     for setting in required_settings:
         if not app.config.get(setting):
             raise Exception('Missing required setting in local_config.py ' + setting)
+
+    version = get_version(app)
+    app.version = version
 
     setup_auth(app)
 

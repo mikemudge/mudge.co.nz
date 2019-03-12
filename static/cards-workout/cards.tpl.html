@@ -1,13 +1,19 @@
-<div ng-controller="MyController as ctrl">
+<div ng-controller="MainController as ctrl">
   <div ng-if="ctrl.cards.length == 0" class="text">
     You won
   </div>
   <div ng-if="ctrl.cards.length > 0" class="card" ng-click="ctrl.removeCard()" ng-touch="ctrl.removeCard()">
-    <img ng-src="{{ ctrl.cards[ctrl.cards.length - 1].img }}" />
+    <img ng-src="{{ ctrl.card.img }}" />
   </div>
   <div class="overlay">
-    Remaining: {{ ctrl.cards.length }}
+    <div class="remaining">
+      Remaining: {{ ctrl.cards.length }}
+    </div>
+    <div class="activity">
+      {{ ctrl.config.activity[ctrl.card.suit] }}
+    </div>
   </div>
+  <!-- Not an overlay because it needs clicks -->
   <div class="undo" ng-click="ctrl.undo()" ng-touch="ctrl.undo()">
     <i class="fa fa-undo"></i>
   </div>

@@ -119,7 +119,7 @@ MainController.prototype.testtrack = function() {
 
 MainController.prototype.track = function() {
   var geometry = new THREE.PlaneGeometry(100, 100, 100, 100);
-  var texture = new THREE.TextureLoader().load("/static/img/Track.jpg" );
+  var texture = new THREE.TextureLoader().load("/static/img/Track.jpg?v=1" );
   var material = new THREE.MeshBasicMaterial({
     map: texture,
     side: THREE.DoubleSide,

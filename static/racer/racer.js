@@ -7,9 +7,11 @@ var Player = function() {
   this.vx = 0;
   this.vy = 0;
 };
-Player.ACCELERATION = 0.015;
-Player.FRICTION = 0.25;
-Player.TURN_SPEED = 0.05;
+Player.ACCELERATION = 0.004;
+Player.FRICTION = 0.04;
+Player.TURN_SPEED = 0.07;
+// 0-1 How much your tyres slip on corners.
+Player.SLIP_FACTOR = 0.3;
 
 var MainController = function() {
   var canvas = document.getElementById('canvas');
@@ -21,8 +23,8 @@ var MainController = function() {
   console.log(gamepads);
   if (gamepads[0]) {
     this.gamepad = gamepads[0];
+    console.log("Rumble");
     this.gamepad.vibrationActuator.playEffect("dual-rumble", {
-      startDelay: 0,
       duration: 1000,
       weakMagnitude: 1.0,
       strongMagnitude: 1.0
@@ -33,6 +35,7 @@ var MainController = function() {
       this.gamepad = event.gamepad;
       console.log("Game Pad connected", this.gamepad);
       // A little rumble to show you it connected.
+      console.log("Rumble");
       this.gamepad.vibrationActuator.playEffect("dual-rumble", {
         duration: 1000,
         strongMagnitude: 1.0,
@@ -57,6 +60,7 @@ var MainController = function() {
   this.vz = 0;
 
   this.scene.add(this.track());
+  this.scene.add(this.testtrack());
 
   // this.scene.add(this.fractal());
 
@@ -105,6 +109,14 @@ var MainController = function() {
   render();
 };
 
+MainController.prototype.testtrack = function() {
+  var size = 100;
+  var divisions = 100;
+
+  var gridHelper = new THREE.GridHelper( size, divisions );
+  return gridHelper;
+}
+
 MainController.prototype.track = function() {
   var geometry = new THREE.PlaneGeometry(100, 100, 100, 100);
   var texture = new THREE.TextureLoader().load("/static/img/Track.jpg" );
@@ -126,11 +138,44 @@ MainController.prototype.resize = function() {
 }
 
 MainController.prototype.render = function(time) {
-  this.move(this.keyControls.get());
+  var speed = Math.sqrt(this.vx * this.vx + this.vz * this.vz)
+  // Direction based on angle.
+  var expectedx = Math.sin(this.cube.rotation.y);
+  var expectedz = Math.cos(this.cube.rotation.y);
+
+  // Dot product to find direction of speed.
+  var dp = this.vx * expectedx + this.vz * expectedz;
+  if (dp < 0) {
+    // Reversing.
+    speed *= -1
+  }
+
+  this.move(this.keyControls.get(), speed);
 
   if (this.cube) {
     this.cube.position.x += this.vx;
     this.cube.position.z += this.vz;
+
+    // Use some original speed and some speed in your aimed direction.
+    // This acts like tyre grip.
+    // TODO should be higher at high speeds?
+    // TODO like turn speed?
+
+    var speed = Math.sqrt(this.vx * this.vx + this.vz * this.vz)
+    var slipFactor = Math.sqrt(speed) * Player.SLIP_FACTOR;
+    // Dot product to find direction of speed.
+    var dp = this.vx * expectedx + this.vz * expectedz;
+    if (dp < 0) {
+      // Reversing.
+      speed *= -1
+    }
+
+    var mx = this.vx * Player.SLIP_FACTOR;
+    var mz = this.vz * Player.SLIP_FACTOR;
+    var gx = (1 - Player.SLIP_FACTOR) * expectedx * speed;
+    var gz = (1 - Player.SLIP_FACTOR) * expectedz * speed;
+    this.vx = mx + gx;
+    this.vz = mz + gz;
 
     // Slow down;
     this.vx *= (1 - 0.2 * Player.FRICTION);
@@ -154,20 +199,23 @@ MainController.prototype.render = function(time) {
   this.renderer.render(this.scene, this.camera);
 }
 
-MainController.prototype.move = function(keys) {
-  if (keys.left) {
-    this.cube.rotation.y += Player.TURN_SPEED;
-  }
-  if (keys.right) {
-    this.cube.rotation.y -= Player.TURN_SPEED;
-  }
+MainController.prototype.move = function(keys, speed) {
   if (keys.up) {
-    this.vx += Math.sin(this.cube.rotation.y) * Player.ACCELERATION;
-    this.vz += Math.cos(this.cube.rotation.y) * Player.ACCELERATION;
+    this.vx += keys.up * Math.sin(this.cube.rotation.y) * Player.ACCELERATION;
+    this.vz += keys.up * Math.cos(this.cube.rotation.y) * Player.ACCELERATION;
   }
   if (keys.down) {
-    this.vx -= Math.sin(this.cube.rotation.y) * Player.ACCELERATION;
-    this.vz -= Math.cos(this.cube.rotation.y) * Player.ACCELERATION;
+    this.vx -= keys.down * Math.sin(this.cube.rotation.y) * Player.ACCELERATION;
+    this.vz -= keys.down * Math.cos(this.cube.rotation.y) * Player.ACCELERATION;
+  }
+  // turnSpeed increases with speed, but not linearly.
+  var turnSpeed = Math.sign(speed) * Math.sqrt(Math.abs(speed)) * Player.TURN_SPEED;
+
+  if (keys.left) {
+    this.cube.rotation.y += keys.left * turnSpeed;
+  }
+  if (keys.right) {
+    this.cube.rotation.y -= keys.right * turnSpeed;
   }
 }
 

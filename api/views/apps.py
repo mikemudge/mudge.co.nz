@@ -166,7 +166,9 @@ class ProjectAppView(MethodView):
                 if tag in styles:
                     app.styles += styles[tag]
 
-            app.scripts += conf.get('scripts', [])
+            for s in conf.get('scripts', []):
+                app.scripts.append(s + "?v=" + app.version)
+
             app.styles += conf.get('styles', [])
             for t in conf.get('templates', []):
                 app.addTemplate(t)

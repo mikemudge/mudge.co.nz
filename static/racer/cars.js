@@ -1,7 +1,7 @@
 function loadCar(callback) {
   var loader = new THREE.BinaryLoader();
   //obj/veyron/VeyronNoUv_bin.js
-  loader.load("https://threejs.org/examples/obj/f50/F50NoUv_bin.js", angular.bind(this, function( geometry ) {
+  loader.load("/static/racer/assets/veyron/F50NoUv_bin.js", angular.bind(this, function( geometry ) {
     geometry.sortFacesByMaterialIndex();
 
     var m = new THREE.MultiMaterial();
@@ -96,7 +96,7 @@ function loadCar(callback) {
     var mesh = new THREE.Mesh( geometry, m );
 
     // This model is big.
-    mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.0001;
+    mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.0002;
 
     callback(mesh);
   }));

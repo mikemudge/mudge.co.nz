@@ -11,9 +11,11 @@ Player.ACCELERATION = 0.004;
 Player.FRICTION = 0.04;
 Player.TURN_SPEED = 0.07;
 // 0-1 How much your tyres slip on corners.
-Player.SLIP_FACTOR = 0.3;
+Player.SLIP_FACTOR = 0.9;
 
-var MainController = function() {
+var MainController = function($scope) {
+  this.$scope = $scope;
+  this.Player = Player;
   var canvas = document.getElementById('canvas');
 
   this.renderer = new THREE.WebGLRenderer({'canvas': canvas, antialias: true});
@@ -41,6 +43,8 @@ var MainController = function() {
         strongMagnitude: 1.0,
         weakMagnitude: 1.0,
       });
+
+      // TODO hook up controls on join?
     }.bind(this));
   }
 
@@ -77,9 +81,12 @@ var MainController = function() {
   }
   this.controls = new THREE.OrbitControls(this.camera, canvas);
   this.controls.maxDistance = 3;
+  this.controls.minDistance = 3;
+  // We start in close mode.
+  this.followMode = 1;
 
   var callback = function(car) {
-    // car.position.y = 0.1;
+    car.position.y = 0.2;
     car.rotation.y = Math.PI;
 
     this.cube = car;
@@ -96,16 +103,34 @@ var MainController = function() {
   });
   var cube = new THREE.Mesh(mesh, material);
 
-  callback(cube);
+  // callback(cube);
   // Not working???
-  // loadCar(callback);
+  loadCar(callback);
 
   window.addEventListener('resize', angular.bind(this, this.resize));
 
-  var render = angular.bind(this, function() {
+  // Pause if the window loses focus
+  window.addEventListener('blur', function() {
+    this.pause = true;
+    this.$scope.$apply();
+  }.bind(this), false);
+
+  this.start();
+}
+
+MainController.prototype.start = function() {
+  // game.start???
+  // TODO still want to check gamepad when paused.
+  // And allow menu selection etc?
+
+  this.pause = false;
+  var render = function() {
+    if (this.pause) {
+      return;
+    }
     requestAnimationFrame(render);
     this.render();
-  });
+  }.bind(this);
   render();
 };
 
@@ -138,21 +163,21 @@ MainController.prototype.resize = function() {
 }
 
 MainController.prototype.render = function(time) {
-  var speed = Math.sqrt(this.vx * this.vx + this.vz * this.vz)
-  // Direction based on angle.
-  var expectedx = Math.sin(this.cube.rotation.y);
-  var expectedz = Math.cos(this.cube.rotation.y);
-
-  // Dot product to find direction of speed.
-  var dp = this.vx * expectedx + this.vz * expectedz;
-  if (dp < 0) {
-    // Reversing.
-    speed *= -1
-  }
-
-  this.move(this.keyControls.get(), speed);
-
   if (this.cube) {
+    var speed = Math.sqrt(this.vx * this.vx + this.vz * this.vz)
+    // Direction based on angle.
+    var expectedx = Math.sin(this.cube.rotation.y);
+    var expectedz = Math.cos(this.cube.rotation.y);
+
+    // Dot product to find direction of speed.
+    var dp = this.vx * expectedx + this.vz * expectedz;
+    if (dp < 0) {
+      // Reversing.
+      speed *= -1
+    }
+
+    this.move(this.keyControls.get(), speed);
+
     this.cube.position.x += this.vx;
     this.cube.position.z += this.vz;
 
@@ -162,7 +187,14 @@ MainController.prototype.render = function(time) {
     // TODO like turn speed?
 
     var speed = Math.sqrt(this.vx * this.vx + this.vz * this.vz)
-    var slipFactor = Math.sqrt(speed) * Player.SLIP_FACTOR;
+
+    var slipFactor = Player.SLIP_FACTOR;
+    slipFactor *= Math.abs(speed) * 2
+
+    // TODO if braking, then slipFactor should be higher?
+    if (slipFactor > 1) {
+      slipFactor = 1;
+    }
     // Dot product to find direction of speed.
     var dp = this.vx * expectedx + this.vz * expectedz;
     if (dp < 0) {
@@ -170,10 +202,10 @@ MainController.prototype.render = function(time) {
       speed *= -1
     }
 
-    var mx = this.vx * Player.SLIP_FACTOR;
-    var mz = this.vz * Player.SLIP_FACTOR;
-    var gx = (1 - Player.SLIP_FACTOR) * expectedx * speed;
-    var gz = (1 - Player.SLIP_FACTOR) * expectedz * speed;
+    var mx = this.vx * slipFactor;
+    var mz = this.vz * slipFactor;
+    var gx = (1 - slipFactor) * expectedx * speed;
+    var gz = (1 - slipFactor) * expectedz * speed;
     this.vx = mx + gx;
     this.vz = mz + gz;
 
@@ -187,10 +219,9 @@ MainController.prototype.render = function(time) {
       this.vz = 0;
     }
 
-    this.camera.position.x = this.cube.position.x
-        - Math.sin(this.cube.rotation.y) * 3;
-    this.camera.position.z = this.cube.position.z
-        - Math.cos(this.cube.rotation.y) * 3;
+    // Loosly follow the car, but don't change camera height.
+    // TODO support follow distance? With variable height too?
+    this.camera.lookAt(this.cube.position);
     this.camera.position.y = 2;
   }
 
@@ -200,6 +231,21 @@ MainController.prototype.render = function(time) {
 }
 
 MainController.prototype.move = function(keys, speed) {
+  if (keys.toggleView) {
+    if (this.followMode != 1) {
+      this.followMode = 1;
+      this.controls.maxDistance = 3;
+    } else {
+      this.followMode = 2;
+      this.controls.maxDistance = 5;
+    }
+  }
+
+  if (keys.pause) {
+    this.pause = true;
+    this.$scope.$apply();
+  }
+
   if (keys.up) {
     this.vx += keys.up * Math.sin(this.cube.rotation.y) * Player.ACCELERATION;
     this.vz += keys.up * Math.cos(this.cube.rotation.y) * Player.ACCELERATION;
@@ -231,6 +277,7 @@ MainController.prototype.getAim = function() {
 }
 
 var ControllerControls = function() {
+  this.lastButton3 = false;
 }
 
 ControllerControls.prototype.get = function() {
@@ -248,6 +295,23 @@ ControllerControls.prototype.get = function() {
   if (gamepad.axes[0] > 0.1) {
     result['right'] = gamepad.axes[0];
   }
+
+  if (gamepad.buttons[3].pressed && !this.lastButton3) {
+    // If the state of button 3 changed from off to on.
+    result['toggleView'] = 1;
+  }
+  this.lastButton3 = gamepad.buttons[3].pressed;
+
+  if (gamepad.buttons[9].pressed) {
+    result['pause'] = 1;
+  }
+  // Handy for figuring out which is which.
+  // for (i=0;i<=15;i++) {
+  //   if (gamepad.buttons[i].pressed) {
+  //     console.log(i);
+  //   }
+  // }
+
   return result;
 };
 
@@ -283,14 +347,16 @@ KeyControls.keyDown = function(e) {
 window.onkeydown = KeyControls.keyDown;
 
 angular.module('racer', [
-  'ngRoute'
+  'ngRoute',
+  'config'
 ])
 .controller('MainController', MainController)
-.config(function($locationProvider, $routeProvider) {
-  // $locationProvider.html5Mode(true);
+.config(function($locationProvider, $routeProvider, config) {
+  $locationProvider.html5Mode(true);
   $routeProvider.when('/', {
-    template: '<canvas id="canvas"></canvas>',
-    controller: 'MainController'
+    templateUrl: '/static/racer/racer.tpl.html?v=' + config.version,
+    controller: 'MainController',
+    controllerAs: 'ctrl'
   })
 })
 ;

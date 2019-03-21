@@ -80,7 +80,7 @@ apps['cards-workout'] = {
     'tags': ['common', 'font-awesome']
 }
 apps['racer'] = {
-    'tags': ['threejs'],
+    'tags': ['threejs', 'common'],
     'scripts': [
         '/static/js/three.js/BinaryLoader.js',
         '/static/racer/cars.js'

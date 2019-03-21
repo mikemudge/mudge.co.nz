@@ -1,0 +1,32 @@
+<canvas id="canvas"></canvas>
+<div ng-hide="ctrl.pause" class="pause">
+  <div class="button" ng-click="ctrl.pause = true">
+    Pause
+  </div>
+</div>
+<div ng-show="ctrl.pause" class="pause_menu">
+  <h4>Pause Menu</h4>
+  <!-- Some min/max/step might be good -->
+  <label>
+    Acceleration
+    <input ng-model="ctrl.Player.ACCELERATION" />
+  </label>
+  <label>
+    Friction
+    <input ng-model="ctrl.Player.FRICTION" />
+  </label>
+  <label>
+    Turn Speed
+    <input ng-model="ctrl.Player.TURN_SPEED" />
+  </label>
+  <label>
+    Slipperiness
+    <input ng-model="ctrl.Player.SLIP_FACTOR" />
+  </label>
+
+  <p>
+    <div class="button" ng-click="ctrl.start()">
+      Continue
+    </div>
+  </p>
+</div>

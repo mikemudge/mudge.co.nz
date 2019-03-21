@@ -6,3 +6,21 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.pause {
+  left: 0;
+  padding: 4px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+}
+
+.pause_menu {
+  background: white;
+  left: 25%;
+  padding: 16px;
+  position: fixed;
+  text-align: center;
+  top: 25%;
+  width: 50%;
+}

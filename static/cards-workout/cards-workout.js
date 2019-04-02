@@ -100,7 +100,7 @@ MainController.prototype.removeCard = function() {
     // 20 * 52 = 1040 seconds.
     // 4 * 4 * 91 = 1456 seconds.
     // which is about 40 minutes for a whole workout (excluding jokers).
-    this.timeToNextCard = 20 + 4 * Math.max(10, this.card.value);
+    this.timeToNextCard = 20 + 4 * Math.min(10, this.card.value);
     if (this.fast_mode) {
       this.timeToNextCard = 5;
     }

@@ -31,6 +31,8 @@ pre {
   /* TODO added inline-block here for trail? */
   display: inline-block;
   cursor: pointer;
+  /* Incase its on an overlay */
+  pointer-events: initial;
 }
 
 .clickable:hover {

@@ -1,4 +1,5 @@
-var MainController = function($scope, $timeout, $location, setupService) {
+var MainController = function($scope, $interval, $location, setupService) {
+  window.ctrl = this;
   this.config = setupService.getConfig();
   var suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
   var values = ['0', '1','2','3','4','5','6','7','8','9','10','j','q','k'];
@@ -27,7 +28,24 @@ var MainController = function($scope, $timeout, $location, setupService) {
   this.cards = cards;
   // Show the top card.
   this.card = cards.pop();
+  // No autoplay on the first card, because we need a user input to play sound.
+  this.timeToNextCard = 0;
+
+  this.fast_mode = this.config.fast;
+  this.autoPlay = this.config.autoPlay;
   this.removed = [];
+
+  $interval(this.countdown.bind(this), 1000);
+
+  // TODO add audio here?
+  // var x = new Audio();
+  var x = document.createElement("AUDIO");
+  x.type = 'audio/mpeg';
+  x.addEventListener('canplaythrough', function(audio) {
+    // Loaded but we can't play it until a user interaction has happened.
+    this.beepAudio = audio.target;
+  }.bind(this));
+  x.src = '/static/cards-workout/mp3/beep1.mp3';
 };
 
 MainController.prototype.shuffle = function(array) {
@@ -49,9 +67,44 @@ MainController.prototype.shuffle = function(array) {
   return array;
 }
 
+MainController.prototype.countdown = function() {
+  console.log('counting');
+  if (this.timeToNextCard > 0) {
+    this.timeToNextCard--;
+    if (this.timeToNextCard === 0) {
+      this.removeCard();
+    }
+  }
+}
+
+MainController.prototype.stopAutoPlay = function() {
+  this.autoPlay = false;
+  this.timeToNextCard = 0;
+}
+
+MainController.prototype.startAutoPlay = function() {
+  this.autoPlay = true;
+  // give 5 seconds of leeway before flipping to the next card.
+  this.timeToNextCard = 5;
+}
+
 MainController.prototype.removeCard = function() {
   this.removed.push(this.card);
   this.card = this.cards.pop();
+  this.beepAudio.currentTime = 0;
+  if (this.beepAudio.paused) {
+    this.beepAudio.play();
+  }
+
+  if (this.autoPlay && this.card.value) {
+    // 20 * 52 = 1040 seconds.
+    // 4 * 4 * 91 = 1456 seconds.
+    // which is about 40 minutes for a whole workout (excluding jokers).
+    this.timeToNextCard = 20 + 4 * Math.max(10, this.card.value);
+    if (this.fast_mode) {
+      this.timeToNextCard = 5;
+    }
+  }
 }
 
 MainController.prototype.undo = function() {
@@ -69,6 +122,8 @@ var SetupController = function(setupService, $location) {
   this.config = setupService.getConfig();
   this.$location = $location;
   this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
+  // Default to not fast, as that is just a testing thing.
+  this.fast = false;
 }
 
 SetupController.prototype.start = function() {

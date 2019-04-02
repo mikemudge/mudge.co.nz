@@ -12,7 +12,9 @@ body {
 .row * {
   display: table-cell;
 }
-
+.clickable {
+  color: #00d0e0;
+}
 
 .text {
   text-align: center;

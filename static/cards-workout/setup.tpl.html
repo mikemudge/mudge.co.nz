@@ -4,6 +4,14 @@
       <label> Jokers: </label>
       <input type="checkbox" ng-model="ctrl.config.jokers" />
     </div>
+    <div class="row">
+      <label> Auto-play: </label>
+      <input type="checkbox" ng-model="ctrl.config.autoPlay" />
+    </div>
+    <div class="row">
+      <label title="flips every 5 seconds"> Fast: </label>
+      <input type="checkbox" ng-model="ctrl.config.fast" />
+    </div>
     <div class="row" ng-repeat="suit in ctrl.suits">
       <label>
         {{ suit }} Activity

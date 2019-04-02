@@ -5,9 +5,20 @@
   <div ng-if="ctrl.cards.length > 0" class="card" ng-click="ctrl.removeCard()" ng-touch="ctrl.removeCard()">
     <img ng-src="{{ ctrl.card.img }}" />
   </div>
-  <div class="overlay">
+  <div class="overlay-input">
     <div class="remaining">
-      Remaining: {{ ctrl.cards.length }}
+      Remaining: {{ ctrl.cards.length }}<br>
+      <div ng-show="ctrl.timeToNextCard">
+        Auto flip in {{ ctrl.timeToNextCard }}
+      </div>
+      <div class="clickable" ng-show="ctrl.autoPlay"
+          ng-click="ctrl.stopAutoPlay()">
+        pause auto-play
+      </div>
+      <div class="clickable" ng-hide="ctrl.autoPlay"
+          ng-click="ctrl.startAutoPlay()">
+        auto-play
+      </div>
     </div>
     <div class="activity">
       {{ ctrl.config.activity[ctrl.card.suit] }}

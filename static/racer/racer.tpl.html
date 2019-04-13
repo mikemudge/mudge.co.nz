@@ -7,23 +7,30 @@
 <div ng-show="ctrl.pause" class="pause_menu">
   <h4>Pause Menu</h4>
   <!-- Some min/max/step might be good -->
-  <label>
-    Acceleration
-    <input ng-model="ctrl.Player.ACCELERATION" />
-  </label>
-  <label>
-    Friction
-    <input ng-model="ctrl.Player.FRICTION" />
-  </label>
-  <label>
-    Turn Speed
-    <input ng-model="ctrl.Player.TURN_SPEED" />
-  </label>
-  <label>
-    Slipperiness
-    <input ng-model="ctrl.Player.SLIP_FACTOR" />
-  </label>
-
+  <div>
+    <label>
+      Acceleration
+      <input ng-model="ctrl.Player.ACCELERATION" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Friction
+      <input ng-model="ctrl.Player.FRICTION" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Turn Speed
+      <input ng-model="ctrl.Player.TURN_SPEED" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Slipperiness
+      <input ng-model="ctrl.Player.SLIP_FACTOR" />
+    </label>
+  </div>
   <p>
     <div class="button" ng-click="ctrl.start()">
       Continue

@@ -23,4 +23,5 @@ body {
   text-align: center;
   top: 25%;
   width: 50%;
+  max-width: 600px;
 }

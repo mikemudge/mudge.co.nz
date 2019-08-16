@@ -21,6 +21,9 @@ mkvirtualenv
 workon
 https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-environments
 
+Test using
+docker-compose exec app nosetests
+
 ### Production
 
 Restart the python app.

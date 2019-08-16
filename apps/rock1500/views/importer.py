@@ -70,9 +70,9 @@ class ImportView(MethodView):
         )
         result = req.json()
 
-        # print("Fetched %d songs. Parsing..." % len(result))
-        # for item in result:
-        #     self.parse_song(item)
-        #     db.session.commit()
+        print("Fetched %d songs. Parsing..." % len(result))
+        for item in result:
+            self.parse_song(item)
+            db.session.commit()
 
         return jsonify(result)

@@ -27,10 +27,16 @@ class Rock1500SongView(DBModelView):
                 Rock1500Song.title.ilike("%" + search + "%"),
                 Rock1500Artist.name.ilike("%" + search + "%")
             ))
-            query.order_by(Rock1500Song.rank2017)
+            query = query.order_by(Rock1500Song.rank2017)
+        else:
+            # Support override for sort?
+            query = query.order_by(Rock1500Song.rankThisYear)
 
-        c = request.args.get('count', 20)
-        query = query.limit(c)
+            limit = request.args.get('limit', 20)
+            query = query.limit(limit)
+
+            start = request.args.get('start', 0)
+            query = query.offset(start)
 
         results = query.all()
         listSchema = self.schema(many=True)

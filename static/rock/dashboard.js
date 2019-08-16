@@ -1,5 +1,6 @@
 function DashboardController($resource, loginService, config, $interval) {
   window.ctrl = this;
+  this.currentUser = loginService.user;
   this.Songs = $resource(config.API_URL + 'api/rock1500/next', {}, {
     recent: {
       url: config.API_URL + 'api/rock1500/recent',

@@ -105,6 +105,43 @@ RockController.prototype.handleDrop = function(pick, $event) {
   this.picks.picks.splice(to_idx, 0, moved);
 }
 
+var SongsController = function($resource, config, $rootScope, $timeout, $location, loginService) {
+  window.ctrl = this;
+  this.$location = $location;
+  this.Songs = $resource(config.API_URL + 'api/rock1500/song');
+  this.currentUser = loginService.user;
+
+  $rootScope.title = "Rock"
+
+  this.limit = 100;
+  this.start = 0;
+  var params = $location.search();
+  if (params.limit) {
+    this.limit = parseInt(params.limit);
+  }
+  if (params.start) {
+    this.start = parseInt(params.start);
+  }
+  this.reload();
+}
+
+SongsController.prototype.load = function(start) {
+  this.start = start;
+  if (this.start < 0) {
+    this.start = 0;
+  } else if (this.start > 1500) {
+    // TODO this should look at total results in the DB
+    this.start = 1480;
+  }
+  this.reload();
+}
+
+SongsController.prototype.reload = function() {
+  this.$location.search({limit: this.limit, start: this.start});
+  this.songsLoading = true;
+  this.songs = this.Songs.query({limit: this.limit, start: this.start});
+}
+
 angular.module('rock', [
   'api',
   'config',
@@ -113,6 +150,7 @@ angular.module('rock', [
   'ngRoute',
   'rockDash'
 ])
+.controller('SongsController', SongsController)
 .controller('RockController', RockController)
 .run(function(loginService) {
   // You must be logged in to use this app.
@@ -122,8 +160,11 @@ angular.module('rock', [
   $locationProvider.html5Mode(true);
   $routeProvider.when('/dashboard', {
     templateUrl: '/static/rock/dashboard.tpl.html'
+  }).when('/picks', {
+    templateUrl: '/static/rock/picks.tpl.html'
   }).otherwise({
-    templateUrl: '/static/rock/home.tpl.html'
+    templateUrl: '/static/rock/songs.tpl.html',
+    reloadOnSearch: false,
   });
 })
 // https://parkji.co.uk/2013/08/11/native-drag-and-drop-in-angularjs.html

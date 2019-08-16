@@ -41,9 +41,21 @@ class ImportView(MethodView):
         song.artist = artist
         song.album = album
 
-        song.rankThisYear = item.get('rank')
-        song.set2017Rank(item.get('rankOneYearAgo'))
-        song.set2016Rank(item.get('rankTwoYearsAgo'))
+        try:
+            song.rankThisYear = item.get('rank')
+        except ValueError as e:
+            # Its not really acceptable if this year's rank is not an
+            raise e
+        try:
+            song.set2017Rank(int(item.get('rankOneYearAgo')))
+        except ValueError as e:
+            # No worries, we only care if its an int.
+            pass
+        try:
+            song.set2016Rank(int(item.get('rankTwoYearsAgo')))
+        except ValueError as e:
+            # No worries, we only care if its an int.
+            pass
 
     @oauth.require_oauth('admin')
     def get(self):
@@ -58,9 +70,9 @@ class ImportView(MethodView):
         )
         result = req.json()
 
-        print("Fetched %d songs. Parsing..." % len(result))
-        for item in result:
-            self.parse_song(item)
-            db.session.commit()
+        # print("Fetched %d songs. Parsing..." % len(result))
+        # for item in result:
+        #     self.parse_song(item)
+        #     db.session.commit()
 
         return jsonify(result)

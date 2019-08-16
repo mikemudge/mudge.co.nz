@@ -16,6 +16,12 @@
   display: inline-block;
 }
 
+.next,
+.previous {
+  display: inline-block;
+  cursor: pointer;
+}
+
 /* Sub text for artist */
 .artist {
   font-size: 10px;
@@ -47,10 +53,15 @@
   box-shadow: 2px 2px 5px 0 #777777;
 }
 
+.songs {
+  margin: 10px 5%;
+  padding: 10px 5%;
+}
+
 .song {
   position: relative;
   display: block;
-  padding: 6px 20px 6px 32px;
+  padding: 6px 20px 6px 38px;
   cursor: pointer;
   border-bottom: 1px solid #777777;
 }

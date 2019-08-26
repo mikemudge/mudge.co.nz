@@ -25,6 +25,21 @@ def importLatest():
         return
 
 @Command.command
+def migrateRankTo2018():
+    # This will initialize the rank2018 field using rank (from last year).
+    # It will also unset the rank for this year's countdown.
+    for song in Rock1500Song.query.order_by(Rock1500Song.rankThisYear).all():
+        if song.rank2019:
+            # This song has already been updated for this year.
+            # Its rankThisYear will be for 2019 already.
+            continue
+        if not song.rank2018 and song.rankThisYear:
+            print("Update rank2018 for %s to %d" % (song.title, song.rankThisYear))
+            song.rank2018 = song.rankThisYear
+            song.rankThisYear = None
+    db.session.commit()
+
+@Command.command
 def import2016():
     import csv
     with open('apps/rock1500/data/Rock 1500 - 2016.csv', 'r') as csvfile:

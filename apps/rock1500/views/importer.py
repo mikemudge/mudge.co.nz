@@ -47,11 +47,28 @@ class ImportView(MethodView):
 
         try:
             song.rankThisYear = item.get('rank')
+
+            if not song.rank2019:
+                # Don't update this once its set.
+                song.rank2019 = song.rankThisYear
         except ValueError as e:
             # Its not really acceptable if this year's rank is not an int
             raise e
 
-        # TODO set rank 2018 once it exists.
+        try:
+            newRank = int(item.get('rankOneYearAgo'))
+
+            if song.rank2018 is None:
+                # Update the DB with new information.
+                song.rank2018 = newRank
+            elif song.rank2018 != newRank:
+                print("Rank changed for 2018 unexpected. Ignoring")
+            else:
+                # We already have a value and its the same so nothing to do.
+                pass
+        except ValueError as e:
+            # No worries, we only care if its an int.
+            pass
 
         try:
             newRank = int(item.get('rankTwoYearsAgo'))

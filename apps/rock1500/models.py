@@ -62,9 +62,6 @@ class Rock1500Song(BaseModel):
     def __repr__(self):
         return self.title
 
-    def set2018Rank(self, value):
-        self.rank2018 = int(value)
-
     def set2017Rank(self, value):
         self.rank2017 = int(value)
 

@@ -45,6 +45,7 @@ class Rock1500Song(BaseModel):
     rankThisYear = db.Column(db.Integer(), index=True)
 
     # Previous ranks if known.
+    # rank2018 = db.Column(db.Integer(), index=True)
     rank2017 = db.Column(db.Integer(), index=True)
     rank2016 = db.Column(db.Integer())
     rank2015 = db.Column(db.Integer())
@@ -60,23 +61,17 @@ class Rock1500Song(BaseModel):
     def __repr__(self):
         return self.title
 
+    def set2018Rank(self, value):
+        self.rank2018 = int(value)
+
     def set2017Rank(self, value):
-        try:
-            self.rank2017 = int(value)
-        except ValueError:
-            self.rank2017 = None
+        self.rank2017 = int(value)
 
     def set2016Rank(self, value):
-        try:
-            self.rank2016 = int(value)
-        except ValueError:
-            self.rank2016 = None
+        self.rank2016 = int(value)
 
     def set2015Rank(self, value):
-        try:
-            self.rank2015 = int(value)
-        except ValueError:
-            self.rank2015 = None
+        self.rank2015 = int(value)
 
 class Rock1500Pick(BaseModel):
     song_id = db.Column(UUID(), db.ForeignKey('rock1500_song.id'), nullable=False)

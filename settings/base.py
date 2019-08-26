@@ -35,6 +35,7 @@ CLIENT_SECRET = None
 RESTRICT_FLASK_ADMIN = [
     '210.246.57.94',  # My Flat
     '121.75.21.164',  # Hugh and Adelle's
+    '24.4.130.218',  # Mian's Place
     '172.23.0.1',  # for docker
     '172.18.0.1',  # for docker
     '127.0.0.1',

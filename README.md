@@ -24,6 +24,15 @@ https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-en
 Test using
 docker-compose exec app nosetests
 
+DB migrations
+To create a migration file use
+```./manage.py db migrate -m "Migration Name"```
+Then to apply the migrations (after reviewing the created file) use
+./manage.py db upgrade
+You should test this before deploying where it will happen automatically.
+Also check that you can downgrade from the new revision.
+./manage.py db downgrade
+
 ### Production
 
 Restart the python app.

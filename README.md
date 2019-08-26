@@ -23,6 +23,8 @@ https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-en
 
 Test using
 docker-compose exec app nosetests
+Or test a single file with
+docker-compose exec app nosetests tests/rock_tests/test_rock.py
 
 DB migrations
 To create a migration file use

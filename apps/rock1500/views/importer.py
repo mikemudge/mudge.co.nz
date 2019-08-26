@@ -25,10 +25,9 @@ class ImportView(MethodView):
             print("Album not found, creating new album %s" % album_name)
             album = Rock1500Album(
                 name=album_name,
+                artist=artist
             )
             db.session.add(album)
-            # Only set the artist for new albums.
-            album.artist = artist
 
         albumArt = item.get('albumArt')
         if len(albumArt) <= 255:
@@ -40,11 +39,11 @@ class ImportView(MethodView):
         if not song:
             print("Song not found, creating new song %s" % song_name)
             song = Rock1500Song(
-                title=song_name
+                title=song_name,
+                artist=artist,
+                album=album
             )
             db.session.add(song)
-        song.artist = artist
-        song.album = album
 
         try:
             song.rankThisYear = item.get('rank')
@@ -82,9 +81,9 @@ class ImportView(MethodView):
         )
         result = req.json()
 
-        # print("Fetched %d songs. Parsing..." % len(result))
-        # for item in result:
-        #     self.parse_song(item)
-        #     db.session.commit()
+        print("Fetched %d songs. Parsing..." % len(result))
+        for item in result:
+            self.parse_song(item)
+            db.session.commit()
 
         return jsonify(result)

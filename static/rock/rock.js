@@ -14,8 +14,8 @@ function RockController($resource, loginService, config, $rootScope, $timeout) {
   console.log(this);
   $rootScope.title = "Rock"
 
-  this.picks = this.Picks.get(function(response) {
-    response.picks.sort(function(a, b) {
+  this.picks = this.Picks.query(function(response) {
+    response.sort(function(a, b) {
       return a.position - b.position;
     });
   });
@@ -32,14 +32,14 @@ RockController.prototype.getTitle = function(song) {
 }
 
 RockController.prototype.addPick = function(song) {
-  var match = this.picks.picks.find(function(p) {
+  var match = this.picks.find(function(p) {
     return p.song.id == song.id;
   });
   if (match) {
     alert('song already picked');
     return;
   }
-  this.picks.picks.push({
+  this.picks.push({
     'song': song
   });
 
@@ -49,16 +49,19 @@ RockController.prototype.addPick = function(song) {
 }
 
 RockController.prototype.removePick = function(pick) {
-  var idx = this.picks.picks.indexOf(pick);
+  var idx = this.picks.indexOf(pick);
   if (idx === -1) {
     alert('Not in list');
     return;
   }
-  this.picks.picks.splice(idx, 1);
+  this.picks.splice(idx, 1);
 }
 
 RockController.prototype.savePicks = function() {
-  this.picks.$save();
+  // This saves as an in order array to preserve position of the picks.
+  this.Picks.save({
+    'picks': this.picks
+  });
 }
 
 RockController.prototype.importSongs = function() {
@@ -94,15 +97,15 @@ RockController.prototype.loadSuggestions = function() {
 
 RockController.prototype.handleDrop = function(pick, $event) {
   var moved_id = $event.dataTransfer.getData('Text');
-  var match = this.picks.picks.findIndex(function(p) {
+  var match = this.picks.findIndex(function(p) {
     return moved_id == p.id;
   });
-  var to_idx = this.picks.picks.findIndex(function(p) {
+  var to_idx = this.picks.findIndex(function(p) {
     return pick.id == p.id;
   });
   // TODO can we splice this at pick up time?
-  var moved = this.picks.picks.splice(match, 1)[0];
-  this.picks.picks.splice(to_idx, 0, moved);
+  var moved = this.picks.splice(match, 1)[0];
+  this.picks.splice(to_idx, 0, moved);
 }
 
 var SongsController = function($resource, config, $rootScope, $timeout, $location, loginService) {

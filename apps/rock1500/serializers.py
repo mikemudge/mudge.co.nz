@@ -12,17 +12,21 @@ class Rock1500AlbumSchema(BaseSchema):
 
 class Rock1500SongSchema(BaseSchema):
     class Meta:
+        exclude = BaseSchema.Meta.exclude + ['picks']
         model = Rock1500Song
 
-    artist = ma.Nested(Rock1500ArtistSchema, dump_only=True)
+    artist = ma.Nested(Rock1500ArtistSchema, dump_only=True, only=['id', 'name'])
 
-    album = ma.Nested(Rock1500AlbumSchema, dump_only=True)
+    album = ma.Nested(Rock1500AlbumSchema, dump_only=True, only=['id', 'name', 'cover_art_url'])
 
 class Rock1500PickSchema(BaseSchema):
     class Meta:
+        exclude = BaseSchema.Meta.exclude
         model = Rock1500Pick
 
     song = ma.Nested(Rock1500SongSchema, dump_only=True)
 
 class Rock1500PicksSchema(BaseSchema):
+    class Meta:
+        fields = ['picks']
     picks = ma.Nested(Rock1500PickSchema, many=True)

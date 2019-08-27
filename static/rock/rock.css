@@ -17,6 +17,11 @@
   display: inline-block;
 }
 
+.pick .artist {
+  font-size: 12px;
+  color: #333333;
+}
+
 .pick .delete {
   cursor: pointer;
   height: 20px;
@@ -42,7 +47,7 @@
   box-shadow: 2px 2px 5px 0 #777777;
 }
 
-.option.song {
+.options .song {
   cursor: pointer;
 }
 

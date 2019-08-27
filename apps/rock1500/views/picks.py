@@ -1,8 +1,8 @@
 from auth.provider import oauth
 from flask import request
 from flask.views import MethodView
-from ..models import Rock1500Pick
-from ..serializers import Rock1500PicksSchema, Rock1500SongSchema
+from ..models import Rock1500Pick, Rock1500Song
+from ..serializers import Rock1500PickSchema
 from shared.database import db
 
 class RockPicksView(MethodView):
@@ -14,22 +14,20 @@ class RockPicksView(MethodView):
 
         result = query.all()
 
-        schema = Rock1500PicksSchema()
+        schema = Rock1500PickSchema(many=True)
 
-        return schema.response({'picks': result})
+        return schema.response(result)
 
     @oauth.require_oauth('rock')
     def post(self):
         # Passed up songs in order?
-        # create/update picks for a user?
-        schema = Rock1500PicksSchema()
+        # Replace all picks for a user with these?
 
-        song_schema = Rock1500SongSchema()
         picks = []
         for i, pick in enumerate(request.json['picks']):
-            song = song_schema.load(pick['song'])
+            song = Rock1500Song.query.get(pick['song']['id'])
             if not song:
-                raise Exception('No song')
+                raise Exception('No song found')
             picks.append(Rock1500Pick(
                 song=song,
                 position=i + 1,
@@ -42,4 +40,5 @@ class RockPicksView(MethodView):
         request.oauth.user.rock_picks = picks
         db.session.commit()
 
-        return schema.response({'picks': picks})
+        schema = Rock1500PickSchema(many=True)
+        return schema.response(picks)

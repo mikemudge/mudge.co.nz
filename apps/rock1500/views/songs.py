@@ -32,11 +32,11 @@ class Rock1500SongView(DBModelView):
             # Support override for sort?
             query = query.order_by(Rock1500Song.rankThisYear)
 
-            limit = request.args.get('limit', 20)
-            query = query.limit(limit)
-
             start = request.args.get('start', 0)
             query = query.offset(start)
+
+        limit = request.args.get('limit', 20)
+        query = query.limit(limit)
 
         results = query.all()
         listSchema = self.schema(many=True)

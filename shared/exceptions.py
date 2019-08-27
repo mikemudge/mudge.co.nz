@@ -82,6 +82,10 @@ def registerHandlers(app):
     # Handle the marshmallow Validation errors.
     @app.errorhandler(ValidationError)
     def handle_validation_error(error):
+        if app.config.get('DEBUG', False):
+            traceback.print_exc()
+            print(error)
+
         invalid_fields = error.normalized_messages()
         response = jsonify({
             'errors': [{

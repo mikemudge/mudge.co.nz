@@ -21,12 +21,12 @@
       <div class="loading" ng-hide="ctrl.picks.$resolved">
         Loading your picks...
       </div>
-      <div class="loading" ng-show="ctrl.picks.picks.length == 0">
+      <div class="loading" ng-show="ctrl.picks.length == 0">
         No picks yet, try finding a song below.
       </div>
       <div class="pick" draggable droppable drop="ctrl.handleDrop(pick, $event)"
           id="{{ pick.id }}"
-          ng-repeat="pick in ctrl.picks.picks">
+          ng-repeat="pick in ctrl.picks">
         <label title="{{ ctrl.getTitle(pick.song) }}">
           {{ $index + 1 }}: {{ pick.song.title }}
           <div class="artist">{{ pick.song.artist.name }}</div>
@@ -38,7 +38,7 @@
 
       <div class="actions">
         <div class="button" ng-click="ctrl.savePicks()"
-            ng-show="ctrl.picks.picks.length">
+            ng-show="ctrl.picks.length">
           Save Picks
         </div>
         <div ng-show="ctrl.currentUser.admin" class="button" ng-click="ctrl.importSongs()">

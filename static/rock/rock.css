@@ -113,13 +113,31 @@ img {
   max-width: 100%;
   max-height: 100%;
 }
+
+/* Styles for dashboard page */
 .prediction {
-  width: 49%;
+  width: 44%;
   display: inline-block;
+  margin: 0 2%;
 }
 
 .recent {
-  width: 49%;
+  width: 44%;
   display: inline-block;
   vertical-align: top;
+  float: right;
+  margin: 0 2%;
+}
+
+.prediction .rank {
+  position: absolute;
+  left: 0px;
+  height: 20px;
+  line-height: 20px;
+  top: 50%;
+  margin: -10px 5px;
+}
+
+.prediction .song_inner {
+  margin-left: 30px;
 }

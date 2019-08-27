@@ -18,48 +18,46 @@ function DashboardController($resource, loginService, config, $interval) {
     this.seconds--;
     console.log('refresh in ', this.seconds);
     if (this.seconds == 0) {
-      this.loadSongs();
+      this.importSongs();
       this.seconds = 60;
     }
   }.bind(this), 1000);
-  this.loadSongs();
+
+  // Load the data for the panels.
+  this.loadPredictions();
+  this.loadRecent();
+
+  // Now make the call to import the latest songs.
+  this.importSongs();
 }
 
-DashboardController.prototype.loadSongs = function(response) {
+DashboardController.prototype.loadRecent = function(response) {
+  // Load the recent songs initially as quick as we can.
+  this.recent = this.Songs.recent({
+    'count': 10
+  });
+}
+
+DashboardController.prototype.loadPredictions = function(response) {
   // Just update the songs, in the background.
-  this.Songs.import().$promise.then(this.importComplete.bind(this));
-}
-
-DashboardController.prototype.importComplete = function(response) {
   this.songs = this.Songs.query({
     'count': 50,
     'worst_rank': 100,
   });
-
-  this.recent = this.Songs.recent({
-    'count': 10
-  });
-
-  this.highest_rank = 1500;
-  this.recent.$promise.then(function(response) {
-    this.highest_rank = response[0].rankThisYear;
-    console.log('recent', response.length);
-    if (this.songs) {
-      this.songs.splice(this.highest_rank - 1)
-    }
-  }.bind(this));
-
-  this.songs.$promise.then(function(response) {
-    console.log('coming', response.length);
-    this.songs.splice(this.highest_rank - 1)
-  }.bind(this));
 }
 
-DashboardController.prototype.importSongs = function() {
-  this.Songs.import().$promise.then(function() {
-    console.log('Import complete');
-    window.location.reload();
-  });
+DashboardController.prototype.importSongs = function(response) {
+  // Just update the songs, in the background.
+  // We want to get the up to date information, although this can take a while.
+  this.Songs.import().$promise.then(this.importComplete.bind(this));
+}
+
+DashboardController.prototype.importComplete = function(response) {
+  console.log('Import complete');
+
+  // Update the panels.
+  this.loadRecent();
+  this.loadPredictions();
 }
 
 angular.module('rockDash', [

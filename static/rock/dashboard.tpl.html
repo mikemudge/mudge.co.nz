@@ -5,43 +5,37 @@
   <div ng-include="'/static/rock/header.tpl.html'">
   </div>
 
-  <div ng-hide="ctrl.songs.$resolved">
-    Loading all the songs...
-  </div>
-  <div ng-show="ctrl.songs.$resolved">
-    <div>
-      <div class="songs">
-        {{ ctrl.songs.length }} songs loaded
-      </div>
-    </div>
+  <div class="actions">
     <div ng-show="ctrl.currentUser.admin" class="button" ng-click="ctrl.importSongs()">
-      Import Songs
+      Import Songs (will query the rock API for new songs)
     </div>
-    <div class="prediction">
+  </div>
+
+  <div class="prediction">
+    <div ng-hide="ctrl.songs.$resolved">
+      Loading predictions...
+    </div>
+    <div ng-show="ctrl.songs.$resolved">
       <div>
         Prediction for the next songs
       </div>
       <div class="song" ng-repeat="song in ctrl.songs">
-        <div ng-hide="song.rankThisYear" class="estimated">
+        <div ng-hide="song.rankThisYear" class="rank estimated">
           {{ ctrl.songs.length - $index }}.
         </div>
-         <div ng-include="'/static/rock/song.tpl.html'">
-          <div class="rank">
-            {{ song.rankThisYear }}
-            <div ng-hide="song.rankThisYear" class="estimated">
-              {{ ctrl.songs.length - $index }}.
-            </div>
-          </div>
-        </div>
+        <div class="song_inner" ng-include="'/static/rock/song.tpl.html'"></div>
       </div>
     </div>
-    <div class="recent">
-      <div>
-        Recently played songs
-      </div>
-      <div class="song" ng-repeat="song in ctrl.recent"
-          ng-include="'/static/rock/song.tpl.html'">
-      </div>
+  </div>
+  <div class="recent">
+    <div ng-show="ctrl.recent.$resolved">
+      Recently played songs
+    </div>
+    <div ng-hide="ctrl.recent.$resolved">
+      Loading recently played...
+    </div>
+    <div class="song" ng-repeat="song in ctrl.recent"
+        ng-include="'/static/rock/song.tpl.html'">
     </div>
   </div>
 </div>

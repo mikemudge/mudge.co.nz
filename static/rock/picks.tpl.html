@@ -1,6 +1,10 @@
 <div ng-controller="RockController as ctrl">
   <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
   </div>
+
+  <div ng-include="'/static/rock/header.tpl.html'">
+  </div>
+
   <div class="page">
     <div class="text">
       <p>
@@ -52,8 +56,8 @@
                 ng-click="ctrl.addPick(song)"
                 title="{{ ctrl.getTitle(song) }}">
               {{ song.title }} (
-                <span ng-show="song.rank2017" class="last_year">{{ song.rank2017 }} </span>
-                <span ng-hide="song.rank2017" class="last_year">{{ song.rank2016 }} </span>
+                <span ng-show="song.rank2018" class="last_year">{{ song.rank2018 }} </span>
+                <span ng-hide="song.rank2018" class="last_year">{{ song.rank2017 }} </span>
               )
               <div class="artist">{{ song.artist.name }}</div>
             </div>

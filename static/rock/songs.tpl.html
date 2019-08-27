@@ -1,6 +1,10 @@
 <div ng-controller="SongsController as ctrl">
   <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
   </div>
+
+  <div ng-include="'/static/rock/header.tpl.html'">
+  </div>
+
   <div ng-hide="ctrl.songs.$resolved">
     Loading all the songs...
   </div>

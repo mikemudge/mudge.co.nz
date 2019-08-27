@@ -1,16 +1,21 @@
 <div class="rank" ng-show="song.rankThisYear">
   {{ song.rankThisYear }}
 </div>
-<div ng-hide="song.rankThisYear" class="estimated">
-  {{ ctrl.songs.length - $index }}.
-</div>
-<div>{{ song.title }}</div>
-<div class="artist">{{ song.artist.name }}</div>
-<!-- This probably isn't set? -->
-<span ng-show="song.rank2017">
-  Last year {{ song.rank2017 }}
-</span>
-Previously {{ song.rank2016 }}, {{ song.rank2015 }}
 <div class="album">
   <img ng-src="{{ song.album.cover_art_url }}" />
+</div>
+<div class="extra_details">
+  <div>{{ song.title }}</div>
+  <div class="artist">{{ song.artist.name }}</div>
+</div>
+<div class="previously">
+  <div ng-show="song.rank2018">
+    Rank 2018: {{ song.rank2018 }}
+  </div>
+  <div ng-show="song.rank2017">
+    Rank 2017: {{ song.rank2017 }}
+  </div>
+  <div ng-hide="song.rank2017 || song.rank2018">
+    New Entry
+  </div>
 </div>

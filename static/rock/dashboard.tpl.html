@@ -1,6 +1,10 @@
 <div ng-controller="DashboardController as ctrl">
   <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
   </div>
+
+  <div ng-include="'/static/rock/header.tpl.html'">
+  </div>
+
   <div ng-hide="ctrl.songs.$resolved">
     Loading all the songs...
   </div>
@@ -17,12 +21,16 @@
       <div>
         Prediction for the next songs
       </div>
-      <div class="song" ng-repeat="song in ctrl.songs"
-          ng-include="'/static/rock/song.tpl.html'">
-        <div class="rank">
-          {{ song.rankThisYear }}
-          <div ng-hide="song.rankThisYear" class="estimated">
-            {{ ctrl.songs.length - $index }}.
+      <div class="song" ng-repeat="song in ctrl.songs">
+        <div ng-hide="song.rankThisYear" class="estimated">
+          {{ ctrl.songs.length - $index }}.
+        </div>
+         <div ng-include="'/static/rock/song.tpl.html'">
+          <div class="rank">
+            {{ song.rankThisYear }}
+            <div ng-hide="song.rankThisYear" class="estimated">
+              {{ ctrl.songs.length - $index }}.
+            </div>
           </div>
         </div>
       </div>

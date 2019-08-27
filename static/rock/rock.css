@@ -1,3 +1,4 @@
+/* Picks page styles */
 .pick {
   position: relative;
 }
@@ -14,18 +15,6 @@
 }
 .pick label .artist {
   display: inline-block;
-}
-
-.next,
-.previous {
-  display: inline-block;
-  cursor: pointer;
-}
-
-/* Sub text for artist */
-.artist {
-  font-size: 10px;
-  color: #333333;
 }
 
 .pick .delete {
@@ -53,6 +42,26 @@
   box-shadow: 2px 2px 5px 0 #777777;
 }
 
+.option.song {
+  cursor: pointer;
+}
+
+/* Recent Songs (aka Home) Page */
+.prequel {
+  margin: 0 10%;
+}
+
+.prequel .next,
+.prequel .previous {
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px;
+  margin: 8px;
+  font-size: 16px;
+  box-shadow: 0px 0px 5px 1px #CCC;
+  border-radius: 5px;
+}
+
 .songs {
   margin: 10px 5%;
   padding: 10px 5%;
@@ -61,23 +70,38 @@
 .song {
   position: relative;
   display: block;
-  padding: 6px 20px 6px 38px;
-  cursor: pointer;
+  padding: 6px 5px;
   border-bottom: 1px solid #777777;
 }
 
 .song .rank {
-  position: absolute;
-  left: 0;
-  top: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 38px;
 }
 
 .album {
+  display: inline-block;
+  vertical-align: middle;
   width: 50px;
   height: 50px;
-  position: absolute;
-  right: 5px;
-  top: 5px;
+}
+
+.song .extra_details {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.song .artist {
+  font-size: 16px;
+  color: #00d0e0;
+}
+
+.song .previously {
+  float: right;
+  vertical-align: middle;
+  font-size: 13px;
+  color: #333333;
 }
 
 img {

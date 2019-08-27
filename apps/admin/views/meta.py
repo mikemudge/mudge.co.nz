@@ -1,20 +1,21 @@
 from auth.provider import oauth
 from flask.views import MethodView
+from flask import jsonify
 from marshmallow import fields as f
-from shared.marshmallow import BaseSchema
+from marshmallow import Schema
 from sqlalchemy import inspect
 
-class FieldSchema(BaseSchema):
+class FieldSchema(Schema):
     name = f.Str(required=True)
     model = f.Str()
     list = f.Boolean()
     type = f.Str()
     link = f.Boolean()
 
-class EndpointsSchema(BaseSchema):
+class EndpointsSchema(Schema):
     crud = f.Str()
 
-class MetaSchema(BaseSchema):
+class MetaSchema(Schema):
     name = f.Str()
     fields = f.Nested(FieldSchema, many=True)
     # TODO should just make this a set of names?
@@ -39,7 +40,7 @@ class MetaView(MethodView):
         # TODO should only create the meta data once?
         results = self.results[projectName.lower()]
         schema = MetaSchema(many=True)
-        return schema.response(results)
+        return jsonify(data=schema.dump(results))
 
     @classmethod
     def makeMeta(cls, model):

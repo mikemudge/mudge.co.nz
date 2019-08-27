@@ -6,7 +6,6 @@ from marshmallow import fields
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 from shared.database import db
-from shared.exceptions import ValidationException
 
 # Make marshmallow sqlalchemy friendly.
 Session = scoped_session(sessionmaker())
@@ -14,7 +13,7 @@ Session = scoped_session(sessionmaker())
 ma = Marshmallow()
 
 class BaseOpts(ModelSchemaOpts):
-    def __init__(self, meta):
+    def __init__(self, meta, ordered):
         if not hasattr(meta, 'sqla_session'):
             meta.sqla_session = db.session
         super(BaseOpts, self).__init__(meta)
@@ -30,24 +29,10 @@ class BaseSchema(ModelSchema):
             return jsonify(errors=[{
                 'message': '%s not found' % self.Meta.model.__name__
             }]), 404
-        result, errors = self.dump(data)
-        if errors:
-            return self.errorResponse(errors)
+        # This can throw a marshmallow.exceptions.ValidationError
+        # which is handled by an error handler in exceptions.py
+        result = self.dump(data)
         return jsonify(data=result)
-
-    def parse(self, data, instance=None):
-        result, errors = self.load(data, session=db.session, instance=instance)
-        if errors:
-            raise ValidationException(errors)
-        return result
-
-    def errorResponse(self, errors):
-        # TODO structure this
-        response = jsonify(error={
-            'errors': errors
-        })
-        response.status_code = 400
-        return response
 
 # Should use this for admin stuff shared, good for identifying by computer and human.
 class IdSchema(BaseSchema):

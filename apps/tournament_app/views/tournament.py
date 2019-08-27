@@ -1,7 +1,6 @@
 from flask import jsonify
 from flask import Blueprint
 from shared.database import db
-from shared.exceptions import ValidationException
 from ..serialize import TournamentSchema
 from ..models import Match, Round, Tournament
 
@@ -21,9 +20,7 @@ def generateTournamentRounds(pk):
     # generate Knockout
     db.session.commit()
     s = TournamentSchema(session=db.session)
-    result, errors = s.dump(tournament)
-    if errors:
-        raise ValidationException(errors)
+    result = s.dump(tournament)
     return jsonify(data=result)
 
 def generateRoundRobin(tournament):

@@ -27,7 +27,7 @@ class RockPicksView(MethodView):
         song_schema = Rock1500SongSchema()
         picks = []
         for i, pick in enumerate(request.json['picks']):
-            song = song_schema.parse(pick['song'])
+            song = song_schema.load(pick['song'])
             if not song:
                 raise Exception('No song')
             picks.append(Rock1500Pick(

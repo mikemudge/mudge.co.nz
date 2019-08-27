@@ -13,7 +13,9 @@ class TrailProgressSchema(BaseSchema):
     # Identify the profile the progress was for.
     trail_profile_id = fields.Str(load_only=True)
 
-    date = fields.Date()
+    date = fields.DateTime()
+
+    editDate = fields.Boolean(optional=True)
 
 class TrailProfileSchema(BaseSchema):
     class Meta:

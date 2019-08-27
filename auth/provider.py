@@ -4,7 +4,7 @@ from datetime import datetime
 from flask import current_app, jsonify
 from flask_oauthlib.provider import OAuth2Provider
 from jose import jwt
-from shared.exceptions import AuthenticationException, ValidationException
+from shared.exceptions import AuthenticationException
 
 oauth = OAuth2Provider()
 

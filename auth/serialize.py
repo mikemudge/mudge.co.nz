@@ -5,7 +5,7 @@ from shared.marshmallow import BaseSchema
 class UserSchema(BaseSchema):
     class Meta:
         model = User
-        exclude = BaseSchema.Meta.exclude
+        exclude = []
         fields = ['profile', 'id', 'email', 'admin']
     profile = fields.Nested('ProfileSchema')
 
@@ -17,6 +17,6 @@ class ProfileSchema(BaseSchema):
 class FriendsSchema(UserSchema):
     class Meta:
         model = User
-        exclude = BaseSchema.Meta.exclude
+        exclude = UserSchema.Meta.exclude
         fields = UserSchema.Meta.fields + ['friends']
     friends = fields.Nested(UserSchema, many=True)

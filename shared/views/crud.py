@@ -1,4 +1,5 @@
 from shared.database import db
+from shared.exceptions import BadRequestException
 from flask import jsonify, request
 from flask.views import MethodView
 from sqlalchemy.exc import IntegrityError
@@ -43,7 +44,7 @@ class DBModelView(MethodView):
 
     def get_data(self):
         if not request.json:
-            return self.errorResponse(['No request.json'])
+            raise BadRequestException('No request.json')
 
         if not self.data:
             # Set self.data so it can be accessed by subclasses.
@@ -62,9 +63,7 @@ class DBModelView(MethodView):
         # This was failing during tests, not sure about real requests.
         s = self.schema(session=db.session)
         data = self.get_data()
-        instance, errors = s.load(data)
-        if errors:
-            return self.errorResponse(errors)
+        instance = s.load(data)
         db.session.add(instance)
         return instance
 
@@ -86,20 +85,10 @@ class DBModelView(MethodView):
         s = self.schema()
         data = self.get_data()
 
-        print(data)
-
-        instance = s.parse(data, instance=instance)
+        instance = s.load(data, instance=instance)
 
         self.save(instance)
         return s.response(instance)
-
-    def errorResponse(self, errors):
-        # TODO structure this
-        response = jsonify(error={
-            'errors': errors
-        })
-        response.status_code = 400
-        return response
 
     def remove(self, pk):
         # delete

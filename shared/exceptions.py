@@ -1,8 +1,10 @@
 from flask import jsonify, request
-from flask import current_app
-import traceback
-
+from marshmallow.exceptions import ValidationError
 from raven.contrib.flask import Sentry
+
+import traceback
+import json
+
 
 sentry = Sentry()
 
@@ -16,12 +18,6 @@ class BaseException(Exception):
         self.status_code = 500
         self.error_code = ErrorCodes.UNKNOWN_ERROR
         pass
-
-class ValidationException(BaseException):
-    def __init__(self, message):
-        Exception.__init__(self)
-        self.message = message
-        self.status_code = 400
 
 class AuthenticationException(BaseException):
     def __init__(self, message, error_code=None):
@@ -58,6 +54,15 @@ def registerHandlers(app):
         response.status_code = error.status_code
         return response
 
+    # TODO unused, but here for reference as to what marshmallow 2 did.
+    def errorResponse(self, errors):
+        # TODO structure this
+        response = jsonify(error={
+            'errors': errors
+        })
+        response.status_code = 400
+        return response
+
     # The catch all error handler.
     @app.errorhandler(Exception)
     @app.errorhandler(500)
@@ -67,13 +72,26 @@ def registerHandlers(app):
         sentry.captureException()
         print(error)
         print('Unknown Exception for route: %s' % request.url)
-        if current_app.config.get('DEBUG', False):
-            raise error
         response = jsonify({
             'message': str(error),
             'status_code': 500
         })
         response.status_code = 500
+        return response
+
+    # Handle the marshmallow Validation errors.
+    @app.errorhandler(ValidationError)
+    def handle_validation_error(error):
+        invalid_fields = error.normalized_messages()
+        response = jsonify({
+            'errors': [{
+                # This is for generic error handlers. Should prefer field errors for details.
+                'message': 'You have some invalid fields\n%s' % json.dumps(invalid_fields),
+            }],
+            # Errors should be a map of field name to error message.
+            'field_errors': invalid_fields
+        })
+        response.status_code = 400
         return response
 
     def handle_abort_error(error):

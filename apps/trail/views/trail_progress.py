@@ -43,9 +43,7 @@ class TrailProgressView(DBModelView):
             raise BadRequestException('No trail_profile found')
 
         schema = TrailProgressSchema(session=db.session)
-        instance, errors = schema.load(self.data)
-        if errors:
-            return self.errorResponse(errors)
+        instance = schema.load(self.data)
         instance.trail_profile = current_trail_profile
         db.session.add(instance)
         db.session.commit()

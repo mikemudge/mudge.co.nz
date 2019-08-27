@@ -6,7 +6,7 @@ from flask import request, jsonify
 from flask import Blueprint
 from flask.views import MethodView
 from shared.database import db
-from shared.exceptions import ValidationException, AuthenticationException
+from shared.exceptions import AuthenticationException
 from shared.exceptions import ErrorCodes
 
 auth_bp = Blueprint('auth_api', __name__, url_prefix='/api')
@@ -73,7 +73,7 @@ class AuthenticationConnectorView(MethodView):
 
     def googleConnection(self, token):
         if not token:
-            raise ValidationException(['No id_token'])
+            raise AuthenticationException(['No id_token'])
         data = googleAuth(token)
 
         email = data['email']

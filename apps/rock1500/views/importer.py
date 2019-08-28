@@ -46,7 +46,7 @@ class ImportView(MethodView):
 
             if rankLastYear is not None:
                 existing = Rock1500Song.query.filter_by(rank2018=rankLastYear).first()
-                if existing:
+                if existing and existing.rankThisYear is None:
                     print('Song name looks different, using last years rank\n %s - %s' % (song_name, existing.title))
                     song = existing
                 # TODO could also use year before to match?

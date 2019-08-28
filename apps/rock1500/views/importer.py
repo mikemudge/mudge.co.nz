@@ -7,6 +7,9 @@ from ..models import Rock1500Album, Rock1500Artist, Rock1500Song
 from shared.database import db
 
 class ImportView(MethodView):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.songsByRank = {}
 
     def parse_song(self, item):
 
@@ -34,9 +37,11 @@ class ImportView(MethodView):
         artist_name = item.get('artist')
         song_name = item.get('title')
 
-        query = Rock1500Song.query
-        query = query.filter_by(rankThisYear=rankThisYear)
-        song = query.first()
+        song = self.songsByRank.get(rankThisYear)
+        if song is None:
+            query = Rock1500Song.query
+            query = query.filter_by(rankThisYear=rankThisYear)
+            song = query.first()
         if song is None and rankLastYear:
             # If it has a rank last year, that is the best identifier.
             song = Rock1500Song.query.filter_by(rank2018=rankLastYear).first()
@@ -137,9 +142,16 @@ class ImportView(MethodView):
         )
         result = req.json()
 
+        query = Rock1500Song.query.filter(Rock1500Song.rankThisYear.isnot(None))
+        songs = query.all()
+        self.songsByRank = {s.rankThisYear: s for s in songs}
+
         print("Fetched %d songs. Parsing..." % len(result))
         for item in result:
             self.parse_song(item)
-            db.session.commit()
+        db.session.commit()
 
-        return jsonify(result)
+        # No need to send all the data back to the client.
+        return jsonify({
+            'status': 'complete'
+        })

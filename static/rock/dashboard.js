@@ -7,8 +7,7 @@ function DashboardController($resource, loginService, config, $interval) {
       isArray: true
     },
     import: {
-      url: '/rock1500/import',
-      isArray: true
+      url: '/rock1500/import'
     }
   });
 
@@ -53,7 +52,7 @@ DashboardController.prototype.importSongs = function(response) {
 }
 
 DashboardController.prototype.importComplete = function(response) {
-  console.log('Import complete');
+  console.log('Import complete', response);
 
   // Update the panels.
   this.loadRecent();

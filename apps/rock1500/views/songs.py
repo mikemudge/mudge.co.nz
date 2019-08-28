@@ -27,9 +27,8 @@ class Rock1500SongView(DBModelView):
                 Rock1500Song.title.ilike("%" + search + "%"),
                 Rock1500Artist.name.ilike("%" + search + "%")
             ))
-            query = query.order_by(Rock1500Song.rank2017)
+            query = query.order_by(Rock1500Song.rank2018)
         else:
-            # Support override for sort?
             query = query.order_by(Rock1500Song.rankThisYear)
 
             start = request.args.get('start', 0)

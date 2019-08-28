@@ -1,9 +1,9 @@
 function DashboardController($resource, loginService, config, $interval) {
   window.ctrl = this;
   this.currentUser = loginService.user;
-  this.Songs = $resource(config.API_URL + 'api/rock1500/next', {}, {
-    recent: {
-      url: config.API_URL + 'api/rock1500/recent',
+  this.Songs = $resource(config.API_URL + 'api/rock1500/song', {}, {
+    next: {
+      url: config.API_URL + 'api/rock1500/next',
       isArray: true
     },
     import: {
@@ -33,17 +33,17 @@ function DashboardController($resource, loginService, config, $interval) {
 
 DashboardController.prototype.loadRecent = function(response) {
   // Load the recent songs initially as quick as we can.
-  this.recent = this.Songs.recent({
-    'count': 10
+  this.recent = this.Songs.query({
+    'count': 20
   });
+  this.recent.$promise.then(function() {
+    this.nextSongIndex = this.recent[0].rankThisYear - 1;
+  }.bind(this))
 }
 
 DashboardController.prototype.loadPredictions = function(response) {
   // Just update the songs, in the background.
-  this.songs = this.Songs.query({
-    'count': 50,
-    'worst_rank': 100,
-  });
+  this.songs = this.Songs.next();
 }
 
 DashboardController.prototype.importSongs = function(response) {

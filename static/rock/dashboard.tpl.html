@@ -17,11 +17,11 @@
     </div>
     <div ng-show="ctrl.songs.$resolved">
       <div>
-        Prediction for the next songs
+        Songs which might play soon
       </div>
       <div class="song" ng-repeat="song in ctrl.songs">
         <div ng-hide="song.rankThisYear" class="rank estimated">
-          {{ ctrl.songs.length - $index }}.
+          {{ ctrl.nextSongIndex - $index }}
         </div>
         <div class="song_inner" ng-include="'/static/rock/song.tpl.html'"></div>
       </div>

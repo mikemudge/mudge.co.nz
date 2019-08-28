@@ -10,6 +10,14 @@ class ImportView(MethodView):
 
     def parse_song(self, item):
 
+        try:
+            rankThisYear = int(item.get('rank'))
+        except ValueError as e:
+            # Its not really acceptable if this year's rank is not an int
+            raise e
+
+        # TODO look this up only as necessary.
+
         artist_name = item.get('artist')
         artist = Rock1500Artist.find_by_name(artist_name)
         if not artist:
@@ -46,7 +54,7 @@ class ImportView(MethodView):
 
             if rankLastYear is not None:
                 existing = Rock1500Song.query.filter_by(rank2018=rankLastYear).first()
-                if existing and (existing.rankThisYear is None or existing.rankThisYear == item.get('rank')):
+                if existing and existing.rankThisYear == rankThisYear:
                     print('Song name looks different, using last years rank\n %s - %s' % (song_name, existing.title))
                     if existing.album == album:
                         # TODO should we update the artist?
@@ -55,6 +63,9 @@ class ImportView(MethodView):
                     elif existing.artist == artist:
                         # TODO should we update the album here?
                         song = existing
+                if song:
+                    # update the name if it changed and we needed to use the rank to find it.
+                    song.name = song_name
                 # TODO could also use year before to match?
 
             if song is None:
@@ -73,15 +84,11 @@ class ImportView(MethodView):
             # Same for artist.
             song.artist = artist
 
-        try:
-            song.rankThisYear = item.get('rank')
+        song.rankThisYear = rankThisYear
 
-            if not song.rank2019:
-                # Don't update this once its set.
-                song.rank2019 = song.rankThisYear
-        except ValueError as e:
-            # Its not really acceptable if this year's rank is not an int
-            raise e
+        if not song.rank2019:
+            # Don't update this once its set.
+            song.rank2019 = song.rankThisYear
 
         try:
             newRank = int(item.get('rankOneYearAgo'))

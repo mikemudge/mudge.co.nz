@@ -36,10 +36,10 @@ class Rock1500Song(BaseModel):
     title = db.Column(db.String(100), index=True)
 
     artist_id = db.Column(UUID(), db.ForeignKey('rock1500_artist.id'), nullable=False)
-    artist = db.relationship(Rock1500Artist, backref="songs")
+    artist = db.relationship(Rock1500Artist, backref="songs", lazy="joined")
 
     album_id = db.Column(UUID(), db.ForeignKey('rock1500_album.id'), nullable=False)
-    album = db.relationship(Rock1500Album, backref="songs")
+    album = db.relationship(Rock1500Album, backref="songs", lazy="joined")
 
     # The important rank, once it is known.
     rankThisYear = db.Column(db.Integer(), index=True)

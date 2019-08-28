@@ -16,109 +16,113 @@ class ImportView(MethodView):
             # Its not really acceptable if this year's rank is not an int
             raise e
 
-        # TODO look this up only as necessary.
+        rankLastYear = None
+        try:
+            rankLastYear = int(item.get('rankOneYearAgo'))
+        except ValueError as e:
+            # Can be non int values like Re-Entry or Debut.
+            pass
 
-        artist_name = item.get('artist')
-        artist = Rock1500Artist.find_by_name(artist_name)
-        if not artist:
-            print("Artist not found, creating new artist %s" % artist_name)
-            artist = Rock1500Artist(
-                name=artist_name
-            )
-            db.session.add(artist)
+        rankTwoYearsAgo = None
+        try:
+            rankTwoYearsAgo = int(item.get('rankTwoYearsAgo'))
+        except ValueError as e:
+            # Can be non int values like Re-Entry or Debut.
+            pass
 
         album_name = item.get('album')
-        album = Rock1500Album.find_by_name(album_name)
-        if not album:
-            print("Album not found, creating new album %s" % album_name)
-            album = Rock1500Album(
-                name=album_name,
-                artist=artist
-            )
-            db.session.add(album)
-
-        albumArt = item.get('albumArt')
-        if len(albumArt) <= 255:
-            album.cover_art_url = item.get('albumArt')
-        album.year = item.get('albumYear')
-
+        artist_name = item.get('artist')
         song_name = item.get('title')
-        song = Rock1500Song.find_by_name(song_name, artist)
-        if not song:
-            # Check for a result where rank2018 == rankOneYearAgo
-            # otherwise this might fail to create with unique constraint.
-            try:
-                rankLastYear = int(item.get('rankOneYearAgo'))
-            except ValueError as e:
-                rankLastYear = None
 
-            if rankLastYear is not None:
-                existing = Rock1500Song.query.filter_by(rank2018=rankLastYear).first()
-                if existing and existing.rankThisYear == rankThisYear:
-                    print('Song name looks different, using last years rank\n %s - %s' % (song_name, existing.title))
-                    if existing.album == album:
-                        # TODO should we update the artist?
-                        # Not sure if it matches or not here?
-                        song = existing
-                    elif existing.artist == artist:
-                        # TODO should we update the album here?
-                        song = existing
-                if song:
-                    # update the name if it changed and we needed to use the rank to find it.
-                    song.name = song_name
-                # TODO could also use year before to match?
-
+        query = Rock1500Song.query
+        query = query.filter_by(rankThisYear=rankThisYear)
+        song = query.first()
+        if song is None and rankLastYear:
+            # If it has a rank last year, that is the best identifier.
+            song = Rock1500Song.query.filter_by(rank2018=rankLastYear).first()
             if song is None:
-                # This looks like a new song, lets try to create it.
-                print("Song not found, creating new song %s" % song_name)
-                song = Rock1500Song(
-                    title=song_name,
-                    artist=artist,
-                    album=album
-                )
-                # TODO may need to handle a unique constraint error here?
-                db.session.add(song)
+                print("Song not found by rank2018 == %d" % rankLastYear)
+            else:
+                print("Song found, by rank2018 lookup %s" % song_name)
+
+        if song is None and rankTwoYearsAgo is not None:
+            # Locate a song by rank in 2017.
+            song = Rock1500Song.query.filter_by(rank2017=rankTwoYearsAgo).first()
+            if song is None:
+                print("Song not found by rank2017 == %d" % rankTwoYearsAgo)
+            else:
+                print("Song found, by rank2017 lookup %s" % song_name)
+
+        if song is None:
+            # Last resort is to lookup by name + artist name.
+            query = Rock1500Song.query.filter(Rock1500Artist.name == artist_name)
+            query = query.filter_by(Rock1500Song.name == song_name)
+            song = query.first()
+
+            if song is not None:
+                # This can happen for songs which ranked in 2016/2015 but not in 2017/2018.
+                print("Song found, by name + artist lookup %s" % song_name)
+
+        if song is not None:
+            changes = 0
+            if song.title != song_name:
+                changes += 1
+            if song.artist.name != artist_name:
+                changes += 1
+            if song.album.name != album_name:
+                changes += 1
+
+            if changes >= 3:
+                print("This song looks completely different. Not updating")
+                print(song.title, song.artist.name, song.album.name)
+                print(song_name, artist_name, album_name)
+                return
+
+            # This song needs to be updated with its position this year.
+            if song.rankThisYear is None:
+                song.rankThisYear = rankThisYear
+                song.rank2019 = rankThisYear
+
+            # Not changing anything else at the moment, but could update artist/album as needed.
+            # That would only be needed to make updates if the API data changes.
+            return
         else:
-            # If the rock API updates the album we should use the latest.
-            song.album = album
-            # Same for artist.
-            song.artist = artist
+            # This looks like its a new song, so we need to add it.
 
-        song.rankThisYear = rankThisYear
-
-        if not song.rank2019:
-            # Don't update this once its set.
-            song.rank2019 = song.rankThisYear
-
-        try:
-            newRank = int(item.get('rankOneYearAgo'))
-
-            if song.rank2018 is None:
-                # Update the DB with new information.
-                song.rank2018 = newRank
-            elif song.rank2018 != newRank:
-                print("Rank changed for 2018 unexpected. Ignoring")
+            album = Rock1500Album.find_by_name(album_name)
+            if album:
+                # If we find the album we can reuse the artist from it.
+                artist = album.artist
             else:
-                # We already have a value and its the same so nothing to do.
-                pass
-        except ValueError as e:
-            # No worries, we only care if its an int.
-            pass
+                # Try and reuse an existing artist.
+                artist = Rock1500Artist.find_by_name(artist_name)
+                if not artist:
+                    print("Artist not found, creating new artist %s" % artist_name)
+                    artist = Rock1500Artist(
+                        name=artist_name
+                    )
+                    db.session.add(artist)
 
-        try:
-            newRank = int(item.get('rankTwoYearsAgo'))
-
-            if song.rank2017 is None:
-                # Update the DB with new information.
-                song.set2017Rank(newRank)
-            elif song.rank2017 != newRank:
-                print("Rank changed for 2017 unexpected. Ignoring")
-            else:
-                # We already have a value and its the same so nothing to do.
-                pass
-        except ValueError as e:
-            # No worries, we only care if its an int.
-            pass
+                # And create the album too.
+                print("Album not found, creating new album %s" % album_name)
+                album = Rock1500Album(
+                    name=album_name,
+                    artist=artist
+                )
+                db.session.add(album)
+            # At this point we have an artist and an album, so we can create a song.
+            print("Song not found, creating new song %s" % song_name)
+            song = Rock1500Song(
+                title=song_name,
+                artist=artist,
+                album=album,
+                rankThisYear=rankThisYear,
+                rank2019=rankThisYear,
+                rank2018=rankLastYear,
+                rank2017=rankTwoYearsAgo,
+            )
+            db.session.add(song)
+            # Because we couldn't find an existing song, we don't need to check this.
 
     @oauth.require_oauth('admin')
     def get(self):

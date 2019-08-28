@@ -61,7 +61,7 @@ class ImportView(MethodView):
         if song is None:
             # Last resort is to lookup by name + artist name.
             query = Rock1500Song.query.filter(Rock1500Artist.name == artist_name)
-            query = query.filter_by(Rock1500Song.name == song_name)
+            query = query.filter_by(title=song_name)
             song = query.first()
 
             if song is not None:

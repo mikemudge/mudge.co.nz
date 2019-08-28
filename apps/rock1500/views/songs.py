@@ -20,6 +20,7 @@ class Rock1500SongView(DBModelView):
         query = Rock1500Song.query
 
         search = request.args.get('search')
+        orderField = Rock1500Song.rankThisYear
 
         if search:
             query = query.join(Rock1500Artist)
@@ -27,11 +28,22 @@ class Rock1500SongView(DBModelView):
                 Rock1500Song.title.ilike("%" + search + "%"),
                 Rock1500Artist.name.ilike("%" + search + "%")
             ))
-            query = query.order_by(Rock1500Song.rank2018)
-        else:
-            query = query.order_by(Rock1500Song.rankThisYear)
+            orderField = Rock1500Song.rank2018
 
-            start = request.args.get('start', 0)
+        artist_id = request.args.get('artist_id', None)
+        if artist_id:
+            query = query.filter_by(artist_id=artist_id)
+            orderField = Rock1500Song.rank2018
+
+        album_id = request.args.get('album_id', None)
+        if album_id:
+            query = query.filter_by(album_id=album_id)
+            orderField = Rock1500Song.rank2018
+
+        query = query.order_by(orderField)
+
+        start = request.args.get('start', 0)
+        if start:
             query = query.offset(start)
 
         limit = request.args.get('limit', 20)

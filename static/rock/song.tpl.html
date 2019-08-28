@@ -1,12 +1,18 @@
-<div class="rank" ng-show="song.rankThisYear">
+<div class="rank">
   {{ song.rankThisYear }}
 </div>
 <div class="album">
-  <img ng-src="{{ song.album.cover_art_url }}" />
+  <a ng-href="album/{{ song.album.id }}">
+    <img ng-src="{{ song.album.cover_art_url }}" />
+  </a>
 </div>
 <div class="extra_details">
   <div>{{ song.title }}</div>
-  <div class="artist">{{ song.artist.name }}</div>
+  <div class="artist">
+    <a ng-href="artist/{{ song.artist.id }}">
+      {{ song.artist.name }}
+    </a>
+  </div>
 </div>
 <div class="previously">
   <div ng-show="song.rank2018">

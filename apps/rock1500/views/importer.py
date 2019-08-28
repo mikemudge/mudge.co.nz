@@ -37,14 +37,33 @@ class ImportView(MethodView):
         song_name = item.get('title')
         song = Rock1500Song.find_by_name(song_name, artist)
         if not song:
-            print("Song not found, creating new song %s" % song_name)
-            song = Rock1500Song(
-                title=song_name,
-                artist=artist,
-                album=album
-            )
-            db.session.add(song)
+            # Check for a result where rank2018 == rankOneYearAgo
+            # otherwise this might fail to create with unique constraint.
+            try:
+                rankLastYear = int(item.get('rankOneYearAgo'))
+            except ValueError as e:
+                rankLastYear = None
 
+            if rankLastYear is not None:
+                existing = Rock1500Song.query.filter_by(rank2018=rankLastYear).first()
+                if existing:
+                    print('Song name looks different, using last years rank\n %s - %s' % (song_name, existing.title))
+                    song = existing
+                # TODO could also use year before to match?
+            else:
+                # This looks like a new song.
+                print("Song not found, creating new song %s" % song_name)
+                song = Rock1500Song(
+                    title=song_name,
+                    artist=artist,
+                    album=album
+                )
+                db.session.add(song)
+
+        # If the rock API updates the album we should use the latest.
+        song.album = album
+        # Same for artist.
+        song.artist = artist
         try:
             song.rankThisYear = item.get('rank')
 

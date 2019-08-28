@@ -46,7 +46,7 @@ class Rock1500Song(BaseModel):
 
     # Previous ranks if known.
     rank2019 = db.Column(db.Integer(), index=True, unique=True)
-    rank2018 = db.Column(db.Integer(), index=True)
+    rank2018 = db.Column(db.Integer(), index=True, unique=True)
     rank2017 = db.Column(db.Integer(), index=True)
     rank2016 = db.Column(db.Integer(), index=True, unique=True)
     rank2015 = db.Column(db.Integer())

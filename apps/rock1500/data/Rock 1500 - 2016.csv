@@ -282,7 +282,7 @@
 281,Muse,Knights Of Cydonia,436,319,Blackholes…,2006
 282,Disturbed,Indestructible,RE-ENTRY,n/a,Indestructible,2008
 283,Steve Earle,Copperhead Road,336,98,Copperhead Road,1988
-284,Villainy,Another Time,930,764,Mode. Set. Clear,2013
+284,Villainy,Another Time,,930,Mode. Set. Clear,2013
 285,I Am Giant,City Limits,678,375,Single Only,2010
 286,Iron Maiden,2 Minutes To Midnight,780,315,Powerslave,1984
 287,Linkin Park,Crawling,365,254,Hydrid Theory,1999
@@ -304,7 +304,7 @@
 303,Smashing Pumpkins,1979,227,76,Mellon Collie & the Infinate Sadness,1995
 304,Metallica,The Memory Remains,486,92,Re-Load,1997
 305,Shihad,You Again,440,213,Killjoy,1995
-306,Blink 182,Adam's Song,347,317,Riptide,1986
+306,Blink 182,Adam's Song,347,983,Riptide,1986
 307,Metallica,Until It Sleeps,293,243,Load,1996
 308,Shinedown,The Sound Of Madness,DEBUT,,The Sound of Madness,2008
 309,Bon Jovi,Wanted Dead Or Alive,265,184,Slippery When Wet,1986
@@ -326,7 +326,7 @@
 325,Foo Fighters,Wheels,917,913,Single Only,2009
 326,Megadeth,Peace Sells But Who's Buying,RE-ENTRY,n/a,Peace Sells But Who's Buying,1986
 327,Weezer,Say It Ain't So,357,119,Weezer (The Blue Album),1994
-328,The Pretty Reckless,Make Me Wanna Die,977,994,The Pretty Reckless EP,2010
+328,The Pretty Reckless,Make Me Wanna Die,,977,The Pretty Reckless EP,2010
 329,Candlebox,Far Behind,566,107,Candlebox,1993
 330,Seether,Fake It,596,715,Finding Beauty in Negative Spaces,2007
 331,Metallica,The Outlaw Torn,335,357,Load,1996
@@ -704,7 +704,7 @@
 703,Live,I Alone,230,192,Throwing Copper,1994
 704,Rise Against,I Don't Wanna Be Here,DEBUT,,The Black Market,2014
 705,Alice In Chains,I Stay Away,DEBUT,,Jar of Flies,1994
-706,Bon Jovi,Bed Of Roses,209,212,Diesel & Dust,1987
+706,Bon Jovi,Bed Of Roses,209,,Diesel & Dust,1987
 707,I Am Giant,Duality (Acoustic Cover),DEBUT,,Single Only,2010
 708,Oasis,Don'T Look Back In Anger,428,342,(What's the Story) Morning Glory?,1995
 709,Stone Temple Pilots,Crackerman,625,688,Core,1992
@@ -916,7 +916,7 @@
 915,Radiohead,Karma Police,606,439,Ok Computer,1997
 916,Metallica,Hit The Lights,DEBUT,,Kill 'Em All,1982
 917,Royal Tusk,Fever,DEBUT,,dealbreaker,2016
-918,Phil Collins,In The Air Tonight,RE-ENTRY,897,Face Value,1981
+918,Phil Collins,In The Air Tonight,RE-ENTRY,,Face Value,1981
 919,Faith No More,Falling To Pieces,241,318,The Real Thing,1989
 920,INXS,Elegantly Wasted,420,622,Elegently Wasted,1997
 921,Deja Voodoo,Can't Do (What I Wanna Do),DEBUT,,Back In Brown,2006
@@ -936,7 +936,7 @@
 935,Royal Blood,Careless,667,Debut,Royal Blood,2014
 936,Th' Dudes,Be Mine Tonight,RE-ENTRY,,right first time,1979
 937,Adelita's Way,Bad Reputation,DEBUT,,getaway,2016
-938,INXS,Devil Inside,811,922,Kick,1987
+938,INXS,Devil Inside,811,942,Kick,1987
 939,Seether,Country Song,433,713,Holding on to Strings Better Left to Fray,2011
 940,The Doors,Break On Through,476,647,The Doors,1967
 941,Orgy,Blue Monday,DEBUT,,candyass,1998
@@ -1490,7 +1490,7 @@
 1489,The Ramones,Blitzkreig Bop,RE-ENTRY,203,Ramones,1976
 1490,Fleetwood Mac,The Chain,RE-ENTRY,n/a,Rumours,1977
 1491,Diesel,Man Alive,DEBUT,n/a,Hepfidelity,1992
-1492,Robert Palmer,Addicted To Love,317,673,Riptide,1986
+1492,Robert Palmer,Addicted To Love,,317,Riptide,1986
 1493,The Verve,The Drugs Don't Work,862,466,Urban Hymns,1997
 1494,The Who,Won't Get Fooled Again,800,Re-Entry,Who's Next?,1971
 1495,Live,Run To The Water,817,745,The distance to here,1999

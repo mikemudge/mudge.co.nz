@@ -50,6 +50,7 @@ class Rock1500Song(BaseModel):
     rank2017 = db.Column(db.Integer(), index=True, unique=True)
     rank2016 = db.Column(db.Integer(), index=True, unique=True)
     rank2015 = db.Column(db.Integer())
+    rank2014 = db.Column(db.Integer(), index=True, unique=True)
 
     @classmethod
     def find_by_name(cls, title, artist):

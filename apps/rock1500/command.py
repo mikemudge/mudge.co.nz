@@ -74,31 +74,68 @@ def import2016():
                 # Skip the first row.
                 continue
 
-            artist = Rock1500Artist.find_by_name(name=row[1])
-            if not artist:
-                artist = Rock1500Artist(name=row[1])
+            rank2016 = int(row[0])
+            try:
+                rank2015 = int(row[3])
+            except ValueError:
+                rank2015 = None
+            try:
+                rank2014 = int(row[4])
+            except ValueError:
+                rank2014 = None
 
-            album = Rock1500Album.find_by_name(name=row[5])
-            if not album:
-                album = Rock1500Album(
-                    artist=artist,
-                    name=row[5],
-                    year=row[6]
-                )
-            song = Rock1500Song.find_by_name(
-                title=row[2],
-                artist=artist)
+            song = Rock1500Song.query.filter_by(rank2016=rank2016).first()
             if not song:
-                count += 1
-                song = Rock1500Song(
-                    album=album,
-                    artist=artist,
+                song = Rock1500Song.query.filter_by(rank2015=rank2015).first()
+
+            if song:
+                # Found the song does it need an update?
+                # Villainy Another time looked corrupt with duplicate rank2015=930 and rank2014=764
+                updated += 1
+                if song.rank2015 != rank2015:
+                    print("rank2015 looks wrong", song.rank2015, rank2015)
+                if song.rank2014 != rank2014:
+                    song.rank2014 = rank2014
+            else:
+                # Need to create the song?
+                album = Rock1500Album.find_by_name(name=row[5])
+                if album:
+                    artist = album.artist
+                else:
+                    # Try and load the artist from the DB.
+                    artist = Rock1500Artist.find_by_name(name=row[1])
+                    if not artist:
+                        print ("Need to create a new artist", row[1])
+                        # TODO this might work better if we used dedupe tactics?
+                        continue
+                        artist = Rock1500Artist(name=row[1])
+
+                    print ("Need to create a new album", row[5])
+                    # TODO this might work better if we used dedupe tactics?
+                    continue
+                    album = Rock1500Album(
+                        artist=artist,
+                        name=row[5],
+                        year=row[6]
+                    )
+
+                # Try and find a song with the same name.
+                # We would expect to of found it by looking up rank first.
+                song = Rock1500Song.find_by_name(
                     title=row[2],
-                )
-                db.session.add(song)
-            updated += 1
-            song.set2016Rank(row[0])
-            song.set2015Rank(row[3])
+                    artist=artist)
+                if not song:
+                    count += 1
+                    print ("Need to create a new song", row[2])
+                    continue
+                    song = Rock1500Song(
+                        album=album,
+                        artist=artist,
+                        title=row[2],
+                        rank2015=rank2015,
+                        rank2016=rank2016
+                    )
+                    db.session.add(song)
 
         print('found %d new songs' % count)
         print('updated %d songs' % updated)

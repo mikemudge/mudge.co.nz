@@ -25,37 +25,26 @@ def importLatest():
         return
 
 @Command.command
-def consolidate2017():
-    # Find songs which are missing a rank for 2017, which match another song with the same rank2016
-    query = Rock1500Song.query
-    query = query.order_by(Rock1500Song.rank2016)
-    query = query.filter(Rock1500Song.rank2016.isnot(None))
-    # And its missing any newer ranks.
-    query = query.filter(Rock1500Song.rank2017.is_(None))
-    query = query.filter(Rock1500Song.rank2018.is_(None))
-
-    for song in query.all():
-        songs = Rock1500Song.query.filter(Rock1500Song.rank2016 == song.rank2016).all()
-        if len(songs) > 1:
-            print('%s has a duplicate' % song.title)
-
-            # Set otherSong conditionally so it doesn't match the existing song.
-            otherSong = songs[0]
-            if otherSong.id == song.id:
-                otherSong = songs[1]
-
-            print('Duplicate is %s' % otherSong.title)
-
-            song1 = song
-            song2 = otherSong
-
-            # We already know rank2016 is the same from the query.
-            print('update rank2015', song2.rank2018, song2.rank2017, song2.rank2016, song1.rank2015)
-            print('delete song which is missing rank for 2017 and 2018 because we merged it into song2')
-            song2.rank2015 = song1.rank2015
-            db.session.delete(song1)
-            print('')
+def consolidateAlbums():
+    # Find any albums with 0 songs and remove them all.
+    query = Rock1500Album.query.filter(~Rock1500Album.songs.any())
+    for album in query.all():
+        print('Album', album.name, len(album.songs))
+        db.session.delete(album)
     db.session.commit()
+
+    # TODO find and deduplicate other albums?
+
+@Command.command
+def consolidateArtists():
+    # Find any albums with 0 songs and remove them all.
+    query = Rock1500Artist.query.filter(~Rock1500Artist.songs.any())
+    for artist in query.all():
+        print('Artist', artist.name, len(artist.songs))
+        db.session.delete(artist)
+    db.session.commit()
+
+    # TODO find and deduplicate other artists?
 
 @Command.command
 def migrateRankTo2018():

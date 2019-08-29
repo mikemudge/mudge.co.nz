@@ -52,10 +52,6 @@
 }
 
 /* Recent Songs (aka Home) Page */
-.prequel {
-  margin: 0 10%;
-}
-
 .prequel .next,
 .prequel .previous {
   display: inline-block;
@@ -67,11 +63,7 @@
   border-radius: 5px;
 }
 
-.songs {
-  margin: 10px 5%;
-  padding: 10px 5%;
-}
-
+/* Shared song styles */
 .song {
   position: relative;
   display: block;
@@ -85,7 +77,7 @@
   width: 38px;
 }
 
-.album {
+.song .album {
   display: inline-block;
   vertical-align: middle;
   width: 50px;
@@ -109,9 +101,32 @@
   color: #333333;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
+/* Common styles? */
+.page {
+  margin: 10px 5%;
+  padding: 10px 5%;
+}
+
+.nav .item {
+  display: inline-block;
+  padding: 8px;
+  border: 1px solid #666;
+  border-bottom: 0px;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nav .item:hover {
+  background: #EEE;
+}
+
+.nav .item.active {
+  background: #DDD;
+}
+
+.nav .item.active:hover {
+  background: #EEE;
 }
 
 /* Styles for dashboard page */
@@ -140,4 +155,24 @@ img {
 
 .prediction .song_inner {
   margin-left: 40px;
+}
+
+/* Styles for artist page. */
+.artist .albums {
+  overflow-x: scroll;
+}
+
+.artist .album {
+  display: inline-block;
+  padding: 8px;
+  vertical-align: top;
+}
+.artist .album img {
+  width: 150px;
+  height: 150px;
+}
+
+/* Styles for album page. */
+.album {
+  max-width: 200px;
 }

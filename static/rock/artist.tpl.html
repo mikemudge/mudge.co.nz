@@ -5,20 +5,38 @@
   <div ng-include="'/static/rock/header.tpl.html'">
   </div>
 
-  <div ng-show="ctrl.artist.$resolved">
-    <h1>
-      {{ ctrl.artist.name }}
-    </h1>
-    <!-- TODO maybe show all albums? -->
-  </div>
+  <div class="page">
+    <div class="artist" ng-show="ctrl.artist.$resolved">
+      <h1>
+        {{ ctrl.artist.name }}
+      </h1>
 
-  <div ng-hide="ctrl.songs.$resolved">
-    Loading all the songs...
-  </div>
-  <div ng-show="ctrl.songs.$resolved">
-    <div class="songs">
-      <div class="song" ng-repeat="song in ctrl.songs"
-          ng-include="'/static/rock/song.tpl.html'">
+      <div class="albums">
+        <h2>
+          Albums
+        </h2>
+        <div class="album" ng-repeat="album in ctrl.albums">
+          <a ng-href="album/{{ album.id }}">
+            <img ng-src="{{ album.cover_art_url }}" />
+            <div class="name">
+              {{ album.name }} ({{ album.year }})
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div ng-hide="ctrl.songs.$resolved">
+      Loading all the songs...
+    </div>
+    <div ng-show="ctrl.songs.$resolved">
+      <div class="songs">
+        <h2>
+          Songs
+        </h2>
+
+        <div class="song" ng-repeat="song in ctrl.songs"
+            ng-include="'/static/rock/song.tpl.html'">
+        </div>
       </div>
     </div>
   </div>

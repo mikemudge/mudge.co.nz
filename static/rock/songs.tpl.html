@@ -5,30 +5,32 @@
   <div ng-include="'/static/rock/header.tpl.html'">
   </div>
 
-  <div ng-hide="ctrl.songs.$resolved">
-    Loading all the songs...
-  </div>
-  <div ng-show="ctrl.songs.$resolved">
-    <div class="prequel">
-      <div>
-        Showing {{ ctrl.start }} - {{ ctrl.start + ctrl.songs.length}}
-      </div>
-      <div class="previous" ng-click="ctrl.load(0)">
-        <i class="fa fa-backward"></i>
-      </div>
-      <div class="previous" ng-click="ctrl.load(ctrl.start - ctrl.limit)">
-        <i class="fa fa-arrow-left"></i>
-      </div>
-      <div class="next" ng-click="ctrl.load(ctrl.start + ctrl.limit)">
-        <i class="fa fa-arrow-right"></i>
-      </div>
-      <div class="next" ng-click="ctrl.load(1480)">
-        <i class="fa fa-forward"></i>
-      </div>
+  <div class="page">
+    <div ng-hide="ctrl.songs.$resolved">
+      Loading all the songs...
     </div>
-    <div class="songs">
-      <div class="song" ng-repeat="song in ctrl.songs"
-          ng-include="'/static/rock/song.tpl.html'">
+    <div ng-show="ctrl.songs.$resolved">
+      <div class="prequel">
+        <div>
+          Showing {{ ctrl.start }} - {{ ctrl.start + ctrl.songs.length}}
+        </div>
+        <div class="previous" ng-click="ctrl.load(0)">
+          <i class="fa fa-backward"></i>
+        </div>
+        <div class="previous" ng-click="ctrl.load(ctrl.start - ctrl.limit)">
+          <i class="fa fa-arrow-left"></i>
+        </div>
+        <div class="next" ng-click="ctrl.load(ctrl.start + ctrl.limit)">
+          <i class="fa fa-arrow-right"></i>
+        </div>
+        <div class="next" ng-click="ctrl.load(1480)">
+          <i class="fa fa-forward"></i>
+        </div>
+      </div>
+      <div class="songs">
+        <div class="song" ng-repeat="song in ctrl.songs"
+            ng-include="'/static/rock/song.tpl.html'">
+        </div>
       </div>
     </div>
   </div>

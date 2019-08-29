@@ -18,7 +18,11 @@ class Rock1500AlbumView(DBModelView):
     def get_multiple(self):
         query = Rock1500Album.query
 
-        query = query.order_by(Rock1500Album.name)
+        query = query.order_by(Rock1500Album.year)
+
+        artist_id = request.args.get('artist_id', None)
+        if artist_id:
+            query = query.filter_by(artist_id=artist_id)
 
         start = request.args.get('start', 0)
         if start:

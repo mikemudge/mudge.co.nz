@@ -1,6 +1,13 @@
 
-var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope) {
+var AuthInterceptor = function ($injector, $q, $templateCache, $rootScope, config) {
   return {
+    request: function(request) {
+      // Make sure all requests for template have a version cache buster.
+      if (request.url.endsWith('.tpl.html')) {
+        request.url += '?v=' + config.version;
+      };
+      return request;
+    },
     response: function(response) {
       console.debug('request', response.config.url);
 

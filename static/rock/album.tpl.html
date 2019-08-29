@@ -1,23 +1,23 @@
 <div ng-controller="AlbumController as ctrl">
   <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
   </div>
-
-  <div ng-include="'/static/rock/header.tpl.html'">
+  <div ng-include="'/static/rock/header.tpl.html?v=' + config.version">
   </div>
-
-  <div ng-show="ctrl.album.$resolved">
-    <img ng-src="{{ ctrl.album.cover_art_url }}" />
-    <div>
-      {{ ctrl.album.name }} ({{ ctrl.album.year }})
+  <div class="page">
+    <div class="album" ng-show="ctrl.album.$resolved">
+      <img ng-src="{{ ctrl.album.cover_art_url }}" />
+      <div>
+        {{ ctrl.album.name }} ({{ ctrl.album.year }})
+      </div>
     </div>
-  </div>
-  <div ng-hide="ctrl.songs.$resolved">
-    Loading all the songs...
-  </div>
-  <div ng-show="ctrl.songs.$resolved">
-    <div class="songs">
-      <div class="song" ng-repeat="song in ctrl.songs"
-          ng-include="'/static/rock/song.tpl.html'">
+    <div ng-hide="ctrl.songs.$resolved">
+      Loading all the songs...
+    </div>
+    <div ng-show="ctrl.songs.$resolved">
+      <div class="songs">
+        <div class="song" ng-repeat="song in ctrl.songs"
+            ng-include="'/static/rock/song.tpl.html'">
+        </div>
       </div>
     </div>
   </div>

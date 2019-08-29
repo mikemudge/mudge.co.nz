@@ -109,12 +109,16 @@ RockController.prototype.handleDrop = function(pick, $event) {
 }
 
 var ArtistController = function($resource, config, $routeParams) {
+  this.Album = $resource(config.API_URL + 'api/rock1500/album/:id');
   this.Artist = $resource(config.API_URL + 'api/rock1500/artist/:id');
   this.Songs = $resource(config.API_URL + 'api/rock1500/song');
 
   this.artist_id = $routeParams.artist_id;
   this.artist = this.Artist.get({id: this.artist_id});
   this.songs = this.Songs.query({
+    artist_id: this.artist_id
+  });
+  this.albums = this.Album.query({
     artist_id: this.artist_id
   });
 }
@@ -167,6 +171,10 @@ SongsController.prototype.reload = function() {
   this.songs = this.Songs.query({limit: this.limit, start: this.start});
 }
 
+var HeaderController = function($location, $route) {
+  this.path = $location.path();
+}
+
 angular.module('rock', [
   'api',
   'config',
@@ -178,24 +186,25 @@ angular.module('rock', [
 .controller('SongsController', SongsController)
 .controller('AlbumController', AlbumController)
 .controller('ArtistController', ArtistController)
+.controller('HeaderController', HeaderController)
 .controller('RockController', RockController)
 .run(function(loginService) {
   // You must be logged in to use this app.
   loginService.ensureLoggedIn();
 })
-.config(function($locationProvider, $routeProvider) {
+.config(function($locationProvider, $routeProvider, config) {
   $locationProvider.html5Mode(true);
   $routeProvider.when('/songs', {
-    templateUrl: '/static/rock/songs.tpl.html',
+    templateUrl: '/static/rock/songs.tpl.html?v=' + config.version,
     reloadOnSearch: false,
   }).when('/picks', {
-    templateUrl: '/static/rock/picks.tpl.html'
+    templateUrl: '/static/rock/picks.tpl.html?v=' + config.version
   }).when('/artist/:artist_id', {
-    templateUrl: '/static/rock/artist.tpl.html'
+    templateUrl: '/static/rock/artist.tpl.html?v=' + config.version
   }).when('/album/:album_id', {
-    templateUrl: '/static/rock/album.tpl.html'
+    templateUrl: '/static/rock/album.tpl.html?v=' + config.version
   }).otherwise({
-    templateUrl: '/static/rock/dashboard.tpl.html'
+    templateUrl: '/static/rock/dashboard.tpl.html?v=' + config.version
   });
 })
 // https://parkji.co.uk/2013/08/11/native-drag-and-drop-in-angularjs.html

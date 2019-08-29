@@ -1,16 +1,16 @@
-<div class="nav">
+<div class="nav page" ng-controller="HeaderController as head">
   <a href=".">
-    <div class="item home">
+    <div class="item home" ng-class="{active: head.path == '/'}">
       Home/Dashboard
     </div>
   </a>
   <a href="picks">
-    <div class="item">
+    <div class="item" ng-class="{active: head.path == '/picks'}">
       Picks
     </div>
   </a>
   <a href="songs">
-    <div class="item">
+    <div class="item" ng-class="{active: head.path == '/songs'}">
       Songs
     </div>
   </a>

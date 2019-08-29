@@ -49,7 +49,7 @@ class Rock1500Song(BaseModel):
     rank2018 = db.Column(db.Integer(), index=True, unique=True)
     rank2017 = db.Column(db.Integer(), index=True, unique=True)
     rank2016 = db.Column(db.Integer(), index=True, unique=True)
-    rank2015 = db.Column(db.Integer())
+    rank2015 = db.Column(db.Integer(), index=True, unique=True)
     rank2014 = db.Column(db.Integer(), index=True, unique=True)
 
     @classmethod

@@ -2,6 +2,8 @@ from flask_script import Manager
 from shared.database import db
 from .models import Rock1500Pick, Rock1500Song, Rock1500Artist, Rock1500Album
 
+import difflib
+
 Command = Manager(usage='Perform rock1500 tasks.')
 
 @Command.command
@@ -85,7 +87,7 @@ def import2016():
                 rank2014 = None
 
             song = Rock1500Song.query.filter_by(rank2016=rank2016).first()
-            if not song:
+            if not song and rank2015:
                 song = Rock1500Song.query.filter_by(rank2015=rank2015).first()
 
             if song:
@@ -94,7 +96,26 @@ def import2016():
                 updated += 1
                 if song.rank2015 != rank2015:
                     print("rank2015 looks wrong", song.rank2015, rank2015)
+                if song.rank2016 != rank2016:
+                    print("rank2016 looks wrong", song.rank2016, rank2016, 'rank2015', song.rank2015, rank2015)
+
+                song_title = song.title.lower().strip()
+                row_title = row[2].lower().strip()
+
+                # TODO some titles use ' instead of letters
+                # Some use different spellings.
+                result = []
+                for s in difflib.ndiff(song_title, row_title):
+                    if s[0] == '-' or s[0] == '+':
+                        result.append(s[0] + s[-1])
+
+                if len(result) > 2:
+                    # 2 results could be an add and a remove of a letter.
+                    # So this will support a single swap or less change.
+                    print("title looks wrong %d '%s' '%s'" % (rank2016, song.title, row[2]))
+                    print(result)
                 if song.rank2014 != rank2014:
+                    print("rank2014 looks wrong", song.rank2015, rank2015)
                     song.rank2014 = rank2014
             else:
                 # Need to create the song?
@@ -124,7 +145,15 @@ def import2016():
                 song = Rock1500Song.find_by_name(
                     title=row[2],
                     artist=artist)
-                if not song:
+                if song:
+                    if not song.rank2015 and rank2015:
+                        print("Set rank2015", song.title, rank2015)
+                        song.rank2015 = rank2015
+                    if not song.rank2016:
+                        print("Set rank2016", song.title, rank2016)
+                        song.rank2016 = rank2016
+                    updated += 1
+                else:
                     count += 1
                     print ("Need to create a new song", row[2])
                     continue

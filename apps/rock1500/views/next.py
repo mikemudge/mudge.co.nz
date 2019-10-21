@@ -14,7 +14,7 @@ class NextSongsView(MethodView):
         query = Rock1500Song.query
 
         aboveRank = request.args.get('worst_rank', None)
-        limit = request.args.get('count', 25)
+        limit = request.args.get('count', 100)
 
         if aboveRank is None:
             # Calculate a max from the current count down location.
@@ -24,13 +24,17 @@ class NextSongsView(MethodView):
                     # Use double the current song as a limit. Most songs don't move that much.
                     # E.g when at song 100, any song in the top 200 of last year might still play.
                     # And always include the top 100 songs, as we expect those to always be in the countdown.
-                    aboveRank = max(mostRecentSong.rankThisYear * 2, 100)
+                    aboveRank = max(mostRecentSong.rankThisYear * 2, 200)
                 else:
                     # Estimate from last years songs
                     aboveRank = mostRecentSong.rankThisYear + limit
             else:
                 # Use a number to remove all the entries which don't appear in 2018.
                 aboveRank = 1501
+
+        if limit > aboveRank:
+            print("limit", limit, "aboveRank", aboveRank)
+            limit = aboveRank
 
         if aboveRank is not None:
             print('Finding songs above %d in 2018' % aboveRank)

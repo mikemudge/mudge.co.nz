@@ -8,7 +8,7 @@ chardet==3.0.4
 Click==7.0
 contextlib2==0.5.5
 cryptography==2.7
-ecdsa==0.13.2
+ecdsa>=0.13.2
 Flask==1.1.1
 Flask-Admin==1.5.3
 Flask-Cors==3.0.8

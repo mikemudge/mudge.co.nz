@@ -49,6 +49,8 @@ def routes(app):
 def get_version(app):
     if app.config.get("ENV") == "dev":
         return str(datetime.now().timestamp())
+    if app.config.get("ENV") == "test":
+        return "test"
     with open(".commithash", "r") as myfile:
         lines = myfile.readlines()
         version = ''.join(lines)
@@ -74,6 +76,7 @@ def create_app(config=None):
         'SQLALCHEMY_DATABASE_URI',
         'JWT_TOKEN_SECRET_KEY',
         'SECRET_KEY',
+        'GOOGLE_CLIENT_ID',
     ]
     for setting in required_settings:
         if not app.config.get(setting):

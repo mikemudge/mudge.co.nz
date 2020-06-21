@@ -48,7 +48,7 @@ def check_flask_admin_ip_access_restriction(req):
             return True
 
         print(_ip_address)
-        raise AuthenticationException('IP_RESTRICTED')
+        raise AuthenticationException('IP_RESTRICTED ' + _ip_address)
 
     return True
 

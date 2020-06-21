@@ -12,7 +12,7 @@ class Angular():
         self.sentry = False
         self.base = '/'
         self.scripts = []
-        self.async = []
+        self.async_scripts = []
         self.templates = []
         self.styles = []
         self.config = {
@@ -49,7 +49,7 @@ class Angular():
             },
             'scripts': self.scripts,
             'styles': self.styles,
-            'async': self.async,
+            'async': self.async_scripts,
             # TODO support embedded templates?
         })
 

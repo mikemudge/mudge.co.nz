@@ -47,6 +47,7 @@ jobs:
         environment:
           POSTGRES_USER: mudgeconzTest
           POSTGRES_DB: mudgeconzTest
+          POSTGRES_PASSWORD: testing
 
     working_directory: ~/repo
 

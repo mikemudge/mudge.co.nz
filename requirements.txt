@@ -2,7 +2,6 @@ alembic
 bcrypt
 flask
 Flask-Admin
-Flask-Cors
 Flask-Login
 flask-marshmallow
 Flask-Migrate

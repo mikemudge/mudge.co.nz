@@ -76,7 +76,6 @@ def create_app(config=None):
         'SQLALCHEMY_DATABASE_URI',
         'JWT_TOKEN_SECRET_KEY',
         'SECRET_KEY',
-        'GOOGLE_CLIENT_ID',
     ]
     for setting in required_settings:
         if not app.config.get(setting):

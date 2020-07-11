@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve mudge.co.nz python app
+After=network.target
+
+[Service]
+User=mudge
+Group=www-data
+WorkingDirectory=/home/mudge/projects/pyauto
+Environment="PATH=/home/mudge/virtualenvs/mudgeconz/bin"
+ExecStart=/home/mudge/virtualenvs/mudgeconz/bin/uwsgi --ini mudgeconz.ini
+
+[Install]
+WantedBy=multi-user.target

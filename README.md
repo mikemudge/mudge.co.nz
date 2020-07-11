@@ -49,6 +49,9 @@ sudo systemctl status webserver.service
 See setup here.
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
 
+Systemctl configs live in
+/etc/systemd/system/
+
 # Deployment
 Uses a git hook to auto deploy.
 /home/mudge/repos/pyauto.git/hooks

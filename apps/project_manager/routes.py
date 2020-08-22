@@ -88,7 +88,7 @@ def get_project(name, path=None):
             '/static/js/three.js/OBJLoader.js',
             '/static/js/eighti/eighti.min.js',
         ]
-        app.async = [
+        app.async_scripts = [
             # TODO load the lib
             '/static/js/eighti/eighti.lib.js',
         ]

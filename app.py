@@ -49,6 +49,8 @@ def routes(app):
 def get_version(app):
     if app.config.get("ENV") == "dev":
         return str(datetime.now().timestamp())
+    if app.config.get("ENV") == "test":
+        return "test"
     with open(".commithash", "r") as myfile:
         lines = myfile.readlines()
         version = ''.join(lines)

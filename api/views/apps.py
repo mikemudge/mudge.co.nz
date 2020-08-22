@@ -86,6 +86,12 @@ apps['racer'] = {
         '/static/racer/cars.js'
     ]
 }
+apps['carai'] = {
+    'tags': ['threejs', 'common'],
+    'scripts': [
+        '/static/racer/racer.js'
+    ]
+}
 apps['rock'] = {
     'tags': ['api', 'common'],
     'scripts': [
@@ -174,6 +180,10 @@ class ProjectAppView(MethodView):
                 app.addTemplate(t)
 
         # Add app files last?
-        app.setupFolder('/static/%s' % app_name)
+        app_path = '/static/%s' % app_name
+        if path:
+            app_path += '/' + path
+
+        app.setupFolder(app_path)
 
         return app.render()

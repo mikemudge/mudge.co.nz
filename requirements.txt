@@ -20,6 +20,9 @@ WTForms
 # Frozen due to https://github.com/jarus/flask-testing/issues/143
 werkzeug==0.16.1
 
+# For running prod.
+uwsgi
+
 # For sentry
 raven
 blinker

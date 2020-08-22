@@ -11,7 +11,7 @@ cd ~/projects/pyauto
 git --git-dir=.git --work-tree=. rev-parse HEAD > .commithash
 
 echo 'Installing pip3 dependencies.'
-pip3 install -r requirements.txt
+pip3 install -r frozen_requirements.txt
 
 echo 'Updating database.'
 export APP_SETTINGS=settings.production

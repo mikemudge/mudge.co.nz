@@ -1,0 +1,26 @@
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+
+  <title>Projects</title>
+  <link rel="stylesheet" type="text/css" href="/static/projects/projects.css" />
+</head>
+<body>
+  {% for key, app in apps %}
+    <div class='project'>
+      <a href="/projects/{{ key }}">
+        <h4>
+          {{ key }}
+        </h4>
+        <span>{{ app.tags | join(' ') }}</span>
+        {% if app.img %}
+          <div class='image'>
+            <img src='/static/img/projects/{{ app.img }}'>
+          </div>
+        {% endif %}
+      </a>
+    </div>
+  {% endfor %}
+</body>
+</html>

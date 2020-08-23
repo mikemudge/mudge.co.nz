@@ -1,4 +1,5 @@
 from flask import current_app, abort, request
+from flask import render_template
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
@@ -34,6 +35,7 @@ styles = {
 
 apps = {}
 apps['ar'] = {
+    'img': 'ar.png',
     'tags': ['threejs'],
     'scripts': [
         '/static/js/three.js/OrbitControls.js',
@@ -47,6 +49,7 @@ apps['ar'] = {
 }
 # TODO ar should just be a plugin for rts.
 apps['rts'] = {
+    'img': 'rts.png',
     'tags': ['threejs'],
     'scripts': [
         '/static/js/three.js/OrbitControls.js',
@@ -58,28 +61,37 @@ apps['rts'] = {
     ]
 }
 apps['seconds'] = {
+    'img': 'seconds.png',
     'tags': ['common']
 }
 apps['soccer'] = {
+    'img': 'soccer.png',
     'tags': ['common']
 }
 apps['tournament'] = {
+    'img': 'tournament.png',
     'tags': ['api', 'login', 'common', 'style1'],
 }
 apps['breakout'] = {
+    'img': 'breakout.png',
     'tags': ['threejs']
 }
-apps['slack_history'] = {
-    'tags': ['common']
-}
+# apps['slack_history'] = {
+#     'tags': ['common']
+# }
 apps['user'] = {
+    'img': 'user.png',
     'tags': ['font-awesome', 'api']
 }
-apps['poker'] = {}
+apps['poker'] = {
+    'img': 'poker.png',
+}
 apps['cards-workout'] = {
+    'img': 'cards-workout.png',
     'tags': ['common', 'font-awesome']
 }
 apps['racer'] = {
+    'img': 'racer.png',
     'tags': ['threejs', 'common'],
     'scripts': [
         '/static/js/three.js/BinaryLoader.js',
@@ -87,12 +99,21 @@ apps['racer'] = {
     ]
 }
 apps['carai'] = {
+    'img': 'carai.png',
     'tags': ['threejs', 'common'],
     'scripts': [
         '/static/racer/racer.js'
     ]
 }
+apps['sheets'] = {
+    'img': 'sheets.png',
+    'tags': [],
+    'scripts': [
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+    ]
+}
 apps['rock'] = {
+    'img': 'rock.png',
     'tags': ['api', 'common'],
     'scripts': [
         '/static/rock/dashboard.js',
@@ -103,39 +124,46 @@ apps['rock'] = {
     ]
 }
 apps['trail'] = {
+    'img': 'trail.png',
     'tags': ['api', 'common', 'gmaps']
 }
-apps['ceo_bingo'] = {}
+apps['ceo_bingo'] = {
+    'img': 'ceo_bingo.png',
+}
 apps['cv'] = {
+    'img': 'cv.png',
     'tags': ['common'],
 }
 # apps['projects'] = {
 #     'tags': ['api']
 # }
 apps['admin'] = {
+    'img': 'admin.png',
     'tags': ['api', 'login', 'common', 'font-awesome'],
     'templates': [
         '/static/admin/header.tpl.html'
     ]
 }
 apps['test'] = {
+    'img': 'test.png',
     'tags': ['common']
 }
+
+
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
+
 
 # Project endpoints.
 class ProjectAppsListView(MethodView):
     def get(self):
         result = []
         sorted_apps = sorted(apps.items())
-        for key, app in sorted_apps:
-            result.append(
-                '<p><a href="/projects/%s">%s</a> %s</p>' % (
-                    key, key, ', '.join(app.get('tags', []))
-                )
-            )
-        return ''.join(result)
+
+        return render_template('projects.tmpl', **{
+            'apps': sorted_apps
+        })
+
 
 class ProjectAppView(MethodView):
     def get(self, app_name, path=None):

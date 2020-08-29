@@ -68,6 +68,8 @@ apps['soccer'] = {
     'img': 'soccer.png',
     'tags': ['common']
 }
+apps['predator'] = {
+}
 apps['tournament'] = {
     'img': 'tournament.png',
     'tags': ['api', 'login', 'common', 'style1'],

@@ -2,6 +2,7 @@ from shared.database import db, BaseModel, UUID
 from auth.models import User
 from sqlalchemy.orm import backref
 
+
 class Rock1500Artist(BaseModel):
     name = db.Column(db.String(100), unique=True, index=True)
 
@@ -12,6 +13,7 @@ class Rock1500Artist(BaseModel):
 
     def __repr__(self):
         return self.name
+
 
 class Rock1500Album(BaseModel):
     name = db.Column(db.String(100), unique=True, index=True)
@@ -32,6 +34,7 @@ class Rock1500Album(BaseModel):
     def __repr__(self):
         return self.name
 
+
 class Rock1500Song(BaseModel):
     title = db.Column(db.String(100), index=True)
 
@@ -45,6 +48,7 @@ class Rock1500Song(BaseModel):
     rankThisYear = db.Column(db.Integer(), index=True)
 
     # Previous ranks if known.
+    rank2020 = db.Column(db.Integer(), index=True, unique=True)
     rank2019 = db.Column(db.Integer(), index=True, unique=True)
     rank2018 = db.Column(db.Integer(), index=True, unique=True)
     rank2017 = db.Column(db.Integer(), index=True, unique=True)
@@ -71,6 +75,7 @@ class Rock1500Song(BaseModel):
 
     def set2015Rank(self, value):
         self.rank2015 = int(value)
+
 
 class Rock1500Pick(BaseModel):
     song_id = db.Column(UUID(), db.ForeignKey('rock1500_song.id'), nullable=False)

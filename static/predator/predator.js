@@ -17,11 +17,13 @@ World.prototype.draw = function(ctx) {
 
 var Creature = function(world, params) {
   this.world = world;
+  this.health = 100;
   this.x = params.x || 50;
   this.y = params.y || 50;
   this.vx = 0;
   this.vy = 0;
   this.radius = params.radius || 20;
+  this.speed = Math.random() + 0.5;
 }
 Creature.BOUNCE_BACK = 0.8;
 Creature.FRICTION = 0.1;
@@ -29,8 +31,8 @@ Creature.FRICTION = 0.1;
 Creature.prototype.update = function() {
   this.x += this.vx;
   this.y += this.vy;
-  this.vx += Math.random() - 0.5;
-  this.vy += Math.random() - 0.5;
+  this.vx += this.speed * (Math.random() - 0.5);
+  this.vy += this.speed * (Math.random() - 0.5);
 
   // Slow down;
   this.vx *= (1 - 0.2 * Creature.FRICTION);
@@ -55,12 +57,35 @@ Creature.prototype.update = function() {
   if (this.y + this.radius > this.world.top + this.world.height && this.vy > 0) {
     this.vy *= -Creature.BOUNCE_BACK;
   }
+
+  this.world.creatures.forEach(function(c) {
+    if (c == this) {
+      // Skip interactions with yourself.
+      return;
+    }
+    disSqr = Math.pow(c.x - this.x, 2) + Math.pow(c.y - this.y, 2);
+    // instead of calculating the sqrt, just use 50 * 50 here.
+    if (disSqr < 2500) {
+      // TODO interact with creatures near you.
+      c.health -= 10;
+      if (c.health == 0) {
+        // I killed it.
+        // Full heal.
+        this.health = 100;
+        this.foodLevel = 100;
+      }
+      // Change velocity based on where the close creature is.
+      this.vx = 0.1 * (this.x - c.x)
+      this.vy = 0.1 * (this.y - c.y)
+    }
+  }.bind(this));
 }
 
 Creature.prototype.draw = function(ctx) {
   ctx.beginPath();
   ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = 'green';
+  str = 255 * this.health / 100;
+  ctx.fillStyle = 'rgb(0, ' + Math.floor(str) + ',0)';
   ctx.fill();
   ctx.lineWidth = 0;
 }
@@ -71,14 +96,15 @@ var SoccerGame = function(canvas) {
   this.stopped = false;
   this.pause = false;
 
+  this.creatures = [];
   this.world = new World({
     left: this.canvas.width / 20,
     width: this.canvas.width * 18 / 20,
     top: this.canvas.height / 20,
-    height: this.canvas.height * 18 / 20
+    height: this.canvas.height * 18 / 20,
   });
+  this.world.creatures = this.creatures;
 
-  this.creatures = [];
   for (var i=0;i<10;i++) {
     this.creatures.push(new Creature(this.world, {
       x: canvas.width * Math.random(),
@@ -93,6 +119,12 @@ SoccerGame.prototype.run = function() {
     c.update();
   });
 
+  // Remove dead creatures.
+  this.creatures = this.creatures.filter(function(c) {
+    return c.health > 0;
+  });
+  this.world.creatures = this.creatures;
+
   // Render the game.
   this.ctx.fillStyle = 'black';
   this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -104,6 +136,10 @@ SoccerGame.prototype.run = function() {
   this.creatures.forEach(function(c) {
     c.draw(this.ctx);
   }.bind(this));
+
+  this.ctx.font = 'normal 16px serif';
+  this.ctx.fillStyle = 'white';
+  this.ctx.fillText("Num players: " + this.creatures.length, 5, 15);
 
   this.ctx.closePath();
 

@@ -8,6 +8,9 @@ scripts = {
         '/static/js/three.js/84/three.min.js',
         '/static/js/three.js/OrbitControls.js'
     ],
+    'jquery': [
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+    ],
     'api': [
         '/static/shared/api.js',
     ],
@@ -70,6 +73,8 @@ apps['soccer'] = {
 }
 apps['predator'] = {
 }
+apps['game'] = {
+}
 apps['tournament'] = {
     'img': 'tournament.png',
     'tags': ['api', 'login', 'common', 'style1'],
@@ -109,21 +114,14 @@ apps['carai'] = {
 }
 apps['sheets'] = {
     'img': 'sheets.png',
-    'tags': [],
-    'scripts': [
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
-    ]
+    'tags': ['jquery']
 }
 apps['rock'] = {
     'img': 'rock.png',
-    'tags': ['api', 'common'],
+    'tags': ['api', 'login', 'common', 'jquery', 'font-awesome'],
     'scripts': [
         '/static/rock/dashboard.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
     ],
-    'styles': [
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
-    ]
 }
 apps['trail'] = {
     'img': 'trail.png',
@@ -182,7 +180,8 @@ class ProjectAppView(MethodView):
                 # Enable sentry.
                 app.sentry = True
 
-        app.addScript('/static/shared/login.js')
+        # TODO can I remove this? apps should add it if they need it.
+        # app.addScript('/static/shared/login.js')
 
         conf = apps.get(app_name)
         if conf:

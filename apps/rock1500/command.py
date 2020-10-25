@@ -64,6 +64,14 @@ def migrateRankTo2018():
     db.session.commit()
 
 @Command.command
+def resetRankThisYear():
+    # This will unset the rank for this year's countdown.
+    # Should migrate the DB first and add a new field for this years countdown.
+    for song in Rock1500Song.query.filter(Rock1500Song.rankThisYear.isnot(None)).all():
+        song.rankThisYear = None
+    db.session.commit()
+
+@Command.command
 def import2016():
     import csv
     with open('apps/rock1500/data/Rock 1500 - 2016.csv', 'r') as csvfile:

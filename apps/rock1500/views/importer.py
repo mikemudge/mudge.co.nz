@@ -47,17 +47,17 @@ class ImportView(MethodView):
             # If it has a rank last year, that is the best identifier.
             song = Rock1500Song.query.filter_by(rank2019=rankLastYear).first()
             if song is None:
-                print("Song not found by rank2018 == %d" % rankLastYear)
+                print("Song not found by rank2019 == %d" % rankLastYear)
             else:
-                print("Song found, by rank2018 lookup %s" % song_name)
+                print("Song found, by rank2019 lookup %s" % song_name)
 
         if song is None and rankTwoYearsAgo is not None:
-            # Locate a song by rank in 2017.
+            # Locate a song by rank in 2018.
             song = Rock1500Song.query.filter_by(rank2018=rankTwoYearsAgo).first()
             if song is None:
-                print("Song not found by rank2017 == %d" % rankTwoYearsAgo)
+                print("Song not found by rank2018 == %d" % rankTwoYearsAgo)
             else:
-                print("Song found, by rank2017 lookup %s" % song_name)
+                print("Song found, by rank2018 lookup %s" % song_name)
 
         if song is None:
             # Last resort is to lookup by name + artist name.
@@ -87,8 +87,7 @@ class ImportView(MethodView):
             # This song needs to be updated with its position this year.
             if song.rankThisYear is None:
                 song.rankThisYear = rankThisYear
-                # song.rank2019 = rankThisYear
-
+                song.rank2020 = rankThisYear
             # Not changing anything else at the moment, but could update artist/album as needed.
             # That would only be needed to make updates if the API data changes.
             return
@@ -123,9 +122,9 @@ class ImportView(MethodView):
                 artist=artist,
                 album=album,
                 rankThisYear=rankThisYear,
-                rank2019=rankThisYear,
-                rank2018=rankLastYear,
-                rank2017=rankTwoYearsAgo,
+                rank2020=rankThisYear,
+                rank2019=rankLastYear,
+                rank2018=rankTwoYearsAgo,
             )
             db.session.add(song)
             # Because we couldn't find an existing song, we don't need to check this.

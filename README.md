@@ -28,6 +28,8 @@ docker-compose exec app nosetests tests/rock_tests/test_rock.py
 
 DB migrations
 To create a migration file use
+```docker-compose exec app bash```
+
 ```./manage.py db migrate -m "Migration Name"```
 Then to apply the migrations (after reviewing the created file) use
 ./manage.py db upgrade

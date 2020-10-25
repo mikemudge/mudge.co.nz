@@ -1,6 +1,7 @@
 import requests
 
 from auth.provider import oauth
+from datetime import date
 from flask import jsonify
 from flask.views import MethodView
 from ..models import Rock1500Album, Rock1500Artist, Rock1500Song
@@ -127,6 +128,7 @@ class ImportView(MethodView):
                 rank2018=rankTwoYearsAgo,
             )
             db.session.add(song)
+            db.session.commit()
             # Because we couldn't find an existing song, we don't need to check this.
 
     @oauth.require_oauth('admin')
@@ -137,6 +139,13 @@ class ImportView(MethodView):
         # Hit rock API.
         # Steal their songs and artists.
         # Update my DB with that.
+
+        current_date = date.today()
+        if current_date.year != 2020:
+            return jsonify({
+                'error': 'Import script needs updating to %d' % current_date.year
+            })
+
         req = requests.get(
             'http://radio-api.mediaworks.nz/comp-api/v1/countdown/therock',
         )

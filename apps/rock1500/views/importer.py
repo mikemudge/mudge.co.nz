@@ -171,6 +171,9 @@ class ImportView(MethodView):
                 print(song.rankThisYear, song.rank2019, song.rank2018, song.title, song.artist.name, song.album.name)
                 print(rankThisYear, rankLastYear, rankTwoYearsAgo, song_name, artist_name, album_name)
                 print(schema.dumps(song, indent=2, separators=(',', ':')))
+                # TODO when reporting to sentry we get errors with orm session.
+                # because sentry gives full context, it attempts to use lots of attributes of model objects
+                # That leads to DB calls with a session which has already been closed (errors)
                 raise Exception('This song looks completely different. Not updating')
 
             # This song needs to be updated with its position this year.
@@ -237,7 +240,14 @@ class ImportView(MethodView):
         if song is None:
             return None
 
+        # Look at 5 attributes of the song vs the item.
+        # if 2 or less are not matches we can believe this is correct song.
+        # E.g song titles and albums commonly change a bit.
         changes = 0
+        if song.rank2019 != item.get('rankLastYear'):
+            changes += 1
+        if song.rank2018 != item.get('rankTwoYearsAgo'):
+            changes += 1
         if song.title != item.get('title'):
             changes += 1
         if song.artist.name != item.get('artist'):
@@ -245,7 +255,7 @@ class ImportView(MethodView):
         if song.album.name != item.get('album'):
             changes += 1
 
-        if changes >= 2:
+        if changes > 2:
             # This is not a good match.
             return None
 

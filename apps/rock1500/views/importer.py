@@ -154,7 +154,7 @@ class ImportView(MethodView):
 
                 if song.album.name == album_name:
                     print("album matches %s" % album_name)
-                    if album.artist != artist_name:
+                    if song.album.artist != artist_name:
                         print("album.artist doesn't match artist")
                         # unset the artist or album? But don't know which is right?
 

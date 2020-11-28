@@ -69,7 +69,10 @@ def registerHandlers(app):
     def handle_unknown_error(error):
         # Unknown errors should always be 500's
         traceback.print_exc()
-        sentry.captureException()
+        try:
+            sentry.captureException()
+        except Exception as e:
+            print("sentry had an error reporting error", str(e))
         print(error)
         print('Unknown Exception for route: %s' % request.url)
         response = jsonify({

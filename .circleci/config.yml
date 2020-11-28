@@ -86,10 +86,10 @@ jobs:
       - run:
           name: Keyscan Github (HACK)
           command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
-      - deploy:
-          name: deploy
+      - run:
+          name: deploy via ssh, git pull and deploy.sh
           command:
-            git push --quiet ssh://mudge@mudge.co.nz:/home/mudge/repos/pyauto.git master
+            ssh mudge@mudge.co.nz "cd projects/pyauto && git pull && ./deploy.sh"
 
 workflows:
   version: 2

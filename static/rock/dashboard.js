@@ -12,22 +12,22 @@ function DashboardController($resource, loginService, config, $interval) {
   });
 
   // Reload the songs each minute in case there is new ones.
-  this.seconds = 60;
-  $interval(function() {
-    this.seconds--;
-    console.log('refresh in ', this.seconds);
-    if (this.seconds == 0) {
-      this.importSongs();
-      this.seconds = 60;
-    }
-  }.bind(this), 1000);
+  // this.seconds = 60;
+  // $interval(function() {
+  //   this.seconds--;
+  //   console.log('refresh in ', this.seconds);
+  //   if (this.seconds == 0) {
+  //     this.importSongs();
+  //     this.seconds = 60;
+  //   }
+  // }.bind(this), 1000);
 
   // Load the data for the panels.
   this.loadPredictions();
   this.loadRecent();
 
   // Now make the call to import the latest songs.
-  this.importSongs();
+  // this.importSongs();
 }
 
 DashboardController.prototype.loadRecent = function(response) {

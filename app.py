@@ -26,6 +26,7 @@ from apps.trail.views import trail_admin
 from shared.exceptions import sentry
 
 import os
+import logging
 
 migrate = Migrate()
 

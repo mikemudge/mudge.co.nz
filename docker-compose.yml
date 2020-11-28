@@ -32,6 +32,8 @@ services:
       - APP_TEST_SETTINGS=settings.localtest
       - ENV=dev
       - PYTHONIOENCODING=utf-8
+      # Because its nice to get logs immediately when you are debugging.
+      - PYTHONUNBUFFERED=true
       - LC_ALL=C.UTF-8
       - LANG=C.UTF-8
       - FLASK_APP=manage.py

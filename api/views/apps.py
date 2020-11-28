@@ -72,8 +72,10 @@ apps['soccer'] = {
     'tags': ['common']
 }
 apps['predator'] = {
+    'img': 'predator.png',
 }
 apps['game'] = {
+    'img': 'game.png',
 }
 apps['tournament'] = {
     'img': 'tournament.png',

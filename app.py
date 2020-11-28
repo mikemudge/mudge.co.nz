@@ -47,7 +47,7 @@ def routes(app):
     tournament_admin.admin_routes(app)
 
 
-def get_version(app):
+def get_env_version(app):
     if app.config.get("ENV") == "dev":
         return str(datetime.now().timestamp())
     if app.config.get("ENV") == "test":
@@ -82,7 +82,7 @@ def create_app(config=None):
         if not app.config.get(setting):
             raise Exception('Missing required setting in local_config.py ' + setting)
 
-    version = get_version(app)
+    version = get_env_version(app)
     app.version = version
 
     setup_auth(app)

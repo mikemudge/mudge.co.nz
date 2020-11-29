@@ -70,12 +70,14 @@ def new_player():
     return app.render()
 
 @eighti_bp.route('new_site/')
-def new_8i_site():
+@eighti_bp.route('new_site/<page>')
+def new_8i_site(page=None):
     app = Angular('8i')
     app.base = '/8i/new_site/'
     app.scripts = [
         'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
         url_for('static', filename="js/three.min.js"),
+        url_for('static', filename="js/three.js/OBJLoader.js"),
         url_for('static', filename='8i/new_site/8i.controls.js'),
         url_for('static', filename="js/three.js/DeviceOrientationControls.js"),
 

@@ -18,6 +18,8 @@ World.prototype.draw = function(ctx) {
 var Creature = function(world, params) {
   this.world = world;
   this.health = 100;
+  this.age = 0;
+  this.color = params.color || Math.floor(Math.random() * 3);
   this.x = params.x || 50;
   this.y = params.y || 50;
   this.vx = 0;
@@ -33,6 +35,7 @@ Creature.prototype.update = function() {
   this.y += this.vy;
   this.vx += this.speed * (Math.random() - 0.5);
   this.vy += this.speed * (Math.random() - 0.5);
+  this.age += 1;
 
   // Slow down;
   this.vx *= (1 - 0.2 * Creature.FRICTION);
@@ -67,12 +70,31 @@ Creature.prototype.update = function() {
     // instead of calculating the sqrt, just use 50 * 50 here.
     if (disSqr < 2500) {
       // TODO interact with creatures near you.
-      c.health -= 10;
-      if (c.health == 0) {
-        // I killed it.
-        // Full heal.
-        this.health = 100;
-        this.foodLevel = 100;
+      if (this.color != c.color) {
+        // Fight eahc other.
+        c.health -= 10;
+        if (c.health == 0) {
+          // I killed it.
+          // Full heal.
+          this.health = 100;
+          this.foodLevel = 100;
+        }
+      } else {
+        // Same color will help each other.
+        if (this.age > 100 && c.age > 100) {
+          // reproduce now, and make a new creature.
+          // And reset the age so repduction is less common.
+          this.age = 0;
+          c.age = 0;
+          if (this.world.creatures.length < 100) {
+            newC = new Creature(this.world, {
+              color: this.color,
+              x: this.x,
+              y: this.y,
+            })
+            this.world.creatures.push(newC);
+          }
+        }
       }
       // Change velocity based on where the close creature is.
       this.vx = 0.1 * (this.x - c.x)
@@ -85,7 +107,13 @@ Creature.prototype.draw = function(ctx) {
   ctx.beginPath();
   ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
   str = 255 * this.health / 100;
-  ctx.fillStyle = 'rgb(0, ' + Math.floor(str) + ',0)';
+  if (this.color == 1) {
+    ctx.fillStyle = 'rgb(' + Math.floor(str) + ', 0, 0)';
+  } else if (this.color == 2) {
+      ctx.fillStyle = 'rgb(0, 0, ' + Math.floor(str) + ')';
+  } else {
+    ctx.fillStyle = 'rgb(0, ' + Math.floor(str) + ', 0)';
+  }
   ctx.fill();
   ctx.lineWidth = 0;
 }

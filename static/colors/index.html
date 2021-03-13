@@ -1,0 +1,43 @@
+
+<html>
+<head>
+</head>
+<body id="screenshot">
+	<div>
+		<video autoplay></video>
+		<canvas class="filter-canvas"></canvas>
+	</div>
+	<div class="buttons">
+		<button id="screenshot-button">Take Photo</button>
+		<button id="play-button">Play/Pause</button>
+		<button id="enhance-button"> Enhance Colours</button>
+		<label><input id="enhance-level" value="40" type="number"/> Enhance Level</label>
+	</div>
+	<div class="chart">
+		<canvas id="myChart"></canvas>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+	<script src="index.js"></script>
+</body>
+<style type="text/css">
+	video {
+		border: 1px solid;
+		/* this is 9/16 which is the standard webcam aspect ratio */
+		height: 225px;
+		width: 400px
+	}
+	.filter-canvas {
+		border: 1px solid;
+		margin-left: 40px;
+		/* this is 9/16 which is the standard webcam aspect ratio */
+		height: 225px;
+		width: 400px
+	}
+	.chart {
+		width: 400px;
+		height: 400px;
+		overflow: hidden;
+	}
+</style>
+</html>

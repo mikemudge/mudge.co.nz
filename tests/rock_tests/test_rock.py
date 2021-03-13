@@ -5,6 +5,8 @@ from auth.models import User
 from shared.database import db
 from tests.base.base_test_case import BaseTestCase
 
+import datetime
+
 class TestRock(BaseTestCase):
 
     def test_songs(self):
@@ -75,6 +77,13 @@ class TestRock(BaseTestCase):
 
         def fakeGet(url):
             return FakeResponse()
+
+        class FakeDate:
+            def today(x):
+                # A date in 2020
+                return datetime.date(2020, 1, 2)
+
+        importer.date = FakeDate()
 
         importer.requests.get = fakeGet
 

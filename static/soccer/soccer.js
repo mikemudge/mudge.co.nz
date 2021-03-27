@@ -150,8 +150,8 @@ var Field = function(params) {
   this.top = params.top;
 
   this.halfGoalWidth = params.halfGoalWidth || 64;
-  this.goalTop = this.height / 2 - this.halfGoalWidth;
-  this.goalBottom = this.height / 2 + this.halfGoalWidth;
+  this.goalTop = this.top + this.height / 2 - this.halfGoalWidth;
+  this.goalBottom = this.top + this.height / 2 + this.halfGoalWidth;
 }
 
 Field.prototype.draw = function(ctx) {

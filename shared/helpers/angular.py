@@ -11,6 +11,7 @@ class Angular():
         self.include = None
         self.sentry = False
         self.base = '/'
+        self.meta = {}
         self.scripts = []
         self.async_scripts = []
         self.templates = []
@@ -42,6 +43,7 @@ class Angular():
                 'app': self.appName,
                 'version': self.version,
                 'base': self.base,
+                'meta': self.meta,
                 'config': self.config,
                 'favicon': self.favicon,
                 'include': self.include,

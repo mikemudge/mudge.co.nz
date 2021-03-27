@@ -3,6 +3,9 @@
   <base href="{{ angular.base | default('/') }}" />
   <link rel="shortcut icon" href="{{ angular.favicon }}" type="image/x-icon" />
   <meta charset="UTF-8">
+  {% if angular.meta.image %}
+  <meta property="og:image" content="{{angular.meta.image}}" />
+  {% endif %}
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
 
   <title ng-bind="title">{{ angular.title | default(angular.app)}}</title>

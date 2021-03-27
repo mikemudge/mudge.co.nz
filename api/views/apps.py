@@ -210,6 +210,9 @@ class ProjectAppView(MethodView):
             for t in conf.get('templates', []):
                 app.addTemplate(t)
 
+            if conf.get('img'):
+                app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
+
         # Add app files last?
         app_path = '/static/%s' % app_name
         if path:

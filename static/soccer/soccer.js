@@ -1,12 +1,9 @@
 // TODO's
 /*
   Crash into other players?
-  Add goal condition and team score.
   Set game win condition with rematch/pausing at the end.
-  Allow for customized game options for each play through.
   Change sizes/mass/bounciness/friction etc.
   Allow different movement controls.
-  Add AI movement control?
   Add support for touch/mobile devices.
 */
 
@@ -151,14 +148,50 @@ var Field = function(params) {
   this.height = params.height;
   this.left = params.left;
   this.top = params.top;
+
+  this.halfGoalWidth = params.halfGoalWidth || 64;
+  this.goalTop = this.height / 2 - this.halfGoalWidth;
+  this.goalBottom = this.height / 2 + this.halfGoalWidth;
 }
 
 Field.prototype.draw = function(ctx) {
   // Draw Field
   ctx.strokeStyle = this.lineColor;
   ctx.lineWidth = 1;
+  goalDepth = this.halfGoalWidth;
   ctx.rect(this.left, this.top, this.width, this.height);
+  ctx.rect(this.left - goalDepth, this.goalTop, goalDepth, this.halfGoalWidth * 2);
+  ctx.rect(this.left + this.width, this.goalTop, goalDepth, this.halfGoalWidth * 2);
   ctx.stroke();
+}
+
+Field.prototype.collide = function(obj) {
+  if (obj.y - obj.radius < this.top && obj.vy < 0) {
+    obj.vy *= -Ball.BOUNCE_BACK;
+  }
+  if (obj.y + obj.radius > this.top + this.height && obj.vy > 0) {
+    obj.vy *= -Ball.BOUNCE_BACK;
+  }
+  if (obj.y > this.goalTop && obj.y < this.goalBottom) {
+    // No bouncing happens if the ball is in the goal space.
+    // TODO should radius be used for this?
+    return;
+  }
+  if (obj.x - obj.radius < this.left && obj.vx < 0) {
+    obj.vx *= -Ball.BOUNCE_BACK;
+  }
+  if (obj.x + obj.radius > this.left + this.width && obj.vx > 0) {
+    obj.vx *= -Ball.BOUNCE_BACK;
+  }
+}
+
+Field.prototype.inGoal = function(x, y) {
+  if (y < this.goalTop || y > this.goalBottom) {
+    return false;
+  }
+  if (x < this.left || x > this.left + this.width) {
+    return true;
+  }
 }
 
 var Ball = function(field, params) {
@@ -187,18 +220,7 @@ Ball.prototype.update = function() {
   }
 
   // crash?
-  if (this.x - this.radius < this.field.left && this.vx < 0) {
-    this.vx *= -Ball.BOUNCE_BACK;
-  }
-  if (this.x + this.radius > this.field.left + this.field.width && this.vx > 0) {
-    this.vx *= -Ball.BOUNCE_BACK;
-  }
-  if (this.y - this.radius < this.field.top && this.vy < 0) {
-    this.vy *= -Ball.BOUNCE_BACK;
-  }
-  if (this.y + this.radius > this.field.top + this.field.height && this.vy > 0) {
-    this.vy *= -Ball.BOUNCE_BACK;
-  }
+  this.field.collide(this);
 }
 
 Ball.prototype.draw = function(ctx) {
@@ -229,7 +251,7 @@ KeyControls.prototype.update = function() {
     'left': KeyControls.down[this.keys.left],
     'right': KeyControls.down[this.keys.right]
   };
-  MoveController.carMove(this.player, arrows);
+  MoveController.move(this.player, arrows);
 };
 
 KeyControls.keyUp = function(e) {
@@ -243,6 +265,40 @@ KeyControls.keyDown = function(e) {
   KeyControls.down[key] = true;
 }
 window.onkeydown = KeyControls.keyDown;
+
+var AIControls = function(game) {
+  this.game = game;
+}
+
+AIControls.prototype.setTeam = function(team) {
+  this.team = team;
+  this.player = team.players[0];
+}
+
+AIControls.prototype.update = function() {
+  if (!AIControls.enabled) {
+    return;
+  }
+  var b = this.game.ball;
+  dx = b.x - this.player.x;
+  dy = b.y - this.player.y;
+  // Speed is a fraction of the distance remaining?
+  // TODO this is made up, probably can be calculated (PID)?
+  // Currently does make the player chase the ball around quite nicely.
+  // However vx and vy are too independent, which means the ball is always hit at 90 degrees.
+  dvx = .8 * dx;
+  dvy = .8 * dy;
+  if (this.player.vx < dvx) {
+    this.player.vx += Player.ACCELERATION;
+  } else if (this.player.vx > dvx) {
+    this.player.vx -= Player.ACCELERATION;
+  }
+  if (this.player.vy < dvy) {
+    this.player.vy += Player.ACCELERATION;
+  } else if (this.player.vy > dvy) {
+    this.player.vy -= Player.ACCELERATION;
+  }
+}
 
 var SoccerGame = function(canvas) {
   this.canvas = canvas;
@@ -260,6 +316,10 @@ var SoccerGame = function(canvas) {
     y: canvas.height / 2
   });
 
+  // Init the score to 0 - 0
+  this.leftScore = 0;
+  this.rightScore = 0;
+
   this.leftTeam = new Team('red', this);
   this.leftTeam.setControl(new KeyControls({
     left: 37,
@@ -268,12 +328,13 @@ var SoccerGame = function(canvas) {
     down: 40
   }));
   this.rightTeam = new Team('#8080FF', this);
-  this.rightTeam.setControl(new KeyControls({
-    left: 65,
-    up: 87,
-    right: 68,
-    down: 83
-  }));
+  // this.rightTeam.setControl(new KeyControls({
+  //   left: 65,
+  //   up: 87,
+  //   right: 68,
+  //   down: 83
+  // }));
+  this.rightTeam.setControl(new AIControls(this));
   // Add controls for each team??
 };
 
@@ -284,6 +345,7 @@ SoccerGame.prototype.updateOptions = function(options) {
   Player.FRICTION = options.friction;
   Player.BOUNCE_BACK = options.bounce;
   Player.KICK_SPEED = options.kick_speed;
+  AIControls.enabled = options.ai;
 }
 
 SoccerGame.prototype.run = function() {
@@ -291,6 +353,20 @@ SoccerGame.prototype.run = function() {
   this.leftTeam.update();
   this.rightTeam.update();
   this.ball.update();
+
+  if (this.field.inGoal(this.ball.x, this.ball.y)) {
+    if (this.ball.x <= this.field.left) {
+      this.rightScore += 1;
+    } else {
+      this.leftScore += 1;
+    }
+    // Reset ball to the center.
+    this.ball = new Ball(this.field, {
+      x: this.canvas.width / 2,
+      y: this.canvas.height / 2
+    });
+  }
+
 
   // Render the game.
   this.ctx.fillStyle = 'black';
@@ -309,6 +385,10 @@ SoccerGame.prototype.run = function() {
   this.rightTeam.players.forEach(function(player) {
     player.draw(this.ctx);
   }, this);
+
+  this.ctx.fillStyle = 'white';
+  this.ctx.font = "30px Arial";
+  this.ctx.fillText(this.leftScore + " - " + this.rightScore, 10, 50);
 
   if (!this.pause) {
     window.requestAnimationFrame(angular.bind(this, this.run));
@@ -344,6 +424,7 @@ var PauseController = function(game, $scope) {
     friction: Player.FRICTION,
     bounce: Player.BOUNCE_BACK,
     kick_speed: Player.KICK_SPEED,
+    ai: true,
   }
   window.addEventListener('blur', function() {
     game.pause = true;

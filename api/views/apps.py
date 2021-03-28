@@ -85,6 +85,11 @@ apps['breakout'] = {
     'img': 'breakout.png',
     'tags': ['threejs']
 }
+apps['bomberman'] = {
+    'img': 'bomberman.png',
+    'tags': ['common']
+}
+
 # apps['slack_history'] = {
 #     'tags': ['common']
 # }

@@ -1,0 +1,24 @@
+<div ng-controller='PauseController as pause'>
+  <div class="popup options" ng-show="pause.game.pause">
+    <h4> Paused </h4>
+    <p>
+      {{ pause.game.pauseMessage }}
+    </p>
+    <p>
+      Use the arrow keys to move around.
+    </p>
+    <p>
+      Space will drop a bomb.
+    </p>
+<!--     <label class="field">
+      Acceleration: <input type="number" step="0.1" ng-model="pause.options.acceleration" />
+    </label>
+ -->
+<!--     <label class="field">
+      Enable AI: <input type="checkbox" ng-model="pause.options.ai" />
+    </label> -->
+    <button type="submit" ng-click="pause.start()">
+      Play
+    </button>
+  </div>
+</div>

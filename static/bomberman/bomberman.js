@@ -421,7 +421,9 @@ BombermanGame.prototype.run = function() {
   } else {
     this.stopped = true;
     console.log('stopped game');
-    this.$scope.$apply();
+    if (this.$scope) {
+      this.$scope.$apply();
+    }
   }
 }
 
@@ -437,6 +439,8 @@ function init() {
 
   document.body.appendChild(canvas);
   var game = new BombermanGame(canvas);
+  // Start the game pause, but call run once to do an initial render.
+  game.pause = true;
   game.run();
   return game;
 };

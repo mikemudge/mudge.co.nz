@@ -6,6 +6,7 @@ var Grid = function(params) {
   this.left = 50;
   this.reset();
 }
+
 Grid.prototype.reset = function() {
   this.tiles = [];
   for (y = 0; y < this.height; y++) {
@@ -19,6 +20,12 @@ Grid.prototype.reset = function() {
         // And can't destroy it either.
         tile.destructable = false;
       } else if (x + y < 4) {
+        // Leave a gap in the start corner.
+      } else if (this.width - x + y < 5) {
+        // Leave a gap in the start corner.
+      } else if (this.height - y + x < 5) {
+        // Leave a gap in the start corner.
+      } else if (this.height - y + this.width - x < 6) {
         // Leave a gap in the start corner.
       } else {
         // Default to dirt tiles.
@@ -186,6 +193,7 @@ Tile.prototype.draw = function(ctx) {
 
 
 var Bomb = function(player, tile) {
+  this.player = player;
   this.x = player.x;
   this.y = player.y;
   this.tile = tile;
@@ -233,28 +241,27 @@ var Player = function(game, controls) {
   this.reset();
 }
 
+Player.prototype.setStart = function(x, y) {
+  this.startx = x;
+  this.starty = y;
+  this.x = x;
+  this.y = y;
+}
+
 Player.prototype.reset = function() {
-  this.x = 1;
-  this.y = 1;
+  this.x = this.startx;
+  this.y = this.starty;
   this.powers = {
     'numBombs': 1,
     'explodeSize': 1
   }
+  this.dead = false;
 }
 
 Player.prototype.update = function() {
   var playerTile = this.grid.getTile(this.x, this.y);
 
   keys = this.controls.update();
-
-  if (playerTile.flameTime > 0) {
-    this.dead = true;
-    // For now reset the game and pause?
-    this.game.reset();
-    this.game.pause = true;
-    this.game.pauseMessage = "A bomb got you";
-    return;
-  }
   if (keys.action1) {
     // Queue up a bomb but don't drop it yet.
     this.dropbomb = true;
@@ -277,12 +284,14 @@ Player.prototype.update = function() {
   if (keys.right && this.x < this.grid.width) {
     dx = 1
   }
-  // Only doing this after inaction means that it takes a little while to drop a bomb?
   if (keys.action1) {
-    // TODO check for player bombs, not all bombs.
-    // Also exploded bombs shouldn't count.
-    // Need to move flames to a seperate list?
-    var bombCount = this.game.bombs.length;
+    var bombCount = 0;
+    this.game.bombs.forEach(function(bomb) {
+      if (bomb.player == this) {
+        bombCount++;
+      }
+    }.bind(this));
+
     if (bombCount < this.powers.numBombs) {
       if (!playerTile.bomb) {
         // Can't add a bomb where one already exists;
@@ -301,10 +310,10 @@ Player.prototype.update = function() {
     if (t.flameTime > 0) {
       // Stepped on a flame, you die.
       this.dead = true;
-      // For now reset the game and pause?
-      this.game.reset();
+      // For now pause the game and reset it?
       this.game.pause = true;
       this.game.pauseMessage = "Oh no you walked into a flame"
+      this.game.reset();
       return;
     }
     this.x += dx;
@@ -354,6 +363,93 @@ KeyControls.keyDown = function(e) {
 }
 window.onkeydown = KeyControls.keyDown;
 
+
+var SimpleAIPlayer = function(game) {
+  this.game = game;
+  this.grid = this.game.grid;
+  this.inactionCount = 0;
+  this.color = 'green'
+  this.reset();
+}
+
+SimpleAIPlayer.prototype.setStart = function(x, y) {
+  this.startx = x;
+  this.starty = y;
+  this.x = x;
+  this.y = y;
+}
+
+SimpleAIPlayer.prototype.reset = function() {
+  this.x = this.startx;
+  this.y = this.starty;
+  this.powers = {
+    'numBombs': 1,
+    'explodeSize': 1
+  }
+  this.direction = 0;
+  this.dead = false;
+}
+
+SimpleAIPlayer.prototype.update = function() {
+  if (this.inactionCount > 0) {
+    this.inactionCount--;
+    return;
+  }
+  var playerTile = this.grid.getTile(this.x, this.y);
+  dx = 0
+  dy = 0
+  if (this.direction == 0) {
+    dx = 1;
+  } else if (this.direction == 1) {
+    dy = 1;
+  } else if (this.direction == 2) {
+    dx = -1
+  } else if (this.direction == 3) {
+    dy = -1;
+  }
+  var t = this.grid.getTile(this.x + dx, this.y + dy);
+  if (dx || dy) {
+    if (t.solid && t.destructable && !playerTile.bomb) {
+      // Next tile is explodable, so drop a bomb if we can.
+      var bombCount = 0;
+      this.game.bombs.forEach(function(bomb) {
+        if (bomb.player == this) {
+          bombCount++;
+        }
+      }.bind(this));
+
+      if (bombCount < this.powers.numBombs) {
+        var bomb = new Bomb(this, playerTile);
+        this.game.addBomb(bomb);
+        playerTile.addBomb(bomb);
+      } else {
+        // Just wait here until you can drop a bomb.
+        return;
+      }
+    }
+    if (t.solid || t.bomb || t.flameTime) {
+      // Can't walk into this.
+      this.direction = (this.direction + 1) % 4;
+      return;
+    }
+    this.x += dx;
+    this.y += dy;
+    if (Math.random() < 0.5) {
+      // some times consider a left turn after moving.
+      this.direction = (this.direction + 3) % 4;
+    }
+    this.inactionCount = 15;
+    if (t.powerup == 'explodeSize') {
+      console.log('explodeSize++');
+      this.powers.explodeSize++;
+    } else if (t.powerup == 'numBombs') {
+      console.log('numBombs++');
+      this.powers.numBombs++;
+    }
+    t.powerup = null;
+  }
+}
+
 var BombermanGame = function(canvas) {
   this.canvas = canvas;
   this.ctx = canvas.getContext('2d');
@@ -369,7 +465,20 @@ var BombermanGame = function(canvas) {
     down: 40,
     action1: 32,
   }));
+  this.player1.setStart(1, 1);
   this.players.push(this.player1);
+
+  var botplayer = new SimpleAIPlayer(this);
+  botplayer.setStart(this.grid.width - 2, 1);
+  this.players.push(botplayer);
+
+  var botplayer = new SimpleAIPlayer(this);
+  botplayer.setStart(this.grid.width - 2, this.grid.height - 2);
+  this.players.push(botplayer);
+
+  var botplayer = new SimpleAIPlayer(this);
+  botplayer.setStart(1, this.grid.height - 2);
+  this.players.push(botplayer);
 };
 
 BombermanGame.prototype.updateOptions = function(options) {
@@ -382,7 +491,9 @@ BombermanGame.prototype.addBomb = function(b) {
 
 BombermanGame.prototype.reset = function() {
   this.bombs = [];
-  this.player1.reset();
+  this.players.forEach(function(player) {
+    player.reset();
+  });
   this.grid.reset();
 }
 
@@ -397,6 +508,22 @@ BombermanGame.prototype.run = function() {
 
   // Update the players, and also check if any got exploded.
   this.players.forEach(function(player) {
+    if (player.dead) {
+      // No update happens anymore.
+      return;
+    }
+    var playerTile = this.grid.getTile(player.x, player.y);
+    if (playerTile.flameTime > 0) {
+      player.dead = true;
+      if (player == this.player1) {
+        // If the human player is dead we should do something.
+        // For now reset the game and pause?
+        this.reset();
+        this.pause = true;
+        this.pauseMessage = "A bomb got you";
+      }
+      return;
+    }
     player.update();
   }, this);
 
@@ -409,6 +536,9 @@ BombermanGame.prototype.run = function() {
 
   // Draw players after the bombs.
   this.players.forEach(function(player) {
+    if (player.dead) {
+      return
+    }
     this.grid.drawPlayer(this.ctx, player);
   }, this);
 

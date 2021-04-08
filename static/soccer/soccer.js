@@ -23,43 +23,6 @@ Player.FRICTION = 0.25;
 Player.BOUNCE_BACK = 0.5;
 Player.KICK_SPEED = 2;
 
-var MoveController = {};
-// Move like you are on ice.
-MoveController.move = function(player, keys) {
-  if (keys.left) {
-    player.vx -= Player.ACCELERATION;
-  }
-  if (keys.up) {
-    player.vy -= Player.ACCELERATION;
-  }
-  if (keys.right) {
-    player.vx += Player.ACCELERATION;
-  }
-  if (keys.down) {
-    player.vy += Player.ACCELERATION;
-  }
-};
-
-MoveController.TURN_SPEED = 0.08;
-
-// Move like a car.
-MoveController.carMove = function(player, keys) {
-  if (keys.left) {
-    player.ang -= MoveController.TURN_SPEED;
-  }
-  if (keys.right) {
-    player.ang += MoveController.TURN_SPEED;
-  }
-  if (keys.up) {
-    player.vx += Math.sin(player.ang) * Player.ACCELERATION;
-    player.vy -= Math.cos(player.ang) * Player.ACCELERATION;
-  }
-  if (keys.down) {
-    player.vx -= Math.sin(player.ang) * Player.ACCELERATION;
-    player.vy += Math.cos(player.ang) * Player.ACCELERATION;
-  }
-};
-
 Player.prototype.updatePosition = function() {
   this.x += this.vx;
   this.y += this.vy;
@@ -231,27 +194,32 @@ Ball.prototype.draw = function(ctx) {
   ctx.lineWidth = 0;
 }
 
-var KeyControls = function(keySettings) {
+var KeyControls = function(keySettings, game, team) {
   this.keys = keySettings;
-}
-
-KeyControls.prototype.setTeam = function(team) {
   this.team = team;
   this.player = team.players[0];
+  this.moveTypes = [
+    new CarMove(game.options),
+    new IceMove(game.options)
+  ]
+  this.moveTypeIndex = 1;
+  this.moveControl = this.moveTypes[this.moveTypeIndex];
 }
 KeyControls.down = {};
 
 KeyControls.prototype.update = function() {
-  if (!this.player) {
-    console.log('no play selected for key controls');
-  }
-  var arrows = {
+    var arrows = {
     'up': KeyControls.down[this.keys.up],
     'down': KeyControls.down[this.keys.down],
     'left': KeyControls.down[this.keys.left],
-    'right': KeyControls.down[this.keys.right]
+    'right': KeyControls.down[this.keys.right],
+    'switchControls': KeyControls.down[this.keys.switchControls],
   };
-  MoveController.move(this.player, arrows);
+  if (arrows.switchControls) {
+    this.moveTypeIndex = (this.moveTypeIndex + 1) % 2;
+    this.moveControl = this.moveTypes[this.moveTypeIndex];
+  }
+  this.moveControl.move(this.player, arrows);
 };
 
 KeyControls.keyUp = function(e) {
@@ -266,11 +234,51 @@ KeyControls.keyDown = function(e) {
 }
 window.onkeydown = KeyControls.keyDown;
 
-var AIControls = function(game) {
-  this.game = game;
-}
 
-AIControls.prototype.setTeam = function(team) {
+var IceMove = function(options) {
+  this.options = options
+};
+
+// Move like you are on ice.
+IceMove.prototype.move = function(player, keys) {
+  if (keys.left) {
+    player.vx -= this.options.acceleration;
+  }
+  if (keys.up) {
+    player.vy -= this.options.acceleration;
+  }
+  if (keys.right) {
+    player.vx += this.options.acceleration;
+  }
+  if (keys.down) {
+    player.vy += this.options.acceleration;
+  }
+};
+
+var CarMove = function(options) {
+  this.options = options;
+}
+// Move like a car.
+CarMove.prototype.move = function(player, keys) {
+  if (keys.left) {
+    player.ang -= this.options.turn_speed;
+  }
+  if (keys.right) {
+    player.ang += this.options.turn_speed;
+  }
+  if (keys.up) {
+    player.vx += Math.sin(player.ang) * this.options.acceleration;
+    player.vy -= Math.cos(player.ang) * this.options.acceleration;
+  }
+  if (keys.down) {
+    player.vx -= Math.sin(player.ang) * this.options.acceleration;
+    player.vy += Math.cos(player.ang) * this.options.acceleration;
+  }
+};
+
+var AIControls = function(game, team) {
+  this.game = game;
+  this.options = game.options;
   this.team = team;
   this.player = team.players[0];
 }
@@ -286,17 +294,33 @@ AIControls.prototype.update = function() {
   // TODO this is made up, probably can be calculated (PID)?
   // Currently does make the player chase the ball around quite nicely.
   // However vx and vy are too independent, which means the ball is always hit at 90 degrees.
-  dvx = .8 * dx;
-  dvy = .8 * dy;
+  dvx = 0;
+  dvy = 0;
+
+  // TODO use a gradient of these things?
+  // This will circle the ball;
+  if (dx < 100) {
+    if (dy < 0) {
+      dvx += .8 * dy;
+      dvy += -.8 * dx;
+    } else {
+      dvx += -.8 * dy;
+      dvy += .8 * dx;
+    }
+  }
+  // This will move towards the ball.
+  dvx += .8 * dx;
+  dvy += .8 * dy;
+
   if (this.player.vx < dvx) {
-    this.player.vx += Player.ACCELERATION;
+    this.player.vx += this.options.acceleration;
   } else if (this.player.vx > dvx) {
-    this.player.vx -= Player.ACCELERATION;
+    this.player.vx -= this.options.acceleration;
   }
   if (this.player.vy < dvy) {
-    this.player.vy += Player.ACCELERATION;
+    this.player.vy += this.options.acceleration;
   } else if (this.player.vy > dvy) {
-    this.player.vy -= Player.ACCELERATION;
+    this.player.vy -= this.options.acceleration;
   }
 }
 
@@ -304,6 +328,9 @@ var SoccerGame = function(canvas) {
   this.canvas = canvas;
   this.ctx = canvas.getContext('2d');
 
+  this.options = {
+    turn_speed: 0.08
+  };
   this.field = new Field({
     left: this.canvas.width / 20,
     width: this.canvas.width * 18 / 20,
@@ -321,35 +348,37 @@ var SoccerGame = function(canvas) {
   this.rightScore = 0;
 
   this.leftTeam = new Team('red', this);
-  this.leftTeam.setControl(new KeyControls({
+  this.rightTeam = new Team('#8080FF', this);
+
+  this.controls = [];
+  this.controls.push(new KeyControls({
     left: 37,
     up: 38,
     right: 39,
-    down: 40
-  }));
-  this.rightTeam = new Team('#8080FF', this);
-  // this.rightTeam.setControl(new KeyControls({
+    down: 40,
+    switchControls: 32,
+  }, this, this.leftTeam));
+  // this.controls.push(new KeyControls({
   //   left: 65,
   //   up: 87,
   //   right: 68,
   //   down: 83
   // }));
-  this.rightTeam.setControl(new AIControls(this));
+  this.controls.push(new AIControls(this, this.rightTeam));
   // Add controls for each team??
 };
 
 SoccerGame.prototype.updateOptions = function(options) {
-  this.option = options;
-  // This is bad.
-  Player.ACCELERATION = options.acceleration;
-  Player.FRICTION = options.friction;
-  Player.BOUNCE_BACK = options.bounce;
-  Player.KICK_SPEED = options.kick_speed;
+  Object.keys(options).forEach(option => this.options[option] = options[option]);
+  console.log('updated options', this.options);
+
+  // TODO manually update each control?
   AIControls.enabled = options.ai;
 }
 
 SoccerGame.prototype.run = function() {
   // Update the game.
+  this.controls.forEach(control => control.update());
   this.leftTeam.update();
   this.rightTeam.update();
   this.ball.update();

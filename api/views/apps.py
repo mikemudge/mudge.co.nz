@@ -132,7 +132,7 @@ apps['rock'] = {
 }
 apps['trail'] = {
     'img': 'trail.png',
-    'tags': ['api', 'common', 'gmaps']
+    'tags': ['api', 'login', 'common', 'gmaps']
 }
 apps['ceo_bingo'] = {
     'img': 'ceo_bingo.png',
@@ -187,9 +187,6 @@ class ProjectAppView(MethodView):
                 # Enable sentry.
                 app.sentry = True
 
-        # TODO can I remove this? apps should add it if they need it.
-        # app.addScript('/static/shared/login.js')
-
         conf = apps.get(app_name)
         if conf:
             tags = conf.get('tags', [])
@@ -220,8 +217,10 @@ class ProjectAppView(MethodView):
 
         # Add app files last?
         app_path = '/static/%s' % app_name
-        if path:
-            app_path += '/' + path
+        # if path:
+        #     print("Path = %s and %s" % (app_path, path))
+            # This was adding /static/trail and login which made a bad path.
+            # app_path += '/' + path
 
         app.setupFolder(app_path)
 

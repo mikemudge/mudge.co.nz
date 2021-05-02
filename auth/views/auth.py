@@ -32,6 +32,7 @@ class AuthenticationConnectorView(MethodView):
 
         client = Client.query.filter_by(client_id=client_id).first()
         if not client:
+            raise AuthenticationException(['Client not found for %s' % client_id])
             return False
 
         request.client = client

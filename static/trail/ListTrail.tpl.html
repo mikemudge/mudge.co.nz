@@ -4,7 +4,12 @@
   </div>
 
   <div class='welcome'>
-    Hi {{ ctrl.currentUser.email }}
+    <span ng-show="ctrl.currentUser.email">
+      Hi {{ ctrl.currentUser.email }}
+    </span>
+    <span ng-hide="ctrl.currentUser.email">
+      <a href="login">Login to use this app</a>
+    </span>
   </div>
 
   <div class="popup profile" ng-show="ctrl.editProfile">

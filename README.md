@@ -59,6 +59,9 @@ Need a GOOGLE_CLIENT_ID and GOOGLE_MAPS_API_KEY set here if you want to use logi
 These values are not checked in (local_config.py) because they are production keys. 
 Go to https://console.cloud.google.com/ to see your google projects.
 
+# Multiple github accounts (ssh keys) on 1 computer.
+https://gist.github.com/jexchan/2351996
+
 ### Production
 
 Restart the python app.

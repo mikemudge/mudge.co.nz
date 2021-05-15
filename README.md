@@ -37,6 +37,31 @@ You should test this before deploying where it will happen automatically.
 Also check that you can downgrade from the new revision.
 ./manage.py db downgrade
 
+
+### New setup onboarding.
+clone repo from git.
+git clone https://github.com/mikemudge/mudge.co.nz.git
+cd mudge.co.nz
+
+# Run the containers.
+docker compose up -d
+
+# Connect to the app container and run some initialization commands.
+docker compose exec app bash
+
+./manage.py db upgrade
+./manage.py init auth
+./manage.py init create_user mike.mudge@gmail.com
+
+# Local Config
+create settings/local_config.py
+Need a GOOGLE_CLIENT_ID and GOOGLE_MAPS_API_KEY set here if you want to use login/maps.
+These values are not checked in (local_config.py) because they are production keys. 
+Go to https://console.cloud.google.com/ to see your google projects.
+
+# Multiple github accounts (ssh keys) on 1 computer.
+https://gist.github.com/jexchan/2351996
+
 ### Production
 
 Restart the python app.

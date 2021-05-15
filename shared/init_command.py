@@ -23,13 +23,17 @@ def auth():
 
     if current_app.config.get('CLIENT_ID'):
         client.client_id = current_app.config.get('CLIENT_ID')
+    else:
+        print("Make sure you have CLIENT_ID set in your settings/config")
+
     if current_app.config.get('CLIENT_SECRET'):
         client.client_secret = current_app.config.get('CLIENT_SECRET')
+    else:
+        print("Make sure you have CLIENT_SECRET set in your settings/config")
 
     db.session.add(client)
     db.session.commit()
 
-    print("Make sure you have CLIENT_ID and CLIENT_SECRET set in your local_config")
 
 @InitCommand.command
 def create_user(email, password=None, admin=False):

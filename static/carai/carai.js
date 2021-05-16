@@ -1,6 +1,8 @@
 
 var MainController = function() {
   var canvas = document.getElementById('canvas');
+  // You can't share a canvas for 3d and 2d rendering.
+  this.canvas2d = document.getElementById('canvas2d');
 
   this.renderer = new THREE.WebGLRenderer({'canvas': canvas, antialias: true});
   this.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -23,6 +25,7 @@ var MainController = function() {
   this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
   // load track will asynchronously assign this.pixelData for collision detection.
+  this.track = new Track();
   this.scene.add(this.loadTrack());
 
 
@@ -36,6 +39,7 @@ var MainController = function() {
     color: 0x00ff00
   });
 
+  this.generation = 1;
   this.updatables = [];
 
   var numCars = 20;
@@ -54,7 +58,7 @@ var MainController = function() {
 
     // Make an AI control for the cube object.
     enable = i > 0 // The first car is controlled by human.
-    this.updatables.push(new AIControls(cube, enable))
+    this.updatables.push(new AIControls(cube, this.track, enable))
   }
 
   // this.updatables[0].verbose = true;
@@ -125,9 +129,7 @@ MainController.prototype.loadTrack = function() {
     console.log("Track image is", img.width, img.height);
     // get the pixel data
     this.pixelData = canvas.getContext('2d');
-    this.updatables.forEach(function(u) {
-      u.pixelData = this.pixelData;
-    }.bind(this));
+    this.track.pixelData = this.pixelData;
   }.bind(this);
 
   // Load for rendering.
@@ -174,11 +176,26 @@ MainController.prototype.resize = function() {
 
 MainController.prototype.render = function(time) {
 
+  var stillRunning = 0;
   this.updatables.forEach(function(x) {
+    if (!x.crashed) {
+      stillRunning++;
+    }
     x.update(time);
-  });
+  }.bind(this));
 
   this.renderer.render(this.scene, this.camera);
+
+  // render overlay?
+  if (this.canvas2d) {
+    var ctx = this.canvas2d.getContext('2d');
+    ctx.canvas.width  = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+    ctx.clearRect(0,0,100,100)
+    ctx.fillStyle = 'white';
+    ctx.font = '24px san-serif';
+    ctx.fillText('Gen: ' + this.generation + ' live: ' + stillRunning, 10, 24);
+  }
 }
 
 var NN = function(ins, hiddens, outs) {
@@ -242,8 +259,67 @@ NN.prototype.play = function(inputs) {
   return result;
 }
 
-var AIControls = function(mesh, enabled) {
+
+var Track = function() {
+
+}
+
+Track.prototype.getPixel = function(loc) {
+  // Convert the location in 3d space to the image space.
+  var px = Math.round(512 + loc.x * 2);
+  var pz = Math.round(512 - loc.z * 2);
+
+  var pixelData = this.pixelData.getImageData(px, pz, 1, 1).data
+  pixelData = [pixelData[0], pixelData[1], pixelData[2]];
+  return pixelData
+}
+
+Track.prototype.getRayDistances = function(mesh) {
+  // px, pz is the pixel on the track image where the car currently is.
+  var px = Math.round(512 + mesh.position.x * 2);
+  var pz = Math.round(512 - mesh.position.z * 2);
+
+  var inputs = [200, 200, 200];
+  for (var d = 1; d < 200; d+=5) {
+    x = px + d * 2 * Math.sin(mesh.rotation.y - Math.PI / 4);
+    z = pz - d * 2 * Math.cos(mesh.rotation.y - Math.PI / 4);  
+    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
+    if (imageData[0] > 192) {
+      inputs[0] = d;
+      break;
+    }
+  }
+
+  // Angle change
+  for (var d = 1; d < 200; d += 5) {
+    // * 2 because the image data is at a different scale to the 3 js space.
+    x = px + d * 2 * Math.sin(mesh.rotation.y);
+    z = pz - d * 2 * Math.cos(mesh.rotation.y);
+    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
+    if (imageData[0] > 192) {
+      // / 2 to render the line in 3d space.
+      inputs[1] = d;
+      break;
+    }
+  }
+
+  // Angle change
+  for (var d = 1; d < 200; d+=5) {
+    x = Math.round(px + d * 2 * Math.sin(mesh.rotation.y + Math.PI / 4));
+    z = Math.round(pz - d * 2 * Math.cos(mesh.rotation.y + Math.PI / 4));
+    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
+    if (imageData[0] > 192) {
+      inputs[2] = d;
+      break;
+    }
+  }
+
+  return inputs;
+}
+
+var AIControls = function(mesh, track, enabled) {
   this.mesh = mesh;
+  this.track = track;
   this.enabled = enabled;
   this.speed = 0.9;
   this.theta = 0;
@@ -284,7 +360,7 @@ var AIControls = function(mesh, enabled) {
 AIControls.prototype.update = function(time) {
   // var scene = this.mesh.parent;
 
-  if (!this.pixelData) {
+  if (!this.track.pixelData) {
     // The track has not been loaded yet.
     return;
   }
@@ -295,57 +371,21 @@ AIControls.prototype.update = function(time) {
 
   var loc = this.mesh.position;
 
-  // px, pz is the pixel on the track image where the car currently is.
-  var px = Math.round(512 + this.mesh.position.x * 2);
-  var pz = Math.round(512 - this.mesh.position.z * 2);
-
   // This is the pixel color for that location px, pz.
-  pixel = this.pixelData.getImageData(px, pz, 1, 1).data;
-  pixel = [pixel[0], pixel[1], pixel[2]];
-  // console.log(px, pz, "looking at", pixel);
+  pixel = this.track.getPixel(loc);
   if (pixel[0] > 192) {
     this.crashed = true;
   }
 
-  var inputs = [200, 200, 200];
-  for (var d = 1; d < 200; d+=5) {
-    x = px + d * 2 * Math.sin(this.mesh.rotation.y - Math.PI / 4);
-    z = pz - d * 2 * Math.cos(this.mesh.rotation.y - Math.PI / 4);  
-    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
-    if (imageData[0] > 192) {
-      this.lines.geometry.vertices[1]
-        .set( -1, 0, 1 ).normalize().multiplyScalar(d / 2);
-      inputs[0] = d;
-      break;
-    }
-  }
+  inputs = this.track.getRayDistances(this.mesh);
 
-  // Angle change
-  for (var d = 1; d < 200; d += 5) {
-    // * 2 because the image data is at a different scale to the 3 js space.
-    x = px + d * 2 * Math.sin(this.mesh.rotation.y);
-    z = pz - d * 2 * Math.cos(this.mesh.rotation.y);
-    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
-    if (imageData[0] > 192) {
-      // / 2 to render the line in 3d space.
-      this.lines.geometry.vertices[3].set(0, 0, d / 2 );
-      inputs[1] = d;
-      break;
-    }
+  if (this.lines) {
+    // Update the line lengths based on raytraced distances.
+    this.lines.geometry.vertices[1].set( -1, 0, 1 ).normalize().multiplyScalar(inputs[0] / 2);
+    this.lines.geometry.vertices[3].set(0, 0, inputs[1] / 2 );
+    this.lines.geometry.vertices[5].set(1, 0, 1 ).normalize().multiplyScalar(inputs[2] / 2);
+    this.lines.geometry.verticesNeedUpdate = true;
   }
-
-  // Angle change
-  for (var d = 1; d < 200; d+=5) {
-    x = Math.round(px + d * 2 * Math.sin(this.mesh.rotation.y + Math.PI / 4));
-    z = Math.round(pz - d * 2 * Math.cos(this.mesh.rotation.y + Math.PI / 4));
-    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
-    if (imageData[0] > 192) {
-      this.lines.geometry.vertices[5].set(1, 0, 1 ).normalize().multiplyScalar(d / 2);
-      inputs[2] = d;
-      break;
-    }
-  }
-  this.lines.geometry.verticesNeedUpdate = true;
 
   if (this.enabled) {
     turnSignals = this.nn.play(inputs);

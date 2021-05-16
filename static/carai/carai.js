@@ -22,6 +22,7 @@ var MainController = function() {
   // Init the camera to look at the cube. Makes x,y look like the screen pixels.
   this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+  // load track will asynchronously assign this.pixelData for collision detection.
   this.scene.add(this.loadTrack());
 
 
@@ -37,7 +38,8 @@ var MainController = function() {
 
   this.updatables = [];
 
-  for (i = 0; i < 2; i++) {
+  var numCars = 20;
+  for (i = 0; i < numCars; i++) {
     var cube;
     if (i == 0) {
       cube = new THREE.Mesh(mesh, selectedMaterial);
@@ -51,13 +53,14 @@ var MainController = function() {
     cube.scale.set(2,2,2);
 
     // Make an AI control for the cube object.
-    this.updatables.push(new AIControls(cube))
+    enable = i > 0 // The first car is controlled by human.
+    this.updatables.push(new AIControls(cube, enable))
   }
 
-  this.updatables[0].verbose = true;
+  // this.updatables[0].verbose = true;
   // Test run of the selected car NN
-  this.nn = this.updatables[0].nn;
-  this.nn.verbose = true;
+  this.nn = this.updatables[1].nn;
+  // this.nn.verbose = true;
 
   // First feature
   // bias is 3rd "input".
@@ -80,12 +83,12 @@ var MainController = function() {
 
   var result;
 
-  result = this.nn.play([0,0,5]);
-  console.log(this.nn.normalInputs, this.nn.hiddens, result);
-  result = this.nn.play([0,5,0]);
-  console.log(this.nn.normalInputs, this.nn.hiddens, result);
-  result = this.nn.play([5,0,0]);
-  console.log(this.nn.normalInputs, this.nn.hiddens, result);
+  // result = this.nn.play([0,0,5]);
+  // console.log(this.nn.normalInputs, this.nn.hiddens, result);
+  // result = this.nn.play([0,5,0]);
+  // console.log(this.nn.normalInputs, this.nn.hiddens, result);
+  // result = this.nn.play([5,0,0]);
+  // console.log(this.nn.normalInputs, this.nn.hiddens, result);
 
   // this.updatables = [];
   window.addEventListener('resize', angular.bind(this, this.resize));
@@ -97,6 +100,9 @@ var MainController = function() {
     this.pause = true;
   }.bind(this), false);
 
+  // Just for now.
+  // this.debug = true;
+
   window.addEventListener('focus', function() {
     console.log("unpause");
     this.pause = false;
@@ -106,6 +112,25 @@ var MainController = function() {
 }
 
 MainController.prototype.loadTrack = function() {
+  // Load the track image for collision detection
+  var img = new Image();
+  img.src = '/static/img/Track.jpg?v=1';
+  img.onload = function() {
+    // create a canvas to manipulate the image
+    var canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+
+    console.log("Track image is", img.width, img.height);
+    // get the pixel data
+    this.pixelData = canvas.getContext('2d');
+    this.updatables.forEach(function(u) {
+      u.pixelData = this.pixelData;
+    }.bind(this));
+  }.bind(this);
+
+  // Load for rendering.
   var geometry = new THREE.PlaneGeometry(1024, 1024, 100, 100);
   var texture = new THREE.TextureLoader().load("/static/img/Track.jpg?v=1" );
   var material = new THREE.MeshBasicMaterial({
@@ -126,7 +151,16 @@ MainController.prototype.start = function() {
     if (this.pause) {
       return;
     }
-    requestAnimationFrame(render);
+    if (this.debug) {
+      var fps = 1;
+      setTimeout(function(){ 
+        // throttle requestAnimationFrame to fps
+        requestAnimationFrame(render);
+      }, 1000/fps)
+    } else {
+      // When not debugging request animation immediately.
+      requestAnimationFrame(render);
+    }
     this.render();
   }.bind(this);
   render();
@@ -152,7 +186,7 @@ var NN = function(ins, hiddens, outs) {
   for (var i = 0; i < ins + 1; i++) {
     this.weights1.push([]);
     for (var h = 0; h < hiddens; h++) {
-      this.weights1[i].push(Math.random() - 0.5);
+      this.weights1[i].push(10 * Math.random() - 5);
     }
   }
   this.weights2 = [];
@@ -172,7 +206,7 @@ NN.prototype.play = function(inputs) {
 
   this.normalInputs = [0, 0, 0];
   for (var i = 0; i < inputs.length; i++) {
-    this.normalInputs[i] = this.sigmoid(inputs[i]);
+    this.normalInputs[i] = this.sigmoid(inputs[i] / 200);
   }
 
   if (this.verbose) { 
@@ -208,8 +242,9 @@ NN.prototype.play = function(inputs) {
   return result;
 }
 
-var AIControls = function(mesh) {
+var AIControls = function(mesh, enabled) {
   this.mesh = mesh;
+  this.enabled = enabled;
   this.speed = 0.9;
   this.theta = 0;
 
@@ -217,33 +252,21 @@ var AIControls = function(mesh) {
   var material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
   var geometry = new THREE.Geometry();
 
+  // Put the ray tracer lines higher than the object its coming from.
+  height = 10;
+  // 3 lines (pairs of vertices) for the raytracer visualization.
   geometry.vertices.push(
-    new THREE.Vector3( 0,  0, 0 ),
-    (new THREE.Vector3( -50, 50, 0 )).normalize().multiplyScalar(50),
-    new THREE.Vector3( 0,  0, 0 ),
-    new THREE.Vector3( 0, 50, 0 ),
-    new THREE.Vector3( 0,  0, 0 ),
-    (new THREE.Vector3( 50, 50, 0 )).normalize().multiplyScalar(50)
+    new THREE.Vector3( 0, height, 0 ),
+    new THREE.Vector3( 10, height, 10 ),
+    new THREE.Vector3( 0, height, 0 ),
+    new THREE.Vector3( 0, height, 10 ),
+    new THREE.Vector3( 0, height, 0 ),
+    new THREE.Vector3( -10, height, 10 )
   );
-  var line = new THREE.Line( geometry, material );
-
-  // Load the track image for collision detection
-  // TODO share one of these for all AI Controls.
-  var img = new Image();
-  img.src = '/static/img/Track.jpg?v=1';
-  img.onload = function() {
-    // create a canvas to manipulate the image
-    var canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-
-    // get the pixel data
-    this.pixelData = canvas.getContext('2d');
-  }.bind(this);
+  this.lines = new THREE.Line( geometry, material );
 
   // Add a line showing the ray cast.
-  this.mesh.add(line);
+  this.mesh.add(this.lines);
 
   this.nn = new NN(3, 5, 2);
 
@@ -262,6 +285,7 @@ AIControls.prototype.update = function(time) {
   // var scene = this.mesh.parent;
 
   if (!this.pixelData) {
+    // The track has not been loaded yet.
     return;
   }
 
@@ -278,94 +302,96 @@ AIControls.prototype.update = function(time) {
   // This is the pixel color for that location px, pz.
   pixel = this.pixelData.getImageData(px, pz, 1, 1).data;
   pixel = [pixel[0], pixel[1], pixel[2]];
+  // console.log(px, pz, "looking at", pixel);
   if (pixel[0] > 192) {
     this.crashed = true;
   }
 
   var inputs = [200, 200, 200];
   for (var d = 1; d < 200; d+=5) {
-    x = px + d * Math.sin(this.mesh.rotation.y - 0.75);
-    z = pz - d * Math.cos(this.mesh.rotation.y - 0.75);  
+    x = px + d * 2 * Math.sin(this.mesh.rotation.y - Math.PI / 4);
+    z = pz - d * 2 * Math.cos(this.mesh.rotation.y - Math.PI / 4);  
     var imageData = this.pixelData.getImageData(x, z, 1, 1).data
     if (imageData[0] > 192) {
-      inputs[0] = d / 20;
+      this.lines.geometry.vertices[1]
+        .set( -1, 0, 1 ).normalize().multiplyScalar(d / 2);
+      inputs[0] = d;
+      break;
+    }
+  }
+
+  // Angle change
+  for (var d = 1; d < 200; d += 5) {
+    // * 2 because the image data is at a different scale to the 3 js space.
+    x = px + d * 2 * Math.sin(this.mesh.rotation.y);
+    z = pz - d * 2 * Math.cos(this.mesh.rotation.y);
+    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
+    if (imageData[0] > 192) {
+      // / 2 to render the line in 3d space.
+      this.lines.geometry.vertices[3].set(0, 0, d / 2 );
+      inputs[1] = d;
       break;
     }
   }
 
   // Angle change
   for (var d = 1; d < 200; d+=5) {
-    x = px + d * Math.sin(this.mesh.rotation.y);
-    z = pz - d * Math.cos(this.mesh.rotation.y);
+    x = Math.round(px + d * 2 * Math.sin(this.mesh.rotation.y + Math.PI / 4));
+    z = Math.round(pz - d * 2 * Math.cos(this.mesh.rotation.y + Math.PI / 4));
     var imageData = this.pixelData.getImageData(x, z, 1, 1).data
     if (imageData[0] > 192) {
-      inputs[1] = d / 20;
+      this.lines.geometry.vertices[5].set(1, 0, 1 ).normalize().multiplyScalar(d / 2);
+      inputs[2] = d;
       break;
     }
   }
+  this.lines.geometry.verticesNeedUpdate = true;
 
-  // Angle change
-  for (var d = 1; d < 200; d+=5) {
-    x = px + d * Math.sin(this.mesh.rotation.y + 0.75);
-    z = pz - d * Math.cos(this.mesh.rotation.y + 0.75);  
-    var imageData = this.pixelData.getImageData(x, z, 1, 1).data
-    if (imageData[0] > 192) {
-      inputs[2] = d / 20;
-      break;
+  if (this.enabled) {
+    turnSignals = this.nn.play(inputs);
+
+    if (this.verbose) {
+      console.log("distances", inputs, "->", turnSignals);
     }
-  }
 
-  turnSignals = this.nn.play(inputs);
-  if (turnSignals[0] > 0.5 && turnSignals[0] > turnSignals[1]) {
-    // Must be more than 0.5 and more than the signal to turn right.
-    this.theta -= .5;
-  } else if (turnSignals[1] > 0.5) {
-    this.theta += .5;
+    if (turnSignals[0] > 0.5 && turnSignals[0] > turnSignals[1]) {
+      // Must be more than 0.5 and more than the signal to turn right.
+      this.theta -= 1;
+    } else if (turnSignals[1] > 0.5) {
+      this.theta += 1;
+    } else {
+      // Not turning
+      // console.log("AI has", turnSignals);
+    }
+
+    this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
+    this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
   } else {
-    // Not turning
-    // console.log("AI has", turnSignals);
-  }
+    // If not enabled then use keys to control.
+    var keyValues = this.keyControls.get();
 
-  if (this.verbose) {
-    console.log("distances", inputs, "->", turnSignals);
+    if (keyValues.left) {
+      this.theta += 3;
+    }
+    if (keyValues.right) {
+      this.theta -= 3;
+    }
+
+    if (keyValues.up) {
+      // Move the postion based on the angle
+      this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
+      this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
+    }
+    if (keyValues.down) {
+      // Move the postion based on the angle
+      this.mesh.position.x -= this.speed * Math.sin(this.mesh.rotation.y);
+      this.mesh.position.z -= this.speed * Math.cos(this.mesh.rotation.y);  
+    }
   }
 
   // Turn the car to theta.
   this.mesh.rotation.y = THREE.Math.degToRad( this.theta );
 
-  this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
-  this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
-
-  // var keyValues = this.keyControls.get();
-
-  // var log = false;
-  // if (keyValues.left) {
-  //   this.theta -= .5;
-  //   log = true;
-  // }
-  // if (keyValues.right) {
-  //   this.theta += .5;
-  //   log = true;
-  // }
-
-  // if (keyValues.up) {
-  //   // Move the postion based on the angle
-  //   this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
-  //   this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
-  //   log = true;
-  // }
-  // if (keyValues.down) {
-  //   // Move the postion based on the angle
-  //   this.mesh.position.x -= this.speed * Math.sin(this.mesh.rotation.y);
-  //   this.mesh.position.z -= this.speed * Math.cos(this.mesh.rotation.y);  
-  //   log = true;
-  // }
-
-  // if (log) {
-  //   // Log the values
-  //   console.log(this.mesh.position.x.toFixed(0), this.mesh.position.z.toFixed(0), inputs);
-  //   console.log(px, pz, "color", pixel)
-  // }
 }
 
 angular.module('carai', [

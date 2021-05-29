@@ -1,6 +1,6 @@
 alembic
 bcrypt
-flask
+flask==1.1.2
 Flask-Admin
 Flask-Login
 flask-marshmallow

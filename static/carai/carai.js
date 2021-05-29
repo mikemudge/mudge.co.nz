@@ -28,71 +28,10 @@ var MainController = function() {
   this.track = new Track();
   this.scene.add(this.loadTrack());
 
-
-  var mesh = new THREE.CubeGeometry( 10, 1, 20 );
-  var material = new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    color: 0xff0000
-  });
-  var selectedMaterial = new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    color: 0x00ff00
-  });
-
-  this.generation = 1;
+  this.generation = 0;
   this.updatables = [];
 
-  var numCars = 20;
-  for (i = 0; i < numCars; i++) {
-    var cube;
-    if (i == 0) {
-      cube = new THREE.Mesh(mesh, selectedMaterial);
-      this.cube = cube;
-    } else {
-      cube = new THREE.Mesh(mesh, material);
-    }
-
-    this.scene.add(cube);
-    cube.position.set(10, 0, 70);
-    cube.scale.set(2,2,2);
-
-    // Make an AI control for the cube object.
-    enable = i > 0 // The first car is controlled by human.
-    this.updatables.push(new AIControls(cube, this.track, enable))
-  }
-
-  // this.updatables[0].verbose = true;
-  // Test run of the selected car NN
-  this.nn = this.updatables[1].nn;
-  // this.nn.verbose = true;
-
-  // First feature
-  // bias is 3rd "input".
-  this.nn.weights1[3][0] = -50;
-  // 0 is the input for left distance.
-  this.nn.weights1[0][0] = 100;
-
-  // Sencond feature
-  // bias is 3rd "input".
-  this.nn.weights1[3][1] = -50;
-  // 2 is the input for right distance.
-  this.nn.weights1[2][1] = 100;
-
-  // This just says turn left when feature 1 is on, right when feature 2 is on.
-  this.nn.weights2[5][0] = -5;
-  this.nn.weights2[5][1] = -5;
-
-  this.nn.weights2[0][0] = 10;
-  this.nn.weights2[1][1] = 10;
-
-  var result;
-
-  // result = this.nn.play([0,0,5]);
-  // console.log(this.nn.normalInputs, this.nn.hiddens, result);
-  // result = this.nn.play([0,5,0]);
-  // console.log(this.nn.normalInputs, this.nn.hiddens, result);
-  // result = this.nn.play([5,0,0]);
-  // console.log(this.nn.normalInputs, this.nn.hiddens, result);
+  this.nextGeneration();
 
   // this.updatables = [];
   window.addEventListener('resize', angular.bind(this, this.resize));
@@ -113,6 +52,41 @@ var MainController = function() {
     this.start();
   }.bind(this), false);
   this.start();
+}
+
+MainController.prototype.fixNN = function(idx) {
+    // this.updatables[0].verbose = true;
+  // Test run of the selected car NN
+  var nn = this.updatables[idx].nn;
+  // this.nn.verbose = true;
+
+  // First feature
+  // bias is 3rd "input".
+  nn.weights1[3][0] = -50;
+  // 0 is the input for left distance.
+  nn.weights1[0][0] = 100;
+
+  // Sencond feature
+  // bias is 3rd "input".
+  nn.weights1[3][1] = -50;
+  // 2 is the input for right distance.
+  nn.weights1[2][1] = 100;
+
+  // This just says turn left when feature 1 is on, right when feature 2 is on.
+  nn.weights2[5][0] = -5;
+  nn.weights2[5][1] = -5;
+
+  nn.weights2[0][0] = 10;
+  nn.weights2[1][1] = 10;
+
+  var result;
+
+  // result = nn.play([0,0,5]);
+  // console.log(nn.normalInputs, nn.hiddens, result);
+  // result = nn.play([0,5,0]);
+  // console.log(nn.normalInputs, nn.hiddens, result);
+  // result = nn.play([5,0,0]);
+  // console.log(nn.normalInputs, nn.hiddens, result);
 }
 
 MainController.prototype.loadTrack = function() {
@@ -174,6 +148,47 @@ MainController.prototype.resize = function() {
   this.renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
+MainController.prototype.nextGeneration = function() {
+  this.generation++;
+
+  this.updatables.forEach(function(aiControl) {
+    this.scene.remove(aiControl.mesh);
+  }.bind(this));
+  // TODO find existing updatables for reuse?
+  this.updatables = [];
+
+  var mesh = new THREE.CubeGeometry( 10, 1, 20 );
+  var material = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    color: 0xff0000
+  });
+  var selectedMaterial = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    color: 0x00ff00
+  });
+
+  var numCars = 20;
+  for (i = 0; i < numCars; i++) {
+    var cube;
+    if (i == 0) {
+      cube = new THREE.Mesh(mesh, selectedMaterial);
+      this.cube = cube;
+    } else {
+      cube = new THREE.Mesh(mesh, material);
+    }
+
+    this.scene.add(cube);
+    cube.position.set(10, 0, 70);
+    cube.scale.set(2,2,2);
+
+    // Make an AI control for the cube object.
+    this.updatables.push(new AIControls(cube, this.track))
+  }
+
+
+  this.fixNN(1);
+}
+
 MainController.prototype.render = function(time) {
 
   var stillRunning = 0;
@@ -195,6 +210,63 @@ MainController.prototype.render = function(time) {
     ctx.fillStyle = 'white';
     ctx.font = '24px san-serif';
     ctx.fillText('Gen: ' + this.generation + ' live: ' + stillRunning, 10, 24);
+
+
+    for (var i = 0; i < 5; i++) {
+      this.renderNN(ctx, 0, 100 + 100 * i, this.updatables[i]);
+    }
+  }
+
+  if (stillRunning == 0) {
+    this.nextGeneration();
+  }
+}
+
+MainController.prototype.renderNN = function(ctx, x, y, car) {
+  nn = car.nn
+  ctx.clearRect(x,y,100,100)
+  ctx.strokeStyle = 'white';
+  ctx.beginPath();
+  ctx.rect(x, y, 100, 100);
+  ctx.stroke();
+
+  if (car.crashed) {
+    ctx.fillStyle = 'white';
+    ctx.font = '16px san-serif';
+    ctx.fillText('Crashed', x + 10, y + 24);
+    return;
+  }
+  ctx.lineWidth = 2;
+
+  for (var i = 0; i < nn.weights1.length; i++) {
+    for (var h = 0; h < nn.weights1[i].length; h++) {
+      colStrength = nn.weights1[i][h] * 10 + 127;
+      // Limit the col between 0-255
+      g = Math.min(Math.max(colStrength, 0), 255);
+      r = 255 - g;
+      ctx.strokeStyle = 'rgba(' + r + ', ' + g + ', 0, 1)';
+
+      ctx.beginPath();
+      ctx.moveTo(x + 20 + i * 20, y + 15);
+      ctx.lineTo(x + 10 + h * 15 , y + 55);
+      ctx.stroke();
+    }
+  }
+
+
+  for (var h = 0; h < nn.weights2.length; h++) {
+    for (var o = 0; o < nn.weights2[h].length; o++) {
+      colStrength = nn.weights2[h][o] * 10 + 127;
+      // Limit the col between 0-255
+      g = Math.min(Math.max(colStrength, 0), 255);
+      r = 255 - g;
+      ctx.strokeStyle = 'rgba(' + r + ', ' + g + ', 0, 1)';
+
+      ctx.beginPath();
+      ctx.moveTo(x + 10 + h * 15 , y + 55);
+      ctx.lineTo(x + 30 + o * 40, y + 90);
+      ctx.stroke();
+    }
   }
 }
 
@@ -317,10 +389,10 @@ Track.prototype.getRayDistances = function(mesh) {
   return inputs;
 }
 
-var AIControls = function(mesh, track, enabled) {
+var AIControls = function(mesh, track) {
   this.mesh = mesh;
   this.track = track;
-  this.enabled = enabled;
+  this.enabled = true;
   this.speed = 0.9;
   this.theta = 0;
 
@@ -396,9 +468,9 @@ AIControls.prototype.update = function(time) {
 
     if (turnSignals[0] > 0.5 && turnSignals[0] > turnSignals[1]) {
       // Must be more than 0.5 and more than the signal to turn right.
-      this.theta -= 1;
+      this.theta -= 3;
     } else if (turnSignals[1] > 0.5) {
-      this.theta += 1;
+      this.theta += 3;
     } else {
       // Not turning
       // console.log("AI has", turnSignals);
@@ -411,10 +483,10 @@ AIControls.prototype.update = function(time) {
     var keyValues = this.keyControls.get();
 
     if (keyValues.left) {
-      this.theta += 3;
+      this.theta += 5;
     }
     if (keyValues.right) {
-      this.theta -= 3;
+      this.theta -= 5;
     }
 
     if (keyValues.up) {

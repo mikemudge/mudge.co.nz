@@ -69,7 +69,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            nosetests tests
+            pytest tests
 
   deploy:
     docker:

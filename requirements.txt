@@ -28,7 +28,7 @@ raven
 blinker
 
 # For testing
-nose
+pytest
 Flask-Testing
 
 # See what needs updating

@@ -37,6 +37,14 @@ You should test this before deploying where it will happen automatically.
 Also check that you can downgrade from the new revision.
 ./manage.py db downgrade
 
+### Packages/Dependencies
+Using pip
+Within the app container.
+See outdated packages with
+pip list --outdated
+Update a single package.
+pip install urllib3 --upgrade
+pip freeze > frozen_requirements.txt
 
 ### New setup onboarding.
 clone repo from git.

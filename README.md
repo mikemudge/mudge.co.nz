@@ -22,9 +22,9 @@ workon
 https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-environments
 
 Test using
-docker-compose exec app nosetests
+docker-compose exec app pytest
 Or test a single file with
-docker-compose exec app nosetests tests/rock_tests/test_rock.py
+docker-compose exec app pytest tests/rock_tests/test_rock.py
 
 DB migrations
 To create a migration file use

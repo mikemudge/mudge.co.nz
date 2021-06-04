@@ -31,6 +31,26 @@ var MainController = function() {
   this.generation = 0;
   this.updatables = [];
 
+  var mesh = new THREE.CubeGeometry( 10, 1, 20 );
+  var material = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    color: 0xff0000
+  });
+  var selectedMaterial = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    color: 0x00ff00
+  });
+
+  var numCars = 20;
+  for (i = 0; i < numCars; i++) {
+    var cube = new THREE.Mesh(mesh, material);
+    cube.scale.set(2, 2, 2);
+    this.scene.add(cube);
+    control = new AIControls(cube, this.track);
+    // Make an AI control for the cube object.
+    this.updatables.push(control)
+  }
+
   this.nextGeneration();
 
   // this.updatables = [];
@@ -48,8 +68,10 @@ var MainController = function() {
 
   window.addEventListener('focus', function() {
     console.log("unpause");
-    this.pause = false;
-    this.start();
+    if (this.pause) {
+      this.pause = false;
+      this.start();
+    }
   }.bind(this), false);
   this.start();
 }
@@ -122,6 +144,10 @@ MainController.prototype.loadTrack = function() {
 }
 
 
+MainController.prototype.startNextGen = function() {
+  this.finishedGeneration = true;
+}
+
 MainController.prototype.start = function() {
   var render = function() {
     if (this.pause) {
@@ -151,41 +177,39 @@ MainController.prototype.resize = function() {
 MainController.prototype.nextGeneration = function() {
   this.generation++;
 
-  this.updatables.forEach(function(aiControl) {
-    this.scene.remove(aiControl.mesh);
-  }.bind(this));
-  // TODO find existing updatables for reuse?
-  this.updatables = [];
-
-  var mesh = new THREE.CubeGeometry( 10, 1, 20 );
-  var material = new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    color: 0xff0000
-  });
-  var selectedMaterial = new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    color: 0x00ff00
-  });
-
-  var numCars = 20;
-  for (i = 0; i < numCars; i++) {
-    var cube;
-    if (i == 0) {
-      cube = new THREE.Mesh(mesh, selectedMaterial);
-      this.cube = cube;
-    } else {
-      cube = new THREE.Mesh(mesh, material);
-    }
-
-    this.scene.add(cube);
-    cube.position.set(10, 0, 70);
-    cube.scale.set(2,2,2);
-
-    // Make an AI control for the cube object.
-    this.updatables.push(new AIControls(cube, this.track))
+  var winner = this.updatables[1];
+  if (this.winner) {
+    winner = this.winner;
   }
 
+  this.updatables.forEach(function(aiControl) {
+    // Reset the location, angle and crashed state.
+    aiControl.mesh.position.set(10, 0, 70);
+    aiControl.mesh.position.x += Math.random() * 2;
+    aiControl.mesh.position.y += Math.random() * 2;
+    aiControl.mesh.position.z += Math.random() * 2;
+    aiControl.theta = 0;
+    aiControl.crashed = false;
+    var selectedMaterial = new THREE.MeshBasicMaterial({
+      side: THREE.DoubleSide,
+      color: 0x00ff00
+    });
+    var material = new THREE.MeshBasicMaterial({
+      side: THREE.DoubleSide,
+      color: 0xff0000
+    });
 
+    aiControl.mesh.material = aiControl == winner ? selectedMaterial : material;
+
+    // The winner keeps its weights, but others get reset.
+    if (aiControl != winner) {
+      aiControl.reset();
+    }
+  }.bind(this));
+
+  this.finishedGeneration = false;
+
+  // This manually overrides one of the NN weights.
   this.fixNN(1);
 }
 
@@ -195,6 +219,7 @@ MainController.prototype.render = function(time) {
   this.updatables.forEach(function(x) {
     if (!x.crashed) {
       stillRunning++;
+      this.winner = x;
     }
     x.update(time);
   }.bind(this));
@@ -217,7 +242,7 @@ MainController.prototype.render = function(time) {
     }
   }
 
-  if (stillRunning == 0) {
+  if (stillRunning == 0 || this.finishedGeneration) {
     this.nextGeneration();
   }
 }
@@ -416,8 +441,6 @@ var AIControls = function(mesh, track) {
   // Add a line showing the ray cast.
   this.mesh.add(this.lines);
 
-  this.nn = new NN(3, 5, 2);
-
   this.crashed = false;
 
   this.keyControls = new KeyControls({
@@ -427,7 +450,14 @@ var AIControls = function(mesh, track) {
     right: 68,
     down: 83
   });
+
+  this.reset();
 };
+
+
+AIControls.prototype.reset = function() {
+  this.nn = new NN(3, 5, 2);
+}
 
 AIControls.prototype.update = function(time) {
   // var scene = this.mesh.parent;

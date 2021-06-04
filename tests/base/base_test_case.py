@@ -45,6 +45,9 @@ class BaseTestCase(TestCase):
                 raise AssertionError('Expected %s=%s but it was missing' % (k, expect))
             self.assertEquals(got[k], expect)
 
+    def assertEquals(self, got, expected):
+        self.assertEqual(got, expected)
+        
     def assertEqual(self, got, expected):
         if type(expected) is dict:
             if type(got) is not dict:

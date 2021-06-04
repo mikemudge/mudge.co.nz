@@ -42,14 +42,14 @@ class TestLogin(BaseTestCase):
         p = Profile()
         db.session.add(p)
         # message = 'null value in column "user_id" violates not-null constraint'
-        # with self.assertRaisesRegexp(sqlalchemy.exc.IntegrityError, message):
+        # with self.assertRaisesRegex(sqlalchemy.exc.IntegrityError, message):
         db.session.commit()
 
     def test_no_user_without_profile(self):
         u = User()
         db.session.add(u)
         message = 'null value in column "profile_id" violates not-null constraint'
-        with self.assertRaisesRegexp(sqlalchemy.exc.IntegrityError, message):
+        with self.assertRaisesRegex(sqlalchemy.exc.IntegrityError, message):
             db.session.commit()
 
     def test_login(self):

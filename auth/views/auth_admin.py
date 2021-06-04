@@ -10,10 +10,10 @@ from wtforms import Form
 
 
 class NewUser(Form):
-    email = TextField(u'Email', validators=[validators.required()])
+    email = TextField(u'Email', validators=[validators.DataRequired()])
 
-    firstname = StringField(u'First Name', validators=[validators.required()])
-    lastname = StringField(u'Last Name', validators=[validators.required()])
+    firstname = StringField(u'First Name', validators=[validators.DataRequired()])
+    lastname = StringField(u'Last Name', validators=[validators.DataRequired()])
 
 class UserView(BaseView):
     column_exclude_list = ['password_hash']

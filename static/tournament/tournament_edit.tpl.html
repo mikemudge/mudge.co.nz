@@ -3,6 +3,10 @@
     <div ng-include="'/static/shared/templates/header.tpl.html'"></div>
   </div>
 
+  <div class=notify ng-show="ctrl.notify">
+    {{ ctrl.notify }}
+  </div>
+
   <h4 ng-if="ctrl.tournament.id"> Edit tournament</h4>
   <h4 ng-if="!ctrl.tournament.id"> Make a new Tournament</h4>
 

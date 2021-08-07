@@ -32,6 +32,7 @@ class UUID(types.TypeDecorator):
             self.impl.length = length
         else:
             self.impl.length = 64
+        self.cache_ok = True
 
         types.TypeDecorator.__init__(self, length=self.impl.length)
 

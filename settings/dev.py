@@ -15,7 +15,7 @@ SECRET_KEY = "fakesecretfordev"
 CLIENT_ID = 'n1xKWnaH6ujwqnkOectTxKGaaTxBVe6FlPmV6B6y'
 CLIENT_SECRET = '9iyycZI7zJwhEFrn9UoDoVv9YNkDAIkP6vkiEtLPGl2xSY3W7Y'
 
-SQLALCHEMY_DATABASE_URI = 'postgres://postgres:password@db/postgres'
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:password@db/postgres'
 
 DEBUG = True
 

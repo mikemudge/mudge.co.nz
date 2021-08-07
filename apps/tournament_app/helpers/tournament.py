@@ -23,7 +23,6 @@ def makeFromTeams(tournament, teams):
         teams.append(teams.pop(1))
         rounds.append(rnd)
 
-    # TODO shuffle rounds, then name them in the shuffled order?
     random.shuffle(rounds)
     for (i, r) in enumerate(rounds):
         r.name = "Round %s" % (i + 1)

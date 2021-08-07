@@ -49,13 +49,14 @@ var TournamentListController = function(loginService, tournamentService) {
 }
 
 var TournamentController = function(
-    $routeParams, $location, loginService, tournamentService) {
+    $routeParams, $location, $timeout, loginService, tournamentService) {
   if (!$routeParams.tournament_id) {
     throw Error('No tournament selected');
   }
 
   this.currentUser = loginService.user;
   this.$location = $location;
+  this.$timeout = $timeout;
   this.tournamentService = tournamentService;
   this.ctrl = this;
   if ($routeParams.tournament_id == 'new') {
@@ -117,7 +118,16 @@ TournamentController.prototype.countMatches = function() {
 }
 
 TournamentController.prototype.generate_rounds = function() {
-  this.tournament.$generate_rounds();
+  this.tournament.$generate_rounds().then(function() {
+    console.log("Rounds generated");
+    // Display a notification to show that rounds are generated?
+    this.notify = "Rounds generated";
+    this.$timeout(function() {
+      this.notify = null;
+      // Go back to the tournament page.
+      this.$location.path('tournament/' + this.tournament.id);
+    }.bind(this), 2000);
+  }.bind(this));
 }
 
 var TableController = function($routeParams, tournamentService) {

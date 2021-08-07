@@ -1,6 +1,6 @@
 from shared.database import db
 from shared.exceptions import BadRequestException
-from flask import jsonify, request
+from flask import current_app, jsonify, request
 from flask.views import MethodView
 from sqlalchemy.exc import IntegrityError
 
@@ -44,7 +44,7 @@ class DBModelView(MethodView):
 
     def get_data(self):
         if not request.json:
-            raise BadRequestException('No request.json')
+            raise BadRequestException('Request does not contain json data')
 
         if not self.data:
             # Set self.data so it can be accessed by subclasses.

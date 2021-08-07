@@ -174,10 +174,13 @@ class ProjectAppsListView(MethodView):
 
 class ProjectAppView(MethodView):
     def get(self, app_name, path=None):
+        logger = current_app.logger
 
         if apps.get(app_name) is None:
+            logger.info('Missing app for %s %s' % (app_name, path))
             return abort(404)
 
+        logger.info("loading app %s %s" % (app_name, path))
         app = Angular(app_name)
         app.base = '/projects/%s/' % app_name
 
@@ -222,6 +225,7 @@ class ProjectAppView(MethodView):
             # This was adding /static/trail and login which made a bad path.
             # app_path += '/' + path
 
+        logger.info("folder setup %s" % app_path)
         app.setupFolder(app_path)
 
         return app.render()

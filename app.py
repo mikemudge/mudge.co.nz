@@ -25,8 +25,9 @@ from apps.trail.views import trail_admin
 
 from shared.exceptions import sentry
 
-import os
 import logging
+import os
+import sys
 
 migrate = Migrate()
 
@@ -117,6 +118,13 @@ def create_app(config=None):
     ma.init_app(app)
 
     oauth.init_app(app)
+
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
+    app.logger.info("Starting app")
 
     # CORS(app, origins=['http://localhost:3333'])
     return app

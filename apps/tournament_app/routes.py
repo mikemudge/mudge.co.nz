@@ -1,10 +1,13 @@
 from auth.provider import oauth
-from flask import request
+from flask import current_app, request
 
 from .models import Tournament, Team, Round, Match, MatchResult
 from .serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema, MatchResultSchema
 from .views.tournament import tournament_bp
 from shared.views.crud import DBModelView, crud
+from shared.database import db
+
+import json
 
 class TournamentView(DBModelView):
     model = Tournament
@@ -20,12 +23,20 @@ class TournamentView(DBModelView):
 
     @oauth.require_oauth('tournament')
     def post(self, pk=None):
-        s = TournamentSchema()
         # Edit or Create.
         if pk:
             return self.edit(Tournament.query.get(pk))
         else:
-            instance = self.createNew()
+            data = self.get_data()
+
+            # Turn data into a DB object.
+            s = TournamentSchema(session=db.session)
+            instance = s.load(data)
+
+            # instance is a map? not a Model?
+            current_app.logger.debug("Created Tournament %s" % instance)
+
+            db.session.add(instance)
             instance.creator = request.oauth.user
             self.save(instance)
             return s.response(instance)

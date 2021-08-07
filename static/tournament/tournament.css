@@ -23,6 +23,14 @@ select {
   display: inline-block;
 }
 
+.notify {
+  display: block;
+  width: 100%;
+  background: red;
+  padding: 8px;
+  position: absolute;
+}
+
 .tabs {
   border-bottom: 1px solid #EEEEEE;
   overflow: hidden;

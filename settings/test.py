@@ -4,7 +4,7 @@ ENV = 'test'
 
 TESTING = True
 # Using CircleCI (passwordless)
-SQLALCHEMY_DATABASE_URI = 'postgres://mudgeconzTest@localhost/mudgeconzTest'
+SQLALCHEMY_DATABASE_URI = 'postgresql://mudgeconzTest@localhost/mudgeconzTest'
 
 PRESERVE_CONTEXT_ON_EXCEPTION = False
 SECRET_KEY = "Testing Secret"

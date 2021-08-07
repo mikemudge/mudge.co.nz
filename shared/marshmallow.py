@@ -14,6 +14,8 @@ ma = Marshmallow()
 
 class BaseOpts(ModelSchemaOpts):
     def __init__(self, meta, ordered):
+        # We need to do this because nested schemas do not pass the session correctly.
+        # https://github.com/marshmallow-code/marshmallow-sqlalchemy/issues/67
         if not hasattr(meta, 'sqla_session'):
             meta.sqla_session = db.session
         super(BaseOpts, self).__init__(meta)

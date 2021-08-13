@@ -157,11 +157,11 @@ apps['test'] = {
 }
 
 apps['traffic'] = {
-    # 'img': 'traffic.png'
+    'img': 'traffic.png'
 }
 
 apps['color_war'] = {
-    # 'img': 'traffic.png'
+    'img': 'color_war.png'
 }
 
 def gmaps():

@@ -27,7 +27,7 @@ Shop.prototype.newTrip = function() {
 
   // TODO shops connections to roads are not straight forward
   // This uses y + 40 to connect to the road at the bottom left of the shop.
-  house = this.map.find(this.x, this.y + 40, function(loc) {
+  result = this.map.find(this.x, this.y + 40, function(loc) {
     // TODO function should be able to return "Usable path" or "Found target"?
     // Need to support available branches and early exit?
     if (loc instanceof House) {
@@ -43,11 +43,11 @@ Shop.prototype.newTrip = function() {
     return false;
   });
 
-  if (house) {
+  if (result) {
     // Use the car to go to the shop.
     // TODO a path should be available from find?
-    console.log("Requesting a car from", house);
-    house.startTrip(this);
+    console.log("Requesting a car from", result.goal);
+    result.goal.startTrip(this, result.path);
   } else {
     // No house with car available.
     // Enqueue trip for the future?
@@ -98,9 +98,19 @@ House.prototype.getAvailableCar = function() {
   return null;
 }
 
-House.prototype.startTrip = function(shop) {
+House.prototype.startTrip = function(shop, path) {
   // TODO should use better pathing.
-  this.getAvailableCar().setPath([shop, house]);
+  returnPath = [];
+  path.forEach(function(s) {
+    returnPath.push(s);
+  });
+  returnPath.push(shop);
+  path.reverse().forEach(function(s) {
+    returnPath.push(s)
+  });
+  returnPath.push(this);
+  console.log(returnPath);
+  this.getAvailableCar().setPath(returnPath);
 }
 
 House.prototype.update = function() {
@@ -384,40 +394,70 @@ Game.prototype.addBuilding = function(thing) {
   this.buildings.push(thing);
 }
 
+Game.prototype.resetFrom = function() {
+  for (var y = 0; y < 30; y++) {
+    for (var x = 0; x < 50; x++) {
+      if (this.map[y][x]) {
+        // TODO there is likely a better way to find a path around a grid.
+        this.map[y][x].from = null;
+      }
+    }
+  }
+}
+
 Game.prototype.find = function(x, y, condition) {
+  this.resetFrom();
   // TODO need navigation methods?
+  start = this.getAt(x, y);
   possibles = [
     this.getAt(x + this.gridSize, y),
     this.getAt(x - this.gridSize, y),
     this.getAt(x, y + this.gridSize),
     this.getAt(x, y - this.gridSize),
   ];
-  // TODO retain the from location for each searched location for path building?
-  visited = new Set();
+  possibles.forEach(function(p) {
+    if (p) {
+      p.from = start;
+    }
+  });
   while (possibles.length > 0) {
-    nextSteps = [];
+    nextPossibles = [];
     for (i=0;i<possibles.length;i++) {
       loc = possibles[i];
-      if (visited.has(loc)) {
-        // Skip things we've seen before.
-        continue;
-      }
-      visited.add(loc);
       // Check condition.
       res = condition(loc);
       if (res === true) {
         // Win condition, need to return the path to here.
-        return loc;
+        path = [];
+        tmp = loc.from;
+        while (tmp != start && path.length < 100) {
+          path.push(tmp);
+          tmp = tmp.from;
+        }
+        path.push(start);
+        console.log(path)
+        return {'path': path, 'goal': loc};
       }
       if (res) {
-        // If res is truthy then we can expand through n.
+        nextSteps = [];
+        // If res is truthy then we can expand through loc.
         nextSteps.push(this.getAt(loc.x + this.gridSize, loc.y))
         nextSteps.push(this.getAt(loc.x - this.gridSize, loc.y))
         nextSteps.push(this.getAt(loc.x, loc.y + this.gridSize))
         nextSteps.push(this.getAt(loc.x, loc.y - this.gridSize))
+
+        for (i = 0; i < nextSteps.length; i++) {
+          if (nextSteps[i]) {
+            if (!nextSteps[i].from) {
+              // Track the way this location was reachable.
+              nextSteps[i].from = loc;
+              nextPossibles.push(nextSteps[i]);
+            }
+          }
+        }
       }
     }
-    possibles = nextSteps;
+    possibles = nextPossibles;
   }
   return null;
 }

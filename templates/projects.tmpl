@@ -7,11 +7,11 @@
   <link rel="stylesheet" type="text/css" href="/static/projects/projects.css" />
 </head>
 <body>
-  {% for key, app in apps %}
+  {% for key, app in apps if app.img %}
     <div class='project'>
       <a href="/projects/{{ key }}">
         <h4>
-          {{ key }}
+          {{ key | capitalize }}
         </h4>
         <span>{{ app.tags | join(' ') }}</span>
         {% if app.img %}
@@ -19,6 +19,19 @@
             <img src='/static/img/projects/{{ app.img }}'>
           </div>
         {% endif %}
+      </a>
+    </div>
+  {% endfor %}
+
+  <h3> Projects missing images.</h3>
+
+  {% for key, app in apps if not app.img %}
+    <div class='project'>
+      <a href="/projects/{{ key }}">
+        <h4>
+          {{ key | capitalize }}
+        </h4>
+        <span>{{ app.tags | join(' ') }}</span>
       </a>
     </div>
   {% endfor %}

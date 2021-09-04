@@ -2,6 +2,9 @@
   <div ng-if="ctrl.cards.length == 0" class="text">
     You won
   </div>
+  <div class="card-1">
+    <img ng-show="ctrl.removed.length > 0" ng-src="{{ ctrl.removed[ctrl.removed.length - 1].img }}" />
+  </div>
   <div ng-if="ctrl.cards.length > 0" class="card" ng-click="ctrl.removeCard()" ng-touch="ctrl.removeCard()">
     <img ng-src="{{ ctrl.card.img }}" />
   </div>
@@ -9,11 +12,24 @@
     <div class="remaining">
       Remaining: {{ ctrl.cards.length }}<br>
       <div ng-show="ctrl.timeToNextCard">
-        Auto flip in {{ ctrl.timeToNextCard }}
+        Auto flip in {{ ctrl.timeToNextCard | number:0 }}
       </div>
-      <div class="clickable" ng-show="ctrl.autoPlay"
-          ng-click="ctrl.stopAutoPlay()">
-        pause auto-play
+      <div ng-show="ctrl.autoPlay">
+        <div> Speed: 
+          {{ ctrl.baseTime | number:0 }}s + 
+          ({{ ctrl.timePerExercise | number:1 }}s * {{ ctrl.card.value }})
+        </div>
+        <div class="clickable" ng-click="ctrl.stopAutoPlay()">
+          pause auto-play
+        </div>
+        <div>
+          <div class="clickable" ng-click="ctrl.slowDownAuto()">
+            Slower
+          </div>
+          <div class="clickable" ng-click="ctrl.speedUpAuto()">
+            Faster
+          </div>
+        </div>
       </div>
       <div class="clickable" ng-hide="ctrl.autoPlay"
           ng-click="ctrl.startAutoPlay()">

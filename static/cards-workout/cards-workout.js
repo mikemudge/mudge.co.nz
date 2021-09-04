@@ -35,6 +35,27 @@ var MainController = function($scope, $interval, $location, setupService) {
   this.autoPlay = this.config.autoPlay;
   this.removed = [];
 
+  this.timePerExercise = 4;
+  this.baseTime = 20;
+
+  // For a 30 minute workout.
+  this.totalTime = 30 * 60;
+  // Split this into a baseTime component and per exercise component.
+  // baseTime is for reading the card, getting setup etc.
+  // perExercise is scaled by how many the card says to do.
+  // We only want to use half our time towards the baseTime component and
+  // baseTime is repeated for every card, so divide by 52.
+  this.baseTime = this.totalTime / 2 / 52;
+  // E.g in a 30 minute workout we use 15 minute across 52 cards.
+  // 30 * 60 / 2 / 52 = ~17 seconds per card.
+
+  // We use the other half of our time for per exercise. 
+  // Divide by 4 suits and 85 (number of total exercises)
+  this.timePerExercise = this.totalTime / 2 / 4 / 85;
+  // In a 30 minute workout this is
+  // 30 * 60 / 2 / 4 / 85 = ~2.6s per exercise.
+
+  console.log(this.baseTime + "," + this.timePerExercise);
   $interval(this.countdown.bind(this), 1000);
 
   // TODO add audio here?
@@ -71,7 +92,7 @@ MainController.prototype.countdown = function() {
   console.log('counting');
   if (this.timeToNextCard > 0) {
     this.timeToNextCard--;
-    if (this.timeToNextCard === 0) {
+    if (this.timeToNextCard <= 0) {
       this.removeCard();
     }
   }
@@ -88,6 +109,21 @@ MainController.prototype.startAutoPlay = function() {
   this.timeToNextCard = 5;
 }
 
+MainController.prototype.slowDownAuto = function() {
+  // Allow 10% more time.
+  this.baseTime *= 1.1;
+  this.timePerExercise *= 1.1;
+  this.timeToNextCard *= 1.1;
+}
+
+MainController.prototype.speedUpAuto = function() {
+  // Reduce time by 10%.
+  this.baseTime *= 0.9;
+  this.timePerExercise *= 0.9;
+  this.timeToNextCard *= 0.9;
+}
+
+
 MainController.prototype.removeCard = function() {
   this.removed.push(this.card);
   this.card = this.cards.pop();
@@ -97,10 +133,7 @@ MainController.prototype.removeCard = function() {
   }
 
   if (this.autoPlay && this.card.value) {
-    // 20 * 52 = 1040 seconds.
-    // 4 * 4 * 91 = 1456 seconds.
-    // which is about 40 minutes for a whole workout (excluding jokers).
-    this.timeToNextCard = 20 + 4 * Math.min(10, this.card.value);
+    this.timeToNextCard = this.baseTime + this.timePerExercise * Math.min(10, this.card.value);
     if (this.fast_mode) {
       this.timeToNextCard = 5;
     }

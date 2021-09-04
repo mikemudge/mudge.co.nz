@@ -25,9 +25,25 @@ body {
   top: 50%;
 }
 
-.card {
-  width: 100%;
+.card-1 {
+  display: inline-block;
+  vertical-align: middle;
+  height: 50%;
+  width: 25%;
+  margin: 2%;
+}
+
+.card-1 img {
   height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.card {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 50%;
   background: white;
   cursor: pointer;
 }
@@ -55,8 +71,9 @@ body {
 }
 
 .activity {
+  font-size: 32;
   left: 50%;
-  top: 100%;
+  bottom: 5px;
   position: absolute;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, 0);
 }

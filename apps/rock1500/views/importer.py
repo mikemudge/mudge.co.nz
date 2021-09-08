@@ -168,9 +168,13 @@ class ImportView(MethodView):
                     # Would be a candidate for getting better data on.
                     # song.rankThisYear = rankThisYear
                     return
+                elif song.title.lower() != item.get('title').lower():
+                    current_app.logger.info("title matches case insensitive")
 
                 if song.artist.name == item.get('artist'):
                     current_app.logger.info("artist looks good")
+                elif song.artist.name.lower() != item.get('artist').lower():
+                    current_app.logger.info("artist name matches case insensitive")
 
                 if song.album.name == album_name:
                     current_app.logger.info("album matches %s" % album_name)
@@ -178,6 +182,8 @@ class ImportView(MethodView):
                     if song.album.artist.name != artist_name:
                         current_app.logger.info("album.artist.name doesn't match artist %s != %s" % (song.album.artist.name, artist_name))
                         # unset the artist or album? But don't know which is right?
+                elif song.album.name.lower() != item.get('album').lower():
+                    current_app.logger.info("album matches case insensitive")
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?
 
@@ -289,13 +295,13 @@ class ImportView(MethodView):
         if song.rank2019 != rankTwoYearsAgo:
             current_app.logger.info("rankTwoYearsAgo not matching")
             changes += 1
-        if song.title != item.get('title'):
+        if song.title.lower() != item.get('title').lower():
             current_app.logger.info("title not matching")
             changes += 1
-        if song.artist.name != item.get('artist'):
+        if song.artist.name.lower() != item.get('artist').lower():
             current_app.logger.info("artist not matching")
             changes += 1
-        if song.album.name != item.get('album'):
+        if song.album.name.lower() != item.get('album').lower():
             current_app.logger.info("album not matching")
             changes += 1
 

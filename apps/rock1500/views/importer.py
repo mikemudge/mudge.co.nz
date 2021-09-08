@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 from auth.provider import oauth
 from datetime import date
@@ -31,17 +32,23 @@ class ImportView(MethodView):
             # We don't want to update it, but we could do some sanity checks on the song?
 
             if song.album:
+                changes = False
                 # Update the albumArt if it doesn't have one yet.
                 if item.get('albumArt') and not song.album.cover_art_url:
+                    changes = True
+                    current_app.logger.info("Update album with art")
                     song.album.cover_art_url=item.get('albumArt')
                 # Update the year if it doesn't have one yet.
                 if item.get('albumYear') and not song.album.year:
                     try:
                         song.album.year = item.get('albumYear');
+                        changes = True
+                        current_app.logger.info("Update album with year")
                     except ValueError as e:
                         # We can't do anything with albumYear if its not an int.
                         current_app.logger.warning("Bad year for album %s" % item.get('albumYear'))
-
+                if changes:
+                    db.session.commit()
             return
         # To help print out debug information about songs.
         schema = Rock1500SongSchema()
@@ -339,7 +346,6 @@ class ImportView(MethodView):
                     current_app.logger.info(i)
 
                 self.parse_song(item)
-                db.session.commit()
             except Exception as e:
                 current_app.logger.warning("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
                 raise e

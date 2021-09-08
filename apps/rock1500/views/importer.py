@@ -140,7 +140,7 @@ class ImportView(MethodView):
                 # There was a song found for last years rank, but its not a match?
                 # Lets create a new song, but we can't set last years rank on it (unique conflict)
                 # TODO it might be better to unset the value on the old song?
-                current_app.logger.info("%d found song which doesn't match" % (rankLastYear, songMatches['lastYear'].title))
+                current_app.logger.info("%d found song which doesn't match %s" % (rankLastYear, songMatches['lastYear'].title))
                 rankLastYear = None
             if songMatches['twoYearsAgo']:
                 # There was a song found for 2 years ago rank, but its not a match?
@@ -167,8 +167,9 @@ class ImportView(MethodView):
 
                 if song.album.name == album_name:
                     current_app.logger.info("album matches %s" % album_name)
+                    # Does album load artist?
                     if song.album.artist != artist_name:
-                        current_app.logger.info("album.artist doesn't match artist")
+                        current_app.logger.info("album.artist doesn't match artist %s != %s" % (song.album.artist, artist_name))
                         # unset the artist or album? But don't know which is right?
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?

@@ -178,6 +178,8 @@ class ImportView(MethodView):
                         # unset the artist or album? But don't know which is right?
                 elif song.album.name.lower() == item.get('album').lower():
                     current_app.logger.info("album matches case insensitive")
+                else:
+                    current_app.logger.info("album not matching %s vs %s" % (song.album.name, item.get('album')))
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?
 
@@ -294,7 +296,7 @@ class ImportView(MethodView):
         # E.g song titles and albums commonly change a bit.
         changes = 0
         if song.rank2020 != rankLastYear:
-            current_app.logger.info("rankLastYear not matching")
+            current_app.logger.info("rankLastYear not matching %s %s" % (str(song.rank2020), str(rankLastYear)))
             changes += 1
         if song.rank2019 != rankTwoYearsAgo:
             current_app.logger.info("rankTwoYearsAgo not matching %s %s" % (str(song.rank2019), str(rankTwoYearsAgo)))
@@ -307,12 +309,10 @@ class ImportView(MethodView):
                 current_app.logger.info("title matches with & replaced. TODO need string normalizer")
 
         if song.artist.name.lower() != item.get('artist').lower():
-            current_app.logger.info("artist not matching")
             # TODO check for combination artists?
             # E.g Bob Seger/The Silver Bullet Band could be 2 artists?
             changes += 1
         if song.album.name.lower() != item.get('album').lower():
-            current_app.logger.info("album not matching")
             changes += 1
 
         if changes > 1:

@@ -3,7 +3,7 @@ import json
 
 from auth.provider import oauth
 from datetime import date
-from flask import jsonify
+from flask import jsonify, current_app
 from flask.views import MethodView
 from ..models import Rock1500Album, Rock1500Artist, Rock1500Song
 from ..serializers import Rock1500SongSchema
@@ -29,6 +29,19 @@ class ImportView(MethodView):
         if song:
             # There is already a song with this rank.
             # We don't want to update it, but we could do some sanity checks on the song?
+
+            if song.album:
+                # Update the albumArt if it doesn't have one yet.
+                if item.get('albumArt') and not song.album.cover_art_url:
+                    song.album.cover_art_url=item.get('albumArt')
+                # Update the year if it doesn't have one yet.
+                if item.get('albumYear') and not song.album.year:
+                    try:
+                        song.album.year = item.get('albumYear');
+                    except ValueError as e:
+                        # We can't do anything with albumYear if its not an int.
+                        current_app.logger.warn("Bad year for album %s" % item.get('albumYear'))
+
             return
         # To help print out debug information about songs.
         schema = Rock1500SongSchema()
@@ -113,11 +126,11 @@ class ImportView(MethodView):
                 if songMatches['lastYear']:
                     print("Last year %s" % schema.dumps(songMatches['lastYear'], indent=2, separators=(',', ':')))
                 else:
-                    print("Last year None")
+                    print("Last year  No song found for rank %s" % str(rankLastYear))
                 if songMatches['twoYearsAgo']:
-                    print("2 years agos %s" % schema.dumps(songMatches['twoYearsAgo'], indent=2, separators=(',', ':')))
+                    print("2 years ago %s" % schema.dumps(songMatches['twoYearsAgo'], indent=2, separators=(',', ':')))
                 else:
-                    print("2 years agos None")
+                    print("2 years ago No song found for rank %s" % str(rankTwoYearsAgo))
             else:
                 print("Found song by artist and title", artist_name, song_name)
                 print("Song", schema.dumps(song))
@@ -168,7 +181,7 @@ class ImportView(MethodView):
                     print("album doesn't match artist")
 
                 schema = Rock1500SongSchema()
-                print(song.rankThisYear, song.rank2019, song.rank2018, song.title, song.artist.name, song.album.name)
+                print(song.rankThisYear, song.rank2020, song.rank2019, song.title, song.artist.name, song.album.name)
                 print(rankThisYear, rankLastYear, rankTwoYearsAgo, song_name, artist_name, album_name)
                 print(schema.dumps(song, indent=2, separators=(',', ':')))
                 # TODO when reporting to sentry we get errors with orm session.
@@ -180,7 +193,7 @@ class ImportView(MethodView):
             if song.rankThisYear is None:
                 print("Setting rankThisYear", rankThisYear, "for", song_name)
                 song.rankThisYear = rankThisYear
-                song.rank2020 = rankThisYear
+                song.rank2021 = rankThisYear
                 self.songsByRank[rankThisYear] = song
                 db.session.commit()
             else:
@@ -191,7 +204,7 @@ class ImportView(MethodView):
                 # Add back in the other spot.
                 self.songsByRank[rankThisYear] = song
                 song.rankThisYear = rankThisYear
-                song.rank2020 = rankThisYear
+                song.rank2021 = rankThisYear
                 db.session.commit()
             # Not changing anything else at the moment, but could update artist/album as needed.
             # That would only be needed to make updates if the API data changes.
@@ -217,8 +230,14 @@ class ImportView(MethodView):
                 print("Album not found, creating new album %s" % album_name)
                 album = Rock1500Album(
                     name=album_name,
-                    artist=artist
+                    artist=artist,
+                    cover_art_url=item.get('albumArt')
                 )
+                try:
+                    album.year = item.get('albumYear');
+                except ValueError as e:
+                    # We will just create the album without year, but log as a warning.
+                    current_app.logger.warn("Bad year for album %s" % item.get('albumYear'))
                 db.session.add(album)
             # At this point we have an artist and an album, so we can create a song.
             print("Song not found, creating new song %s" % song_name)
@@ -227,9 +246,9 @@ class ImportView(MethodView):
                 artist=artist,
                 album=album,
                 rankThisYear=rankThisYear,
-                rank2020=rankThisYear,
-                rank2019=rankLastYear,
-                rank2018=rankTwoYearsAgo,
+                rank2021=rankThisYear,
+                rank2020=rankLastYear,
+                rank2019=rankTwoYearsAgo,
             )
             db.session.add(song)
             db.session.commit()
@@ -244,9 +263,9 @@ class ImportView(MethodView):
         # if 2 or less are not matches we can believe this is correct song.
         # E.g song titles and albums commonly change a bit.
         changes = 0
-        if song.rank2019 != item.get('rankLastYear'):
+        if song.rank2020 != item.get('rankOneYearAgo'):
             changes += 1
-        if song.rank2018 != item.get('rankTwoYearsAgo'):
+        if song.rank2019 != item.get('rankTwoYearsAgo'):
             changes += 1
         if song.title != item.get('title'):
             changes += 1
@@ -271,41 +290,45 @@ class ImportView(MethodView):
         # Steal their songs and artists.
         # Update my DB with that.
 
-        current_date = date.today()
-        if current_date.year != 2020:
-            return jsonify({
-                'error': 'Import script needs updating to %d' % current_date.year
-            })
-
-        print("Loading data from rock API")
+        current_app.logger.info("Loading data from rock API")
         req = requests.get(
             'http://radio-api.mediaworks.nz/comp-api/v1/countdown/therock',
         )
         result = req.json()
 
-        print("rock API loaded %d songs" % len(result))
-        print("loading songs from DB")
+        current_app.logger.info("rock API loaded %d songs" % len(result))
+
+
+        current_date = date.today()
+        if current_date.year != 2021:
+            current_app.logger.warn("Import script needs updating to %d" % current_date.year);
+            return jsonify({
+                'error': 'Import script needs updating to %d' % current_date.year
+            })
+
+        # Now look at our database.
+        current_app.logger.info("loading songs from DB")
         query = Rock1500Song.query
         songs = query.all()
-        print("loaded %d songs from DB" % len(songs))
+        current_app.logger.info("loaded %d songs from DB" % len(songs))
 
         # Prepare song data for quicker finds.
         self.songsByRank = {s.rankThisYear: s for s in songs if s.rankThisYear}
-        self.songsByThisYearRank = {s.rank2020: s for s in songs if s.rank2020}
-        self.songsByLastYearRank = {s.rank2019: s for s in songs if s.rank2019}
-        self.songsByTwoYearsAgoRank = {s.rank2018: s for s in songs if s.rank2018}
+        self.songsByThisYearRank = {s.rank2021: s for s in songs if s.rank2021}
+        self.songsByLastYearRank = {s.rank2020: s for s in songs if s.rank2020}
+        self.songsByTwoYearsAgoRank = {s.rank2019: s for s in songs if s.rank2019}
 
-        print("Fetched %d songs. Parsing..." % len(result))
+        current_app.logger.info("Fetched %d songs. Parsing..." % len(result))
         for i, item in enumerate(result):
             try:
                 if i % 100 == 0:
                     # Show progress if nothing else is happening.
-                    print(i)
+                    current_app.logger.info(i)
 
                 self.parse_song(item)
                 db.session.commit()
             except Exception as e:
-                print("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
+                current_app.logger.warn("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
                 raise e
         db.session.commit()
 

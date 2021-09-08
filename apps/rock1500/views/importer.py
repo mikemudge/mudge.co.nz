@@ -177,6 +177,8 @@ class ImportView(MethodView):
                     current_app.logger.info("artist looks good")
                 elif song.artist.name.lower() == item.get('artist').lower():
                     current_app.logger.info("artist name matches case insensitive")
+                else:
+                    current_app.logger.info("artist not matching %s vs %s" % (song.artist.name, item.get('artist')))
 
                 if song.album.name == album_name:
                     current_app.logger.info("album matches %s" % album_name)
@@ -295,7 +297,7 @@ class ImportView(MethodView):
             current_app.logger.info("rankLastYear not matching")
             changes += 1
         if song.rank2019 != rankTwoYearsAgo:
-            current_app.logger.info("rankTwoYearsAgo not matching")
+            current_app.logger.info("rankTwoYearsAgo not matching %d %d" % (song.rank2019, rankTwoYearsAgo))
             changes += 1
         if song.title.lower() != item.get('title').lower():
             current_app.logger.info("title not matching")

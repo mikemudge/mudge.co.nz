@@ -36,18 +36,20 @@ class ImportView(MethodView):
                 # Update the albumArt if it doesn't have one yet.
                 if item.get('albumArt') and not song.album.cover_art_url:
                     changes = True
-                    current_app.logger.info("Update album with art")
+                    current_app.logger.info("Update album with art %s" % item.get('albumArt'))
                     song.album.cover_art_url=item.get('albumArt')
                 # Update the year if it doesn't have one yet.
                 if item.get('albumYear') and not song.album.year:
                     try:
-                        song.album.year = item.get('albumYear');
+                        song.album.year = int(item.get('albumYear'));
                         changes = True
-                        current_app.logger.info("Update album with year")
+                        current_app.logger.info("Update album with year %d" % song.album.year)
                     except ValueError as e:
                         # We can't do anything with albumYear if its not an int.
                         current_app.logger.warning("Bad year for album %s" % item.get('albumYear'))
                 if changes:
+                    current_app.logger.info("Update album %s" % song.album.name)
+                    db.session.add(song.album)
                     db.session.commit()
             return
         # To help print out debug information about songs.

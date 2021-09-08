@@ -19,6 +19,7 @@ SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:password@db/postgres'
 
 DEBUG = True
 
+LOG_LEVEL="DEBUG"
 try:
     # import the local config to override for local settings
     from settings.local_config import *

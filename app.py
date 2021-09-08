@@ -120,11 +120,24 @@ def create_app(config=None):
     oauth.init_app(app)
 
     handler = logging.StreamHandler(sys.stdout)
-    handler.setLevel(logging.DEBUG)
+    if app.config.get("LOG_LEVEL") == "DEBUG":
+        handler.setLevel(logging.DEBUG)
+    if app.config.get("LOG_LEVEL") == "INFO":
+        handler.setLevel(logging.INFO)
+    if app.config.get("LOG_LEVEL") == "WARN":
+        handler.setLevel(logging.WARN)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
-    app.logger.info("Starting app")
+    if app.config.get("LOG_LEVEL") == "DEBUG":
+        app.logger.debug("Starting app with DEBUG logs")
+    elif app.config.get("LOG_LEVEL") == "INFO":
+        app.logger.info("Starting app with INFO logs")
+    elif app.config.get("LOG_LEVEL") == "WARN":
+        app.logger.warn("Starting app with WARN logs")
+    else:
+        app.logger.info("Starting app")
+
 
     # CORS(app, origins=['http://localhost:3333'])
     return app

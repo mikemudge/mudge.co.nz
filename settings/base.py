@@ -2,6 +2,8 @@ ENABLE_TEST = False
 
 ENV = 'dev'
 
+LOG_LEVEL="INFO"
+
 FAVICON = 'favicon.png'
 
 SENTRY_DSN = None

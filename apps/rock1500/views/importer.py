@@ -50,8 +50,8 @@ class ImportView(MethodView):
         if song:
             # Just update from this years rank.
             # The song has the ranks sent for this year, but not set in rankThisYear?
-            current_app.logger.info("Found song by rank2020 but not rankThisYear", schema.dumps(song))
-            current_app.logger.info("Item", json.dumps(item))
+            current_app.logger.info("Found song by rank2020 but not rankThisYear %s" % schema.dumps(song))
+            current_app.logger.info("Item %s" % json.dumps(item))
             return
 
         current_app.logger.info("Song ranked %d (%s) not found" % (rankThisYear, item.get('title')))
@@ -82,7 +82,7 @@ class ImportView(MethodView):
 
         if songMatches['lastYear']:
             if songMatches['lastYear'] == songMatches['twoYearsAgo']:
-                current_app.logger.info("Match on previous years", rankLastYear, rankTwoYearsAgo)
+                current_app.logger.info("Match on previous years %d %d" % (rankLastYear, rankTwoYearsAgo))
                 # This song looks good if both previous ranks match.
                 song = songMatches['lastYear']
             elif songMatches['lastYear'].title == song_name:
@@ -107,15 +107,15 @@ class ImportView(MethodView):
             query = query.filter(Rock1500Song.title == song_name)
             songs = query.all()
             if len(songs) == 0:
-                current_app.logger.info("No song found for", song_name, "by", artist_name)
+                current_app.logger.info("No song found for %s by %s" % (song_name, artist_name))
             elif len(songs) == 1:
-                current_app.logger.info("One song found for", song_name, "by", artist_name)
+                current_app.logger.info("One song found for %s by %s" % (song_name, artist_name))
                 song = songs[0]
                 if song.artist.name != artist_name:
-                    print("Artist name doesn't match", song_name, "by", song.artist.name)
+                    print("Artist name doesn't match %s by %s" % (song_name, song.artist.name))
                     song = None
             else:
-                current_app.logger.info("Multiple songs found for", song_name, "by", artist_name)
+                current_app.logger.info("Multiple songs found for %s by %s" % (song_name, artist_name))
 
             if not song:
                 # good in this case indicates 2 out of 3 matches from rank last year, 2 years ago and title.
@@ -132,21 +132,21 @@ class ImportView(MethodView):
                 else:
                     current_app.logger.info("2 years ago No song found for rank %s" % str(rankTwoYearsAgo))
             else:
-                current_app.logger.info("Found song by artist and title", artist_name, song_name)
-                current_app.logger.info("Song", schema.dumps(song))
+                current_app.logger.info("Found song by artist and title %s %s" % (artist_name, song_name))
+                current_app.logger.info("Song %s" % schema.dumps(song))
 
             # TODO would be interesting to see which are None?
             if songMatches['lastYear']:
                 # There was a song found for last years rank, but its not a match?
                 # Lets create a new song, but we can't set last years rank on it (unique conflict)
                 # TODO it might be better to unset the value on the old song?
-                current_app.logger.info(rankLastYear, "found song which doesn't match", songMatches['lastYear'].title)
+                current_app.logger.info("%d found song which doesn't match" % (rankLastYear, songMatches['lastYear'].title))
                 rankLastYear = None
             if songMatches['twoYearsAgo']:
                 # There was a song found for 2 years ago rank, but its not a match?
                 # Lets create a new song, but we can't set two years ago rank on it (unique conflict)
                 # TODO it might be better to unset the value on the old song?
-                current_app.logger.info(rankTwoYearsAgo, "found song which doesn't match", songMatches['twoYearsAgo'].title)
+                current_app.logger.info("%d found song which doesn't match %s" % (rankTwoYearsAgo, songMatches['twoYearsAgo'].title))
                 rankTwoYearsAgo = None
 
         if song is not None:
@@ -181,9 +181,8 @@ class ImportView(MethodView):
                     current_app.logger.info("album doesn't match artist")
 
                 schema = Rock1500SongSchema()
-                current_app.logger.info(song.rankThisYear, song.rank2020, song.rank2019, song.title, song.artist.name, song.album.name)
-                current_app.logger.info(rankThisYear, rankLastYear, rankTwoYearsAgo, song_name, artist_name, album_name)
-                current_app.logger.info(schema.dumps(song, indent=2, separators=(',', ':')))
+                current_app.logger.info("item = %s" % json.dumps(item, indent=2, separators=(',', ':')))
+                current_app.logger.info("song = %s" % schema.dumps(song, indent=2, separators=(',', ':')))
                 # TODO when reporting to sentry we get errors with orm session.
                 # because sentry gives full context, it attempts to use lots of attributes of model objects
                 # That leads to DB calls with a session which has already been closed (errors)
@@ -191,13 +190,13 @@ class ImportView(MethodView):
 
             # This song needs to be updated with its position this year.
             if song.rankThisYear is None:
-                current_app.logger.info("Setting rankThisYear", rankThisYear, "for", song_name)
+                current_app.logger.info("Setting rankThisYear %d for %s" % (rankThisYear, song_name))
                 song.rankThisYear = rankThisYear
                 song.rank2021 = rankThisYear
                 self.songsByRank[rankThisYear] = song
                 db.session.commit()
             else:
-                current_app.logger.info("song already has a rankThisYear of", song.rankThisYear, "for", song_name)
+                current_app.logger.info("song already has a rankThisYear of %d for %s" % (song.rankThisYear, song_name))
                 # Update this song to have the correct rank for this year.
                 # Remove from old lookup spot.
                 self.songsByRank[song.rankThisYear] = None

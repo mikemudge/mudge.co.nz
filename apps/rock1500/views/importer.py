@@ -40,7 +40,7 @@ class ImportView(MethodView):
                         song.album.year = item.get('albumYear');
                     except ValueError as e:
                         # We can't do anything with albumYear if its not an int.
-                        current_app.logger.warn("Bad year for album %s" % item.get('albumYear'))
+                        current_app.logger.warning("Bad year for album %s" % item.get('albumYear'))
 
             return
         # To help print out debug information about songs.
@@ -50,11 +50,11 @@ class ImportView(MethodView):
         if song:
             # Just update from this years rank.
             # The song has the ranks sent for this year, but not set in rankThisYear?
-            print("Found song by rank2020 but not rankThisYear", schema.dumps(song))
-            print("Item", json.dumps(item))
+            current_app.logger.info("Found song by rank2020 but not rankThisYear", schema.dumps(song))
+            current_app.logger.info("Item", json.dumps(item))
             return
 
-        print("Song ranked %d (%s) not found" % (rankThisYear, item.get('title')))
+        current_app.logger.info("Song ranked %d (%s) not found" % (rankThisYear, item.get('title')))
         # The song might exist it just hasn't had its rank set for this year yet.
 
         rankLastYear = None
@@ -82,11 +82,11 @@ class ImportView(MethodView):
 
         if songMatches['lastYear']:
             if songMatches['lastYear'] == songMatches['twoYearsAgo']:
-                print("Match on previous years", rankLastYear, rankTwoYearsAgo)
+                current_app.logger.info("Match on previous years", rankLastYear, rankTwoYearsAgo)
                 # This song looks good if both previous ranks match.
                 song = songMatches['lastYear']
             elif songMatches['lastYear'].title == song_name:
-                print("Match on 1 year ago song title %s vs %s" % (song_name, songMatches['lastYear'].title))
+                current_app.logger.info("Match on 1 year ago song title %s vs %s" % (song_name, songMatches['lastYear'].title))
                 # rank last year + title match is good enough.
                 song = songMatches['lastYear']
 
@@ -94,7 +94,7 @@ class ImportView(MethodView):
             # Try to use 2 years ago + title.
             if songMatches['twoYearsAgo']:
                 if song_name == songMatches['twoYearsAgo'].title:
-                    print("Match on 2 years ago song title %s vs %s" % (song_name, songMatches['twoYearsAgo'].title))
+                    current_app.logger.info("Match on 2 years ago song title %s vs %s" % (song_name, songMatches['twoYearsAgo'].title))
                     # This song looks ok, but maybe we should set its rank last year?
                     song = songMatches['twoYearsAgo']
 
@@ -107,46 +107,46 @@ class ImportView(MethodView):
             query = query.filter(Rock1500Song.title == song_name)
             songs = query.all()
             if len(songs) == 0:
-                print("No song found for", song_name, "by", artist_name)
+                current_app.logger.info("No song found for", song_name, "by", artist_name)
             elif len(songs) == 1:
-                print("One song found for", song_name, "by", artist_name)
+                current_app.logger.info("One song found for", song_name, "by", artist_name)
                 song = songs[0]
                 if song.artist.name != artist_name:
                     print("Artist name doesn't match", song_name, "by", song.artist.name)
                     song = None
             else:
-                print("Multiple songs found for", song_name, "by", artist_name)
+                current_app.logger.info("Multiple songs found for", song_name, "by", artist_name)
 
             if not song:
                 # good in this case indicates 2 out of 3 matches from rank last year, 2 years ago and title.
-                print("no good match found for song %s" % song_name)
+                current_app.logger.info("no good match found for song %s" % song_name)
 
                 # print the whole thing if there is anything to print.
-                print(json.dumps(item, indent=2, separators=(',', ':')))
+                current_app.logger.info(json.dumps(item, indent=2, separators=(',', ':')))
                 if songMatches['lastYear']:
-                    print("Last year %s" % schema.dumps(songMatches['lastYear'], indent=2, separators=(',', ':')))
+                    current_app.logger.info("Last year %s" % schema.dumps(songMatches['lastYear'], indent=2, separators=(',', ':')))
                 else:
-                    print("Last year  No song found for rank %s" % str(rankLastYear))
+                    current_app.logger.info("Last year No song found for rank %s" % str(rankLastYear))
                 if songMatches['twoYearsAgo']:
-                    print("2 years ago %s" % schema.dumps(songMatches['twoYearsAgo'], indent=2, separators=(',', ':')))
+                    current_app.logger.info("2 years ago %s" % schema.dumps(songMatches['twoYearsAgo'], indent=2, separators=(',', ':')))
                 else:
-                    print("2 years ago No song found for rank %s" % str(rankTwoYearsAgo))
+                    current_app.logger.info("2 years ago No song found for rank %s" % str(rankTwoYearsAgo))
             else:
-                print("Found song by artist and title", artist_name, song_name)
-                print("Song", schema.dumps(song))
+                current_app.logger.info("Found song by artist and title", artist_name, song_name)
+                current_app.logger.info("Song", schema.dumps(song))
 
             # TODO would be interesting to see which are None?
             if songMatches['lastYear']:
                 # There was a song found for last years rank, but its not a match?
                 # Lets create a new song, but we can't set last years rank on it (unique conflict)
                 # TODO it might be better to unset the value on the old song?
-                print(rankLastYear, "found song which doesn't match", songMatches['lastYear'].title)
+                current_app.logger.info(rankLastYear, "found song which doesn't match", songMatches['lastYear'].title)
                 rankLastYear = None
             if songMatches['twoYearsAgo']:
                 # There was a song found for 2 years ago rank, but its not a match?
                 # Lets create a new song, but we can't set two years ago rank on it (unique conflict)
                 # TODO it might be better to unset the value on the old song?
-                print(rankTwoYearsAgo, "found song which doesn't match", songMatches['twoYearsAgo'].title)
+                current_app.logger.info(rankTwoYearsAgo, "found song which doesn't match", songMatches['twoYearsAgo'].title)
                 rankTwoYearsAgo = None
 
         if song is not None:
@@ -156,19 +156,19 @@ class ImportView(MethodView):
 
                 if song.title == item.get('title'):
                     # If the song title is a match then these things look good.
-                    print("song title is a match %s" % song.title)
+                    current_app.logger.info("song title is a match %s" % song.title)
                     # TODO this could probably be safely updated without the artist/album.
                     # Would be a candidate for getting better data on.
                     # song.rankThisYear = rankThisYear
                     return
 
                 if song.artist.name == item.get('artist'):
-                    print("artist looks good")
+                    current_app.logger.info("artist looks good")
 
                 if song.album.name == album_name:
-                    print("album matches %s" % album_name)
+                    current_app.logger.info("album matches %s" % album_name)
                     if song.album.artist != artist_name:
-                        print("album.artist doesn't match artist")
+                        current_app.logger.info("album.artist doesn't match artist")
                         # unset the artist or album? But don't know which is right?
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?
@@ -178,12 +178,12 @@ class ImportView(MethodView):
 
                 if album and artist is not album.artist:
                     # One of these might be wrong?
-                    print("album doesn't match artist")
+                    current_app.logger.info("album doesn't match artist")
 
                 schema = Rock1500SongSchema()
-                print(song.rankThisYear, song.rank2020, song.rank2019, song.title, song.artist.name, song.album.name)
-                print(rankThisYear, rankLastYear, rankTwoYearsAgo, song_name, artist_name, album_name)
-                print(schema.dumps(song, indent=2, separators=(',', ':')))
+                current_app.logger.info(song.rankThisYear, song.rank2020, song.rank2019, song.title, song.artist.name, song.album.name)
+                current_app.logger.info(rankThisYear, rankLastYear, rankTwoYearsAgo, song_name, artist_name, album_name)
+                current_app.logger.info(schema.dumps(song, indent=2, separators=(',', ':')))
                 # TODO when reporting to sentry we get errors with orm session.
                 # because sentry gives full context, it attempts to use lots of attributes of model objects
                 # That leads to DB calls with a session which has already been closed (errors)
@@ -191,13 +191,13 @@ class ImportView(MethodView):
 
             # This song needs to be updated with its position this year.
             if song.rankThisYear is None:
-                print("Setting rankThisYear", rankThisYear, "for", song_name)
+                current_app.logger.info("Setting rankThisYear", rankThisYear, "for", song_name)
                 song.rankThisYear = rankThisYear
                 song.rank2021 = rankThisYear
                 self.songsByRank[rankThisYear] = song
                 db.session.commit()
             else:
-                print("song already has a rankThisYear of", song.rankThisYear, "for", song_name)
+                current_app.logger.info("song already has a rankThisYear of", song.rankThisYear, "for", song_name)
                 # Update this song to have the correct rank for this year.
                 # Remove from old lookup spot.
                 self.songsByRank[song.rankThisYear] = None
@@ -220,14 +220,14 @@ class ImportView(MethodView):
                 # Try and reuse an existing artist.
                 artist = Rock1500Artist.find_by_name(artist_name)
                 if not artist:
-                    print("Artist not found, creating new artist %s" % artist_name)
+                    current_app.logger.info("Artist not found, creating new artist %s" % artist_name)
                     artist = Rock1500Artist(
                         name=artist_name
                     )
                     db.session.add(artist)
 
                 # And create the album too.
-                print("Album not found, creating new album %s" % album_name)
+                current_app.logger.info("Album not found, creating new album %s" % album_name)
                 album = Rock1500Album(
                     name=album_name,
                     artist=artist,
@@ -237,10 +237,10 @@ class ImportView(MethodView):
                     album.year = item.get('albumYear');
                 except ValueError as e:
                     # We will just create the album without year, but log as a warning.
-                    current_app.logger.warn("Bad year for album %s" % item.get('albumYear'))
+                    current_app.logger.warning("Bad year for album %s" % item.get('albumYear'))
                 db.session.add(album)
             # At this point we have an artist and an album, so we can create a song.
-            print("Song not found, creating new song %s" % song_name)
+            current_app.logger.info("Song not found, creating new song %s" % song_name)
             song = Rock1500Song(
                 title=song_name,
                 artist=artist,
@@ -301,7 +301,7 @@ class ImportView(MethodView):
 
         current_date = date.today()
         if current_date.year != 2021:
-            current_app.logger.warn("Import script needs updating to %d" % current_date.year);
+            current_app.logger.warning("Import script needs updating to %d" % current_date.year);
             return jsonify({
                 'error': 'Import script needs updating to %d' % current_date.year
             })
@@ -328,7 +328,7 @@ class ImportView(MethodView):
                 self.parse_song(item)
                 db.session.commit()
             except Exception as e:
-                current_app.logger.warn("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
+                current_app.logger.warning("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
                 raise e
         db.session.commit()
 

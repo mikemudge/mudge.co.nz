@@ -168,12 +168,12 @@ class ImportView(MethodView):
                     # Would be a candidate for getting better data on.
                     # song.rankThisYear = rankThisYear
                     return
-                elif song.title.lower() != item.get('title').lower():
+                elif song.title.lower() == item.get('title').lower():
                     current_app.logger.info("title matches case insensitive")
 
                 if song.artist.name == item.get('artist'):
                     current_app.logger.info("artist looks good")
-                elif song.artist.name.lower() != item.get('artist').lower():
+                elif song.artist.name.lower() == item.get('artist').lower():
                     current_app.logger.info("artist name matches case insensitive")
 
                 if song.album.name == album_name:
@@ -182,7 +182,7 @@ class ImportView(MethodView):
                     if song.album.artist.name != artist_name:
                         current_app.logger.info("album.artist.name doesn't match artist %s != %s" % (song.album.artist.name, artist_name))
                         # unset the artist or album? But don't know which is right?
-                elif song.album.name.lower() != item.get('album').lower():
+                elif song.album.name.lower() == item.get('album').lower():
                     current_app.logger.info("album matches case insensitive")
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?
@@ -297,9 +297,15 @@ class ImportView(MethodView):
             changes += 1
         if song.title.lower() != item.get('title').lower():
             current_app.logger.info("title not matching")
-            changes += 1
+            if song.title.replace('&', 'And').lower() != item.get('title').replace('&', 'And').lower():
+                changes += 1
+            else:
+                current_app.logger.info("title matches with & replaced. TODO need string normalizer")
+
         if song.artist.name.lower() != item.get('artist').lower():
             current_app.logger.info("artist not matching")
+            # TODO check for combination artists?
+            # E.g Bob Seger/The Silver Bullet Band could be 2 artists?
             changes += 1
         if song.album.name.lower() != item.get('album').lower():
             current_app.logger.info("album not matching")

@@ -163,16 +163,6 @@ class ImportView(MethodView):
             # update previous ranks if needed to be able to apply change?
             if not self.checkMatch(song, item):
 
-                if song.title == item.get('title'):
-                    # If the song title is a match then these things look good.
-                    current_app.logger.info("song title is a match %s" % song.title)
-                    # TODO this could probably be safely updated without the artist/album.
-                    # Would be a candidate for getting better data on.
-                    # song.rankThisYear = rankThisYear
-                    return
-                elif song.title.lower() == item.get('title').lower():
-                    current_app.logger.info("title matches case insensitive")
-
                 if song.artist.name == item.get('artist'):
                     current_app.logger.info("artist looks good")
                 elif song.artist.name.lower() == item.get('artist').lower():
@@ -197,6 +187,16 @@ class ImportView(MethodView):
                 if album and artist is not album.artist:
                     # One of these might be wrong?
                     current_app.logger.info("album doesn't match artist")
+
+                if song.title == item.get('title'):
+                    # If the song title is a match then these things look good.
+                    current_app.logger.info("song title is a match %s" % song.title)
+                    # TODO this could probably be safely updated without the artist/album.
+                    # Would be a candidate for getting better data on.
+                    # song.rankThisYear = rankThisYear
+                    return
+                elif song.title.lower() == item.get('title').lower():
+                    current_app.logger.info("title matches case insensitive")
 
                 schema = Rock1500SongSchema()
                 current_app.logger.info("item = %s" % json.dumps(item, indent=2, separators=(',', ':')))

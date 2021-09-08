@@ -313,7 +313,10 @@ class ImportView(MethodView):
             # E.g Bob Seger/The Silver Bullet Band could be 2 artists?
             changes += 1
         if song.album.name.lower() != item.get('album').lower():
-            changes += 1
+            if song.album.name.replace('&', 'And').lower() != item.get('album').replace('&', 'And').lower():
+                changes += 1
+            else:
+                current_app.logger.info("title matches with & replaced. TODO need string normalizer")
 
         if changes > 1:
             # This is not a good match.

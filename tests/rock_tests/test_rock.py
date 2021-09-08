@@ -81,7 +81,7 @@ class TestRock(BaseTestCase):
         class FakeDate:
             def today(x):
                 # A date in 2020
-                return datetime.date(2020, 1, 2)
+                return datetime.date(2021, 1, 2)
 
         importer.date = FakeDate()
 

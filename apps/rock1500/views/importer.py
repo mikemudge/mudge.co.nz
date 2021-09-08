@@ -284,14 +284,19 @@ class ImportView(MethodView):
         # E.g song titles and albums commonly change a bit.
         changes = 0
         if song.rank2020 != rankLastYear:
+            current_app.logger.info("rankLastYear not matching")
             changes += 1
         if song.rank2019 != rankTwoYearsAgo:
+            current_app.logger.info("rankTwoYearsAgo not matching")
             changes += 1
         if song.title != item.get('title'):
+            current_app.logger.info("title not matching")
             changes += 1
         if song.artist.name != item.get('artist'):
+            current_app.logger.info("artist not matching")
             changes += 1
         if song.album.name != item.get('album'):
+            current_app.logger.info("album not matching")
             changes += 1
 
         if changes > 1:

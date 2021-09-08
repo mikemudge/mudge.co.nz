@@ -297,7 +297,7 @@ class ImportView(MethodView):
             current_app.logger.info("rankLastYear not matching")
             changes += 1
         if song.rank2019 != rankTwoYearsAgo:
-            current_app.logger.info("rankTwoYearsAgo not matching %d %d" % (song.rank2019, rankTwoYearsAgo))
+            current_app.logger.info("rankTwoYearsAgo not matching %s %s" % (str(song.rank2019), str(rankTwoYearsAgo)))
             changes += 1
         if song.title.lower() != item.get('title').lower():
             current_app.logger.info("title not matching")

@@ -168,8 +168,8 @@ class ImportView(MethodView):
                 if song.album.name == album_name:
                     current_app.logger.info("album matches %s" % album_name)
                     # Does album load artist?
-                    if song.album.artist != artist_name:
-                        current_app.logger.info("album.artist doesn't match artist %s != %s" % (song.album.artist, artist_name))
+                    if song.album.artist.name != artist_name:
+                        current_app.logger.info("album.artist.name doesn't match artist %s != %s" % (song.album.artist.name, artist_name))
                         # unset the artist or album? But don't know which is right?
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?
@@ -259,13 +259,26 @@ class ImportView(MethodView):
         if song is None:
             return None
 
+        rankLastYear = None
+        try:
+            rankLastYear = int(item.get('rankOneYearAgo'))
+        except ValueError as e:
+            # Can be non int values like Re-Entry or Debut.
+            pass
+
+        rankTwoYearsAgo = None
+        try:
+            rankTwoYearsAgo = int(item.get('rankTwoYearsAgo'))
+        except ValueError as e:
+            # Can be non int values like Re-Entry or Debut.
+            pass
         # Look at 5 attributes of the song vs the item.
         # if 2 or less are not matches we can believe this is correct song.
         # E.g song titles and albums commonly change a bit.
         changes = 0
-        if song.rank2020 != item.get('rankOneYearAgo'):
+        if song.rank2020 != rankLastYear:
             changes += 1
-        if song.rank2019 != item.get('rankTwoYearsAgo'):
+        if song.rank2019 != rankTwoYearsAgo:
             changes += 1
         if song.title != item.get('title'):
             changes += 1
@@ -274,7 +287,7 @@ class ImportView(MethodView):
         if song.album.name != item.get('album'):
             changes += 1
 
-        if changes > 2:
+        if changes > 1:
             # This is not a good match.
             return None
 

@@ -21,6 +21,11 @@ class RockSongView(BaseView):
     form_overrides = dict(rank2016=IntegerField)
     form_overrides = dict(rank2017=IntegerField)
 
+    column_formatters = {
+        'album': BaseView._to_view_url('rock1500album'),
+        'artist': BaseView._to_view_url('rock1500artist')
+    }
+
 class RockAlbumView(BaseView):
     column_exclude_list = ['date_created']
 
@@ -28,6 +33,7 @@ class RockAlbumView(BaseView):
 
     column_formatters = {
         'cover_art_url': BaseView.format_image,
+        'artist': BaseView._to_view_url('rock1500artist')
     }
 
 class RockPickView(BaseView):

@@ -125,6 +125,7 @@ apps['sheets'] = {
 }
 apps['rock'] = {
     'img': 'rock.png',
+    'title': 'Rock 2000',
     'tags': ['api', 'login', 'common', 'jquery', 'font-awesome'],
     'scripts': [
         '/static/rock/dashboard.js',
@@ -214,6 +215,8 @@ class ProjectAppView(MethodView):
                     app.scripts += scripts[tag]
                 if tag in styles:
                     app.styles += styles[tag]
+
+            app.title = conf.get('title', app_name)
 
             for s in conf.get('scripts', []):
                 app.scripts.append(s + "?v=" + app.version)

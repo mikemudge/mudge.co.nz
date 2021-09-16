@@ -182,6 +182,9 @@ class ImportView(MethodView):
                 # TODO when reporting to sentry we get errors with orm session.
                 # because sentry gives full context, it attempts to use lots of attributes of model objects
                 # That leads to DB calls with a session which has already been closed (errors)
+                if "title" not in diff:
+                    song['title'] = song.title
+
                 raise Exception("This song looks completely different. Not updating diff = %s" % 
                     json.dumps(diff, indent=2, separators=(',', ':')))
 
@@ -250,6 +253,18 @@ class ImportView(MethodView):
             db.session.commit()
             # Because we couldn't find an existing song, we don't need to check this.
 
+    def normalizeString(self, string):
+        # & and And are often switched.
+        val = string.replace('&', 'And')
+        # / is used to split artists, but and is used as well.
+        val = string.replace(' / ', ' and ')
+        # Sometimes / has no spaces.
+        val = string.replace('/', ' and ')
+        # Strip single quotes for things like "I Love Rock 'n' Roll vs I love Rock n Roll"
+        val = string.replace("'", '')
+        val = val.lower()
+        return val
+
     def checkMatch(self, song, item):
 
         if song is None:
@@ -276,22 +291,15 @@ class ImportView(MethodView):
             diff['rankLastYear'] = [song.rank2020, rankLastYear]
         if song.rank2019 != rankTwoYearsAgo:
             diff['rankTwoYearsAgo'] = [song.rank2019, rankTwoYearsAgo]
-        if song.title.lower() != item.get('title').lower():
-            current_app.logger.info("title not matching")
-            if song.title.replace('&', 'And').lower() != item.get('title').replace('&', 'And').lower():
-                diff['title'] = [song.title, item.get('title')]
-            else:
-                current_app.logger.info("title matches with & replaced. TODO need string normalizer")
+        if self.normalizeString(song.title) != self.normalizeString(item.get('title')):
+            diff['title'] = [song.title, item.get('title')]
 
-        if song.artist.name.lower() != item.get('artist').lower():
+        if self.normalizeString(song.artist.name) != self.normalizeString(item.get('artist')):
             # TODO check for combination artists?
             # E.g Bob Seger/The Silver Bullet Band could be 2 artists?
             diff['artist'] = [song.artist.name, item.get('artist')]
-        if song.album.name.lower() != item.get('album').lower():
-            if song.album.name.replace('&', 'And').lower() != item.get('album').replace('&', 'And').lower():
-                diff['album'] = [song.album.name, item.get('album')]
-            else:
-                current_app.logger.info("title matches with & replaced. TODO need string normalizer")
+        if self.normalizeString(song.album.name) != self.normalizeString(item.get('album')):
+            diff['album'] = [song.album.name, item.get('album')]
 
         if len(diff) > 1:
             # This is not a good match.

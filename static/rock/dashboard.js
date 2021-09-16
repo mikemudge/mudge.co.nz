@@ -1,4 +1,4 @@
-function DashboardController($resource, loginService, config, $interval) {
+function DashboardController($resource, loginService, config, $interval, $rootScope) {
   window.ctrl = this;
   this.currentUser = loginService.user;
   this.Songs = $resource(config.API_URL + 'api/rock1500/song', {}, {
@@ -10,6 +10,9 @@ function DashboardController($resource, loginService, config, $interval) {
       url: '/rock1500/import'
     }
   });
+
+  this.home = true;
+  $rootScope.title = 'Dashboard | Rock 2000';
 
   // Reload the songs each minute in case there is new ones.
   // this.seconds = 60;

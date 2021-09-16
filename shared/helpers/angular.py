@@ -7,6 +7,7 @@ class Angular():
 
     def __init__(self, name):
         self.appName = name
+        self.title = name
         self.version = current_app.version
         self.include = None
         self.sentry = False
@@ -41,6 +42,7 @@ class Angular():
         return render_template('angular.tmpl', **{
             'angular': {
                 'app': self.appName,
+                'title': self.title.capitalize(),
                 'version': self.version,
                 'base': self.base,
                 'meta': self.meta,

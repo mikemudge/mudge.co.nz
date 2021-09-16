@@ -161,25 +161,11 @@ class ImportView(MethodView):
         if song is not None:
             # TODO use songMatches to figure out the best song?
             # update previous ranks if needed to be able to apply change?
-            if not self.checkMatch(song, item):
+            diff = self.checkMatch(song, item)
+            if diff:
 
-                if song.artist.name == item.get('artist'):
-                    current_app.logger.info("artist looks good")
-                elif song.artist.name.lower() == item.get('artist').lower():
-                    current_app.logger.info("artist name matches case insensitive")
-                else:
-                    current_app.logger.info("artist not matching %s vs %s" % (song.artist.name, item.get('artist')))
-
-                if song.album.name == album_name:
-                    current_app.logger.info("album matches %s" % album_name)
-                    # Does album load artist?
-                    if song.album.artist.name != artist_name:
-                        current_app.logger.info("album.artist.name doesn't match artist %s != %s" % (song.album.artist.name, artist_name))
-                        # unset the artist or album? But don't know which is right?
-                elif song.album.name.lower() == item.get('album').lower():
-                    current_app.logger.info("album matches case insensitive")
-                else:
-                    current_app.logger.info("album not matching %s vs %s" % (song.album.name, item.get('album')))
+                for field, v in diff.items():
+                    current_app.logger.info("%s not matching %s %s" % (field, str(v[0]), str(v[1])))
 
                 # TODO if nothing matches then this is suspcious, assume rank is wrong?
 
@@ -190,23 +176,14 @@ class ImportView(MethodView):
                     # One of these might be wrong?
                     current_app.logger.info("album doesn't match artist")
 
-                if song.title == item.get('title'):
-                    # If the song title is a match then these things look good.
-                    current_app.logger.info("song title is a match %s" % song.title)
-                    # TODO this could probably be safely updated without the artist/album.
-                    # Would be a candidate for getting better data on.
-                    # song.rankThisYear = rankThisYear
-                    return
-                elif song.title.lower() == item.get('title').lower():
-                    current_app.logger.info("title matches case insensitive")
-
                 schema = Rock1500SongSchema()
                 current_app.logger.info("item = %s" % json.dumps(item, indent=2, separators=(',', ':')))
                 current_app.logger.info("song = %s" % schema.dumps(song, indent=2, separators=(',', ':')))
                 # TODO when reporting to sentry we get errors with orm session.
                 # because sentry gives full context, it attempts to use lots of attributes of model objects
                 # That leads to DB calls with a session which has already been closed (errors)
-                raise Exception('This song looks completely different. Not updating')
+                raise Exception("This song looks completely different. Not updating diff = %s" % 
+                    json.dumps(diff, indent=2, separators=(',', ':')))
 
             # This song needs to be updated with its position this year.
             if song.rankThisYear is None:
@@ -294,36 +271,34 @@ class ImportView(MethodView):
         # Look at 5 attributes of the song vs the item.
         # if 2 or less are not matches we can believe this is correct song.
         # E.g song titles and albums commonly change a bit.
-        changes = 0
+        diff = {}
         if song.rank2020 != rankLastYear:
-            current_app.logger.info("rankLastYear not matching %s %s" % (str(song.rank2020), str(rankLastYear)))
-            changes += 1
+            diff['rankLastYear'] = [song.rank2020, rankLastYear]
         if song.rank2019 != rankTwoYearsAgo:
-            current_app.logger.info("rankTwoYearsAgo not matching %s %s" % (str(song.rank2019), str(rankTwoYearsAgo)))
-            changes += 1
+            diff['rankTwoYearsAgo'] = [song.rank2019, rankTwoYearsAgo]
         if song.title.lower() != item.get('title').lower():
             current_app.logger.info("title not matching")
             if song.title.replace('&', 'And').lower() != item.get('title').replace('&', 'And').lower():
-                changes += 1
+                diff['title'] = [song.title, item.get('title')]
             else:
                 current_app.logger.info("title matches with & replaced. TODO need string normalizer")
 
         if song.artist.name.lower() != item.get('artist').lower():
             # TODO check for combination artists?
             # E.g Bob Seger/The Silver Bullet Band could be 2 artists?
-            changes += 1
+            diff['artist'] = [song.artist.name, item.get('artist')]
         if song.album.name.lower() != item.get('album').lower():
             if song.album.name.replace('&', 'And').lower() != item.get('album').replace('&', 'And').lower():
-                changes += 1
+                diff['album'] = [song.album.name, item.get('album')]
             else:
                 current_app.logger.info("title matches with & replaced. TODO need string normalizer")
 
-        if changes > 1:
+        if len(diff) > 1:
             # This is not a good match.
-            return None
+            return diff
 
         # The match is pretty close, so accept it.
-        return song
+        return None
 
     @oauth.require_oauth('admin')
     def get(self):

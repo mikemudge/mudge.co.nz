@@ -183,7 +183,7 @@ class ImportView(MethodView):
                 # because sentry gives full context, it attempts to use lots of attributes of model objects
                 # That leads to DB calls with a session which has already been closed (errors)
                 if "title" not in diff:
-                    song['title'] = song.title
+                    diff['title'] = song.title
 
                 raise Exception("This song looks completely different. Not updating diff = %s" % 
                     json.dumps(diff, indent=2, separators=(',', ':')))

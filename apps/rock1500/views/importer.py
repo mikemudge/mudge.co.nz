@@ -33,10 +33,6 @@ class ImportView(MethodView):
             # Can be non int values like Re-Entry or Debut.
             pass
 
-        album_name = item.get('album')
-        artist_name = item.get('artist')
-        song_name = item.get('title')
-
         rankTwoYearsAgo = None
         try:
             rankTwoYearsAgo = int(item.get('rankTwoYearsAgo'))
@@ -44,6 +40,9 @@ class ImportView(MethodView):
             # Can be non int values like Re-Entry or Debut.
             pass
 
+        album_name = item.get('album')
+        artist_name = item.get('artist')
+        song_name = item.get('title')
 
         song = self.songsByRank.get(rankThisYear)
         if song:

@@ -44,6 +44,7 @@ class ImportView(MethodView):
         artist_name = item.get('artist')
         song_name = item.get('title')
 
+
         song = self.songsByRank.get(rankThisYear)
         if song:
             # There is already a song with this rank.

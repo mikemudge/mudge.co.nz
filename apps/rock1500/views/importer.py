@@ -44,6 +44,7 @@ class ImportView(MethodView):
             # Can be non int values like Re-Entry or Debut.
             pass
 
+
         song = self.songsByRank.get(rankThisYear)
         if song:
             # There is already a song with this rank.

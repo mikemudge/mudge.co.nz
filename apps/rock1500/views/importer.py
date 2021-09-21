@@ -26,6 +26,24 @@ class ImportView(MethodView):
             # Its not really acceptable if this year's rank is not an int
             raise e
 
+        rankLastYear = None
+        try:
+            rankLastYear = int(item.get('rankOneYearAgo'))
+        except ValueError as e:
+            # Can be non int values like Re-Entry or Debut.
+            pass
+
+        rankTwoYearsAgo = None
+        try:
+            rankTwoYearsAgo = int(item.get('rankTwoYearsAgo'))
+        except ValueError as e:
+            # Can be non int values like Re-Entry or Debut.
+            pass
+
+        album_name = item.get('album')
+        artist_name = item.get('artist')
+        song_name = item.get('title')
+
         song = self.songsByRank.get(rankThisYear)
         if song:
             # There is already a song with this rank.
@@ -51,6 +69,35 @@ class ImportView(MethodView):
                     current_app.logger.info("Update album %s" % song.album.name)
                     db.session.add(song.album)
                     db.session.commit()
+
+            songChanges = False
+            if rankLastYear and not song.rank2020:
+                if rankLastYear in self.songsByLastYearRank:
+                    # TODO is this song the same but with a different looking title?
+                    # They could be combined into 1?
+                    current_app.logger.info("Song %s claims to have rankLastYear of %d" % (song.title, rankLastYear))
+                    current_app.logger.info("However this rank is already claimed by %s" % self.songsByLastYearRank[rankLastYear].title)
+                else:
+                    # The rank isn't already taken, so this song can be updated to have it.
+                    song.rank2020 = rankLastYear
+                    current_app.logger.info("Update song with rank2020 %d" % rankLastYear)
+                    songChanges = True
+            if rankTwoYearsAgo and not song.rank2019:
+                if rankTwoYearsAgo in self.songsByTwoYearsAgoRank:
+                    # TODO is this song the same but with a different looking title?
+                    # They could be combined into 1?
+                    current_app.logger.info("Song %s claims to have rankTwoYearsAgo of %d" % (song.title, rankTwoYearsAgo))
+                    current_app.logger.info("However this rank is already claimed by %s" %  self.songsByTwoYearsAgoRank[rankTwoYearsAgo].title)
+                else:
+                    # The rank isn't already taken, so this song can be updated to have it.
+                    song.rank2019 = rankTwoYearsAgo
+                    current_app.logger.info("Update song with rank2019 %d" % rankTwoYearsAgo)
+                    songChanges = True
+            if songChanges:
+                current_app.logger.info("Update song %s" % song.title)
+                db.session.add(song)
+                db.session.commit()
+
             return
         # To help print out debug information about songs.
         schema = Rock1500SongSchema()
@@ -66,24 +113,6 @@ class ImportView(MethodView):
         current_app.logger.info("Song ranked %d (%s) not found" % (rankThisYear, item.get('title')))
         # The song might exist it just hasn't had its rank set for this year yet.
 
-        rankLastYear = None
-        try:
-            rankLastYear = int(item.get('rankOneYearAgo'))
-        except ValueError as e:
-            # Can be non int values like Re-Entry or Debut.
-            pass
-
-        rankTwoYearsAgo = None
-        try:
-            rankTwoYearsAgo = int(item.get('rankTwoYearsAgo'))
-        except ValueError as e:
-            # Can be non int values like Re-Entry or Debut.
-            pass
-
-        album_name = item.get('album')
-        artist_name = item.get('artist')
-        song_name = item.get('title')
-
         songMatches = {
             'lastYear': self.songsByLastYearRank.get(rankLastYear),
             'twoYearsAgo': self.songsByTwoYearsAgoRank.get(rankTwoYearsAgo)
@@ -94,7 +123,7 @@ class ImportView(MethodView):
                 current_app.logger.info("Match on previous years %d %d" % (rankLastYear, rankTwoYearsAgo))
                 # This song looks good if both previous ranks match.
                 song = songMatches['lastYear']
-            elif songMatches['lastYear'].title == song_name:
+            elif self.normalizeString(songMatches['lastYear'].title) == self.normalizeString(song_name):
                 current_app.logger.info("Match on 1 year ago song title %s vs %s" % (song_name, songMatches['lastYear'].title))
                 # rank last year + title match is good enough.
                 song = songMatches['lastYear']
@@ -102,7 +131,7 @@ class ImportView(MethodView):
         if not song:
             # Try to use 2 years ago + title.
             if songMatches['twoYearsAgo']:
-                if song_name == songMatches['twoYearsAgo'].title:
+                if self.normalizeString(songMatches['twoYearsAgo'].title) == self.normalizeString(song_name):
                     current_app.logger.info("Match on 2 years ago song title %s vs %s" % (song_name, songMatches['twoYearsAgo'].title))
                     # This song looks ok, but maybe we should set its rank last year?
                     song = songMatches['twoYearsAgo']
@@ -194,6 +223,8 @@ class ImportView(MethodView):
                 song.rankThisYear = rankThisYear
                 song.rank2021 = rankThisYear
                 self.songsByRank[rankThisYear] = song
+                # check for missing information, and update it?
+                # At the moment we will do this on the next run. See above.
                 db.session.commit()
             else:
                 current_app.logger.info("song already has a rankThisYear of %d for %s" % (song.rankThisYear, song_name))
@@ -258,16 +289,19 @@ class ImportView(MethodView):
         # & and And are often switched.
         val = string.replace('&', 'And')
         # / is used to split artists, but and is used as well.
-        val = string.replace(' / ', ' and ')
+        val = val.replace(' / ', ' and ')
         # Sometimes / has no spaces.
-        val = string.replace('/', ' and ')
+        val = val.replace('/', ' and ')
         # Strip single quotes for things like "I Love Rock 'n' Roll vs I love Rock n Roll"
-        val = string.replace("'", '')
+        val = val.replace("'", '')
         # Remove .'s which can happen. E.g Seether Ft. Amy Lee
-        val = string.replace(".", '')
+        val = val.replace(".", "")
         # Remove spaces. E.g Stone Sour is the same as Stonesour.
-        val = string.replace(" ", '')
+        val = val.replace(" ", '')
         val = val.lower()
+        # The commonly prefixes artists. E.g The Rolling Stones vs Rolling Stones.
+        if val.startswith("the"):
+            val = val[3:]
         return val
 
     def checkMatch(self, song, item):

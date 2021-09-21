@@ -1,5 +1,5 @@
 from auth.provider import oauth
-from flask import request
+from flask import request, current_app
 from flask.views import MethodView
 from ..models import Rock1500Song
 from ..serializers import Rock1500SongSchema
@@ -19,6 +19,7 @@ class NextSongsView(MethodView):
         if aboveRank is None:
             # Calculate a max from the current count down location.
             mostRecentSong = Rock1500Song.query.order_by(Rock1500Song.rankThisYear).limit(1).first()
+            current_app.logger.info("Looking for songs based on mostRecentSong rank = %d" % mostRecentSong.rankThisYear)
             if mostRecentSong:
                 if mostRecentSong.rankThisYear <= 750:
                     # Use double the current song as a limit. Most songs don't move that much.
@@ -33,21 +34,20 @@ class NextSongsView(MethodView):
                 aboveRank = 1501
 
         if limit > aboveRank:
-            print("limit", limit, "aboveRank", aboveRank)
+            current_app.logger.info("Limit %d aboveRank %d" % (limit, aboveRank))
             limit = aboveRank
 
         if aboveRank is not None:
-            print('Finding songs above %d in 2018' % aboveRank)
+            current_app.logger.info('Finding songs above %d in 2020' % aboveRank)
             query = query.filter(
-                Rock1500Song.rank2018 < aboveRank)
+                Rock1500Song.rank2020 < aboveRank)
 
         # Filter out songs which have been played already.
         query = query.filter(
             Rock1500Song.rankThisYear.is_(None))
 
         # Order by the position they ranked last time.
-        # 2016 is the last year we got all the ranks for.
-        query = query.order_by(Rock1500Song.rank2018.desc())
+        query = query.order_by(Rock1500Song.rank2020.desc())
 
         # And limit so it doesn't do too much work.
         query = query.limit(limit)

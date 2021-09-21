@@ -99,6 +99,26 @@ Run daily @ 4am in mudge@mudge.co.nz crontab.
 outputs sql files into /home/mudge/db-backups/
 https://www.postgresql.org/docs/9.1/static/backup-dump.html
 
+#DB Restore
+In sandbox, copy the backup file locally.
+Mount it into the db (postgres) container using docker-compose.yml
+      - ./mudgeconz.Tuesday.sql:/tmp/backup.sql
+
+Connect to the db container
+docker compose exec db bash
+Remove existing records in the tables.
+TRUNCATE rock1500_artist CASCADE;
+
+Then on the postgres host, run the restore command.
+psql -U postgres postgres < /tmp/backup.sql
+
+Caveats
+The dump may have a dependency in the wrong order.
+E.g rock1500_album depends on rock1500_artist but is inserted first.
+Running the command again can help as artist should be inserted in the first run, and album can be inserted in the 2nd.
+Tables which depend on user have issues as users are different in prod and sandbox.
+E.g rock1500_picks will not restore in sandbox.
+
 #SSL Certificate
 /etc/letsencrypt/live/mudge.co.nz/fullchain.pem
 Using letsencrypt

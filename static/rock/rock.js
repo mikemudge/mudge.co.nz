@@ -96,6 +96,8 @@ RockController.prototype.loadSuggestions = function() {
 }
 
 RockController.prototype.handleDrop = function(pick, $event) {
+  // TODO newly added "picks" don't have an id and can be easily confused if there are multiple added.
+  // They all will have an effective id of '' which makes them all equal.
   var moved_id = $event.dataTransfer.getData('Text');
   var match = this.picks.findIndex(function(p) {
     return moved_id == p.id;

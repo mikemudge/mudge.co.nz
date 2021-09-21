@@ -262,6 +262,8 @@ class ImportView(MethodView):
         val = string.replace('/', ' and ')
         # Strip single quotes for things like "I Love Rock 'n' Roll vs I love Rock n Roll"
         val = string.replace("'", '')
+        # Remove .'s which can happen. E.g Seether Ft. Amy Lee
+        val = string.replace(".", '')
         val = val.lower()
         return val
 

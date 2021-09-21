@@ -253,6 +253,7 @@ class ImportView(MethodView):
             db.session.commit()
             # Because we couldn't find an existing song, we don't need to check this.
 
+    # For comparison purposes only we want to ignore some diff between whats in the DB and what the api gives.
     def normalizeString(self, string):
         # & and And are often switched.
         val = string.replace('&', 'And')
@@ -264,6 +265,8 @@ class ImportView(MethodView):
         val = string.replace("'", '')
         # Remove .'s which can happen. E.g Seether Ft. Amy Lee
         val = string.replace(".", '')
+        # Remove spaces. E.g Stone Sour is the same as Stonesour.
+        val = string.replace(" ", '')
         val = val.lower()
         return val
 

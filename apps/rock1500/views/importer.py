@@ -288,7 +288,8 @@ class ImportView(MethodView):
     # For comparison purposes only we want to ignore some diff between whats in the DB and what the api gives.
     def normalizeString(self, string):
         # & and And are often switched.
-        val = string.replace('&', 'And')
+        val = string.lower()
+        val = val.replace('&', 'and')
         # / is used to split artists, but and is used as well.
         val = val.replace(' / ', ' and ')
         # Sometimes / has no spaces.
@@ -299,7 +300,6 @@ class ImportView(MethodView):
         val = val.replace(".", "")
         # Remove spaces. E.g Stone Sour is the same as Stonesour.
         val = val.replace(" ", '')
-        val = val.lower()
         # The commonly prefixes artists. E.g The Rolling Stones vs Rolling Stones.
         if val.startswith("the"):
             val = val[3:]

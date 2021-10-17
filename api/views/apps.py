@@ -165,6 +165,11 @@ apps['color_war'] = {
     'img': 'color_war.png'
 }
 
+apps['congestion'] = {
+}
+apps['flocking'] = {
+}
+
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
 

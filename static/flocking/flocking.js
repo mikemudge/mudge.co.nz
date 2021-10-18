@@ -29,13 +29,38 @@ Car.prototype.update = function() {
   this.x += this.speed * Math.sin(this.theta);
   this.y += this.speed * Math.cos(this.theta);
 
-  // TODO adjust angle to avoid collision with boundries.
   // At the moment we just randomly change our angular velocity.
-  if (Math.random() > 0.5) {
-    this.thetaDelta += 0.01;
-  } else {
-    this.thetaDelta -= 0.01;
+  var turn = Math.random() * 0.02 - 0.01;
+
+
+  // This prevents them from leaving the world, but its very ridged movement right now, smoother would be good.
+  if (this.x > this.world.left + this.world.width - 50) {
+    this.theta = Math.PI * 3 / 2;
+    this.thetaDelta = 0;
   }
+  if (this.x < this.world.left + 50) {
+    this.theta = Math.PI / 2;
+    this.thetaDelta = 0;
+  }
+  if (this.y < this.world.top + 50) {
+    this.theta = 0;
+    this.thetaDelta = 0;
+  }
+  if (this.y > this.world.top + this.world.height - 50) {
+    this.theta = Math.PI;
+    this.thetaDelta = 0;
+  }
+
+  // Don't turn too tightly.
+  if (this.thetaDelta > 0.1) {
+    turn = -0.01;
+  }
+  if (this.thetaDelta < -0.1) {
+    turn = 0.01;
+  }
+
+  // Update my delta by the turn amount.
+  this.thetaDelta += turn;
   this.theta += this.thetaDelta;
 
   // TODO adjust speed and angle to be more similar to things near you.
@@ -44,6 +69,43 @@ Car.prototype.update = function() {
     if (c == this) {
       // Skip interactions with yourself.
       return;
+    }
+    dx = c.x - this.x;
+    dy = c.y - this.y;
+    disSqr = dx * dx + dy * dy;
+    if (disSqr < 2500) {
+      // Closer than 50px, influence this.
+      if (c.speed > this.speed) {
+        this.speed += 0.01;
+      } else {
+        this.speed -= 0.01;
+      }
+      // TODO look at theta as well.
+      if (this.theta < c.theta) {
+        // The others angle is more than this.
+        if (this.theta + Math.PI > c.theta) {
+          this.thetaDelta += 0.01;
+        } else {
+          // More than 180 higher indicates going the other way is faster.
+          this.thetaDelta -= 0.01;
+        }
+      } else {
+        // The others angle is lower than this.
+        if (this.theta - Math.PI < c.theta) {
+          // Its closer than 180, so move towards it.
+          this.thetaDelta -= 0.01;
+        } else {
+          // Moving the other way will be faster.
+          this.thetaDelta += 0.01;
+        }
+      }
+      // Turn faster if they are turning more than you.
+      // Turn slower if you are already turning faster than them.
+      if (c.thetaDelta > this.thetaDelta) {
+        this.thetaDelta += 0.005;
+      } else {
+        this.thetaDelta -= 0.005;
+      }
     }
   }.bind(this));
 }

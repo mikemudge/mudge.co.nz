@@ -23,32 +23,22 @@ var Car = function(world, params) {
   this.vy = 0;
   this.radius = params.radius || 12;
   this.speed = Math.random() * 2 + 1;
+  this.vx = this.speed;
+  this.ax = 0;
+  this.reactionTime = 0;
+  this.preferredFollowingDistance = 50 + this.speed * 5;
 }
-Car.FRICTION = 0.1;
+Car.FRICTION = 0.02;
 
 Car.prototype.update = function() {
   this.x += this.vx;
   this.y += this.vy;
 
-  if (this.vx < this.speed * .95) {
-    this.vx += Math.random();
-  } else if (this.vx > this.speed * 1.05) {
-    this.vx -= Math.random();
-  }
-
   // Slow down;
-  this.vx *= (1 - Car.FRICTION);
-  this.vy *= (1 - Car.FRICTION);
-  if (this.vx < 0.01 && this.vx > -0.01) {
-    this.vx = 0;
-  }
-  if (this.vy < 0.01 && this.vy > -0.01) {
-    this.vy = 0;
-  }
+  // this.vx *= (1 - Car.FRICTION);
+  // this.vy *= (1 - Car.FRICTION);
 
-  // TODO slow down if there is a car too close in front?
-
-  this.followingDistance = null;
+  this.followingDistance = 100000;
   this.world.cars.forEach(function(c) {
     if (c == this) {
       // Skip interactions with yourself.
@@ -57,24 +47,43 @@ Car.prototype.update = function() {
     disy = Math.abs(c.y - this.y);
     if (disy < 12) {
       dis = c.x - this.x;
-      if (dis > 0 && dis < 50) {
-        // You are considered to be following if you are within 50 pixels of a car.
+      if (dis > 0 && dis < this.followingDistance) {
         this.followingDistance = dis
-        // Figure out my speed delta to theirs.
-        if (this.vx > c.vx) {
-          // I'm faster than them, so need to slow.
-          // This is a very drastic braking to 50% of your speed.
-          this.vx *= 0.5
-        }
       }
     }
   }.bind(this));
+
+  // You are considered to be too close if you are within 50 pixels of a car.
+  if (this.followingDistance < this.preferredFollowingDistance) {
+    // Brakes will reduce speed by a fixed amount.
+    this.pax = -0.3;
+  } else if (this.vx < this.speed) {
+    // go faster up to your max speed.
+    this.pax = 0.3;
+  } else {
+    this.pax = 0;
+  }
+
+  if (this.ax != this.pax) {
+    if (this.reactionTime < 0) {
+      this.reactionTime = 1;
+    } else {
+      this.reactionTime--;
+      if (this.reactionTime == 0) {
+        this.ax = this.pax;
+      }
+    }
+  }
+
+  // Can't go slower than 0.
+  this.vx = Math.max(this.vx + this.ax, 0);
 }
 
 Car.prototype.draw = function(ctx) {
   ctx.beginPath();
-  ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-  if (this.followingDistance) {
+  // ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+  ctx.rect(this.x - this.radius - 4, this.y - this.radius, this.radius * 2 + 8, this.radius * 2);
+  if (this.followingDistance < this.preferredFollowingDistance) {
     // Show red to indicate braking.
     ctx.fillStyle = 'red';
   } else {
@@ -86,7 +95,7 @@ Car.prototype.draw = function(ctx) {
 
 var CarSpawn = function(world, y) {
   this.world = world;
-  this.spawnRate = 100;
+  this.spawnRate = 50;
   this.y = y;
   // Start with a new car ready to go.
   this.time = this.spawnRate;

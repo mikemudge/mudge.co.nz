@@ -5,6 +5,7 @@ var Shop = function(params, map) {
   this.w = 60;
   this.h = 40;
   this.chance = 0;
+  this.trips = 0;
 }
 
 Shop.prototype.update = function() {
@@ -20,8 +21,13 @@ Shop.prototype.update = function() {
   }
 }
 
+Shop.prototype.carArrive = function() {
+  this.trips--;
+}
+
 Shop.prototype.newTrip = function() {
-  console.log("New trip available at", this)
+  console.log("New trip available at", this);
+  this.trips++;
   // Find a house with a car, or queue up trip.
   // Queued trips will need to be queried if roads change?
 
@@ -45,9 +51,9 @@ Shop.prototype.newTrip = function() {
 
   if (result) {
     // Use the car to go to the shop.
-    // TODO a path should be available from find?
-    console.log("Requesting a car from", result.goal);
-    result.goal.startTrip(this, result.path);
+    console.log("Requesting a car to", result.goal);
+    car = result.goal.getAvailableCar();
+    car.setTrip(result.path, this);
   } else {
     // No house with car available.
     // Enqueue trip for the future?
@@ -77,6 +83,10 @@ Shop.prototype.draw = function(ctx) {
   ctx.fill()
   ctx.stroke();
   ctx.lineWidth = 1;
+
+  ctx.font = 'normal 16px serif';
+  ctx.fillStyle = 'white';
+  ctx.fillText("" + this.trips, x + w / 2 - 3, y + h / 2 + 6);
 }
 
 var House = function(params, map) {
@@ -98,23 +108,13 @@ House.prototype.getAvailableCar = function() {
   return null;
 }
 
-House.prototype.startTrip = function(shop, path) {
-  // TODO should use better pathing.
-  returnPath = [];
-  path.forEach(function(s) {
-    returnPath.push(s);
-  });
-  returnPath.push(shop);
-  path.reverse().forEach(function(s) {
-    returnPath.push(s)
-  });
-  returnPath.push(this);
-  console.log(returnPath);
-  this.getAvailableCar().setPath(returnPath);
-}
-
 House.prototype.update = function() {
   this.car1.update();
+}
+
+House.prototype.carArrive = function() {
+  // Car's target is set to null meaning its already known as available.
+  // Nothing else to do here.
 }
 
 House.prototype.draw = function(ctx) {
@@ -167,6 +167,26 @@ Car.prototype.update = function() {
   }
 }
 
+Car.prototype.returnHome = function () {
+  return this.returnPath;
+}
+
+Car.prototype.setTrip = function(path, shop) {
+  toShop = [];
+  path.forEach(function(s) {
+    toShop.push(s);
+  });
+  toShop.push(shop);
+
+  returnPath = [];
+  path.reverse().forEach(function(s) {
+    returnPath.push(s)
+  });
+  returnPath.push(this);
+
+  this.setPath(toShop);
+  this.returnPath = returnPath;
+}
 Car.prototype.setPath = function(path) {
   this.targetIdx = -1;
   this.targets = path;
@@ -177,9 +197,13 @@ Car.prototype.getNextLocation = function() {
   this.targetIdx++;
   if (this.targetIdx >= this.targets.length) {
     console.log('Car reached goal');
-    // TODO should inform target that it has been reached?
-    // Shops will remove a trip.
-    // Houses will increase cars available count.
+    this.target.carArrive();
+    if (this.target != this.house) {
+      this.setPath(this.returnHome());
+      return this.target;
+    } else {
+      // The car has returned home.
+    }
     return null;
   }
   return this.targets[this.targetIdx];
@@ -233,6 +257,14 @@ Road.prototype.draw = function(ctx) {
   }
   if (this.map.getAt(x - 20, y)) {
     ctx.fillRect(x - 10, y + 2, w, h - 4);
+  }
+  if (this.color == '#CCCCCC') {
+    if (this.map.getAt(x, y + 20)) {
+      ctx.fillRect(x + 2, y + 10, w - 4, h);
+    }
+    if (this.map.getAt(x + 20, y)) {
+      ctx.fillRect(x + 10, y + 2, w, h - 4);
+    }
   }
   // TODO diagonals.
 

@@ -12,6 +12,7 @@ body {
   display: inline-block;
   border: 1px solid black;
   border-radius: 5px;
+  vertical-align: top;
 }
 
 @media (max-width: 600px) {

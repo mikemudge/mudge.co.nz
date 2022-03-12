@@ -16,6 +16,9 @@ scripts = {
     ],
     'login': [
         '/static/shared/login.js'
+    ],
+    'p5': [
+        'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js',
     ]
 }
 
@@ -95,7 +98,7 @@ apps['bomberman'] = {
 # }
 apps['user'] = {
     'img': 'user.png',
-    'tags': ['font-awesome', 'api']
+    'tags': ['font-awesome', 'login', 'api']
 }
 apps['poker'] = {
     'img': 'poker.png',
@@ -168,6 +171,10 @@ apps['color_war'] = {
 apps['congestion'] = {
 }
 apps['flocking'] = {
+}
+
+apps['p5_test'] = {
+    'tags': ['p5']
 }
 
 def gmaps():

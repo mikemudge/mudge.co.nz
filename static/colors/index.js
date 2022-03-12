@@ -1,6 +1,6 @@
-function ClusterFinder() {
+function ClusterFinder(maxClusters) {
   this.clusters = [];
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < maxClusters; i++) {
     this.addCluster();
   }
 }
@@ -169,10 +169,11 @@ function main() {
     setEnhancement();
   }
 
-  cluster = new ClusterFinder();
+  cluster = new ClusterFinder(5);
 
   const ctx = canvas.getContext('2d')
-  rotateColor = false;
+  rotateRed = true;
+  rotateBlue = false;
   function renderImage() {
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       let frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -185,10 +186,15 @@ function main() {
         let g = frame.data[i * 4 + 1];
         let b = frame.data[i * 4 + 2];
         // When blue is the most prominent color, change it.
-        if (rotateColor && b > r && b > g) {
+        if (rotateBlue && b > r && b > g) {
           frame.data[i * 4 + 0] = b;
           frame.data[i * 4 + 1] = r;
           frame.data[i * 4 + 2] = g;
+        }
+        if (rotateRed && r > b && r > g) {
+          frame.data[i * 4 + 0] = g;
+          frame.data[i * 4 + 1] = b;
+          frame.data[i * 4 + 2] = r;
         }
         r = frame.data[i * 4 + 0];
         g = frame.data[i * 4 + 1];

@@ -233,6 +233,10 @@ class ProjectAppView(MethodView):
             for s in conf.get('scripts', []):
                 app.scripts.append(s + "?v=" + app.version)
 
+            s = request.args.get('sample');
+            if s:
+                app.scripts.append("/static/%s/%s.js?v=%s" % (app_name, s, app.version))
+
             app.styles += conf.get('styles', [])
             for t in conf.get('templates', []):
                 app.addTemplate(t)

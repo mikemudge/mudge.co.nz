@@ -133,13 +133,20 @@ function setup() {
     mover = new Mover(x, y, mass)
 
     movers.push(mover);
+
+    // Calculate the speed to get a perfect orbit.
+    vel = createVector(width / 2, height / 2).sub(mover.pos);
+    dis = vel.mag();
+    let strength = Math.sqrt(5 * 100 / dis);
+    vel.setMag(strength);
+    mover.vel = createVector(vel.y, -vel.x);
   }
 
   attractors.push(new Attractor(width/2, height/2, 100));
 }
 
 function draw() {
-  background(0);
+  background(0, 5);
 
   // render a half screen filled "high drag" zone.
   // fill(255, 125);

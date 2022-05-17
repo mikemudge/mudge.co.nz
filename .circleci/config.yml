@@ -6,7 +6,7 @@ version: 2
 jobs:
   install_deps:
     docker:
-      - image: circleci/python:3.6.1
+      - image: cimg/python:3.6.9
         environment:
           APP_SETTINGS: settings.test
 
@@ -18,9 +18,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "frozen_requirements.txt" }}
+          - v2-dependencies-{{ checksum "frozen_requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v2-dependencies-
 
       - run:
           name: install dependencies
@@ -32,11 +32,11 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "frozen_requirements.txt" }}
+          key: v2-dependencies-{{ checksum "frozen_requirements.txt" }}
 
   test:
     docker:
-      - image: circleci/python:3.6.1
+      - image: cimg/python:3.6.9
         environment:
           APP_SETTINGS: settings.test
 
@@ -57,9 +57,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "frozen_requirements.txt" }}
+          - v2-dependencies-{{ checksum "frozen_requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v2-dependencies-
 
       - run:
           name: add commithash version
@@ -73,7 +73,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/python:3.6.1
+      - image: cimg/base:2021.04
         environment:
           APP_SETTINGS: settings.test
 

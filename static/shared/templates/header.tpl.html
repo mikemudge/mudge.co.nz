@@ -16,7 +16,7 @@
   <!-- /auth/user? -->
   <!-- TODO allow redirect to a user/profile update page? -->
   <div class="image">
-    <img ng-src="{{ ctrl.currentUser.profile.image }}" />
+    <img referrerpolicy="no-referrer" ng-src="{{ ctrl.currentUser.profile.image }}" />
   </div>
   <div class="username">
     {{ ctrl.currentUser.profile.username }}

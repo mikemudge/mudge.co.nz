@@ -6,15 +6,16 @@
     <h4>Status</h4>
     <p>{{ ctrl.loginService.currentStatus }}</p>
     <p>
-    Current access: {{ ctrl.currentAccess.scopes }}
+      Mudge.co.nz access: {{ ctrl.currentAccess.scopes }}
+    </p>
+    <p>
+      Google login: {{ ctrl.loginService.googleStatus }}
     </p>
     <hr>
   </div>
 
   <div ng-show="ctrl.googleLoginButton">
-    <div class="button" ng-click="ctrl.loginWithGoogle()">
-      Login with Google
-    </div>
+    <div id="googleLoginButton"></div>
   </div>
 
   <div class="clickable" ng-click="ctrl.advanced=!ctrl.advanced">
@@ -34,19 +35,20 @@
     </div>
     <hr>
     <div>
-      Google login: {{ ctrl.loginService.googleStatus }}
       <div ng-show="ctrl.loginService.googleUser">
         <div class="clickable" ng-click="debug=true">Show google data</div>
         <pre ng-show="debug">{{ ctrl.loginService.googleUser | json }}</pre>
       </div>
     </div>
+    <p> User for mudge.co.nz </p>
     <div>
-      <pre>Mudge.co.nz user = {{ ctrl.loginService.user | json }}</pre>
+      <pre>{{ ctrl.loginService.user | json }}</pre>
     </div>
+    <p>Access JWT contents </p>
     <div>
-      <pre>JWT contents {{ ctrl.loginService.currentAccess | json }}</pre>
+      <pre>{{ ctrl.loginService.currentAccess | json }}</pre>
     </div>
-    <div ng-repeat="line in ctrl.debug">
+    <div ng-repeat="line in ctrl.debug track by $index">
       {{ line }}
     </div>
   </div>

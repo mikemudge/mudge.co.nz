@@ -223,3 +223,8 @@ button:hover,
   opacity: 0.8;
 }
 
+/* Button for logging in with google */
+#loginWithGoogle {
+  cursor: pointer;
+  display: inline-block;
+}

@@ -6,7 +6,7 @@ version: 2
 jobs:
   install_deps:
     docker:
-      - image: circleci/python:3.6.1
+      - image: cimg/python:3.6.9
         environment:
           APP_SETTINGS: settings.test
 
@@ -36,7 +36,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/python:3.6.1
+      - image: circleci/python:3.6.9
         environment:
           APP_SETTINGS: settings.test
 
@@ -73,7 +73,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/python:3.6.1
+      - image: cimg/base:2021.04
         environment:
           APP_SETTINGS: settings.test
 

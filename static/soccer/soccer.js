@@ -235,6 +235,57 @@ KeyControls.keyDown = function(e) {
 window.onkeydown = KeyControls.keyDown;
 
 
+var ControllerControls = function(game, team) {
+  this.lastButton3 = false;
+  this.player = team.players[0];
+  this.moveTypes = [
+    new CarMove(game.options),
+    new IceMove(game.options)
+  ]
+  this.moveTypeIndex = 1;
+  this.moveControl = this.moveTypes[this.moveTypeIndex];
+}
+
+ControllerControls.prototype.get = function() {
+  // Need to re-get each time, values don't change otherwise.
+  var gamepad = navigator.getGamepads()[0];
+  result = {
+    'up': gamepad.buttons[7].value,
+    'down': gamepad.buttons[6].value,
+    'left': gamepad.buttons[14].value,
+    'right': gamepad.buttons[15].value
+  };
+  if (gamepad.axes[0] < 0.1) {
+    result['left'] = -gamepad.axes[0];
+  }
+  if (gamepad.axes[0] > 0.1) {
+    result['right'] = gamepad.axes[0];
+  }
+
+  if (gamepad.buttons[3].pressed && !this.lastButton3) {
+    // If the state of button 3 changed from off to on.
+    result['toggleView'] = 1;
+  }
+  this.lastButton3 = gamepad.buttons[3].pressed;
+
+  if (gamepad.buttons[9].pressed) {
+    result['pause'] = 1;
+  }
+  // Handy for figuring out which is which.
+  for (i=0;i<=15;i++) {
+    if (gamepad.buttons[i].pressed) {
+      console.log(i);
+    }
+  }
+
+  return result;
+};
+
+ControllerControls.prototype.update = function() {
+  var arrows = this.get();
+  this.moveControl.move(this.player, arrows);
+};
+
 var IceMove = function(options) {
   this.options = options
 };
@@ -366,6 +417,39 @@ var SoccerGame = function(canvas) {
   // }));
   this.controls.push(new AIControls(this, this.rightTeam));
   // Add controls for each team??
+
+
+  gamepads = navigator.getGamepads();
+  console.log(gamepads);
+  if (gamepads[0]) {
+    this.gamepad = gamepads[0];
+    console.log("Rumble");
+    this.gamepad.vibrationActuator.playEffect("dual-rumble", {
+      duration: 1000,
+      weakMagnitude: 1.0,
+      strongMagnitude: 1.0
+    });
+  } else {
+    // Add a listener for gamepad connections.
+    window.addEventListener("gamepadconnected", function(event) {
+      this.gamepad = event.gamepad;
+      console.log("Game Pad connected", this.gamepad);
+      // A little rumble to show you it connected.
+      console.log("Rumble");
+      this.gamepad.vibrationActuator.playEffect("dual-rumble", {
+        duration: 1000,
+        strongMagnitude: 1.0,
+        weakMagnitude: 1.0,
+      });
+
+      console.log("Switching to gamepad");
+      controller = new ControllerControls(this, this.leftTeam);
+      this.controls.push(controller);
+
+      // TODO hook up controls on join?
+    }.bind(this));
+  }
+
 };
 
 SoccerGame.prototype.updateOptions = function(options) {

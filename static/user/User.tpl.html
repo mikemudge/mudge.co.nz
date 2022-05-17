@@ -2,7 +2,7 @@
   <div>
     Hi {{ ctrl.user.email }}
     <div class="user">
-      <img ng-show="ctrl.user.profile.image" class="image" ng-src="{{ctrl.user.profile.image}}"/>
+      <img referrerpolicy="no-referrer" ng-show="ctrl.user.profile.image" class="image" ng-src="{{ctrl.user.profile.image}}"/>
       <div class="column">
         <div class="name">
           {{ ctrl.user.profile.firstname }}
@@ -22,7 +22,7 @@
       <i class="fa fa-minus"></i>
     </div>
     <div class="image">
-      <img ng-show="friend.profile.image" class="image" ng-src="{{friend.profile.image}}"/>
+      <img ng-show="friend.profile.image" referrerpolicy="no-referrer" class="image" ng-src="{{friend.profile.image}}"/>
     </div>
     <div class="column">
       <div class="name">
@@ -46,7 +46,7 @@
       <i class="fa fa-plus"></i>
     </div>
     <div class="image">
-      <img ng-show="friend.profile.image" class="image" ng-src="{{friend.profile.image}}"/>
+      <img ng-show="friend.profile.image" referrerpolicy="no-referrer" class="image" ng-src="{{friend.profile.image}}"/>
     </div>
     <div class="column">
       <div class="name">

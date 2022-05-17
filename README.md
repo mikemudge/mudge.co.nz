@@ -1,6 +1,9 @@
 ### Development
 Uses docker.
 
+To test any docker image
+docker run --rm -it --entrypoint bash <image>
+
 To build:
 docker-compose build
 

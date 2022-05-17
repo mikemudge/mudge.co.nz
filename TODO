@@ -1,2 +1,0 @@
-Better errors when scope or client is bad (invalid basic auth?)
-??? Might be done, handles GOOGLE_CLIENT_ID change now?

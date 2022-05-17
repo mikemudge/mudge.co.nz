@@ -44,9 +44,6 @@ var MainController = function($scope) {
         weakMagnitude: 1.0,
       });
 
-      console.log("Switching to gamepad");
-      this.keyControls = new ControllerControls(this.gamepad);
-
       // TODO hook up controls on join?
     }.bind(this));
   }
@@ -72,10 +69,8 @@ var MainController = function($scope) {
   // this.scene.add(this.fractal());
 
   if (this.gamepad) {
-    console.log("Using gamepad");
     this.keyControls = new ControllerControls(this.gamepad);
   } else {
-    console.log("Using keyboard");
     this.keyControls = new KeyControls({
       // WASD
       left: 65,

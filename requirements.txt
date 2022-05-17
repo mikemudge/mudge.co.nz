@@ -23,9 +23,6 @@ werkzeug==0.16.1
 # For running prod.
 uwsgi
 
-#Local https development
-pyopenssl
-
 # For sentry
 raven
 blinker

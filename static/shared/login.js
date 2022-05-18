@@ -83,7 +83,7 @@ LoginService.prototype.googleScriptReady = function() {
 
     // TODO google isn't attempted here, so rejecting the promise so apps can show a login button.
     // We have login access for mudge.co.nz so didn't attempt google.
-    this.googleAuto.reject('Access token available, not using google');
+    this.googleAuto.reject('Not attempted, access token for mudge.co.nz already available.');
     return;
   }
 
@@ -165,8 +165,10 @@ LoginService.prototype.ensureLoggedIn = function() {
   }.bind(this), function(err) {
     // Login failed, will need to display the google button.
     this.showGoogleButton();
+
     // Depending on the page being /login a button will be rendered for the user to click.
     // This will redirect if the page is not already /login.
+    // TODO this could be improved on, but requires some app specific login code.
     this.$location.path("/login");
 
     // Return a promise which will resolve after a manual login happens.
@@ -310,7 +312,7 @@ LoginService.prototype.loadFromStorage = function() {
 
   var remaining = this.currentAccess.exp - Date.now() / 1000
   remaining = remaining.toFixed();
-  this.currentStatus = "Found login " + this.currentAccess.user.email + " with " + remaining + " seconds remaining";
+  this.currentStatus = "Found login " + this.currentAccess.user.email + " for " + remaining + " more seconds";
 
   // Create a User object with the local user data.
   var user = new this.User(this.currentAccess.user);
@@ -372,6 +374,14 @@ var LoginController = function(loginService, $location, $scope) {
   this.currentAccess = loginService.currentAccess;
   this.currentUser = loginService.user;
 
+  this.currentApp = config.appName;
+  if (!this.currentApp) {
+    // Don't show header "Back" on this page.
+    this.home = true;
+  }
+  // Loads once the google auth completes.
+  this.googleUser = null;
+
   // This is used to track the sequence of events which happen.
   this.debug = [
     "Checking authentication"
@@ -388,6 +398,7 @@ var LoginController = function(loginService, $location, $scope) {
 
   // This promise is only resolved if a google user is available.
   loginService.google.promise.then(function(gUser) {
+    this.googleUser = gUser;
     this.debug.push("Google user available: " + gUser.email);
   }.bind(this), function(err) {
     this.debug.push("Google User not available: " + err)
@@ -421,6 +432,7 @@ LoginController.prototype.logout = function() {
 
   // Update the controllers view of the user.
   this.currentUser = this.loginService.user;
+  this.currentAccess = this.loginService.currentAccess;
 }
 
 angular.module('mmLogin', [

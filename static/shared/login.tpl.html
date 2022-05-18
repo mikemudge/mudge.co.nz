@@ -2,21 +2,30 @@
   <div class="header" ng-include="'/static/shared/templates/header.tpl.html'">
   </div>
 
+  <p ng-show="ctrl.currentApp && ctrl.currentUser.email">
+    <a class="capitalize" href=".">Back to the {{ ctrl.currentApp }} Home Page</a>
+  </p>
   <div>
-    <h4>Status</h4>
-    <p>{{ ctrl.loginService.currentStatus }}</p>
-    <p>
-      Mudge.co.nz access: {{ ctrl.currentAccess.scopes }}
-    </p>
-    <p>
-      Google login: {{ ctrl.loginService.googleStatus }}
-    </p>
-    <hr>
+    <p> Login Options </p>
+    <div ng-show="ctrl.currentUser.email">
+      <p>
+      You are logged in as {{ ctrl.currentUser.email }}
+      </p>
+    </div>
+    <div ng-hide="ctrl.currentUser.email">
+      <p>
+        You are not logged into mudge.co.nz
+      </p>
+      <p ng-hide="ctrl.googleUser">
+        Login using google to authenticate your user.
+      </p>
+    </div>
+    <div ng-show="ctrl.googleLoginButton">
+      <div id="googleLoginButton"></div>
+    </div>
   </div>
 
-  <div ng-show="ctrl.googleLoginButton">
-    <div id="googleLoginButton"></div>
-  </div>
+  <hr />
 
   <div class="clickable" ng-click="ctrl.advanced=!ctrl.advanced">
     <span ng-hide="ctrl.advanced">Show</span>
@@ -26,6 +35,13 @@
 
   <div ng-show="ctrl.advanced">
     <hr>
+    <h4>Mudge.co.nz</h4>
+    <p> status: {{ ctrl.loginService.currentStatus }}</p>
+    <p> scopes: {{ ctrl.currentAccess.scopes }}</p>
+    <hr>
+    <h4>Google</h4>
+    <p> status: {{ ctrl.loginService.googleStatus }}</p>
+
     <div> Actions </div>
     <div class="button" ng-click="ctrl.logout()">
       Logout

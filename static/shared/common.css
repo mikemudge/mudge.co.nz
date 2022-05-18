@@ -39,6 +39,10 @@ pre {
   opacity: 0.8;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .nowrap {
   white-space: nowrap;
 }

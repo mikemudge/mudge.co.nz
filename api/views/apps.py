@@ -98,7 +98,7 @@ apps['bomberman'] = {
 # }
 apps['user'] = {
     'img': 'user.png',
-    'tags': ['font-awesome', 'login', 'api']
+    'tags': ['font-awesome', 'login', 'api', 'common']
 }
 apps['poker'] = {
     'img': 'poker.png',

@@ -22,9 +22,8 @@ var MainController = function($scope) {
   this.renderer.setSize( window.innerWidth, window.innerHeight );
 
   // TODO enable left + right axes, but not up+down?
-  // TODO set 
   this.humanControls = new GameControls({
-    'debug': true
+    // 'debug': true
   });
   this.humanControls.init();
 

@@ -31,6 +31,8 @@ def login():
     app = Angular('user')
     app.setupFolder('static/user')
     app.addLogin()
+    # This means the app won't link to the "home" page.
+    app.config['appName'] = None;
     return app.render()
 
 @main_bp.route('/error/')

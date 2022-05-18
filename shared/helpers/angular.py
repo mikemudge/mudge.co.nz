@@ -19,6 +19,7 @@ class Angular():
         self.styles = []
         self.config = {
             'basePath': '/static/%s/' % self.appName,
+            'appName': self.appName,
             'version': self.version,
             'API_URL': current_app.config.get('API_URL'),
             'DEBUG': current_app.config.get('DEBUG'),

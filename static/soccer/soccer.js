@@ -194,8 +194,9 @@ Ball.prototype.draw = function(ctx) {
   ctx.lineWidth = 0;
 }
 
-var KeyControls = function(keySettings, game, team) {
-  this.keys = keySettings;
+var HumanControls = function(controls, game, team) {
+  this.controls = controls;
+  this.game = game;
   this.team = team;
   this.player = team.players[0];
   this.moveTypes = [
@@ -205,35 +206,23 @@ var KeyControls = function(keySettings, game, team) {
   this.moveTypeIndex = 1;
   this.moveControl = this.moveTypes[this.moveTypeIndex];
 }
-KeyControls.down = {};
 
-KeyControls.prototype.update = function() {
-    var arrows = {
-    'up': KeyControls.down[this.keys.up],
-    'down': KeyControls.down[this.keys.down],
-    'left': KeyControls.down[this.keys.left],
-    'right': KeyControls.down[this.keys.right],
-    'switchControls': KeyControls.down[this.keys.switchControls],
-  };
+HumanControls.prototype.update = function() {
+  var arrows = this.controls.get();
+
+  // TODO implement named actions so this can work.
   if (arrows.switchControls) {
     this.moveTypeIndex = (this.moveTypeIndex + 1) % 2;
     this.moveControl = this.moveTypes[this.moveTypeIndex];
   }
+
+  if (arrows.pause) {
+    // TODO doesn't show the popup? Probably needs a function with a scope apply.
+    // Can't pause from within the game currently, no access to scope, nothing watching.
+  }
+
   this.moveControl.move(this.player, arrows);
-};
-
-KeyControls.keyUp = function(e) {
-  var key = e.keyCode ? e.keyCode : e.which;
-  KeyControls.down[key] = false;
 }
-window.onkeyup = KeyControls.keyUp;
-
-KeyControls.keyDown = function(e) {
-  var key = e.keyCode ? e.keyCode : e.which;
-  KeyControls.down[key] = true;
-}
-window.onkeydown = KeyControls.keyDown;
-
 
 var IceMove = function(options) {
   this.options = options
@@ -242,16 +231,16 @@ var IceMove = function(options) {
 // Move like you are on ice.
 IceMove.prototype.move = function(player, keys) {
   if (keys.left) {
-    player.vx -= this.options.acceleration;
+    player.vx -= keys.left * this.options.acceleration;
   }
   if (keys.up) {
-    player.vy -= this.options.acceleration;
+    player.vy -= keys.up * this.options.acceleration;
   }
   if (keys.right) {
-    player.vx += this.options.acceleration;
+    player.vx += keys.right * this.options.acceleration;
   }
   if (keys.down) {
-    player.vy += this.options.acceleration;
+    player.vy += keys.down * this.options.acceleration;
   }
 };
 
@@ -261,18 +250,18 @@ var CarMove = function(options) {
 // Move like a car.
 CarMove.prototype.move = function(player, keys) {
   if (keys.left) {
-    player.ang -= this.options.turn_speed;
+    player.ang -= keys.left * this.options.turn_speed;
   }
   if (keys.right) {
-    player.ang += this.options.turn_speed;
+    player.ang += keys.right * this.options.turn_speed;
   }
   if (keys.up) {
-    player.vx += Math.sin(player.ang) * this.options.acceleration;
-    player.vy -= Math.cos(player.ang) * this.options.acceleration;
+    player.vx += Math.sin(player.ang) * keys.up * this.options.acceleration;
+    player.vy -= Math.cos(player.ang) * keys.up * this.options.acceleration;
   }
   if (keys.down) {
-    player.vx -= Math.sin(player.ang) * this.options.acceleration;
-    player.vy += Math.cos(player.ang) * this.options.acceleration;
+    player.vx -= Math.sin(player.ang) * keys.down * this.options.acceleration;
+    player.vy += Math.cos(player.ang) * keys.down * this.options.acceleration;
   }
 };
 
@@ -350,20 +339,33 @@ var SoccerGame = function(canvas) {
   this.leftTeam = new Team('red', this);
   this.rightTeam = new Team('#8080FF', this);
 
+  this.gameControls = new GameControls({
+    'controller': {
+      'directions': 'stick'
+    },
+    'keys': {
+      left: 37,
+      up: 38,
+      right: 39,
+      down: 40,
+      // TODO this "action" is not currently supported.
+      switchControls: 32,
+    }
+  });
+
+  // There should probably be a builder for controls setup?
+  // registerWASD?
+  // registerDirections() keys and controller?
+  // Controller can have racing directions triggers + analog steering.
+  // Controller can have regular directions using analog stick.
+  // addAction('switchControls')
+
+  this.gameControls.init();
+  // TODO need to support 2 player.
+
   this.controls = [];
-  this.controls.push(new KeyControls({
-    left: 37,
-    up: 38,
-    right: 39,
-    down: 40,
-    switchControls: 32,
-  }, this, this.leftTeam));
-  // this.controls.push(new KeyControls({
-  //   left: 65,
-  //   up: 87,
-  //   right: 68,
-  //   down: 83
-  // }));
+  // Push a wrapper which can convert control inputs to the game.
+  this.controls.push(new HumanControls(this.gameControls, this, this.leftTeam));
   this.controls.push(new AIControls(this, this.rightTeam));
   // Add controls for each team??
 };

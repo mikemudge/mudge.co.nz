@@ -21,32 +21,12 @@ var MainController = function($scope) {
   this.renderer = new THREE.WebGLRenderer({'canvas': canvas, antialias: true});
   this.renderer.setSize( window.innerWidth, window.innerHeight );
 
-  gamepads = navigator.getGamepads();
-  console.log(gamepads);
-  if (gamepads[0]) {
-    this.gamepad = gamepads[0];
-    console.log("Rumble");
-    this.gamepad.vibrationActuator.playEffect("dual-rumble", {
-      duration: 1000,
-      weakMagnitude: 1.0,
-      strongMagnitude: 1.0
-    });
-  } else {
-    // Add a listener for gamepad connections.
-    window.addEventListener("gamepadconnected", function(event) {
-      this.gamepad = event.gamepad;
-      console.log("Game Pad connected", this.gamepad);
-      // A little rumble to show you it connected.
-      console.log("Rumble");
-      this.gamepad.vibrationActuator.playEffect("dual-rumble", {
-        duration: 1000,
-        strongMagnitude: 1.0,
-        weakMagnitude: 1.0,
-      });
-
-      // TODO hook up controls on join?
-    }.bind(this));
-  }
+  // TODO enable left + right axes, but not up+down?
+  // TODO set 
+  this.humanControls = new GameControls({
+    'debug': true
+  });
+  this.humanControls.init();
 
   this.scene = new THREE.Scene();
 
@@ -68,17 +48,6 @@ var MainController = function($scope) {
 
   // this.scene.add(this.fractal());
 
-  if (this.gamepad) {
-    this.keyControls = new ControllerControls(this.gamepad);
-  } else {
-    this.keyControls = new KeyControls({
-      // WASD
-      left: 65,
-      up: 87,
-      right: 68,
-      down: 83
-    });
-  }
   this.controls = new THREE.OrbitControls(this.camera, canvas);
   this.controls.maxDistance = 3;
   this.controls.minDistance = 3;
@@ -176,7 +145,7 @@ MainController.prototype.render = function(time) {
       speed *= -1
     }
 
-    this.move(this.keyControls.get(), speed);
+    this.move(this.humanControls.get(), speed);
 
     this.cube.position.x += this.vx;
     this.cube.position.z += this.vz;
@@ -275,76 +244,6 @@ MainController.prototype.getAim = function() {
   // objects needs to contain the floor.
   var intersects = raycaster.intersectObjects( objects, false /* recurse */);
 }
-
-var ControllerControls = function() {
-  this.lastButton3 = false;
-}
-
-ControllerControls.prototype.get = function() {
-  // Need to re-get each time, values don't change otherwise.
-  var gamepad = navigator.getGamepads()[0];
-  result = {
-    'up': gamepad.buttons[7].value,
-    'down': gamepad.buttons[6].value,
-    'left': gamepad.buttons[14].value,
-    'right': gamepad.buttons[15].value
-  };
-  if (gamepad.axes[0] < 0.1) {
-    result['left'] = -gamepad.axes[0];
-  }
-  if (gamepad.axes[0] > 0.1) {
-    result['right'] = gamepad.axes[0];
-  }
-
-  if (gamepad.buttons[3].pressed && !this.lastButton3) {
-    // If the state of button 3 changed from off to on.
-    result['toggleView'] = 1;
-  }
-  this.lastButton3 = gamepad.buttons[3].pressed;
-
-  if (gamepad.buttons[9].pressed) {
-    result['pause'] = 1;
-  }
-  // Handy for figuring out which is which.
-  // for (i=0;i<=15;i++) {
-  //   if (gamepad.buttons[i].pressed) {
-  //     console.log(i);
-  //   }
-  // }
-
-  return result;
-};
-
-var KeyControls = function(keySettings) {
-  this.keys = keySettings;
-}
-KeyControls.down = {};
-
-KeyControls.prototype.setTeam = function(team) {
-  this.team = team;
-  this.player = team.players[0];
-}
-
-KeyControls.prototype.get = function() {
-  return {
-    'up': KeyControls.down[this.keys.up],
-    'down': KeyControls.down[this.keys.down],
-    'left': KeyControls.down[this.keys.left],
-    'right': KeyControls.down[this.keys.right]
-  };
-};
-
-KeyControls.keyUp = function(e) {
-  var key = e.keyCode ? e.keyCode : e.which;
-  KeyControls.down[key] = false;
-}
-window.onkeyup = KeyControls.keyUp;
-
-KeyControls.keyDown = function(e) {
-  var key = e.keyCode ? e.keyCode : e.which;
-  KeyControls.down[key] = true;
-}
-window.onkeydown = KeyControls.keyDown;
 
 angular.module('racer', [
   'ngRoute',

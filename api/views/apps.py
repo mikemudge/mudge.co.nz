@@ -72,7 +72,10 @@ apps['seconds'] = {
 }
 apps['soccer'] = {
     'img': 'soccer.png',
-    'tags': ['common']
+    'tags': ['common'],
+    'scripts': [
+        '/static/shared/gamecontrols.js',
+    ]
 }
 apps['predator'] = {
     'img': 'predator.png',
@@ -111,6 +114,7 @@ apps['racer'] = {
     'img': 'racer.png',
     'tags': ['threejs', 'common'],
     'scripts': [
+        '/static/shared/gamecontrols.js',
         '/static/js/three.js/BinaryLoader.js',
         '/static/racer/cars.js'
     ]

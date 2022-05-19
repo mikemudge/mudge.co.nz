@@ -47,62 +47,167 @@ GameControls.prototype.init = function() {
   }
   controllerSettings.debug = this.config.debug;
 
+  this.controllers = [];
+
   // Check all the gamepads immediately.
   var gamepads = navigator.getGamepads();
-  if (this.debug) {
+  if (this.config.debug) {
   	// Don't know why, but this can contain nulls.
   	console.log(gamepads);
 	}
   if (gamepads[0]) {
     // Rumble if one is found.
-    console.log("Rumble");
-    gamepads[0].vibrationActuator.playEffect("dual-rumble", {
-      duration: 1000,
-      weakMagnitude: 1.0,
-      strongMagnitude: 1.0
-    });
+    this.rumble(gamepads[0]);
     // Then register it to be used.
-	  this.controller = new ControllerControls(controllerSettings);
+	  this.controllers.push(new ControllerControls(0, controllerSettings));
   } else {
   	// TODO perhaps we should always do this, incase additional controllers are added later?
     // Add a listener for gamepad connections.
     window.addEventListener("gamepadconnected", function(event) {
       console.log("Game Pad connected", event.gamepad);
+
+      // standard is good, anything else we might need to calibrate keys.
+      if (event.gamepad.mapping !== 'standard') {
+        console.log("Game Pad mapping is not standard '" + event.gamepad.mapping + "'");
+        // Support other controllers?
+        controllerSettings = {
+          // These aren't correct, but we can't use 15 if that index doesn't exist.
+          // I think the axes are used for d-pad on this controller.
+          'up': 1,
+          'down': 2,
+          'left': 3,
+          'right': 4,
+          'debug': this.config.debug
+        }
+      }
+
       // A little rumble to show you it connected.
-      console.log("Rumble");
-      event.gamepad.vibrationActuator.playEffect("dual-rumble", {
-        duration: 1000,
-        strongMagnitude: 1.0,
-        weakMagnitude: 1.0,
-      });
+      this.rumble(event.gamepad);
 
       // Hook up controls to use this.
-		  this.controller = new ControllerControls(controllerSettings);
+      // TODO support a list of controllers?
+      console.log("Setting controller", event.gamepad.id);
+		  this.controllers[0] = (new ControllerControls(event.gamepad.index, controllerSettings));
     }.bind(this));
   }
+}
+
+GameControls.prototype.rumble = function(gamepad) {
+  if (!gamepad.vibrationActuator) {
+    console.log("This gamepad doesn't support rumble");
+    return;
+  }
+  console.log("Rumble");
+  gamepad.vibrationActuator.playEffect("dual-rumble", {
+    duration: 1000,
+    weakMagnitude: 1.0,
+    strongMagnitude: 1.0
+  });
 }
 
 // TODO the current interface here could probably be improved on.
 // Returns a map of "actions".
 GameControls.prototype.get = function() {
-	if (this.controller) {
-		// TODO support both keys and controller at the same time?
-		return this.controller.get();
+	if (this.controllers) {
+		// TODO support both keys and controllers at the same time?
+    var result = {};
+    this.controllers.forEach((c) => {
+      // TODO combine all results?
+      result = c.get();
+    })
+		return result;
 	}
 	return this.keyControls.get();
 
 }
 
 // TODO use these to map inputs to user actions.
-var ControllerControls = function(controllerSettings) {
+var ControllerControls = function(gamepadIndex, controllerSettings) {
   this.controllerSettings = controllerSettings;
-  this.debug = this.controllerSettings.debug;
+  this.gamepadIndex = gamepadIndex;
+  this.debug = this.controllerSettings.debug || true;
   this.lastButton3 = false;
+
+  // There is a standard controller button mapping.
+  // See https://w3c.github.io/gamepad/#remapping
+  // Not all controllers use this, so may need to support calibration for some?
+  this.standardButtons = [
+    'A',
+    'B',
+    'X',
+    'Y',
+    'L1',
+    'R1',
+    'L2',
+    'R2',
+    'select',
+    'start',
+    'L3',
+    'R3',
+    'up',
+    'down',
+    'left',
+    'right'
+  ];
+
+  // Negative is up/left, positive is down/right.
+  this.standardAxes = [
+    'horizontal-left',
+    'vertical-left',
+    'horizontal-right',
+    'vertical-right',
+  ];
+
+  // Non standard?
+  this.nonStandardButtons = [
+    'A',
+    'B',
+    '?', // Nothing at 2
+    'X',
+    'Y',
+    '?', // Nothing at 5
+    'L1',
+    'R1',
+    'L2',
+    'R2',
+    'select',
+    'start',
+    '?', // Nothing at 12
+    'L3',
+    'R3',
+  ];
+  // Dpad is handled in axes.
+
+  this.nonStandardAxes = [
+    'horizontal-left',
+    'vertical-left',
+    'horizontal-right',
+    'L2 strength', // -1 nothing, 0 medium, 1 full.
+    'R2 strength', // -1 nothing, 0 medium, 1 full.
+    'vertical-right',
+    '6', // Always 0
+    '7', // Always 0
+    '8', // Always 0
+    'D-Pad somehow?'
+  ];
+
+  // D-Pad values (axes[9])
+  // -1 is up.
+  // 1 is up + left
+  // 0.714 is left
+  // 0.429 is left down
+  // 0.1428 is down
+  // -0.1428 is down right
+  // -0.429 is right
+  // -0.714 is up right
+  // 3.286 is center.
+
+
 }
 
 ControllerControls.prototype.get = function() {
-  // Need to re-get each time, values don't change otherwise.
-  var gamepad = navigator.getGamepads()[0];
+  // In chrome, the gamepad objects change, so re-get each time.
+  var gamepad = navigator.getGamepads()[this.gamepadIndex];
 
   result = {
     'up': gamepad.buttons[this.controllerSettings['up']].value,
@@ -137,10 +242,21 @@ ControllerControls.prototype.get = function() {
     result['pause'] = 1;
   }
   // Handy for figuring out which is which.
+  // Different controllers have different button mappings?
   if (this.debug) {
-    for (i=0;i<=15;i++) {
+    console.log(gamepad.axes);
+
+    for (i=0;i<gamepad.axes.length;i++) {
+      if (gamepad.axes[i] == 1 || gamepad.axes[i] == -1) {
+        if (i != 3 && i != 4) {
+          console.log("axes", i, this.standardAxes[i], "=", gamepad.axes[i])
+        }
+      }
+    }
+
+    for (i=0;i<gamepad.buttons.length;i++) {
       if (gamepad.buttons[i].pressed) {
-        console.log(i);
+        console.log("button", i, this.standardButtons[i], "pressed", gamepad.buttons[i].value);
       }
     }
   }

@@ -340,7 +340,7 @@ var SoccerGame = function(canvas) {
   this.rightTeam = new Team('#8080FF', this);
 
   this.gameControls = new GameControls({
-    // 'debug': true,
+    'debug': true,
     'controller': {
       'directions': 'stick'
     },

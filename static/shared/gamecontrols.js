@@ -108,7 +108,7 @@ GameControls.prototype.rumble = function(gamepad) {
 // TODO the current interface here could probably be improved on.
 // Returns a map of "actions".
 GameControls.prototype.get = function() {
-	if (this.controllers) {
+	if (this.controllers.length) {
 		// TODO support both keys and controllers at the same time?
     var result = {};
     this.controllers.forEach((c) => {

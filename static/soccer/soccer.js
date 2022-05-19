@@ -12,11 +12,15 @@ var Player = function(team, game) {
   this.game = game;
   this.radius = 10;
   this.line_length = this.radius * 1.8;
-  this.x = (Math.random() * 18 + 1) * game.canvas.width / 20;
-  this.y = (Math.random() * 18 + 1) * game.canvas.height / 20;
+  this.pos = createVector(
+    (Math.random() * 18 + 1) * game.canvas.width / 20,
+    (Math.random() * 18 + 1) * game.canvas.height / 20);
+
+  this.vel = createVector(0, 0);
+
+  // Use heading instead of ang.
+  // rotate(this.vel.heading());
   this.ang = 0;
-  this.vx = 0;
-  this.vy = 0;
 };
 Player.ACCELERATION = 0.25;
 Player.FRICTION = 0.25;
@@ -24,64 +28,59 @@ Player.BOUNCE_BACK = 0.5;
 Player.KICK_SPEED = 2;
 
 Player.prototype.updatePosition = function() {
-  this.x += this.vx;
-  this.y += this.vy;
+  this.pos.add(this.vel);
 
-  // Slow down;
-  this.vx *= (1 - 0.2 * Player.FRICTION);
-  this.vy *= (1 - 0.2 * Player.FRICTION);
-  if (this.vx < 0.01 && this.vx > -0.01) {
-    this.vx = 0;
-  }
-  if (this.vy < 0.01 && this.vy > -0.01) {
-    this.vy = 0;
-  }
+  this.vel.mult(1 - 0.2 * Player.FRICTION);
+
+  // TODO apply friction differently?
+  // let drag = this.vel.copy().normalize().mult(-1);
+  // drag.setMag(.3 * this.vel.magSq())
+  // this.vel.add(drag);
 }
 
 Player.prototype.update = function() {
   this.updatePosition();
 
   // crash?
-  if (this.x - this.radius < this.game.field.left && this.vx < 0) {
-    this.vx *= -Player.BOUNCE_BACK;
+  if (this.pos.x - this.radius < this.game.field.left && this.vel.x < 0) {
+    this.vel.x *= -Player.BOUNCE_BACK;
   }
-  if (this.x + this.radius > this.game.field.left + this.game.field.width && this.vx > 0) {
-    this.vx *= -Player.BOUNCE_BACK;
+  if (this.pos.x + this.radius > this.game.field.left + this.game.field.width && this.vel.x > 0) {
+    this.vel.x *= -Player.BOUNCE_BACK;
   }
-  if (this.y - this.radius < this.game.field.top && this.vy < 0) {
-    this.vy *= -Player.BOUNCE_BACK;
+  if (this.pos.y - this.radius < this.game.field.top && this.vel.y < 0) {
+    this.vel.y *= -Player.BOUNCE_BACK;
   }
-  if (this.y + this.radius > this.game.field.top + this.game.field.height && this.vy > 0) {
-    this.vy *= -Player.BOUNCE_BACK;
+  if (this.pos.y + this.radius > this.game.field.top + this.game.field.height && this.vel.y > 0) {
+    this.vel.y *= -Player.BOUNCE_BACK;
   }
 
-  if (this.x - this.game.ball.x < this.radius + this.game.ball.radius &&
-      this.x - this.game.ball.x > -this.radius - this.game.ball.radius &&
-      this.y - this.game.ball.y < this.radius + this.game.ball.radius &&
-      this.y - this.game.ball.y > -this.radius - this.game.ball.radius) {
+  if (this.pos.x - this.game.ball.pos.x < this.radius + this.game.ball.radius &&
+      this.pos.x - this.game.ball.pos.x > -this.radius - this.game.ball.radius &&
+      this.pos.y - this.game.ball.pos.y < this.radius + this.game.ball.radius &&
+      this.pos.y - this.game.ball.pos.y > -this.radius - this.game.ball.radius) {
     // Kick physics?
-    this.game.ball.vx *= 0.8;
-    this.game.ball.vy *= 0.8;
-    this.game.ball.vx += this.vx * Player.KICK_SPEED;
-    this.game.ball.vy += this.vy * Player.KICK_SPEED;
+    this.game.ball.vel.mult(0.8);
+    kick = this.vel.copy().mult(Player.KICK_SPEED)
+    this.game.ball.vel.add(kick);
 
     // slow down when you kick the ball.
-    this.vx *= -Player.BOUNCE_BACK;
-    this.vy *= -Player.BOUNCE_BACK;
+    this.vel.add(this.vel.copy().mult(-Player.BOUNCE_BACK));
   }
 }
 
 Player.prototype.draw = function(ctx) {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = this.team.color;
-  ctx.fill();
-  ctx.lineWidth = 4;
-  ctx.beginPath();
-  ctx.moveTo(this.x, this.y);
-  ctx.lineTo(this.x + Math.sin(this.ang) * this.line_length, this.y - Math.cos(this.ang) * this.line_length);
-  ctx.strokeStyle = this.team.color;
-  ctx.stroke();
+  fill(this.team.color);
+  circle(this.pos.x, this.pos.y, this.radius * 2);
+
+  // TODO show the direction with a line?
+  // Need a vector for this.
+  // ctx.lineWidth = 4;
+  // ctx.beginPath();
+  // ctx.moveTo(this.x, this.y);
+  // ctx.lineTo(this.x + Math.sin(this.ang) * this.line_length, this.y - Math.cos(this.ang) * this.line_length);
+  // ctx.strokeStyle = this.team.color;
+  // ctx.stroke();
 }
 
 var Team = function(color, game) {
@@ -119,32 +118,31 @@ var Field = function(params) {
 
 Field.prototype.draw = function(ctx) {
   // Draw Field
-  ctx.strokeStyle = this.lineColor;
-  ctx.lineWidth = 1;
-  goalDepth = this.halfGoalWidth;
-  ctx.rect(this.left, this.top, this.width, this.height);
-  ctx.rect(this.left - goalDepth, this.goalTop, goalDepth, this.halfGoalWidth * 2);
-  ctx.rect(this.left + this.width, this.goalTop, goalDepth, this.halfGoalWidth * 2);
-  ctx.stroke();
+  stroke(255)
+  noFill();
+  var goalDepth = this.halfGoalWidth;
+  rect(this.left, this.top, this.width, this.height);
+  rect(this.left - goalDepth, this.goalTop, goalDepth, this.halfGoalWidth * 2);
+  rect(this.left + this.width, this.goalTop, goalDepth, this.halfGoalWidth * 2);
 }
 
 Field.prototype.collide = function(obj) {
-  if (obj.y - obj.radius < this.top && obj.vy < 0) {
-    obj.vy *= -Ball.BOUNCE_BACK;
+  if (obj.pos.y - obj.radius < this.top && obj.vel.y < 0) {
+    obj.vel.y *= -Ball.BOUNCE_BACK;
   }
-  if (obj.y + obj.radius > this.top + this.height && obj.vy > 0) {
-    obj.vy *= -Ball.BOUNCE_BACK;
+  if (obj.pos.y + obj.radius > this.top + this.height && obj.vel.y > 0) {
+    obj.vel.y *= -Ball.BOUNCE_BACK;
   }
-  if (obj.y > this.goalTop && obj.y < this.goalBottom) {
+  if (obj.pos.y > this.goalTop && obj.pos.y < this.goalBottom) {
     // No bouncing happens if the ball is in the goal space.
     // TODO should radius be used for this?
     return;
   }
-  if (obj.x - obj.radius < this.left && obj.vx < 0) {
-    obj.vx *= -Ball.BOUNCE_BACK;
+  if (obj.pos.x - obj.radius < this.left && obj.vel.x < 0) {
+    obj.vel.x *= -Ball.BOUNCE_BACK;
   }
-  if (obj.x + obj.radius > this.left + this.width && obj.vx > 0) {
-    obj.vx *= -Ball.BOUNCE_BACK;
+  if (obj.pos.x + obj.radius > this.left + this.width && obj.vel.x > 0) {
+    obj.vel.x *= -Ball.BOUNCE_BACK;
   }
 }
 
@@ -157,41 +155,33 @@ Field.prototype.inGoal = function(x, y) {
   }
 }
 
-var Ball = function(field, params) {
+var Ball = function(field) {
   this.field = field;
-  this.x = params.x || 50;
-  this.y = params.y || 50;
-  this.vx = 0;
-  this.vy = 0;
-  this.radius = params.radius || 20;
+  this.pos = createVector(this.field.width / 2, this.field.height / 2);
+  this.vel = createVector(0, 0);
+  this.radius = 20;
 }
 Ball.BOUNCE_BACK = 0.8;
 Ball.FRICTION = 0.1;
 
 Ball.prototype.update = function() {
-  this.x += this.vx;
-  this.y += this.vy;
+  this.vel.add(this.acc);
+  this.vel.limit(this.maxSpeed);
 
-  // Slow down;
-  this.vx *= (1 - 0.2 * Ball.FRICTION);
-  this.vy *= (1 - 0.2 * Ball.FRICTION);
-  if (this.vx < 0.01 && this.vx > -0.01) {
-    this.vx = 0;
-  }
-  if (this.vy < 0.01 && this.vy > -0.01) {
-    this.vy = 0;
-  }
+  this.pos.add(this.vel);
 
-  // crash?
+
+  // TODO check friction from coding train.
+  this.vel.mult(1 - 0.2 * Ball.FRICTION);
+
+  // crash into walls
   this.field.collide(this);
 }
 
 Ball.prototype.draw = function(ctx) {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = 'green';
-  ctx.fill();
-  ctx.lineWidth = 0;
+  fill(color(0, 128, 0));
+  noStroke();
+  circle(this.pos.x, this.pos.y, this.radius * 2);
 }
 
 var HumanControls = function(controls, game, team) {
@@ -209,6 +199,8 @@ var HumanControls = function(controls, game, team) {
 
 HumanControls.prototype.update = function() {
   var arrows = this.controls.get();
+
+  console.log("HumanControls", arrows);
 
   // TODO implement named actions so this can work.
   if (arrows.switchControls) {
@@ -231,16 +223,16 @@ var IceMove = function(options) {
 // Move like you are on ice.
 IceMove.prototype.move = function(player, keys) {
   if (keys.left) {
-    player.vx -= keys.left * this.options.acceleration;
+    player.vel.x -= keys.left * this.options.acceleration;
   }
   if (keys.up) {
-    player.vy -= keys.up * this.options.acceleration;
+    player.vel.y -= keys.up * this.options.acceleration;
   }
   if (keys.right) {
-    player.vx += keys.right * this.options.acceleration;
+    player.vel.x += keys.right * this.options.acceleration;
   }
   if (keys.down) {
-    player.vy += keys.down * this.options.acceleration;
+    player.vel.y += keys.down * this.options.acceleration;
   }
 };
 
@@ -256,12 +248,12 @@ CarMove.prototype.move = function(player, keys) {
     player.ang += keys.right * this.options.turn_speed;
   }
   if (keys.up) {
-    player.vx += Math.sin(player.ang) * keys.up * this.options.acceleration;
-    player.vy -= Math.cos(player.ang) * keys.up * this.options.acceleration;
+    player.vel.x += Math.sin(player.ang) * keys.up * this.options.acceleration;
+    player.vel.y -= Math.cos(player.ang) * keys.up * this.options.acceleration;
   }
   if (keys.down) {
-    player.vx -= Math.sin(player.ang) * keys.down * this.options.acceleration;
-    player.vy += Math.cos(player.ang) * keys.down * this.options.acceleration;
+    player.vel.x -= Math.sin(player.ang) * keys.down * this.options.acceleration;
+    player.vel.y += Math.cos(player.ang) * keys.down * this.options.acceleration;
   }
 };
 
@@ -273,12 +265,9 @@ var AIControls = function(game, team) {
 }
 
 AIControls.prototype.update = function() {
-  if (!AIControls.enabled) {
-    return;
-  }
   var b = this.game.ball;
-  dx = b.x - this.player.x;
-  dy = b.y - this.player.y;
+  dx = b.pos.x - this.player.pos.x;
+  dy = b.pos.y - this.player.pos.y;
   // Speed is a fraction of the distance remaining?
   // TODO this is made up, probably can be calculated (PID)?
   // Currently does make the player chase the ball around quite nicely.
@@ -301,43 +290,44 @@ AIControls.prototype.update = function() {
   dvx += .8 * dx;
   dvy += .8 * dy;
 
-  if (this.player.vx < dvx) {
-    this.player.vx += this.options.acceleration;
-  } else if (this.player.vx > dvx) {
-    this.player.vx -= this.options.acceleration;
+  if (this.player.vel.x < dvx) {
+    this.player.vel.x += this.options.acceleration;
+  } else if (this.player.vel.x > dvx) {
+    this.player.vel.x -= this.options.acceleration;
   }
-  if (this.player.vy < dvy) {
-    this.player.vy += this.options.acceleration;
-  } else if (this.player.vy > dvy) {
-    this.player.vy -= this.options.acceleration;
+  if (this.player.vel.y < dvy) {
+    this.player.vel.y += this.options.acceleration;
+  } else if (this.player.vel.y > dvy) {
+    this.player.vel.y -= this.options.acceleration;
   }
 }
 
 var SoccerGame = function(canvas) {
   this.canvas = canvas;
-  this.ctx = canvas.getContext('2d');
 
   this.options = {
-    turn_speed: 0.08
+    turn_speed: 0.08,
+    acceleration: Player.ACCELERATION,
+    friction: Player.FRICTION,
+    bounce: Player.BOUNCE_BACK,
+    kick_speed: Player.KICK_SPEED,
+    ai: true,
   };
   this.field = new Field({
-    left: this.canvas.width / 20,
-    width: this.canvas.width * 18 / 20,
-    top: this.canvas.height / 20,
-    height: this.canvas.height * 18 / 20
+    left: width / 20,
+    width: width * 18 / 20,
+    top: height / 20,
+    height: height * 18 / 20
   });
 
-  this.ball = new Ball(this.field, {
-    x: canvas.width / 2,
-    y: canvas.height / 2
-  });
+  this.ball = new Ball(this.field);
 
   // Init the score to 0 - 0
   this.leftScore = 0;
   this.rightScore = 0;
 
-  this.leftTeam = new Team('red', this);
-  this.rightTeam = new Team('#8080FF', this);
+  this.leftTeam = new Team(color(255, 0, 0), this);
+  this.rightTeam = new Team(color(128, 128, 255), this);
 
   this.gameControls = new GameControls({
     'debug': true,
@@ -371,120 +361,63 @@ var SoccerGame = function(canvas) {
   // Add controls for each team??
 };
 
-SoccerGame.prototype.updateOptions = function(options) {
-  Object.keys(options).forEach(option => this.options[option] = options[option]);
-  console.log('updated options', this.options);
-
-  // TODO manually update each control?
-  AIControls.enabled = options.ai;
-}
-
-SoccerGame.prototype.run = function() {
+SoccerGame.prototype.update = function() {
   // Update the game.
-  this.controls.forEach(control => control.update());
+  for (let control of this.controls) {
+    control.update();
+  }
+
   this.leftTeam.update();
   this.rightTeam.update();
   this.ball.update();
 
-  if (this.field.inGoal(this.ball.x, this.ball.y)) {
-    if (this.ball.x <= this.field.left) {
+  if (this.field.inGoal(this.ball.pos.x, this.ball.pos.y)) {
+    if (this.ball.pos.x <= this.field.left) {
       this.rightScore += 1;
     } else {
       this.leftScore += 1;
     }
     // Reset ball to the center.
-    this.ball = new Ball(this.field, {
-      x: this.canvas.width / 2,
-      y: this.canvas.height / 2
-    });
-  }
-
-
-  // Render the game.
-  this.ctx.fillStyle = 'black';
-  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-  this.ctx.beginPath();
-  this.field.draw(this.ctx);
-  this.ctx.closePath();
-
-  this.ctx.beginPath();
-  this.ball.draw(this.ctx);
-  this.ctx.closePath();
-
-  this.leftTeam.players.forEach(function(player) {
-    player.draw(this.ctx);
-  }, this);
-  this.rightTeam.players.forEach(function(player) {
-    player.draw(this.ctx);
-  }, this);
-
-  this.ctx.fillStyle = 'white';
-  this.ctx.font = "30px Arial";
-  this.ctx.fillText(this.leftScore + " - " + this.rightScore, 10, 50);
-
-  if (!this.pause) {
-    window.requestAnimationFrame(angular.bind(this, this.run));
-  } else {
-    this.stopped = true;
-    console.log('stopped game');
+    this.ball = new Ball(this.field);
   }
 }
 
-function init() {
-  // does the shit it has to.
-  var canvas = document.createElement('canvas');
-  var resizeCanvas = function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+SoccerGame.prototype.draw = function() {
+  this.field.draw();
+  this.ball.draw();
+
+  for (let player of this.leftTeam.players) {
+    player.draw();
   }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas, false);
-
-  document.body.appendChild(canvas);
-  var game = new SoccerGame(canvas);
-  game.run();
-  return game;
-};
-
-
-var PauseController = function(game, $scope) {
-  this.game = game;
-  $scope.game = game;
-  game.pause = true;
-  this.options = {
-    acceleration: Player.ACCELERATION,
-    friction: Player.FRICTION,
-    bounce: Player.BOUNCE_BACK,
-    kick_speed: Player.KICK_SPEED,
-    ai: true,
+  for (let player of this.rightTeam.players) {
+    player.draw();
   }
-  window.addEventListener('blur', function() {
-    game.pause = true;
-    $scope.$apply();
-     //not running full
-  }, false);
+
+  fill(255);
+  textSize(32);
+  text(this.leftScore + " - " + this.rightScore, 10, 50);
 }
 
-PauseController.prototype.start = function() {
-  // game.start???
-  this.game.updateOptions(this.options);
-  this.game.pause = false;
-  this.game.stopped = false;
-  this.game.run();
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  // TODO share a game with angular?
+  game = new SoccerGame({
+    width: windowWidth,
+    height: windowHeight
+  });
+
+  game.options = {};
+}
+
+function draw() {
+  background(0);
+
+  game.update();
+
+  game.draw();
 }
 
 angular.module('soccer', [
   'config',
-  'ngRoute'
 ])
-.controller('PauseController', PauseController)
-.factory('game', function() {
-  return init();
-})
-.config(function($routeProvider, config) {
-  $routeProvider
-    .otherwise({
-      templateUrl: '/static/soccer/soccer.tpl.html',
-    });
-});
 

@@ -72,7 +72,7 @@ apps['seconds'] = {
 }
 apps['soccer'] = {
     'img': 'soccer.png',
-    'tags': ['common'],
+    'tags': ['common', 'p5'],
     'scripts': [
         '/static/shared/gamecontrols.js',
     ]

@@ -244,8 +244,6 @@ ControllerControls.prototype.get = function() {
   // Handy for figuring out which is which.
   // Different controllers have different button mappings?
   if (this.debug) {
-    console.log(gamepad.axes);
-
     for (i=0;i<gamepad.axes.length;i++) {
       if (gamepad.axes[i] == 1 || gamepad.axes[i] == -1) {
         if (i != 3 && i != 4) {

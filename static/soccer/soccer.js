@@ -11,6 +11,7 @@ var Player = function(team, game) {
   this.team = team;
   this.game = game;
   this.radius = 10;
+  this.mass = 1;
   this.line_length = this.radius * 1.8;
   this.pos = createVector(
     (Math.random() * 18 + 1) * game.canvas.width / 20,
@@ -30,12 +31,15 @@ Player.KICK_SPEED = 2;
 Player.prototype.updatePosition = function() {
   this.pos.add(this.vel);
 
-  this.vel.mult(1 - 0.2 * Player.FRICTION);
+  // Surface friction will be proportional to mass.
+  let friction = this.vel.copy().normalize().mult(-1);
+  friction.setMag(0.1 * this.mass)
 
-  // TODO apply friction differently?
-  // let drag = this.vel.copy().normalize().mult(-1);
-  // drag.setMag(.3 * this.vel.magSq())
-  // this.vel.add(drag);
+  // Drag friction is proportional to velocity squared, but much less.
+  // This constraint results in players having a max speed.
+  let drag = this.vel.copy().normalize().mult(-1);
+  drag.setMag(.02 * this.vel.magSq());
+  this.vel.add(drag);
 }
 
 Player.prototype.update = function() {
@@ -83,11 +87,13 @@ Player.prototype.draw = function(ctx) {
   // ctx.stroke();
 }
 
-var Team = function(color, game) {
+var Team = function(color, game, numPlayers) {
   this.color = color;
 
   this.players = [];
-  this.players.push(new Player(this, game));
+  for (i = 0; i < numPlayers; i++) {
+    this.players.push(new Player(this, game));
+  }
 };
 
 Team.prototype.setControl = function(control) {
@@ -160,9 +166,9 @@ var Ball = function(field) {
   this.pos = createVector(this.field.width / 2, this.field.height / 2);
   this.vel = createVector(0, 0);
   this.radius = 20;
+  this.mass = 0.2;
 }
 Ball.BOUNCE_BACK = 0.8;
-Ball.FRICTION = 0.1;
 
 Ball.prototype.update = function() {
   this.vel.add(this.acc);
@@ -171,8 +177,15 @@ Ball.prototype.update = function() {
   this.pos.add(this.vel);
 
 
-  // TODO check friction from coding train.
-  this.vel.mult(1 - 0.2 * Ball.FRICTION);
+  // Surface friction will be proportional to mass.
+  let friction = this.vel.copy().normalize().mult(-1);
+  friction.setMag(0.1 * this.mass)
+
+  // Drag friction is proportional to velocity squared, but much less.
+  // This constraint results in the balls max speed.
+  let drag = this.vel.copy().normalize().mult(-1);
+  drag.setMag(.005 * this.vel.magSq());
+  this.vel.add(drag);
 
   // crash into walls
   this.field.collide(this);
@@ -199,8 +212,6 @@ var HumanControls = function(controls, game, team) {
 
 HumanControls.prototype.update = function() {
   var arrows = this.controls.get();
-
-  console.log("HumanControls", arrows);
 
   // TODO implement named actions so this can work.
   if (arrows.switchControls) {
@@ -259,52 +270,85 @@ CarMove.prototype.move = function(player, keys) {
 
 var AIControls = function(game, team) {
   this.game = game;
-  this.options = game.options;
   this.team = team;
-  this.player = team.players[0];
+  // TODO assign "roles" to players so they don't all do exactly the same AI.
+  this.players = team.players;
+  this.maxSpeed = 5;
+  this.maxForce = 0.2
 }
 
 AIControls.prototype.update = function() {
-  var b = this.game.ball;
-  dx = b.pos.x - this.player.pos.x;
-  dy = b.pos.y - this.player.pos.y;
-  // Speed is a fraction of the distance remaining?
-  // TODO this is made up, probably can be calculated (PID)?
-  // Currently does make the player chase the ball around quite nicely.
-  // However vx and vy are too independent, which means the ball is always hit at 90 degrees.
-  dvx = 0;
-  dvy = 0;
+  for (player of this.players) {
+    this.updatePlayer(player);
+    // this.updateSimple(player);
+  }
+}
 
-  // TODO use a gradient of these things?
-  // This will circle the ball;
-  if (dx < 100) {
-    if (dy < 0) {
-      dvx += .8 * dy;
-      dvy += -.8 * dx;
+AIControls.prototype.seek = function(player, target) {
+  let force = p5.Vector.sub(target, player.pos);
+  force.limit(this.maxSpeed);
+  force.sub(player.vel)
+  force.limit(this.maxForce)
+  return force
+}
+
+AIControls.prototype.updateSimple = function(player) {
+  var b = this.game.ball;
+
+  // Very simple go to the ball logic with some noise to make it more interesting.
+  force = this.seek(player, b.pos);
+  force.add(p5.Vector.random2D().mult(.2));
+  force.limit(this.maxForce);
+  player.vel.add(force);
+}
+
+AIControls.prototype.updatePlayer = function(player) {
+  var b = this.game.ball;
+
+  // Towards the ball from the player.
+  let force = p5.Vector.sub(b.pos, player.pos);
+  force.limit(this.maxSpeed);
+
+  // Keep things interesting by adding some noise.
+  force.add(p5.Vector.random2D());
+
+  // Towards the "goal" from the ball.
+  // TODO this could be improved to be more directional than just "right"
+  goalwards = createVector(1, 0);
+  goalwards.setMag(this.maxSpeed);
+  // TODO use this to determine the "wrong side" of the ball?
+
+  if (force.x < b.radius) {
+    // On the wrong side of the ball, need to go around it.
+    if (force.y < 0) {
+      // below the ball, go around the bottom of it.
+      around = createVector(force.y, force.x * -1);
+      around.setMag(this.maxSpeed);
+      force.add(around);
     } else {
-      dvx += -.8 * dy;
-      dvy += .8 * dx;
+      // above the ball, go around the top of it.
+      around = createVector(force.y * -1, force.x);
+      around.setMag(this.maxSpeed);
+      force.add(around);
     }
   }
-  // This will move towards the ball.
-  dvx += .8 * dx;
-  dvy += .8 * dy;
 
-  if (this.player.vel.x < dvx) {
-    this.player.vel.x += this.options.acceleration;
-  } else if (this.player.vel.x > dvx) {
-    this.player.vel.x -= this.options.acceleration;
-  }
-  if (this.player.vel.y < dvy) {
-    this.player.vel.y += this.options.acceleration;
-  } else if (this.player.vel.y > dvy) {
-    this.player.vel.y -= this.options.acceleration;
-  }
+  // Now force is set to the desired velocity, subtract our current velocity to get the delta (accelerationo to apply).
+
+  force.sub(player.vel);
+
+  // Limit the force to the maximum force, then apply it.
+  // Assumes 1 second per frame, and 1 mass (a = F / m) and (v = a * t)
+  force.limit(this.maxForce);
+  player.vel.add(force);
 }
 
 var SoccerGame = function(canvas) {
   this.canvas = canvas;
 
+  // TODO instead of these we should be able to use mass + air resistance constants.
+  // Ball mass being low will mean heavier players will transfer more speed.
+  // Ball air resistance being low will mean the ball can move faster than players.
   this.options = {
     turn_speed: 0.08,
     acceleration: Player.ACCELERATION,
@@ -326,11 +370,13 @@ var SoccerGame = function(canvas) {
   this.leftScore = 0;
   this.rightScore = 0;
 
-  this.leftTeam = new Team(color(255, 0, 0), this);
-  this.rightTeam = new Team(color(128, 128, 255), this);
+  let red = color(255, 0, 0);
+  let blue = color(128, 128, 255);
+  this.leftTeam = new Team(red, this, 2);
+  this.rightTeam = new Team(blue, this, 2);
 
   this.gameControls = new GameControls({
-    'debug': true,
+    // 'debug': true,
     'controller': {
       'directions': 'stick'
     },
@@ -357,8 +403,9 @@ var SoccerGame = function(canvas) {
   this.controls = [];
   // Push a wrapper which can convert control inputs to the game.
   this.controls.push(new HumanControls(this.gameControls, this, this.leftTeam));
+
+  // The right team is controlled by AI.
   this.controls.push(new AIControls(this, this.rightTeam));
-  // Add controls for each team??
 };
 
 SoccerGame.prototype.update = function() {

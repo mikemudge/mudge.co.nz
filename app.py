@@ -96,7 +96,7 @@ def create_app(config=None):
         response.headers["X-Content-Type-Options"] = "nosniff"
 
         # Needs more testing.
-        # response.headers["Content-Security-Policy"] = "script-src 'unsafe-inline' localhost:5000 cdn.ravenjs.com cdnjs.cloudflare.com maps.googleapis.com"
+        # response.headers["Content-Security-Policy"] = "script-src 'unsafe-inline' localhost:5000 mudge.co.nz cdn.ravenjs.com cdnjs.cloudflare.com maps.googleapis.com"
         return response
 
     setup_auth(app)

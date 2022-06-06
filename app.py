@@ -92,7 +92,7 @@ def create_app(config=None):
         # Include nothing when redirecting to http.
         # Include the origin only when redirecting to another origin using https.
         # Include the origin and path when on the same origin.
-        response.headers["X-Frame-Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
         response.headers["X-Content-Type-Options"] = "nosniff"
 
         # Needs more testing.

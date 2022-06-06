@@ -86,6 +86,19 @@ def create_app(config=None):
     version = get_env_version(app)
     app.version = version
 
+    @app.after_request
+    def apply_headers(response):
+        response.headers["X-Frame-Options"] = "SAMEORIGIN"
+        # Include nothing when redirecting to http.
+        # Include the origin only when redirecting to another origin using https.
+        # Include the origin and path when on the same origin.
+        response.headers["X-Frame-Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+
+        # Needs more testing.
+        # response.headers["Content-Security-Policy"] = "script-src 'unsafe-inline' localhost:5000 cdn.ravenjs.com cdnjs.cloudflare.com maps.googleapis.com"
+        return response
+
     setup_auth(app)
 
     sentry.init_app(app, logging=True)

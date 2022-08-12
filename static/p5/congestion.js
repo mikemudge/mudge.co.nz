@@ -1,36 +1,49 @@
 class Car {
   constructor(pos) {
     this.pos = pos;
-    this.desiredSpeed = random(1,2);
+    this.desiredSpeed = random(1,3);
     this.vel = createVector(this.desiredSpeed, 0);
     this.acc = createVector(0, 0);
-    this.maxForce = 0.2
+    this.maxForce = 0.3
     this.r = 16;
-    this.color = color(255);
+    this.color = 'green';
+    this.preferredFollowingDistance = 64;
   }
 
   update() {
     if (this.target && this.target.finished()) {
       this.target = null;
     }
+    // Default to accelerating up to desiredSpeed.
+    var brakes = false;
     if (this.target) {
       let d = p5.Vector.dist(this.target.pos, this.pos);
-      if (d < this.r * 4) {
-        // brake force.
-        let force = this.vel.copy().normalize().mult(-1);
-        force.setMag(this.maxForce);
-        this.applyForce(force);
-      } else {
-        // set force to desired.
-        let force = createVector(this.desiredSpeed, 0);
-        // This take the difference from the current velocity.
-        force.sub(this.vel)
-        // And limit so it doesn't go in 1 frame.
-        force.limit(this.maxForce)
-        this.applyForce(force);
+      if (d < this.preferredFollowingDistance) {
+        // Brake when you get too close to the car in front.
+        brakes = true;
       }
     }
+
+    // set force to take you to the desired speed.
+    let force = createVector(this.desiredSpeed, 0);
+    force.sub(this.vel)
+    force.limit(this.maxForce)
+
+    // When braking use max force in reverse.
+    if (brakes) {
+        force = this.vel.copy().mult(-1);
+        force.limit(this.maxForce);
+        this.color = 'red'
+    } else {
+      this.color = 'green'
+    }
+    this.applyForce(force);
+
     this.vel.add(this.acc);
+    if (this.vel.x < 0) {
+      // No reversing.
+      this.vel.x = 0;
+    }
     this.vel.limit(this.maxSpeed);
 
     this.pos.add(this.vel);

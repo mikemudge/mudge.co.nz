@@ -205,12 +205,13 @@ class Spawner {
     this.r = 20;
     this.path = path;
     this.time = 0;
+    this.rate = 150;
     this.color = color(random(255), random(255), random(255));
   }
 
   update() {
     this.time++;
-    if (this.time % 500 == 1) {
+    if (this.time % this.rate == 0) {
       let unit = new Unit(this.pos.x, this.pos.y, 8);
       unit.color = color(this.color.levels);
       unit.target = this.path.points[1];
@@ -246,7 +247,7 @@ class Spawner {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 600);
   paused = false;
   units = [];
   path = new Path([

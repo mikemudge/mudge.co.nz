@@ -12,7 +12,9 @@
       {{ player.handValue || json }}
     </div>
   </div>
-  <div class="deck">
-    <pre>{{ ctrl.cards | json }}</pre>
+  <div class="actions">
+    <div class="button" ng-click="ctrl.redeal()">
+      Re deal
+    </div>
   </div>
 </div>

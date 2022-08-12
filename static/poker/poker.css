@@ -4,9 +4,8 @@ body {
 
 .hand {
   display: inline-block;
-  /* Covers the visible overflow of the last card */
-  padding-right: 54px;
-  /* Gap between hands */
+  vertical-align: top;
+  width: 140px;
   margin-right: 20px;
 }
 
@@ -27,4 +26,5 @@ body {
 
 .card img {
   height: 100%;
+  max-width: initial;
 }

@@ -1,11 +1,15 @@
 var MyController = function($scope, $timeout) {
   this.players = [];
 
+  // Use timeout to disconnect construction of this controller with init logic.
+  $timeout(this.redeal.bind(this), 0);
+}
+
+MyController.prototype.redeal = function() {
+  this.players = [];
   this.makeGame();
 
-  $timeout(angular.bind(this, function() {
-    angular.forEach(this.players, angular.bind(this, this.calculateHand));
-  }), 100);
+  this.players.forEach(this.calculateHand.bind(this));
 }
 
 MyController.prototype.makeGame = function() {
@@ -47,11 +51,10 @@ MyController.prototype.calculateHand = function(player) {
     'Clubs': 0,
     'Spades': 0
   };
-  console.log(cards);
   var maxCount = 0;
   var bestCountCard = cards[0];
   var flushSuit = null;
-  angular.forEach(cards, function(card) {
+  cards.forEach(function(card) {
     values[card.value]++;
     var count = values[card.value];
     if (count > maxCount) {

@@ -87,10 +87,6 @@ apps['tournament'] = {
     'img': 'tournament.png',
     'tags': ['api', 'login', 'common', 'style1'],
 }
-apps['breakout'] = {
-    'img': 'breakout.png',
-    'tags': ['threejs']
-}
 apps['bomberman'] = {
     'img': 'bomberman.png',
     'tags': ['common']
@@ -105,6 +101,7 @@ apps['user'] = {
 }
 apps['poker'] = {
     'img': 'poker.png',
+    'tags': ['common']
 }
 apps['cards-workout'] = {
     'img': 'cards-workout.png',
@@ -170,11 +167,6 @@ apps['traffic'] = {
 
 apps['color_war'] = {
     'img': 'color_war.png'
-}
-
-apps['congestion'] = {
-}
-apps['flocking'] = {
 }
 
 apps['p5_test'] = {

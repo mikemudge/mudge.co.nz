@@ -24,6 +24,7 @@ var Spawner = function(team, x, z) {
   this.buildTime = 50;
   this.mesh = cube(10, team.color);
   this.mesh.position.x = x;
+  this.mesh.position.y = 5;
   this.mesh.position.z = z;
 }
 units.Spawner = Spawner;

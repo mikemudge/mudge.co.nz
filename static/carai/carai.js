@@ -443,14 +443,6 @@ var AIControls = function(mesh, track) {
 
   this.crashed = false;
 
-  this.keyControls = new KeyControls({
-    // WASD
-    left: 65,
-    up: 87,
-    right: 68,
-    down: 83
-  });
-
   this.reset();
 };
 
@@ -489,47 +481,24 @@ AIControls.prototype.update = function(time) {
     this.lines.geometry.verticesNeedUpdate = true;
   }
 
-  if (this.enabled) {
-    turnSignals = this.nn.play(inputs);
+  turnSignals = this.nn.play(inputs);
 
-    if (this.verbose) {
-      console.log("distances", inputs, "->", turnSignals);
-    }
-
-    if (turnSignals[0] > 0.5 && turnSignals[0] > turnSignals[1]) {
-      // Must be more than 0.5 and more than the signal to turn right.
-      this.theta -= 3;
-    } else if (turnSignals[1] > 0.5) {
-      this.theta += 3;
-    } else {
-      // Not turning
-      // console.log("AI has", turnSignals);
-    }
-
-    this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
-    this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
-  } else {
-    // If not enabled then use keys to control.
-    var keyValues = this.keyControls.get();
-
-    if (keyValues.left) {
-      this.theta += 5;
-    }
-    if (keyValues.right) {
-      this.theta -= 5;
-    }
-
-    if (keyValues.up) {
-      // Move the postion based on the angle
-      this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
-      this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
-    }
-    if (keyValues.down) {
-      // Move the postion based on the angle
-      this.mesh.position.x -= this.speed * Math.sin(this.mesh.rotation.y);
-      this.mesh.position.z -= this.speed * Math.cos(this.mesh.rotation.y);  
-    }
+  if (this.verbose) {
+    console.log("distances", inputs, "->", turnSignals);
   }
+
+  if (turnSignals[0] > 0.5 && turnSignals[0] > turnSignals[1]) {
+    // Must be more than 0.5 and more than the signal to turn right.
+    this.theta -= 3;
+  } else if (turnSignals[1] > 0.5) {
+    this.theta += 3;
+  } else {
+    // Not turning
+    // console.log("AI has", turnSignals);
+  }
+
+  this.mesh.position.x += this.speed * Math.sin(this.mesh.rotation.y);
+  this.mesh.position.z += this.speed * Math.cos(this.mesh.rotation.y);  
 
   // Turn the car to theta.
   this.mesh.rotation.y = THREE.Math.degToRad( this.theta );

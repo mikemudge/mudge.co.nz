@@ -43,7 +43,7 @@ class Angular():
         return render_template('angular.tmpl', **{
             'angular': {
                 'app': self.appName,
-                'title': self.title.capitalize(),
+                'title': self.title[0].upper() + self.title[1:],
                 'version': self.version,
                 'base': self.base,
                 'meta': self.meta,

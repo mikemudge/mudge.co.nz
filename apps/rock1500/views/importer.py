@@ -19,6 +19,61 @@ class ImportView(MethodView):
         self.songsByLastYearRank = {}
         self.songsByTwoYearsAgoRank = {}
 
+    @oauth.require_oauth('admin')
+    def get(self):
+        return self.updateDB()
+
+    def updateDB(self):
+        # Hit rock API.
+        # Steal their songs and artists.
+        # Update my DB with that.
+
+        current_app.logger.info("Loading data from rock API")
+        req = requests.get(
+            'http://radio-api.mediaworks.nz/comp-api/v1/countdown/therock',
+        )
+        result = req.json()
+
+        current_app.logger.info("rock API loaded %d songs" % len(result))
+
+
+        current_date = date.today()
+        if current_date.year != 2022:
+            current_app.logger.warning("Import script needs updating to %d" % current_date.year);
+            return jsonify({
+                'error': 'Import script needs updating to %d' % current_date.year
+            })
+
+        # Now look at our database.
+        current_app.logger.info("loading songs from DB")
+        query = Rock1500Song.query
+        songs = query.all()
+        current_app.logger.info("loaded %d songs from DB" % len(songs))
+
+        # Prepare song data for quicker finds.
+        self.songsByRank = {s.rankThisYear: s for s in songs if s.rankThisYear}
+        self.songsByThisYearRank = {s.rank2022: s for s in songs if s.rank2022}
+        self.songsByLastYearRank = {s.rank2021: s for s in songs if s.rank2021}
+        self.songsByTwoYearsAgoRank = {s.rank2020: s for s in songs if s.rank2020}
+
+        current_app.logger.info("Fetched %d songs. Parsing..." % len(result))
+        for i, item in enumerate(result):
+            try:
+                if i % 100 == 0:
+                    # Show progress if nothing else is happening.
+                    current_app.logger.info(i)
+
+                self.parse_song(item)
+            except Exception as e:
+                current_app.logger.warning("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
+                raise e
+        db.session.commit()
+
+        # No need to send all the data back to the client.
+        return jsonify({
+            'status': 'complete'
+        })
+
     def parse_song(self, item):
         try:
             rankThisYear = int(item.get('rank'))
@@ -71,7 +126,7 @@ class ImportView(MethodView):
                     db.session.commit()
 
             songChanges = False
-            if rankLastYear and not song.rank2020:
+            if rankLastYear and not song.rank2021:
                 if rankLastYear in self.songsByLastYearRank:
                     # TODO is this song the same but with a different looking title?
                     # They could be combined into 1?
@@ -79,10 +134,10 @@ class ImportView(MethodView):
                     current_app.logger.info("However this rank is already claimed by %s" % self.songsByLastYearRank[rankLastYear].title)
                 else:
                     # The rank isn't already taken, so this song can be updated to have it.
-                    song.rank2020 = rankLastYear
-                    current_app.logger.info("Update song with rank2020 %d" % rankLastYear)
+                    song.rank2021 = rankLastYear
+                    current_app.logger.info("Update song with rank2021 %d" % rankLastYear)
                     songChanges = True
-            if rankTwoYearsAgo and not song.rank2019:
+            if rankTwoYearsAgo and not song.rank2020:
                 if rankTwoYearsAgo in self.songsByTwoYearsAgoRank:
                     # TODO is this song the same but with a different looking title?
                     # They could be combined into 1?
@@ -90,8 +145,8 @@ class ImportView(MethodView):
                     current_app.logger.info("However this rank is already claimed by %s" %  self.songsByTwoYearsAgoRank[rankTwoYearsAgo].title)
                 else:
                     # The rank isn't already taken, so this song can be updated to have it.
-                    song.rank2019 = rankTwoYearsAgo
-                    current_app.logger.info("Update song with rank2019 %d" % rankTwoYearsAgo)
+                    song.rank2020 = rankTwoYearsAgo
+                    current_app.logger.info("Update song with rank2020 %d" % rankTwoYearsAgo)
                     songChanges = True
             if songChanges:
                 current_app.logger.info("Update song %s" % song.title)
@@ -106,7 +161,7 @@ class ImportView(MethodView):
         if song:
             # Just update from this years rank.
             # The song has the ranks sent for this year, but not set in rankThisYear?
-            current_app.logger.info("Found song by rank2020 but not rankThisYear %s" % schema.dumps(song))
+            current_app.logger.info("Found song by rank2022 but not rankThisYear %s" % schema.dumps(song))
             current_app.logger.info("Item %s" % json.dumps(item))
             return
 
@@ -221,7 +276,7 @@ class ImportView(MethodView):
             if song.rankThisYear is None:
                 current_app.logger.info("Setting rankThisYear %d for %s" % (rankThisYear, song_name))
                 song.rankThisYear = rankThisYear
-                song.rank2021 = rankThisYear
+                song.rank2022 = rankThisYear
                 self.songsByRank[rankThisYear] = song
                 # check for missing information, and update it?
                 # At the moment we will do this on the next run. See above.
@@ -234,7 +289,7 @@ class ImportView(MethodView):
                 # Add back in the other spot.
                 self.songsByRank[rankThisYear] = song
                 song.rankThisYear = rankThisYear
-                song.rank2021 = rankThisYear
+                song.rank2022 = rankThisYear
                 db.session.commit()
             # Not changing anything else at the moment, but could update artist/album as needed.
             # That would only be needed to make updates if the API data changes.
@@ -276,9 +331,9 @@ class ImportView(MethodView):
                 artist=artist,
                 album=album,
                 rankThisYear=rankThisYear,
-                rank2021=rankThisYear,
-                rank2020=rankLastYear,
-                rank2019=rankTwoYearsAgo,
+                rank2022=rankThisYear,
+                rank2021=rankLastYear,
+                rank2020=rankTwoYearsAgo,
             )
             db.session.add(song)
             db.session.commit()
@@ -326,10 +381,10 @@ class ImportView(MethodView):
         # if 2 or less are not matches we can believe this is correct song.
         # E.g song titles and albums commonly change a bit.
         diff = {}
-        if song.rank2020 != rankLastYear:
-            diff['rankLastYear'] = [song.rank2020, rankLastYear]
-        if song.rank2019 != rankTwoYearsAgo:
-            diff['rankTwoYearsAgo'] = [song.rank2019, rankTwoYearsAgo]
+        if song.rank2021 != rankLastYear:
+            diff['rankLastYear'] = [song.rank2021, rankLastYear]
+        if song.rank2020 != rankTwoYearsAgo:
+            diff['rankTwoYearsAgo'] = [song.rank2020, rankTwoYearsAgo]
         if self.normalizeString(song.title) != self.normalizeString(item.get('title')):
             diff['title'] = [song.title, item.get('title')]
 
@@ -347,57 +402,3 @@ class ImportView(MethodView):
         # The match is pretty close, so accept it.
         return None
 
-    @oauth.require_oauth('admin')
-    def get(self):
-        return self.updateDB()
-
-    def updateDB(self):
-        # Hit rock API.
-        # Steal their songs and artists.
-        # Update my DB with that.
-
-        current_app.logger.info("Loading data from rock API")
-        req = requests.get(
-            'http://radio-api.mediaworks.nz/comp-api/v1/countdown/therock',
-        )
-        result = req.json()
-
-        current_app.logger.info("rock API loaded %d songs" % len(result))
-
-
-        current_date = date.today()
-        if current_date.year != 2021:
-            current_app.logger.warning("Import script needs updating to %d" % current_date.year);
-            return jsonify({
-                'error': 'Import script needs updating to %d' % current_date.year
-            })
-
-        # Now look at our database.
-        current_app.logger.info("loading songs from DB")
-        query = Rock1500Song.query
-        songs = query.all()
-        current_app.logger.info("loaded %d songs from DB" % len(songs))
-
-        # Prepare song data for quicker finds.
-        self.songsByRank = {s.rankThisYear: s for s in songs if s.rankThisYear}
-        self.songsByThisYearRank = {s.rank2021: s for s in songs if s.rank2021}
-        self.songsByLastYearRank = {s.rank2020: s for s in songs if s.rank2020}
-        self.songsByTwoYearsAgoRank = {s.rank2019: s for s in songs if s.rank2019}
-
-        current_app.logger.info("Fetched %d songs. Parsing..." % len(result))
-        for i, item in enumerate(result):
-            try:
-                if i % 100 == 0:
-                    # Show progress if nothing else is happening.
-                    current_app.logger.info(i)
-
-                self.parse_song(item)
-            except Exception as e:
-                current_app.logger.warning("Error parsing song\n%s" % json.dumps(item, indent=2, separators=(',', ':')))
-                raise e
-        db.session.commit()
-
-        # No need to send all the data back to the client.
-        return jsonify({
-            'status': 'complete'
-        })

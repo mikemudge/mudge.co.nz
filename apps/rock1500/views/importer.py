@@ -348,6 +348,8 @@ class ImportView(MethodView):
         val = val.replace(' / ', ' and ')
         # Sometimes / has no spaces.
         val = val.replace('/', ' and ')
+        # Strip ? for songs like Why Can't This Be Love?
+        val = val.replace('?', '')
         # Strip single quotes for things like "I Love Rock 'n' Roll vs I love Rock n Roll"
         val = val.replace("'", '')
         # Remove .'s which can happen. E.g Seether Ft. Amy Lee

@@ -132,6 +132,13 @@ class ImportView(MethodView):
                     # They could be combined into 1?
                     current_app.logger.info("Song %s claims to have rankLastYear of %d" % (song.title, rankLastYear))
                     current_app.logger.info("However this rank is already claimed by %s" % self.songsByLastYearRank[rankLastYear].title)
+                    if self.normalizeString(song.title) == self.normalizeString(self.songsByLastYearRank):
+                        normalizedString = self.normalizeString(song.title)
+                        current_app.logger.info("Songs look the same when normalized %s" % normalizedString);
+                        # TODO can probably merge songs here?
+                    else:
+                        # Songs look significantly different, requires manual changes.
+
                 else:
                     # The rank isn't already taken, so this song can be updated to have it.
                     song.rank2021 = rankLastYear

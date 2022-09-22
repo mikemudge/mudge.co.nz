@@ -27,6 +27,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install --upgrade pip
             pip install -r frozen_requirements.txt
 
       - save_cache:

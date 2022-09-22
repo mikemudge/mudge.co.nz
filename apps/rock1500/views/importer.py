@@ -138,7 +138,7 @@ class ImportView(MethodView):
                         # TODO can probably merge songs here?
                     else:
                         # Songs look significantly different, requires manual changes.
-
+                        pass
                 else:
                     # The rank isn't already taken, so this song can be updated to have it.
                     song.rank2021 = rankLastYear

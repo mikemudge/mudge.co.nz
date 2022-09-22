@@ -18,7 +18,7 @@ color.setRGB(1.0, 0, 0);
 // color.setRGB(.75, .75, .75);
 
 let ringRadius = 2.0;
-let radius = 17/2 + ringRadius;
+let radius = 17/2 + ringRadius * 0.5;
 let ptsA = 100;
 let ptsB = 50;
 let pts = [];

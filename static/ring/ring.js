@@ -17,7 +17,7 @@ color.setRGB(1.0, 0, 0);
 // silver
 // color.setRGB(.75, .75, .75);
 
-let ringRadius = 2.0;
+let ringRadius = 1.5;
 let radius = 17/2 + ringRadius * 0.5;
 let ptsA = 100;
 let ptsB = 50;

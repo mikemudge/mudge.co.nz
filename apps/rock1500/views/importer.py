@@ -132,7 +132,7 @@ class ImportView(MethodView):
                     # They could be combined into 1?
                     current_app.logger.info("Song %s claims to have rankLastYear of %d" % (song.title, rankLastYear))
                     current_app.logger.info("However this rank is already claimed by %s" % self.songsByLastYearRank[rankLastYear].title)
-                    if self.normalizeString(song.title) == self.normalizeString(self.songsByLastYearRank):
+                    if self.normalizeString(song.title) == self.normalizeString(self.songsByLastYearRank[rankLastYear].title):
                         normalizedString = self.normalizeString(song.title)
                         current_app.logger.info("Songs look the same when normalized %s" % normalizedString);
                         # TODO can probably merge songs here?
@@ -390,7 +390,7 @@ class ImportView(MethodView):
         # if 2 or less are not matches we can believe this is correct song.
         # E.g song titles and albums commonly change a bit.
         diff = {}
-        if song.rank2021 != rankLastYear:
+        if song.rank2021 and song.rank2021 != rankLastYear:
             diff['rankLastYear'] = [song.rank2021, rankLastYear]
         if song.rank2020 != rankTwoYearsAgo:
             diff['rankTwoYearsAgo'] = [song.rank2020, rankTwoYearsAgo]

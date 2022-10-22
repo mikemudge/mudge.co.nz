@@ -1,0 +1,8 @@
+# these versions are specific because the latest versions don't work together.
+# Error was ImportError: cannot import name 'parse_rule' from 'werkzeug.routing'
+Werkzeug <= 2.1.2   
+flask == 2.1.2   
+flask-restx >= 0.5.1 
+
+# For psql actions
+psycopg2

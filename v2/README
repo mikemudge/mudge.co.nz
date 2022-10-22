@@ -1,0 +1,17 @@
+Need to create database for each application.
+Along with users for application access.
+
+Then need to initialze the databases for each application, create tables for each model.
+This process would also upgrade the database based on the models/migration.
+
+Each application needs a connection string to use for its own database.
+
+Need to create a REST application based on the models, ability to support RBAC is nice to have.
+models would require RBAC fields to have RBAC enabled? create/modify users/teams?
+
+REST application/endpoints allows crud of the db table for each model
+
+The primary interaction for developers should be the model.
+Changes to models to propergate to the RESTful API, DB and validation/schema.
+
+

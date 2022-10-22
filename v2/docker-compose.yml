@@ -1,0 +1,42 @@
+version: '2'
+volumes:
+  postgres_data:
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      # Creates a default postgres user and database.
+      - POSTGRES_PASSWORD=root_password
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    ports:
+      - 5000:5000
+    environment:
+      # PG* is used as defaults for psql
+      - PGHOST=db
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - FLASK_SQLALCHEMY_DATABASE_URI="postgresql://postgres:password@db/postgres"
+      # default to use the dev enviroment.
+      - APP_SETTINGS=settings.dev
+      - APP_TEST_SETTINGS=settings.localtest
+      - FLASK_ENV=dev
+      - PYTHONIOENCODING=utf-8
+      # Because its nice to get logs immediately when you are debugging.
+      - PYTHONUNBUFFERED=true
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
+    command: ["/app/run_dev.sh"]

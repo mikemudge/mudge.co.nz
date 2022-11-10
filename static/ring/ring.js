@@ -26,7 +26,10 @@ for (r = 0; r < ptsB; r ++) {
 	ang1 = Math.PI * 2 * r / ptsB;
 	y = Math.cos(ang1) * ringRadius;
 	extraR = Math.sin(ang1) * ringRadius;
-	if (extraR < 0) extraR *= 0.5;
+	if (extraR < 0) {
+		// extraR < 0 means the inside edge (touching the finger)
+		extraR *= 0.5;
+	}
 	actualRadius = radius + extraR;
 	pts.push([]);
 	for (i = 0; i < ptsA; i ++) {
@@ -41,14 +44,80 @@ for (r = 0; r < ptsB; r ++) {
 	}
 }
 
-for (r = 0; r < ptsB; r ++) {
+// for (r = 0; r < ptsB; r ++) {
+// 	for (i = 0; i < ptsA; i ++) {
+// 		ni = (i + 1) % ptsA;
+// 		nr = (r + 1) % ptsB;
+// 		p = pts[r][i];
+// 		p1 = pts[r][ni];
+// 		p2 = pts[nr][i];
+// 		p3 = pts[nr][ni];
+
+// 		positions.push(p.x, p.y, p.z);
+// 		colors.push( color.r, color.g, color.b, alpha );
+// 		positions.push(p1.x, p1.y, p1.z);
+// 		colors.push( color.r, color.g, color.b, alpha );
+// 		positions.push(p2.x, p2.y, p2.z);
+// 		colors.push( color.r, color.g, color.b, alpha );
+
+// 		positions.push(p3.x, p3.y, p3.z);
+// 		colors.push( color.r, color.g, color.b, alpha );
+// 		positions.push(p2.x, p2.y, p2.z);
+// 		colors.push( color.r, color.g, color.b, alpha );
+// 		positions.push(p1.x, p1.y, p1.z);
+// 		colors.push( color.r, color.g, color.b, alpha );
+// 	}
+// }
+
+
+// r is from top to bottom.
+// i goes around the finger.
+for (r = 0; r < ptsB; r+=2) {
 	for (i = 0; i < ptsA; i ++) {
-		ni = (i + 1) % ptsA;
-		nr = (r + 1) % ptsB;
-		p = pts[r][i];
-		p1 = pts[r][ni];
-		p2 = pts[nr][i];
-		p3 = pts[nr][ni];
+		if (r > ptsB / 2) {
+			// The inside is square based.
+			// ni = (i + 1) % ptsA;
+			// nr = (r + 1) % ptsB;
+			// p = pts[r][i];
+			// p1 = pts[r][ni];
+			// p2 = pts[nr][i];
+			// p3 = pts[nr][ni];
+
+			// positions.push(p.x, p.y, p.z);
+			// colors.push( color.r, color.g, color.b, alpha );
+			// positions.push(p1.x, p1.y, p1.z);
+			// colors.push( color.r, color.g, color.b, alpha );
+			// positions.push(p2.x, p2.y, p2.z);
+			// colors.push( color.r, color.g, color.b, alpha );
+
+			// positions.push(p3.x, p3.y, p3.z);
+			// colors.push( color.r, color.g, color.b, alpha );
+			// positions.push(p2.x, p2.y, p2.z);
+			// colors.push( color.r, color.g, color.b, alpha );
+			// positions.push(p1.x, p1.y, p1.z);
+			// colors.push( color.r, color.g, color.b, alpha );
+			// continue;
+		}
+		if (i % 2 == 0) {
+			ni = (i + 1) % ptsA;
+			nr = (r + 1) % ptsB;
+			nni = (i + 2) % ptsA;
+			nnr = (r + 2) % ptsB;
+			p = pts[r][ni];
+			p1 = pts[nr][nni];
+			p2 = pts[nnr][ni];
+			p3 = pts[nr][i];
+		} else {
+			ni = (i + 1) % ptsA;
+			nr = (r + 1) % ptsB;
+			nni = (i + 2) % ptsA;
+			nnr = (r + 2) % ptsB;
+			nnnr = (r + 3) % ptsB;
+			p = pts[nr][ni];
+			p1 = pts[nnr][nni];
+			p2 = pts[nnnr][ni];
+			p3 = pts[nnr][i];
+		}
 
 		positions.push(p.x, p.y, p.z);
 		colors.push( color.r, color.g, color.b, alpha );
@@ -57,11 +126,11 @@ for (r = 0; r < ptsB; r ++) {
 		positions.push(p2.x, p2.y, p2.z);
 		colors.push( color.r, color.g, color.b, alpha );
 
-		positions.push(p3.x, p3.y, p3.z);
+		positions.push(p.x, p.y, p.z);
 		colors.push( color.r, color.g, color.b, alpha );
 		positions.push(p2.x, p2.y, p2.z);
 		colors.push( color.r, color.g, color.b, alpha );
-		positions.push(p1.x, p1.y, p1.z);
+		positions.push(p3.x, p3.y, p3.z);
 		colors.push( color.r, color.g, color.b, alpha );
 	}
 }

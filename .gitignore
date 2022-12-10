@@ -78,3 +78,6 @@ local_config.py
 
 # The git commit hash when deploy was last run.
 .commithash
+
+# Intellij configs.
+.idea

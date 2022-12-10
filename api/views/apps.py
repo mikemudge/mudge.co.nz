@@ -54,6 +54,7 @@ apps['ar'] = {
     ]
 }
 apps['avengersTD'] = {
+    'img': 'avengersTD.png',
     'tags': ['p5']  
 }
 

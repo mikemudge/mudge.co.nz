@@ -1,229 +1,207 @@
 
-var World = function(params) {
-  this.lineColor = '#FFFFFF';
-  this.width = params.width;
-  this.height = params.height;
-  this.left = params.left;
-  this.top = params.top;
+class World {
+
+  constructor(pos, size) {
+    this.lineColor = '#FFFFFF';
+    this.pos = pos;
+    this.size = size;
+    this.width = size.x;
+    this.height = size.y;
+  }
+
+  draw() {
+    // Draw Arena
+    stroke(this.lineColor);
+    strokeWeight(1);
+    noFill();
+    rect(this.pos.x, this.pos.y, this.width, this.height);
+  }
 }
 
-World.prototype.draw = function(ctx) {
-  // Draw Field
-  ctx.strokeStyle = this.lineColor;
-  ctx.lineWidth = 1;
-  ctx.rect(this.left, this.top, this.width, this.height);
-  ctx.stroke();
-}
+class Creature {
+  constructor(world, pos, params) {
+    this.world = world;
+    this.pos = pos;
+    this.health = 100;
+    this.color = Math.floor(random(5));
+    this.vel = createVector(0, 0);
+    this.radius = 5;
+    this.maxSpeed = 6;
+    this.maxForce = 0.2;
+  }
 
-var Creature = function(world, params) {
-  this.world = world;
-  this.health = 100;
-  this.age = 0;
-  this.color = params.color || Math.floor(Math.random() * 3);
-  this.x = params.x || 50;
-  this.y = params.y || 50;
-  this.vx = 0;
-  this.vy = 0;
-  this.radius = params.radius || 20;
-  this.speed = Math.random() + 0.5;
+  beats(other) {
+    if (this.color !== other.color) {
+      if (this.color + 1 === other.color || (this.color === 4 && other.color === 0)) {
+        return true;
+      }
+    }
+  }
+
+  bounceBorder() {
+    if (this.pos.x - this.radius < this.world.pos.x && this.vel.x < 0) {
+      this.vel.x *= -1;
+    }
+    if (this.pos.x + this.radius > this.world.pos.x + this.world.width && this.vel.x > 0) {
+      this.vel.x *= -1;
+    }
+    if (this.pos.y - this.radius < this.world.pos.y && this.vel.y < 0) {
+      this.vel.y *= -1;
+    }
+    if (this.pos.y + this.radius > this.world.pos.y + this.world.height && this.vel.y > 0) {
+      this.vel.y *= -1;
+    }
+  }
+
+  wrapBorder() {
+    let x = (this.pos.x - this.world.pos.x + this.world.size.x) % this.world.size.x + this.world.pos.x;
+    let y = (this.pos.y - this.world.pos.y + this.world.size.y) % this.world.size.y + this.world.pos.y;
+
+    this.pos.set(x, y);
+  }
+
+  update() {
+    this.pos.add(this.vel);
+
+    // crash?
+    // this.bounceBorder();
+    this.wrapBorder();
+
+    let force = createVector(0, 0);
+    for (let c of this.world.creatures) {
+      if (c === this) {
+        // Skip interactions with yourself.
+        continue;
+      }
+      let diff = p5.Vector.sub(c.pos, this.pos);
+      let dis = diff.mag();
+
+      if (dis < 2 * this.radius) {
+        // In range, apply color changes.
+        if (this.beats(c)) {
+          c.color = this.color;
+        } else if (this.beats(c)) {
+          this.color = c.color;
+        }
+        // Also bounce away?
+        this.vel.set(diff.x, diff.y);
+        this.vel.setMag(-1);
+      }
+
+      if (dis > 200) {
+        // ignore things far away.
+        continue;
+      }
+      // scale inversely to distance.
+      // diff.mult(10 / dis);
+      diff.limit(this.maxSpeed);
+      diff.sub(this.vel);
+      if (c.beats(this)) {
+        // avoid.
+        force.sub(diff);
+      } else if (this.beats(c)) {
+        // chase
+        force.add(diff)
+      }
+    }
+
+    // random movement.
+    force.add(p5.Vector.random2D().mult(this.maxForce));
+
+    force.limit(this.maxForce);
+    this.vel.add(force);
+
+    // Slow down;
+    this.vel.mult(0.98);
+
+    if (this.vel.mag() < 0.01) {
+      this.vel.set(0, 0);
+    }
+
+  }
+
+  draw() {
+    let str = 255 * this.health / 100;
+    if (this.color === 1) {
+      fill(color(str,0,0));
+    } else if (this.color === 2) {
+      fill(color(0, 0, str));
+    } else if (this.color === 3) {
+      fill(color(str, str, 0));
+    } else if (this.color === 4) {
+      fill(color(str, 0, str));
+    } else {
+      fill(color(0, str, 0));
+    }
+    noStroke();
+    arc(this.pos.x, this.pos.y, this.radius * 2, this.radius * 2, 0, 2 * Math.PI);
+  }
 }
-Creature.BOUNCE_BACK = 0.8;
+Creature.BOUNCE_BACK = 0.5;
 Creature.FRICTION = 0.1;
 
-Creature.prototype.update = function() {
-  this.x += this.vx;
-  this.y += this.vy;
-  this.vx += this.speed * (Math.random() - 0.5);
-  this.vy += this.speed * (Math.random() - 0.5);
-  this.age += 1;
-
-  // Slow down;
-  this.vx *= (1 - 0.2 * Creature.FRICTION);
-  this.vy *= (1 - 0.2 * Creature.FRICTION);
-  if (this.vx < 0.01 && this.vx > -0.01) {
-    this.vx = 0;
-  }
-  if (this.vy < 0.01 && this.vy > -0.01) {
-    this.vy = 0;
-  }
-
-  // crash?
-  if (this.x - this.radius < this.world.left && this.vx < 0) {
-    this.vx *= -Creature.BOUNCE_BACK;
-  }
-  if (this.x + this.radius > this.world.left + this.world.width && this.vx > 0) {
-    this.vx *= -Creature.BOUNCE_BACK;
-  }
-  if (this.y - this.radius < this.world.top && this.vy < 0) {
-    this.vy *= -Creature.BOUNCE_BACK;
-  }
-  if (this.y + this.radius > this.world.top + this.world.height && this.vy > 0) {
-    this.vy *= -Creature.BOUNCE_BACK;
-  }
-
-  this.world.creatures.forEach(function(c) {
-    if (c == this) {
-      // Skip interactions with yourself.
-      return;
-    }
-    disSqr = Math.pow(c.x - this.x, 2) + Math.pow(c.y - this.y, 2);
-    // instead of calculating the sqrt, just use 50 * 50 here.
-    if (disSqr < 2500) {
-      // TODO interact with creatures near you.
-      if (this.color != c.color) {
-        // Fight eahc other.
-        c.health -= 10;
-        if (c.health == 0) {
-          // I killed it.
-          // Full heal.
-          this.health = 100;
-          this.foodLevel = 100;
-        }
-      } else {
-        // Same color will help each other.
-        if (this.age > 100 && c.age > 100) {
-          // reproduce now, and make a new creature.
-          // And reset the age so repduction is less common.
-          this.age = 0;
-          c.age = 0;
-          if (this.world.creatures.length < 100) {
-            newC = new Creature(this.world, {
-              color: this.color,
-              x: this.x,
-              y: this.y,
-            })
-            this.world.creatures.push(newC);
-          }
-        }
-      }
-      // Change velocity based on where the close creature is.
-      this.vx = 0.1 * (this.x - c.x)
-      this.vy = 0.1 * (this.y - c.y)
-    }
-  }.bind(this));
-}
-
-Creature.prototype.draw = function(ctx) {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-  str = 255 * this.health / 100;
-  if (this.color == 1) {
-    ctx.fillStyle = 'rgb(' + Math.floor(str) + ', 0, 0)';
-  } else if (this.color == 2) {
-      ctx.fillStyle = 'rgb(0, 0, ' + Math.floor(str) + ')';
-  } else {
-    ctx.fillStyle = 'rgb(0, ' + Math.floor(str) + ', 0)';
-  }
-  ctx.fill();
-  ctx.lineWidth = 0;
-}
-
-var SoccerGame = function(canvas) {
-  this.canvas = canvas;
-  this.ctx = canvas.getContext('2d');
+var SoccerGame = function(width, height) {
   this.stopped = false;
   this.pause = false;
 
   this.creatures = [];
-  this.world = new World({
-    left: this.canvas.width / 20,
-    width: this.canvas.width * 18 / 20,
-    top: this.canvas.height / 20,
-    height: this.canvas.height * 18 / 20,
-  });
+  this.world = new World(
+      createVector(width / 20,  height / 20),
+      createVector(width * 18 / 20, height * 18 / 20)
+  );
   this.world.creatures = this.creatures;
 
-  for (var i=0;i<10;i++) {
-    this.creatures.push(new Creature(this.world, {
-      x: canvas.width * Math.random(),
-      y: canvas.height * Math.random()
-    }));
+  // 1000 works ok.
+  // 5000 is slow (1fps)
+  for (var i=0;i<1000;i++) {
+    let loc = this.world.size.copy();
+    loc.mult(random(), random())
+    loc.add(this.world.pos);
+    this.creatures.push(new Creature(this.world, loc, {}));
   }
 };
 
-SoccerGame.prototype.run = function() {
+SoccerGame.prototype.update = function() {
   // Update the game.
-  this.creatures.forEach(function(c) {
+  this.creatures.forEach(function (c) {
     c.update();
   });
-
   // Remove dead creatures.
   this.creatures = this.creatures.filter(function(c) {
     return c.health > 0;
   });
   this.world.creatures = this.creatures;
+}
 
-  // Render the game.
-  this.ctx.fillStyle = 'black';
-  this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-  this.ctx.beginPath();
-  this.world.draw(this.ctx);
-  this.ctx.closePath();
 
-  this.ctx.beginPath();
+SoccerGame.prototype.draw = function() {
+  this.world.draw();
+
   this.creatures.forEach(function(c) {
-    c.draw(this.ctx);
-  }.bind(this));
+    c.draw();
+  });
 
-  this.ctx.font = 'normal 16px serif';
-  this.ctx.fillStyle = 'white';
-  this.ctx.fillText("Num players: " + this.creatures.length, 5, 15);
-
-  this.ctx.closePath();
-
-  if (!this.pause) {
-    window.requestAnimationFrame(angular.bind(this, this.run));
-  } else {
-    this.stopped = true;
-    console.log('stopped game');
-  }
+  textSize(16);
+  noStroke();
+  fill('white');
+  text("Num players: " + this.creatures.length, 5, 15);
 }
 
-var PauseController = function(game, $scope) {
-  this.game = game;
-  $scope.game = game;
-  game.pause = true;
-  window.addEventListener('blur', function() {
-    game.pause = true;
-    $scope.$apply();
-     //not running full
-  }, false);
+var game;
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  game = new SoccerGame(windowWidth, windowHeight);
 }
 
-PauseController.prototype.start = function() {
-  // game.start???
-  this.game.pause = false;
-  this.game.stopped = false;
-  this.game.run();
+function draw() {
+  background(0);
+
+  game.update();
+
+  game.draw();
 }
-
-function init() {
-  var canvas = document.createElement('canvas');
-  var resizeCanvas = function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas, false);
-
-  document.body.appendChild(canvas);
-  var game = new SoccerGame(canvas);
-  game.run();
-  return game;
-};
 
 angular.module('predator', [
   'config',
   'ngRoute'
-])
-.factory('game', function() {
-  return init();
-})
-.controller('PauseController', PauseController)
-.config(function($routeProvider, config) {
-  $routeProvider
-    .otherwise({
-      templateUrl: '/static/predator/predator.tpl.html',
-    });
-});
-
+]);

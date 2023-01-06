@@ -1,12 +1,52 @@
+class QuadTree {
+  constructor(level) {
+    this.xMid = 0;
+    this.yMid = 0;
+    this.creatures = [];
+    // if (level < 4) {
+    //   this.nodes = [
+    //     [new QuadTree(level + 1), new QuadTree(level + 1)],
+    //     [new QuadTree(level + 1), new QuadTree(level + 1)]
+    //   ];
+    // }
+  }
+
+  add(creature, pos) {
+    if (!this.nodes) {
+      this.creatures.push(creature);
+      return;
+    }
+    let x = pos.x < this.xMid ? 0 : 1;
+    let y = pos.y < this.yMid ? 0 : 1;
+    this.nodes[x][y].add(creature, pos);
+  }
+
+  getMany(pos, range, lists) {
+    if (!this.nodes) {
+      lists.push(this.creatures);
+      return;
+    }
+    let x1 = pos.x - range < this.xMid ? 0 : 1;
+    let x2 = pos.x + range < this.xMid ? 0 : 1;
+    let y1 = pos.y - range < this.yMid ? 0 : 1;
+    let y2 = pos.y + range < this.yMid ? 0 : 1;
+    for (let x=x1;x<=x2;x++) {
+      for (let y=y1;y<=y2;y++) {
+        // TODO make this more more efficient than concat?
+        this.nodes[x][y].getMany(pos, range, lists);
+      }
+    }
+  }
+}
 
 class World {
-
   constructor(pos, size) {
     this.lineColor = '#FFFFFF';
     this.pos = pos;
     this.size = size;
     this.width = size.x;
     this.height = size.y;
+    this.quadTree = new QuadTree(0);
   }
 
   draw() {
@@ -16,6 +56,14 @@ class World {
     noFill();
     rect(this.pos.x, this.pos.y, this.width, this.height);
   }
+
+  add(creature) {
+    this.quadTree.add(creature, creature.pos);
+  }
+
+  closeTo(pos, range, lists) {
+    return this.quadTree.getMany(pos, range, lists);
+  }
 }
 
 class Creature {
@@ -23,7 +71,12 @@ class Creature {
     this.world = world;
     this.pos = pos;
     this.health = 100;
-    this.color = Math.floor(random(5));
+    this.colors = [
+      color(255,0,0),
+      color(0,0,255),
+      color(0,255,0),
+    ];
+    this.color = Math.floor(random(this.colors.length));
     this.vel = createVector(0, 0);
     this.radius = 5;
     this.maxSpeed = 6;
@@ -32,7 +85,7 @@ class Creature {
 
   beats(other) {
     if (this.color !== other.color) {
-      if (this.color + 1 === other.color || (this.color === 4 && other.color === 0)) {
+      if ((this.color + 1) % this.colors.length === other.color) {
         return true;
       }
     }
@@ -68,7 +121,7 @@ class Creature {
     this.wrapBorder();
 
     let force = createVector(0, 0);
-    for (let c of this.world.creatures) {
+    for (let c of this.world.allCreatures) {
       if (c === this) {
         // Skip interactions with yourself.
         continue;
@@ -93,9 +146,7 @@ class Creature {
         continue;
       }
       // scale inversely to distance.
-      // diff.mult(10 / dis);
-      diff.limit(this.maxSpeed);
-      diff.sub(this.vel);
+      diff.setMag(100.0 / dis);
       if (c.beats(this)) {
         // avoid.
         force.sub(diff);
@@ -107,6 +158,8 @@ class Creature {
 
     // random movement.
     force.add(p5.Vector.random2D().mult(this.maxForce));
+    force.limit(this.maxSpeed);
+    force.sub(this.vel);
 
     force.limit(this.maxForce);
     this.vel.add(force);
@@ -121,18 +174,7 @@ class Creature {
   }
 
   draw() {
-    let str = 255 * this.health / 100;
-    if (this.color === 1) {
-      fill(color(str,0,0));
-    } else if (this.color === 2) {
-      fill(color(0, 0, str));
-    } else if (this.color === 3) {
-      fill(color(str, str, 0));
-    } else if (this.color === 4) {
-      fill(color(str, 0, str));
-    } else {
-      fill(color(0, str, 0));
-    }
+    fill(this.colors[this.color]);
     noStroke();
     arc(this.pos.x, this.pos.y, this.radius * 2, this.radius * 2, 0, 2 * Math.PI);
   }
@@ -149,15 +191,18 @@ var SoccerGame = function(width, height) {
       createVector(width / 20,  height / 20),
       createVector(width * 18 / 20, height * 18 / 20)
   );
-  this.world.creatures = this.creatures;
+  this.world.allCreatures = this.creatures;
 
   // 1000 works ok.
   // 5000 is slow (1fps)
-  for (var i=0;i<1000;i++) {
+  let howMany = 1000;
+  for (var i = 0; i < howMany; i++) {
     let loc = this.world.size.copy();
     loc.mult(random(), random())
     loc.add(this.world.pos);
-    this.creatures.push(new Creature(this.world, loc, {}));
+    let creature = new Creature(this.world, loc, {});
+    this.world.add(creature);
+    this.creatures.push(creature);
   }
 };
 
@@ -167,10 +212,10 @@ SoccerGame.prototype.update = function() {
     c.update();
   });
   // Remove dead creatures.
-  this.creatures = this.creatures.filter(function(c) {
-    return c.health > 0;
-  });
-  this.world.creatures = this.creatures;
+  // this.creatures = this.creatures.filter(function(c) {
+  //   return c.health > 0;
+  // });
+  this.world.allCreatures = this.creatures;
 }
 
 

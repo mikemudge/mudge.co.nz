@@ -11,11 +11,17 @@ const colors = [];
 const color = new THREE.Color();
 alpha = 1;
 // red
-color.setRGB(1.0, 0, 0);
-// gold
-// color.setRGB(1, .78, .21);
-// silver
-// color.setRGB(.75, .75, .75);
+params = new URLSearchParams(window.location.search);
+
+let colorParam = params.get("color");
+if (colorParam === "gold") {
+	color.setRGB(1, .78, .21);
+} else if (colorParam === "silver") {
+	color.setRGB(.75, .75, .75);
+} else {
+	// red.
+	color.setRGB(1.0, 0, 0);
+}
 
 let ringRadius = 1.5;
 let radius = 17/2 + ringRadius * 0.5;
@@ -149,6 +155,8 @@ const material = new THREE.MeshPhongMaterial( {
 // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 // material.side = THREE.FrontSide;
 const cube = new THREE.Mesh( geometry, material );
+cube.rotation.z = Math.PI / 2;
+cube.rotation.y = Math.PI / 2;
 scene.add( cube );
 
 camera.position.z = 100;
@@ -165,6 +173,11 @@ light2.position.set( -20, 20, -20 );
 scene.add( light2 );
 
 controls = new THREE.OrbitControls(camera);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.minPolarAngle = 0.25; // radians
+controls.maxPolarAngle = Math.PI - 0.5; // radians
+
 
 // Instantiate an exporter
 const exporter = new OBJExporter();

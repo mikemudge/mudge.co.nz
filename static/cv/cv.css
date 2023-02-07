@@ -3,7 +3,6 @@
 .title {
   font-size: 20px;
   font-weight: 700;
-  text-align: center;
 }
 
 .sub_title {
@@ -70,8 +69,9 @@
   font-weight: 700;
 }
 .job .project {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .university .sub_title {

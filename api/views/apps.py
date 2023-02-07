@@ -54,7 +54,8 @@ apps['ar'] = {
     ]
 }
 apps['avengersTD'] = {
-    'tags': ['p5']  
+    'img': 'avengersTD.png',
+    'tags': ['p5']
 }
 
 # TODO ar should just be a plugin for rts.
@@ -83,6 +84,7 @@ apps['soccer'] = {
 }
 apps['predator'] = {
     'img': 'predator.png',
+    'tags': ['p5']
 }
 apps['game'] = {
     'img': 'game.png',

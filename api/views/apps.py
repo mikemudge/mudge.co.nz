@@ -40,6 +40,17 @@ styles = {
 }
 
 apps = {}
+
+apps['3dprint'] = {
+    'tags': ['threejs', 'objexport'],
+    'scripts': [
+        'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.js',
+        '/static/js/three.js/OrbitControls.js',
+        '/static/3dprint/ObjExporter.js',
+        '/static/3dprint/cube.js'
+    ],
+
+}
 apps['ar'] = {
     'img': 'ar.png',
     'tags': ['threejs'],

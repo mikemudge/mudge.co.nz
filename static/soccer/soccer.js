@@ -33,12 +33,12 @@ Player.prototype.updatePosition = function() {
 
   // Surface friction will be proportional to mass.
   let friction = this.vel.copy().normalize().mult(-1);
-  friction.setMag(0.1 * this.mass)
+  friction.setMag(this.game.options.friction * this.mass);
 
   // Drag friction is proportional to velocity squared, but much less.
   // This constraint results in players having a max speed.
   let drag = this.vel.copy().normalize().mult(-1);
-  drag.setMag(.02 * this.vel.magSq());
+  drag.setMag(this.game.options.friction2 * this.vel.magSq());
   this.vel.add(drag);
 }
 
@@ -278,9 +278,11 @@ var AIControls = function(game, team) {
 }
 
 AIControls.prototype.update = function() {
-  for (player of this.players) {
-    this.updatePlayer(player);
-    // this.updateSimple(player);
+  if (this.game.options.ai) {
+    for (player of this.players) {
+      this.updatePlayer(player);
+      // this.updateSimple(player);
+    }
   }
 }
 
@@ -353,6 +355,7 @@ var SoccerGame = function(canvas) {
     turn_speed: 0.08,
     acceleration: Player.ACCELERATION,
     friction: Player.FRICTION,
+    friction2: 0.02,
     bounce: Player.BOUNCE_BACK,
     kick_speed: Player.KICK_SPEED,
     ai: true,
@@ -377,6 +380,7 @@ var SoccerGame = function(canvas) {
 
   this.gameControls = new GameControls({
     // 'debug': true,
+    // TODO need a deadzone for gamepad controller?
     'controller': {
       'directions': 'stick'
     },
@@ -407,6 +411,13 @@ var SoccerGame = function(canvas) {
   // The right team is controlled by AI.
   this.controls.push(new AIControls(this, this.rightTeam));
 };
+
+SoccerGame.prototype.play = function() {
+  loop();
+}
+SoccerGame.prototype.pause = function() {
+  noLoop();
+}
 
 SoccerGame.prototype.update = function() {
   // Update the game.
@@ -445,6 +456,8 @@ SoccerGame.prototype.draw = function() {
   text(this.leftScore + " - " + this.rightScore, 10, 50);
 }
 
+var game;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // TODO share a game with angular?
@@ -452,8 +465,6 @@ function setup() {
     width: windowWidth,
     height: windowHeight
   });
-
-  game.options = {};
 }
 
 function draw() {
@@ -464,7 +475,38 @@ function draw() {
   game.draw();
 }
 
+var PauseController = function(game, $scope) {
+  this.game = game;
+  this.$scope = $scope;
+  this.start();
+  window.addEventListener('blur', this.pause.bind(this), false);
+}
+
+PauseController.prototype.pause = function() {
+  this.running = false;
+  this.game.pause();
+  this.options = game.options;
+  this.$scope.$apply();
+}
+
+PauseController.prototype.start = function() {
+  // game.start???
+  this.running = true;
+  this.game.play();
+}
+
 angular.module('soccer', [
   'config',
+  'ngRoute'
 ])
+.factory('game', function() {
+  return game;
+})
+.controller('PauseController', PauseController)
+.config(function($routeProvider, config) {
+  $routeProvider
+      .otherwise({
+        templateUrl: '/static/soccer/soccer.tpl.html',
+      });
+});
 

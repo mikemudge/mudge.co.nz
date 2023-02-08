@@ -1,5 +1,5 @@
 <div ng-controller='PauseController as pause'>
-  <div class="popup options" ng-show="pause.game.pause">
+  <div class="popup options" ng-hide="pause.running">
     <h4> Paused </h4>
     <label class="field">
       Acceleration: <input type="number" step="0.1" ng-model="pause.options.acceleration" />

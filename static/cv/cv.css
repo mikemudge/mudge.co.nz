@@ -3,7 +3,12 @@
 .title {
   font-size: 20px;
   font-weight: 700;
-  text-align: center;
+}
+
+@media print {
+  body {
+    font-size: 14px;
+  }
 }
 
 .sub_title {
@@ -18,9 +23,8 @@
 }
 .intro .info {
   text-align: center;
-  /* To allow space for the profile image */
-  padding: 48px 160px 48px 10px;
-  margin: 0px auto;
+  padding: 16px 10px;
+  margin: 0 auto;
 }
 
 .profile {
@@ -70,8 +74,9 @@
   font-weight: 700;
 }
 .job .project {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .university .sub_title {

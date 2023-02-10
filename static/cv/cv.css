@@ -5,6 +5,12 @@
   font-weight: 700;
 }
 
+@media print {
+  body {
+    font-size: 14px;
+  }
+}
+
 .sub_title {
   font-size: 16px;
   font-weight: 700;
@@ -17,9 +23,8 @@
 }
 .intro .info {
   text-align: center;
-  /* To allow space for the profile image */
-  padding: 48px 160px 48px 10px;
-  margin: 0px auto;
+  padding: 16px 10px;
+  margin: 0 auto;
 }
 
 .profile {

@@ -47,7 +47,7 @@ apps['3dprint'] = {
         'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.js',
         '/static/js/three.js/OrbitControls.js',
         '/static/3dprint/ObjExporter.js',
-        '/static/3dprint/cube.js'
+        '/static/3dprint/straight.js'
     ],
 
 }

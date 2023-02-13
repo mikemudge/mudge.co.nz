@@ -6,6 +6,9 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 params = new URLSearchParams(window.location.search);
 
 
+'/static/3dprint/straight.js'
+
+
 const material = new THREE.MeshPhongMaterial( {
 	color: 0xaaaaaa, specular: 0xffffff, shininess: 250,
 	side: THREE.FrontSide, vertexColors: true, transparent: true

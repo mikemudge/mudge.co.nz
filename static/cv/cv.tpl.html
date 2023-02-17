@@ -3,240 +3,136 @@
     <div class="intro">
       <div class="info">
         <div class="title">Michael Mudge</div>
-        <div>Wellington</div>
-        <div><span>027</span><span>3896828</span></div>
+        <div>Wellington NZ</div>
+        <div><span>+64</span> <span>27</span><span>3896828</span></div>
         <div>mike.mudge@gmail.com</div>
-      </div>
-      <div class="profile">
-        <img src="/static/cv/Me.jpg" />
       </div>
     </div>
     <div class="about section">
       <p>
-        I’m a software developer with over 10 years of experience with an excellent understanding of a
-        variety of computer languages. Having worked in both large international companies and
-        smaller, local startups, I have a wide range of knowledge and a sound understanding of the
-        complexities in modern application development. I’m capable of making quick decisions under
-        pressure in order to maintain quality while still delivering within deadlines.
+
+        I’m a software engineer with over 10 years of experience, with a wide range of knowledge and a sound understanding of the
+        complexities in modern application development. Having worked in both large international companies and
+        smaller local startups, I have a proven record of making quick decisions under
+        pressure in order to maintain quality while still delivering within tight deadlines.
       </p>
       <p>
-        I am comfortable working as part of both small and large teams or working autonomously as a
-        self-starter. I’d prefer to work in a small, diverse team which has multiple responsibilities, in a
-        company where continued learning is encouraged. I enjoy the variety in being able to support
-        multiple services and applications across the board and gain a full understanding of the
-        company’s products and/or services.
+        As a tech lead, I mentor engineers on my team and cross-functional teams, influencing them to adopt consistent software patterns.
+        I find tackling the hardest challenges to be the most satisfactory, and love to innovate and optimize my solutions to unique problems.
+        I like the variety in supporting multiple services and applications across the board to gain a full view of the
+        company’s products.
       </p>
       <p>
-        I received a 1st Class (Hons) degree in Computer Science from Victoria University, Wellington.
       </p>
     </div>
 
     <div class="experience section">
       <div class="job">
+        <div class="company">Sailthru</div>
+        <div class="year">2018-present</div>
+        <p>
+          I joined Sailthru as a Site Reliability Engineer, supporting a large number of products to enable Personalized Marketing via Email, Onsite and Push notifications.
+        </p>
+
+        <div>
+          <p class="project">Cloud Migration</p>
+          With a company goal to migrate our data center to AWS, I led the migration of Sailthru's php applications, consisting of 6 web services, 20 queue consumers and many cronjobs.
+          Dependencies such as Mongo DB, Active MQ and Kafka were also migrated as part of this effort.<br>
+          Key results I delivered include:
+        </div>
+        <ul>
+          <li>Introduced CI pipeline, dependency management and staging environment</li>
+          <li>Upgraded PHP to a supported version</li>
+          <li>Redesigned applications to follow cloud standard</li>
+          <li>Parallelized deployments to reduce duration from ~40m to 5m </li>
+          <li>Improved logging, monitoring and alerts</li>
+          <li>Zero downtime migration to kubernetes (EKS)</li>
+        </ul>
+
+        <div>
+          <p class="project">Incident Management</p>
+          The SRE team has the most in-depth knowledge of the Sailthru stack, while on the team I:
+          <ul>
+            <li>Handled tickets escalated to us, which were the most difficult ones
+              <ul>
+                <li>Deep-dived into the inner workings of Mongo and Kafka</li>
+                <li>Investigated complex race conditions across multiple applications</li>
+              </ul>
+            </li>
+            <li>On-call for a large number of legacy services with limited observability</li>
+            <li>Navigated unfamiliar code to quickly identify root causes during incident remediation</li>
+            <li>Balanced short term workarounds and long term redesigning of system components</li>
+            <li>Designed and implemented rollout plans for risky changes</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="project">Best Practices</p>
+          Working with legacy code has made me advocate for consistency through better processes:
+          <ul>
+              <li>Documentation, architecture diagrams and RFC's</li>
+              <li>Observability - health checks, metrics, logging and traces</li>
+              <li>Application design - API's, exception handling, idempotency, design patterns</li>
+              <li>CI/CD, unit testing and run books</li>
+            </ul>
+        </div>
+
+        <div>
+          <p class="project">Leadership</p>
+          Being the first remote worker with a 6-8 hour time difference from the New York team, I helped create processes to enable effective communication.
+          As the processes matured, I worked with team leads to onboard new hires across timezones.
+          <ul>
+            <li>Mentored coworkers from multiple teams</li>
+            <li>Code reviews across engineering teams, driving for readability</li>
+            <li>Documentation to help developers navigate local development setup</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
         <div class="company">8i</div>
         <div class="year">2015-2017</div>
-
         <p>
-          As one of the early developers at 8i I worked on a variety of projects, starting off on several solo projects before working on our AR app, Holo, with a larger team. As the company grew I was looked upon to provide history and context for the engineering teams, handing over code as necessary.
-        </p>
-        <p>
-          <div class="project">Website</div>
-          I redeveloped 8i.com twice using Wagtail/Django running on Amazon cloud.
-          The front-end started with Angular, moving to jQuery/JavaScript and HTML with CSS.
-          I integrated Sphinx for documentation and used markdown from 8i Plugins to generate HTML.
-          I implemented the site with a CMS which allowed for content managers to have complete control of the content, including uploading new images and creating sub models for listed content.
-        </p>
-        <p>
-          <div class="project">Web Player</div>
-          I developed a web player similar to YouTube for playing our volumetric videos using three.js. This required an understanding of 3D vector mathematics.
-        </p>
-        <p>
-          <div class="project">Holo Content Platform</div>
-          I worked in a team of two to build the backend and CMS for Holo.
-          Holo had 1,000,000+ downloads and was dealing with an average of ~150 users at a time.
-          Backend was distributed using Amazon’s ECS and EC2 using docker images for easy rollback.
-          It used BuildKite agents to continuously test and deploy automatically from Github.
-          Content requirements included user access controls, content grouped by character, tags and promotions.
-          It also required content creation, including file upload to Amazon, screenshot generation, grouping/ordering and adding metadata. Also supported Draft/Private and Published content.
-        </p>
-        <p>
-          <div class="project">Director</div>
-          I developed a web editor allowing creation of a scene to compliment our volumetric videos.
-          I was responsible for the implementation and delivery, but I worked with developers, product owners and others to define a flexible, extendable scene graph schema. It supported adding 8i 3D videos, 3D models (obj format), additional audio, background photo spheres, 3D text and 2D images as a plane. Each item had a timeline of keyframes for position, rotation and scale as appropriate.
-          8i worked with Life magazine to create the “Buzz Aldrin: Cycling Pathways to Mars” VR experience and web director was used to create a teaser while the full VR experience was being worked on.
+          As one of the early SWEs at 8i, I worked on a variety of solo projects including VR webapps.
+          VR was a developing field and I innovated with our designer to develop a volumetric video player, volumetric scene creator and an augmented map overlay for volumetric videos.
+          As the team rapidly grew, I later focused on backend development and API design for our AR app Holo on Web, Android and iOS.
         </p>
       </div>
       <div class="job">
         <div class="company">Google</div>
         <span class="year">2012 - 2015</span>
         <p>
-          I worked in Mountain View, California as a Software Engineer in Google Payments (Google Wallet) for three years.
-        </p>
-        <p>
-          <div class="project">Wallet JS API</div>
-          An API for third party websites making integration easy for merchants (e.g. newegg.com). I also worked on gathering analytics and using those to increase purchase conversion. I was on the initial product launch team and the subsequent on-call team for maintenance and several feature releases.
-        </p>
-        <p>
-
-          <div class="project">Wallet Backend</div>
-          I was part of a team which migrated the backend used by the JS, Android and iOS clients dealing with ~$1m of purchases per day to a new framework. Ensuring backwards and forwards compatibility between traffic to the old and new servers.  The work I contributed to this and the previous project got me promoted to the next level of software engineer.
-        </p>
-        <p>
-          <div class="project">Frontend Payment UI</div>
-          Worked on a project to consolidate all payment UI components while still supporting and building new UI components for the latest Google projects (such as Project Fi and Youtube rent/purchase). Worked closely with designers and material design to build out a shopping cart component with flexibility to support international prices, line items and taxes.
-        </p>
-        <p>
-          <div class="project">Application Development</div>
-          During my time at Google I learned a lot about the best practices of developing a product, including maintaining environments for development, testing, canary and production, pushing and rolling back environments, running unit, functional and smoke tests against those environments and feature protection using flags and experiments for a slow, controlled roll out.
+          As a software engineer on Google Payments, I worked on both purchase flow frontend components and a complete rewrite of the Wallet backend supporting Web, Android and iOS teams.
         </p>
       </div>
 
       <div class="job">
-        <p>
-          <div class="company">Smart Apps</div>
-          <span class="year">2010 - 2012</span>
-          <div class="description">
-            Solo contract developer for iPhone/iPad apps and supporting backend.
-          </div>
-        </p>
-      </div>
+        <div class="company">Internships</div>
+        <span class="year">2007 - 2012</span>
 
-      <div class="job">
-        <p>
-          <div class="company">Aviat Networks</div>
-          <span class="year">2010 - 2011, Summer of Code internship</span>
-          <div class="description">
-            Automated testing of physical wireless hardware including writing tests, updating tested software and resource contention. Used Shell, Python and SNMP.
-          </div>
-        </p>
-      </div>
-
-      <div class="job">
-        <p>
-          <div class="company">The Alchemist Design and Print</div>
-          <span class="year">2007 - 2009</span>
-          <div class="description">
-            Part time web development work while studying. Solo web developer working with designers to go from Photoshop files to a fully functioning website.
-          </div>
-        </p>
-      </div>
-
-      <div class="job">
-        <p>
-          <div class="company">Innaworks</div>
-          <span class="year">2008 - 9, Summer of Code internship</span>
-          <div class="description">
-            Worked in a team of two to build a library to run J2ME games on Android. Most significantly implementing the J2ME 2D graphics calls to work with Android.
-          </div>
-        </p>
+        <ul>
+          <li>Smart Apps - Solo developer for iPhone/iPad apps and the backend.</li>
+          <li>Aviat Networks - Automated testing for physical wireless hardware.</li>
+          <li>The Alchemist Design and Print - Solo web developer for a design agency.</li>
+          <li>Innaworks - Developed a compatability/convertor library for J2ME games to run on Android devices.</li>
+        </ul>
       </div>
     </div>
 
     <div class="technical section">
-      <div class="title">
-        Technical Skills
-      </div>
-
-      <div class="skill">
-        <div class="sub_title">Object Oriented Programming</div>
-        <div>
-          <p>
-            I have used Java since I was 15. Discovering it through a course at high school but then spending my free time doing little projects after school because I enjoyed it so much.
-          </p>
-          <p>
-            I went through a progression of learning about classes and objects and then how the principles of OO and using design patterns help to write code which is easier to reuse and understand. And when combined sensibly can be used to solve large programming problems.
-          </p>
-        </div>
-      </div>
-
-      <div class="skill">
-        <div class="sub_title">Problem Solving/Quick Learner</div>
-        <div>
-          <p>
-            I have become efficient in finding quick effective solutions without assistance.
-          </p>
-          <p>
-            Previous jobs which I have worked in had me as the only IT person. I had no one who I could turn to for help meaning it was up to me to research and implement a solution for all problems which came up.
-          </p>
-        </div>
-      </div>
-
-      <div class="skill">
-        <div class="sub_title">Web Development</div>
-        <div>
-          I started learning web development during high school and since then I have spent a decent amount of time just dabbling on my own little web applications on a local server with php and mysql.
-          I have also worked with designers and product managers (The Alchemist & Google) to create a working website from a static design.
-        </div>
-      </div>
-
-      <div class="skill">
-        <div class="sub_title">Languages &amp; Frameworks</div>
-        <div class="table">
-          <div class="row">
-            <div class="cell">Java</div>
-            <div class="cell"> 10+ Years</div>
-            <div class="cell"></div>
-          </div>
-          <div class="row">
-            <div class="cell">PHP</div>
-            <div class="cell"> 8 Years</div>
-            <div class="cell"> Wordpress </div>
-          </div>
-          <div class="row">
-            <div class="cell">Templating</div>
-            <div class="cell"> 6 Years</div>
-            <div class="cell"> Twig &amp; Jinja2 </div>
-          </div>
-          <div class="row">
-            <div class="cell">SQL Databases</div>
-            <div class="cell"> 3 Years</div>
-            <div class="cell"></div>
-          </div>
-          <div class="row">
-            <div class="cell">Python</div>
-            <div class="cell"> 2 Years</div>
-            <div class="cell"> Flask, Django and Wagtail</div>
-          </div>
-          <div class="row">
-            <div class="cell">JavaScript, HTML and CSS</div>
-            <div class="cell"> 8 Years</div>
-            <div class="cell"> jQuery, Angular and Closure</div>
-          </div>
-        </div>
-      </div>
+      <div class="title">Technical Skills</div>
+      <p>
+        I'm always eager to learn new tools and technologies.
+        My current strengths are:<br>
+        Java, PHP, CircleCI, Mongo, Kafka, Kubernetes, Terraform
+      </p>
     </div>
 
-    <div class="university">
-      <div class="title">University</div>
-
-      <div>
-        <div class="sub_title">University:</div> Victoria University, Wellington
-      </div>
-      <div>
-        <div class="sub_title">Degree:</div> Bachelor of Computer Science (1st Class Honours)
-      </div>
-      <div>
-        Average grade was A with mainly A+’s in the computer focused papers.
-      </div>
-      <div class="sub_title">
-        Programming Competition
-      </div>
-      <div>
-        Each year through university I partook in the ACM programming competition.
-        The format of the competition was five hours in which teams of three had to try and solve as many problems as they could using any language of their choice. My team finished consistently in the top 20 out of about 70-80 teams in the south pacific, with a best finish at 8th.
-      </div>
-    </div>
-    <div class="school section">
-      <div class="title">Secondary School</div>
-
-      <div class="sub_title">
-        2000 - 2005 Wellington High School
-      </div>
-      <div>
-        Obtained the Principal’s Award for Excellence.
-        First in subject in Electronics, Info Science and Computer Studies.
-        Excellence in subject for Math for all 3 years.
-      </div>
+    <div class="university job">
+      <div class="title">Education</div>
+      <span class="year">2007 - 2010</span>
+      <p>
+        I received a 1st Class Honours degree in Computer Science from Victoria University, Wellington.
+      </p>
     </div>
 
     <div class="interest section">
@@ -245,13 +141,10 @@
       </div>
       <div>
         <p>
-          I enjoy being physically active, mainly cycling and running but will join in with just about any sport. I’ve played soccer since I was young and still enjoy getting out there for a kick around.
+          I enjoy being physically active, such as cycling and running. I’ve played soccer since I was young but will join in with just about any sport.
         </p>
         <p>
-          I also enjoy developing my own computer programs, playing computer games, watching tv, and spending time with friends during the weekends.
-        </p>
-        <p>
-          There are a lot of different areas in the computing industry which I enjoy working in. I would like to work in a job which is varied because I like to try new things and find solutions to problems.
+          I also enjoy developing my own computer programs, playing computer games, and 3d printing.
         </p>
       </div>
     </div>
@@ -259,23 +152,7 @@
       <div class="title">
         Referees
       </div>
-      <div class="table">
-        <div class="row">
-          <div class="cell">Asher Hutchings (Lead Designer 8i)</div>
-          <div class="cell"><a href="mailto:asher@8i.com">asher@8i.com</a></div>
-          <div class="cell"><span>027</span><span>9556949</span></div>
-        </div>
-        <div class="row">
-          <div class="cell">Eugene d’Eon (Co-Founder, CTO at 8i)</div>
-          <div class="cell"><a href="mailto:e@8i.com">e@8i.com</a></div>
-          <div class="cell"><span>021</span><span>711581</span></div>
-        </div>
-        <div class="row">
-          <div class="cell">Stavan (Google Manager)</div>
-          <div class="cell"><a href="mailto:stavan@google.com">stavan@google.com</a></div>
-          <div class="cell"></div>
-        </div>
-      </div>
+      <p>Available on request</p>
     </div>
   </div>
 </div>

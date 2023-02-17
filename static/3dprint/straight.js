@@ -12,7 +12,7 @@ loadGeometry = function() {
   track_width = 18.5;
   wall_height = 3;
   wall_width = 1.5;
-  length = 50;
+  length = 40;
 
   // The "hole" connector.
   connector_inset = 6.1;

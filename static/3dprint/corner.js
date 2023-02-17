@@ -1,12 +1,27 @@
+class Shape {
+  constructor() {
+    this.positions = [];
+    this.colors = [];
+    this.color = [1.0, 0, 0, 1.0];
+  }
+
+  addTriangle(a, b, c) {
+    this.positions.push(a.x, a.y, a.z);
+    this.positions.push(b.x, b.y, b.z);
+    this.positions.push(c.x, c.y, c.z);
+    this.colors.push(this.color[0], this.color[1], this.color[2], this.color[3]);
+    this.colors.push(this.color[0], this.color[1], this.color[2], this.color[3]);
+    this.colors.push(this.color[0], this.color[1], this.color[2], this.color[3]);
+  }
+
+  addQuad(a, b, c, d) {
+    this.addTriangle(a, b, c);
+    this.addTriangle(a, c, d);
+  }
+}
 
 loadGeometry = function() {
-  const geometry = new THREE.BufferGeometry();
-
-  const positions = [];
-  const colors = [];
-
-  const color = new THREE.Color();
-  alpha = 1;
+  shape = new Shape();
 
   track_height = 3;
   track_width = 18.5;
@@ -32,172 +47,141 @@ loadGeometry = function() {
   y = track_height;
   z = length;
 
-  // Red
-  color.setRGB(1.0, 0, 0);
-
   // Top of the track
   segments = 20;
   lzs = [];
   rzs = [];
   lxs = [];
   rxs = [];
+  locs = [];
   for (let r=0;r <= segments;r++) {
     lxs.push(radius - (radius - track_width) * Math.cos(Math.PI * r / 2 / segments));
     lzs.push(radius - (radius - track_width) * Math.sin(Math.PI * r / 2 / segments));
     rxs.push(radius - (radius + track_width) * Math.cos(Math.PI * r / 2 / segments));
     rzs.push(radius - (radius + track_width) * Math.sin(Math.PI * r / 2 / segments));
-    console.log(lxs[r], lzs[r], rxs[r], rzs[r]);
+
+    xs = [
+      radius - (radius + wall_width + track_width) * Math.cos(Math.PI * r / 2 / segments),
+      radius - (radius + track_width) * Math.cos(Math.PI * r / 2 / segments),
+      radius - (radius - track_width) * Math.cos(Math.PI * r / 2 / segments),
+      radius - (radius - wall_width - track_width) * Math.cos(Math.PI * r / 2 / segments),
+    ];
+    zs = [
+      radius - (radius + wall_width + track_width) * Math.sin(Math.PI * r / 2 / segments),
+      radius - (radius + track_width) * Math.sin(Math.PI * r / 2 / segments),
+      radius - (radius - track_width) * Math.sin(Math.PI * r / 2 / segments),
+      radius - (radius - wall_width - track_width) * Math.sin(Math.PI * r / 2 / segments),
+    ];
+    locs.push([
+      createVector(xs[0], 0, zs[0]),
+      createVector(xs[3], 0, zs[3]),
+      createVector(xs[3], track_height + wall_height, zs[3]),
+      createVector(xs[2], track_height + wall_height, zs[2]),
+      createVector(xs[2], track_height, zs[2]),
+      createVector(xs[1], track_height, zs[1]),
+      createVector(xs[1], track_height + wall_height, zs[1]),
+      createVector(xs[0], track_height + wall_height, zs[0]),
+      createVector(xs[0], 0, zs[0])
+    ]);
   }
 
-  // TODO will need to handle connectors?
   for (let r=1;r <= segments;r++) {
-    positions.push(lzs[r - 1], y, lxs[r - 1]);
-    positions.push(rzs[r - 1], y, rxs[r - 1]);
-    positions.push(rzs[r], y, rxs[r]);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    positions.push(lzs[r - 1], y, lxs[r - 1]);
-    positions.push(rzs[r], y, rxs[r]);
-    positions.push(lzs[r], y, lxs[r]);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
+    for (let i=1; i < locs[r].length; i++) {
+      if (r > segments - 2 && (i === 5 || i === 1)) {
+        // Don't render the top/bottom track for the inset.
+        // TODO We do need to fill in this area someway.
+        continue;
+      }
+      a = locs[r][i - 1];
+      b = locs[r][i];
+      c = locs[r - 1][i];
+      d = locs[r - 1][i - 1];
+      shape.addTriangle(a, b, c);
+      shape.addTriangle(a, c, d);
+    }
   }
 
-  y = track_height + wall_height;
-  for (let r=1;r <= segments;r++) {
-    positions.push(rzs[r-1], y, rxs[r-1]);
-    positions.push(rzs[r-1], track_height, rxs[r-1]);
-    positions.push(rzs[r], track_height, rxs[r]);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    positions.push(rzs[r-1], y, rxs[r-1]);
-    positions.push(rzs[r], track_height, rxs[r]);
-    positions.push(rzs[r], y, rxs[r]);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
+  // End plates.
+  // TODO should think about the order of these, could be easier to render?
+  locs2 = [
+    createVector(-triangle_edge_width, 0, radius),
+    createVector(-triangle_edge_width, y, radius),
+    createVector(triangle_edge_width, y, radius),
+    createVector(triangle_edge_width, 0, radius),
+    createVector(triangle_long_width, 0, radius + triangle_outset),
+    createVector(triangle_long_width, y, radius + triangle_outset),
+    createVector(-triangle_long_width, y, radius + triangle_outset),
+    createVector(-triangle_long_width, 0, radius + triangle_outset),
+  ]
+  r = 0;
+  shape.addTriangle(locs[r][0], locs2[0], locs[r][5]);
+  shape.addTriangle(locs2[0], locs2[1], locs[r][5]);
+  shape.addTriangle(locs[r][1], locs[r][2], locs[r][4]);
+  shape.addTriangle(locs[r][2], locs[r][3], locs[r][4]);
+  shape.addTriangle(locs[r][1], locs[r][4], locs2[2]);
+  shape.addTriangle(locs[r][1], locs2[2], locs2[3]);
+  shape.addTriangle(locs[r][5], locs[r][6], locs[r][7]);
+  shape.addTriangle(locs[r][0], locs[r][5], locs[r][7]);
 
-    positions.push(lzs[r-1], track_height, lxs[r-1]);
-    positions.push(lzs[r-1], y, lxs[r-1]);
-    positions.push(lzs[r], track_height, lxs[r]);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    positions.push(lzs[r-1], y, lxs[r-1]);
-    positions.push(lzs[r], y, lxs[r]);
-    positions.push(lzs[r], track_height, lxs[r]);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-    colors.push(color.r, color.g, color.b, alpha);
-  }
+  // Top of triangle
+  shape.addQuad(locs2[6], locs2[5], locs2[2], locs2[1]);
+  // Bottom of triangle
+  shape.addQuad(locs2[0], locs2[3], locs2[4], locs2[7]);
+  // Sides
+  shape.addQuad(locs2[7], locs2[6], locs2[1], locs2[0]);
+  shape.addQuad(locs2[5], locs2[4], locs2[3], locs2[2]);
+  // End
+  shape.addQuad(locs2[4], locs2[5], locs2[6], locs2[7]);
 
-  // y = track_height + wall_height;
-  //
-  // // Top right
-  // positions.push(-z, y, track_width);
-  // positions.push(-z, y, outer_track);
-  // positions.push(z, y, outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z, y, track_width);
-  // positions.push(z, y, outer_track);
-  // positions.push(z, y, track_width);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
-  // // Top left
-  // positions.push(-z, y, -outer_track);
-  // positions.push(-z, y, -track_width);
-  // positions.push(z, y, -track_width);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z, y, -outer_track);
-  // positions.push(z, y, -track_width);
-  // positions.push(z, y, -outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
-  // // Bottom
-  // positions.push(-z + connector_inset, 0, outer_track);
-  // positions.push(-z + connector_inset, 0, -outer_track);
-  // positions.push(z, 0, -outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z + connector_inset, 0, outer_track);
-  // positions.push(z, 0, -outer_track);
-  // positions.push(z, 0, outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
-  // y = track_height + wall_height;
-  // // Outer wall left
-  // positions.push(-z, 0, -outer_track);
-  // positions.push(-z, y, -outer_track);
-  // positions.push(z, y, -outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z, 0, -outer_track);
-  // positions.push(z, y, -outer_track);
-  // positions.push(z, 0, -outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
-  // y = track_height + wall_height;
-  // // Inner wall left
-  // positions.push(-z, y, -track_width);
-  // positions.push(-z, 3, -track_width);
-  // positions.push(z, 3, -track_width);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z, y, -track_width);
-  // positions.push(z, 3, -track_width);
-  // positions.push(z, y, -track_width);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
-  // y = track_height + wall_height;
-  // // Inner wall right
-  // positions.push(-z, 3, track_width);
-  // positions.push(-z, y, track_width);
-  // positions.push(z, y, track_width);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z, 3, track_width);
-  // positions.push(z, y, track_width);
-  // positions.push(z, 3, track_width);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
-  // y = track_height + wall_height;
-  // // Inner wall right
-  // positions.push(-z, y, outer_track);
-  // positions.push(-z, 0, outer_track);
-  // positions.push(z, 0, outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // positions.push(-z, y, outer_track);
-  // positions.push(z, 0, outer_track);
-  // positions.push(z, y, outer_track);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  // colors.push(color.r, color.g, color.b, alpha);
-  //
+  locs2 = [
+    createVector(radius, 0, -edge_connector_width),
+    createVector(radius, y, -edge_connector_width),
+    createVector(radius, y, edge_connector_width),
+    createVector(radius, 0, edge_connector_width),
+    createVector(radius - connector_inset, 0, connector_width),
+    createVector(radius - connector_inset, y, connector_width),
+    createVector(radius - connector_inset, y, -connector_width),
+    createVector(radius - connector_inset, 0, -connector_width),
+  ]
+  r = segments;
+  shape.addTriangle(locs[r][5], locs2[0], locs[r][0]);
+  shape.addTriangle(locs[r][5], locs2[1], locs2[0]);
+  shape.addTriangle(locs[r][4], locs[r][2], locs[r][1]);
+  shape.addTriangle(locs[r][4], locs[r][3], locs[r][2]);
+  shape.addTriangle(locs2[2], locs[r][4], locs[r][1]);
+  shape.addTriangle(locs2[3], locs2[2], locs[r][1]);
+  shape.addTriangle(locs[r][7], locs[r][6], locs[r][5]);
+  shape.addTriangle(locs[r][7], locs[r][5], locs[r][0]);
+
+  // Sides
+  shape.addQuad(locs2[0], locs2[1], locs2[6], locs2[7]);
+  shape.addQuad(locs2[2], locs2[3], locs2[4], locs2[5]);
+  // End
+  shape.addQuad(locs2[7], locs2[6], locs2[5], locs2[4]);
+
+  // Add top surface.
+  shape.addQuad(locs[r - 1][4], locs[r][4], locs2[2], locs2[5]);
+  // This quad is a little risky, it can be a dart so order is important.
+  shape.addQuad(locs[r - 2][4], locs[r - 1][4], locs2[5], locs[r - 2][5]);
+
+  shape.addQuad(locs2[6], locs2[1], locs[r][5], locs[r - 1][5]);
+  // This quad is a little risky, it can be a dart so order is important.
+  shape.addQuad(locs2[6], locs[r - 1][5], locs[r - 2][5], locs2[5]);
+
+  // bottom surface.
+  shape.addQuad(locs[r - 1][1], locs2[4], locs2[3], locs[r][1]);
+  // This quad is a little risky, it can be a dart so order is important.
+  shape.addQuad(locs[r - 2][1], locs[r - 2][0], locs2[4], locs[r - 1][1]);
+
+  shape.addQuad(locs2[7], locs[r - 1][0], locs[r][0], locs2[0]);
+  // This quad is a little risky, it can be a dart so order is important.
+  shape.addQuad(locs2[7], locs2[4], locs[r - 2][0], locs[r - 1][0]);
+
+  // Top of triangle
+  // shape.addQuad(locs2[6], locs2[5], locs2[2], locs2[1]);
+  // Bottom of triangle
+  // shape.addQuad(locs2[0], locs2[3], locs2[4], locs2[7]);
+
   // y = track_height + wall_height;
   // // End wall
   // positions.push(z, y, outer_track);
@@ -494,6 +478,11 @@ loadGeometry = function() {
   // colors.push(color.r, color.g, color.b, alpha);
   // colors.push(color.r, color.g, color.b, alpha);
   // colors.push(color.r, color.g, color.b, alpha);
+
+
+  let positions = shape.positions;
+  let colors = shape.colors;
+  const geometry = new THREE.BufferGeometry();
 
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));

@@ -42,7 +42,7 @@ styles = {
 apps = {}
 
 apps['3dprint'] = {
-    'tags': ['threejs', 'objexport'],
+    'tags': ['p5', 'threejs', 'objexport'],
     'scripts': [
         'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.js',
         '/static/js/three.js/OrbitControls.js',

@@ -42,12 +42,11 @@ styles = {
 apps = {}
 
 apps['3dprint'] = {
-    'tags': ['threejs', 'objexport'],
+    'tags': ['p5', 'threejs', 'objexport'],
     'scripts': [
         'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.js',
         '/static/js/three.js/OrbitControls.js',
         '/static/3dprint/ObjExporter.js',
-        '/static/3dprint/cube.js'
     ],
 
 }
@@ -248,9 +247,12 @@ class ProjectAppView(MethodView):
             app.title = conf.get('title', app_name)
 
             for s in conf.get('scripts', []):
-                app.scripts.append(s + "?v=" + app.version)
+                if s.startswith('https://'):
+                    app.scripts.append(s)
+                else:
+                    app.scripts.append(s + "?v=" + app.version)
 
-            s = request.args.get('sample');
+            s = request.args.get('sample')
             if s:
                 app.scripts.append("/static/%s/%s.js?v=%s" % (app_name, s, app.version))
 

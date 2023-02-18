@@ -5,15 +5,13 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 params = new URLSearchParams(window.location.search);
 
-const material = new THREE.MeshPhongMaterial( {
-	color: 0xaaaaaa, specular: 0xffffff, shininess: 250,
-	side: THREE.FrontSide, vertexColors: true, transparent: true
-} );
-
 var linkText = document.createTextNode("Download obj");
 var downloadButton = document.createElement('a');
 downloadButton.appendChild(linkText);
-document.body.appendChild(downloadButton);
+setTimeout(function() {
+	let links = document.getElementsByClassName("links");
+	links[0].appendChild(downloadButton);
+}, 1000);
 
 function setup() {
 	if (!window.loadGeometry) {
@@ -21,11 +19,12 @@ function setup() {
 	}
 	geometry = loadGeometry();
 
-	// const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-	// material.side = THREE.FrontSide;
+	// Render the geometry on screen using lighting to show edges more clearly.
+	const material = new THREE.MeshPhongMaterial( {
+		color: 0xaaaaaa, specular: 0xffffff, shininess: 10,
+		side: THREE.FrontSide, vertexColors: true, transparent: true
+	} );
 	const cube = new THREE.Mesh( geometry, material );
-	cube.rotation.z = Math.PI / 2;
-	cube.rotation.y = Math.PI / 2;
 	scene.add( cube );
 
 	// Parse the input and generate the OBJ output
@@ -41,32 +40,37 @@ function draw() {
 	noLoop();
 }
 
-camera.position.z = 100;
-camera.position.y = 50;
+// Up on my 3d printer is +Z.
+// This is important to orientate exported files in slicers.
+// Initially start the camera in front of the printer +Y.
+camera.up = new THREE.Vector3(0,0,1);
+camera.position.z = 50;
+camera.position.y = -100;
 
 scene.add( new THREE.AmbientLight(0xC0C0C0) );
+// White light at 50% intensity
+const dirLight = new THREE.DirectionalLight( 0xffffff, 0.5 ) ;
+dirLight.position.set( 20, 20, 20 );
+scene.add( dirLight );
 
 const light1 = new THREE.PointLight(0x404040);
-light1.position.set( 20, 20, 20 );
+light1.position.set( 20, 40, 80 );
 scene.add( light1 );
 
 const light2 = new THREE.PointLight(0x404040);
-light2.position.set( -20, 20, -20 );
+light2.position.set( -20, 40, -80 );
 scene.add( light2 );
 
 controls = new THREE.OrbitControls(camera);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
-controls.minPolarAngle = 0.25; // radians
-controls.maxPolarAngle = Math.PI - 0.5; // radians
-
 
 // Instantiate an exporter
 const exporter = new OBJExporter();
 
 // Render the thing locally
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight - 20 );
+renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 function animate() {

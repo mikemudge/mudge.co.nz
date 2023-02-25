@@ -157,6 +157,7 @@ apps['trail'] = {
 }
 apps['ceo_bingo'] = {
     'img': 'ceo_bingo.png',
+    'hidden': True,
 }
 apps['cv'] = {
     'img': 'cv.png',
@@ -204,7 +205,7 @@ class ProjectAppsListView(MethodView):
         sorted_apps = sorted(apps.items())
 
         return render_template('projects.tmpl', **{
-            'apps': sorted_apps
+            'apps': [a for a in sorted_apps if 'hidden' not in a[1] or not a[1]['hidden']]
         })
 
 

@@ -70,21 +70,30 @@ class Board {
     let x = floor((mouseX - this.x) / this.size / 2);
     let y = floor((mouseY - this.y) / this.size / 2);
     if (x >= 0 && x < 8 && y >= 0 && y < 8) {
-      if (this.selectedUnit) {
-        // move unit here?
-        if (this.grid[y][x].get()) {
-          console.log("Already a unit at", x, y);
-        } else {
-          // Remove the unit from its old spot.
-          this.grid[this.selectedUnit.y][this.selectedUnit.x].set(null);
-          this.selectedUnit.y = y;
-          this.selectedUnit.x = x;
-          // Add it to the new spot.
-          this.grid[y][x].set(this.selectedUnit);
-          this.selectedUnit = null;
+      let unit = this.grid[y][x].get();
+      if (unit) {
+        // If no unit is selected, or we are selecting a unit of the same color
+        if (!this.selectedUnit || unit.color === this.selectedUnit.color) {
+          // Make the new unit selected
+          this.selectedUnit = unit;
+          return;
         }
-      } else {
-        this.selectedUnit = this.grid[y][x].get();
+      }
+      if (this.selectedUnit) {
+        let moves = this.possibleMoves(this.selectedUnit);
+        let allowed = moves.filter(function(m) {return m.x === x && m.y === y});
+
+        if (allowed.length === 0) {
+          console.log("moving to", x, y, "is not an allowed move");
+          return;
+        }
+        // Remove the unit from its old spot.
+        this.grid[this.selectedUnit.y][this.selectedUnit.x].set(null);
+        this.selectedUnit.y = y;
+        this.selectedUnit.x = x;
+        // Add it to the new spot.
+        this.grid[y][x].set(this.selectedUnit);
+        this.selectedUnit = null;
       }
     }
   }
@@ -182,6 +191,8 @@ class Board {
   }
 
   kingMoves(unit) {
+    // TODO need to check that its not moving into check
+    // Also need to check for stalemate/checkmate states.
     return this.moves(unit, this.dirs, 1);
   }
 

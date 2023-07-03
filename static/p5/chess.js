@@ -151,11 +151,7 @@ class Board {
   possibleMoves(selectedUnit) {
     switch (selectedUnit.unit) {
       case "P":
-        if (selectedUnit.color === "W") {
-          return [{x: selectedUnit.x, y: selectedUnit.y - 1}];
-        } else {
-          return [{x: selectedUnit.x, y: selectedUnit.y + 1}];
-        }
+        return this.pawnMoves(selectedUnit);
       case "K":
         return this.kingMoves(selectedUnit);
       case "H":
@@ -188,6 +184,24 @@ class Board {
       }
     }
     return moves;
+  }
+
+  pawnMoves(unit) {
+    const result = [];
+    if (unit.color === "W") {
+      result.push({x: unit.x, y: unit.y - 1});
+      if (unit.y === 6) {
+        // pawn can move 2 from the first row.
+        result.push({x: unit.x, y: 4})
+      }
+    } else {
+      result.push({x: unit.x, y: unit.y + 1});
+      if (unit.y === 1) {
+        // pawn can move 2 from the first row.
+        result.push({x: unit.x, y: 3})
+      }
+    }
+    return result;
   }
 
   kingMoves(unit) {

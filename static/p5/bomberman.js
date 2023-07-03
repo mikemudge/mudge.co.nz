@@ -63,33 +63,33 @@ class Bomb {
   
   propegateFlames(map, range) {
     let flame = new Flame(this.pos);
-    map.getTile(this.pos).flameTime = 2 * this.framerate;
+    map.getTile(this.pos).flameTime = this.framerate / 2;
     for (let i = 1; i <= range; i++) {
       var offset = createVector(i, 0);
       var t = map.getTile(p5.Vector.add(this.pos, offset));
       if (t && !t.solid || t.destructable) {
-        t.flameTime = 2 * this.framerate;
+        t.flameTime = this.framerate / 2;
         t.color = color(0);
         t.solid = false;
       }
       offset = createVector(-i, 0);
       t = map.getTile(p5.Vector.add(this.pos, offset));
       if (t && !t.solid || t.destructable) {
-        t.flameTime = 2 * this.framerate;
+        t.flameTime = this.framerate / 2;
         t.color = color(0);
         t.solid = false;
       }
       offset = createVector(0, i);
       t = map.getTile(p5.Vector.add(this.pos, offset));
       if (t && !t.solid || t.destructable) {
-        t.flameTime = 2 * this.framerate;
+        t.flameTime = this.framerate / 2;
         t.color = color(0);
         t.solid = false;
       }
       offset = createVector(0, -i);
       t = map.getTile(p5.Vector.add(this.pos, offset));
       if (t && !t.solid || t.destructable) {
-        t.flameTime = 2 * this.framerate;
+        t.flameTime = this.framerate / 2;
         t.color = color(0);
         t.solid = false;
       }
@@ -148,7 +148,10 @@ class Tile {
     this.template.show(this.color, size);
     if (this.flameTime > 0) {
       this.flameTime--;
-      new Flame().show(this.color, size / ceil(this.flameTime / 30));
+      // flametime goes from 15 -> 1
+      // scale goes from 0.25 to 1.
+      let scale = 1 - this.flameTime / 20;
+      new Flame().show(this.color, size * scale);
     }
   }
 

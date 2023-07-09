@@ -31,7 +31,12 @@ class Square {
     this.flag = !this.flag;
   }
 
+  isFlag() {
+    return this.flag;
+  }
+
   show(size) {
+    stroke(1);
     if (this.covered) {
       // Covered square.
       fill("#ccc");
@@ -111,6 +116,7 @@ class BombermanGame {
     this.width = 10;
     this.height = 10;
     this.size = 20;
+    this.bombs = 0;
     this.map = new Grid(this.width, this.height);
     this.setupNewGame();
   }
@@ -122,9 +128,15 @@ class BombermanGame {
       }
     }
 
+    this.flags = 0;
+    this.bombs = 0;
     // place some bombs
     for (let i = 0; i < 10; i++) {
-      this.map.getRandomTile().getData().setBomb();
+      let square = this.map.getRandomTile().getData();
+      if (!square.isBomb()) {
+        this.bombs++;
+        square.setBomb();
+      }
     }
 
     for (let y = 0; y < this.height; y++) {
@@ -161,7 +173,14 @@ class BombermanGame {
       // Click was outside the board
       return;
     }
-    square.toggleFlag();
+    if (square.covered) {
+      square.toggleFlag();
+      if (square.isFlag()) {
+        this.flags++;
+      } else {
+        this.flags--;
+      }
+    }
   }
 
   click(x, y) {
@@ -169,6 +188,10 @@ class BombermanGame {
     let square = tile.getData();
     if (!square) {
       // Click was outside the board
+      return;
+    }
+    if (square.flag) {
+      // Don't allow clicking on flags.
       return;
     }
     let tiles = [tile];
@@ -211,19 +234,24 @@ class BombermanGame {
         pop();
       }
     }
+
+    noStroke();
+    fill('#fff');
+    textSize(16);
+    text("Bombs remaining: " + (this.bombs - this.flags), 0, 15);
   }
 }
 
 function setup() {
   size = 50 * 2 + 20 * 2 * 10;
-  createCanvas(size, size);
+  c = createCanvas(size, size);
+  c.canvas.oncontextmenu = function() {
+    return false;
+  }
+
   // Must match bomb settings for countdown.
   frameRate(30);
   game = new BombermanGame();
-}
-
-document.oncontextmenu = function() {
-  return false;
 }
 
 function mouseReleased() {

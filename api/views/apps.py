@@ -267,6 +267,9 @@ class ProjectAppView(MethodView):
             if conf.get('img'):
                 app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
 
+            if app_name == 'p5' and s == 'minesweeper':
+                app.meta['image'] = '/static/img/projects/minesweeper.png'
+
         # Add app files last?
         app_path = '/static/%s' % app_name
         # if path:

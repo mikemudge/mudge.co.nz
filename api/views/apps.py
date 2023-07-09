@@ -192,9 +192,6 @@ apps['p5_test'] = {
 
 apps['p5'] = {
     'tags': ['p5'],
-    'scripts': [
-        '/static/p5/grid.js',
-    ]
 }
 
 def gmaps():
@@ -267,8 +264,13 @@ class ProjectAppView(MethodView):
             if conf.get('img'):
                 app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
 
-            if app_name == 'p5' and s == 'minesweeper':
-                app.meta['image'] = '/static/img/projects/minesweeper.png'
+            if app_name == 'p5':
+                if s == 'bomberman':
+                    app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
+                    app.scripts.append("/static/p5/view.js?v=%s" % app.version)
+                if s == 'minesweeper':
+                    app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
+                    app.meta['image'] = '/static/img/projects/minesweeper.png'
 
         # Add app files last?
         app_path = '/static/%s' % app_name

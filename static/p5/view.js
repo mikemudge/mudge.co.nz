@@ -4,7 +4,7 @@
 // TODO support loading particular objects (layers)
 
 class MapView {
-  constructor(size) {
+  constructor(size, screenWidth, screenHeight) {
     // Have an area of the screen which shows the game.
     this.offsetLeft = 50;
     this.offsetTop = 50;
@@ -34,16 +34,21 @@ class MapView {
 
   draw(map) {
     // TODO align center?
-    let width = 340 / this.size / 2;
-    let height = 340 / this.size / 2;
-    width = min(width, map.width - this.left);
-    height = min(height, map.height - this.top);
-    for (let y = this.top; y < this.top + height; y++) {
-      for (let x = this.left; x < this.left + width; x++) {
-        let tile = map.getTile(createVector(x, y));
+    // This covers the area of map which needs to be drawn.
+    let top = 0;
+    let left = 0;
+    let right = map.width;
+    let bottom = map.height;
+
+    // TODO figure out what region of map we need to show.
+    // This depends on where we are focused on.
+    for (let y = top; y < bottom; y++) {
+      for (let x = left; x < right; x++) {
+        let square = map.getTile(x, y).getData();
         push();
-        translate(this.toScreenX(x - this.left), this.toScreenY(y - this.top));
-        tile.show(this.size);
+        // TODO this should be offset by the top/left?
+        translate(this.toScreenX(x), this.toScreenY(y));
+        square.show(this.size);
         pop();
       }
     }

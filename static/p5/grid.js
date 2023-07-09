@@ -89,6 +89,10 @@ class Grid {
     this.getTile(x, y).setData(data);
   }
 
+  getTileAtPos(pos) {
+    return this.getTile(pos.x, pos.y);
+  }
+
   getTile(x, y) {
     if (y < 0 || y >= this.height) {
       return this.boundryTile;

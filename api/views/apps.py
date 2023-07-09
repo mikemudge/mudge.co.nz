@@ -3,7 +3,7 @@ from flask import render_template
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
-scripts = {
+SCRIPTS = {
     'threejs': [
         '/static/js/three.js/84/three.min.js',
         '/static/js/three.js/OrbitControls.js'
@@ -22,7 +22,7 @@ scripts = {
     ]
 }
 
-styles = {
+STYLES = {
     'font-awesome': [
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
     ],
@@ -191,7 +191,10 @@ apps['p5_test'] = {
 }
 
 apps['p5'] = {
-    'tags': ['p5']
+    'tags': ['p5'],
+    'scripts': [
+        '/static/p5/grid.js',
+    ]
 }
 
 def gmaps():
@@ -240,10 +243,10 @@ class ProjectAppView(MethodView):
                 app.scripts += [gmaps()]
 
             for tag in tags:
-                if tag in scripts:
-                    app.scripts += scripts[tag]
-                if tag in styles:
-                    app.styles += styles[tag]
+                if tag in SCRIPTS:
+                    app.scripts += SCRIPTS[tag]
+                if tag in STYLES:
+                    app.styles += STYLES[tag]
 
             app.title = conf.get('title', app_name)
 

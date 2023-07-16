@@ -156,8 +156,8 @@ class Bomb {
 
 class Game {
   constructor(view) {
-    this.width = 10;
-    this.height = 10;
+    this.width = 20;
+    this.height = 20;
     this.size = 20;
     this.bombs = 0;
     this.map = new Grid(this.width, this.height);
@@ -218,10 +218,13 @@ class Game {
   }
 
   update() {
+    this.view.setCenter(this.humanPlayer.pos);
+
+    // TODO need to disconnect tile updates from display?
+
     for (let player of this.players) {
       player.update();
     }
-
   }
 
   draw() {
@@ -240,11 +243,14 @@ class Game {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  view = new MapView(20);
+  w = view.getCanvasWidth();
+  h = view.getCanvasHeight();
+  createCanvas(w, h);
+  console.log("setting canvas size", w, h);
   // Must match bomb settings for countdown.
   frameRate(30);
 
-  view = new MapView(20, 400, 400);
   game = new Game(view);
 }
 

@@ -17,8 +17,8 @@ class MapView {
     this.left = 0;
     this.top = 0;
     // This is the offsets from the center which we will draw.
-    this.halfMapTileHeight = Math.ceil(this.screenHeight / this.size / 2 / 2);
-    this.halfMapTileWidth = Math.ceil(this.screenWidth / this.size / 2 / 2);
+    this.halfMapTileHeight = (this.screenHeight / this.size / 2 / 2);
+    this.halfMapTileWidth = (this.screenWidth / this.size / 2 / 2);
 
     console.log(this.halfMapTileWidth, this.halfMapTileHeight);
   }
@@ -37,20 +37,20 @@ class MapView {
 
   toScreenX(x) {
     let left = this.center.x - this.halfMapTileWidth;
-    return this.offsetLeft + this.size + (x - left) * this.size * 2;
+    return this.offsetLeft + (x - left) * this.size * 2;
   }
 
   toScreenY(y) {
     let top = this.center.y - this.halfMapTileHeight;
-    return this.offsetTop + this.size + (y - top) * this.size * 2;
+    return this.offsetTop + (y - top) * this.size * 2;
   }
 
   toGameX(x) {
-    return Math.round((x - this.offsetLeft - this.size) / (2 * this.size));
+    return Math.round((x - this.offsetLeft) / (2 * this.size));
   }
 
   toGameY(y) {
-    return Math.round((y - this.offsetTop - this.size) / (2 * this.size));
+    return Math.round((y - this.offsetTop) / (2 * this.size));
   }
 
   setCenter(pos) {
@@ -80,8 +80,8 @@ class MapView {
     this.size = Math.min(100, this.size);
 
     // Update the values which depend on size.
-    this.halfMapTileHeight = Math.ceil(this.screenHeight / this.size / 2 / 2);
-    this.halfMapTileWidth = Math.ceil(this.screenWidth / this.size / 2 / 2);
+    this.halfMapTileHeight = (this.screenHeight / this.size / 2 / 2);
+    this.halfMapTileWidth = (this.screenWidth / this.size / 2 / 2);
   }
 
   draw(map) {

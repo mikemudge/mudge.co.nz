@@ -15,18 +15,26 @@ class Player {
   show(size) {
     fill(this.color);
 
-    ellipse(0, 0, size * 2);
+    circle(0, 0, size * 1.4);
   }
 }
 
 class Square {
   constructor() {
     this.color = color(random(255), random(255), random(255))
+    this.tree = true;
   }
 
   show(size) {
     fill(this.color);
     rect(-size, -size, size * 2, size * 2);
+
+    if (this.tree) {
+      fill("brown");
+      rect(-size * .1, 0, size * .2 , size * .5);
+      fill("green");
+      circle(0, size * -.25, size * .75, size * .75);
+    }
   }
 }
 
@@ -40,7 +48,7 @@ class Game {
     this.setupNewGame();
 
     this.view = view;
-    this.humanPlayer = new Player(0, 0);
+    this.humanPlayer = new Player(1, 1);
     this.humanPlayer.color = color('red')
     this.players = [this.humanPlayer];
 
@@ -91,7 +99,7 @@ class Game {
       let y = this.view.toScreenY(player.pos.y);
       translate(x, y);
       noStroke();
-      player.show(this.view.getSize() * .8);
+      player.show(this.view.getSize());
       pop();
     }
   }

@@ -34,6 +34,8 @@ class Player {
   }
 
   update() {
+    this.map.update();
+
     for (let bomb of this.bombs) {
       bomb.update();
     }
@@ -70,6 +72,12 @@ class Square {
     return temp;
   }
 
+  update() {
+    if (this.flameTime > 0) {
+      this.flameTime--;
+    }
+  }
+
   show(size) {
     if (this.solid) {
       if (this.destructable) {
@@ -90,14 +98,9 @@ class Square {
     }
 
     if (this.bomb) {
-      if (this.bomb.time < 0) {
-        this.bomb = null;
-      } else {
-        this.bomb.show(size);
-      }
+      this.bomb.show(size);
     }
     if (this.flameTime > 0) {
-      this.flameTime--;
       // flametime goes from 15 -> 1
       // scale goes from 0.25 to 1.
       let scale = 1 - this.flameTime / 20;
@@ -129,6 +132,7 @@ class Bomb {
       // explode to flames.
       let map = this.player.map;
       this.player.map.getTileAtPos(this.pos).getData().solid = false;
+      this.player.map.getTileAtPos(this.pos).getData().bomb = null;
       this.propegateFlames(map, this.player.flameRange);
     }
   }
@@ -137,6 +141,12 @@ class Bomb {
     let square = tile.getData();
     if (!square) {
       // Edge of map.
+      return false;
+    }
+    if (square.bomb) {
+      square.bomb.time = 1;
+      // TODO explode now? Instead of setup to explode on next update() call?
+      // Can't continue after hitting a bomb.
       return false;
     }
     if (square.solid) {

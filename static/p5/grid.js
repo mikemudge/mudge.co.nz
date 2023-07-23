@@ -42,6 +42,12 @@ class Tile {
     ]
   }
 
+  update() {
+    if (this.data) {
+      this.data.update();
+    }
+  }
+
   getData() {
     return this.data;
   }
@@ -66,6 +72,14 @@ class Grid {
       for (let x = 0; x < this.width; x++) {
         let tile = new Tile(this, x, y, null);
         this.tiles[y].push(tile);
+      }
+    }
+  }
+
+  update() {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        this.tiles[y][x].update();
       }
     }
   }

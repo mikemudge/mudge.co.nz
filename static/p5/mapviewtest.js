@@ -22,19 +22,33 @@ class Player {
 class Square {
   constructor() {
     this.color = color(random(255), random(255), random(255))
-    this.tree = true;
+    this.tree = new Tree();
   }
 
   show(size) {
     fill(this.color);
     rect(-size, -size, size * 2, size * 2);
+    this.tree.show(size);
+  }
+}
 
-    if (this.tree) {
-      fill("brown");
-      rect(-size * .1, 0, size * .2 , size * .5);
-      fill("green");
-      circle(0, size * -.25, size * .75, size * .75);
-    }
+class Tree {
+  constructor() {
+    // lawn green is #7CFC00
+    // green is #008000
+    let rnd = random();
+    this.color = color(rnd * 0x7c, 0x80 + rnd * (0xfc - 0x80), 0);
+    this.treePos = createVector(random(-.5,.5), random(-.25, .5));
+  }
+
+  show(size) {
+    stroke("black");
+    fill(this.color);
+    rect(-size, -size, size * 2 , size * 2);
+    fill("brown");
+    rect(size * (this.treePos.x - .1), size * this.treePos.y, size * .2 , size * .5);
+    fill("ForestGreen");
+    circle(size * this.treePos.x,  size * (this.treePos.y - .25), size * .75, size * .75);
   }
 }
 
@@ -64,26 +78,9 @@ class Game {
     }
   }
 
-  keys() {
-    let vel = createVector(0, 0);
-    if (keyCode === LEFT_ARROW) {
-      vel.x-=0.5;
-    } else if (keyCode === RIGHT_ARROW) {
-      vel.x+=0.5;
-    } else if (keyCode === UP_ARROW) {
-      vel.y-=0.5;
-    } else if (keyCode === DOWN_ARROW) {
-      vel.y+=0.5;
-    } else if (keyCode === 32 /* SPACE */) {
-      this.humanPlayer.action();
-    }
-    this.humanPlayer.setVel(vel);
-  }
-
   update() {
-    this.view.setCenter(this.humanPlayer.pos);
-
     // TODO need to disconnect tile updates from display?
+    view.update();
 
     for (let player of this.players) {
       player.update();
@@ -102,6 +99,8 @@ class Game {
       player.show(this.view.getSize());
       pop();
     }
+
+    this.view.coverEdges();
   }
 }
 
@@ -118,7 +117,11 @@ function setup() {
 }
 
 function keyPressed() {
-  game.keys(keyCode);
+  view.keys();
+}
+
+function keyReleased() {
+  view.keys();
 }
 
 function mouseWheel(event) {

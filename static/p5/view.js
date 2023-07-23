@@ -16,6 +16,7 @@ class MapView {
     this.size = size;
     this.left = 0;
     this.top = 0;
+    this.center = createVector(0, 0);
     // This is the offsets from the center which we will draw.
     this.halfMapTileHeight = (this.screenHeight / this.size / 2 / 2);
     this.halfMapTileWidth = (this.screenWidth / this.size / 2 / 2);
@@ -54,8 +55,28 @@ class MapView {
   }
 
   setCenter(pos) {
-    this.center = pos;
-    // TODO constrain this?
+    this.center.set(pos);
+  }
+
+  translate(vel) {
+    this.center.add(vel);
+  }
+
+  keys() {
+    let vel = createVector(0, 0);
+    if (keyIsDown(LEFT_ARROW)) {
+      vel.x -= 10 / this.size;
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+      vel.x += 10 / this.size;
+    }
+    if (keyIsDown(UP_ARROW)) {
+      vel.y -= 10 / this.size;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+      vel.y += 10 / this.size;
+    }
+    this.vel = vel;
   }
 
   scale(amount) {
@@ -84,6 +105,12 @@ class MapView {
     this.halfMapTileWidth = (this.screenWidth / this.size / 2 / 2);
   }
 
+  update() {
+    // TODO should vel be scaled by size?
+    // Otherwise we move fast when zoomed in, and slow when zoomed out.
+    this.center.add(this.vel);
+  }
+
   draw(map) {
     // TODO align center?
     // This covers the area of map which needs to be drawn.
@@ -95,9 +122,9 @@ class MapView {
     // Assuming center is a grid tile location.
     // TODO should support grid and non grid viewing?
     top = Math.round(this.center.y - this.halfMapTileHeight);
-    bottom = top + 2 * this.halfMapTileHeight;
+    bottom = top + 1 + 2 * this.halfMapTileHeight;
     left = Math.round(this.center.x - this.halfMapTileWidth);
-    right = left + 2 * this.halfMapTileWidth;
+    right = left + 1 + 2 * this.halfMapTileWidth;
 
     // We need to know what map space to render?
     // This depends on the size of map rendering?
@@ -117,5 +144,14 @@ class MapView {
         pop();
       }
     }
+  }
+
+  coverEdges() {
+    fill("#333333");
+    noStroke();
+    rect(0, 0, this.offsetLeft, this.getCanvasHeight());
+    rect(0, 0, this.getCanvasWidth(), this.offsetTop);
+    rect(this.screenWidth + this.offsetLeft, 0, this.offsetLeft, this.getCanvasHeight());
+    rect(0, this.screenHeight + this.offsetTop, this.getCanvasWidth(), this.offsetTop);
   }
 }

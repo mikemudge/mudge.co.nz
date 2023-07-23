@@ -5,6 +5,7 @@ class Player {
     this.color = color(255);
     this.bombs = [];
     this.flameRange = 1;
+    this.numBombs = 1;
   }
 
   setVel(vel) {
@@ -14,9 +15,19 @@ class Player {
     if (!t || t.solid) {
       this.pos.sub(this.vel);
     }
+    let powerup = t.collectPowerUp();
+    if (powerup === 'explodeSize') {
+      this.flameRange++;
+    } else if (powerup === 'numBombs') {
+      this.numBombs++;
+    }
   }
 
   action() {
+    if (this.bombs.length >= this.numBombs) {
+      // Can't add any more bombs.
+      return;
+    }
     let bomb = new Bomb(this);
     this.bombs.push(bomb);
     this.map.getTileAtPos(this.pos).getData().addBomb(bomb);
@@ -27,6 +38,11 @@ class Player {
       bomb.update();
     }
     // Remove old bombs?
+    for (let i = this.bombs.length - 1; i >= 0; i--) {
+      if (this.bombs[i].time < 0) {
+        this.bombs.splice(i, 1);
+      }
+    }
   }
 
   show(size) {
@@ -48,6 +64,12 @@ class Square {
     this.flameTime = flameTime;
   }
 
+  collectPowerUp() {
+    let temp = this.powerup;
+    this.powerup = null;
+    return temp;
+  }
+
   show(size) {
     if (this.solid) {
       if (this.destructable) {
@@ -56,6 +78,15 @@ class Square {
         fill("#fff");
       }
       rect(-size, -size, size * 2, size * 2);
+    } else {
+      if (this.powerup) {
+        if (this.powerup === 'explodeSize') {
+          fill("red");
+        } else if (this.powerup === 'numBombs') {
+          fill("green");
+        }
+        circle(0, 0, size * .6);
+      }
     }
 
     if (this.bomb) {
@@ -150,14 +181,18 @@ class Bomb {
 
     noStroke()
     fill('white');
+    // TODO locate where this should be better when zoomed in/out?
+    // 12px for 20 size is default, and looks good.
+    textSize(size * 0.6);
     text(ceil(this.time / this.framerate), -3, 3);
   }
 }
 
 class Game {
   constructor(view) {
-    this.width = 20;
-    this.height = 20;
+    // These should be odd to get the solid block pattern right.
+    this.width = 21;
+    this.height = 21;
     this.size = 20;
     this.bombs = 0;
     this.map = new Grid(this.width, this.height);
@@ -172,6 +207,7 @@ class Game {
   }
 
   setupNewGame() {
+    let cornerSize = 4;
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         let square = new Square();
@@ -179,9 +215,9 @@ class Game {
           // Indestructible rock.
           square.solid = true;
           square.destructable = false;
-        } else if (x + y < 4 || this.height - y + this.width - x < 6) {
+        } else if (x + y < cornerSize || this.height - y + this.width - x < cornerSize + 2) {
           // Leave a gap in the corners.
-        } else if (this.width - x + y < 5 || this.height - y + x < 5) {
+        } else if (this.width - x + y < cornerSize + 1 || this.height - y + x < cornerSize + 1) {
           // Leave a gap in the corners.
         } else {
           square.solid = true;
@@ -236,7 +272,7 @@ class Game {
       let y = this.view.toScreenY(player.pos.y);
       translate(x, y);
       noStroke();
-      player.show(this.size * .8);
+      player.show(this.view.size * .8);
       pop();
     }
   }
@@ -250,6 +286,7 @@ function setup() {
   console.log("setting canvas size", w, h);
   // Must match bomb settings for countdown.
   frameRate(30);
+  console.log("textSize", textSize());
 
   game = new Game(view);
 }
@@ -257,6 +294,10 @@ function setup() {
 function keyPressed() {
   game.keys(keyCode);
 }
+
+// function mouseWheel(event) {
+//   view.scale(event.delta);
+// }
 
 function draw() {
   background(0);

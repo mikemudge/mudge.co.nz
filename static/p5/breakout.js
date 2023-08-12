@@ -1,3 +1,52 @@
+class Line {
+  constructor(x1, y1, x2, y2) {
+    this.x1 = x1;
+    this.y1 = y1;
+    this.x2 = x2;
+    this.y2 = y2;
+  }
+
+  show() {
+    line(this.x1, this.y1, this.x2, this.y2);
+  }
+
+  /** Find the point on the line closest to point */
+  closePoint(point) {
+    let distX = this.x1 - this.x2;
+    let distY = this.y1 - this.y2;
+    let lenSq = (distX*distX) + (distY*distY);
+    // TODO lenSq/len could be a property of line?
+
+    let dot = ( ((point.x-this.x1)*(this.x2-this.x1)) + ((point.y-this.y1)*(this.y2-this.y1)) ) / lenSq;
+
+    // Limit dot to be between 0 and 1 so the close point ends up on the line.
+    dot = min(1, max(0, dot));
+    let closestX = this.x1 + (dot * (this.x2-this.x1));
+    let closestY = this.y1 + (dot * (this.y2-this.y1));
+
+    // TODO this could be anywhere on the line if it was infinite.
+    return createVector(closestX, closestY);
+  }
+
+  collisionPoint(line) {
+
+    // This value indicates how far along the line it will hit. 0-1 is based on the ends of the line used above.
+    // 1.5 would indicate it hits if the line was 50% longer in that direction.
+    var uA = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+
+    // if uA is between 0-1, lines are colliding
+    if (uA >= 0 && uA <= 1) {
+      // Find where the lines meet
+      var intersectionX = x1 + (uA * (x2-x1));
+      var intersectionY = y1 + (uA * (y2-y1));
+      fill(255,0,0);
+      noStroke();
+      ellipse(intersectionX, intersectionY, 8, 8);
+      return true;
+    }
+  }
+}
+
 class Ball {
   constructor(pos, vel) {
     this.pos = createVector(width / 2, height - 50);
@@ -27,6 +76,46 @@ class Ball {
     }
   }
 
+  collideBrick(brick) {
+    // Draw a line indicating the balls movement.
+    let p1 = this.vel.copy().setMag(this.size / 2).add(this.pos);
+    let p2 = this.vel.copy().setMag(this.size * 3).add(this.pos);
+    let ballMove = new Line(p1.x, p1.y, p2.x, p2.y);
+
+    stroke("green");
+    fill("green");
+    ballMove.show();
+
+    // TODO
+    // Get the point on the line closest to the ball.
+    // Determine if its close enough to collide.
+
+    var bounceSpot = null;
+    var bestDis = 0;
+    for (let l of [brick.bottom, brick.left, brick.right, brick.top]) {
+      let closePoint = l.closePoint(this.pos);
+      let dis = closePoint.dist(this.pos);
+      if (!bounceSpot || dis < bestDis) {
+        bounceSpot = closePoint;
+        bestDis = dis;
+      }
+    }
+    if (bounceSpot) {
+      // Show the hit point.
+      circle(bounceSpot.x, bounceSpot.y, 5);
+    }
+
+    if (this.pos.dist(bounceSpot) < this.size / 2) {
+      // Close enough to hit this, perform bounce.
+
+      // Calculate the vector from bounce point towards the ball to reflect on.
+      let n = bounceSpot.sub(this.pos).mult(-1);
+      this.vel.reflect(n);
+      return true;
+    }
+    return false;
+  }
+
   finished() {
     // If the ball leaves the screen off the bottom.
     return this.pos.y + this.size > height;
@@ -43,121 +132,36 @@ class Ball {
 }
 
 class Brick {
-  constructor(x, y, r, col) {
-    this.size = 20;
+  constructor(x, y, r) {
+    this.size = r || 20;
     this.pos = createVector(x, y);
     this.color = color(random(255), random(255), random(255));
-    this.health = 100;
+    this.health = 1;
+    this.bottom = new Line(x - this.size, y + this.size / 2, x + this.size, y + this.size / 2);
+    this.left = new Line(x - this.size, y - this.size / 2, x - this.size, y + this.size / 2);
+    this.right = new Line(x + this.size, y - this.size / 2, x + this.size, y + this.size / 2);
+    this.top = new Line(x - this.size, y - this.size / 2, x + this.size, y - this.size / 2);
   }
 
   update() {
   }
 
-  collide(ball) {
+  hit(args) {
+    // Always finish this brick off immediately.
+    this.health--;
     if (this.finished()) {
-      return;
-    }
-    if (ball.pos.x + ball.size >= this.pos.x - this.size && ball.pos.x - ball.size <= this.pos.x + this.size) {
-      if (ball.pos.y + ball.size >= this.pos.y - this.size / 2 && ball.pos.y - ball.size <= this.pos.y + this.size / 2) {
-        this.health = 0;
-
-
-        var x0 = ball.pos.x;
-        var y0 = ball.pos.y;
-        var x1 = this.pos.x - this.size
-        var x2 = this.pos.x + this.size
-        var y1 = this.pos.y + this.size / 2;
-        var y2 = y1
-
-        // TODO because we only have vertical and horizonal lines, this should be simplified?
-        var n = (x2 - x1) * (y1 - y0) - (x1 - x0) * (y2 - y1);
-        var d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        var bottomDis = Math.abs(n) / d;
-
-        // Check top side
-        x1 = this.pos.x - this.size
-        x2 = this.pos.x + this.size
-        y1 = this.pos.y - this.size / 2;
-        y2 = this.pos.y - this.size / 2
-        n = (x2 - x1) * (y1 - y0) - (x1 - x0) * (y2 - y1);
-        d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        var topDis = Math.abs(n) / d;
-
-        // Check left side
-        x1 = this.pos.x - this.size
-        x2 = x1
-        y1 = this.pos.y - this.size / 2;
-        y2 = this.pos.y + this.size / 2
-        n = (x2 - x1) * (y1 - y0) - (x1 - x0) * (y2 - y1);
-        d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        var leftDis = Math.abs(n) / d;
-
-        // Check right side
-        x1 = this.pos.x + this.size
-        x2 = x1
-        y1 = this.pos.y - this.size / 2;
-        y2 = this.pos.y + this.size / 2
-        n = (x2 - x1) * (y1 - y0) - (x1 - x0) * (y2 - y1);
-        d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        var rightDis = Math.abs(n) / d;
-
-        var debug = false;
-
-        // This works ok, but it needs to consider the limits of the line as currently its assuming infinite length.
-        if (ball.vel.x > 0) {
-          // ball is moving right.
-          if (debug) console.log("dis to left", leftDis);
-          if (ball.vel.y > 0) {
-            // ball is moving down
-            if (debug) console.log("dis to top", topDis);
-            if (topDis < leftDis) {
-              ball.vel.y *= -1;
-            } else {
-              ball.vel.x *= -1;
-            }
-          } else {
-            // ball is moving up
-            if (debug) console.log("dis to bottom", bottomDis);
-            if (bottomDis < leftDis) {
-              ball.vel.y *= -1;
-            } else {
-              ball.vel.x *= -1;
-            }
-          }
-        } else {
-          // ball is moving left.
-          if (debug) console.log("dis to right", rightDis);
-          if (ball.vel.y > 0) {
-            // ball is moving down
-            if (debug) console.log("dis to top", topDis);
-            if (topDis < rightDis) {
-              ball.vel.y *= -1;
-            } else {
-              ball.vel.x *= -1;
-            }
-          } else {
-            // ball is moving up
-            if (debug) console.log("dis to bottom", bottomDis);
-            if (bottomDis < rightDis) {
-              ball.vel.y *= -1;
-            } else {
-              ball.vel.x *= -1;
-            }
-          }
+      let rnd = random(100);
+      // % chance of getting a powerup.
+      if (rnd < 20 || args.get("powerup")) {
+        let powerup = new PowerUp(this.pos.x, this.pos.y);
+        if (args.get("powerup")) {
+          powerup.type = args.get("powerup");
         }
-        // TODO improve bounce here.
-        // let diff = p5.Vector.sub(this.pos, ball.pos);
-        // if (Math.abs(diff.x) > Math.abs(diff.y) * 2) {
-        //   // The x distance is more than double the y, bounce x;
-        //   // TODO a small margin where both bounce?
-        //   ball.vel.x *= -1;
-        // } else {
-        //   ball.vel.y *= -1;
-        // }
-        return true;
+        console.log("Add power up", powerup.type);
+        return powerup;
       }
     }
-    return false;
+    return null;
   }
 
   finished() {
@@ -195,37 +199,49 @@ class PowerUp {
     this.vel.add(createVector(0, 0.04))
   }
 
-  collide(paddle) {
+  collide(paddle, game) {
     if (this.claimed) {
       // Already claimed this power.
       return;
+    }
+
+    if (this.pos.x - this.size < 0 && this.vel.x < 0) {
+      this.vel.x *= -1;
+    }
+    if (this.pos.x + this.size > width && this.vel.x > 0) {
+      this.vel.x *= -1;
+    }
+    if (this.pos.y - this.size < 0 && this.vel.y < 0) {
+      this.vel.y *= -1;
     }
 
     if (this.pos.y + this.size > paddle.pos.y - paddle.height) {
       let d = this.pos.x - paddle.pos.x;
       if (-paddle.width < d && d < paddle.width) {
         // Hit the paddle
-        this.claim();
+        this.claim(game);
       }
     }
   }
 
-  claim() {
+  claim(game) {
     this.claimed = true;
-    if (this.type == "newball") {
+    if (this.type === "newball") {
       let ball = new Ball();
-      ball.pos = balls[0].pos.copy();
-      ball.vel = balls[0].vel.copy();
+      // TODO should this use a different ball to duplicate?
+      // Perhaps the last one to have bounced off paddle?
+      ball.pos = game.balls[0].pos.copy();
+      ball.vel = game.balls[0].vel.copy();
       ball.vel.add(p5.Vector.random2D());
 
-      balls.push(ball);
-    } else if (this.type == "largerpaddle") {
+      game.balls.push(ball);
+    } else if (this.type === "largerpaddle") {
       // Increase paddle size.
-      paddle.width += 10;
-    } else if (this.type == "smallerpaddle") {
+      game.paddle.width += 10;
+    } else if (this.type === "smallerpaddle") {
       // Decrease paddle size.
-      if (paddle.width > 20) {
-        paddle.width -= 10;
+      if (game.paddle.width > 20) {
+        game.paddle.width -= 10;
       }
     } else {
       console.log("unknown power", this.type);
@@ -233,10 +249,7 @@ class PowerUp {
   }
 
   finished() {
-    if (this.claimed || this.pos.y + this.size > height) {
-      return true;
-    }
-    return false;
+    return this.claimed || this.pos.y + this.size > height;
   }
 
   show() {
@@ -244,11 +257,11 @@ class PowerUp {
     translate(this.pos.x, this.pos.y);
     stroke(255);
     strokeWeight(1);
-    if (this.type == "newball") {
+    if (this.type === "newball") {
       fill(color(200, 0, 0));
-    } else if (this.type == "largerpaddle") {
+    } else if (this.type === "largerpaddle") {
       fill(color(0, 200, 0));
-    } else if (this.type == "smallerpaddle") {
+    } else if (this.type === "smallerpaddle") {
       fill(color(0, 0, 200));
     }
     rect(-this.size, -this.size, this.size * 2, this.size * 2, 3);
@@ -286,23 +299,102 @@ class Paddle {
   }
 }
 
-function reset() {
-  paused = true;
+class Game {
+  constructor() {
 
-  balls = [new Ball()];
-  paddle = new Paddle();
+    this.reset();
+  }
 
-  powerups = [];
-  bricks = [];
-  for (y = 40; y <= height / 2; y += 20) {
-    for (x = 40; x <= width - 40; x += 40) {
-      bricks.push(new Brick(x, y));
+  reset() {
+    this.paused = true;
+    this.balls = [new Ball()];
+    this.paddle = new Paddle();
+
+    this.powerups = [];
+    this.bricks = [];
+
+    // for testing
+    // this.bricks.push(new Brick(200, 100, 100));
+    // this.bricks.push(new Brick(400, 100, 100));
+    // this.bricks.push(new Brick(200, 200, 100));
+    // return;
+
+    let size = 20;
+    for (let y = 40; y <= height / 2; y += size) {
+      for (let x = 40; x <= width - size * 2; x += size * 2) {
+        this.bricks.push(new Brick(x, y, size));
+      }
     }
+  }
+
+  show() {
+    for (let brick of this.bricks) {
+      brick.update();
+      brick.show();
+      for (let ball of this.balls) {
+        if (brick.finished()) {
+          continue;
+        }
+        if (ball.collideBrick(brick)) {
+            var powerup = brick.hit(args);
+            if (powerup) {
+              this.powerups.push(powerup);
+            }
+        }
+      }
+    }
+    for (let i = this.bricks.length - 1; i >= 0; i--) {
+      if (this.bricks[i].finished()) {
+        this.bricks.splice(i, 1);
+      }
+    }
+
+    if (this.bricks.length === 0) {
+      // Level complete?
+      console.log("Level complete");
+      this.reset();
+      return;
+    }
+
+    for (let ball of this.balls) {
+      if (!this.paused) {
+        ball.update();
+        this.paddle.collide(ball);
+      }
+      ball.show();
+    }
+
+    for (let i = this.balls.length - 1; i >= 0; i--) {
+      if (this.balls[i].finished()) {
+        this.balls.splice(i, 1);
+      }
+    }
+
+    if (this.balls.length === 0) {
+      // You lose
+      console.log("You lose");
+      this.reset();
+      return;
+    }
+
+    for (let powerup of this.powerups) {
+      powerup.update();
+      powerup.collide(this.paddle, this);
+      powerup.show();
+    }
+    for (let i = this.powerups.length - 1; i >= 0; i--) {
+      if (this.powerups[i].finished()) {
+        this.powerups.splice(i, 1);
+      }
+    }
+
+    this.paddle.update();
+    this.paddle.show();
   }
 }
 
 function mouseClicked() {
-  paused = false;
+  game.paused = false;
 }
 
 function setup() {
@@ -310,79 +402,13 @@ function setup() {
 
   args = new URLSearchParams(location.search);
 
-  reset();
+  game = new Game();
+
+  game.reset();
 }
 
 function draw() {
   background(0);
 
-  for (let brick of bricks) {
-    brick.update();
-    for (let ball of balls) {
-      if (!brick.finished() && brick.collide(ball)) {
-        if (brick.finished()) {
-          rnd = random(100);
-          // % chance of getting a powerup.
-          if (rnd < 20 || args.get("powerup")) {
-            powerup = new PowerUp(brick.pos.x, brick.pos.y);
-            powerups.push(powerup);
-            if (args.get("powerup")) {
-              powerup.type = args.get("powerup");
-            }
-            console.log("Add power up", powerup.type);
-          }
-        }
-      }
-    }
-    brick.show();
-  }
-  for (let i = bricks.length - 1; i >= 0; i--) {
-    if (bricks[i].finished()) {
-      bricks.splice(i, 1);
-    }
-  }
-
-  if (bricks.length == 0) {
-    // Level complete?
-    console.log("Level complete");
-    reset();
-    return;
-  }
-
-  for (let ball of balls) {
-    if (!paused) {
-      ball.update();
-      paddle.collide(ball);
-    }
-    ball.show();
-  }
-
-  for (let i = balls.length - 1; i >= 0; i--) {
-    if (balls[i].finished()) {
-      balls.splice(i, 1);
-    }
-  }
-
-  if (balls.length == 0) {
-    // You lose
-    console.log("You lose");
-    reset();
-    return;
-  }
-
-  for (let powerup of powerups) {
-    powerup.update();
-    powerup.collide(paddle);
-    powerup.show();
-  }
-  for (let i = powerups.length - 1; i >= 0; i--) {
-    powerup = powerups[i];
-    if (powerup.finished()) {
-      powerups.splice(i, 1);
-    }
-  }
-
-
-  paddle.update();
-  paddle.show();
+  game.show();
 }

@@ -136,6 +136,34 @@ class Game {
       }
     }
   }
+  doubleClick(x, y) {
+    let tile = this.clickedTile(x, y);
+    let square = tile.getData();
+    if (!square) {
+      // Click was outside the board
+      return;
+    }
+    if (square.flag) {
+      // Don't allow clicking on flags.
+      return;
+    }
+    // Find how many flags are next to this?
+    // uncover all neighbours which are not flags if flag count is equal to this tiles count.
+    var flags = 0;
+    for(let n of tile.getOrdinalTiles()) {
+      if (n.getData() && n.getData().flag) {
+        flags++;
+      }
+    }
+    if (flags === square.count) {
+      // Uncover all non flag neighbours
+      for(let n of tile.getOrdinalTiles()) {
+        if (n.getData() && !n.getData().flag) {
+          this.uncover(n)
+        }
+      }
+    }
+  }
 
   click(x, y) {
     let tile = this.clickedTile(x, y);
@@ -148,6 +176,11 @@ class Game {
       // Don't allow clicking on flags.
       return;
     }
+    this.uncover(tile);
+  }
+
+  uncover(tile) {
+    let square = tile.getData();
     let tiles = [tile];
     while(tiles.length > 0) {
       let next = [];
@@ -214,6 +247,10 @@ function mouseReleased() {
   if (mouseButton === "right") {
     game.flag(mouseX, mouseY)
   }
+}
+
+function doubleClicked() {
+  game.doubleClick(mouseX, mouseY);
 }
 
 function draw() {

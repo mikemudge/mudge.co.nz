@@ -4,6 +4,9 @@ class Line {
     this.y1 = y1;
     this.x2 = x2;
     this.y2 = y2;
+    let distX = this.x1 - this.x2;
+    let distY = this.y1 - this.y2;
+    this.lenSq = (distX*distX) + (distY*distY);
   }
 
   show() {
@@ -12,19 +15,13 @@ class Line {
 
   /** Find the point on the line closest to point */
   closePoint(point) {
-    let distX = this.x1 - this.x2;
-    let distY = this.y1 - this.y2;
-    let lenSq = (distX*distX) + (distY*distY);
-    // TODO lenSq/len could be a property of line?
-
-    let dot = ( ((point.x-this.x1)*(this.x2-this.x1)) + ((point.y-this.y1)*(this.y2-this.y1)) ) / lenSq;
+    let dot = ( ((point.x-this.x1)*(this.x2-this.x1)) + ((point.y-this.y1)*(this.y2-this.y1)) ) / this.lenSq;
 
     // Limit dot to be between 0 and 1 so the close point ends up on the line.
     dot = min(1, max(0, dot));
     let closestX = this.x1 + (dot * (this.x2-this.x1));
     let closestY = this.y1 + (dot * (this.y2-this.y1));
 
-    // TODO this could be anywhere on the line if it was infinite.
     return createVector(closestX, closestY);
   }
 
@@ -77,19 +74,6 @@ class Ball {
   }
 
   collideBrick(brick) {
-    // Draw a line indicating the balls movement.
-    let p1 = this.vel.copy().setMag(this.size / 2).add(this.pos);
-    let p2 = this.vel.copy().setMag(this.size * 3).add(this.pos);
-    let ballMove = new Line(p1.x, p1.y, p2.x, p2.y);
-
-    stroke("green");
-    fill("green");
-    ballMove.show();
-
-    // TODO
-    // Get the point on the line closest to the ball.
-    // Determine if its close enough to collide.
-
     var bounceSpot = null;
     var bestDis = 0;
     for (let l of [brick.bottom, brick.left, brick.right, brick.top]) {
@@ -99,10 +83,6 @@ class Ball {
         bounceSpot = closePoint;
         bestDis = dis;
       }
-    }
-    if (bounceSpot) {
-      // Show the hit point.
-      circle(bounceSpot.x, bounceSpot.y, 5);
     }
 
     if (this.pos.dist(bounceSpot) < this.size / 2) {
@@ -232,7 +212,7 @@ class PowerUp {
       // Perhaps the last one to have bounced off paddle?
       ball.pos = game.balls[0].pos.copy();
       ball.vel = game.balls[0].vel.copy();
-      ball.vel.add(p5.Vector.random2D());
+      ball.vel.add(p5.Vector.random2D()).limit(1,5);
 
       game.balls.push(ball);
     } else if (this.type === "largerpaddle") {

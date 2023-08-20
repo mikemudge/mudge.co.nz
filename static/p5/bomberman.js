@@ -48,9 +48,10 @@ class Player {
   }
 
   show(size) {
+    noStroke();
     fill(this.color);
 
-    ellipse(0, 0, size * 2);
+    ellipse(0, 0, size * 1.6);
   }
 }
 
@@ -277,19 +278,19 @@ class Game {
     this.view.draw(this.map);
 
     for (let player of this.players) {
-      push();
-      let x = this.view.toScreenX(player.pos.x);
-      let y = this.view.toScreenY(player.pos.y);
-      translate(x, y);
-      noStroke();
-      player.show(this.view.size * .8);
-      pop();
+      view.show(player);
     }
+
+    this.view.coverEdges();
   }
 }
 
 function setup() {
   view = new MapView(20);
+
+  // Fixed view size, or comment out for full screen.
+  // view.setScreen(15 * 2 * 20 + 100, 13 * 2 * 20 + 100);
+
   w = view.getCanvasWidth();
   h = view.getCanvasHeight();
   createCanvas(w, h);
@@ -299,6 +300,13 @@ function setup() {
   console.log("textSize", textSize());
 
   game = new Game(view);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight - 18);
+
+  // TODO set screen should compensate for offsets?
+  view.setScreen(windowWidth, windowHeight - 18);
 }
 
 function keyPressed() {

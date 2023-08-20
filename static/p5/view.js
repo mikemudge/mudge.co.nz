@@ -6,22 +6,32 @@
 class MapView {
   constructor(size) {
     // Have an area of the screen which shows the game.
-    this.offsetLeft = 50;
+    this.offsetLeft = 100;
     this.offsetTop = 50;
+    this.offsetBottom = 100;
 
-    // How much screen we need to render a 20x15 section of the map.
-    // TODO should not be hardcoded.
-    this.screenWidth = 20 * 2 * size;
-    this.screenHeight = 15 * 2 * size;
-    this.size = size;
-    this.left = 0;
-    this.top = 0;
+    // The size of a map tile (number of units across a single map tile is).
+    this.mapSize = size;
+
+    // This represents the current scale to render everything at.
+    this.size = 1;
+    this.minSize = 0.25;
+    this.maxSize = 10;
+
+    // default to use the whole window.
+    this.setScreen(windowWidth, windowHeight);
     this.center = createVector(0, 0);
-    // This is the offsets from the center which we will draw.
-    this.halfMapTileHeight = (this.screenHeight / this.size / 2 / 2);
-    this.halfMapTileWidth = (this.screenWidth / this.size / 2 / 2);
+  }
 
-    console.log(this.halfMapTileWidth, this.halfMapTileHeight);
+  getMapSize() {
+    return this.mapSize;
+  }
+
+  setScreen(width, height) {
+    this.screenWidth = width - 2 * this.offsetLeft;
+    this.screenHeight = height - this.offsetTop - this.offsetBottom;
+
+    this.halfScreen = createVector(this.screenWidth / 2, this.screenHeight / 2);
   }
 
   getCanvasWidth() {
@@ -29,7 +39,7 @@ class MapView {
   }
 
   getCanvasHeight() {
-    return this.offsetTop * 2 + this.screenHeight;
+    return this.offsetTop + this.offsetBottom + this.screenHeight;
   }
 
   getSize() {
@@ -37,21 +47,24 @@ class MapView {
   }
 
   toScreenX(x) {
-    let left = this.center.x - this.halfMapTileWidth;
-    return this.offsetLeft + (x - left) * this.size * 2;
+    // Take the difference from the current map center scaled by the size.
+    let mapping = (x - this.center.x) * this.size;
+    return this.offsetLeft + this.halfScreen.x + mapping;
   }
 
   toScreenY(y) {
-    let top = this.center.y - this.halfMapTileHeight;
-    return this.offsetTop + (y - top) * this.size * 2;
+    // Take the difference from the current map center scaled by the size.
+    let mapping = (y - this.center.y) * this.size;
+    // Then locate that from the center of the screen.
+    return this.offsetTop + this.halfScreen.y + mapping;
   }
 
   toGameX(x) {
-    return Math.round((x - this.offsetLeft) / (2 * this.size));
+    return Math.round((x - this.offsetLeft) / (this.size));
   }
 
   toGameY(y) {
-    return Math.round((y - this.offsetTop) / (2 * this.size));
+    return Math.round((y - this.offsetTop) / (this.size));
   }
 
   setCenter(pos) {
@@ -65,16 +78,16 @@ class MapView {
   keys() {
     let vel = createVector(0, 0);
     if (keyIsDown(LEFT_ARROW)) {
-      vel.x -= 10 / this.size;
+      vel.x -= 20 / this.size;
     }
     if (keyIsDown(RIGHT_ARROW)) {
-      vel.x += 10 / this.size;
+      vel.x += 20 / this.size;
     }
     if (keyIsDown(UP_ARROW)) {
-      vel.y -= 10 / this.size;
+      vel.y -= 20 / this.size;
     }
     if (keyIsDown(DOWN_ARROW)) {
-      vel.y += 10 / this.size;
+      vel.y += 20 / this.size;
     }
     this.vel = vel;
   }
@@ -95,20 +108,24 @@ class MapView {
     // Also based on the current size, so we scale quicker when larger.
     this.size += amount * (this.size / 50);
 
-    // Do not support lower than 4.
-    this.size = Math.max(4, this.size);
-    // Or larger than 100?
-    this.size = Math.min(100, this.size);
-
-    // Update the values which depend on size.
-    this.halfMapTileHeight = (this.screenHeight / this.size / 2 / 2);
-    this.halfMapTileWidth = (this.screenWidth / this.size / 2 / 2);
+    // Limit scaling to some sensible min/max
+    this.size = Math.max(this.minSize, this.size);
+    this.size = Math.min(this.maxSize, this.size);
   }
 
   update() {
     // TODO should vel be scaled by size?
     // Otherwise we move fast when zoomed in, and slow when zoomed out.
     this.center.add(this.vel);
+  }
+
+  show(thing) {
+    push();
+    let x = this.toScreenX(thing.pos.x);
+    let y = this.toScreenY(thing.pos.y);
+    translate(x, y);
+    thing.show(this.mapSize * this.size / 2);
+    pop();
   }
 
   draw(map) {
@@ -119,19 +136,21 @@ class MapView {
     let right = map.width;
     let bottom = map.height;
 
-    // Assuming center is a grid tile location.
-    // TODO should support grid and non grid viewing?
-    top = Math.round(this.center.y - this.halfMapTileHeight);
-    bottom = top + 1 + 2 * this.halfMapTileHeight;
-    left = Math.round(this.center.x - this.halfMapTileWidth);
-    right = left + 1 + 2 * this.halfMapTileWidth;
-
-    // We need to know what map space to render?
-    // This depends on the size of map rendering?
-
-
     // TODO figure out what region of map we need to show.
     // use this.center as the focus point for the view of the map.
+
+    // This is the number of map tiles required to draw in each direction.
+    let halfMapTileHeight = (this.halfScreen.y / this.size);
+    let halfMapTileWidth = (this.halfScreen.x / this.size);
+
+    // Assuming center is a grid tile location.
+    top = Math.round((this.center.y - halfMapTileHeight) / this.mapSize);
+    left = Math.round((this.center.x - halfMapTileWidth) / this.mapSize);
+
+    // TODO could optimize these better.
+    bottom = Math.round((this.center.y + halfMapTileHeight) / this.mapSize) + 1;
+    right = Math.round((this.center.x + halfMapTileWidth) / this.mapSize) + 1;
+
     for (let y = top; y < bottom; y++) {
       for (let x = left; x < right; x++) {
         let square = map.getTile(x, y).getData();
@@ -139,19 +158,24 @@ class MapView {
           continue;
         }
         push();
-        translate(this.toScreenX(x), this.toScreenY(y));
-        square.show(this.size);
+        translate(this.toScreenX(x * this.mapSize), this.toScreenY(y * this.mapSize));
+        square.show(this.mapSize * this.size / 2);
         pop();
       }
     }
   }
 
-  coverEdges() {
-    fill("#333333");
-    noStroke();
+  coverEdges(debug) {
+    if (debug) {
+      noFill();
+      stroke("#333333");
+    } else {
+      fill("#333333");
+      noStroke();
+    }
     rect(0, 0, this.offsetLeft, this.getCanvasHeight());
     rect(0, 0, this.getCanvasWidth(), this.offsetTop);
     rect(this.screenWidth + this.offsetLeft, 0, this.offsetLeft, this.getCanvasHeight());
-    rect(0, this.screenHeight + this.offsetTop, this.getCanvasWidth(), this.offsetTop);
+    rect(0, this.screenHeight + this.offsetTop, this.getCanvasWidth(), this.offsetBottom);
   }
 }

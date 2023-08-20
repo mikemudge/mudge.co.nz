@@ -1,15 +1,14 @@
 
 class Creature {
   constructor(world) {
-    this.size = 12;
+    this.size = 5;
     this.world = world;
     this.pos = createVector(random(world.width), random(world.height));
     this.vel = p5.Vector.random2D();
     this.age = 0;
     this.maxSpeed = 5;
-    this.maxForce = 0.2
+    this.maxForce = 0.2;
     this.health = 100;
-    this.foodLevel = 100;
     this.color = random(['red', 'green', 'blue']);
   }
 
@@ -20,7 +19,7 @@ class Creature {
 
     this.collide();
 
-    this.acc = p5.Vector.random2D().setMag(0.5);
+    this.acc = p5.Vector.random2D().setMag(this.maxForce);
 
     this.vel.add(this.acc);
     this.vel.limit(this.maxSpeed);
@@ -31,15 +30,15 @@ class Creature {
 
   collide() {
     for (let c of this.world.creatures) {
-      if (this == c) {
+      if (this === c) {
         continue;
       }
       let dis = this.pos.dist(c.pos);
       if (dis < this.size * 2) {
-        if (this.color != c.color) {
+        if (this.color !== c.color) {
         // Fight each other.
           c.health -= 10;
-          if (c.health == 0) {
+          if (c.health === 0) {
             // I killed it, full heal.
             this.health = 100;
             this.foodLevel = 100;
@@ -48,12 +47,12 @@ class Creature {
           // Same color will help each other.
           if (this.age > 100 && c.age > 100) {
             // reproduce now, and make a new creature.
-            // And reset the age so repduction is less common.
+            // And reset the age so reproduction is less common.
             this.age = 0;
             c.age = 0;
-            if (this.world.creatures.length < 100) {
+            if (this.world.creatures.length < this.world.maxCreatures) {
               let newC = new Creature(this.world);
-              newC.color = this.color,
+              newC.color = this.color;
               newC.pos = this.pos.copy();
               this.world.creatures.push(newC);
             }
@@ -84,16 +83,6 @@ class Creature {
     this.acc.add(force);
   }
 
-  seek(target) {
-    let force = p5.Vector.sub(target, this.pos);
-    if (force.mag() > this.maxSpeed) {
-      force.setMag(this.maxSpeed);
-    }
-    force.sub(this.vel)
-    force.limit(this.maxForce)
-    return force
-  }
-
   finished() {
     return this.health <= 0;
   }
@@ -111,14 +100,17 @@ class Creature {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  // 18px is the top div showing nav items.
+  createCanvas(windowWidth, windowHeight - 18);
   world = {
     creatures: [],
+    // <1000 runs ok, starts to get slow around then.
+    maxCreatures: 500,
     width: width,
     height: height
   }
 
-  for (i = 0; i < 10; i++) {
+  for (var i = 0; i < world.maxCreatures / 2; i++) {
     creature = new Creature(world);
     world.creatures.push(creature);
   }

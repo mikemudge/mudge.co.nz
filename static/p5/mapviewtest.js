@@ -54,15 +54,14 @@ class Tree {
 
 class Game {
   constructor(view) {
-    this.width = 20;
+    this.debug = false;
+    this.width = 30;
     this.height = 20;
-    this.size = 20;
-    this.bombs = 0;
     this.map = new Grid(this.width, this.height);
     this.setupNewGame();
 
     this.view = view;
-    this.humanPlayer = new Player(1, 1);
+    this.humanPlayer = new Player(view.getMapSize(), view.getMapSize());
     this.humanPlayer.color = color('red')
     this.players = [this.humanPlayer];
 
@@ -91,21 +90,15 @@ class Game {
     this.view.draw(this.map);
 
     for (let player of this.players) {
-      push();
-      let x = this.view.toScreenX(player.pos.x);
-      let y = this.view.toScreenY(player.pos.y);
-      translate(x, y);
-      noStroke();
-      player.show(this.view.getSize());
-      pop();
+      this.view.show(player);
     }
 
-    this.view.coverEdges();
+    this.view.coverEdges(this.debug);
   }
 }
 
 function setup() {
-  view = new MapView(20);
+  view = new MapView(40);
   w = view.getCanvasWidth();
   h = view.getCanvasHeight();
   createCanvas(w, h);
@@ -114,6 +107,12 @@ function setup() {
   frameRate(30);
 
   game = new Game(view);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight - 18);
+
+  view.setScreen(windowWidth, windowHeight - 18);
 }
 
 function keyPressed() {

@@ -1,3 +1,5 @@
+from settings.base import *
+
 ENV = 'staging'
 
 API_URL = 'http://159.203.245.129/'

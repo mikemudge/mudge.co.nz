@@ -1,3 +1,5 @@
+from settings.base import *
+
 ENV = 'production'
 
 API_URL = 'https://mudge.co.nz/'

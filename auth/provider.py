@@ -138,7 +138,8 @@ def create_token(request, client, user):
             current_app.config.get('JWT_TOKEN_SECRET_KEY'),
             algorithm=current_app.config.get('JWT_TOKEN_ALGORITHM'))
 
-    except jwt.JWSError:
+    except jwt.JWSError as e:
+        print(e)
         raise AuthenticationException(['Invalid jwt signing'])
 
 def _create_token_body(request, client, user):

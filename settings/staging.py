@@ -1,11 +1,9 @@
-from settings.base import *
-
 ENV = 'staging'
 
 API_URL = 'http://159.203.245.129/'
 
 try:
     # import the local config to override for local settings
-    from local_config import *
+    from settings.local_config import *
 except:
     pass

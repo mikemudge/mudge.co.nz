@@ -69,6 +69,9 @@ var LoginService = function(config, $http, $location, $resource, $q) {
 }
 
 LoginService.prototype.googleScriptReady = function() {
+  if (!config.GOOGLE_CLIENT_ID) {
+    alert("config.GOOGLE_CLIENT_ID must be set");
+  }
 
   // Always need to have this initialized in case an app want to render a button.
   google.accounts.id.initialize({

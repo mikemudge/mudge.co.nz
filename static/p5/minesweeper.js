@@ -71,7 +71,7 @@ class Game {
     this.height = 10;
     this.size = 20;
     this.bombs = 0;
-    this.map = new Grid(this.width, this.height);
+    this.map = new Grid(this.width, this.height, 20);
     this.setupNewGame();
   }
 

@@ -14,6 +14,7 @@ class Player {
     let t = this.map.getTileAtPos(this.pos).getData();
     if (!t || t.solid) {
       this.pos.sub(this.vel);
+      return;
     }
     let powerup = t.collectPowerUp();
     if (powerup === 'explodeSize') {
@@ -204,13 +205,12 @@ class Game {
     // These should be odd to get the solid block pattern right.
     this.width = 21;
     this.height = 21;
-    this.size = 20;
     this.bombs = 0;
-    this.map = new Grid(this.width, this.height);
+    this.map = new Grid(this.width, this.height, view.getMapSize());
     this.setupNewGame();
 
     this.view = view;
-    this.humanPlayer = new Player(this.map, 1, 1);
+    this.humanPlayer = new Player(this.map, view.getMapSize(), view.getMapSize());
     this.humanPlayer.color = color('red')
     this.players = [this.humanPlayer];
 
@@ -261,7 +261,7 @@ class Game {
     } else if (keyCode === 32 /* SPACE */) {
       this.humanPlayer.action();
     }
-    this.humanPlayer.setVel(vel);
+    this.humanPlayer.setVel(vel.mult(this.view.getMapSize()));
   }
 
   update() {
@@ -286,7 +286,7 @@ class Game {
 }
 
 function setup() {
-  view = new MapView(20);
+  view = new MapView(40);
 
   // Fixed view size, or comment out for full screen.
   // view.setScreen(15 * 2 * 20 + 100, 13 * 2 * 20 + 100);

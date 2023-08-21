@@ -59,7 +59,8 @@ class Tile {
 
 // A data structure which represents a grid.
 class Grid {
-  constructor(width, height) {
+  constructor(width, height, size) {
+    this.size = size;
     this.width = width;
     this.height = height;
     this.tiles = [];
@@ -104,7 +105,10 @@ class Grid {
   }
 
   getTileAtPos(pos) {
-    return this.getTile(pos.x, pos.y);
+    let gx = Math.round(pos.x / this.size);
+    let gy = Math.round(pos.y / this.size);
+
+    return this.getTile(gx, gy);
   }
 
   getTile(x, y) {

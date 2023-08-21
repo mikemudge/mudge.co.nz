@@ -19,9 +19,9 @@ class NextSongsView(MethodView):
         if aboveRank is None:
             # Calculate a max from the current count down location.
             mostRecentSong = Rock1500Song.query.order_by(Rock1500Song.rankThisYear).limit(1).first()
-            current_app.logger.info("Looking for songs based on mostRecentSong rank = %d" % mostRecentSong.rankThisYear)
-            if mostRecentSong:
-                if mostRecentSong.rankThisYear <= 750:
+            if mostRecentSong and mostRecentSong.rankThisYear:
+                current_app.logger.info("Looking for songs based on mostRecentSong rank = %d" % mostRecentSong.rankThisYear)
+                if mostRecentSong.rankThisYear <= 1000:
                     # Use double the current song as a limit. Most songs don't move that much.
                     # E.g when at song 100, any song in the top 200 of last year might still play.
                     # And always include the top 100 songs, as we expect those to always be in the countdown.
@@ -30,8 +30,9 @@ class NextSongsView(MethodView):
                     # Estimate from last years songs
                     aboveRank = mostRecentSong.rankThisYear + limit
             else:
+                current_app.logger.info("Looking for songs based on mostRecentSong rank = 2000")
                 # Use a number to remove all the entries which don't appear in 2018.
-                aboveRank = 1501
+                aboveRank = 2001
 
         if limit > aboveRank:
             current_app.logger.info("Limit %d aboveRank %d" % (limit, aboveRank))

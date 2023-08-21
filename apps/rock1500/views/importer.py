@@ -10,6 +10,13 @@ from ..models import Rock1500Album, Rock1500Artist, Rock1500Song
 from ..serializers import Rock1500SongSchema
 from shared.database import db
 
+"""
+Run this with
+./manage.py rock1500 importLatest
+
+As part of adding a new year the rank this year should be reset.
+./manage.py rock1500 resetRankThisYear
+"""
 
 class ImportView(MethodView):
     def __init__(self, **kwargs):
@@ -18,7 +25,7 @@ class ImportView(MethodView):
         self.songsByThisYearRank = {}
         self.songsByLastYearRank = {}
         self.songsByTwoYearsAgoRank = {}
-        self.updateYear = 2022
+        self.updateYear = 2023
 
     @oauth.require_oauth('admin')
     def get(self):
@@ -53,9 +60,9 @@ class ImportView(MethodView):
 
         # Prepare song data for quicker finds.
         self.songsByRank = {s.rankThisYear: s for s in songs if s.rankThisYear}
-        self.songsByThisYearRank = {s.rank2022: s for s in songs if s.rank2022}
-        self.songsByLastYearRank = {s.rank2021: s for s in songs if s.rank2021}
-        self.songsByTwoYearsAgoRank = {s.rank2020: s for s in songs if s.rank2020}
+        self.songsByThisYearRank = {s.rank2023: s for s in songs if s.rank2023}
+        self.songsByLastYearRank = {s.rank2022: s for s in songs if s.rank2022}
+        self.songsByTwoYearsAgoRank = {s.rank2021: s for s in songs if s.rank2021}
 
         current_app.logger.info("Fetched %d songs. Parsing..." % len(result))
         for i, item in enumerate(result):
@@ -127,7 +134,7 @@ class ImportView(MethodView):
                     db.session.commit()
 
             songChanges = False
-            if rankLastYear and not song.rank2021:
+            if rankLastYear and not song.rank2022:
                 if rankLastYear in self.songsByLastYearRank:
                     # TODO is this song the same but with a different looking title?
                     # They could be combined into 1?
@@ -142,10 +149,10 @@ class ImportView(MethodView):
                         pass
                 else:
                     # The rank isn't already taken, so this song can be updated to have it.
-                    song.rank2021 = rankLastYear
-                    current_app.logger.info("Update song with rank2021 %d" % rankLastYear)
+                    song.rank2022 = rankLastYear
+                    current_app.logger.info("Update song with rank2022 %d" % rankLastYear)
                     songChanges = True
-            if rankTwoYearsAgo and not song.rank2020:
+            if rankTwoYearsAgo and not song.rank2021:
                 if rankTwoYearsAgo in self.songsByTwoYearsAgoRank:
                     # TODO is this song the same but with a different looking title?
                     # They could be combined into 1?
@@ -153,8 +160,8 @@ class ImportView(MethodView):
                     current_app.logger.info("However this rank is already claimed by %s" %  self.songsByTwoYearsAgoRank[rankTwoYearsAgo].title)
                 else:
                     # The rank isn't already taken, so this song can be updated to have it.
-                    song.rank2020 = rankTwoYearsAgo
-                    current_app.logger.info("Update song with rank2020 %d" % rankTwoYearsAgo)
+                    song.rank2021 = rankTwoYearsAgo
+                    current_app.logger.info("Update song with rank2021 %d" % rankTwoYearsAgo)
                     songChanges = True
             if songChanges:
                 current_app.logger.info("Update song %s" % song.title)
@@ -169,7 +176,7 @@ class ImportView(MethodView):
         if song:
             # Just update from this years rank.
             # The song has the ranks sent for this year, but not set in rankThisYear?
-            current_app.logger.info("Found song by rank2022 but not rankThisYear %s" % schema.dumps(song))
+            current_app.logger.info("Found song by rank2023 but not rankThisYear %s" % schema.dumps(song))
             current_app.logger.info("Item %s" % json.dumps(item))
             return
 
@@ -276,6 +283,8 @@ class ImportView(MethodView):
                 # That leads to DB calls with a session which has already been closed (errors)
                 if "title" not in diff:
                     diff['title'] = song.title
+                if "rank" not in diff:
+                    diff['rankThisYear'] = rankThisYear
 
                 raise Exception("This song looks completely different. Not updating diff = %s" % 
                     json.dumps(diff, indent=2, separators=(',', ':')))
@@ -284,7 +293,7 @@ class ImportView(MethodView):
             if song.rankThisYear is None:
                 current_app.logger.info("Setting rankThisYear %d for %s" % (rankThisYear, song_name))
                 song.rankThisYear = rankThisYear
-                song.rank2022 = rankThisYear
+                song.rank2023 = rankThisYear
                 self.songsByRank[rankThisYear] = song
                 # check for missing information, and update it?
                 # At the moment we will do this on the next run. See above.
@@ -306,7 +315,7 @@ class ImportView(MethodView):
             # This looks like its a new song, so we need to add it.
 
             album = Rock1500Album.find_by_name(album_name)
-            if album:
+            if album and album.name != "Single Only":
                 # If we find the album we can reuse the artist from it.
                 artist = album.artist
             else:
@@ -339,9 +348,9 @@ class ImportView(MethodView):
                 artist=artist,
                 album=album,
                 rankThisYear=rankThisYear,
-                rank2022=rankThisYear,
-                rank2021=rankLastYear,
-                rank2020=rankTwoYearsAgo,
+                rank2023=rankThisYear,
+                rank2022=rankLastYear,
+                rank2021=rankTwoYearsAgo,
             )
             db.session.add(song)
             db.session.commit()
@@ -391,10 +400,11 @@ class ImportView(MethodView):
         # if 2 or less are not matches we can believe this is correct song.
         # E.g song titles and albums commonly change a bit.
         diff = {}
-        if song.rank2021 and song.rank2021 != rankLastYear:
-            diff['rankLastYear'] = [song.rank2021, rankLastYear]
-        if song.rank2020 != rankTwoYearsAgo:
-            diff['rankTwoYearsAgo'] = [song.rank2020, rankTwoYearsAgo]
+        if song.rank2022 and song.rank2022 != rankLastYear:
+            diff['rankLastYear'] = [song.rank2022, rankLastYear]
+        # TODO Seems that rankTwoYearsAgo is not trustworthy in 2023.
+        # if song.rank2021 != rankTwoYearsAgo:
+        #     diff['rankTwoYearsAgo'] = [song.rank2021, rankTwoYearsAgo]
         if self.normalizeString(song.title) != self.normalizeString(item.get('title')):
             diff['title'] = [song.title, item.get('title')]
 

@@ -36,6 +36,7 @@ CLIENT_SECRET = None
 # TODO could just put this on prod?
 RESTRICT_FLASK_ADMIN = [
     '122.58.43.24',  # My home
-    '172.31.1.1',  # for docker
+    '73.15.185.193',  # Mian flat
+    '172.18.0.1',  # for docker
     '127.0.0.1',
 ]

@@ -48,6 +48,7 @@ class Rock1500Song(BaseModel):
     rankThisYear = db.Column(db.Integer(), index=True)
 
     # Previous ranks if known.
+    rank2023 = db.Column(db.Integer(), index=True, unique=True)
     rank2022 = db.Column(db.Integer(), index=True, unique=True)
     rank2021 = db.Column(db.Integer(), index=True, unique=True)
     rank2020 = db.Column(db.Integer(), index=True, unique=True)

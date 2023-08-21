@@ -18,6 +18,7 @@ class ImportView(MethodView):
         self.songsByThisYearRank = {}
         self.songsByLastYearRank = {}
         self.songsByTwoYearsAgoRank = {}
+        self.updateYear = 2022
 
     @oauth.require_oauth('admin')
     def get(self):
@@ -38,7 +39,7 @@ class ImportView(MethodView):
 
 
         current_date = date.today()
-        if current_date.year != 2022:
+        if current_date.year != self.updateYear:
             current_app.logger.warning("Import script needs updating to %d" % current_date.year);
             return jsonify({
                 'error': 'Import script needs updating to %d' % current_date.year

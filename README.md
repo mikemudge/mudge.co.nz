@@ -83,6 +83,8 @@ sudo service nginx restart
 
 Logs location on server.
 sudo systemctl status webserver.service
+# Follow logs
+journalctl -u webserver.service -f
 
 See setup here.
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04

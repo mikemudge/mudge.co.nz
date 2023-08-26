@@ -26,6 +26,7 @@ class Unit {
     this.acc = createVector(0, 0);
     this.maxSpeed = 1.5;
     this.maxForce = 0.25;
+    this.goalIndex = 0;
     this.color = team.color;
     this.attackPower = 1;
     this.health = 100;
@@ -54,8 +55,12 @@ class Unit {
         return;
       }
       this.applyForce(this.seek(this.target.pos));
-    } else if (this.goal) {
-      this.applyForce(this.seek(this.goal));
+    } else if (this.goal.points.length > this.goalIndex) {
+      let goal = this.goal.points[this.goalIndex];
+      if (p5.Vector.dist(this.pos, goal) < this.r) {
+        this.goalIndex++;
+      }
+      this.applyForce(this.seek(goal));
     }
 
     // Now update the speed and position based on what was calculated above.
@@ -113,27 +118,61 @@ class Path {
   }
 }
 
+class Tower {
+  constructor(team, pos) {
+    this.team = team;
+    this.game = team.getGame();
+    this.pos = pos;
+    this.color = team.color;
+    this.health = 1000;
+  }
+
+  update() {
+    // Find targets, shoot them
+  }
+
+  damage(attack) {
+    this.health -= attack;
+  }
+
+  finished() {
+    return this.health <= 0;
+  }
+
+  show(size) {
+    fill(this.color);
+
+    circle(0, 0, size * 1.6);
+  }
+}
+
 class Spawner {
-  constructor(team, pos, path) {
+  constructor(team, pos) {
     this.team = team;
     this.game = team.getGame();
     this.pos = pos;
     this.r = 20;
-    this.path = path;
+    this.paths = [];
     this.time = -1;
     this.respawnTime = 200;
     this.color = team.color;
     this.health = 1000;
   }
 
+  addPath(path) {
+    this.paths.push(new Path(path));
+  }
+
   update() {
     this.time++;
     if (this.time % this.respawnTime === 0) {
       for (let i = 0; i < 4; i++) {
-        let pos = p5.Vector.random2D().mult(this.r).add(this.pos);
-        let unit = new Unit(pos, this.team);
-        unit.goal = this.path.points[1];
-        this.game.addUnit(unit);
+        for (let path of this.paths) {
+          let pos = p5.Vector.random2D().mult(this.r).add(this.pos);
+          let unit = new Unit(pos, this.team);
+          unit.goal = path;
+          this.game.addUnit(unit);
+        }
       }
     }
   }
@@ -166,7 +205,7 @@ class Team {
 class Game {
   constructor(view) {
     this.view = view;
-    this.width = 600;
+    this.width = 1000;
     this.height = 600;
     view.setCenter(createVector(this.width / 2, this.height / 2));
     this.units = [];
@@ -175,21 +214,43 @@ class Game {
 
   init() {
     this.units = [];
-    let path = new Path([
-      createVector(50, 50),
+    let team = new Team(this, color('#D33430'));
+    let spawner = new Spawner(team, createVector(50, 50));
+    spawner.addPath([
       createVector(this.width - 50, this.height - 50)
     ]);
-    let team = new Team(this, color('#D33430'));
-    let spawner = new Spawner(team, createVector(50, 50), path);
+    spawner.addPath([
+      createVector(50, this.height - 50),
+      createVector(this.width - 50, this.height - 50)
+    ]);
+    spawner.addPath([
+      createVector(this.width - 50, 50),
+      createVector(this.width - 50, this.height - 50)
+    ]);
     this.units.push(spawner);
+    this.units.push(new Tower(team, createVector(150, 50)));
+    this.units.push(new Tower(team, createVector(50, 150)));
+    this.units.push(new Tower(team, createVector(this.width / 2, 50)));
+    this.units.push(new Tower(team, createVector(50, this.height / 2)));
 
-    path = new Path([
-      createVector(this.width - 50, this.height - 50),
+    team = new Team(this, color('#5C16C8'))
+    spawner = new Spawner(team, createVector(this.width - 50, this.height - 50));
+    spawner.addPath([
       createVector(50, 50)
     ]);
-    team = new Team(this, color('#5C16C8'))
-    spawner = new Spawner(team, createVector(this.width - 50, this.height - 50), path);
+    spawner.addPath([
+      createVector(50, this.height - 50),
+      createVector(50, 50)
+    ]);
+    spawner.addPath([
+      createVector(this.width - 50, 50),
+      createVector(50, 50)
+    ]);
     this.units.push(spawner);
+    this.units.push(new Tower(team, createVector(this.width - 150, this.height - 50)));
+    this.units.push(new Tower(team, createVector(this.width - 50, this.height - 150)));
+    this.units.push(new Tower(team, createVector(this.width / 2, this.height - 50)));
+    this.units.push(new Tower(team, createVector(this.width - 50, this.height / 2)));
   }
 
   getNearby(pos, range) {

@@ -29,7 +29,7 @@ class Unit {
     this.goalIndex = 0;
     this.color = team.color;
     this.attackPower = 1;
-    this.health = 100;
+    this.maxHealth = this.health = 100;
     this.range = 20;
   }
 
@@ -94,12 +94,61 @@ class Unit {
   }
 
   show(size) {
+    let uSize = size * this.r / 10;
+    push();
     rotate(this.vel.heading());
     stroke(255);
     strokeWeight(1);
     fill(lerpColor(color(0), this.color, this.health / 100 * .5 + .5));
 
-    ellipse(0, 0, size * 0.8);
+    ellipse(0, 0, uSize);
+    pop();
+
+    if (this.health < this.maxHealth) {
+      fill("#0F0")
+      noStroke();
+      rect(-uSize, -uSize, uSize * 2 * this.health/this.maxHealth, size / 2);
+      stroke("#FFF");
+      noFill();
+      rect(-uSize, -uSize, uSize * 2, size / 2);
+    }
+  }
+}
+
+class HeroUnit extends Unit {
+  constructor(pos, team) {
+    super(pos, team);
+    this.targetPos = null;
+    this.vel.mult(0);
+    this.r = 12;
+    this.maxHealth = this.health = 400;
+    this.healthRecover = 10;
+    // TODO experience and leveling up stats?
+  }
+
+  update() {
+    if (this.health < this.maxHealth) {
+      this.health += this.healthRecover;
+      this.health = Math.min(this.health, this.maxHealth);
+    }
+    // Move to a target location, or attack a target unit?
+    if (this.targetPos) {
+      this.applyForce(this.seek(this.targetPos));
+    } else if (this.target) {
+      if (this.target.pos.dist(this.pos) < this.range) {
+        this.target.damage(this.attackPower);
+        // No moving while attacking.
+        return;
+      }
+      this.applyForce(this.seek(this.target.pos));
+    }
+
+    // Now update the speed and position based on what was calculated above.
+    this.vel.add(this.acc);
+    this.vel.limit(this.maxSpeed);
+
+    this.pos.add(this.vel);
+    this.acc.set(0, 0);
   }
 }
 
@@ -206,7 +255,7 @@ class Game {
   constructor(view) {
     this.view = view;
     this.width = 1000;
-    this.height = 600;
+    this.height = 1000;
     view.setCenter(createVector(this.width / 2, this.height / 2));
     this.units = [];
     this.init();
@@ -232,6 +281,9 @@ class Game {
     this.units.push(new Tower(team, createVector(50, 150)));
     this.units.push(new Tower(team, createVector(this.width / 2, 50)));
     this.units.push(new Tower(team, createVector(50, this.height / 2)));
+
+    this.hero = new HeroUnit(createVector(100, 100), team);
+    this.addUnit(this.hero);
 
     team = new Team(this, color('#5C16C8'))
     spawner = new Spawner(team, createVector(this.width - 50, this.height - 50));
@@ -264,8 +316,24 @@ class Game {
     this.units.push(unit);
   }
 
+  click() {
+    let gamePos = createVector(view.toGameX(mouseX), view.toGameY(mouseY));
+    this.hero.targetPos = gamePos;
+    console.log(mouseX, mouseY, gamePos);
+  }
+
   show() {
+    this.view.setCenter(this.hero.pos);
     this.view.update();
+
+    if (this.hero.targetPos) {
+      this.view.show({
+        pos: this.hero.targetPos, show: function (size) {
+          fill("green");
+          circle(0, 0, 10);
+        }
+      });
+    }
 
     for (let unit of this.units) {
       unit.update();
@@ -295,6 +363,10 @@ function setup() {
   console.log("setting canvas size", w, h);
 
   game = new Game(view);
+  window.onblur = function() {
+    game.paused = true;
+    noLoop();
+  }
 }
 
 function windowResized() {
@@ -309,6 +381,14 @@ function keyPressed() {
 
 function keyReleased() {
   view.keys();
+}
+
+function mouseReleased() {
+  if (game.paused) {
+    game.paused = false;
+    loop();
+  }
+  game.click();
 }
 
 function mouseWheel(event) {

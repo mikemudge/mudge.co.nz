@@ -60,11 +60,11 @@ class MapView {
   }
 
   toGameX(x) {
-    return Math.round((x - this.offsetLeft) / (this.size));
+    return (x - this.offsetLeft - this.halfScreen.x) / this.size + this.center.x;
   }
 
   toGameY(y) {
-    return Math.round((y - this.offsetTop) / (this.size));
+    return (y - this.offsetTop - this.halfScreen.y) / this.size + this.center.y;
   }
 
   setCenter(pos) {

@@ -15,11 +15,11 @@
   </div>
 </div>
 <div class="previously">
+  <div ng-show="song.rank2022">
+    Rank 2022: {{ song.rank2022 }}
+  </div>
   <div ng-show="song.rank2021">
     Rank 2021: {{ song.rank2021 }}
-  </div>
-  <div ng-show="song.rank2020">
-    Rank 2020: {{ song.rank2020 }}
   </div>
   <div ng-hide="song.rank2021 || song.rank2022">
     New Entry

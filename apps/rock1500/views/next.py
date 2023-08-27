@@ -39,16 +39,16 @@ class NextSongsView(MethodView):
             limit = aboveRank
 
         if aboveRank is not None:
-            current_app.logger.info('Finding songs above %d in 2021' % aboveRank)
+            current_app.logger.info('Finding songs above %d in 2022' % aboveRank)
             query = query.filter(
-                Rock1500Song.rank2021 < aboveRank)
+                Rock1500Song.rank2022 < aboveRank)
 
         # Filter out songs which have been played already.
         query = query.filter(
             Rock1500Song.rankThisYear.is_(None))
 
         # Order by the position they ranked last time.
-        query = query.order_by(Rock1500Song.rank2021.desc())
+        query = query.order_by(Rock1500Song.rank2022.desc())
 
         # And limit so it doesn't do too much work.
         query = query.limit(limit)

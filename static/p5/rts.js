@@ -16,6 +16,53 @@ class Projectile {
   }
 }
 
+class HealthBar {
+  constructor(maxHealth) {
+    this.maxHealth = maxHealth;
+    this.health = maxHealth;
+    this.recovery = 0;
+    this.scale = 1;
+  }
+
+  setScale(scale) {
+    this.scale = scale;
+  }
+
+  setRecovery(recovery) {
+    this.recovery = recovery;
+  }
+
+  update() {
+    this.health = Math.min(this.health + this.recovery, this.maxHealth);
+  }
+
+  damage(amount) {
+    this.health -= amount;
+  }
+
+  getFraction() {
+    return this.health / this.maxHealth;
+  }
+
+  isDamaged() {
+    return this.health < this.maxHealth;
+  }
+
+  isAlive() {
+    return this.health > 0;
+  }
+
+  show(size) {
+    let uSize = this.scale * size;
+    fill("#0F0")
+    noStroke();
+    rect(-uSize, -uSize, uSize * 2 * this.health/this.maxHealth, size / 2);
+    stroke("#FFF");
+    noFill();
+    rect(-uSize, -uSize, uSize * 2, size / 2);
+  }
+}
+
 class Unit {
   constructor(pos, team) {
     this.r = 8;
@@ -29,7 +76,7 @@ class Unit {
     this.goalIndex = 0;
     this.color = team.color;
     this.attackPower = 1;
-    this.maxHealth = this.health = 100;
+    this.health = new HealthBar(100);
     this.range = 20;
   }
 
@@ -72,11 +119,15 @@ class Unit {
   }
 
   damage(attack) {
-    this.health -= attack;
+    this.health.damage(attack);
+  }
+
+  getHealth() {
+    return this.health;
   }
 
   finished() {
-    return this.health <= 0;
+    return !this.health.isAlive();
   }
 
   applyForce(force) {
@@ -99,19 +150,10 @@ class Unit {
     rotate(this.vel.heading());
     stroke(255);
     strokeWeight(1);
-    fill(lerpColor(color(0), this.color, this.health / 100 * .5 + .5));
+    fill(lerpColor(color(0), this.color, this.health.getFraction() * .5 + .5));
 
     ellipse(0, 0, uSize);
     pop();
-
-    if (this.health < this.maxHealth) {
-      fill("#0F0")
-      noStroke();
-      rect(-uSize, -uSize, uSize * 2 * this.health/this.maxHealth, size / 2);
-      stroke("#FFF");
-      noFill();
-      rect(-uSize, -uSize, uSize * 2, size / 2);
-    }
   }
 }
 
@@ -121,18 +163,24 @@ class HeroUnit extends Unit {
     this.targetPos = null;
     this.vel.mult(0);
     this.r = 12;
-    this.maxHealth = this.health = 400;
-    this.healthRecover = 10;
+    this.maxSpeed = 3;
+    this.health = new HealthBar(500);
+    this.health.setRecovery(10);
+    this.health.setScale(1.5);
     // TODO experience and leveling up stats?
   }
 
   update() {
-    if (this.health < this.maxHealth) {
-      this.health += this.healthRecover;
-      this.health = Math.min(this.health, this.maxHealth);
-    }
+    this.health.update();
     // Move to a target location, or attack a target unit?
     if (this.targetPos) {
+      if (this.pos.dist(this.targetPos) < this.maxSpeed) {
+        // Set speed/acc to 0;
+        this.vel.mult(0);
+        this.acc.mult(0);
+        this.targetPos = null;
+        return;
+      }
       this.applyForce(this.seek(this.targetPos));
     } else if (this.target) {
       if (this.target.pos.dist(this.pos) < this.range) {
@@ -149,6 +197,18 @@ class HeroUnit extends Unit {
 
     this.pos.add(this.vel);
     this.acc.set(0, 0);
+  }
+
+  show(size) {
+    super.show(size);
+
+    if (this.targetPos) {
+      // Also show the targetPos for this hero.
+      strokeWeight(2)
+      stroke("green");
+      let v = p5.Vector.sub(this.targetPos, this.pos).mult(size / 20);
+      line(0, 0, v.x, v.y);
+    }
   }
 }
 
@@ -173,19 +233,24 @@ class Tower {
     this.game = team.getGame();
     this.pos = pos;
     this.color = team.color;
-    this.health = 1000;
+    this.health = new HealthBar(5000);
+    this.health.setScale(3);
   }
 
   update() {
     // Find targets, shoot them
   }
 
+  getHealth() {
+    return this.health;
+  }
+
   damage(attack) {
-    this.health -= attack;
+    this.health.damage(attack);
   }
 
   finished() {
-    return this.health <= 0;
+    return !this.health.isAlive();
   }
 
   show(size) {
@@ -205,7 +270,8 @@ class Spawner {
     this.time = -1;
     this.respawnTime = 200;
     this.color = team.color;
-    this.health = 1000;
+    this.health = new HealthBar(10000);
+    this.health.setScale(3);
   }
 
   addPath(path) {
@@ -226,12 +292,16 @@ class Spawner {
     }
   }
 
+  getHealth() {
+    return this.health;
+  }
+
   damage(attack) {
-    this.health -= attack;
+    this.health.damage(attack);
   }
 
   finished() {
-    return this.health <= 0;
+    return !this.health.isAlive();
   }
 
   show(size) {
@@ -319,21 +389,13 @@ class Game {
   click() {
     let gamePos = createVector(view.toGameX(mouseX), view.toGameY(mouseY));
     this.hero.targetPos = gamePos;
-    console.log(mouseX, mouseY, gamePos);
   }
 
   show() {
-    this.view.setCenter(this.hero.pos);
-    this.view.update();
-
-    if (this.hero.targetPos) {
-      this.view.show({
-        pos: this.hero.targetPos, show: function (size) {
-          fill("green");
-          circle(0, 0, 10);
-        }
-      });
+    if (!this.hero.finished()) {
+      this.view.setCenter(this.hero.pos);
     }
+    this.view.update();
 
     for (let unit of this.units) {
       unit.update();
@@ -347,6 +409,14 @@ class Game {
     // Render the game.
     for (let unit of this.units) {
       this.view.show(unit);
+    }
+
+    // Render the game.
+    for (let unit of this.units) {
+      let health = unit.getHealth();
+      if (health.isDamaged()) {
+        this.view.showAtPos(health, unit.pos);
+      }
     }
 
     this.view.coverEdges();
@@ -387,6 +457,7 @@ function mouseReleased() {
   if (game.paused) {
     game.paused = false;
     loop();
+    return;
   }
   game.click();
 }

@@ -120,9 +120,13 @@ class MapView {
   }
 
   show(thing) {
+    this.showAtPos(thing, thing.pos);
+  }
+
+  showAtPos(thing, pos) {
     push();
-    let x = this.toScreenX(thing.pos.x);
-    let y = this.toScreenY(thing.pos.y);
+    let x = this.toScreenX(pos.x);
+    let y = this.toScreenY(pos.y);
     translate(x, y);
     thing.show(this.mapSize * this.size / 2);
     pop();

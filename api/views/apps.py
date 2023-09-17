@@ -18,7 +18,8 @@ SCRIPTS = {
         '/static/shared/login.js'
     ],
     'p5': [
-        'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js',
+        # 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js',
+        '/static/p5/p5.min.js',
     ]
 }
 
@@ -268,7 +269,7 @@ class ProjectAppView(MethodView):
                 if s == 'mapviewtest':
                     app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
                     app.scripts.append("/static/p5/view.js?v=%s" % app.version)
-                if s == 'bomberman' or s == 'rts':
+                if s == 'bomberman' or s == 'rts' or 'traffic':
                     app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
                     app.scripts.append("/static/p5/view.js?v=%s" % app.version)
                 if s == 'minesweeper':

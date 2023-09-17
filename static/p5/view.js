@@ -59,6 +59,12 @@ class MapView {
     return this.offsetTop + this.halfScreen.y + mapping;
   }
 
+  toGameGrid(pos) {
+    return createVector(
+      Math.round(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
+      Math.round(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+  }
+
   toGameX(x) {
     return (x - this.offsetLeft - this.halfScreen.x) / this.size + this.center.x;
   }

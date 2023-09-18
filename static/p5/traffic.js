@@ -10,6 +10,9 @@ class Shop {
     this.debugConsole = false;
   }
 
+  placed() {
+  }
+
   update() {
     // Add a trip with increasing chance.
     // Means its unlikely to have trips close together, but also unlikely to have them too far apart.
@@ -107,13 +110,16 @@ class Factory {
       "logs": 0,
       "wood": 0
     };
-    this.truck = new Car(this, game);
-    this.truck.cargoSize = 4;
-    this.game.addCar(this.truck);
     this.debug = true;
     this.debugConsole = false;
   };
-  
+
+  placed() {
+    this.truck = new Car(this, this.game);
+    this.truck.cargoSize = 4;
+    this.game.addCar(this.truck);
+  }
+
   checkResourcesAvailable() {
     if (this.processing) {
       // Can't start processing if we already are.
@@ -268,13 +274,11 @@ class House {
     this.w = 1;
     this.h = 1;
     // TODO should have a singular connected road as a start point for pathing.
-    this.car1 = new Car(this, game);
-    this.game.addCar(this.car1);
     this.debug = true;
   }
 
   getAvailableCar() {
-    if (this.car1.target == null) {
+    if (this.car1 && this.car1.target == null) {
       return this.car1;
     }
     return null;
@@ -283,6 +287,14 @@ class House {
   update() {
     this.car1.update();
   };
+
+  placed() {
+    this.color = 'red';
+    // Create and add a car to the game.
+    this.car1 = new Car(this, this.game);
+    this.game.addCar(this.car1);
+    this.car1.pos.set(this.pos);
+  }
 
   carArrive() {
     // Car's target is set to null meaning its already known as available.
@@ -418,6 +430,10 @@ class Road {
   update() {
   }
 
+  placed() {
+    this.color = '#999999';
+  }
+
   show(size) {
     fill(this.color);
     noStroke();
@@ -471,7 +487,7 @@ class MouseControls {
       "road",
       "house",
       "factory",
-      "mine",
+      "shop",
     ];
   };
   
@@ -490,6 +506,11 @@ class MouseControls {
       } else if (this.buttons[i] === "house") {
         this.build = new House(createVector(20, 20), this.game);
         this.building = "house";
+        // TODO need a build item field?
+      } else if (this.buttons[i] === "shop") {
+        this.build = new Shop(createVector(20, 20), this.game);
+        this.building = "shop";
+        this.build.color = '#CC0000';
         // TODO need a build item field?
       } else if (this.buttons[i] === "delete") {
         // TODO support remove mode?
@@ -603,14 +624,18 @@ class MouseControls {
     if (event.button === 0) {
       if (this.game.isEmpty(this.build.pos)) {
         console.log("Adding " + this.building + " to map", this.build);
-        this.build.color = this.build.actualColor;
-        if (this.building === "road") {
-          this.game.addRoad(this.build);
-          this.build = new Road(this.build.pos.copy(), this.game);
-          this.build.color = '#CCCCCC';
-        } else {
-          this.game.addBuilding(this.build);
-          this.build = new House(this.build.pos.copy(), this.game);
+        if (this.building) {
+          if (this.building === "road") {
+            this.game.addRoad(this.build);
+            this.build = new Road(this.build.pos.copy(), this.game);
+          } else {
+            this.game.addBuilding(this.build);
+            if (this.building === "house") {
+              this.build = new House(this.build.pos.copy(), this.game);
+            } else if (this.building === "shop") {
+              this.build = new Shop(this.build.pos.copy(), this.game);
+            }
+          }
         }
       } else {
         // Occupied location clicked, show warning?
@@ -713,12 +738,16 @@ class TrafficGame {
   };
 
   addRoad(thing) {
+    thing.placed();
+
     let square = this.map.getTileAtPos(thing.pos).getData();
     square.road = thing;
     this.roads.push(thing);
   };
 
   addBuilding(thing) {
+    thing.placed();
+
     // TODO support space, (I.e things which occupy multiple locations)
     for (var y = thing.pos.y / this.gridSize; y < thing.pos.y / this.gridSize + thing.h; y++) {
       for (var x = thing.pos.x / this.gridSize; x < thing.pos.x / this.gridSize + thing.w; x++) {
@@ -822,41 +851,15 @@ class TrafficGame {
     this.controls.display();
   }
 
-  // draw() {
-  //
-  //
-  //   // Now draw all the things in the grid, roads first and buildings/cars on top.
-  //   this.roads.forEach(function(t) {t.draw(this.ctx);}.bind(this));
-  //   this.buildings.forEach(function(t) {t.draw(this.ctx);}.bind(this));
-  //
-  //   if (this.debug) {
-  //     this.roads.forEach(function(t) {
-  //       t.debugDraw(this.ctx);
-  //     }.bind(this));
-  //     this.buildings.forEach(function(t) {
-  //       t.debugDraw(this.ctx);
-  //     }.bind(this));
-  //   }
-  //
-  //   this.controls.draw(this.ctx);
-  // };
-
   update() {
     this.controls.update();
 
     for (let building of this.buildings) {
       building.update();
     }
-  }
 
-  run() {
-    // Update the game.
-    this.controls.update();
-    // Update all the buildings.
-    this.buildings.forEach(function(t) {
-      t.update();
-    }.bind(this));
-  };
+    this.view.update();
+  }
 }
 
 function setup() {
@@ -901,17 +904,21 @@ function keyReleased() {
 }
 
 function mouseDragged(event) {
+  if (game.paused) {
+    return;
+  }
   game.controls.onMouseMove(mouseX, mouseY, event.buttons);
 }
 
 function mouseMoved() {
+  if (game.paused) {
+    return;
+  }
   game.controls.onMouseMove(mouseX, mouseY, false);
 }
 
 function mousePressed() {
   if (game.paused) {
-    game.paused = false;
-    loop();
     return;
   }
   game.controls.onMouseDown(mouseX, mouseY);

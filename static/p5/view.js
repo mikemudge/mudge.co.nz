@@ -46,6 +46,11 @@ class MapView {
     return this.size;
   }
 
+  toScreen(pos) {
+    return pos.copy().sub(this.center).mult(this.size)
+      .add(this.halfScreen).add(this.offsetLeft, this.offsetTop);
+  }
+
   toScreenX(x) {
     // Take the difference from the current map center scaled by the size.
     let mapping = (x - this.center.x) * this.size;
@@ -99,10 +104,16 @@ class MapView {
   }
 
   scale(amount) {
+    let x2 = this.toGameX(mouseX);
+    let y2 = this.toGameY(mouseY);
+    // Still scale the same amount
+    let preSize = this.size;
+
+    // Reverse direction for zoom.
+    amount *= -1;
     // how to interpret the amount?
     // It can get largish for fast scrolling, based on my simple testing. -100, 100
     // But its also small for slow scrolling -2, 2.
-    // TODO should support configuration for * x so x can affect direction and sensitivity.
 
     // Scale based on amount (which contains a direction -/+).
     // Using a max/min to avoid the amount being too little/slow.
@@ -117,6 +128,12 @@ class MapView {
     // Limit scaling to some sensible min/max
     this.size = Math.max(this.minSize, this.size);
     this.size = Math.min(this.maxSize, this.size);
+
+    // We want x2, y2 to be in the same location.
+    // Need distance from center to x2, y2 to get scaled.
+    this.center.sub(x2, y2).mult(preSize / this.size).add(x2, y2);
+    // let off = createVector(x2, y2).sub(this.center).mult( -preSize / this.size);
+    // this.center.add(off);
   }
 
   update() {

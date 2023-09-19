@@ -14,6 +14,7 @@ class Player {
 
   show(size) {
     fill(this.color);
+    noStroke();
 
     circle(0, 0, size * 1.4);
   }
@@ -68,6 +69,18 @@ class Game {
     // Add keys for player?
   }
 
+  pause() {
+    this.paused = true;
+    console.log("game paused");
+    noLoop();
+  }
+
+  unpause() {
+    this.paused = false;
+    console.log("game resumed");
+    loop();
+  }
+
   setupNewGame() {
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
@@ -107,6 +120,7 @@ function setup() {
   frameRate(30);
 
   game = new Game(view);
+  window.onblur = game.pause;
 }
 
 function windowResized() {

@@ -121,6 +121,7 @@ function setup() {
 
   game = new Game(view);
   window.onblur = game.pause;
+  window.onfocus = game.unpause;
 }
 
 function windowResized() {

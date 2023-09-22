@@ -479,46 +479,40 @@ class MouseControls {
         name: "Concrete"
       }
     };
-    this.buttons = [
-      "build",
-      "delete"
-    ];
-    this.buildButtons = [
-      "road",
-      "house",
-      "factory",
-      "shop",
-    ];
+
+    this.menu = new ButtonMenu();
+    this.view.addBottomMenu(this.menu);
+
+    // Build a menu for actions.
+    let buildMenu = this.menu.registerSubMenu("build");
+    let closure = this.buttonClick.bind(this);
+    buildMenu.addButton("road", closure);
+    buildMenu.addButton("house", closure);
+    buildMenu.addButton("factory", closure);
+    buildMenu.addButton("shop", closure);
+
+    this.menu.addButton("delete", function() {});
+
+    this.view.topMenu = new DisplayMenu(this.showResources.bind(this));
   };
   
   update () {
     // Any math or anything this needs to do?
   };
-  
-  buttonClick(i) {
-    if (i < this.buttons.length) {
-      if (this.buttons[i] === "build") {
-        this.buttons = this.buildButtons;
-      } else if (this.buttons[i] === "road") {
-        this.build = new Road(createVector(-20, -20), this.game);
-        this.build.color = '#CCCCCC';
-        this.building = "road";
-      } else if (this.buttons[i] === "house") {
-        this.build = new House(createVector(20, 20), this.game);
-        this.building = "house";
-        // TODO need a build item field?
-      } else if (this.buttons[i] === "shop") {
-        this.build = new Shop(createVector(20, 20), this.game);
-        this.building = "shop";
-        this.build.color = '#CC0000';
-        // TODO need a build item field?
-      } else if (this.buttons[i] === "delete") {
-        // TODO support remove mode?
-      }
-    } else {
-      console.log("Click on actions outside of buttons");
+
+  buttonClick(buttonName) {
+    console.log("clicked button", buttonName, this.game);
+    this.building = buttonName;
+    if (buttonName === "road") {
+      this.build = new Road(createVector(-20, -20), this.game);
+      this.build.color = '#CCCCCC';
+    } else if (buttonName === "house") {
+      this.build = new House(createVector(20, 20), this.game);
+    } else if (buttonName === "shop") {
+      this.build = new Shop(createVector(20, 20), this.game);
+      this.build.color = '#CC0000';
     }
-  };
+  }
 
   display() {
     if (this.build !== null) {
@@ -528,11 +522,11 @@ class MouseControls {
         // Display a not possible to build here warning?
       }
     }
+  }
 
-    // Draw buttons overlay.
-
+  showResources() {
+    // TODO the menu should known the size it can occupy?
     let w = this.view.getCanvasWidth();
-    let y = this.view.getCanvasHeight();
 
     fill('white')
     noStroke();
@@ -543,16 +537,6 @@ class MouseControls {
       let resource = this.resources[resources[r]];
       text(resource.name + ": " + resource.amount, w - 8, 20 + 15 * r);
     }
-
-    this.buttons.forEach(function(button, i) {
-      stroke('white')
-      noFill();
-      textAlign(CENTER);
-      rect(50 * i, y - 50, 50, 50);
-      fill('white');
-      noStroke();
-      text(button, 25 + 50 * i, y - 20);
-    }, this);
   }
 
   onMouseOut(event) {
@@ -606,9 +590,8 @@ class MouseControls {
   onMouseUp(mx, my, event) {
     this.mx = mx;
     this.my = my;
-    if (this.my > this.game.view.getCanvasHeight() - 50) {
-      // Click on the action bar.
-      this.buttonClick(Math.floor(this.mx / 50));
+    if (this.view.click(mx, my)) {
+      // Click was consumed by the view
       return;
     }
     if (this.build === null) {
@@ -618,9 +601,7 @@ class MouseControls {
     // convert to game pos, then gridify.
     this.build.pos.set(this.view.toGameGrid(createVector(this.mx, this.my)));
 
-    // this.build.x = Math.floor(this.mx / this.game.gridSize) * this.game.gridSize;
-    // this.build.y = Math.floor(this.my / this.game.gridSize) * this.game.gridSize;
-      // Indicates that this was a left click?
+    // Indicates that this was a left click?
     if (event.button === 0) {
       if (this.game.isEmpty(this.build.pos)) {
         console.log("Adding " + this.building + " to map", this.build);
@@ -694,7 +675,7 @@ class TrafficGame {
   };
 
   loadScenario() {
-    // Add a shop at the top left corner
+    // Add a shop in the top left corner
     this.addBuilding(new Shop(createVector(100, 120), this));
 
     this.addBuilding(new Shop(createVector(300, 120), this));
@@ -876,6 +857,10 @@ function setup() {
   window.onblur = function() {
     game.paused = true;
     noLoop();
+  }
+  window.onfocus = function() {
+    game.paused = false;
+    loop();
   }
 }
 

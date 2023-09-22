@@ -1,7 +1,116 @@
 
-// TODO support rendering a view of this.
-// TODO support loading objects near a point.
-// TODO support loading particular objects (layers)
+class DisplayMenu {
+  constructor(showMethod) {
+    this.showMethod = showMethod;
+  }
+
+  show() {
+    this.showMethod();
+  }
+
+  click(mx, my) {
+    // Nothing to do for clicks as this is a display only menu.
+  }
+}
+
+class ChatMenu {
+  constructor(view) {
+    this.view = view;
+    this.lines = [];
+  }
+
+  addMessage(message) {
+    this.lines.push({
+      'time': Date.now(),
+      'message': message
+    });
+  }
+
+  show() {
+    noStroke();
+    fill('white');
+    textSize(16);
+    textAlign(LEFT);
+    let expire = Date.now() - 10000;
+    let spliceIdx = 0;
+    let y = this.view.getInnerHeight() - this.lines.length * 16 + 10;
+    for (let i = 0; i < this.lines.length; i++) {
+      text(this.lines[i].message, 5, y + i * 16);
+      if (this.lines[i].time < expire) {
+        spliceIdx = i + 1;
+      }
+    }
+    // Will auto splice to ensure max 10 lines.
+    spliceIdx = Math.max(spliceIdx, this.lines.length - 10);
+    this.lines.splice(0, spliceIdx);
+  }
+}
+
+class ButtonMenu {
+  constructor() {
+    this.buttons = [];
+    this.subMenu = null;
+    this.buttonSize = 80;
+  }
+
+  show() {
+    // TODO can we handle submenus better?
+    if (this.subMenu) {
+      this.subMenu.show();
+    } else {
+      stroke('white')
+      noFill();
+      this.buttons.forEach(function(button, i) {
+        rect(this.buttonSize * i, 0, this.buttonSize, this.buttonSize);
+      }, this);
+      fill('white');
+      textAlign(CENTER);
+      noStroke();
+      this.buttons.forEach(function(button, i) {
+        text(button.name, this.buttonSize * i, 0, this.buttonSize, this.buttonSize);
+      }, this);
+    }
+  }
+
+  click(mx, my) {
+    if (this.subMenu) {
+      this.subMenu.click(mx, my);
+      return;
+    }
+
+    if (my > this.buttonSize) {
+      console.log("my > buttonSize", my, this.buttonSize);
+      // Didn't click the button?
+      return;
+    }
+    let buttonIdx = Math.floor(mx / this.buttonSize);
+    let button = this.buttons[buttonIdx];
+    if (button) {
+      button.click(button.name);
+    } else {
+      console.log("clicked menu on no button");
+    }
+  }
+
+  registerSubMenu(name) {
+    let subMenu = new ButtonMenu();
+    this.addButton(name, function() {
+      this.subMenu = subMenu;
+    }.bind(this));
+    return subMenu;
+  }
+
+  reset() {
+    this.buttons = [];
+  }
+f
+  addButton(name, clickHandler) {
+    this.buttons.push({
+      'name': name,
+      'click': clickHandler
+    });
+  }
+}
 
 class MapView {
   constructor(size) {
@@ -21,6 +130,13 @@ class MapView {
     // default to use the whole window.
     this.setScreen(windowWidth, windowHeight);
     this.center = createVector(0, 0);
+    this.bottomMenus = [];
+    this.topMenu = new ButtonMenu();
+    this.overlayMenu = new ChatMenu(this);
+  }
+
+  addBottomMenu(menu) {
+    this.bottomMenus.push(menu);
   }
 
   getMapSize() {
@@ -40,6 +156,14 @@ class MapView {
 
   getCanvasHeight() {
     return this.offsetTop + this.offsetBottom + this.screenHeight;
+  }
+
+  getInnerWidth() {
+    return this.screenWidth;
+  }
+
+  getInnerHeight() {
+    return this.screenHeight;
   }
 
   getSize() {
@@ -64,10 +188,17 @@ class MapView {
     return this.offsetTop + this.halfScreen.y + mapping;
   }
 
+  /** map a screen position to its closest grid position. Aligned to map grid */
   toGameGrid(pos) {
     return createVector(
       Math.round(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
       Math.round(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+  }
+
+  /** map a screen position to its in game location. Not aligned to grid */
+  toGame(pos) {
+    // TODO can this use vector math instead?
+    return createVector(this.toGameX(pos.x), this.toGameY(pos.y));
   }
 
   toGameX(x) {
@@ -103,6 +234,22 @@ class MapView {
     this.vel = vel;
   }
 
+  click() {
+    if (mouseY < this.offsetTop) {
+      this.topMenu.click(mouseX, mouseY);
+      return true;
+    }
+    let my = mouseY - this.screenHeight - this.offsetTop;
+    if (my > 0) {
+      let index = Math.floor(this.bottomMenus.length * mouseX / this.getCanvasWidth());
+      let mx = mouseX - (index * this.getCanvasWidth() / this.bottomMenus.length);
+      // TODO test with multiple menus?
+      this.bottomMenus[index].click(mx, my);
+      return true;
+    }
+    // TODO otherwise click on the game?
+  }
+
   scale(amount) {
     let x2 = this.toGameX(mouseX);
     let y2 = this.toGameY(mouseY);
@@ -128,6 +275,15 @@ class MapView {
     // Limit scaling to some sensible min/max
     this.size = Math.max(this.minSize, this.size);
     this.size = Math.min(this.maxSize, this.size);
+
+    // TODO controversial zooming?
+    let influence = 1;
+    if (preSize > this.size) {
+      // Focus on center when zooming out.
+      influence = 0;
+    }
+    x2 = (x2 - this.center.x) * influence + this.center.x;
+    y2 = (y2 - this.center.y) * influence + this.center.y;
 
     // We want x2, y2 to be in the same location.
     // Need distance from center to x2, y2 to get scaled.
@@ -156,27 +312,19 @@ class MapView {
   }
 
   draw(map) {
-    // TODO align center?
-    // This covers the area of map which needs to be drawn.
-    let top = 0;
-    let left = 0;
-    let right = map.width;
-    let bottom = map.height;
+    this.drawMap(map);
+  }
 
-    // TODO figure out what region of map we need to show.
-    // use this.center as the focus point for the view of the map.
-
+  drawMap(map) {
     // This is the number of map tiles required to draw in each direction.
     let halfMapTileHeight = (this.halfScreen.y / this.size);
     let halfMapTileWidth = (this.halfScreen.x / this.size);
 
-    // Assuming center is a grid tile location.
-    top = Math.round((this.center.y - halfMapTileHeight) / this.mapSize);
-    left = Math.round((this.center.x - halfMapTileWidth) / this.mapSize);
+    let top = Math.round((this.center.y - halfMapTileHeight) / this.mapSize);
+    let left = Math.round((this.center.x - halfMapTileWidth) / this.mapSize);
 
-    // TODO could optimize these better.
-    bottom = Math.round((this.center.y + halfMapTileHeight) / this.mapSize) + 1;
-    right = Math.round((this.center.x + halfMapTileWidth) / this.mapSize) + 1;
+    let bottom = Math.round((this.center.y + halfMapTileHeight) / this.mapSize) + 1;
+    let right = Math.round((this.center.x + halfMapTileWidth) / this.mapSize) + 1;
 
     for (let y = top; y < bottom; y++) {
       for (let x = left; x < right; x++) {
@@ -204,5 +352,21 @@ class MapView {
     rect(0, 0, this.getCanvasWidth(), this.offsetTop);
     rect(this.screenWidth + this.offsetLeft, 0, this.offsetLeft, this.getCanvasHeight());
     rect(0, this.screenHeight + this.offsetTop, this.getCanvasWidth(), this.offsetBottom);
+
+    // After covering up the map, draw the menus overtop.
+    this.topMenu.show();
+
+    push()
+    translate(this.offsetLeft, this.offsetTop);
+    this.overlayMenu.show();
+    pop();
+
+    for (let i = 0; i < this.bottomMenus.length; i++) {
+      let x = (i * this.getCanvasWidth() / this.bottomMenus.length);
+      push()
+      translate(x, this.screenHeight + this.offsetTop);
+      this.bottomMenus[i].show();
+      pop();
+    }
   }
 }

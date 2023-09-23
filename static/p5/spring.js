@@ -6,6 +6,8 @@ class Node {
     this.connections = [];
     this.from = [];
     this.fixed = false;
+    this.gravity = createVector(0, 10);
+    this.mass = 1;
   }
 
   update() {
@@ -14,37 +16,41 @@ class Node {
       return;
     }
 
-    stroke(color('cyan'));
-    strokeWeight(2);
+    // Start with some gravity which is a const acceleration.
+    // f = ma;
+    let force = this.gravity.copy().mult(this.mass);
 
-    // Start with some gravity.
-    let force = createVector(0, 10);
-    line(this.pos.x, this.pos.y, this.pos.x + force.x * 100, this.pos.y + force.y * 100);
-    // Add some air resistance.
-    let resistance = this.vel.copy().setMag(- this.vel.magSq() / 20);
-    line(this.pos.x, this.pos.y, this.pos.x + resistance.x * 100, this.pos.y + resistance.y * 100);
+    // Add some air resistance proportional to velocity squared.
+    let resistance = this.vel.copy().setMag(- this.vel.magSq() / 100);
     force.add(resistance);
 
     // Then add the forces towards the natural length of the connections.
     for (let conn of this.connections) {
-      let f = conn.force(this);
-      line(this.pos.x, this.pos.y, this.pos.x + f.x * 100, this.pos.y + f.y * 100);
+      let f = conn.springForce(this);
       force.add(f);
     }
-    // Scale the force by the time per frame to calculate the velocity as a distance per frame.
-    // delta x = v * delta t
-    force.mult(1/30);
-    force = conn.energyBasedForce(node, force);
+
+    if (this.pos.y + this.size > 600) {
+      if (this.vel.y > 0) {
+        this.vel.y *= -.5;
+      }
+      // Cancel out force and reverse any motion when on the ground.
+      let x = -force.x - this.vel.x * 2;
+      let y = -force.y + (600 - this.pos.y - this.size);
+      force.add(createVector(x, y));
+    }
+
+    // a = f / m;
+    force.mult(1 / this.mass);
+    // delta v = a * t;
+    // t is 1/30 due to frameRate.
+    // delta v = f * 1/30
+    let t = 1 / 10;
+    force.mult(t);
     this.vel.add(force);
 
-    // Show the total force.
-    stroke(color('red'));
-    line(this.pos.x, this.pos.y, this.pos.x + force.x * 3000, this.pos.y + force.y * 3000);
-
-    // Max speed to avoid the really crazy movements.
-    this.vel.limit(5);
-
-    this.pos.add(this.vel);
+    // delta x = v * t?
+    this.pos.add(this.vel.copy().mult(t));
   }
 
   addConnection(c) {
@@ -54,11 +60,33 @@ class Node {
     }
   }
 
+  alreadyConnected(node) {
+    return this.connections.find(function(c) {
+      return c.to === node;
+    });
+  }
+
   showConnections() {
     for (let conn of this.from) {
       conn.show();
     }
   }
+
+  showForce(color, force) {
+    stroke(color);
+    // Multiply force by 10 to make sure its visible.
+    line(this.pos.x, this.pos.y, this.pos.x + force.x * 10, this.pos.y + force.y * 10);
+  }
+
+  showSelected() {
+    fill('green');
+    if (this.fixed) {
+      rect(this.pos.x - this.size, this.pos.y - this.size, this.size * 2, this.size * 2);
+    } else {
+      circle(this.pos.x, this.pos.y, this.size * 2);
+    }
+  }
+
   show() {
     noStroke();
     fill(0);
@@ -67,6 +95,30 @@ class Node {
     } else {
       circle(this.pos.x, this.pos.y, this.size * 2);
     }
+
+    if (this.fixed) {
+      // don't show forces on fixed nodes as they don't apply.
+      return;
+    }
+    if (this !== selectedNode) {
+      return;
+    }
+    // Show forces acting on the node.
+    strokeWeight(2);
+    this.showForce('green', this.gravity);
+    let resistance = this.vel.copy().setMag(- this.vel.magSq() / 20);
+    this.showForce('cyan', resistance);
+
+    let force = this.gravity.copy().add(resistance)
+    for (let conn of this.connections) {
+      // Show the full force from each connection.
+      let f = conn.springForce(this);
+      force.add(f);
+      this.showForce('purple', f);
+    }
+
+    // Show the total force on the node.
+    this.showForce('red', force);
   }
 }
 
@@ -78,66 +130,23 @@ class Connection {
     this.length = this.from.pos.dist(this.to.pos);
   }
 
-  energyBasedForce(node, f) {
-    let diff = this.from.pos.dist(this.to.pos) - this.length;
-    let v = node.vel.mag();
-    var m = 1;
-    // energy;
-    // Gravity = m * g * h.
-    // Kinetic = 1/2 m * v * v
-    // Spring = 1/2 k * x * x
-
-    // determine after with the force applied.
-    let nx = (node.x + node.vel.x + f.x);
-    let ny = (node.y + node.vel.y + f.y);
-    let dh = ny - node.y;
-    var dx = createVector(nx, ny).sub(this.from.pos);
-    if (this.from === node) {
-      dx = createVector(nx, ny).sub(this.to.pos).mult(-1);
+  springForce(node) {
+    // The current actual length of a spring;
+    let x = this.to.pos.dist(this.from.pos);
+    let off = x - this.length;
+    if (Math.abs(off) < 0.01) {
+      // No force should apply if the offset is minimal.
+      off = 0;
     }
-    let ndiff = dx - this.length;
-
-    var energyDelta = 0;
-    energyDelta += m * 10 * dh;
-    energyDelta += 1 / 2 * this.rigidity * (ndiff * ndiff - diff * diff);
-
-    // energyDelta *= 0.9;
-    // Calculate how much speed the node can have with energy conserved?
-    let nv = Math.sqrt(energyDelta * 2 / m + v * v);
-    f.setMag(nv);
-    return f;
-  }
-
-  force(node) {
-    let diff = this.from.pos.dist(this.to.pos) - this.length;
-
-    if (diff < 0) {
-      // the connection is shorter than expected.
-      // For ropes this would mean 0 tension.
-      // return createVector(0,0);
-    }
-    let directionForce = p5.Vector.sub(this.to.pos, this.from.pos);
-    // Determine the magnitude of force based on spring forces f = -kx
-    directionForce.setMag(-diff * this.rigidity);
-
-    // If the forces movement will flip direction in the space of a single frame then we should apply less.
-    // E.g -kx will be in the opposite direction by the end of this frame.
-
+    let forceMag = -this.rigidity * off;
     if (node === this.from) {
-      // If we want the force from the other node's perspective it would be the equal opposite.
-      directionForce.mult(-1);
+      // The direction of the force is based on which node is affected by it.
+      return this.from.pos.copy().sub(this.to.pos).setMag(forceMag);
+    } else {
+      return this.to.pos.copy().sub(this.from.pos).setMag(forceMag);
     }
-
-    // Make this a desired speed rather than an applied force.
-    // delta = final - initial
-    // node.vel is initial
-    let desiredSpeed = p5.Vector.sub(directionForce, node.vel);
-    // The force must be applied in the direction of the connection.
-    // But we can scale it based on how much we are already moving in the right direction.
-    directionForce.setMag(desiredSpeed.dot(directionForce));
-
-    return directionForce;
   }
+
   show() {
     // Green if the length is accurate.
     // Red if the length is stretched or compressed.
@@ -156,17 +165,29 @@ class Connection {
 }
 
 let nodes;
-let lastNode;
+let selectedNode;
+let running = false;
 
 function setup() {
-  createCanvas(800, 600);
+  let c = createCanvas(800, 600);
   nodes = [];
-  lastNode = null;
 
   fixedNode = new Node(createVector(400, 100));
   fixedNode.fixed = true;
-  lastNode = fixedNode;
   nodes.push(fixedNode);
+
+  // Start with the fixed node selected?
+  selectedNode = fixedNode;
+
+  c.canvas.oncontextmenu = function() {
+    return false;
+  }
+  window.onblur = function() {
+    noLoop();
+  }
+  window.onfocus = function() {
+    loop();
+  }
 }
 
 function draw() {
@@ -178,33 +199,62 @@ function draw() {
   for (let node of nodes) {
     node.show();
   }
-  for (let node of nodes) {
-    node.update();
+  if (selectedNode) {
+    selectedNode.showSelected();
+  }
+  if (running) {
+    for (let node of nodes) {
+      node.update();
+    }
   }
 }
 
-function mouseClicked() {
-  let loc = createVector(mouseX, mouseY);
-  let currentNode = null;
-  for (let node of nodes) {
-    if (loc.dist(node.pos) < 16) {
-      currentNode = node;
+function keyPressed() {
+  if (key === ' ') {
+    // Run a frame?
+    for (let node of nodes) {
+      node.update();
     }
+    running = false;
   }
-  // If there is no existing node, create a new one.
-  if (!currentNode) {
-    currentNode = new Node(loc);
-    nodes.push(currentNode);
+  if (keyCode === ENTER) {
+    running = !running;
+  }
+}
+
+function mouseReleased() {
+  if (mouseButton !== LEFT) {
+    selectedNode = null;
+    return;
   }
 
-  // Attach a connection to the current node from the last node.
-  // TODO need a way to deselect last node?
-  // TODO should show last node.
-  // TODO prevent connecting the same nodes again.
-  if (lastNode) {
-    let c = new Connection(lastNode, currentNode);
-    lastNode.addConnection(c);
-    currentNode.addConnection(c);
+  let loc = createVector(mouseX, mouseY);
+
+  // Determine if a node was clicked.
+  let clickedNode = null;
+  for (let node of nodes) {
+    if (loc.dist(node.pos) < 16) {
+      clickedNode = node;
+    }
   }
-  lastNode = currentNode;
+
+  let shift = keyIsDown(16);
+  // If there is no node at the click location, create a new one.
+  if (!clickedNode) {
+    clickedNode = new Node(loc);
+    nodes.push(clickedNode);
+  }
+
+  if (selectedNode) {
+    if (selectedNode.alreadyConnected(clickedNode)) {
+      // prevent connecting the same nodes again.
+      console.log("prevented adding existing connection")
+    } else {
+      let c = new Connection(selectedNode, clickedNode);
+      selectedNode.addConnection(c);
+      clickedNode.addConnection(c);
+    }
+  }
+  // Always select the node at the location which was clicked.
+  selectedNode = clickedNode;
 }

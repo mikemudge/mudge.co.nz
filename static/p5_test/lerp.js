@@ -96,17 +96,6 @@ function calculatePos(train) {
 function draw() {
   background(0);
 
-  noStroke();
-  for (let p of points) {
-    fill('white');
-    rect(p.pos.x - 3, p.pos.y - 3, 6);
-
-    fill('grey');
-    rect(p.pos.x + p.lerpControl.x - 3, p.pos.y + p.lerpControl.y - 3, 6);
-    fill('yellow');
-    rect(p.pos.x - p.lerpControl.x - 3, p.pos.y - p.lerpControl.y - 3, 6);
-  }
-
   debug = false;
   noStroke();
   let lastPoint = null;
@@ -143,13 +132,33 @@ function draw() {
       if (lastPoint) {
         // calculate a perpendicular vector.
         let c = p5.Vector.sub(p6, lastPoint);
-        // Swap x and y, with negative y to calculate a perpendicular vector.
-        c.set(-c.y, c.x);
+        // Rotate 90 degrees to get perpendicular.
+        c.rotate(HALF_PI);
         c.setMag(5);
         stroke('yellow');
         line(p6.x - c.x, p6.y - c.y, p6.x + c.x, p6.y +c.y);
       }
       lastPoint = p6;
+    }
+
+    stroke('orange');
+    strokeWeight(5);
+    noFill();
+    let a = from.pos.copy().add(from.lerpControl);
+    let b = to.pos.copy().sub(to.lerpControl);
+    bezier(ps[0].x, ps[0].y, a.x, a.y, b.x, b.y, ps[3].x, ps[3].y);
+    strokeWeight(1);
+
+    // draw the points last.
+    noStroke();
+    for (let p of points) {
+      fill('white');
+      rect(p.pos.x - 3, p.pos.y - 3, 6);
+
+      fill('grey');
+      rect(p.pos.x + p.lerpControl.x - 3, p.pos.y + p.lerpControl.y - 3, 6);
+      fill('yellow');
+      rect(p.pos.x - p.lerpControl.x - 3, p.pos.y - p.lerpControl.y - 3, 6);
     }
   }
 

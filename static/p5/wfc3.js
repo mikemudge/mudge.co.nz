@@ -13,7 +13,30 @@ class Square {
   update() {
 
   }
-  
+
+  removePossible(dir, patterns) {
+    let removalOccured = false;
+    // Iterate through the possibilities and remove which don't match a pattern on this side.
+    for (let i = this.possible.length - 1; i >= 0; i--) {
+      let tile = this.tiles[this.possible[i]];
+      if (!patterns.includes(tile[dir])) {
+        // Incompatible neighbour.
+        this.possible.splice(i, 1);
+        removalOccured = true;
+      }
+    }
+    return removalOccured;
+  }
+
+  getReversedPatternSet(dir) {
+    let set = {};
+    for (let possible of this.possible) {
+      let tile = this.tiles[possible];
+      set[tile[dir].split('').reverse().join('')] = 1;
+    }
+    return Object.keys(set);
+  }
+
   collapse() {
     if (this.type != null) {
       // Already collapsed.
@@ -22,29 +45,10 @@ class Square {
     if (this.possible.length === 0) {
       console.error("No possible tiles", this);
       this.type = -1;
-      this.possible = [-1];
       return;
     }
     this.type = random(this.possible);
     this.possible = [this.type];
-  }
-
-  reducePossible(dir, value) {
-    if (this.type != null) {
-      // Already collapsed, no more reducing possible.
-      return;
-    }
-
-    for (let i = this.possible.length - 1; i >= 0; i--) {
-      let tile = this.tiles[this.possible[i]];
-      if (tile[dir] !== value) {
-        // Incompatible neighbour.
-        this.possible.splice(i, 1);
-      }
-    }
-    if (this.possible.length === 1) {
-      this.collapse();
-    }
   }
 
   getPossibleCount() {
@@ -54,10 +58,10 @@ class Square {
   show(size) {
     if (this.type == null || this.type == -1) {
       fill(255);
-      text(this.possible.length, this.pos.x - size + 5, this.pos.y - size + 15);
+      text(this.getPossibleCount(), -5, 0);
       stroke(70);
       noFill();
-      rect(this.pos.x - size, this.pos.y - size, size * 2, size * 2);
+      rect(-size, -size, size * 2, size * 2);
       return;
     }
     let tile = this.tiles[this.type];
@@ -79,24 +83,8 @@ class WFC {
     this.rate = 1;
   }
 
-  load(edges, allimages) {
-
-    let widths = [14, 14, 16, 16, 16, 10];
-// let widths = [5, 5, 4];
-    let squareHeight = 16;
-    let squareWidth = 16;
-
-    this.tiles = [];
-    let i = 0;
-    for (var y = 0; y < widths.length; y += 1) {
-      for (var x = 0; x < widths[y]; x += 1) {
-        let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
-        let a = edges[i];
-        i++;
-        this.tiles.push([a[0], a[1], a[2], a[3], img, 0]);
-      }
-    }
-
+  load(tiles) {
+    this.tiles = tiles;
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         let square = new Square(x, y, this.tiles);
@@ -106,16 +94,49 @@ class WFC {
   }
 
   update() {
+    if (this.complete) {
+      return;
+    }
     this.time++;
+    // Set the type of one square every rate frames.
     if (this.time % this.rate === 0) {
-      this.collapseNext();
+      let best = this.chooseTile();
+
+      if (best) {
+        this.collapseTile(best);
+      } else {
+        console.log("Completed iterating");
+        this.complete = true;
+      }
     }
   }
 
-  collapseNext() {
+  click() {
+    if (this.reduceTiles && this.reduceTiles.length > 0) {
+      // propagate?
+      let next = [];
+      for (let tile of this.reduceTiles) {
+        if (this.reduceTile(tile)) {
+          next = next.concat(tile.getCardinalTiles());
+        }
+      }
+      this.reduceTiles = next;
+    } else {
+      // Choose a tile.
+      let tile = this.chooseTile();
+      if (!tile) {
+        console.log("No more tiles available for collapsing");
+      } else {
+        tile.getData().collapse();
+        console.log("Collapsing", tile.x, tile.y, "as", tile.getData().type)
+        this.reduceTiles = tile.getCardinalTiles();
+      }
+    }
+  }
+
+  chooseTile() {
+    let seenAtCurrentBest = 0;
     let best = null;
-    let bx = -1;
-    let by = -1;
     for (let y = 0; y < this.map.height; y++) {
       for (let x = 0; x < this.map.width; x++) {
         let opt = this.map.getTile(x, y);
@@ -123,19 +144,42 @@ class WFC {
           // Already collapsed
           continue;
         }
-        if (!best || opt.getData().getPossibleCount() < best.getData().getPossibleCount()) {
+        if (!best) {
+          // Just choose the first thing we see if we haven't got anything yet.
+          seenAtCurrentBest = 1;
+          best = opt;
+        }
+        if (opt.getData().getPossibleCount() === best.getData().getPossibleCount()) {
+          // If things are equal choose the new option with a diminishing chance.
+          // With a 2nd thing 1/2 chance, with a 3rd thing 1/3 chance.
+          // The net result is all possible best things could be chosen uniformly.
+          seenAtCurrentBest++;
+          if (Math.random() < 1 / seenAtCurrentBest) {
+            best = opt;
+          }
+        } else if (opt.getData().getPossibleCount() > 0 && opt.getData().getPossibleCount() < best.getData().getPossibleCount()) {
+          // This is better than others, and it's the first time we have seen anything this good.
+          seenAtCurrentBest = 1;
           best = opt;
         }
       }
     }
+    return best;
+  }
 
-    if (best == null) {
-      console.log("Completed iterating")
-      noLoop();
-    } else {
-      // Set the type of one square every second.
-      this.collapseTile(best);
+  reduceTile(tile) {
+    let removed = false;
+    let dirs = tile.getCardinalTiles();
+    for (let dir = 0; dir < 4; dir++) {
+      let sq = dirs[dir].getData();
+      if (!sq) {
+        // Hit an edge.
+        continue;
+      }
+      let opposite = (2 + dir) % 4;
+      removed |= tile.getData().removePossible(dir, sq.getReversedPatternSet(opposite));
     }
+    return removed;
   }
 
   collapseTile(loc) {
@@ -159,14 +203,62 @@ class WFC {
   }
 
   reducePossible(tile, dir, pattern) {
-    if (tile.getData()) {
-      tile.getData().reducePossible(dir, pattern);
+    let square = tile.getData();
+    if (!square) {
+      // This can happen if we hit an edge of the map.
+      return;
+    }
+
+    if (square.type != null) {
+      // Already collapsed, no more reducing possible.
+      return;
+    }
+
+    let removed = square.removePossible(dir, [pattern]);
+
+    if (removed) {
+      // After removing some possibilities we need to propagate.
+      // E.g. if SW is the only option above, it limits our left and right options.
+      // left must have *S and right must have W* based on matching above.
+      this.recursePossible(tile);
+    }
+  }
+
+  recursePossible(tile) {
+    // Iterate all directions
+    let dirs = tile.getCardinalTiles();
+    for (let dir = 0; dir < 4; dir++) {
+      let sq = dirs[dir].getData();
+      if (!sq) {
+        // Hit an edge.
+        continue;
+      }
+      if (sq.type != null) {
+        // This direction is already collapsed.
+        continue;
+      }
+      let opposite = (2 + dir) % 4;
+      // Determine the set of patterns in dir, then reduce sq based on what is possible.
+      let removed = sq.removePossible(opposite, tile.getData().getReversedPatternSet(dir));
+      if (removed) {
+        this.recursePossible(dirs[dir]);
+      }
     }
   }
 
   draw() {
 
     this.view.draw(this.map);
+
+    if (this.selectedTile) {
+      let pos = createVector(this.selectedTile.x, this.selectedTile.y).mult(32);
+      this.view.showAtPos({
+        show: function (size) {
+          fill('green');
+          circle(-size, -size, 2 * size, 2 * size);
+        }
+      }, pos);
+    }
 
     this.view.coverEdges();
 
@@ -290,7 +382,23 @@ function setup() {
     ['WD', 'DD', 'DD', 'DW']
   ]
 
-  wfc.load(edges, allimages)
+  // Split the large image up into tiles, using the edge data above.
+  let widths = [14, 14, 16, 16, 16, 10];
+  let squareHeight = 16;
+  let squareWidth = 16;
+
+  tiles = [];
+  let i = 0;
+  for (var y = 0; y < widths.length; y += 1) {
+    for (var x = 0; x < widths[y]; x += 1) {
+      let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
+      let a = edges[i];
+      i++;
+      tiles.push([a[0], a[1], a[2], a[3], img, 0]);
+    }
+  }
+
+  wfc.load(tiles)
 }
 
 function draw() {
@@ -305,6 +413,6 @@ function mouseWheel(event) {
   view.scale(event.delta);
 }
 
-function keyPressed() {
-  wfc.collapseNext();
+function mouseReleased() {
+  wfc.click();
 }

@@ -21,8 +21,8 @@ class Square {
     }
     if (this.possible.length === 0) {
       console.error("No possible tiles", this);
-      this.type = 0;
-      this.possible = [0];
+      this.type = -1;
+      this.possible = [-1];
       return;
     }
     this.type = random(this.possible);
@@ -30,6 +30,10 @@ class Square {
   }
 
   reducePossible(dir, value) {
+    if (this.type != null) {
+      // Already collapsed, no more reducing possible.
+      return;
+    }
 
     for (let i = this.possible.length - 1; i >= 0; i--) {
       let tile = this.tiles[this.possible[i]];
@@ -43,8 +47,12 @@ class Square {
     }
   }
 
+  getPossibleCount() {
+    return this.possible.length;
+  }
+
   draw(size) {
-    if (this.type == null) {
+    if (this.type == null || this.type == -1) {
       fill(255);
       text(this.possible.length, this.pos.x - size + 5, this.pos.y - size + 15);
       stroke(70);
@@ -102,6 +110,10 @@ class Grid {
       return;
     }
     loc.collapse();
+    if (loc.type === -1) {
+      // Invalid collapse
+      return;
+    }
 
     // console.log("Collapsing", x, y, "as", loc.type)
     let tile = this.tiles[loc.type];
@@ -225,28 +237,8 @@ function setup() {
   for (var y = 0; y < widths.length; y += 1) {
     for (var x = 0; x < widths[y]; x += 1) {
       let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
-      imgSquares.push(img);
       let a = edges[i];
       i++;
-      // Only use grass and water tiles.
-      if (i >= 6 && i <= 14) {
-        continue
-      }
-      if (i >= 20 && i <= 28) {
-        continue
-      }
-      if (i >= 32) {
-        continue
-      }
-      // if (i >= 44 && i <= 48) {
-      //   continue
-      // }
-      // if (i >= 60 && i <= 65) {
-      //   continue
-      // }
-      // if (i >= 76 && i <= 81) {
-      //   continue
-      // }
       tiles.push([a[0], a[1], a[2], a[3], img, 0]);
     }
   }
@@ -271,16 +263,32 @@ function draw() {
   }
 
   time++;
-  if (time % rate == 0) {
-    // TODO pick from remaining grid locations (prevent dups)
-    idx = time / rate - 1;
-    x = idx % grid.width;
-    y = int(idx / grid.width);
-    if (y >= grid.height) {
+  if (time % rate === 0) {
+
+    best = null;
+    bx = -1;
+    by = -1;
+    for (let y = 0; y < grid.height; y++) {
+      for (let x = 0; x < grid.width; x++) {
+        opt = grid.get(x, y);
+        if (opt.type != null) {
+          // Already collapsed
+          continue;
+        }
+        if (!best || opt.getPossibleCount() < best.getPossibleCount()) {
+          best = opt;
+          bx = x;
+          by = y;
+        }
+      }
+    }
+
+    if (best == null) {
+      console.log("Completed iterating")
       noLoop();
     } else {
       // Set the type of one square every second.
-      loc = grid.collapse(x, y);
+      grid.collapse(bx, by);
     }
   }
 

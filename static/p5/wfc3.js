@@ -51,7 +51,7 @@ class Square {
     return this.possible.length;
   }
 
-  draw(size) {
+  show(size) {
     if (this.type == null || this.type == -1) {
       fill(255);
       text(this.possible.length, this.pos.x - size + 5, this.pos.y - size + 15);
@@ -61,68 +61,125 @@ class Square {
       return;
     }
     let tile = this.tiles[this.type];
-    push();
-    translate(this.pos.x, this.pos.y);
-    rotate(tile[5]);
-
     image(tile[4], -size, -size, size * 2, size * 2);
-    pop()
   }
 }
 
-class Grid {
-  constructor(w, h, size, tiles) {
-    this.width = w;
-    this.height = h;
-    this.size = size;
-    this.data = [];
-    this.tiles = tiles;
+class WFC {
+  constructor() {
+    this.width = 30;
+    this.height = 20;
+    this.map = new Grid(this.width, this.height, view.getMapSize());
 
-    for (let y = 0; y < this.height; y++) {
-      this.data[y] = [];
-      for (let x = 0; x < this.width; x++) {
-        this.data[y][x] = new Square(50 + x * this.size * 2, 100 + y * this.size * 2, tiles);
+    this.view = view;
+    this.view.setCenter(createVector(this.width, this.height).mult(view.getMapSize() / 2));
+
+    this.time = 0;
+    // How many frames between collapses.
+    this.rate = 1;
+  }
+
+  load(edges, allimages) {
+
+    let widths = [14, 14, 16, 16, 16, 10];
+// let widths = [5, 5, 4];
+    let squareHeight = 16;
+    let squareWidth = 16;
+
+    this.tiles = [];
+    let i = 0;
+    for (var y = 0; y < widths.length; y += 1) {
+      for (var x = 0; x < widths[y]; x += 1) {
+        let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
+        let a = edges[i];
+        i++;
+        this.tiles.push([a[0], a[1], a[2], a[3], img, 0]);
       }
     }
 
-    // An unused square used for all impossible locations.
-    this.edge = new Square(0, 0, tiles);
-  }
-
-  draw() {
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        this.data[y][x].draw(this.size);
+        let square = new Square(x, y, this.tiles);
+        this.map.setTileData(x, y, square);
       }
     }
   }
 
-  get(x, y) {
-    if (x < 0 || y < 0 || x >= this.width || y >= this.height) {
-      return this.edge;
+  update() {
+    this.time++;
+    if (this.time % this.rate === 0) {
+      this.collapseNext();
     }
-    return this.data[y][x];
   }
 
-  collapse(x, y) {
-    let loc = this.get(x, y);
-    if (loc === this.edge) {
+  collapseNext() {
+    let best = null;
+    let bx = -1;
+    let by = -1;
+    for (let y = 0; y < this.map.height; y++) {
+      for (let x = 0; x < this.map.width; x++) {
+        let opt = this.map.getTile(x, y);
+        if (opt.getData().type != null) {
+          // Already collapsed
+          continue;
+        }
+        if (!best || opt.getData().getPossibleCount() < best.getData().getPossibleCount()) {
+          best = opt;
+        }
+      }
+    }
+
+    if (best == null) {
+      console.log("Completed iterating")
+      noLoop();
+    } else {
+      // Set the type of one square every second.
+      this.collapseTile(best);
+    }
+  }
+
+  collapseTile(loc) {
+    let square = loc.getData();
+    if (!square) {
       return;
     }
-    loc.collapse();
-    if (loc.type === -1) {
-      // Invalid collapse
+
+    square.collapse();
+    if (square.type === -1) {
+      // Invalid collapse?
       return;
     }
 
     // console.log("Collapsing", x, y, "as", loc.type)
-    let tile = this.tiles[loc.type];
-    // Consider the direction for these.
-    this.get(x, y - 1).reducePossible(2, tile[0].split('').reverse().join(''));
-    this.get(x + 1, y).reducePossible(3, tile[1].split('').reverse().join(''));
-    this.get(x, y + 1).reducePossible(0, tile[2].split('').reverse().join(''));
-    this.get(x - 1, y).reducePossible(1, tile[3].split('').reverse().join(''));
+    let tile = this.tiles[square.type];
+    this.reducePossible(loc.north(), 2, tile[0].split('').reverse().join(''));
+    this.reducePossible(loc.east(), 3, tile[1].split('').reverse().join(''));
+    this.reducePossible(loc.south(), 0, tile[2].split('').reverse().join(''));
+    this.reducePossible(loc.west(), 1, tile[3].split('').reverse().join(''));
+  }
 
+  reducePossible(tile, dir, pattern) {
+    if (tile.getData()) {
+      tile.getData().reducePossible(dir, pattern);
+    }
+  }
+
+  draw() {
+
+    this.view.draw(this.map);
+
+    this.view.coverEdges();
+
+    let squareHeight = 16;
+    let squareWidth = 16;
+    // Show all the tiles along the top.
+    for (let i = 0; i < this.tiles.length; i++) {
+      let x = 20 + (i % 26) * squareWidth;
+      let y = this.view.getCanvasHeight() - 90 + Math.floor(i / 26) * squareHeight;
+      image(this.tiles[i][4], x, y, squareWidth, squareHeight);
+    }
+    //
+    // grid.draw();
   }
 }
 
@@ -130,15 +187,14 @@ function preload() {
   allimages = loadImage('/static/p5/wfc/tileset.png');
 }
 
-let widths = [14, 14, 16, 16, 16, 10];
-// let widths = [5, 5, 4];
-let squareHeight = 16;
-let squareWidth = 16;
-let imgSquares = [];
-
+let wfc = null;
 function setup() {
-  createCanvas(1000, 700);
-  tiles = [];
+  view = new MapView(32);
+  w = view.getCanvasWidth();
+  h = view.getCanvasHeight();
+  createCanvas(w, h);
+
+  wfc = new WFC(view);
 
   let edges = [
     ['WW', 'WG', 'GW', 'WW'],
@@ -233,64 +289,22 @@ function setup() {
     ['DW', 'WD', 'DD', 'DD'],
     ['WD', 'DD', 'DD', 'DW']
   ]
-  i = 0;
-  for (var y = 0; y < widths.length; y += 1) {
-    for (var x = 0; x < widths[y]; x += 1) {
-      let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
-      let a = edges[i];
-      i++;
-      tiles.push([a[0], a[1], a[2], a[3], img, 0]);
-    }
-  }
 
-  size = 16;
-  w = 800 / 2 / size;
-  h = 500 / 2 / size;
-  grid = new Grid(w, h, size, tiles);
-  time = 0;
-  // How many frames between collapses.
-  rate = 1;
+  wfc.load(edges, allimages)
 }
 
 function draw() {
   background(0);
 
-  // Show all the tiles along the top.
-  for (let i = 0; i < tiles.length; i++) {
-    let x = (i % 26) * squareWidth;
-    let y = Math.floor(i / 26) * squareHeight;
-    image(tiles[i][4], x, y, squareWidth, squareHeight);
-  }
+  wfc.update();
 
-  time++;
-  if (time % rate === 0) {
+  wfc.draw();
+}
 
-    best = null;
-    bx = -1;
-    by = -1;
-    for (let y = 0; y < grid.height; y++) {
-      for (let x = 0; x < grid.width; x++) {
-        opt = grid.get(x, y);
-        if (opt.type != null) {
-          // Already collapsed
-          continue;
-        }
-        if (!best || opt.getPossibleCount() < best.getPossibleCount()) {
-          best = opt;
-          bx = x;
-          by = y;
-        }
-      }
-    }
+function mouseWheel(event) {
+  view.scale(event.delta);
+}
 
-    if (best == null) {
-      console.log("Completed iterating")
-      noLoop();
-    } else {
-      // Set the type of one square every second.
-      grid.collapse(bx, by);
-    }
-  }
-
-  grid.draw();
+function keyPressed() {
+  wfc.collapseNext();
 }

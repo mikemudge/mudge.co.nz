@@ -266,7 +266,7 @@ class ProjectAppView(MethodView):
                 app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
 
             if app_name == 'p5':
-                if s in ['mapviewtest', 'bomberman', 'rts', 'moba', 'road', 'traffic']:
+                if s in ['mapviewtest', 'bomberman', 'rts', 'moba', 'road', 'traffic', 'wfc3']:
                     app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
                     app.scripts.append("/static/p5/view.js?v=%s" % app.version)
                 elif s == 'minesweeper':

@@ -8,6 +8,8 @@ class Square {
     for (let i = 0; i < this.tiles.length; i++) {
       this.possible.push(i);
     }
+    this.debugCollapseType = false;
+    this.debugPossible = true;
   }
 
   update() {
@@ -57,22 +59,30 @@ class Square {
 
   show(size) {
     if (this.type == null || this.type == -1) {
-      fill(255);
-      text(this.getPossibleCount(), -5, 0);
+      if (this.debugPossible) {
+        fill(255);
+        text(this.getPossibleCount(), -5, 0);
+      }
       stroke(70);
       noFill();
       rect(-size, -size, size * 2, size * 2);
       return;
     }
     let tile = this.tiles[this.type];
-    image(tile[4], -size, -size, size * 2, size * 2);
+    image(tile[4], -size, -size, size * 2 - 1, size * 2 - 1);
+
+    // Show what this collapsed to
+    if (this.debugCollapseType) {
+      fill(255);
+      text(this.type, -5, 0);
+    }
   }
 }
 
 class WFC {
   constructor() {
-    this.width = 30;
-    this.height = 20;
+    this.width = 40;
+    this.height = 40;
     this.map = new Grid(this.width, this.height, view.getMapSize());
 
     this.view = view;
@@ -266,8 +276,17 @@ class WFC {
     let squareWidth = 16;
     // Show all the tiles along the top.
     for (let i = 0; i < this.tiles.length; i++) {
-      let x = 20 + (i % 26) * squareWidth;
-      let y = this.view.getCanvasHeight() - 90 + Math.floor(i / 26) * squareHeight;
+      let x = i % 14;
+      let y = Math.floor(i / 14);
+      if (i === 52 || i === 53) {
+        // Two odd cases.
+        x -= 2;
+      } else if (i >= 38) {
+        x = (i - 38) % 16 + 20;
+        y = Math.floor((i - 38) / 16);
+      }
+      x = x * squareWidth + 20;
+      y = y * squareHeight + this.view.getCanvasHeight() - 90;
       image(this.tiles[i][4], x, y, squareWidth, squareHeight);
     }
     //

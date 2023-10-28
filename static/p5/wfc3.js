@@ -8,6 +8,8 @@ class Square {
     for (let i = 0; i < this.tiles.length; i++) {
       this.possible.push(i);
     }
+    this.patterns = [[], [], [], []];
+    this.calcReversedPatternSet();
     this.debugCollapseType = false;
     this.debugPossible = true;
   }
@@ -27,16 +29,29 @@ class Square {
         removalOccured = true;
       }
     }
+    if (removalOccured) {
+      // Recalculate what possible patterns you can support.
+      this.calcReversedPatternSet();
+    }
     return removalOccured;
   }
 
-  getReversedPatternSet(dir) {
-    let set = {};
+  calcReversedPatternSet() {
+    let set = [{}, {}, {}, {}];
     for (let possible of this.possible) {
       let tile = this.tiles[possible];
-      set[tile[dir].split('').reverse().join('')] = 1;
+      for (let d = 0; d < 4; d++) {
+        let pattern = tile[d].split('').reverse().join('');
+        set[d][pattern] = 1;
+      }
     }
-    return Object.keys(set);
+    for (let d = 0; d < 4; d++) {
+      this.patterns[d] = Object.keys(set[d]);
+    }
+  }
+
+  getReversedPatternSet(dir) {
+    return this.patterns[dir];
   }
 
   collapse() {
@@ -49,8 +64,17 @@ class Square {
       this.type = -1;
       return;
     }
-    this.type = random(this.possible);
+    // TODO use possible tiles weight to sway this randomness.
+    let opts = [];
+    for (let i = 0; i < this.possible.length; i++) {
+      let t = this.tiles[this.possible[i]];
+      for (let ii = 0; ii < t[6]; ii++) {
+        opts.push(this.possible[i]);
+      }
+    }
+    this.type = random(opts);
     this.possible = [this.type];
+    this.calcReversedPatternSet();
   }
 
   getPossibleCount() {
@@ -108,16 +132,32 @@ class WFC {
       return;
     }
     this.time++;
-    // Set the type of one square every rate frames.
+    // Set the type of two squares every rate frames.
     if (this.time % this.rate === 0) {
-      let best = this.chooseTile();
+      this.collapseBestTile();
+      this.collapseBestTile();
+    }
+  }
 
-      if (best) {
-        this.collapseTile(best);
-      } else {
-        console.log("Completed iterating");
-        this.complete = true;
+  collapseBestTile() {
+    let best = this.chooseTile();
+
+    if (best) {
+      best.getData().collapse();
+      // console.log("Collapsing", tile.x, tile.y, "as", tile.getData().type)
+      let reduceTiles = best.getCardinalTiles();
+      while(reduceTiles.length > 0) {
+        let next = [];
+        for (let tile of reduceTiles) {
+          if (this.reduceTile(tile)) {
+            next = next.concat(tile.getCardinalTiles());
+          }
+        }
+        reduceTiles = next;
       }
+    } else {
+      console.log("Completed iterating");
+      this.complete = true;
     }
   }
 
@@ -192,83 +232,8 @@ class WFC {
     return removed;
   }
 
-  collapseTile(loc) {
-    let square = loc.getData();
-    if (!square) {
-      return;
-    }
-
-    square.collapse();
-    if (square.type === -1) {
-      // Invalid collapse?
-      return;
-    }
-
-    // console.log("Collapsing", x, y, "as", loc.type)
-    let tile = this.tiles[square.type];
-    this.reducePossible(loc.north(), 2, tile[0].split('').reverse().join(''));
-    this.reducePossible(loc.east(), 3, tile[1].split('').reverse().join(''));
-    this.reducePossible(loc.south(), 0, tile[2].split('').reverse().join(''));
-    this.reducePossible(loc.west(), 1, tile[3].split('').reverse().join(''));
-  }
-
-  reducePossible(tile, dir, pattern) {
-    let square = tile.getData();
-    if (!square) {
-      // This can happen if we hit an edge of the map.
-      return;
-    }
-
-    if (square.type != null) {
-      // Already collapsed, no more reducing possible.
-      return;
-    }
-
-    let removed = square.removePossible(dir, [pattern]);
-
-    if (removed) {
-      // After removing some possibilities we need to propagate.
-      // E.g. if SW is the only option above, it limits our left and right options.
-      // left must have *S and right must have W* based on matching above.
-      this.recursePossible(tile);
-    }
-  }
-
-  recursePossible(tile) {
-    // Iterate all directions
-    let dirs = tile.getCardinalTiles();
-    for (let dir = 0; dir < 4; dir++) {
-      let sq = dirs[dir].getData();
-      if (!sq) {
-        // Hit an edge.
-        continue;
-      }
-      if (sq.type != null) {
-        // This direction is already collapsed.
-        continue;
-      }
-      let opposite = (2 + dir) % 4;
-      // Determine the set of patterns in dir, then reduce sq based on what is possible.
-      let removed = sq.removePossible(opposite, tile.getData().getReversedPatternSet(dir));
-      if (removed) {
-        this.recursePossible(dirs[dir]);
-      }
-    }
-  }
-
   draw() {
-
     this.view.draw(this.map);
-
-    if (this.selectedTile) {
-      let pos = createVector(this.selectedTile.x, this.selectedTile.y).mult(32);
-      this.view.showAtPos({
-        show: function (size) {
-          fill('green');
-          circle(-size, -size, 2 * size, 2 * size);
-        }
-      }, pos);
-    }
 
     this.view.coverEdges();
 
@@ -288,9 +253,8 @@ class WFC {
       x = x * squareWidth + 20;
       y = y * squareHeight + this.view.getCanvasHeight() - 90;
       image(this.tiles[i][4], x, y, squareWidth, squareHeight);
+      text(this.tiles[i][6], x + 6, y + 12);
     }
-    //
-    // grid.draw();
   }
 }
 
@@ -413,9 +377,26 @@ function setup() {
       let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
       let a = edges[i];
       i++;
-      tiles.push([a[0], a[1], a[2], a[3], img, 0]);
+      tiles.push([a[0], a[1], a[2], a[3], img, 0, 1]);
     }
   }
+
+  // TODO base weights on edges?
+  // E.g doubles higher?
+  // Certain elements higher?
+
+  // Set edges more than corners.
+  tiles[1][6] = 2;
+  tiles[14][6] = 2;
+  tiles[16][6] = 2;
+  tiles[29][6] = 2;
+
+  // Set weight of grass tile higher.
+  tiles[15][6] = 10;
+  tiles[24][6] = 10;
+  tiles[25][6] = 10;
+  // And water
+  tiles[31][6] = 10;
 
   wfc.load(tiles)
 }

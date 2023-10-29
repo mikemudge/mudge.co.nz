@@ -384,19 +384,35 @@ function setup() {
   // TODO base weights on edges?
   // E.g doubles higher?
   // Certain elements higher?
+  for (let t of tiles) {
+    let edgeStr = t[0]+t[1]+t[2]+t[3];
+    for (let i = 0; i < 4; i++) {
+      if (t[i][0] === t[i][1]) {
+        t[6]+=3;
+      }
+    }
+    // TODO categorize tiles as corners/straights etc.
+    // And as grass/water/stone/dirt?
+    // Then support sliders for each category to increase/decrease chance.
 
-  // Set edges more than corners.
-  tiles[1][6] = 2;
-  tiles[14][6] = 2;
-  tiles[16][6] = 2;
-  tiles[29][6] = 2;
-
-  // Set weight of grass tile higher.
-  tiles[15][6] = 10;
-  tiles[24][6] = 10;
-  tiles[25][6] = 10;
-  // And water
-  tiles[31][6] = 10;
+    // Make some types of tiles impossible.
+    if (edgeStr.includes("B") || edgeStr.includes("D") || edgeStr.includes("S")) {
+      t[6] = 0;
+    }
+  }
+  //
+  // // Set edges more than corners.
+  // tiles[1][6] = 2;
+  // tiles[14][6] = 2;
+  // tiles[16][6] = 2;
+  // tiles[29][6] = 2;
+  //
+  // // Set weight of grass tile higher.
+  // tiles[15][6] = 10;
+  // tiles[24][6] = 10;
+  // tiles[25][6] = 10;
+  // // And water
+  // tiles[31][6] = 10;
 
   wfc.load(tiles)
 }

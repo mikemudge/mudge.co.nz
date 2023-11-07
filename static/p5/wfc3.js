@@ -387,16 +387,16 @@ function setup() {
   for (let t of tiles) {
     let edgeStr = t[0]+t[1]+t[2]+t[3];
     for (let i = 0; i < 4; i++) {
-      if (t[i][0] === t[i][1]) {
-        t[6]+=3;
-      }
+      // if (t[i][0] === t[i][1]) {
+      //   t[6]+=3;
+      // }
     }
     // TODO categorize tiles as corners/straights etc.
     // And as grass/water/stone/dirt?
     // Then support sliders for each category to increase/decrease chance.
 
     // Make some types of tiles impossible.
-    if (edgeStr.includes("B") || edgeStr.includes("D") || edgeStr.includes("S")) {
+    if (edgeStr.includes("B") || edgeStr.includes("S")) {
       t[6] = 0;
     }
   }

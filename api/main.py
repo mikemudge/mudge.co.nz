@@ -1,8 +1,9 @@
 import os
+import json
 
 from flask import Blueprint
 from flask import send_from_directory
-from flask import abort, current_app
+from flask import abort, current_app, request
 from shared.helpers.angular import Angular
 
 main_bp = Blueprint('main', __name__)
@@ -26,8 +27,15 @@ def robots():
 def main_page():
     return "Welcome"
 
+@main_bp.route('/sailthru/postback', methods=['POST'])
+def postback():
+    data = json.dumps(request.form)
+
+    current_app.logger.info("got a postback %s" % data)
+    return "Postback recieved"
+
 @main_bp.route('/login/')
-def login():
+def post():
     app = Angular('user')
     app.setupFolder('static/user')
     app.addLogin()

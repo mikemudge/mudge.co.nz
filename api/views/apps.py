@@ -156,10 +156,10 @@ apps['trail'] = {
     'img': 'trail.png',
     'tags': ['api', 'login', 'common', 'gmaps']
 }
-apps['ceo_bingo'] = {
-    'img': 'ceo_bingo.png',
-    'hidden': True,
-}
+# apps['ceo_bingo'] = {
+#     'img': 'ceo_bingo.png',
+#     'hidden': True,
+# }
 apps['cv'] = {
     'img': 'cv.png',
     'tags': ['common'],

@@ -1,0 +1,14 @@
+<div ng-controller="MainController as ctrl">
+    <div ng-repeat="recipe in ctrl.recipes">
+        <ul>
+            <li ng-repeat="ingredient in recipe.ingredients">
+                {{ ingredient }}
+            </li>
+        </ul>
+        <ol>
+            <li ng-repeat="instruction in recipe.instructions">
+                {{ instruction }}
+            </li>
+        </ol>
+    </div>
+</div>

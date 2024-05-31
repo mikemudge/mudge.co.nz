@@ -164,6 +164,9 @@ apps['cv'] = {
     'img': 'cv.png',
     'tags': ['common'],
 }
+apps['recipe'] = {
+    'tags': ['api', 'login', 'common']
+}
 # apps['projects'] = {
 #     'tags': ['api']
 # }

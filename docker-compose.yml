@@ -38,4 +38,6 @@ services:
       - FLASK_APP=manage.py
       - FLASK_DEBUG=1
     command: ["/app/docker/run_dev.sh"]
+#    local https mode.
+#    command: ["/app/run_https.py"]
     # command: sleep infinity

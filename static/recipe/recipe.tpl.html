@@ -1,8 +1,12 @@
 <div ng-controller="MainController as ctrl">
+    <button ng-click="ctrl.toggleNoSleepMode()">
+        <span ng-hide="ctrl.sleepMode">Keep screen awake</span>
+        <span ng-show="ctrl.sleepMode">Allow Screen to sleep</span>
+    </button>
     <div ng-repeat="recipe in ctrl.recipes">
-        <ul>
+        <ul class="ingredients">
             <li ng-repeat="ingredient in recipe.ingredients">
-                {{ ingredient }}
+                {{ ingredient.name }} - {{ ingredient.amount}}
             </li>
         </ul>
         <ol>

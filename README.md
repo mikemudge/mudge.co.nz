@@ -1,3 +1,18 @@
+### TODO
+
+Update google auth (again)
+Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes.
+https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment
+https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment
+
+Update Trail app.
+As of February 21st, 2024, google.maps.Marker is deprecated. 
+Please use google.maps.marker.AdvancedMarkerElement instead. 
+At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. 
+While google.maps.Marker will continue to receive bug fixes for any major regressions, existing bugs in google.maps.Marker will not be addressed. 
+At least 12 months notice will be given before support is discontinued. 
+Please see https://developers.google.com/maps/deprecations for additional details and https://developers.google.com/maps/documentation/javascript/advanced-markers/migration for the migration guide.
+
 ### Development
 Uses docker.
 

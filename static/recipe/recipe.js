@@ -6,6 +6,7 @@ class MainController {
     window.ctrl = this;
     this.$scope = $scope;
     this.sleepMode = false;
+    this.recipe = 0;
     this.recipes = [{
       "name": "Dim's Vege Nachoes",
       "ingredients": [{
@@ -31,6 +32,46 @@ class MainController {
         "Add globs of bean mix and sour cream",
         "Grate cheese and add on top",
         "Bake for 15-20 minutes, longer for more char on chips."
+      ]
+    }, {
+      "source_url": "https://www.loveandlemons.com/broccoli-salad/",
+      "name": "Broccoli Salad",
+      "ingredients": [{
+        name: "Broccoli",
+        amount: "1",
+      },{
+        name: "Dried Cranberries",
+        amount: "1 Bag",
+      },{
+        name: "Red Onion",
+        amount: "1 small",
+      },{
+        // TODO support alternatives?
+        // aka replacements?
+        name: "Seeds/Nuts",
+        description: "(sunflower, pumpkin, almonds or similar)",
+        amount: "1 handful",
+      },{
+        name: "Dressing",
+        amount: "Enough to cover",
+      },{
+        // TODO support optional extras?
+        name: "Bacon bits",
+        amount: "A sprinkle",
+      },{
+        name: "Cheese, (grated parmesan)",
+        amount: "",
+      }],
+      "instructions": [
+        "Chop broccoli, cutting the stems in particular into small pieces.",
+        "Chop red onion finely",
+        "Mix dressing? Or use a premade one?",
+        "Dressing option - mayo, olive oil, vinegar, 1t dijon mustard, honey",
+        // Tablespoons -> cups is ~16:1
+        "Mix broccoli, red onion and cranberries into the dressing",
+        "Let soak in the fridge for up to 24 hours",
+        "Add seeds/nuts.",
+        "Toss and serve"
       ]
     }]
   }

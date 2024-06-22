@@ -1,0 +1,146 @@
+<head>
+
+</head>
+<body>
+<script>
+
+  let poolA = {
+    teams: {
+      "Germany": 6,
+      "Switzerland": 4,
+      "Scotland": 1,
+      "Hungry": 0
+    },
+    matches: [
+      ["Switzerland", "Germany"],
+      ["Scotland", "Hungry"],
+    ]
+  }
+
+  let poolB = {
+    teams: {
+      "Spain": 6,
+      "Italy": 3,
+      "Albania": 1,
+      "Croatia": 1
+    },
+    matches: [
+      ["Albania", "Spain"],
+      ["Croatia", "Italy"],
+    ]
+  }
+
+  let poolC = {
+    teams: {
+      "England": 4,
+      "Denmark": 2,
+      "Slovenia": 2,
+      "Serbia": 1
+    },
+    matches: [
+      ["Denmark", "Serbia"],
+      ["England", "Slovenia"],
+    ]
+  }
+
+  let poolD = {
+    teams: {
+      "Netherlands": 4,
+      "France": 4,
+      "Austria": 3,
+      "Poland": 0
+    },
+    matches: [
+      ["France", "Poland"],
+      ["Netherlands", "Austria"],
+    ]
+  }
+
+  let poolE = {
+    teams: {
+      "Romania": 3,
+      "Slovakia": 3,
+      "Belgium": 3,
+      "Ukraine": 3
+    },
+    matches: [
+      // ["Belgium", "Romania"],
+      ["Slovakia", "Romania"],
+      ["Ukraine", "Belgium"],
+    ]
+  }
+
+  let poolF = {
+    teams: {
+      "Portugal": 6,
+      "Turkey": 3,
+      "Czechia": 1,
+      "Georgia": 1
+    },
+    matches: [
+      ["Georgia", "Portugal"],
+      ["Czechia", "Turkey"],
+    ]
+  }
+
+  outcomes = [{
+    "Win": [3, 0]
+  },{
+    "Tie": [1,1],
+  },{
+    "Lose": [0,3],
+  }];
+
+  function recurse(matchIndex, matches, state) {
+    if (matchIndex >= matches.length) {
+      return state;
+    }
+    let match = matches[matchIndex];
+    let teamA = match[0];
+    let teamB = match[1];
+    let possibleStates = {};
+    for (let outcome of outcomes) {
+      var copy = {...state};
+      let r = Object.keys(outcome)[0];
+      copy[teamA] += outcome[r][0];
+      copy[teamB] += outcome[r][1];
+      if (matchIndex < matches.length - 1) {
+        possibleStates[teamA + " " + r] = recurse(matchIndex + 1, matches, copy);
+      } else {
+        // Only one possibility
+        possibleStates[teamA + " " + r] = [copy];
+      }
+    }
+    return possibleStates;
+  }
+
+  for (let pool of [poolA, poolB, poolC, poolD, poolE, poolF]) {
+    let teams = pool['teams'];
+    let matches = pool['matches'];
+
+    let possibles = recurse(0, matches, teams);
+    console.log(possibles);
+
+    let qualiCounts = {};
+    let p = Object.keys(possibles);
+    for (let result of p) {
+      let p2 = Object.keys(possibles[result]);
+      for (let result2 of p2) {
+        // Will be a list of size 1.
+        let table = possibles[result][result2][0];
+        let teams = Object.keys(table);
+        let teamList = [];
+        for (let team of teams) {
+          teamList.push({'name': team, 'score': table[team]});
+        }
+        teamList.sort((a, b) => b.score - a.score);
+        let qualifiedKey = teamList[0]['name'] + teamList[1]['name'];
+        qualiCounts[qualifiedKey] = qualiCounts[qualifiedKey] || 0;
+        qualiCounts[qualifiedKey]++;
+      }
+    }
+    console.log(qualiCounts);
+  }
+
+</script>
+</body>

@@ -34,6 +34,62 @@ class MainController {
         "Bake for 15-20 minutes, longer for more char on chips."
       ]
     }, {
+      "source_url": "https://www.skinnytaste.com/picadillo-6-ww-pts/",
+      "name": "Cuban Picadillo",
+      "ingredients": [{
+        name: "Onion",
+        amount: "1 medium",
+      }, {
+        name: "Garlic",
+        amount: "2 cloves",
+      }, {
+        name: "Tomato",
+        amount: "1 medium",
+      }, {
+        name: "Pepper",
+        amount: "1 medium",
+      }, {
+        name: "Ground Beef",
+        amount: "~1.5lb",
+      }, {
+        name: "Chopped Tomatos Can",
+        amount: "1 Can",
+      }, {
+        name: "Cumin",
+        amount: "1 tsp",
+      }, {
+        name: "Cumin",
+        amount: "1 tsp",
+      // Optional stuff?
+      }, {
+        name: "Olives",
+        amount: "2 tbsp",
+      }, {
+        name: "Cilantro",
+        amount: "2 tbsp",
+      }, {
+        name: "Dried Bayleaf",
+        amount: "2 leaves",
+      }, {
+        name: "Salt and Pepper",
+        amount: "to taste",
+      }]
+    }, {
+      "source_url": "https://www.skinnytaste.com/air-fryer-beef-empanadas/",
+      "name": "Air Fryer Beef Empanadas"
+      "ingredients": [{
+        name: "Empanada discs",
+        amount: "8+"
+      }, {
+        // Add options for other things.
+        name: "Picadillo (Or other fillings)",
+        amount: "8+"
+      }, {
+        name: "Egg + water",
+        amount: "1 egg + 1 tsp",
+        description: "for brushing/sticking discs together"
+      }]
+    }, {
       "source_url": "https://www.loveandlemons.com/broccoli-salad/",
       "name": "Broccoli Salad",
       "ingredients": [{

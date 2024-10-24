@@ -6,7 +6,7 @@ class Square {
     this.tiles = tiles;
     // Initially all tiles are possible.
     for (let i = 0; i < this.tiles.length; i++) {
-      if (this.tiles[i][6] > 0) {
+      if (this.tiles[i].likelihood > 0) {
         this.possible.push(i);
       }
     }
@@ -25,7 +25,7 @@ class Square {
     // Iterate through the possibilities and remove which don't match a pattern on this side.
     for (let i = this.possible.length - 1; i >= 0; i--) {
       let tile = this.tiles[this.possible[i]];
-      if (!patterns.includes(tile[dir])) {
+      if (!patterns.includes(tile.getPattern(dir))) {
         // Incompatible neighbour.
         this.possible.splice(i, 1);
         removalOccured = true;
@@ -43,7 +43,7 @@ class Square {
     for (let possible of this.possible) {
       let tile = this.tiles[possible];
       for (let d = 0; d < 4; d++) {
-        let pattern = tile[d].split('').reverse().join('');
+        let pattern = tile.reversePattern(d);
         set[d][pattern] = 1;
       }
     }
@@ -70,7 +70,7 @@ class Square {
     let opts = [];
     for (let i = 0; i < this.possible.length; i++) {
       let t = this.tiles[this.possible[i]];
-      for (let ii = 0; ii < t[6]; ii++) {
+      for (let ii = 0; ii < t.likelihood; ii++) {
         opts.push(this.possible[i]);
       }
     }
@@ -95,13 +95,53 @@ class Square {
       return;
     }
     let tile = this.tiles[this.type];
-    image(tile[4], -size, -size, size * 2 - 1, size * 2 - 1);
+    image(tile.img, -size, -size, size * 2 - 1, size * 2 - 1);
 
     // Show what this collapsed to
     if (this.debugCollapseType) {
       fill(255);
       text(this.type, -5, 0);
     }
+  }
+}
+
+/* Represents a tile which can be selected for a square in the grid. */
+class WFCTile {
+  constructor(patterns) {
+    this.likelihood = 1;
+    this.tags = [];
+    // Array of size 4 (NESW) with the edge patterns which this tile has.
+    this.patterns = patterns;
+  }
+
+  setImage(img) {
+    this.img = img;
+  }
+
+  getPattern(dir) {
+    return this.patterns[dir];
+  }
+  reversePattern(dir) {
+    return this.patterns[dir].split('').reverse().join('');
+  }
+
+  hasPattern(match) {
+    return this.patterns.join('').includes(match);
+  }
+
+  isEdge() {
+    // Which are edges?
+    // tiles one way but not the other
+    let verticalTiling = this.reversePattern(0) === this.getPattern(2);
+    let horizontalTiling = this.reversePattern(1) === this.getPattern(3);
+
+    if (verticalTiling && !horizontalTiling) {
+      return true;
+    }
+    if (!verticalTiling && horizontalTiling) {
+      return true;
+    }
+    return false;
   }
 }
 
@@ -130,6 +170,7 @@ class WFC {
   }
 
   update() {
+    view.update();
     if (this.complete) {
       return;
     }
@@ -254,8 +295,8 @@ class WFC {
       }
       x = x * squareWidth + 20;
       y = y * squareHeight + this.view.getCanvasHeight() - 90;
-      image(this.tiles[i][4], x, y, squareWidth, squareHeight);
-      text(this.tiles[i][6], x + 6, y + 12);
+      image(this.tiles[i].img, x, y, squareWidth, squareHeight);
+      text(this.tiles[i].likelihood, x + 6, y + 12);
     }
   }
 }
@@ -267,104 +308,105 @@ function preload() {
 let wfc = null;
 function setup() {
   view = new MapView(32);
+
   w = view.getCanvasWidth();
   h = view.getCanvasHeight();
   createCanvas(w, h);
 
   wfc = new WFC(view);
 
-  let edges = [
-    ['WW', 'WG', 'GW', 'WW'],
-    ['WW', 'WG', 'GG', 'GW'],
-    ['WW', 'WW', 'WG', 'GW'],
-    ['GG', 'GW', 'WG', 'GG'],
-    ['GG', 'GG', 'GW', 'WG'],
-    ['DD', 'DG', 'GD', 'DD'],
-    ['DD', 'DG', 'GG', 'GD'],
-    ['DD', 'DD', 'DG', 'GD'],
-    ['GG', 'GD', 'DG', 'GG'],
-    ['GG', 'GG', 'GD', 'DG'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['SS', 'SW', 'WS', 'SS'],
-    ['SS', 'SS', 'SW', 'WS'],
+  let tiles = [
+    new WFCTile(['WW', 'WG', 'GW', 'WW']),
+    new WFCTile(['WW', 'WG', 'GG', 'GW']),
+    new WFCTile(['WW', 'WW', 'WG', 'GW']),
+    new WFCTile(['GG', 'GW', 'WG', 'GG']),
+    new WFCTile(['GG', 'GG', 'GW', 'WG']),
+    new WFCTile(['DD', 'DG', 'GD', 'DD']),
+    new WFCTile(['DD', 'DG', 'GG', 'GD']),
+    new WFCTile(['DD', 'DD', 'DG', 'GD']),
+    new WFCTile(['GG', 'GD', 'DG', 'GG']),
+    new WFCTile(['GG', 'GG', 'GD', 'DG']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['SS', 'SW', 'WS', 'SS']),
+    new WFCTile(['SS', 'SS', 'SW', 'WS']),
 
-    ['WG', 'GG', 'GW', 'WW'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['GW', 'WW', 'WG', 'GG'],
-    ['GW', 'WG', 'GG', 'GG'],
-    ['WG', 'GG', 'GG', 'GW'],
-    ['DG', 'GG', 'GD', 'DD'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['GD', 'DD', 'DG', 'GG'],
-    ['GD', 'DG', 'GG', 'GG'],
-    ['DG', 'GG', 'GG', 'GD'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['SW', 'WS', 'SS', 'SS'],
-    ['WS', 'SS', 'SS', 'SW'],
+    new WFCTile(['WG', 'GG', 'GW', 'WW']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['GW', 'WW', 'WG', 'GG']),
+    new WFCTile(['GW', 'WG', 'GG', 'GG']),
+    new WFCTile(['WG', 'GG', 'GG', 'GW']),
+    new WFCTile(['DG', 'GG', 'GD', 'DD']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['GD', 'DD', 'DG', 'GG']),
+    new WFCTile(['GD', 'DG', 'GG', 'GG']),
+    new WFCTile(['DG', 'GG', 'GG', 'GD']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['SW', 'WS', 'SS', 'SS']),
+    new WFCTile(['WS', 'SS', 'SS', 'SW']),
 
-    ['WG', 'GW', 'WW', 'WW'],
-    ['GG', 'GW', 'WW', 'WG'],
-    ['GW', 'WW', 'WW', 'WG'],
-    ['WW', 'WW', 'WW', 'WW'],
-    ['DD', 'DD', 'DD', 'DD'],
-    ['DG', 'GD', 'DD', 'DD'],
-    ['GG', 'GD', 'DD', 'DG'],
-    ['GD', 'DD', 'DD', 'DG'],
-    ['GG', 'GS', 'SG', 'GG'],
-    ['GG', 'GG', 'GS', 'SG'],
-    ['WW', 'WD', 'DW', 'WW'],
-    ['WW', 'WD', 'DD', 'DW'],
-    ['WW', 'WW', 'WD', 'DW'],
-    ['WW', 'WS', 'SW', 'WW'],
-    ['WW', 'WS', 'SS', 'SW'],
-    ['WW', 'WW', 'WS', 'SW'],
+    new WFCTile(['WG', 'GW', 'WW', 'WW']),
+    new WFCTile(['GG', 'GW', 'WW', 'WG']),
+    new WFCTile(['GW', 'WW', 'WW', 'WG']),
+    new WFCTile(['WW', 'WW', 'WW', 'WW']),
+    new WFCTile(['DD', 'DD', 'DD', 'DD']),
+    new WFCTile(['DG', 'GD', 'DD', 'DD']),
+    new WFCTile(['GG', 'GD', 'DD', 'DG']),
+    new WFCTile(['GD', 'DD', 'DD', 'DG']),
+    new WFCTile(['GG', 'GS', 'SG', 'GG']),
+    new WFCTile(['GG', 'GG', 'GS', 'SG']),
+    new WFCTile(['WW', 'WD', 'DW', 'WW']),
+    new WFCTile(['WW', 'WD', 'DD', 'DW']),
+    new WFCTile(['WW', 'WW', 'WD', 'DW']),
+    new WFCTile(['WW', 'WS', 'SW', 'WW']),
+    new WFCTile(['WW', 'WS', 'SS', 'SW']),
+    new WFCTile(['WW', 'WW', 'WS', 'SW']),
 
-    ['BB', 'BG', 'GB', 'BB'],
-    ['BB', 'BG', 'GG', 'GB'],
-    ['BB', 'BB', 'BG', 'GB'],
-    ['BB', 'BB', 'BB', 'BB'],
-    ['SS', 'SS', 'SS', 'SS'],
-    ['SS', 'SG', 'GS', 'SS'],
-    ['SS', 'SG', 'GG', 'GS'],
-    ['SS', 'SS', 'SG', 'GS'],
-    ['GS', 'SG', 'GG', 'GG'],
-    ['SG', 'GG', 'GG', 'GS'],
-    ['WD', 'DD', 'DW', 'WW'],
-    ['DD', 'DD', 'DD', 'DD'],
-    ['DW', 'WW', 'WD', 'DD'],
-    ['WS', 'SS', 'SW', 'WW'],
-    ['SS', 'SS', 'SS', 'SS'],
-    ['SW', 'WW', 'WS', 'SS'],
+    new WFCTile(['BB', 'BG', 'GB', 'BB']),
+    new WFCTile(['BB', 'BG', 'GG', 'GB']),
+    new WFCTile(['BB', 'BB', 'BG', 'GB']),
+    new WFCTile(['BB', 'BB', 'BB', 'BB']),
+    new WFCTile(['SS', 'SS', 'SS', 'SS']),
+    new WFCTile(['SS', 'SG', 'GS', 'SS']),
+    new WFCTile(['SS', 'SG', 'GG', 'GS']),
+    new WFCTile(['SS', 'SS', 'SG', 'GS']),
+    new WFCTile(['GS', 'SG', 'GG', 'GG']),
+    new WFCTile(['SG', 'GG', 'GG', 'GS']),
+    new WFCTile(['WD', 'DD', 'DW', 'WW']),
+    new WFCTile(['DD', 'DD', 'DD', 'DD']),
+    new WFCTile(['DW', 'WW', 'WD', 'DD']),
+    new WFCTile(['WS', 'SS', 'SW', 'WW']),
+    new WFCTile(['SS', 'SS', 'SS', 'SS']),
+    new WFCTile(['SW', 'WW', 'WS', 'SS']),
 
-    ['BG', 'GG', 'GB', 'BB'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['GB', 'BB', 'BG', 'GG'],
-    ['GG', 'GB', 'BG', 'GG'],
-    ['GG', 'GG', 'GB', 'BG'],
-    ['SG', 'GG', 'GS', 'SS'],
-    ['GG', 'GG', 'GG', 'GG'],
-    ['GS', 'SS', 'SG', 'GG'],
-    ['DD', 'DW', 'WD', 'DD'],
-    ['DD', 'DD', 'DW', 'WD'],
-    ['WD', 'DW', 'WW', 'WW'],
-    ['DD', 'DW', 'WW', 'WD'],
-    ['DW', 'WW', 'WW', 'WD'],
-    ['WS', 'SW', 'WW', 'WW'],
-    ['SS', 'SW', 'WW', 'WS'],
-    ['SW', 'WW', 'WW', 'WS'],
+    new WFCTile(['BG', 'GG', 'GB', 'BB']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['GB', 'BB', 'BG', 'GG']),
+    new WFCTile(['GG', 'GB', 'BG', 'GG']),
+    new WFCTile(['GG', 'GG', 'GB', 'BG']),
+    new WFCTile(['SG', 'GG', 'GS', 'SS']),
+    new WFCTile(['GG', 'GG', 'GG', 'GG']),
+    new WFCTile(['GS', 'SS', 'SG', 'GG']),
+    new WFCTile(['DD', 'DW', 'WD', 'DD']),
+    new WFCTile(['DD', 'DD', 'DW', 'WD']),
+    new WFCTile(['WD', 'DW', 'WW', 'WW']),
+    new WFCTile(['DD', 'DW', 'WW', 'WD']),
+    new WFCTile(['DW', 'WW', 'WW', 'WD']),
+    new WFCTile(['WS', 'SW', 'WW', 'WW']),
+    new WFCTile(['SS', 'SW', 'WW', 'WS']),
+    new WFCTile(['SW', 'WW', 'WW', 'WS']),
 
-    ['BG', 'GB', 'BB', 'BB'],
-    ['GG', 'GB', 'BB', 'BG'],
-    ['GB', 'BB', 'BB', 'BG'],
-    ['GB', 'BG', 'GG', 'GG'],
-    ['BG', 'GG', 'GG', 'GB'],
-    ['SG', 'GS', 'SS', 'SS'],
-    ['GG', 'GS', 'SS', 'SG'],
-    ['GS', 'SS', 'SS', 'SG'],
-    ['DW', 'WD', 'DD', 'DD'],
-    ['WD', 'DD', 'DD', 'DW']
+    new WFCTile(['BG', 'GB', 'BB', 'BB']),
+    new WFCTile(['GG', 'GB', 'BB', 'BG']),
+    new WFCTile(['GB', 'BB', 'BB', 'BG']),
+    new WFCTile(['GB', 'BG', 'GG', 'GG']),
+    new WFCTile(['BG', 'GG', 'GG', 'GB']),
+    new WFCTile(['SG', 'GS', 'SS', 'SS']),
+    new WFCTile(['GG', 'GS', 'SS', 'SG']),
+    new WFCTile(['GS', 'SS', 'SS', 'SG']),
+    new WFCTile(['DW', 'WD', 'DD', 'DD']),
+    new WFCTile(['WD', 'DD', 'DD', 'DW'])
   ]
 
   // Split the large image up into tiles, using the edge data above.
@@ -372,14 +414,11 @@ function setup() {
   let squareHeight = 16;
   let squareWidth = 16;
 
-  tiles = [];
   let i = 0;
   for (var y = 0; y < widths.length; y += 1) {
     for (var x = 0; x < widths[y]; x += 1) {
       let img = allimages.get(x * squareWidth, y * squareHeight, squareWidth, squareHeight);
-      let a = edges[i];
-      i++;
-      tiles.push([a[0], a[1], a[2], a[3], img, 0, 1]);
+      tiles[i++].setImage(img);
     }
   }
 
@@ -387,41 +426,38 @@ function setup() {
   // E.g doubles higher?
   // Certain elements higher?
   for (let t of tiles) {
-    let edgeStr = t[0]+t[1]+t[2]+t[3];
-    for (let i = 0; i < 4; i++) {
-      // if (t[i][0] === t[i][1]) {
-      //   t[6]+=3;
-      // }
-    }
     // TODO categorize tiles as corners/straights etc.
     // And as grass/water/stone/dirt?
     // Then support sliders for each category to increase/decrease chance.
 
-    // Make some types of tiles impossible.
-    if (edgeStr.includes("D")) {
-      t[6] = 0;
+
+    // Make edges more likely
+    if (t.isEdge()) {
+      t.likelihood = 10;
     }
-    if (edgeStr.includes("B") || edgeStr.includes("S")) {
-      t[6] = 0;
+
+    // Make some types of tiles impossible.
+    if (t.hasPattern("D") || t.hasPattern("B") || t.hasPattern("S")) {
+      t.likelihood = 0;
     }
   }
   //
   // // Set edges more than corners.
-  tiles[1][6] = 20;
-  tiles[14][6] = 20;
-  tiles[16][6] = 20;
-  tiles[29][6] = 20;
+  tiles[1].likelihood = 10;
+  tiles[14].likelihood = 10;
+  tiles[16].likelihood = 10;
+  tiles[29].likelihood = 10;
   //
   // // Set weight of grass tile higher.
-  tiles[10][6] = 0;
-  tiles[11][6] = 0;
-  tiles[15][6] = 100;
-  tiles[24][6] = 0;
-  tiles[25][6] = 0;
-  tiles[61][6] = 0;
-  tiles[66][6] = 0;
+  tiles[10].likelihood = 0;
+  tiles[11].likelihood = 0;
+  tiles[15].likelihood = 100;
+  tiles[24].likelihood = 0;
+  tiles[25].likelihood = 0;
+  tiles[61].likelihood = 0;
+  tiles[66].likelihood = 0;
   // // And water
-  tiles[31][6] = 100;
+  tiles[31].likelihood = 100;
 
   wfc.load(tiles)
 }
@@ -432,6 +468,20 @@ function draw() {
   wfc.update();
 
   wfc.draw();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight - 18);
+
+  view.setScreen(windowWidth, windowHeight - 18);
+}
+
+function keyPressed() {
+  view.keys();
+}
+
+function keyReleased() {
+  view.keys();
 }
 
 function mouseWheel(event) {

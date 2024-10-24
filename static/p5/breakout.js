@@ -48,6 +48,7 @@ class Ball {
   constructor(pos, vel) {
     this.pos = createVector(width / 2, height - 50);
     this.vel = createVector(random(-3, 3), 3);
+    this.vel.setMag(5);
     this.size = 8;
     this.color = color(255);
   }
@@ -213,6 +214,7 @@ class PowerUp {
       ball.pos = game.balls[0].pos.copy();
       ball.vel = game.balls[0].vel.copy();
       ball.vel.add(p5.Vector.random2D()).limit(1,5);
+      ball.vel.setMag(5);
 
       game.balls.push(ball);
     } else if (this.type === "largerpaddle") {
@@ -269,6 +271,7 @@ class Paddle {
         var paddleHitX = d / this.width;
         ball.vel.x = 0.8 * ball.vel.x + 2 * paddleHitX;
         ball.vel.y *= -1;
+        ball.vel.setMag(5);
       }
     }
   }

@@ -6,7 +6,9 @@ class Square {
     this.tiles = tiles;
     // Initially all tiles are possible.
     for (let i = 0; i < this.tiles.length; i++) {
-      this.possible.push(i);
+      if (this.tiles[i][6] > 0) {
+        this.possible.push(i);
+      }
     }
     this.patterns = [[], [], [], []];
     this.calcReversedPatternSet();
@@ -396,23 +398,30 @@ function setup() {
     // Then support sliders for each category to increase/decrease chance.
 
     // Make some types of tiles impossible.
+    if (edgeStr.includes("D")) {
+      t[6] = 0;
+    }
     if (edgeStr.includes("B") || edgeStr.includes("S")) {
       t[6] = 0;
     }
   }
   //
   // // Set edges more than corners.
-  // tiles[1][6] = 2;
-  // tiles[14][6] = 2;
-  // tiles[16][6] = 2;
-  // tiles[29][6] = 2;
+  tiles[1][6] = 20;
+  tiles[14][6] = 20;
+  tiles[16][6] = 20;
+  tiles[29][6] = 20;
   //
   // // Set weight of grass tile higher.
-  // tiles[15][6] = 10;
-  // tiles[24][6] = 10;
-  // tiles[25][6] = 10;
+  tiles[10][6] = 0;
+  tiles[11][6] = 0;
+  tiles[15][6] = 100;
+  tiles[24][6] = 0;
+  tiles[25][6] = 0;
+  tiles[61][6] = 0;
+  tiles[66][6] = 0;
   // // And water
-  // tiles[31][6] = 10;
+  tiles[31][6] = 100;
 
   wfc.load(tiles)
 }

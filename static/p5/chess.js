@@ -260,10 +260,10 @@ class Board {
     const result = [];
     if (this.isValid(unit.x, unit.y + unit.vy, unit) && !this.isCapture(unit.x, unit.y + unit.vy, unit)) {
       result.push({x: unit.x, y: unit.y + unit.vy});
-    }
-    if (unit.y === unit.sy && !this.isCapture(unit.x, unit.y + 2 * unit.vy, unit)) {
-      // pawn can move 2 from the first row.
-      result.push({x: unit.x, y: unit.sy + 2 * unit.vy})
+      // pawn can also move 2 from the first row.
+      if (unit.y === unit.sy && !this.isCapture(unit.x, unit.y + 2 * unit.vy, unit)) {
+        result.push({x: unit.x, y: unit.sy + 2 * unit.vy})
+      }
     }
     // Capture moves.
     if (this.isCapture(unit.x + 1, unit.y + unit.vy, unit)) {

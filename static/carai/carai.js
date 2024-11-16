@@ -32,18 +32,19 @@ var MainController = function() {
   this.updatables = [];
 
   var mesh = new THREE.CubeGeometry( 10, 1, 20 );
-  var material = new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    color: 0xff0000
-  });
-  var selectedMaterial = new THREE.MeshBasicMaterial({
+
+  this.selectedCarMaterial = new THREE.MeshBasicMaterial({
     side: THREE.DoubleSide,
     color: 0x00ff00
+  });
+  this.regularCarMaterial = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    color: 0xff0000
   });
 
   var numCars = 20;
   for (i = 0; i < numCars; i++) {
-    var cube = new THREE.Mesh(mesh, material);
+    var cube = new THREE.Mesh(mesh, this.regularCarMaterial);
     cube.scale.set(2, 2, 2);
     this.scene.add(cube);
     control = new AIControls(cube, this.track);
@@ -190,19 +191,11 @@ MainController.prototype.nextGeneration = function() {
     aiControl.mesh.position.z += Math.random() * 2;
     aiControl.theta = 0;
     aiControl.crashed = false;
-    var selectedMaterial = new THREE.MeshBasicMaterial({
-      side: THREE.DoubleSide,
-      color: 0x00ff00
-    });
-    var material = new THREE.MeshBasicMaterial({
-      side: THREE.DoubleSide,
-      color: 0xff0000
-    });
-
-    aiControl.mesh.material = aiControl == winner ? selectedMaterial : material;
+    // Reset the maxDistance as well.
+    aiControl.maxDistance = 0;
 
     // The winner keeps its weights, but others get reset.
-    if (aiControl != winner) {
+    if (aiControl !== this.winner) {
       aiControl.reset();
     }
   }.bind(this));
@@ -215,13 +208,26 @@ MainController.prototype.nextGeneration = function() {
 
 MainController.prototype.render = function(time) {
 
+  var best = 0;
   var stillRunning = 0;
   this.updatables.forEach(function(x) {
     if (!x.crashed) {
       stillRunning++;
+    }
+    // Calculate max distance from start?
+    if (x.maxDistance > best) {
       this.winner = x;
+      best = x.maxDistance;
     }
     x.update(time);
+  }.bind(this));
+
+  this.updatables.forEach(function(aiControl) {
+    if (aiControl === this.winner) {
+      aiControl.mesh.material = this.selectedCarMaterial;
+    } else {
+      aiControl.mesh.material = this.regularCarMaterial;
+    }
   }.bind(this));
 
   this.renderer.render(this.scene, this.camera);
@@ -420,6 +426,7 @@ var AIControls = function(mesh, track) {
   this.enabled = true;
   this.speed = 0.9;
   this.theta = 0;
+  this.maxDistance = 0;
 
   // Create a line for the radar.
   var material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
@@ -503,6 +510,9 @@ AIControls.prototype.update = function(time) {
   // Turn the car to theta.
   this.mesh.rotation.y = THREE.Math.degToRad( this.theta );
 
+  this.maxDistance = Math.max(
+    this.maxDistance,
+    Math.pow(this.mesh.position.x - 10, 2) + Math.pow(this.mesh.position.z - 70, 2));
 }
 
 angular.module('carai', [

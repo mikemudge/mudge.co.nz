@@ -43,6 +43,7 @@ STYLES = {
 apps = {}
 
 apps['3dprint'] = {
+    'img': '3dprint.png',
     'tags': ['p5', 'threejs', 'objexport'],
     'scripts': [
         'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.js',

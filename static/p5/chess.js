@@ -66,7 +66,51 @@ class Board {
     }
   }
 
+  update() {
+    if (this.turn === 1) {
+      // AI turn.
+      var allMoves = [];
+      this.blackPlayer.forEach(function(unit) {
+        this.possibleMoves(unit).forEach(function(move) {
+          allMoves.push([unit, move]);
+        });
+      }.bind(this));
+
+      var choose = random(allMoves);
+      if (!choose) {
+        alert("Can't play any move, you win");
+        this.turn = 0;
+        return;
+      }
+      var unit = choose[0];
+      var move = choose[1];
+
+      this.makeMove(unit, move);
+      this.turn = 0;
+    }
+  }
+
+  makeMove(unit, move) {
+    var capture = this.grid[move.y][move.x].get();
+    if (capture) {
+      console.log("captured ", capture.type, "at", move.x, move.y);
+
+      // Remove the piece from the players list.
+      const index = this.players[capture.color].indexOf(capture);
+      this.players[capture.color].splice(index, 1);
+    }
+    // Remove the unit from its old spot.
+    this.grid[unit.y][unit.x].set(null);
+    unit.y = move.y;
+    unit.x = move.x;
+    // Add it to the new spot.
+    this.grid[move.y][move.x].set(unit);
+  }
   click(mouseX, mouseY) {
+    if (mouseButton !== LEFT) {
+      this.selectedUnit = null;
+      return;
+    }
     let x = floor((mouseX - this.x) / this.size / 2);
     let y = floor((mouseY - this.y) / this.size / 2);
     if (x >= 0 && x < 8 && y >= 0 && y < 8) {
@@ -85,24 +129,29 @@ class Board {
 
         if (allowed.length === 0) {
           console.log("moving", this.selectedUnit.type, "to", x, y, "is not an allowed move");
+          // Deselect unit.
+          this.selectedUnit = null;
           return;
         }
-        // Remove the unit from its old spot.
-        this.grid[this.selectedUnit.y][this.selectedUnit.x].set(null);
-        this.selectedUnit.y = y;
-        this.selectedUnit.x = x;
-        // Add it to the new spot.
-        this.grid[y][x].set(this.selectedUnit);
+        this.makeMove(this.selectedUnit, allowed[0]);
         this.selectedUnit = null;
+        this.turn = 1;
       }
     }
   }
 
   initStart() {
     this.turn = 0;
+
+    this.whitePlayer = [];
+    this.blackPlayer = [];
+    this.players = {
+      "W": this.whitePlayer,
+      "B": this.blackPlayer
+    }
     for (let x = 0; x < 8; x++) {
-      this.grid[1][x].set(new Unit(this, x, 1, "B", "Pawn"))
-      this.grid[6][x].set(new Unit(this, x, 6, "W", "Pawn"))
+      this.addUnit(new Unit(this, x, 1, "B", "Pawn"));
+      this.addUnit(new Unit(this, x, 6, "W", "Pawn"));
     }
 
     this.addUnit(new Unit(this, 0, 0, "B", "Rook"))
@@ -127,6 +176,7 @@ class Board {
 
   addUnit(unit) {
     this.grid[unit.y][unit.x].set(unit);
+    this.players[unit.color].push(unit);
   }
 
   showSelectedUnit(selectedUnit) {
@@ -306,6 +356,8 @@ function draw() {
   background(color(192, 192, 192));
 
   board.show();
+
+  board.update();
 }
 
 function mouseClicked() {

@@ -20,6 +20,10 @@ SCRIPTS = {
     'p5': [
         # 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js',
         '/static/p5/p5.min.js',
+    ],
+    'gridview': [
+        "/static/p5/grid.js",
+        "/static/p5/view.js"
     ]
 }
 
@@ -184,7 +188,8 @@ apps['test'] = {
 }
 
 apps['traffic'] = {
-    'img': 'traffic.png'
+    'img': 'traffic.png',
+    'tags': ['p5', 'gridview']
 }
 
 apps['color_war'] = {
@@ -270,7 +275,7 @@ class ProjectAppView(MethodView):
                 app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
 
             if app_name == 'p5':
-                if s in ['mapviewtest', 'bomberman', 'rts', 'moba', 'road', 'traffic', 'wfc3']:
+                if s in ['mapviewtest', 'bomberman', 'rts', 'moba', 'road', 'wfc3']:
                     app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
                     app.scripts.append("/static/p5/view.js?v=%s" % app.version)
                 elif s == 'minesweeper':

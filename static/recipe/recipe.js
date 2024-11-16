@@ -76,7 +76,7 @@ class MainController {
       }]
     }, {
       "source_url": "https://www.skinnytaste.com/air-fryer-beef-empanadas/",
-      "name": "Air Fryer Beef Empanadas"
+      "name": "Air Fryer Beef Empanadas",
       "ingredients": [{
         name: "Empanada discs",
         amount: "8+"

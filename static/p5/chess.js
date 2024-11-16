@@ -84,7 +84,7 @@ class Board {
         let allowed = moves.filter(function(m) {return m.x === x && m.y === y});
 
         if (allowed.length === 0) {
-          console.log("moving to", x, y, "is not an allowed move");
+          console.log("moving", this.selectedUnit.type, "to", x, y, "is not an allowed move");
           return;
         }
         // Remove the unit from its old spot.
@@ -101,27 +101,27 @@ class Board {
   initStart() {
     this.turn = 0;
     for (let x = 0; x < 8; x++) {
-      this.grid[1][x].set(new Unit(this, x, 1, "B", "P"))
-      this.grid[6][x].set(new Unit(this, x, 6, "W", "P"))
+      this.grid[1][x].set(new Unit(this, x, 1, "B", "Pawn"))
+      this.grid[6][x].set(new Unit(this, x, 6, "W", "Pawn"))
     }
 
-    this.addUnit(new Unit(this, 0, 0, "B", "R"))
-    this.addUnit(new Unit(this, 1, 0, "B", "H"))
-    this.addUnit(new Unit(this, 2, 0, "B", "B"))
-    this.addUnit(new Unit(this, 3, 0, "B", "K"))
-    this.addUnit(new Unit(this, 4, 0, "B", "Q"))
-    this.addUnit(new Unit(this, 5, 0, "B", "B"))
-    this.addUnit(new Unit(this, 6, 0, "B", "H"))
-    this.addUnit(new Unit(this, 7, 0, "B", "R"))
+    this.addUnit(new Unit(this, 0, 0, "B", "Rook"))
+    this.addUnit(new Unit(this, 1, 0, "B", "Horse"))
+    this.addUnit(new Unit(this, 2, 0, "B", "Bishop"))
+    this.addUnit(new Unit(this, 3, 0, "B", "King"))
+    this.addUnit(new Unit(this, 4, 0, "B", "Queen"))
+    this.addUnit(new Unit(this, 5, 0, "B", "Bishop"))
+    this.addUnit(new Unit(this, 6, 0, "B", "Horse"))
+    this.addUnit(new Unit(this, 7, 0, "B", "Rook"))
 
-    this.addUnit(new Unit(this, 0, 7, "W", "R"))
-    this.addUnit(new Unit(this, 1, 7, "W", "H"))
-    this.addUnit(new Unit(this, 2, 7, "W", "B"))
-    this.addUnit(new Unit(this, 3, 7, "W", "K"))
-    this.addUnit(new Unit(this, 4, 7, "W", "Q"))
-    this.addUnit(new Unit(this, 5, 7, "W", "B"))
-    this.addUnit(new Unit(this, 6, 7, "W", "H"))
-    this.addUnit(new Unit(this, 7, 7, "W", "R"))
+    this.addUnit(new Unit(this, 0, 7, "W", "Rook"))
+    this.addUnit(new Unit(this, 1, 7, "W", "Horse"))
+    this.addUnit(new Unit(this, 2, 7, "W", "Bishop"))
+    this.addUnit(new Unit(this, 3, 7, "W", "King"))
+    this.addUnit(new Unit(this, 4, 7, "W", "Queen"))
+    this.addUnit(new Unit(this, 5, 7, "W", "Bishop"))
+    this.addUnit(new Unit(this, 6, 7, "W", "Horse"))
+    this.addUnit(new Unit(this, 7, 7, "W", "Rook"))
 
   }
 
@@ -188,19 +188,21 @@ class Board {
 
   pawnMoves(unit) {
     const result = [];
-    if (unit.color === "W") {
-      result.push({x: unit.x, y: unit.y - 1});
-      if (unit.y === 6) {
-        // pawn can move 2 from the first row.
-        result.push({x: unit.x, y: 4})
-      }
-    } else {
-      result.push({x: unit.x, y: unit.y + 1});
-      if (unit.y === 1) {
-        // pawn can move 2 from the first row.
-        result.push({x: unit.x, y: 3})
-      }
+    if (this.isValid(unit.x, unit.y + unit.vy, unit) && !this.isCapture(unit.x, unit.y + unit.vy, unit)) {
+      result.push({x: unit.x, y: unit.y + unit.vy});
     }
+    if (unit.y === unit.sy && !this.isCapture(unit.x, unit.y + 2 * unit.vy, unit)) {
+      // pawn can move 2 from the first row.
+      result.push({x: unit.x, y: unit.sy + 2 * unit.vy})
+    }
+    // Capture moves.
+    if (this.isCapture(unit.x + 1, unit.y + unit.vy, unit)) {
+      result.push({x: unit.x + 1, y: unit.y + unit.vy})
+    }
+    if (this.isCapture(unit.x - 1, unit.y + unit.vy, unit)) {
+      result.push({x: unit.x - 1, y: unit.y + unit.vy})
+    }
+    // TODO en passant is hard, needs previous board state, or at least previous move?
     return result;
   }
 
@@ -243,6 +245,14 @@ class Board {
     return moves;
   }
 
+  isCapture(x, y, unit) {
+    if (x < 0 || x >= 8 || y < 0 || y >= 8) {
+      return false;
+    }
+    let capture = this.grid[y][x].get();
+    return capture && capture.color !== unit.color;
+  }
+
   isValid(x, y, unit) {
     if (x < 0 || x >= 8 || y < 0 || y >= 8) {
       return false;
@@ -261,8 +271,11 @@ class Unit {
     this.board = board;
     this.x = x;
     this.y = y;
+    this.sy = y;
+    this.vy = col === "W" ? -1 : 1;
     this.color = col;
-    this.unit = unit;
+    this.type = unit;
+    this.unit = unit[0];
   }
 
   show(size) {

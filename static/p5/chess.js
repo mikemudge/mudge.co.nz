@@ -64,6 +64,24 @@ class Board {
     if (this.selectedUnit) {
       this.showSelectedUnit(this.selectedUnit);
     }
+
+    if (this.lastLocation) {
+      stroke(color(220, 50, 20));
+      strokeWeight(2);
+      noFill();
+      let x = this.x + this.lastLocation.x * this.size * 2;
+      let y = this.y + this.lastLocation.y * this.size * 2;
+      rect(x, y, this.size * 2);
+    }
+
+    if (this.lastPiece) {
+      stroke(color(220, 50, 20));
+      strokeWeight(2);
+      noFill();
+      let x = this.x + this.lastPiece.x * this.size * 2 + this.size;
+      let y = this.y + this.lastPiece.y * this.size * 2 + this.size;
+      circle(x, y, this.size * 1.5);
+    }
   }
 
   update() {
@@ -91,6 +109,8 @@ class Board {
   }
 
   makeMove(unit, move) {
+    this.lastLocation = {x: unit.x, y: unit.y};
+    this.lastPiece = unit;
     var capture = this.grid[move.y][move.x].get();
     if (capture) {
       console.log("captured ", capture.type, "at", move.x, move.y);

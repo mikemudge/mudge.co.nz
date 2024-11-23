@@ -112,9 +112,15 @@ class Board {
     this.lastLocation = {x: unit.x, y: unit.y};
     this.lastPiece = unit;
     var capture = this.grid[move.y][move.x].get();
+    // A move like En Passant can capture a piece which is not at the grid location.
+    if (move.capture) {
+      capture = move.capture;
+    }
     if (capture) {
       console.log("captured ", capture.type, "at", move.x, move.y);
 
+      // Remove the piece from the board.
+      this.grid[capture.y][capture.x].set(null);
       // Remove the piece from the players list.
       const index = this.players[capture.color].indexOf(capture);
       this.players[capture.color].splice(index, 1);
@@ -272,6 +278,21 @@ class Board {
     if (this.isCapture(unit.x - 1, unit.y + unit.vy, unit)) {
       result.push({x: unit.x - 1, y: unit.y + unit.vy})
     }
+
+    // En passant check.
+    if (this.lastPiece && this.lastPiece.isPawn()) {
+      // The pawn must now be on the same row as us.
+      if (this.lastPiece.y === unit.y) {
+        // And it was previously 2 rows ahead of us (move 2 steps).
+        if (this.lastLocation.y === unit.y + 2 * unit.vy) {
+          // And it must be in an adjacent columen
+          if (Math.abs(this.lastPiece.x - unit.x) === 1) {
+            // This is a valid en passant move, but we need to ensure if used, it will additionally capture the piece.
+            result.push({x: this.lastPiece.x, y: unit.y + unit.vy, capture: this.lastPiece});
+          }
+        }
+      }
+    }
     // TODO en passant is hard, needs previous board state, or at least previous move?
     return result;
   }
@@ -346,6 +367,10 @@ class Unit {
     this.color = col;
     this.type = unit;
     this.unit = unit[0];
+  }
+
+  isPawn() {
+    return this.type === "Pawn";
   }
 
   show(size) {

@@ -20,6 +20,15 @@ class Square {
     }
   }
 }
+
+class Player {
+  constructor(color) {
+    this.color = color;
+    this.pieces = [];
+    this.captured = [];
+  }
+}
+
 class Board {
   constructor(pos, vel) {
     this.grid = [];
@@ -30,7 +39,26 @@ class Board {
       }
       this.grid.push(row);
     }
+    let params = getURLParams();
+    // TODO Add support for different AI and for human player?
+    this.strategy = [
+      params.whiteStrategy || 'randomAI',
+      params.blackStrategy || 'randomAI'
+    ];
+
     this.turn = 0;
+    // at 30fps this would be 5 seconds per move.
+    this.delayMoveReset = params.delayMoveReset || 150;
+
+    var input = document.createElement("input");
+    input.type = "range";
+    input.min = 0;
+    input.max = 300;
+    input.value = this.delayMoveReset;
+    input.onchange = function(event) {
+      this.delayMoveReset = parseInt(event.target.value);
+    }.bind(this);
+    document.body.appendChild(input);
 
     this.x = 50;
     this.y = 50;
@@ -65,8 +93,20 @@ class Board {
       this.showSelectedUnit(this.selectedUnit);
     }
 
+    for (var y = 0; y < this.players[0].captured.length; y++) {
+      this.players[0].captured[y].showAt(this.size, this.x - this.size, this.y + this.size + y * this.size);
+    }
+    for (y = 0; y < this.players[1].captured.length; y++) {
+      this.players[1].captured[y].showAt(this.size, this.x + this.size * 17, this.y + this.size + y * this.size);
+    }
+
+
     if (this.lastLocation) {
-      stroke(color(220, 50, 20));
+      if (this.lastPiece.color === "W") {
+        stroke(color(20, 255, 20));
+      } else {
+        stroke(color(255, 50, 20));
+      }
       strokeWeight(2);
       noFill();
       let x = this.x + this.lastLocation.x * this.size * 2;
@@ -75,7 +115,11 @@ class Board {
     }
 
     if (this.lastPiece) {
-      stroke(color(220, 50, 20));
+      if (this.lastPiece.color === "W") {
+        stroke(color(20, 255, 20));
+      } else {
+        stroke(color(255, 50, 20));
+      }
       strokeWeight(2);
       noFill();
       let x = this.x + this.lastPiece.x * this.size * 2 + this.size;
@@ -85,27 +129,35 @@ class Board {
   }
 
   update() {
-    if (this.turn === 1) {
-      // AI turn.
-      var allMoves = [];
-      this.blackPlayer.forEach(function(unit) {
-        this.possibleMoves(unit).forEach(function(move) {
-          allMoves.push([unit, move]);
-        });
-      }.bind(this));
-
-      var choose = random(allMoves);
-      if (!choose) {
-        alert("Can't play any move, you win");
-        this.turn = 0;
-        return;
-      }
-      var unit = choose[0];
-      var move = choose[1];
-
-      this.makeMove(unit, move);
-      this.turn = 0;
+    if (this.turn === -1) {
+      // Game is over
+      return;
     }
+
+    if (this.delayMove > 0) {
+      this.delayMove--;
+      return;
+    }
+    var choose = null;
+    if (this.strategy[this.turn] === 'human') {
+      // No AI required, let the human make a manual move.
+      return;
+    } else if (this.strategy[this.turn] === 'randomAI') {
+      choose = this.aiRandom(this.players[this.turn]);
+    } else if (this.strategy[this.turn] === 'v2AI') {
+      choose = this.aiV2(this.players[this.turn]);
+    }
+
+    if (!choose) {
+      alert("Can't play any move, you win");
+      this.turn = -1;
+      return;
+    }
+    var unit = choose[0];
+    var move = choose[1];
+
+    this.makeMove(unit, move);
+    this.turn = 1 - this.turn;
   }
 
   makeMove(unit, move) {
@@ -121,17 +173,34 @@ class Board {
 
       // Remove the piece from the board.
       this.grid[capture.y][capture.x].set(null);
+
+      let player = this.players[capture.color === "W" ? 0 : 1];
       // Remove the piece from the players list.
-      const index = this.players[capture.color].indexOf(capture);
-      this.players[capture.color].splice(index, 1);
+      const index = player.pieces.indexOf(capture);
+      var r = player.pieces.splice(index, 1);
+      player.captured.push(r[0]);
     }
+    unit.hasMoved = true;
     // Remove the unit from its old spot.
     this.grid[unit.y][unit.x].set(null);
     unit.y = move.y;
     unit.x = move.x;
     // Add it to the new spot.
     this.grid[move.y][move.x].set(unit);
+    // To support castling we need to move 2 pieces sometimes.
+    if (move.other) {
+      var piece = move.other.piece;
+      piece.hasMoved = true;
+      this.grid[piece.y][piece.x].set(null);
+      piece.y = move.other.y;
+      piece.x = move.other.x;
+      // Add it to the new spot.
+      this.grid[move.other.y][move.other.x].set(piece);
+    }
+    // Reset the move delay clock.
+    this.delayMove = this.delayMoveReset;
   }
+
   click(mouseX, mouseY) {
     if (mouseButton !== LEFT) {
       this.selectedUnit = null;
@@ -149,7 +218,9 @@ class Board {
           return;
         }
       }
-      if (this.selectedUnit) {
+      // Can only play a move if the strategy is 'human'
+      let canMove = this.strategy[this.turn] === 'human';
+      if (this.selectedUnit && canMove) {
         let moves = this.possibleMoves(this.selectedUnit);
         let allowed = moves.filter(function(m) {return m.x === x && m.y === y});
 
@@ -171,10 +242,10 @@ class Board {
 
     this.whitePlayer = [];
     this.blackPlayer = [];
-    this.players = {
-      "W": this.whitePlayer,
-      "B": this.blackPlayer
-    }
+    this.players = [
+      new Player("W"),
+      new Player("B")
+    ]
     for (let x = 0; x < 8; x++) {
       this.addUnit(new Unit(this, x, 1, "B", "Pawn"));
       this.addUnit(new Unit(this, x, 6, "W", "Pawn"));
@@ -202,7 +273,7 @@ class Board {
 
   addUnit(unit) {
     this.grid[unit.y][unit.x].set(unit);
-    this.players[unit.color].push(unit);
+    this.players[unit.color === "W" ? 0 : 1].pieces.push(unit);
   }
 
   showSelectedUnit(selectedUnit) {
@@ -300,7 +371,46 @@ class Board {
   kingMoves(unit) {
     // TODO need to check that its not moving into check
     // Also need to check for stalemate/checkmate states.
-    return this.moves(unit, this.dirs, 1);
+
+    // Need to check for castling as well?
+    var possible = this.moves(unit, this.dirs, 1);
+
+    if (!unit.hasMoved) {
+      // Castling is only possible if this unit has never moved before.
+      // Need to check the rooks as well, and all spaces in between.
+      var leftRook = this.grid[unit.y][0].get();
+      var rightRook = this.grid[unit.y][7].get();
+
+      if (leftRook && !leftRook.hasMoved) {
+        // Could be a candidate, need to check spaces between.
+        var pieceInWay = false;
+        for (var x = 1; x < 3; x++) {
+          if (this.grid[unit.y][x].get()) {
+            pieceInWay = true;
+            break;
+          }
+        }
+        if (!pieceInWay) {
+          possible.push({x: 1, y: unit.y, other: {piece: leftRook, x: 2, y: unit.y}});
+        }
+      }
+
+      if (rightRook && !rightRook.hasMoved) {
+        // Could be a candidate, need to check spaces between.
+        pieceInWay = false;
+        for (x = 4; x < 7; x++) {
+          if (this.grid[unit.y][x].get()) {
+            pieceInWay = true;
+            break;
+          }
+        }
+        if (!pieceInWay) {
+          possible.push({x: 5, y: unit.y, other: {piece: rightRook, x: 4, y: unit.y}});
+        }
+      }
+
+    }
+    return possible;
   }
 
   bishopMoves(unit) {
@@ -355,6 +465,29 @@ class Board {
     }
     return true;
   }
+  getAllMoves(player) {
+    // AI turn.
+    var allMoves = [];
+    player.pieces.forEach(function (unit) {
+      this.possibleMoves(unit).forEach(function (move) {
+        allMoves.push([unit, move]);
+      });
+    }.bind(this));
+    return allMoves;
+  }
+
+  aiRandom(player) {
+    // AI turn.
+    var allMoves = this.getAllMoves(player);
+    return random(allMoves);
+  }
+
+  aiV2(player) {
+    // AI turn.
+    var allMoves = this.getAllMoves(player);
+    // TODO something better than random.
+    return random(allMoves);
+  }
 }
 
 class Unit {
@@ -376,6 +509,10 @@ class Unit {
   show(size) {
     let x = this.board.x + this.x * size * 2 + size;
     let y = this.board.y + this.y * size * 2 + size;
+    this.showAt(size, x, y);
+  }
+
+  showAt(size, x, y) {
     stroke(color(128,128,128));
     strokeWeight(2);
     if (this.color === "W") {
@@ -386,6 +523,7 @@ class Unit {
     circle(x, y, size);
     fill(color(128,128,128));
     noStroke();
+    textSize(size / 2);
     text(this.unit, x - 4 - (this.unit === "Q" ? 1 : 0), y + 4);
   }
 }

@@ -13,16 +13,12 @@ function TournamentService($resource, loginService) {
 
   // TODO paginate?
   this.tournaments = this.Tournament.query();
-  this.cache = {};
 }
 
 TournamentService.prototype.loadTournament = function(id) {
-  if (!this.cache[id]) {
-    this.cache[id] = this.Tournament.get({
-      id: id
-    });
-  }
-  return this.cache[id]
+  return this.Tournament.get({
+    id: id
+  });
 }
 
 TournamentService.prototype.save = function(tournament) {
@@ -140,7 +136,7 @@ var TableController = function($routeParams, tournamentService) {
 }
 
 TableController.prototype.prepTable = function(tournament) {
-  console.log(tournament);
+  console.log("Prepping Table", tournament);
   // Iterate teams/matches and calculate wins.
   var teamMap = {}
   tournament.teams.forEach(function(team) {
@@ -159,6 +155,7 @@ TableController.prototype.prepTable = function(tournament) {
 
   tournament.rounds.forEach(function(round) {
     round.matches.forEach(function(match) {
+      console.log("Round", round.name, "Match", match.homeTeam.name + " v " + match.awayTeam.name, "Result", match.result);
       if (match.result) {
         var hTeam = teamMap[match.homeTeam.id];
         var aTeam = teamMap[match.awayTeam.id];
@@ -222,6 +219,9 @@ RoundController.prototype.selectRound = function(round) {
 var MatchController = function($location, $routeParams, tournamentService) {
   this.$location = $location;
   this.tournament_id = $routeParams.tournament_id;
+  this.tournament = {
+    id: this.tournament_id,
+  }
 
   // TODO should get a cached version of this.
   // As all matches of a round should be loaded by the previous page

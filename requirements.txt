@@ -17,6 +17,9 @@ sqlalchemy < 1.4.0
 SQLAlchemy-Utils
 WTForms
 
+# Schema validation
+jsonschema
+
 # For local https testing.
 pyOpenSSL
 

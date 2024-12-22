@@ -1,0 +1,17 @@
+{
+    "$id": "https://mudge.co.nz/tournament/round.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The round's name E.g 'Round X' or 'Quarterfinals'."
+        },
+        "matches": {
+            "type": "array",
+            "description": "The matches which make up this round.",
+            "items": {"$ref":  "match.schema.json"}
+        }
+    }
+}

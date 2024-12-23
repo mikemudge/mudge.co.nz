@@ -1,0 +1,14 @@
+<div class="admin_home" ng-controller="HomeController as ctrl">
+  <div ng-include="'/static/admin/header.tpl.html'"></div>
+  <div class="page">
+    <h3>
+      We couldn't find that sorry, perhaps something below could help.
+    </h3>
+    <div>
+      Choose a project
+      <p ng-show="ctrl.project">
+        <a href="{{ ctrl.project }}/">Project: {{ ctrl.project }}</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -13,10 +13,10 @@
     <tr ng-repeat="item in ctrl.list" ng-class-odd="'odd'">
       <td class="actions">
         <span ng-if="item.id">
-          <a class="view item" href="model/{{ ctrl.model.name }}/{{ item.id }}">
+          <a class="view item" href="{{ ctrl.project }}/model/{{ ctrl.model.name }}/{{ item.id }}">
             <i class="fa fa-eye"></i>
           </a>
-          <a class="edit item" href="model/{{ ctrl.model.name }}/{{ item.id }}/edit">
+          <a class="edit item" href="{{ ctrl.project }}/model/{{ ctrl.model.name }}/{{ item.id }}/edit">
             <i class="fa fa-pencil"></i>
           </a>
           <span class="delete item" ng-click="ctrl.deleteItem(item)">
@@ -27,7 +27,7 @@
       <td ng-repeat="field in ctrl.model.list_fields">
         <span ng-if="field.list">
           <span ng-if="field.link" ng-repeat="subitem in item[field.name]">
-            <a href="model/{{ field.model.name }}/{{ subitem.id }}">
+            <a href="{{ ctrl.project }}/model/{{ field.model.name }}/{{ subitem.id }}">
               {{ subitem.name }}
             </a>
           </span>

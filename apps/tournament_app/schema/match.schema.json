@@ -1,18 +1,17 @@
 {
     "$id": "https://mudge.co.nz/tournament/round.schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Person",
+    "title": "Match",
     "type": "object",
     "properties": {
-        "name": {
-            "type": "string",
-            "description": "The round's name E.g 'Round X' or 'Quarterfinals'."
-        },
         "homeTeam": {
             "$ref":  "team.schema.json"
         },
         "awayTeam": {
             "$ref":  "team.schema.json"
+        },
+        "round": {
+            "$ref":  "round.schema.json"
         },
         "result": {
             "type": "object",

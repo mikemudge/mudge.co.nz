@@ -1,3 +1,5 @@
+import json
+
 from apps.tournament_app.models import Tournament, Team, Match, Round
 from auth.provider import oauth
 from marshmallow import fields as f
@@ -6,6 +8,50 @@ from shared.views.crud import DBModelView
 from sqlalchemy import inspect
 
 from apps.admin.views.meta import MetaView
+
+
+def make_json_schema(dir, schemas):
+    models = []
+    for schema_file in schemas:
+        with open("%s/%s" % (dir, schema_file)) as fp:
+            schema = json.load(fp)
+            model = {
+                'name': schema['title'],
+                'endpoints': {
+                    'crud': '/api/admin/model/%s/:id' % schema['title'].lower()
+                }
+            }
+
+            fields = []
+            for name, prop in schema['properties'].items():
+                field = {
+                    'name': name,
+                    # 'type': 'readonly'
+                }
+                if 'items' in prop:
+                    field['list'] = True
+                    # Should this be array, which must be true for items to be valid?
+                    if '$ref' in prop['items']:
+                        field['model'] = prop['items']['$ref']
+                        field['type'] = prop['items']['$ref']
+                    else:
+                        field['type'] = prop['type']
+                else:
+                    # A non list model?
+                    if '$ref' in prop:
+                        field['model'] = prop['$ref']
+                        field['type'] = prop['$ref']
+                    else:
+                        field['type'] = prop['type']
+                    field['list'] = False
+                fields.append(field)
+
+            model['fields'] = fields
+            model['list_fields'] = fields
+            model['edit_fields'] = fields
+            models.append(model)
+
+    return models
 
 def routes(app):
     # Make the endpoint and return it.
@@ -20,6 +66,17 @@ def routes(app):
         Match,
         Round
     ])
+
+    tournament_schema = make_json_schema("apps/tournament_app/schema", [
+        'tournament.schema.json',
+        'round.schema.json',
+        'match.schema.json',
+        'team.schema.json'
+    ])
+
+    # TODO support some "view" relationships like match.round.tournament?
+    print(tournament_schema)
+    MetaView.results['tournament json schema'] = tournament_schema
 
     app.add_url_rule(
         '/api/admin/project/<projectName>',

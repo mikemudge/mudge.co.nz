@@ -1,6 +1,11 @@
 var CrudService = function($resource, config) {
   this.AdminModels = $resource('/api/admin/project/:projectName');
   this.models = {};
+  // TODO should load these?
+  this.projects = [
+    'Tournament',
+    'Tournament Json Schema'
+  ];
   this.$resource = $resource;
 }
 
@@ -150,23 +155,29 @@ EditController.prototype.saveItem = function(item) {
   this.isSaving = true;
 }
 
-var HomeController = function(crudService) {
+var HomeController = function(crudService, $routeParams) {
   window.ctrl = this;
-  this.project = 'Tournament';
-  crudService.loadProject(this.project).then(function() {
-    this.models = crudService.models;
-  }.bind(this));
+  this.project = $routeParams.project;
+  if (this.project) {
+    crudService.loadProject(this.project).then(function() {
+      this.models = crudService.models;
+    }.bind(this));
+  } else {
+    this.projects = crudService.projects;
+  }
 }
 
-var HeaderController = function(crudService, loginService) {
+var HeaderController = function(crudService, loginService, $routeParams) {
   window.headctrl = this;
   this.models = crudService.models;
+  this.project = $routeParams.project;
   this.user = loginService.user;
 }
 
 var ListController = function(crudService, $routeParams, $resource) {
   window.ctrl = this;
-  crudService.loadProject('Tournament').then(function() {
+  this.project = $routeParams.project;
+  crudService.loadProject($routeParams.project).then(function() {
     this.model = crudService.get_model($routeParams.model_name);
     this.list = this.model.Resource.query();
   }.bind(this));
@@ -222,16 +233,21 @@ angular.module('admin', [
   $routeProvider.when('/', {
     templateUrl: '/static/admin/home.tpl.html'
   })
-  .when('/model/:model_name', {
+  .when('/:project/', {
+    templateUrl: '/static/admin/home.tpl.html'
+  })
+  .when('/:project/model/:model_name', {
     templateUrl: '/static/admin/list.tpl.html'
   })
-  .when('/model/:model_name/create', {
+  .when('/:project/model/:model_name/create', {
     templateUrl: '/static/admin/edit.tpl.html'
   })
-  .when('/model/:model_name/:id', {
+  .when('/:project/model/:model_name/:id', {
     templateUrl: '/static/admin/details.tpl.html'
   })
-  .when('/model/:model_name/:id/edit', {
+  .when('/:project/model/:model_name/:id/edit', {
     templateUrl: '/static/admin/edit.tpl.html'
+  }).otherwise({
+    templateUrl: '/static/admin/lost.tpl.html'
   })
 });

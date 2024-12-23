@@ -3,9 +3,12 @@
     <div class="item">
       <a href="."> Mudge Admin </a>
     </div>
+    <div class="item">
+      <a href="{{ head.project }}/">Project: {{ head.project }}</a>
+    </div>
 
     <div class="item" ng-repeat="model in head.models">
-      <a href="model/{{ model.name }}"> {{ model.name }}</a>
+      <a href="{{ head.project }}/model/{{ model.name }}"> {{ model.name }}</a>
     </div>
     <div class="user">
       <img referrerpolicy="no-referrer" ng-src="{{ head.user.profile.image }}" title="{{ head.user.email }}"/>
@@ -14,16 +17,16 @@
 
   <div class="tabs" ng-show="ctrl.model">
     <div class="tab">
-      <a href="model/{{ ctrl.model.name }}">List</a>
+      <a href="{{ head.project }}/model/{{ ctrl.model.name }}">List</a>
     </div>
     <div class="tab">
-      <a href="model/{{ ctrl.model.name }}/create">Create</a>
+      <a href="{{ head.project }}/model/{{ ctrl.model.name }}/create">Create</a>
     </div>
     <div class="tab" ng-show="ctrl.item.id">
-      <a href="model/{{ ctrl.model.name }}/{{ ctrl.item.id }}/edit">Edit</a>
+      <a href="{{ head.project }}/model/{{ ctrl.model.name }}/{{ ctrl.item.id }}/edit">Edit</a>
     </div>
     <div class="tab" ng-show="ctrl.item.id">
-      <a href="model/{{ ctrl.model.name }}/{{ ctrl.item.id }}">Details</a>
+      <a href="{{ head.project }}/model/{{ ctrl.model.name }}/{{ ctrl.item.id }}">Details</a>
     </div>
   </div>
 </div>

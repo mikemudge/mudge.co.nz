@@ -6,10 +6,6 @@ from .serialize import TournamentSchema, TeamSchema, RoundSchema, MatchSchema, M
 from .views.tournament import tournament_bp
 from shared.views.crud import DBModelView, crud
 from shared.database import db
-from jsonschema import validate
-
-import json
-import os
 
 class TournamentView(DBModelView):
     model = Tournament
@@ -31,12 +27,6 @@ class TournamentView(DBModelView):
         else:
             data = self.get_data()
 
-            # Load JSON schema from file
-            dirname = os.path.dirname(__file__)
-            filename = os.path.join(dirname, 'schema/tournament.schema.json')
-            with open(filename) as f:
-                schema = json.load(f)
-                validate(instance=data, schema=schema)
             # Turn data into a DB object.
             s = TournamentSchema(session=db.session)
             instance = s.load(data)

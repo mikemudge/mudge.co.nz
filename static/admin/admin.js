@@ -16,6 +16,8 @@ var CrudService = function($resource, config) {
 // name is a human friendly representation for selectors?
 // Does every model need name? Makes sense for Team, Tournament and Round? Maybe not for Match/Result
 // may require endpoints to lookup names for ids? Should use batching for this?
+// Relationships should be directional as well?
+// E.g you can add a team to a tournament on the edit tournament page, but not the edit team page?
 
 CrudService.prototype.loadProject = function(projectName) {
   var loadingModels = this.AdminModels.query({
@@ -117,6 +119,9 @@ var EditController = function(crudService, $location, $routeParams) {
 
     // Load options for models.
     this.model.fields.forEach(function(f) {
+      if (["id", "date_created", "date_updated"].includes(f.name)) {
+        f.type = 'readonly';
+      }
       if (f.model) {
         // Get them for options?
         // TODO this should happen once we attempt to edit the field.
@@ -132,8 +137,9 @@ var EditController = function(crudService, $location, $routeParams) {
 
 EditController.prototype.saveItem = function(item) {
   // Updates on the server.
-  item.isSaving = true;
   item.$save().then(function() {
+    // Successfully saved?
+    this.isSaving = false;
     // TODO redirect to list view or stay here?
     // this.$location.path('model/' + this.model.name);
   }.bind(this), function(response) {
@@ -141,6 +147,7 @@ EditController.prototype.saveItem = function(item) {
     console.error(response);
     return response;
   }.bind(this));
+  this.isSaving = true;
 }
 
 var HomeController = function(crudService) {
@@ -159,7 +166,6 @@ var HeaderController = function(crudService, loginService) {
 
 var ListController = function(crudService, $routeParams, $resource) {
   window.ctrl = this;
-  this.crudService = crudService;
   crudService.loadProject('Tournament').then(function() {
     this.model = crudService.get_model($routeParams.model_name);
     this.list = this.model.Resource.query();

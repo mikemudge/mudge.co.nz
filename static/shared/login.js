@@ -315,8 +315,9 @@ LoginService.prototype.loadFromStorage = function() {
 
   var remaining = this.currentAccess.exp - Date.now() / 1000
   remaining = remaining.toFixed();
-  this.currentStatus = "Found login " + this.currentAccess.user.email + " for " + remaining + " more seconds";
+  this.currentStatus = "Found login " + this.currentAccess.user.email + " valid for " + remaining + " more seconds";
 
+  console.log("Login currentStatus", this.currentStatus);
   // Create a User object with the local user data.
   var user = new this.User(this.currentAccess.user);
   user.$get();

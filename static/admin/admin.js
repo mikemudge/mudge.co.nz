@@ -4,13 +4,28 @@ var CrudService = function($resource, config) {
   this.$resource = $resource;
 }
 
+// Fields like id (read only)
+// Model ownership? E.g a Round belongs to a Tournament, and should not be usable outside of that tournament.
+// A MatchResult belongs to a Match which belongs to a Round.
+// Model sharing? E.g a Team can participate in multiple tournaments, so can be reused/shared.
+// When should you be able to create nested items within a form?
+
+// Should their be a common set of fields which every model is expected to contain?
+// id is required if a model is savable.
+// Some models like MatchResult are not independently savable, only saved within a Match?
+// name is a human friendly representation for selectors?
+// Does every model need name? Makes sense for Team, Tournament and Round? Maybe not for Match/Result
+// may require endpoints to lookup names for ids? Should use batching for this?
+
 CrudService.prototype.loadProject = function(projectName) {
   var loadingModels = this.AdminModels.query({
     projectName: projectName
   }).$promise.then(function(response) {
     console.log('Loaded project: ' + projectName);
-    console.log(response);
-    response.forEach(function(model) {
+    for (const model of response) {
+      console.log("Model", model.name, 'at', model.endpoints.crud);
+      // Each model should define a schema for validation.
+      // We want to convert a schema into an html form to support CRUD operations for the model.
       this.models[model.name.toLowerCase()] = model;
       parseDates = function(model, item) {
         model.fields.forEach(function(f) {
@@ -54,7 +69,7 @@ CrudService.prototype.loadProject = function(projectName) {
           }
         }
       })
-    }.bind(this));
+    }
 
     response.forEach(function(model) {
       model.fields.forEach(function(f) {
@@ -71,8 +86,7 @@ CrudService.prototype.loadProject = function(projectName) {
 
 // Call after loadProject() has resolved.
 CrudService.prototype.get_model = function(model_name) {
-  var model_name = model_name.toLowerCase();
-  var model = this.models[model_name];
+  var model = this.models[model_name.toLowerCase()];
   if (!model) {
     throw new Error(model_name + ' not found');
   }
@@ -131,7 +145,8 @@ EditController.prototype.saveItem = function(item) {
 
 var HomeController = function(crudService) {
   window.ctrl = this;
-  crudService.loadProject('Tournament').then(function() {
+  this.project = 'Tournament';
+  crudService.loadProject(this.project).then(function() {
     this.models = crudService.models;
   }.bind(this));
 }

@@ -471,9 +471,9 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight - 18);
+  resizeCanvas(windowWidth, windowHeight);
 
-  view.setScreen(windowWidth, windowHeight - 18);
+  view.setScreen(windowWidth, windowHeight);
 }
 
 function keyPressed() {

@@ -1,0 +1,25 @@
+<html>
+<head lang="en">
+  <link rel="shortcut icon" href="{{ app.favicon }}" type="image/x-icon" />
+  <meta charset="UTF-8">
+  {% if app.meta.image %}
+  <meta property="og:image" content="{{angular.meta.image}}" />
+  {% endif %}
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+
+  <title> {{ app.title }}  </title>
+
+  {% for style in styles %}
+  <link rel="stylesheet" type="text/css" href="{{ style }}" />
+  {% endfor %}
+</head>
+<body>
+  {% for script in scripts %}
+  <script src="{{ script }}" type="text/javascript"></script>
+  {% endfor %}
+
+  {% for script in async %}
+  <script async src="{{ script }}" type="text/javascript"></script>
+  {% endfor %}
+</body>
+</html>

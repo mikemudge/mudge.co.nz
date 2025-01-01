@@ -100,8 +100,7 @@ class Creature {
 }
 
 function setup() {
-  // 18px is the top div showing nav items.
-  createCanvas(windowWidth, windowHeight - 18);
+  createCanvas(windowWidth, windowHeight);
   world = {
     creatures: [],
     // <1000 runs ok, starts to get slow around then.

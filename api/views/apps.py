@@ -3,6 +3,8 @@ from flask import render_template
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
+import os
+
 SCRIPTS = {
     'threejs': [
         '/static/js/three.js/84/three.min.js',
@@ -45,6 +47,7 @@ STYLES = {
 }
 
 apps = {}
+p5_apps = {}
 
 apps['3dprint'] = {
     'img': '3dprint.png',
@@ -202,6 +205,38 @@ apps['p5_test'] = {
 
 apps['p5'] = {
     'tags': ['p5'],
+    'styles': ['/static/p5/p5.css']
+}
+
+p5_apps['mapviewtest'] = {
+    'tags': ['gridview']
+}
+p5_apps['bomberman'] = {
+    'tags': ['gridview']
+}
+p5_apps['rts'] = {
+    'tags': ['gridview'],
+    'entry_point': '/static/p5/rts/rts.js',
+    'scripts': [
+        '/static/p5/rts/units.js',
+        '/static/p5/rts/buildings.js',
+        '/static/p5/rts/actions.js',
+        '/static/p5/rts/game.js'
+    ]
+}
+p5_apps['moba'] = {
+    'tags': ['gridview']
+}
+p5_apps['road'] = {
+    'tags': ['gridview']
+}
+p5_apps['wfc3'] = {
+    'tags': ['gridview']
+}
+
+p5_apps['minesweeper'] = {
+    'img': 'minesweeper.png',
+    'scripts': ["/static/p5/grid.js"]
 }
 
 def gmaps():
@@ -227,7 +262,14 @@ class ProjectAppView(MethodView):
             logger.info('Missing app for %s %s' % (app_name, path))
             return abort(404)
 
-        logger.info("loading app %s %s" % (app_name, path))
+        sample = request.args.get('sample')
+        if path:
+            # Use path to determine the sample?
+            parts = os.path.split(path)
+            sample = parts[0]
+            pass
+
+        logger.info("Loading app %s %s" % (app_name, path))
         app = Angular(app_name)
         app.base = '/projects/%s/' % app_name
 
@@ -237,59 +279,60 @@ class ProjectAppView(MethodView):
                 # Enable sentry.
                 app.sentry = True
 
+        app_path = '/static/%s' % app_name
+
         conf = apps.get(app_name)
         if conf:
-            tags = conf.get('tags', [])
-            extra_tags = request.args.get('tags')
-            if extra_tags:
-                extra_tags = ','.split(extra_tags)
-                print(extra_tags)
-                tags += extra_tags
-
-            if 'gmaps' in tags:
-                app.scripts += [gmaps()]
-
-            for tag in tags:
-                if tag in SCRIPTS:
-                    app.scripts += SCRIPTS[tag]
-                if tag in STYLES:
-                    app.styles += STYLES[tag]
-
+            # Set the title from the config, or default to the app name.
             app.title = conf.get('title', app_name)
+            app_path = conf.get('path', app_path)
 
-            for s in conf.get('scripts', []):
-                if s.startswith('https://'):
-                    app.scripts.append(s)
-                else:
-                    app.scripts.append(s + "?v=" + app.version)
-
-            s = request.args.get('sample')
-            if s:
-                app.scripts.append("/static/%s/%s.js?v=%s" % (app_name, s, app.version))
-
-            app.styles += conf.get('styles', [])
-            for t in conf.get('templates', []):
-                app.addTemplate(t)
-
+            # Set the meta image if one is set.
             if conf.get('img'):
                 app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
 
-            if app_name == 'p5':
-                if s in ['mapviewtest', 'bomberman', 'rts', 'moba', 'road', 'wfc3']:
-                    app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
-                    app.scripts.append("/static/p5/view.js?v=%s" % app.version)
-                elif s == 'minesweeper':
-                    app.scripts.append("/static/p5/grid.js?v=%s" % app.version)
-                    app.meta['image'] = '/static/img/projects/minesweeper.png'
+            self.updateFromConf(app, conf)
 
-        # Add app files last?
-        app_path = '/static/%s' % app_name
-        # if path:
-        #     print("Path = %s and %s" % (app_path, path))
-            # This was adding /static/trail and login which made a bad path.
-            # app_path += '/' + path
+            if sample:
+                entry_point = "%s/%s.js" % (app_path, sample)
+                # Sample is an app within an app group, load a script for it.
+
+                if app_name == 'p5':
+                    app.template = 'app.tmpl'
+                    p5_conf = p5_apps.get(sample)
+                    if p5_conf:
+                        entry_point = p5_conf.get('entry_point', entry_point)
+                        self.updateFromConf(app, p5_conf)
+
+                app.scripts.append("%s?v=%s" % (entry_point, app.version))
 
         logger.info("folder setup %s" % app_path)
-        app.setupFolder(app_path)
+        if app_name != 'p5' or sample == None:
+            app.setupFolder(app_path)
 
         return app.render()
+
+    def updateFromConf(self, app, conf):
+        # Add all scripts and styles for the tags in the config.
+        tags = conf.get('tags', [])
+
+        if 'gmaps' in tags:
+            app.scripts += [gmaps()]
+
+        for tag in tags:
+            if tag in SCRIPTS:
+                app.scripts += SCRIPTS[tag]
+            if tag in STYLES:
+                app.styles += STYLES[tag]
+
+        # Add all scripts for the application.
+        for s in conf.get('scripts', []):
+            if s.startswith('https://'):
+                app.scripts.append(s)
+            else:
+                app.scripts.append(s + "?v=" + app.version)
+
+        # Add all styles for the application.
+        app.styles += conf.get('styles', [])
+        for t in conf.get('templates', []):
+            app.addTemplate(t)

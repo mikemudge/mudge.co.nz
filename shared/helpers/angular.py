@@ -15,6 +15,7 @@ class Angular():
         self.meta = {}
         self.scripts = []
         self.async_scripts = []
+        self.template = 'angular.tmpl'
         self.templates = []
         self.styles = []
         self.config = {
@@ -40,7 +41,14 @@ class Angular():
         self.favicon = '/favicon.ico'
 
     def render(self):
-        return render_template('angular.tmpl', **{
+        return render_template(self.template, **{
+            'app': {
+                'app': self.appName,
+                'title': self.title[0].upper() + self.title[1:],
+                'version': self.version,
+                'meta': self.meta,
+                'favicon': self.favicon,
+            },
             'angular': {
                 'app': self.appName,
                 'title': self.title[0].upper() + self.title[1:],

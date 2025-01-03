@@ -128,34 +128,17 @@ class ConstructionSite extends Building {
   }
 }
 
-class Tower {
-  constructor(team, pos) {
-    this.team = team;
-    this.game = team.getGame();
-    this.pos = pos;
-    this.color = team.color;
-    this.health = new HealthBar(5000);
-    this.health.setScale(3);
+class Tower extends Building {
+  constructor(pos, team) {
+    super(pos, team);
   }
 
   update() {
     // Find targets, shoot them
   }
 
-  getHealth() {
-    return this.health;
-  }
-
-  damage(attack) {
-    this.health.damage(attack);
-  }
-
-  finished() {
-    return !this.health.isAlive();
-  }
-
   show(size) {
-    fill(this.color);
+    fill(this.team.color);
 
     circle(0, 0, size * 1.6);
   }

@@ -261,6 +261,10 @@ class Builder extends Unit {
       'cost': 10,
       'action': this.buildWall,
       'repeat': true
+    }, {
+      'name': 'Build Tower',
+      'cost': 100,
+      'action': this.buildTower
     });
   }
 
@@ -274,6 +278,10 @@ class Builder extends Unit {
 
   buildHouse() {
     return new ConstructionSite(new House(this.pos.copy(), this.team), 100);
+  }
+
+  buildTower() {
+    return new ConstructionSite(new Tower(this.pos.copy(), this.team), 100);
   }
 
   buildWall(lastBuildTarget) {

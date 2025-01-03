@@ -50,7 +50,7 @@ class ButtonMenu {
   constructor() {
     this.buttons = [];
     this.subMenu = null;
-    this.buttonSize = 80;
+    this.buttonSize = 60;
   }
 
   show() {
@@ -67,7 +67,7 @@ class ButtonMenu {
       textAlign(CENTER);
       noStroke();
       this.buttons.forEach(function(button, i) {
-        text(button.name, this.buttonSize * i, 0, this.buttonSize, this.buttonSize);
+        text(button.name, this.buttonSize * i, 10, this.buttonSize, this.buttonSize - 20);
       }, this);
     }
   }

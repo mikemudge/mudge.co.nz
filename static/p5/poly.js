@@ -68,10 +68,16 @@ class Path {
     for(let i = 0; i < this.points.length; i++){
       let j = (i + 1) % this.points.length;
 
-      let tmp = intersect_point(p, p2, this.points[i], this.points[j]);
-      if (tmp) {
-        this.iPoints.push(tmp);
-        numIntersects++;
+      // Check if points[i] is on the line p, p2?
+      // If so it's likely to count twice as part of each line.
+      if (p.y !== this.points[i].y) {
+        // The point is on the line, so both lines out from it would have intersection points.
+        // We only want to count 1 intersections
+        let tmp = intersect_point(p, p2, this.points[i], this.points[j]);
+        if (tmp) {
+          this.iPoints.push(tmp);
+          numIntersects++;
+        }
       }
     }
     console.log("Clicked with", numIntersects, "intersects to outside");
@@ -226,139 +232,11 @@ function intersect_point(point1, point2, point3, point4) {
   // values between 0-1 are on the line between the points.
   // It is possible that the point falls on one line but not both.
   // This will cause a uA between 0-1 but a uB which is not.
-  if (uA <= 0 || uA > 1 || uB <= 0 || uB > 1) {
+  if (uA < 0 || uA > 1 || uB < 0 || uB > 1) {
     // The lines do not have an intersection between the points provided.
     return null;
   }
 
   // Using line1 with a magnitude from uA offset by the starting point of this line we can determine the intersection point.
   return line1.mult(uA).add(point1);
-}
-
-let polys = [];
-let mousePos = null;
-let hoverPoly = null
-let hoverPoint = null;
-function setup() {
-  let c = createCanvas(windowWidth, windowHeight - 18);
-
-  mousePos = createVector(0, 0);
-
-  let path = new Path();
-  path.initRandom(4);
-  polys.push(path);
-  c.canvas.oncontextmenu = function() {
-    return false;
-  }
-  window.onblur = function() {
-    noLoop();
-  }
-  window.onfocus = function() {
-    loop();
-  }
-}
-
-function draw() {
-  background(0);
-  for (path of polys) {
-    path.showComplete();
-  }
-  if (buildPoly) {
-    buildPoly.showInProgress();
-
-    stroke('green');
-    for (path of polys) {
-      connector = buildPoly.connectTo(path);
-      line(connector[0].x, connector[0].y, connector[1].x, connector[1].y);
-    }
-  }
-
-  if (hoverPoly) {
-    hoverPoly.highlight();
-
-    noStroke();
-    text("Area: " + hoverPoly.calculateArea(), 5, 15);
-  }
-  if (hoverPoint) {
-    fill('red');
-    rect(hoverPoint.x - 3, hoverPoint.y - 3, 6);
-  }
-}
-
-let clicked = null;
-let clickedPoly = null;
-let buildPoly = null
-function mousePressed() {
-  // select a point based on click.
-  mousePos.set(mouseX, mouseY);
-  console.log("Click ", mousePos);
-  if (buildPoly) {
-    let checkFinish = buildPoly.click(mousePos);
-    if (checkFinish) {
-      polys.push(buildPoly);
-      buildPoly = null;
-    } else {
-      // Add a new point to the in progress poly.
-      buildPoly.add(mousePos);
-    }
-    return;
-  }
-
-  // If there is no poly being built we check to see if any existing one is clicked on.
-  for (path of polys.reverse()) {
-    // Check if a point was clicked.
-    clicked = path.click(mousePos);
-    if (clicked) {
-      clickedPoly = path;
-      break;
-    }
-    // Or if the entire polygon was clicked.
-    if (path.isInside(mousePos)) {
-      // This is a click on an existing polygon.
-      clickedPoly = path;
-      break;
-    }
-  }
-
-  if (!clicked && !clickedPoly) {
-    console.log("No poly clicked");
-    // This will start a new poly.
-    console.log("Starting a new poly");
-    buildPoly = new Path();
-    buildPoly.add(mousePos);
-  }
-}
-
-function mouseMoved() {
-  hoverPoint = null;
-  hoverPoly = null;
-  mousePos.set(mouseX, mouseY);
-  for (path of polys) {
-    hoverPoint = path.click(mousePos);
-    if (path.isInside(mousePos)) {
-      // This is a click on an existing polygon.
-      hoverPoly = path;
-      break;
-    }
-  }
-}
-
-function mouseDragged() {
-  if (clicked) {
-    // TODO need to update the poly here as well.
-    // Otherwise min/max are not updated.
-    clickedPoly.movePoint(clicked, mouseX, mouseY);
-  } else if (clickedPoly) {
-    // mousePos is where the mouse was previously.
-    clickedPoly.move(mouseX - mousePos.x, mouseY - mousePos.y);
-    mousePos.set(mouseX, mouseY);
-  }
-}
-
-function mouseReleased() {
-  if (clicked) {
-    clicked.set(mouseX, mouseY);
-    clicked = null;
-  }
-  clickedPoly = null;
 }

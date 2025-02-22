@@ -26,6 +26,9 @@ SCRIPTS = {
     'gridview': [
         "/static/p5/grid.js",
         "/static/p5/view.js"
+    ],
+    'poly': [
+        "/static/p5/poly.js"
     ]
 }
 
@@ -211,6 +214,9 @@ apps['p5'] = {
 p5_apps['mapviewtest'] = {
     'tags': ['gridview']
 }
+p5_apps['polytest'] = {
+    'tags': ['poly']
+}
 p5_apps['bomberman'] = {
     'tags': ['gridview']
 }
@@ -297,7 +303,7 @@ class ProjectAppView(MethodView):
                 entry_point = "%s/%s.js" % (app_path, sample)
                 # Sample is an app within an app group, load a script for it.
 
-                if app_name == 'p5':
+                if app_name == 'p5' or app_name == 'p5_test':
                     app.template = 'app.tmpl'
                     p5_conf = p5_apps.get(sample)
                     if p5_conf:

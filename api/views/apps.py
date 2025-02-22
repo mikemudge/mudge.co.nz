@@ -3,6 +3,7 @@ from flask import render_template
 from flask.views import MethodView
 from shared.helpers.angular import Angular
 
+import time
 import os
 
 SCRIPTS = {
@@ -95,6 +96,9 @@ apps['rts'] = {
 }
 apps['seconds'] = {
     'img': 'seconds.png',
+    'tags': ['common']
+}
+apps['workouttime'] = {
     'tags': ['common']
 }
 apps['soccer'] = {
@@ -277,6 +281,8 @@ class ProjectAppView(MethodView):
 
         logger.info("Loading app %s %s" % (app_name, path))
         app = Angular(app_name)
+        # Used to bust cache in development.
+        app.version = int(time.time())
         app.base = '/projects/%s/' % app_name
 
         if app_name == 'trail':

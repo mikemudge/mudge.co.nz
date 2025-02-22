@@ -1,0 +1,21 @@
+<div ng-controller="MainController as ctrl">
+  <div>
+    Time: {{ ctrl.time / 1000 | number:2 }} / {{ ctrl.times[ctrl.timeIndex].value }}
+  </div>
+  <div>
+    Loop: {{ ctrl.loops }}
+  </div>
+
+  Program:
+  <div ng-repeat="time in ctrl.times">
+    <label>
+      <input type="number" ng-model="time.value"/>
+    </label>
+  </div>
+  <div>
+    <button ng-click="ctrl.times.push({})">Add</button>
+  </div>
+  <div>
+    <button ng-click="ctrl.start()">Start</button>
+  </div>
+</div>

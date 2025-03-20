@@ -24,7 +24,7 @@ jsonschema
 pyOpenSSL
 
 # Frozen due to https://github.com/jarus/flask-testing/issues/143
-werkzeug==0.16.1
+werkzeug==2.2.3
 
 # For running prod.
 uwsgi

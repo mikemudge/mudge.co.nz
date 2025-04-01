@@ -502,10 +502,10 @@ class SoccerGame {
     this.controls = [];
     // Push a wrapper which can convert control inputs to the game.
     this.controls.push(new HumanControls(this.gameControls, this, this.leftTeam));
+  }
 
-    // The plays on each team can be controlled by AI.
-    this.controls.push(new AIControls(this, this.leftTeam));
-    this.controls.push(new AIControls(this, this.rightTeam));
+  addControls(humanControls) {
+    this.controls.push(humanControls);
   }
 
   play() {
@@ -561,6 +561,8 @@ class SoccerGame {
 }
 
 var game;
+var humanControls;
+var mousePos;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -569,6 +571,19 @@ function setup() {
     width: windowWidth,
     height: windowHeight
   });
+
+  // A single controllable unit.
+  // TODO support selecting different units?
+  let controlled = game.leftTeam.players[0];
+  humanControls = new SwipeControls(controlled);
+
+  game.addControls(humanControls);
+  // The plays on each team can be controlled by AI.
+  // this.controls.push(new AIControls(game, game.leftTeam));
+  // this.controls.push(new AIControls(game, game.rightTeam));
+
+
+  mousePos = createVector(0, 0);
 }
 
 function draw() {
@@ -583,6 +598,32 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
 
   game.resize(windowWidth, windowHeight);
+}
+
+// TODO move this setup into the swipecontrol.js class?
+// TODO how to handle multiple touches?
+function touchStarted() {
+  humanControls.start(touches[0]);
+}
+function mousePressed() {
+  mousePos.set(mouseX, mouseY);
+  humanControls.start(mousePos);
+}
+
+function touchMoved() {
+  humanControls.move(touches[0]);
+}
+function mouseDragged() {
+  mousePos.set(mouseX, mouseY);
+  humanControls.move(mousePos);
+}
+
+function touchEnded() {
+  humanControls.end(touches[0]);
+}
+function mouseReleased() {
+  mousePos.set(mouseX, mouseY);
+  humanControls.end(mousePos);
 }
 
 class PauseController {

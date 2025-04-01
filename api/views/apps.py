@@ -106,6 +106,7 @@ apps['soccer'] = {
     'tags': ['common', 'p5'],
     'scripts': [
         '/static/shared/gamecontrols.js',
+        '/static/shared/swipecontrols.js',
     ]
 }
 apps['predator'] = {
@@ -281,8 +282,10 @@ class ProjectAppView(MethodView):
 
         logger.info("Loading app %s %s" % (app_name, path))
         app = Angular(app_name)
-        # Used to bust cache in development.
-        app.version = int(time.time())
+        if current_app.config.get('ENV') != 'dev':
+            # Used to bust cache in development.
+            app.version = str(int(time.time()))
+
         app.base = '/projects/%s/' % app_name
 
         if app_name == 'trail':

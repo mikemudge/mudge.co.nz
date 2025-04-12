@@ -1,12 +1,12 @@
 class Player {
-  static BOUNCE_BACK = 0.5;
-  static KICK_SPEED = 2;
 
   constructor(team) {
     this.team = team;
     this.game = team.getGame();
-    this.radius = 10;
-    this.mass = 1;
+    this.mass = 40;
+    // A = pi * r^2
+    // r = sqrt(A / pi), A = mass / d
+    this.radius = Math.floor(Math.sqrt(this.mass * 2));
     this.reset();
   }
 
@@ -28,44 +28,84 @@ class Player {
     this.pos.add(this.vel);
 
     // Surface friction will be proportional to mass.
-    // Drag friction is proportional to velocity squared, but much less.
-    let mag = Math.min(this.vel.mag(), this.game.options.friction * this.mass + this.game.options.friction2 * this.vel.magSq());
+    let surfaceFriction = this.vel.copy().normalize().mult(-1);
+    surfaceFriction.setMag(this.game.options.sliding_friction * this.mass);
+    this.vel.add(surfaceFriction);
+
+    // Drag friction is proportional to velocity squared.
+    let mag = this.game.options.drag_friction * this.vel.magSq();
     // friction is in the opposite direction to velocity.
-    let friction = this.vel.copy().normalize().mult(-1);
-    friction.setMag(mag);
-    this.vel.add(friction);
+    let airFriction = this.vel.copy().normalize().mult(-1);
+    airFriction.setMag(mag);
+    // At very high speeds the "drag" can exceed speed.
+    // Because we are sampling the force based on a discrete frame this can reverse the direction of the object.
+    // Instead we will artificially limit the force to a fraction of the speed so that it quickly reduces speed.
+    airFriction.limit(this.vel.mag() / 2);
+    this.vel.add(airFriction);
   }
 
   update() {
     // crash?
+    // The bounce back into walls is 50%, but only for the motion towards the wall?
     if (this.pos.x - this.radius < 0 && this.vel.x < 0) {
-      this.vel.x *= -Player.BOUNCE_BACK;
+      this.vel.x *= -1;
+      this.vel.mult(0.5);
     }
     if (this.pos.x + this.radius > this.game.field.left * 2 + this.game.field.width && this.vel.x > 0) {
-      this.vel.x *= -Player.BOUNCE_BACK;
+      this.vel.x *= -1;
+      this.vel.mult(0.5);
     }
     if (this.pos.y - this.radius < 0 && this.vel.y < 0) {
-      this.vel.y *= -Player.BOUNCE_BACK;
+      this.vel.y *= -1;
+      this.vel.mult(0.5);
     }
     if (this.pos.y + this.radius > this.game.field.top * 2 + this.game.field.height && this.vel.y > 0) {
-      this.vel.y *= -Player.BOUNCE_BACK;
+      this.vel.y *= -1;
+      this.vel.mult(0.5);
     }
+    let ball = this.game.ball;
 
-    if (this.pos.x - this.game.ball.pos.x < this.radius + this.game.ball.radius &&
-      this.pos.x - this.game.ball.pos.x > -this.radius - this.game.ball.radius &&
-      this.pos.y - this.game.ball.pos.y < this.radius + this.game.ball.radius &&
-      this.pos.y - this.game.ball.pos.y > -this.radius - this.game.ball.radius) {
-      // Kick physics?
-      this.game.ball.vel.mult(0.8);
-      let kick = this.game.ball.pos.copy().sub(this.pos).mult(.25)
-      // let kick = this.vel.copy().mult(Player.KICK_SPEED)
-      this.game.ball.vel.add(kick);
-
-      // slow down when you kick the ball.
-      this.vel.add(this.vel.copy().mult(-Player.BOUNCE_BACK));
-    }
+    this.collide(ball);
 
     this.updatePosition();
+  }
+
+  collide(obj) {
+    let d = p5.Vector.dist(this.pos, obj.pos);
+    if (d > this.radius + obj.radius) {
+      // Not colliding
+      return;
+    }
+    // Kick physics based on https://www.youtube.com/watch?v=dJNFPv9Mj-Y
+    let impact = obj.pos.copy().sub(this.pos);
+    impact.setMag(this.radius + obj.radius);
+    let vDiff = obj.vel.copy().sub(this.vel);
+    let mSum = this.mass + obj.mass;
+    let num = 2 * vDiff.dot(impact)
+    let den = mSum * impact.magSq();
+
+    let deltaV = impact.copy();
+    deltaV.mult(obj.mass * num / den);
+    this.vel.add(deltaV);
+    // Reverse
+    let deltaV2 = impact.copy();
+    deltaV2.mult(-this.mass * num / den);
+    obj.vel.add(deltaV2);
+
+    // TODO should consider the velocity of both objects to determine when impact would have occurred?
+    // The point when the distance between objects is exactly equal to the sum of their radius.
+    // This impact point would be more accurate.
+    // For now just shift the objects slightly apart to ensure impact distance is correct.
+    let overlap = impact.copy();
+    overlap.setMag((d - this.radius - obj.radius) / 2);
+    this.pos.add(overlap);
+    obj.pos.sub(overlap);
+
+    // Lose some kinetic energy (50%) for the obj and player.
+    // TODO this should be based on ke = 1/2 m * v^2?
+    obj.vel.mult(0.8);
+    this.vel.mult(0.8);
+
   }
 
   draw() {
@@ -76,7 +116,7 @@ class Player {
 
 class Team {
 
-  constructor(color, game, numPlayers, dir) {
+  constructor(color, game, dir) {
     this.color = color;
     this.dir = dir;
     this.game = game;
@@ -84,13 +124,14 @@ class Team {
     this.formation = [4,1,4,1];
 
     this.players = [];
-    for (let i = 0; i < numPlayers; i++) {
-      this.players.push(new Player(this, game));
-    }
   }
 
   getGame() {
     return this.game;
+  }
+
+  addPlayer(player) {
+    this.players.push(player);
   }
 
   draw() {
@@ -104,12 +145,6 @@ class Team {
       player.reset();
     }
   };
-
-  update() {
-    for (let player of this.players) {
-      player.update();
-    }
-  }
 
   setupFormation() {
     let form = this.formation;
@@ -152,7 +187,7 @@ class Field {
 
   draw() {
     // Draw Field
-    stroke(255)
+    stroke(this.lineColor)
     noFill();
     var goalDepth = this.halfGoalWidth;
     rect(this.left, this.top, this.width, this.height);
@@ -162,10 +197,12 @@ class Field {
 
   collide(obj) {
     if (obj.pos.y - obj.radius < this.top && obj.vel.y < 0) {
-      obj.vel.y *= -Ball.BOUNCE_BACK;
+      obj.vel.y *= -1;
+      obj.vel.mult(0.8)
     }
     if (obj.pos.y + obj.radius > this.top + this.height && obj.vel.y > 0) {
-      obj.vel.y *= -Ball.BOUNCE_BACK;
+      obj.vel.y *= -1;
+      obj.vel.mult(0.8);
     }
     if (obj.pos.y > this.goalTop && obj.pos.y < this.goalBottom) {
       // No bouncing happens if the ball is in the goal space.
@@ -173,10 +210,12 @@ class Field {
       return;
     }
     if (obj.pos.x - obj.radius < this.left && obj.vel.x < 0) {
-      obj.vel.x *= -Ball.BOUNCE_BACK;
+      obj.vel.x *= -1;
+      obj.vel.mult(0.8);
     }
     if (obj.pos.x + obj.radius > this.left + this.width && obj.vel.x > 0) {
-      obj.vel.x *= -Ball.BOUNCE_BACK;
+      obj.vel.x *= -1;
+      obj.vel.mult(0.8);
     }
   }
 
@@ -192,32 +231,31 @@ class Field {
 }
 
 class Ball {
-  static BOUNCE_BACK = 0.8;
-
-  constructor(field) {
-    this.field = field;
+  constructor(game) {
+    this.game = game;
+    this.field = game.field;
     this.pos = createVector(this.field.left + this.field.width / 2, this.field.top + this.field.height / 2);
     this.vel = createVector(0, 0);
     this.radius = 20;
-    this.mass = 0.2;
+    this.mass = 10;
   }
 
 
   update() {
-    this.vel.add(this.acc);
     this.vel.limit(this.maxSpeed);
 
     this.pos.add(this.vel);
 
 
     // Surface friction will be proportional to mass.
-    let friction = this.vel.copy().normalize().mult(-1);
-    friction.setMag(0.1 * this.mass)
+    let surfaceFriction = this.vel.copy().normalize().mult(-1);
+    surfaceFriction.setMag(this.game.options.sliding_friction * this.mass);
+    this.vel.add(surfaceFriction);
 
     // Drag friction is proportional to velocity squared, but much less.
     // This constraint results in the balls max speed.
     let drag = this.vel.copy().normalize().mult(-1);
-    drag.setMag(.005 * this.vel.magSq());
+    drag.setMag(this.game.options.drag_friction * this.vel.magSq());
     this.vel.add(drag);
 
     // crash into walls
@@ -293,6 +331,8 @@ class IceMove {
 class CarMove {
   constructor(options) {
     this.options = options;
+    this.turn_speed = options.turn_speed || 0.08;
+    this.acceleration = options.acceleration || 0.25;
   }
 
   move(player, keys) {
@@ -438,16 +478,12 @@ class SoccerGame {
   constructor(canvas) {
     this.canvas = canvas;
 
-    // TODO instead of these we should be able to use mass + air resistance constants.
+    // TODO instead of these we should be able to use mass + friction constants.
     // Ball mass being low will mean heavier players will transfer more speed.
     // Ball air resistance being low will mean the ball can move faster than players.
     this.options = {
-      turn_speed: 0.08,
-      acceleration: 0.25,
-      friction: 0.25 * 0,
-      friction2: 0.02,
-      bounce: Player.BOUNCE_BACK,
-      kick_speed: Player.KICK_SPEED,
+      sliding_friction: 0.001,
+      drag_friction: 0.001,
       ai: true,
     };
     this.field = new Field({
@@ -458,7 +494,7 @@ class SoccerGame {
       halfGoalWidth: height * 4.5 / 20
     });
 
-    this.ball = new Ball(this.field);
+    this.ball = new Ball(this);
 
     // Init the score to 0 - 0
     this.leftScore = 0;
@@ -466,11 +502,23 @@ class SoccerGame {
 
     let red = 'pink';
     let blue = 'lightskyblue';
-    this.leftTeam = new Team(red, this, 11, -1);
-    this.rightTeam = new Team(blue, this, 11, 1);
+    let numPlayers = 11;
+    this.players = [];
+    this.leftTeam = new Team(red, this, -1);
+    this.rightTeam = new Team(blue, this, 1);
     this.rightTeam.formation = [4, 2, 3, 1];
 
-    this.leftTeam.reset();
+    for (let i = 0; i < numPlayers; i++) {
+      let player = new Player(this.leftTeam, game);
+      this.players.push(player);
+      this.leftTeam.addPlayer(player);
+
+      let rightPlayer = new Player(this.rightTeam, game);
+      this.players.push(rightPlayer);
+      this.rightTeam.addPlayer(rightPlayer);
+    }
+
+    this.leftTeam.setupFormation();
     this.rightTeam.setupFormation();
 
     this.gameControls = new GameControls({
@@ -508,10 +556,22 @@ class SoccerGame {
     this.controls.push(humanControls);
   }
 
+  applyControl(player, force) {
+    // A control is requesting a force be applied to a player.
+    // Simply add the force/mass to the velocity.
+    // F = ma, a = dv . dt; Assuming dt = 1 frame
+    // dv = F / m
+    player.vel.add(force);
+  }
+
   play() {
+    this.paused = false;
+    console.log("Resumed");
     loop();
   }
   pause() {
+    this.paused = true;
+    console.log("Paused");
     noLoop();
   }
 
@@ -526,8 +586,23 @@ class SoccerGame {
       control.update();
     }
 
-    this.leftTeam.update();
-    this.rightTeam.update();
+    for (let i = 0; i <this.players.length; i++) {
+      let player = this.players[i];
+      // players collide with other players.
+      for (let ii = i + 1; ii < this.players.length; ii++) {
+        player.collide(this.players[ii]);
+      }
+      // And collide with the ball.
+      player.collide(this.ball);
+
+      this.field.collide(player);
+    }
+
+    // Update the players locations.
+    for (let player of this.players) {
+      player.update();
+    }
+
     this.ball.update();
 
     if (this.field.inGoal(this.ball.pos.x, this.ball.pos.y)) {
@@ -537,7 +612,7 @@ class SoccerGame {
         this.leftScore += 1;
       }
       // Reset ball to the center.
-      this.ball = new Ball(this.field);
+      this.ball = new Ball(this);
 
       this.leftTeam.setupFormation();
       this.rightTeam.setupFormation();
@@ -556,6 +631,7 @@ class SoccerGame {
 
     fill(255);
     textSize(32);
+    noStroke();
     text(this.leftScore + " - " + this.rightScore, 10, 50);
   }
 }
@@ -563,19 +639,21 @@ class SoccerGame {
 var game;
 var humanControls;
 var mousePos;
+var touchPos;
+var logger;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  logger = new Logger();
   // TODO share a game with angular?
   game = new SoccerGame({
     width: windowWidth,
     height: windowHeight
   });
 
-  // A single controllable unit.
-  // TODO support selecting different units?
-  let controlled = game.leftTeam.players[0];
-  humanControls = new SwipeControls(controlled);
+  // A list of controllable units.
+  let controllable = game.leftTeam.players;
+  humanControls = new SwipeControls(game, controllable);
 
   game.addControls(humanControls);
   // The plays on each team can be controlled by AI.
@@ -584,6 +662,8 @@ function setup() {
 
 
   mousePos = createVector(0, 0);
+  touchPos = createVector(0, 0);
+  logger.debug("Game Start");
 }
 
 function draw() {
@@ -592,6 +672,8 @@ function draw() {
   game.update();
 
   game.draw();
+
+  logger.draw(windowWidth / 2 - 160, windowHeight - 150);
 }
 
 function windowResized() {
@@ -601,28 +683,32 @@ function windowResized() {
 }
 
 // TODO move this setup into the swipecontrol.js class?
-// TODO how to handle multiple touches?
-function touchStarted() {
-  humanControls.start(touches[0]);
-}
+// TODO handle multiple touches? Would need touchStarted, touchMoved and touchedEnded.
 function mousePressed() {
+  if (game.paused) {
+    return;
+  }
   mousePos.set(mouseX, mouseY);
+  logger.debug("Mouse Pressed " + mousePos);
   humanControls.start(mousePos);
 }
 
-function touchMoved() {
-  humanControls.move(touches[0]);
-}
 function mouseDragged() {
+  if (game.paused) {
+    return;
+  }
   mousePos.set(mouseX, mouseY);
+  logger.debug("Mouse Drag " + mousePos);
   humanControls.move(mousePos);
 }
 
-function touchEnded() {
-  humanControls.end(touches[0]);
-}
 function mouseReleased() {
+  if (game.paused) {
+    // TODO can we access the pause controller to start the game?
+    return;
+  }
   mousePos.set(mouseX, mouseY);
+  logger.debug("Mouse Release " + mousePos);
   humanControls.end(mousePos);
 }
 
@@ -630,7 +716,7 @@ class PauseController {
   constructor(game, $scope) {
     this.game = game;
     this.$scope = $scope;
-    this.start();
+    this.running = true;
     window.addEventListener('blur', this.pause.bind(this), false);
   }
 

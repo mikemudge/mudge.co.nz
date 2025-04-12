@@ -136,11 +136,11 @@ class Unit {
 
   seek(target) {
     let force = p5.Vector.sub(target, this.pos);
-    if (force.mag() > this.maxSpeed) {
+    // if (force.mag() > this.maxSpeed) {
       force.setMag(this.maxSpeed);
-    }
+    // }
     force.sub(this.vel)
-    force.limit(this.maxForce)
+    // force.limit(this.maxForce)
     return force
   }
 
@@ -197,6 +197,7 @@ class HeroUnit extends Unit {
 
     this.pos.add(this.vel);
     this.acc.set(0, 0);
+    this.vel.set(0, 0);
   }
 
   show(size) {
@@ -328,7 +329,7 @@ class Game {
     this.height = 1000;
     view.setCenter(createVector(this.width / 2, this.height / 2));
     this.units = [];
-    this.init();
+    this.controls = [];
   }
 
   init() {
@@ -375,6 +376,10 @@ class Game {
     this.units.push(new Tower(team, createVector(this.width - 50, this.height / 2)));
   }
 
+  addControls(controls) {
+    this.controls.push(controls);
+  }
+
   getNearby(pos, range) {
     var result = this.units.filter(function(unit) {
       return unit.pos.dist(pos) < range;
@@ -384,6 +389,10 @@ class Game {
 
   addUnit(unit) {
     this.units.push(unit);
+  }
+
+  applyControl(unit, force) {
+    unit.applyForce(force);
   }
 
   click() {
@@ -396,6 +405,10 @@ class Game {
       this.view.setCenter(this.hero.pos);
     }
     this.view.update();
+
+    for (let control of this.controls) {
+      control.update();
+    }
 
     for (let unit of this.units) {
       unit.update();
@@ -419,10 +432,16 @@ class Game {
       }
     }
 
+    for (let control of this.controls) {
+      control.draw();
+    }
+
     this.view.coverEdges();
   }
 }
 
+var mousePos;
+var humanControls;
 function setup() {
   view = new MapView(40);
   // 18px is the top div showing nav items.
@@ -432,11 +451,21 @@ function setup() {
   createCanvas(w, h);
   console.log("setting canvas size", w, h);
 
+  logger = new Logger();
   game = new Game(view);
   window.onblur = function() {
     game.paused = true;
     noLoop();
   }
+
+  game.init();
+
+  humanControls = new SwipeJoystick(game, game.hero);
+  humanControls.speed = game.hero.maxSpeed;
+  game.addControls(humanControls);
+
+  mousePos = createVector(0, 0);
+  touchPos = createVector(0, 0);
 }
 
 function windowResized() {
@@ -445,12 +474,57 @@ function windowResized() {
   view.setScreen(windowWidth, windowHeight - 18);
 }
 
-function keyPressed() {
-  view.keys();
+// Disable key controls because the view follows the hero unit.
+// TODO could use keys to move the unit instead?
+// function keyPressed() {
+//   view.keys();
+// }
+//
+// function keyReleased() {
+//   view.keys();
+// }
+
+// TODO move this setup into the swipecontrol.js class?
+// TODO handle multiple touches? Would need touchStarted, touchMoved and touchedEnded.
+function mousePressed() {
+  mousePos.set(mouseX, mouseY);
+  logger.debug("Mouse Pressed " + mousePos.x.toFixed(2) + "," + mousePos.y.toFixed(2));
+  // humanControls.start(mousePos);
 }
 
-function keyReleased() {
-  view.keys();
+function touchStarted() {
+  touchPos.set(touches[0].x, touches[0].y);
+  logger.debug("Touch Started " + numberFormat(touchPos.x) + "," + numberFormat(touchPos.y));
+  humanControls.start(touchPos);
+  // Avoid a mousePressed/mouseClicked event from following this.
+  return false;
+}
+
+function numberFormat(num) {
+  return "" + Math.round(num * 100) / 100;
+}
+
+function touchMoved() {
+  touchPos.set(touches[0].x, touches[0].y);
+  logger.debug("Touch Moved " + numberFormat(touchPos.x) + "," + numberFormat(touchPos.y));
+  humanControls.move(touchPos);
+}
+
+function mouseDragged() {
+  mousePos.set(mouseX, mouseY);
+  logger.debug("Mouse Drag " + numberFormat(mousePos.x) + "," + numberFormat(mousePos.y));
+  // humanControls.move(mousePos);
+}
+
+function touchEnded() {
+  if (game.paused) {
+    game.paused = false;
+    loop();
+    return;
+  }
+  // touches is empty/not set here, so just use the previous touchPos for "end"
+  logger.debug("Touch Ended " + numberFormat(touchPos.x) + "," + numberFormat(touchPos.y));
+  humanControls.end(touchPos);
 }
 
 function mouseReleased() {
@@ -459,6 +533,12 @@ function mouseReleased() {
     loop();
     return;
   }
+  // mousePos.set(mouseX, mouseY);
+  // logger.debug("Mouse Release " + numberFormat(mousePos.x) + "," + numberFormat(mousePos.y));
+  // humanControls.end(mousePos);
+
+  // For a mouse we want to use mouse controls.
+  // A "touch" which doesn't move (touchMoved) can appear just like a mouse click (pressed/released).
   game.click();
 }
 
@@ -470,4 +550,6 @@ function draw() {
   background(0);
 
   game.show();
+
+  logger.draw(windowWidth / 2 - 150, windowHeight - 160);
 }

@@ -1,21 +1,6 @@
 <div ng-controller='PauseController as pause'>
   <div class="popup options" ng-hide="pause.running">
     <h4> Paused </h4>
-    <label class="field">
-      Acceleration: <input type="number" step="0.1" ng-model="pause.options.acceleration" />
-    </label>
-    <label class="field">
-      Friction: <input type="number" step="0.1" ng-model="pause.options.friction" />
-    </label>
-    <label class="field">
-      Bounce: <input type="number" step="0.1" ng-model="pause.options.bounce" />
-    </label>
-    <label class="field">
-      Kick Speed: <input type="number" step="0.1" ng-model="pause.options.kick_speed" />
-    </label>
-    <label class="field">
-      Enable AI: <input type="checkbox" ng-model="pause.options.ai" />
-    </label>
     <button type="submit" ng-click="pause.start()">
       Play
     </button>

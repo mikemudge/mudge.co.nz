@@ -1,6 +1,6 @@
 import sys
 from flask import current_app
-from flask import render_template, url_for
+from flask import render_template, make_response, url_for
 from flask import request
 
 class Angular():
@@ -41,7 +41,7 @@ class Angular():
         self.favicon = '/favicon.ico'
 
     def render(self):
-        return render_template(self.template, **{
+        html = render_template(self.template, **{
             'app': {
                 'app': self.appName,
                 'title': self.title[0].upper() + self.title[1:],
@@ -65,6 +65,11 @@ class Angular():
             'async': self.async_scripts,
             # TODO support embedded templates?
         })
+
+        response = make_response(html)
+        if self.config.get('ENV') == 'dev':
+            response.headers['Cache-Control'] = 'no-cache'
+        return response
 
     def addStyle(self, href, version=True):
         if version:

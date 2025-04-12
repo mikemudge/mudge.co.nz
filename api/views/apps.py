@@ -106,6 +106,7 @@ apps['soccer'] = {
     'tags': ['common', 'p5'],
     'scripts': [
         '/static/shared/gamecontrols.js',
+        '/static/shared/logger.js',
         '/static/shared/swipecontrols.js',
     ]
 }
@@ -236,7 +237,11 @@ p5_apps['rts'] = {
     ]
 }
 p5_apps['moba'] = {
-    'tags': ['gridview']
+    'tags': ['gridview'],
+    'scripts': [
+        '/static/shared/logger.js',
+        '/static/shared/swipecontrols.js'
+    ]
 }
 p5_apps['road'] = {
     'tags': ['gridview']
@@ -282,8 +287,8 @@ class ProjectAppView(MethodView):
 
         logger.info("Loading app %s %s" % (app_name, path))
         app = Angular(app_name)
-        if current_app.config.get('ENV') != 'dev':
-            # Used to bust cache in development.
+        if current_app.config.get('ENV') == 'dev':
+            # Used to bust cache during development.
             app.version = str(int(time.time()))
 
         app.base = '/projects/%s/' % app_name

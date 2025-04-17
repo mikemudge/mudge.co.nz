@@ -249,6 +249,11 @@ p5_apps['road'] = {
 p5_apps['wfc3'] = {
     'tags': ['gridview']
 }
+p5_apps['planets'] = {
+    'scripts': [
+        '/static/shared/logger.js',
+    ]
+}
 
 p5_apps['minesweeper'] = {
     'img': 'minesweeper.png',
@@ -281,11 +286,10 @@ class ProjectAppView(MethodView):
         sample = request.args.get('sample')
         if path:
             # Use path to determine the sample?
-            parts = os.path.split(path)
+            parts = path.split("/")
             sample = parts[0]
-            pass
 
-        logger.info("Loading app %s %s" % (app_name, path))
+        logger.info("Loading app name=%s path=%s sample=%s" % (app_name, path, sample))
         app = Angular(app_name)
         if current_app.config.get('ENV') == 'dev':
             # Used to bust cache during development.

@@ -24,6 +24,14 @@ class Logger {
     }
   }
 
+  vectorf(pos) {
+    return this.numberf(pos.x) + "," + this.numberf(mousePos.y);
+  }
+
+  numberf(num) {
+    return "" + Math.round(num * 100) / 100;
+  }
+
   draw(x, y) {
     noStroke();
     fill("white");

@@ -75,7 +75,7 @@ def routes(app):
     ])
 
     # TODO support some "view" relationships like match.round.tournament?
-    print(tournament_schema)
+    # print(tournament_schema)
     MetaView.results['tournament json schema'] = tournament_schema
 
     app.add_url_rule(

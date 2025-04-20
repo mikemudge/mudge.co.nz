@@ -331,7 +331,7 @@ class ProjectAppView(MethodView):
                 app.scripts.append("%s?v=%s" % (entry_point, app.version))
 
         logger.info("folder setup %s" % app_path)
-        if app_name != 'p5' or sample == None:
+        if app_name != 'p5' or app_name != 'p5_test' or sample == None:
             app.setupFolder(app_path)
 
         return app.render()

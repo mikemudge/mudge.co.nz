@@ -91,6 +91,14 @@ class Grid {
     return this.getTile(x, y);
   }
 
+  getWidth() {
+    return this.width;
+  }
+
+  getHeight() {
+    return this.height;
+  }
+
   getBorder() {
     return this.boundryTile;
   }

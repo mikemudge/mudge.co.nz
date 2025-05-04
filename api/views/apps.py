@@ -249,6 +249,9 @@ p5_apps['road'] = {
 p5_apps['wfc3'] = {
     'tags': ['gridview']
 }
+p5_apps['wfc'] = {
+    'tags': ['gridview']
+}
 p5_apps['planets'] = {
     'scripts': [
         '/static/shared/logger.js',

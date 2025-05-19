@@ -18,8 +18,10 @@ class Square {
       // Already collapsed.
       return;
     }
+
     this.tile = random(this.possible);
     this.possible = [this.tile];
+    console.log("Collapsed", this, this.tile);
   }
 
   reducePossible(allowed) {
@@ -37,13 +39,16 @@ class Square {
   show(size) {
     if (!this.tile) {
       fill(255);
+      noStroke();
       text(this.possible.length, 5, 15);
       stroke(70);
       noFill();
       rect(0, 0, size * 2, size * 2);
       return;
     }
-    image(this.tile.image, 0, 0, size * 2, size * 2);
+    if (this.tile.image) {
+      image(this.tile.image, 0, 0, size * 2, size * 2);
+    }
   }
 
   up() {
@@ -61,7 +66,7 @@ class Square {
 }
 
 class WFCTile {
-  constructor(img, x, y) {
+  constructor(img) {
     this.image = img;
     // Register which tiles can be adjacent to this in various directions.
     this.left = [];
@@ -71,8 +76,23 @@ class WFCTile {
     this.edges = [[],[],[],[]];
     this.edgeTypeCounts = {};
     this.edgeTypes = [];
+    this.debug = false;
+  }
+  copy() {
+    let t = new WFCTile(this.image);
+    t.up = [...this.up];
+    t.right = [...this.right];
+    t.down = [...this.down];
+    t.left = [...this.left];
+    t.edges = [...this.edges];
+    t.edgeTypeCounts = Object.assign({}, this.edgeTypeCounts);
+    t.edgeTypes = [...this.edgeTypes];
+    return t;
   }
 
+  setDebug(debug) {
+    this.debug = debug;
+  }
   addRight(tile) {
     this.right.push(tile);
   }
@@ -149,7 +169,11 @@ class WFCTile {
       } else if (blankPixels > 14) {
         type = "blank";
       } else if (alphaPixels + blankPixels > 14) {
-        type = "transparent";
+        if (blankPixels > 7) {
+          type = "blank";
+        } else {
+          type = "transparent";
+        }
       } else if (samePixels > 14) {
         type = "same";
       } else {
@@ -169,7 +193,14 @@ class WFCTile {
   }
 
   show(x, y, w, h) {
-    image(this.image, x, y, w, h);
+    if (this.image) {
+      image(this.image, x, y, w, h);
+    } else {
+      // Show empty tile.
+      fill(255);
+      noStroke();
+      text("E", x + 5, y + 15);
+    }
   }
   colorString(pixel) {
     if (pixel[3] === 0) {
@@ -218,15 +249,11 @@ class WFCTile {
   }
 }
 
-class CollapseFunction {
+class TileSetEdgeMatcher {
 
-  constructor(grid) {
-    this.grid = grid;
-    this.total = 0;
-    this.totalDiff = [0, 0, 0, 0];
-  }
-
-  setTileset(tileset, tileWidth, tileHeight) {
+  constructor(tileset, tileWidth, tileHeight) {
+    // this.total = 0;
+    // this.totalDiff = [0, 0, 0, 0];
     let tilesAcross = tileset.width / tileWidth;
     let tilesDown = tileset.height / tileHeight;
     if (tileWidth !== tileHeight) {
@@ -246,7 +273,7 @@ class CollapseFunction {
     this.allTiles = [];
     for (var y = 0; y < this.tiles.getHeight(); y++) {
       for (var x = 0; x < this.tiles.getWidth(); x++) {
-        this.allTiles.push(this.tiles.getTile(x, y));
+        this.allTiles.push(this.tiles.getTile(x, y).getData());
       }
     }
 
@@ -392,31 +419,511 @@ class CollapseFunction {
     }
   }
 
-  getPossibleTiles() {
-    let possibleTiles = [];
-    // Set allTiles based on ones which were setup.
-    for (let t of this.allTiles) {
-      let tile = t.getData();
-      if (tile.right.length > 0 && tile.left.length > 0 && tile.up.length > 0 && tile.down.length > 0) {
-        possibleTiles.push(tile);
+  removeConnections(tiles) {
+    for (let t of tiles) {
+      for (let t1 of t.up) {
+        t1.down.splice(t1.down.indexOf(t), 1);
       }
+      for (let t1 of t.left) {
+        t1.right.splice(t1.right.indexOf(t), 1);
+      }
+      for (let t1 of t.down) {
+        t1.up.splice(t1.up.indexOf(t), 1);
+      }
+      for (let t1 of t.right) {
+        t1.left.splice(t1.left.indexOf(t), 1);
+      }
+      t.up = [];
+      t.down = [];
+      t.left = [];
+      t.right = [];
     }
-    return possibleTiles;
   }
 
-  getCollapsable() {
+  draw() {
+    for (var y = 0; y < this.tiles.getHeight(); y++) {
+      for (var x = 0; x < this.tiles.getWidth(); x++) {
+        let tile = this.get(x, y).getData();
+        tile.show(20 + x * this.tileWidth, 20 + y * this.tileHeight, this.tileWidth, this.tileHeight);
+      }
+    }
+    // Overlay the index of each tile to aid debugging.
+    textSize(14);
+    fill(255);
+    noStroke();
+    for (var y = 0; y < this.tiles.getHeight(); y++) {
+      for (var x = 0; x < this.tiles.getWidth(); x++) {
+        text(x + "," + y, x * this.tileWidth + 26, y * this.tileHeight + 32);
+      }
+    }
+
+    if (this.clicked) {
+      this.showWithEdges(this.clicked);
+    }
+  }
+
+  showWithEdges(tile) {
+    // This x is based on the width of the previous display.
+    let x = 40 + 12 * this.tileWidth;
+    let y = 40;
+    stroke('white');
+    noFill();
+    let scale = 20;
+    noSmooth();
+    // Default distance down to display the edges.
+    let height = 50;
+    if (tile.image) {
+      // Override this if we are displaying a tile.
+      height = scale * tile.image.height;
+      rect(x, y, scale * tile.image.width + 1, scale * tile.image.height + 1);
+      tile.show(x, y, scale * tile.image.width, scale * tile.image.height);
+      tile.showEdges(x, y, scale);
+    }
+
+    let edgeMax = Math.max(tile.right.length, tile.left.length, tile.up.length, tile.down.length);
+
+    // Shift down a tile and a bit more (font size).
+    y += height + 45;
+    textSize(16);
+    fill(255);
+    noStroke();
+    text("L", x + 6, y);
+    text("U", x + 6 + this.tileWidth / 2 * 1.5, y);
+    text("R", x + 6 + this.tileWidth / 2 * 3, y);
+    text("D", x + 6 + this.tileWidth / 2 * 4.5, y);
+    y += 5;
+
+    stroke('white');
+    noFill();
+    for (let i = 0; i < edgeMax; i++) {
+      if (tile.left[i]) {
+        tile.left[i].show(x, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
+      }
+      if (tile.up[i]) {
+        tile.up[i].show(x + 1.5 * this.tileWidth / 2, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
+      }
+      if (tile.right[i]) {
+        tile.right[i].show(x + 3 * this.tileWidth / 2, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
+      }
+      if (tile.down[i]) {
+        tile.down[i].show(x + 4.5 * this.tileWidth / 2, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
+      }
+    }
+  }
+
+  click(pos) {
+    let x = Math.floor((pos.x - 20) / this.tileWidth);
+    let y = Math.floor((pos.y - 20) / this.tileHeight);
+    // Default to no selection.
+    this.clicked = null;
+    if (y >= 0 && y < this.tiles.getHeight()) {
+      if (x >= 0 && x < this.tiles.getWidth()) {
+        this.clicked = this.get(x, y).getData();
+      }
+    }
+
+    if (this.clicked) {
+      console.log("clicked on", this.clicked, pos.x, pos.y, x, y);
+    }
+  }
+
+  detectEdges() {
+    // Find edges which look like they join.
+    for (let i1 = 0; i1 < this.allTiles.length; i1++) {
+      let t1 = this.allTiles[i1];
+      t1.image.loadPixels();
+      t1.calculateEdges();
+      t1.classifyEdges();
+    }
+
+    // Check if ground tiles can join to each other?
+    for (let i1 = 0; i1 < this.allTiles.length; i1++) {
+      for (let i2 = i1; i2 < this.allTiles.length; i2++) {
+        this.edgeDetect(this.allTiles[i1], this.allTiles[i2]);
+      }
+    }
+  }
+
+  manualFixes(empty) {
+    // TODO hack some blank edges.
+    for (let x = 0; x < 8; x++) {
+      let houseFront = [this.get(x, 6).getData(), this.get(x, 7).getData()];
+
+      // Reset down, then add empty.
+      houseFront[0].down = [];
+      houseFront[1].down = [];
+      houseFront[0].up = [];
+      houseFront[1].up = [];
+      // These house front tiles can be above empty.
+      this.multiConnectY(houseFront, [empty]);
+
+    }
+
+    // Left roof above left wall, right roof above right wall.
+    this.connectY(this.get(0, 5).getData(), this.get(0, 6).getData());
+    this.connectY(this.get(2, 5).getData(), this.get(3, 6).getData());
+
+    // Second house
+    this.connectY(this.get(4, 5).getData(), this.get(4, 6).getData());
+    this.connectY(this.get(6, 5).getData(), this.get(7, 6).getData());
+
+    for (let x = 0; x < 4; x++) {
+      // connect front and roof.
+      this.connectY(this.get(x, 5).getData(), this.get(x, 6).getData());
+      // The other house (4 over)
+      this.connectY(this.get(x + 4, 5).getData(), this.get(x + 4, 6).getData());
+
+    }
+
+    // The house roof needs to connect.
+    for (let y = 4; y < 6; y++) {
+      let middleRoof = this.get(1, y).getData();
+      let decorRoof = this.get(3, y).getData();
+      this.connectX(middleRoof, middleRoof);
+      this.connectX(decorRoof, middleRoof);
+      this.connectX(middleRoof, decorRoof);
+      this.connectX(this.get(0, y).getData(), decorRoof);
+      this.connectX(decorRoof, this.get(2, y).getData());
+      this.connectX(this.get(0, y).getData(), middleRoof);
+      this.connectX(middleRoof, this.get(2, y).getData());
+
+      // Second house
+      middleRoof = this.get(5, y).getData();
+      decorRoof = this.get(7, y).getData();
+      this.connectX(middleRoof, middleRoof);
+      this.connectX(decorRoof, middleRoof);
+      this.connectX(middleRoof, decorRoof);
+      this.connectX(this.get(4, y).getData(), decorRoof);
+      this.connectX(decorRoof, this.get(6, y).getData());
+      this.connectX(this.get(4, y).getData(), middleRoof);
+      this.connectX(middleRoof, this.get(6, y).getData());
+    }
+
+    let left = [this.get(0, 6).getData()];
+    let right = [this.get(3, 6).getData()];
+    let doubleDoor = [this.get(2, 7).getData(), this.get(3, 7).getData()];
+    let middle = [this.get(1, 6).getData()];
+    let decor = [
+      // this.get(2, 6).getData(),
+      this.get(0, 7).getData(),
+      this.get(1, 7).getData(),
+    ];
+    // The middle roof can connect down to any of the middle fronts.
+    let middleRoof = [this.get(1, 5).getData(), this.get(3, 5).getData()]
+    this.multiConnectY(middleRoof, middle);
+    this.multiConnectY(middleRoof, decor);
+    this.multiConnectY(middleRoof, doubleDoor);
+
+    // TODO this may cause dupes?
+    this.connectHouse(left, right, doubleDoor, middle, decor);
+
+    // Second house.
+    left = [this.get(4, 6).getData()];
+    right = [this.get(7, 6).getData()];
+    doubleDoor = [this.get(6, 7).getData(), this.get(7, 7).getData()];
+    middle = [this.get(5, 6).getData()];
+    decor = [
+      // this.get(6, 6).getData(),
+      this.get(4, 7).getData(),
+      this.get(5, 7).getData(),
+    ];
+    // The middle roof can connect down to any of the middle fronts.
+    middleRoof = [this.get(5, 5).getData(), this.get(7, 5).getData()]
+    this.multiConnectY(middleRoof, middle);
+    this.multiConnectY(middleRoof, decor);
+    this.multiConnectY(middleRoof, doubleDoor);
+
+    // TODO this may cause dupes?
+    this.connectHouse(left, right, doubleDoor, middle, decor);
+
+    // Castle
+    let roof1 = this.get(0, 10).getData();
+    let roof2 = this.get(1, 10).getData();
+    let roof3 = this.get(2, 10).getData();
+
+    // roof2 down matching is best, copy it to the others.
+    roof1.down = [...roof2.down];
+    roof3.down = [...roof2.down];
+
+    this.connectX(empty, this.get(6, 10).getData());
+    this.connectX(this.get(6, 10).getData(), empty);
+    this.connectY(this.get(6, 10).getData(), empty);
+
+    // Manually fix up some edges.
+    this.fixTrees();
+
+    this.fixWalls();
+  }
+
+  connectHouse(left, right, doubleDoor, middle, decor) {
+    this.multiConnectX(left, middle);
+    this.multiConnectX(left, decor);
+    this.multiConnectX(middle, middle);
+    this.multiConnectX(middle, decor);
+    this.multiConnectX(decor, middle);
+    this.multiConnectX(decor, right);
+    this.multiConnectX(middle, right);
+    this.multiConnectX([doubleDoor[1]], right);
+    this.multiConnectX([doubleDoor[1]], middle);
+    this.multiConnectX(left, [doubleDoor[0]]);
+    this.multiConnectX(middle, [doubleDoor[0]]);
+    this.connectX(doubleDoor[0], doubleDoor[1]);
+  }
+
+  allowAll(type, inner, outer) {
+    for (let a of inner) {
+      for (let d = 0; d < 4; d++) {
+        if (a.getEdgeType(d) === type) {
+          for (let b of outer) {
+            this.connectDirection(d, a, b);
+          }
+        }
+      }
+    }
+  }
+
+  findCluster(x, y) {
+    let t = this.get(x, y).getData();
+    let cluster = [];
+    let explore = [t];
+    while (explore.length > 0) {
+      let next = [];
+      for (let e of explore) {
+        // Is e already part of the cluster?
+        if (cluster.includes(e)) {
+          continue;
+        }
+        cluster.push(e);
+        for (let a of e.left) {
+          next.push(a);
+        }
+        for (let a of e.right) {
+          next.push(a);
+        }
+        for (let a of e.up) {
+          next.push(a);
+        }
+        for (let a of e.down) {
+          next.push(a);
+        }
+      }
+      explore = next;
+    }
+    return cluster;
+  }
+
+  addTile(t) {
+    this.allTiles.push(t);
+  }
+
+  blankEdges(edges) {
+    for (let i1 = 0; i1 < this.allTiles.length; i1++) {
+      let t1 = this.allTiles[i1];
+      for (let d = 0; d < 4; d++) {
+        if (t1.getEdgeType(d) === "blank") {
+          for (let e of edges) {
+            this.connectDirection(d, t1, e);
+          }
+        }
+      }
+    }
+  }
+
+  transparentEdges(edges) {
+    for (let i1 = 0; i1 < this.allTiles.length; i1++) {
+      let t1 = this.allTiles[i1];
+      for (let d = 0; d < 4; d++) {
+        if (t1.getEdgeType(d) === "transparent") {
+          for (let e of edges) {
+            this.connectDirection(d, t1, e);
+          }
+        }
+      }
+    }
+  }
+
+  edgeDetect(t1, t2) {
+    // Match edges based on their type, or color difference threshold.
+    let match = [0, 0, 0, 0];
+    for (let d = 0; d < 4; d++) {
+      match[d] = this.compareEdges(d, t1, t2, t1.debug && t2.debug);
+    }
+
+    // threshold doesn't work well for all situations.
+    // Could use a better matcher?
+    // How do we avoid wood matching dirt (they are the exact same color)?
+    // Ignore no alpha pixels?
+
+    if (match[0]) {
+      this.connectY(t2, t1);
+    }
+    if (t1 !== t2 && match[2]) {
+      this.connectY(t1, t2);
+    }
+    if (match[3]) {
+      this.connectX(t2, t1);
+    }
+    // If tiles are the same, we already connected them above.
+    if (t1 !== t2 && match[1]) {
+        this.connectX(t1, t2);
+    }
+  }
+
+  compareEdges(d, t1, t2, verbose) {
+    let opp = (d + 2) % 4;
+    if (t1.getEdgeType(d) !== "colored" && t1.getEdgeType(d) !== "same") {
+      // This detector only works with colored/same edges.
+      if (verbose) {
+        console.log(t1.debug, d, t2.debug, "non coloured edges");
+      }
+      return false;
+    }
+    if (t2.getEdgeType(opp) !== "colored" && t2.getEdgeType(opp) !== "same") {
+      // Don't connect to tiles which are not also colored or same.
+      if (verbose) {
+        console.log(t1.debug, d, t2.debug, "non coloured edges");
+      }
+      return false;
+    }
+
+    let edge = t1.edges[d];
+    // The opposite direction for t2. 0 -> 2, 1 -> 3, 2 -> 0, 3 -> 1
+    let edge2 = t2.edges[opp];
+    let edgeDiff = 0;
+    let pixelsMatched = 0;
+    for (let i = 0; i < edge.length; i++) {
+      // All pixel colors (RGBA)
+      let pixelDiff = this.pixelColorDistance(edge[i], edge2[i]);
+      if (i > 0) {
+        // check against 1 pixel after this one, use that if it's a better match (diagonal match)
+        pixelDiff = Math.min(pixelDiff, this.pixelColorDistance(edge[i], edge2[i - 1]));
+        pixelDiff = Math.min(pixelDiff, this.pixelColorDistance(edge[i - 1], edge2[i]));
+      }
+      if (i < edge.length - 1) {
+        pixelDiff = Math.min(pixelDiff, this.pixelColorDistance(edge[i], edge2[i + 1]));
+        pixelDiff = Math.min(pixelDiff, this.pixelColorDistance(edge[i + 1], edge2[i]));
+      }
+      // Ignore blank edges which meet transparent ones?
+      if ((t1.isBlank(edge[i]) && t2.isTransparent(edge2[i])) || (t1.isTransparent(edge[i]) && t2.isBlank(edge2[i]))) {
+        pixelDiff = 0;
+      }
+      if (pixelDiff === 0) {
+        pixelsMatched++
+      }
+      edgeDiff += pixelDiff;
+    }
+    if (verbose) {
+      console.log(t1.debug, d, t2.debug, "pixelsMatched",pixelsMatched, "edgeDiff", edgeDiff);
+    }
+    // Castle roof with a dark grey pixel.
+    // 15 matched pixels and one is off by 6713?
+    // 139,155,180
+    // 192,203,220
+    // 53, 48, 40 = 82 ^ 2
+
+    if (pixelsMatched < 2) {
+      // Not a match if only 0 or 1 pixels match.
+    }
+    // How many pixels were matched, and how far away in color space were they on average.
+    let threshold = 16 * 500;
+    return edgeDiff < threshold;
+  }
+
+  pixelColorDistance(p1, p2) {
+    let diff = 0
+    for (let ii = 0; ii < 4; ii++) {
+      // Use the distance between colors in rgba.
+      diff += Math.pow(p1[ii] - p2[ii], 2);
+    }
+    return diff;
+  }
+
+  fixWalls(allGrassDirt) {
+    let wall = [
+      this.get(5,10).getData(),
+      this.get(6,10).getData()
+    ];
+    let wall2 = [
+      wall[0].copy(),
+      wall[1].copy()
+    ];
+    let roof = [
+      this.get(0,10).getData(),
+      this.get(1,10).getData(),
+      this.get(2,10).getData()
+    ];
+
+    // Using a top wall and bottom wall so its always fixed height of 2.
+    this.multiConnectY(roof, wall);
+    this.multiConnectY(wall, wall2);
+    for (let w of wall2) {
+      w.setEdgeType(2, "blank");
+    }
+  }
+
+  fixTrees() {
+    let treetop = [
+      this.get(7,1).getData(),
+    ];
+    let tree = [
+      this.get(6,2).getData(),
+      this.get(8,2).getData()
+    ];
+    this.multiConnectY(treetop, tree);
+    let treetop2 = [
+      this.get(10,1).getData(),
+    ];
+    let tree2 = [
+      this.get(9,2).getData(),
+      this.get(11,2).getData()
+    ];
+    this.multiConnectY(treetop2, tree2);
+  }
+}
+
+class CollapseFunction {
+  constructor(width, height, view, layers) {
+    this.width = width;
+    this.height = height;
+    this.view = view;
+    this.groundTiles = layers[0];
+    this.objectTiles = layers[1];
+    this.view.setCenter(createVector(200, 200));
+
+    // TODO layers aren't quite right.
+
+    this.ground = new Grid(width, height, view.getMapSize());
+    this.objects = new Grid(width, height, view.getMapSize());
+    this.reset();
+  }
+
+  reset() {
+    this.complete = false;
+    this.ground.reset();
+    this.objects.reset();
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        let square = new Square(x, y);
+        square.setPossible(this.groundTiles);
+        this.ground.setTileData(x, y, square);
+        square = new Square(x, y);
+        square.setPossible(this.objectTiles);
+        this.objects.setTileData(x, y, square);
+      }
+    }
+  }
+
+  getCollapsable(layer) {
     let currentMin = 1000000;
     let minimalPossible = [];
-    let allTiles = [];
-    for (let y = 0; y < this.grid.getHeight(); y++) {
-      for (let x = 0; x < this.grid.getWidth(); x++) {
-        let t = grid.getTile(x, y);
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        let t = layer.getTile(x, y);
         let numPossible = t.getData().possible.length;
         if (t.getData().tile || numPossible === 0) {
           // already collapsed or cannot collapse to anything.
           continue;
         }
-        allTiles.push(t);
         if (numPossible < currentMin) {
           minimalPossible = [t];
           currentMin = numPossible;
@@ -425,25 +932,52 @@ class CollapseFunction {
         }
       }
     }
-    // return allTiles;
     return minimalPossible;
   }
+
   update() {
+
+    view.update();
+
     if (this.complete) {
       return;
     }
 
     // Collapse will pick a tile from the possible ones.
-    let collapsable = this.getCollapsable();
+    let collapsable = this.getCollapsable(this.ground);
+    let collapsable2 = this.getCollapsable(this.objects);
 
+    let collapse = false;
     if (collapsable.length > 0) {
       let loc = random(collapsable);
       loc.getData().collapse();
       this.reduceWrapper(loc);
-    } else {
+      collapse = true;
+    }
+    if (collapsable2.length > 0) {
+      let loc = random(collapsable2);
+      loc.getData().collapse();
+      this.reduceWrapper(loc);
+      collapse = true;
+    }
+    if (!collapse) {
       console.log("All filled in");
       this.complete = true;
     }
+  }
+
+  draw() {
+    this.view.drawMap(this.ground);
+    this.view.drawMap(this.objects);
+    // view.coverEdges();
+
+    fill(255);
+    noStroke();
+    text("reset", 15, 11 * 32 + 50);
+    // Rectangle around the button.
+    noFill();
+    stroke(255);
+    rect(15, 11 * 32 + 35, 100, 20);
   }
 
   reduceWrapper(loc) {
@@ -503,284 +1037,7 @@ class CollapseFunction {
     }
     return loc.getData().reducePossible(possible);
   }
-
-  draw() {
-    for (var y = 0; y < this.tiles.getHeight(); y++) {
-      for (var x = 0; x < this.tiles.getWidth(); x++) {
-        let tile = this.get(x, y).getData();
-        tile.show(20 + x * this.tileWidth, 20 + y * this.tileHeight, this.tileWidth, this.tileHeight);
-      }
-    }
-    // Overlay the index of each tile to aid debugging.
-    textSize(14);
-    fill(255);
-    noStroke();
-    for (var y = 0; y < this.tiles.getHeight(); y++) {
-      for (var x = 0; x < this.tiles.getWidth(); x++) {
-        text(x + "," + y, x * this.tileWidth + 26, y * this.tileHeight + 32);
-      }
-    }
-    text("reset", 15, this.tiles.getHeight() * this.tileHeight + 50);
-
-    // Rectangle around the button.
-    noFill();
-    stroke(255);
-    rect(15, this.tiles.getHeight() * this.tileHeight + 35, 100, 20);
-
-    if (this.clicked) {
-      this.showWithEdges(this.clicked);
-    }
-  }
-
-  showWithEdges(tile) {
-    // This x is based on the width of the previous display.
-    let x = 40 + 12 * this.tileWidth;
-    let y = 40;
-    stroke('white');
-    noFill();
-    let scale = 20;
-    noSmooth();
-    rect(x, y, scale * tile.image.width + 1, scale * tile.image.height + 1);
-    tile.show(x, y, scale * tile.image.width, scale * tile.image.height);
-    tile.showEdges(x, y, scale);
-
-    let edgeMax = Math.max(tile.right.length, tile.left.length, tile.up.length, tile.down.length);
-
-    // Shift down a tile and a bit more (font size).
-    y += scale * tile.image.height + 45;
-    textSize(16);
-    fill(255);
-    noStroke();
-    text("L", x + 6, y);
-    text("U", x + 6 + this.tileWidth / 2 * 1.5, y);
-    text("R", x + 6 + this.tileWidth / 2 * 3, y);
-    text("D", x + 6 + this.tileWidth / 2 * 4.5, y);
-    y += 5;
-
-    stroke('white');
-    noFill();
-    for (let i = 0; i < edgeMax; i++) {
-      if (tile.left[i]) {
-        tile.left[i].show(x, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
-      }
-      if (tile.up[i]) {
-        tile.up[i].show(x + 1.5 * this.tileWidth / 2, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
-      }
-      if (tile.right[i]) {
-        tile.right[i].show(x + 3 * this.tileWidth / 2, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
-      }
-      if (tile.down[i]) {
-        tile.down[i].show(x + 4.5 * this.tileWidth / 2, y + i * 1.5 * this.tileHeight / 2, this.tileWidth / 2, this.tileHeight / 2)
-      }
-    }
-  }
-
-  click(pos) {
-    let x = Math.floor((pos.x - 20) / this.tileWidth);
-    let y = Math.floor((pos.y - 20) / this.tileHeight);
-    // Default to no selection.
-    this.clicked = null;
-    if (y >= 0 && y < this.tiles.getHeight()) {
-      if (x >= 0 && x < this.tiles.getWidth()) {
-        this.clicked = this.get(x, y).getData();
-      }
-    }
-
-    if (this.clicked) {
-      console.log("clicked on", this.clicked, pos.x, pos.y, x, y);
-    }
-
-    let dy = pos.y - (this.tiles.getHeight() * this.tileHeight + 35);
-    let dx = pos.x - 15;
-    if (dy > 0 && dy < 20 && dx > 0 && dx < 100) {
-      console.log("clicked on reset");
-      this.reset();
-    }
-  }
-
-  reset() {
-    this.complete = false;
-    this.grid.reset();
-    let allTiles = this.getPossibleTiles();
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        let square = new Square(x, y);
-        square.setPossible(allTiles);
-        grid.setTileData(x, y, square);
-      }
-    }
-  }
-
-  detectEdges() {
-    // Find edges which look like they join.
-
-    let overlayTiles = [];
-    let opaqueTiles = [];
-    for (let i1 = 0; i1 < this.allTiles.length; i1++) {
-      let t1 = this.allTiles[i1].getData();
-      t1.image.loadPixels();
-      t1.calculateEdges();
-      t1.classifyEdges();
-      if (t1.getEdgeCount('transparent') >= 4) {
-        // Ignore these ones for now?
-        overlayTiles.push(this.allTiles[i1]);
-      } else {
-        opaqueTiles.push(this.allTiles[i1]);
-      }
-    }
-
-    for (let x = 0; x < 8; x++) {
-      this.get(x, 6).getData().setEdgeType(2, "blank");
-      this.get(x, 7).getData().setEdgeType(2, "blank");
-    }
-
-    // TODO Clustering of edges? (Transitivity?)
-    // TODO positional awareness, my north's east is also my east's north.
-    // Make sure that tile's which fit here can line up with some of my neighbours?
-    // TODO neighbour categories? E.g good colour matches, possible blank edge matches, transparent matches?
-    // TODO better transparent/blank detection. Find tiles which can go anywhere, all edges are blank/transparent?
-
-    // Check if ground tiles can join to each other?
-    for (let i1 = 0; i1 < opaqueTiles.length; i1++) {
-      for (let i2 = i1; i2 < opaqueTiles.length; i2++) {
-        this.edgeDetect(opaqueTiles[i1], opaqueTiles[i2]);
-      }
-    }
-
-    // Find clusters of tiles which join?
-    let allGrassDirt = this.findCluster(this.tiles.getTile(0, 0).getData());
-    let castleRoof = this.findCluster(this.tiles.getTile(0, 8).getData());
-    let fence = this.findCluster(this.tiles.getTile(8, 3).getData());
-
-    this.allowAll("blank", castleRoof, allGrassDirt);
-    this.allowAll("transparent", fence, allGrassDirt);
-  }
-
-  allowAll(type, inner, outer) {
-    for (let a of inner) {
-      for (let d = 0; d < 4; d++) {
-        if (a.getEdgeType(d) === type) {
-          for (let b of outer) {
-            this.connectDirection(d, a, b);
-          }
-        }
-      }
-    }
-  }
-
-  findCluster(t) {
-    let cluster = [];
-    let explore = [t];
-    while (explore.length > 0) {
-      let next = [];
-      for (let e of explore) {
-        // Is e already part of the cluster?
-        if (cluster.includes(e)) {
-          continue;
-        }
-        cluster.push(e);
-        for (let a of e.left) {
-          next.push(a);
-        }
-        for (let a of e.right) {
-          next.push(a);
-        }
-        for (let a of e.up) {
-          next.push(a);
-        }
-        for (let a of e.down) {
-          next.push(a);
-        }
-      }
-      explore = next;
-    }
-    return cluster;
-  }
-
-  edgeDetect(loc1, loc2) {
-    let t1 = loc1.getData();
-    let t2 = loc2.getData();
-
-    // Match edges based on their type, or color difference threshold.
-    let match = [0, 0, 0, 0];
-    for (let d = 0; d < 4; d++) {
-      match[d] = this.compareEdges(d, t1, t2);
-    }
-
-    // threshold doesn't work well for all situations.
-    // Could use a better matcher?
-    // How do we avoid wood matching dirt (they are the exact same color)?
-    // Ignore no alpha pixels?
-
-    if (match[0]) {
-      this.connectY(t2, t1);
-    }
-    if (t1 !== t2 && match[2]) {
-      this.connectY(t1, t2);
-    }
-    if (match[3]) {
-      this.connectX(t2, t1);
-    }
-    // If tiles are the same, we already connected them above.
-    if (t1 !== t2 && match[1]) {
-        this.connectX(t1, t2);
-    }
-  }
-
-  compareEdges(d, t1, t2) {
-    if (t1.getEdgeType(d) !== "colored" && t1.getEdgeType(d) !== "same") {
-      // This detector only works with colored/same edges.
-      return false;
-    }
-    let opp = (d + 2) % 4;
-    if (t2.getEdgeType(opp) !== "colored" && t2.getEdgeType(opp) !== "same") {
-      // Don't connect to tiles which are not also colored or same.
-      return false;
-    }
-
-    let edge = t1.edges[d];
-    // The opposite direction for t2. 0 -> 2, 1 -> 3, 2 -> 0, 3 -> 1
-    let edge2 = t2.edges[opp];
-    let edgeDiff = 0;
-    let pixelsMatched = 0;
-    for (let i = 0; i < edge.length; i++) {
-      // All pixel colors (RGBA)
-      let pixelDiff = this.pixelColorDistance(edge[i], edge2[i]);
-      if (i > 0) {
-        // check against 1 pixel after this one, use that if it's a better match (diagonal match)
-        pixelDiff = Math.min(pixelDiff, this.pixelColorDistance(edge[i], edge2[i - 1]));
-      }
-      if (i < edge.length - 1) {
-        pixelDiff = Math.min(pixelDiff, this.pixelColorDistance(edge[i], edge2[i + 1]));
-      }
-      // Ignore blank edges which meet transparent ones?
-      if ((t1.isBlank(edge[i]) && t2.isTransparent(edge2[i])) || (t1.isTransparent(edge[i]) && t2.isBlank(edge2[i]))) {
-        pixelDiff = 0;
-      }
-      if (pixelDiff === 0) {
-        pixelsMatched++
-      }
-      edgeDiff += pixelDiff;
-    }
-
-    if (pixelsMatched < 2) {
-      // Not a match if only 0 or 1 pixels match.
-    }
-    // How many pixels were matched, and how far away in color space were they on average.
-    let threshold = 16 * 400;
-    return edgeDiff < threshold;
-  }
-
-  pixelColorDistance(p1, p2) {
-    let diff = 0
-    for (let ii = 0; ii < 4; ii++) {
-      // Use the distance between colors in rgba.
-      diff += Math.pow(p1[ii] - p2[ii], 2);
-    }
-    return diff;
-  }
 }
-
 function preload() {
   tileset = loadImage('/static/p5/game/tinytown/tilemap_packed.png');
 }
@@ -890,44 +1147,100 @@ function manualSetup() {
 }
 
 let mousePos;
+let tilesetMatcher;
+let collapseFunction;
 function setup() {
-  view = new MapView(20);
 
+  mousePos = createVector(0, 0);
+
+  tilesetMatcher = new TileSetEdgeMatcher(tileset, 16,16);
+
+  // Get additional logging during edge detection for debug tiles.
+  tilesetMatcher.get(0, 10).getData().setDebug("0,10");
+  tilesetMatcher.get(1, 10).getData().setDebug("1,10");
+
+  // TODO Clustering of edges? (Transitivity?)
+  // TODO positional awareness, my north's east is also my east's north.
+  // Make sure that tile's which fit here can line up with some of my neighbours?
+
+  tilesetMatcher.detectEdges();
+
+  // The grass/dirt cluster is the ground layer.
+  let grassDirtTiles = tilesetMatcher.findCluster(0, 0);
+
+  // Add an empty tile to the object layer, so there is an option to have nothing above grass.
+  let empty = new WFCTile(null);
+  for (let d = 0; d < 4; d++) {
+    empty.setEdgeType(d, "transparent");
+  }
+  tilesetMatcher.addTile(empty);
+  this.clicked = empty;
+
+  // TODO try to reduce these.
+  tilesetMatcher.manualFixes(empty);
+
+  // Connect blank edges to empty?
+  tilesetMatcher.blankEdges([empty]);
+
+  // Connect other edges to empty?
+  // E.g castle walls don't have a blank edge.
+
+  // Connect transparent edges to the empty tile.
+  // This means there is always a slight gap between things.
+  tilesetMatcher.transparentEdges([empty]);
+
+  // disconnect some of the "items" which don't join well.
+  tilesetMatcher.removeConnections([
+    tilesetMatcher.get(9, 4).getData(),
+    tilesetMatcher.get(11, 7).getData(),
+    tilesetMatcher.get(11, 8).getData(),
+    tilesetMatcher.get(8, 9).getData(),
+    tilesetMatcher.get(9, 9).getData(),
+    tilesetMatcher.get(8, 10).getData(),
+    tilesetMatcher.get(10, 10).getData(),
+    tilesetMatcher.get(11, 10).getData(),
+  ]);
+
+  // layer 2 is everything which can go on top of grass/dirt
+  // Start with the fence cluster, but after transparent edges have been joined.
+  let objectTiles = tilesetMatcher.findCluster(8, 3);
+  let items = [];
+  let objects = [];
+  for (let t of objectTiles) {
+    if (t.down.length === 0 || t.up.length === 0 || t.left.length === 0 || t.right.length === 0) {
+      // This tile doesn't work with anything currently so skip it.
+      continue;
+    }
+    if (t.getEdgeCount("transparent") >= 4) {
+      items.push(t);
+    } else {
+      objects.push(t);
+    }
+  }
+
+  // manualSetup();
+
+  // Create a grid, and use the matched tiles to fill it in.
+  view = new MapView(20);
   w = view.getCanvasWidth();
   h = view.getCanvasHeight();
   createCanvas(w, h);
   console.log("setting canvas size", w, h);
-  view.setCenter(createVector(200, 200));
 
-  mousePos = createVector(0, 0);
-
-  width = 35;
-  height = 25;
-  grid = new Grid(width, height, view.getMapSize());
-  // Get collapseFunction to fill in a grid.
-
-  collapseFunction = new CollapseFunction(grid);
-  collapseFunction.setTileset(tileset, 16,16);
-
-  collapseFunction.detectEdges();
-
-  // The detection should have some groups which can be accessed by any of their members?
-  // Get all grass tiles?
-  // Get all house tiles?
-  // collapseFunction.multiConnectY();
-
-  // manualSetup();
-  collapseFunction.reset();
+  let layers = [grassDirtTiles, objects];
+  // TODO layers should restrict each other.
+  collapseFunction = new CollapseFunction(35, 25, view, layers);
 
   // collapseFunction.edges;
   if (Notification.permission === "granted") {
     setTimeout(function() {
-      new Notification("WFC Test", {
+      let notification = new Notification("WFC Test", {
         body: "Hi",
         tag: "dedupe"
         // Also can contain badge, icon, image, data and more https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
       });
-    }, 1000);
+      console.log("Notification", notification);
+    }, 5000);
   } else {
     console.log("Notifications permission", Notification.permission);
   }
@@ -936,16 +1249,12 @@ function setup() {
 function draw() {
   background(127);
 
-  view.update();
-
-  // TODO conditionally show the mapping of edges for the tileset?
-  collapseFunction.draw();
+  // TODO Make this draw conditional?
+  tilesetMatcher.draw();
 
   // update should find and fill in one square each frame.
   collapseFunction.update();
-
-  view.drawMap(grid);
-  // view.coverEdges();
+  collapseFunction.draw();
 }
 
 
@@ -969,5 +1278,12 @@ function mouseWheel(event) {
 
 function mouseReleased() {
   mousePos.set(mouseX, mouseY);
-  collapseFunction.click(mousePos);
+  tilesetMatcher.click(mousePos);
+
+  let dy = mouseY - (11 * 32 + 35);
+  let dx = mouseX - 15;
+  if (dy > 0 && dy < 20 && dx > 0 && dx < 100) {
+    console.log("clicked on reset");
+    collapseFunction.reset();
+  }
 }

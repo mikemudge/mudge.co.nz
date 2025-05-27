@@ -746,7 +746,11 @@ class TileSetEdgeMatcher {
     this.multiConnectZ(grass, yellowTrees);
 
 
-    // let allFences = this.findCluster(8, 3)
+    // Castle gates should have dirt beneath.
+    this.connectZ(this.getData(0, 2), this.getData(3, 10))
+    this.connectZ(this.getData(2, 2), this.getData(4, 10))
+
+    let allFences = this.findCluster(8, 3)
     // this.multiConnectZ(grass, allFences);
     // Manual fence align with grass edges.
     // This causes many impossible state errors?
@@ -757,6 +761,12 @@ class TileSetEdgeMatcher {
         this.connectZ(dirt, fence);
       }
     }
+    // Connect vertical and horizontal fences to dirt/grass edges.
+    this.connectZ(this.getData(0, 2), this.getData(11, 4));
+    this.connectZ(this.getData(2, 2), this.getData(11, 4));
+    this.connectZ(this.getData(1, 3), this.getData(9, 6));
+    this.connectZ(this.getData(1, 1), this.getData(9, 6));
+
     // Connect top left corner fence.
     this.connectZ(this.getData(5, 3), this.getData(8, 3));
     // Connect top right corner fence.
@@ -766,8 +776,16 @@ class TileSetEdgeMatcher {
     // Connect bottom left corner fence.
     this.connectZ(this.getData(4, 3), this.getData(8, 5));
 
+    // If a fence doesn't already have a match, allow it on all grass/dirt edges.
+    // this covers the dead end fences.
+    for (let t of allFences) {
+      if (t.below.length === 0) {
+        console.log(t);
+        this.multiConnectZ(grassDirtEdges, [t]);
+      }
+    }
 
-    // Everything with no requirement under them, should be allowed on all grass/dirt.
+    // Everything with no requirement under them, should be allowed on all grass.
     for (let t of this.allTiles) {
       if (grassDirtTiles.includes(t)) {
         // grassDirtTiles are the bottom layer, so need nothing below them.

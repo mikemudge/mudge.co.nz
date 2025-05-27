@@ -48,6 +48,10 @@ class Tile {
     }
   }
 
+  getLocationString() {
+    return this.x + "," + this.y;
+  }
+
   getData() {
     return this.data;
   }

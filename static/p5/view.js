@@ -191,8 +191,13 @@ class MapView {
   /** map a screen position to its closest grid position. Aligned to map grid */
   toGameGrid(pos) {
     return createVector(
-      Math.round(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
-      Math.round(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+        Math.round(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
+        Math.round(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+  }
+  toGameGridFloor(pos) {
+    return createVector(
+        Math.floor(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
+        Math.floor(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
   }
 
   /** map a screen position to its in game location. Not aligned to grid */
@@ -300,6 +305,15 @@ class MapView {
 
   show(thing) {
     this.showAtPos(thing, thing.pos);
+  }
+
+  showAtGridLoc(loc, method) {
+    push();
+    let x = this.toScreenX(loc.x * this.mapSize);
+    let y = this.toScreenY(loc.y * this.mapSize);
+    translate(x, y);
+    method(this.mapSize * this.size / 2);
+    pop();
   }
 
   showAtPos(thing, pos) {

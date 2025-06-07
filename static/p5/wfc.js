@@ -1582,7 +1582,7 @@ class WFCOverlay {
 }
 
 function preload() {
-  tileset = loadImage('/static/p5/game/tinytown/tilemap_packed.png');
+  tileset = loadImage('/static/p5/game/tilesets/tinytown_packed.png');
 }
 
 let renderer;

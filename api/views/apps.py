@@ -28,6 +28,9 @@ SCRIPTS = {
         "/static/p5/grid.js",
         "/static/p5/view.js"
     ],
+    'wfc': [
+        "/static/p5/wfc.js",
+    ],
     'poly': [
         "/static/p5/poly.js"
     ]
@@ -249,8 +252,11 @@ p5_apps['road'] = {
 p5_apps['wfc3'] = {
     'tags': ['gridview']
 }
-p5_apps['wfc'] = {
-    'tags': ['gridview']
+p5_apps['wfc-tinytown'] = {
+    'tags': ['gridview', 'wfc']
+}
+p5_apps['wfc-mountain'] = {
+    'tags': ['gridview', 'wfc']
 }
 p5_apps['planets'] = {
     'scripts': [

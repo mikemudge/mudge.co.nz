@@ -82,7 +82,7 @@ class Shop {
     fill('red');
     strokeWeight(3);
     stroke('#CC0000');
-    rect(-size + 2, -size + 2, size * this.w * 2 - 4, size * this.h * 2 - 4, r);
+    rect(2, 2, size * this.w * 2 - 4, size * this.h * 2 - 4, r);
 
     if (this.debug) {
       noStroke()
@@ -172,7 +172,7 @@ class Factory {
   update() {
     if (this.processing) {
       this.processingTime++;
-      if (this.processingTime > this.processTime) {
+      if (this.processingTime >= this.processTime) {
         this.processComplete();
       }
     }
@@ -247,7 +247,18 @@ class Factory {
     fill('red');
     strokeWeight(3);
     stroke('#CC0000');
-    rect(-size + 2, -size + 2, size * this.w * 2 - 4, size * this.h * 2 - 4, size * 0.6);
+    rect(2, 2, size * this.w * 2 - 4, size * this.h * 2 - 4, size * 0.6);
+
+    // Show processing
+    if (this.processTime) {
+      stroke('white');
+      strokeWeight(1);
+      noFill()
+      rect(0, 0, this.w * size * 2, 5);
+      fill('white');
+      noStroke();
+      rect(0, 0, this.w * size * 2 * this.processingTime / this.processTime, 5);
+    }
 
     if (this.debug) {
       noStroke()
@@ -293,24 +304,24 @@ class House {
     // Create and add a car to the game.
     this.car1 = new Car(this, this.game);
     this.game.addCar(this.car1);
-    this.car1.pos.set(this.pos);
+    this.car1.pos.set(this.pos).add(10, 10);
   }
 
   carArrive() {
     // Car's target is set to null meaning its already known as available.
-    this.car1.pos.set(this.pos);
+    this.car1.pos.set(this.pos).add(10, 10);
     this.car1.vel.set(0, 0);
   };
 
   show(size) {
     fill('red')
     noStroke();
-    rect(-size + 1, -size + 1, size * 2 - 2, size * 2 - 2);
+    rect(1, 1, size * 2 - 2, size * 2 - 2);
 
     if (this.debug) {
       if (this.getAvailableCar()) {
         fill('white');
-        text("c", 0, 5);
+        text("c", size + 2, size + 5);
       }
     }
   }
@@ -321,7 +332,7 @@ class Car {
     this.house = house;
     this.game = game;
     this.map = game.map;
-    this.pos = house.pos.copy();
+    this.pos = house.pos.copy().add(10, 10);
     this.vel = createVector(0, 0);
     this.maxSpeed = 1.7;
     this.targets = [];
@@ -337,11 +348,11 @@ class Car {
 
     let road = this.target.getData().road;
     if (road) {
-      this.vel = road.pos.copy().sub(this.pos);
+      this.vel = road.pos.copy().add(10, 10).sub(this.pos);
     } else {
       // Arrived at a building.
       let building = this.target.getData().building;
-      this.vel = building.pos.copy().sub(this.pos);
+      this.vel = building.pos.copy().add(10, 10).sub(this.pos);
     }
     if (this.vel.magSq() < 9) {
       this.target = this.getNextLocation();
@@ -361,13 +372,13 @@ class Car {
     path.forEach(function(s) {
       toShop.push(s);
     });
-    toShop.push(this.map.getTileAtPos(shop.pos));
+    toShop.push(this.map.getTileAtPosFloor(shop.pos));
 
     let returnPath = [];
     path.reverse().forEach(function(s) {
       returnPath.push(s);
     });
-    returnPath.push(this.map.getTileAtPos(this.house.pos));
+    returnPath.push(this.map.getTileAtPosFloor(this.house.pos));
 
     this.setPath(toShop);
     this.returnPath = returnPath;
@@ -403,7 +414,9 @@ class Car {
     rotate(this.vel.heading());
 
     fill('green');
-    rect(-size / 2, -size * 3/ 5, size, size / 2);
+    // By drawing the car off to the side, it appears to be driving on the side of the road.
+    // TODO we can do better than this though?
+    rect(-size / 2, - size * 3 / 4, size, size / 2);
 
     pop();
   }
@@ -425,7 +438,7 @@ class Road {
     this.pos = pos;
     this.actualColor = '#999999';
     this.color = this.actualColor;
-  };
+  }
 
   update() {
   }
@@ -437,29 +450,22 @@ class Road {
   show(size) {
     fill(this.color);
     noStroke();
-    circle(0, 0, size * 2);
+    circle(size, size, size * 2);
 
     let tile = this.map.getTileAtPos(this.pos);
     if (tile.north().getData() && tile.north().getData().road) {
-      rect(-size, -size, 2 * size, size);
+      rect(0, 0, 2 * size, size);
     }
     if (tile.south().getData() && tile.south().getData().road) {
-      rect(-size, 0, 2 * size, size);
+      rect(0, size, 2 * size, size);
     }
     if (tile.west().getData() && tile.west().getData().road) {
-      rect(-size, -size, size, 2 * size);
+      rect(0, 0, size, 2 * size);
     }
     if (tile.east().getData() && tile.east().getData().road) {
-      rect(0, -size, size, 2 * size);
+      rect(size, 0, size, 2 * size);
     }
     // TODO diagonals?
-  }
-
-  debugDraw(ctx) {
-    if (this.map.debugPathing && this.dis) {
-      ctx.fillStyle = 'white';
-      ctx.fillText("" + this.dis, this.x + this.map.gridSize / 2, this.y + this.map.gridSize / 2 + 5);
-    }
   }
 }
 
@@ -635,18 +641,13 @@ class Square {
   show(size) {
     stroke("white");
     noFill();
-    rect(-size, -size, size * 2, size * 2);
-
-    if (this.road) {
-      text(0, 0, "r");
-    }
+    rect(0, 0, size * 2, size * 2);
   }
 }
 
 class TrafficGame {
   constructor(view) {
     this.view = view;
-    this.stopped = false;
     this.pause = false;
     this.debug = false;
     // TODO remove this?
@@ -657,10 +658,10 @@ class TrafficGame {
     this.height = 30;
     this.map = new Grid(this.width, this.height, view.getMapSize());
     // Center in the middle of the grid.
-    view.setCenter(createVector(24.5 * view.getMapSize(), 14.5 * view.getMapSize()));
+    view.setCenter(createVector(25 * view.getMapSize(), 15 * view.getMapSize()));
 
-    for (let y = 0; y < this.height; y++) {
-      for (let x = 0; x < this.width; x++) {
+    for (let y = 0; y < this.map.getHeight(); y++) {
+      for (let x = 0; x < this.map.getWidth(); x++) {
         let square = new Square();
         this.map.setTileData(x, y, square);
       }
@@ -748,8 +749,8 @@ class TrafficGame {
   };
 
   resetFrom() {
-    for (var y = 0; y < 30; y++) {
-      for (var x = 0; x < 50; x++) {
+    for (var y = 0; y < this.map.getHeight(); y++) {
+      for (var x = 0; x < this.map.getWidth(); x++) {
         let square = this.map.getTile(x, y).getData();
         if (square) {
           // TODO there is likely a better way to find a path around a grid.
@@ -845,13 +846,7 @@ class TrafficGame {
 
 function setup() {
   view = new MapView(20);
-  // 18px is the top div showing nav items.
-  view.setScreen(windowWidth, windowHeight - 18);
-  let w = view.getCanvasWidth();
-  let h = view.getCanvasHeight();
-  createCanvas(w, h);
-  console.log("setting canvas size", w, h);
-
+  view.createCanvas();
   game = new TrafficGame(view);
 
   window.onblur = function() {
@@ -864,10 +859,18 @@ function setup() {
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight - 18);
+function draw() {
+  background(0);
 
-  view.setScreen(windowWidth, windowHeight - 18);
+  game.update();
+
+  game.show();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+
+  view.setScreen(windowWidth, windowHeight);
 }
 
 function keyPressed() {
@@ -925,14 +928,6 @@ function mouseWheel(event) {
     return;
   }
   view.scale(event.delta);
-}
-
-function draw() {
-  background(0);
-
-  game.update();
-
-  game.show();
 }
 
 // Angular trys to load this modules.

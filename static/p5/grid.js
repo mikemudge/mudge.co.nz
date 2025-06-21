@@ -126,6 +126,13 @@ class Grid {
     return this.getTile(gx, gy);
   }
 
+  getTileAtPosFloor(pos) {
+    let gx = Math.floor(pos.x / this.size);
+    let gy = Math.floor(pos.y / this.size);
+
+    return this.getTile(gx, gy);
+  }
+
   getTile(x, y) {
     if (y < 0 || y >= this.height) {
       return this.boundryTile;

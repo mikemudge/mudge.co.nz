@@ -103,7 +103,7 @@ class ButtonMenu {
   reset() {
     this.buttons = [];
   }
-f
+
   addButton(name, clickHandler) {
     this.buttons.push({
       'name': name,
@@ -158,6 +158,12 @@ class MapView {
     return this.offsetTop + this.offsetBottom + this.screenHeight;
   }
 
+  createCanvas() {
+    let w = this.getCanvasWidth();
+    let h = this.getCanvasHeight();
+    createCanvas(w, h);
+  }
+
   getInnerWidth() {
     return this.screenWidth;
   }
@@ -191,8 +197,8 @@ class MapView {
   /** map a screen position to its closest grid position. Aligned to map grid */
   toGameGrid(pos) {
     return createVector(
-        Math.round(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
-        Math.round(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+        Math.floor(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
+        Math.floor(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
   }
   toGameGridFloor(pos) {
     return createVector(

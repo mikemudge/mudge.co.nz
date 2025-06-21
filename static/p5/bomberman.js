@@ -52,7 +52,7 @@ class Player {
     noStroke();
     fill(this.color);
 
-    ellipse(0, 0, size * 1.6);
+    ellipse(size, size, size * 1.6);
   }
 }
 
@@ -87,7 +87,7 @@ class Square {
       } else {
         fill("#fff");
       }
-      rect(-size, -size, size * 2, size * 2);
+      rect(0, 0, size * 2, size * 2);
     } else {
       if (this.powerup) {
         if (this.powerup === 'explodeSize') {
@@ -95,7 +95,7 @@ class Square {
         } else if (this.powerup === 'numBombs') {
           fill("green");
         }
-        circle(0, 0, size * .6);
+        circle(size, size, size * .6);
       }
     }
 
@@ -103,20 +103,21 @@ class Square {
       this.bomb.show(size);
     }
     if (this.flameTime > 0) {
-      // flametime goes from 15 -> 1
-      // scale goes from 0.25 to 1.
-      let scale = 1 - this.flameTime / 20;
-      this.showFlame(size * scale);
+      this.showFlame(size);
     }
   }
 
   showFlame(size) {
+    // flametime goes from 15 -> 1
+    // scale goes from 0.25 to 1.
+    let scale = 1 - this.flameTime / 20;
+
     fill('yellow');
-    ellipse(0, 0, size * 2);
+    ellipse(size, size, size * 2 * scale);
     fill('orange');
-    ellipse(0, 0, size * 1.8);
+    ellipse(size, size, size * 1.8 * scale);
     fill('red');
-    ellipse(0, 0, size * 1.4);
+    ellipse(size, size, size * 1.4 * scale);
   }
 }
 
@@ -133,8 +134,8 @@ class Bomb {
     if (this.time === 0) {
       // explode to flames.
       let map = this.player.map;
-      this.player.map.getTileAtPos(this.pos).getData().solid = false;
-      this.player.map.getTileAtPos(this.pos).getData().bomb = null;
+      this.player.map.getTileAtPosFloor(this.pos).getData().solid = false;
+      this.player.map.getTileAtPosFloor(this.pos).getData().bomb = null;
       this.propegateFlames(map, this.player.flameRange);
     }
   }
@@ -189,14 +190,14 @@ class Bomb {
 
   show(size) {
     fill('#00f');
-    ellipse(0, 0, size * 1.6);
+    ellipse(size, size, size * 1.6);
 
     noStroke()
     fill('white');
     // TODO locate where this should be better when zoomed in/out?
     // 12px for 20 size is default, and looks good.
     textSize(size * 0.6);
-    text(ceil(this.time / this.framerate), -3, 3);
+    text(ceil(this.time / this.framerate), size - 3, size + 3);
   }
 }
 
@@ -206,11 +207,11 @@ class Game {
     this.width = 21;
     this.height = 21;
     this.bombs = 0;
-    this.map = new Grid(this.width, this.height, view.getMapSize());
+    this.map = new Grid(this.width, this.height, 40);
     this.setupNewGame();
 
     this.view = view;
-    this.humanPlayer = new Player(this.map, view.getMapSize(), view.getMapSize());
+    this.humanPlayer = new Player(this.map, 40, 40);
     this.humanPlayer.color = color('red')
     this.players = [this.humanPlayer];
 
@@ -287,18 +288,9 @@ class Game {
 
 function setup() {
   view = new MapView(40);
-
-  // Fixed view size, or comment out for full screen.
-  // view.setScreen(15 * 2 * 20 + 100, 13 * 2 * 20 + 100);
-
-  w = view.getCanvasWidth();
-  h = view.getCanvasHeight();
-  createCanvas(w, h);
-  console.log("setting canvas size", w, h);
+  view.createCanvas();
   // Must match bomb settings for countdown.
   frameRate(30);
-  console.log("textSize", textSize());
-
   game = new Game(view);
 }
 

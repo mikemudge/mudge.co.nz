@@ -29,7 +29,11 @@ SCRIPTS = {
         "/static/p5/view.js"
     ],
     'wfc': [
-        "/static/p5/wfc.js",
+        "/static/p5/wfc/tile.js",
+        "/static/p5/wfc/tileset.js",
+        "/static/p5/wfc/collapse.js",
+        "/static/p5/wfc/overlay.js",
+        "/static/p5/wfc/renders.js",
     ],
     'poly': [
         "/static/p5/poly.js"

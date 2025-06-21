@@ -10,66 +10,57 @@ class MountainTileSet {
 
   doMatching() {
     // Get additional logging during edge detection for debug tiles.
-    this.matcher.debug(4, 7);
-    this.matcher.debug(5, 7);
+    this.matcher.debug(13, 0);
+    this.matcher.debug(13, 1);
 
     // Read pixels from image to determine what tiles can connect to.
     this.matcher.updateTileEdges();
 
-    // How many pixels were matched, and how far away in color space were they on average.
-    let threshold = this.matcher.tileWidth * 550;
-    // Do edge detection to join tiles in specific regions.
-    this.matcher.detectEdges(this.matcher.getRect(0, 0, 15, 15), threshold, []);
+    let threshold = this.matcher.tileWidth * 700;
 
-    this.connectRect(0, 0, 5, 6);
-    // this.connectRect(6, 0, 9, 6);
-    // this.connectRect(0, 7, 3, 11);
-    // this.connectRect(0, 12, 3, 15);
-
-    let clusters = this.matcher.findAllClusters();
-
-    // Get all the objects which can go above grass/dirt, should include trees, fences, houses and castle.
-    let objects = [];
-    for (let [i, cluster] of clusters.entries()) {
-      console.log("Cluster", cluster.map(function(i) { return i.name }));
+    // Grass/Stone (ground)
+    console.log("Grass/Stone threshold:", threshold);
+    let grassStone = this.matcher.getRect(11, 0, 13, 2);
+    for (let t of this.matcher.getRect(14, 6, 15, 7)) {
+      grassStone.push(t);
     }
+    this.matcher.detectEdges(grassStone, threshold, []);
+
+    // Cliffs.
+    threshold = this.matcher.tileWidth * 2000;
+    this.matcher.detectEdges(this.matcher.getRect(0, 0, 5, 6), threshold, []);
+    // this.matcher.detectEdges(this.matcher.getRect(6, 0, 9, 6), threshold, []);
+
+    // Trees
+    threshold = this.matcher.tileWidth * 8000;
+    this.matcher.detectEdges(this.matcher.getRect(4, 12, 6, 15), threshold, []);
+    this.matcher.detectEdges(this.matcher.getRect(7, 13, 8, 15), threshold, []);
+    this.matcher.detectEdges(this.matcher.getRect(9, 12, 10, 15), threshold, []);
+
+    // this.manualFixes();
+
+    this.matcher.findAllClusters();
 
     // This tileset already has an empty image, so use that, but connect it to all transparent edges.
     let empty = this.matcher.getData(0, 0);
     empty.image = null;
+    this.matcher.addTile(empty);
+    this.matcher.interchangable([empty]);
     this.matcher.transparentEdges([empty]);
 
-    let available = [];
-    for (let tile of this.matcher.allTiles) {
-      if (tile === empty) {
-        // This tile is isolated, but still allowed.
-        available.push(tile);
-        continue;
-      }
-      if (tile.isIsolated()) {
-        // Skip isolated tiles.
-        continue;
-      }
-      if (tile.anyEdgeUnconnectable()) {
-        // Skip tiles which don't have a connection on some edge.
-        continue;
-      }
-      available.push(tile);
-    }
-    return [available];
-  }
+    let layers = this.matcher.getLayers();
 
-  connectRect(x1, y1, x2, y2) {
-    for (let y = y1; y <= y2; y++) {
-      for (let x = x1; x <= x2; x++) {
-        if (x + 1 <= x2) {
-          this.matcher.connectX(this.get(x, y), this.get(x + 1, y));
-        }
-        if (y + 1 <= y2) {
-          this.matcher.connectY(this.get(x, y), this.get(x, y + 1));
-        }
-      }
-    }
+    // Default that all objects can go above all ground?
+    this.matcher.connectLayersZ(layers[0], layers[1]);
+
+    console.log("Layers", layers);
+
+    // How many pixels were matched, and how far away in color space were they on average.
+    // Do edge detection to join tiles in specific regions.
+    // this.matcher.detectEdges(layers[0], threshold, []);
+    // this.matcher.detectEdges(layers[1], threshold, []);
+
+    return layers;
   }
 }
 
@@ -79,7 +70,7 @@ function preload() {
 
 let renderer;
 function setup() {
-  let tilesetMatcher = new TileSetEdgeMatcher(tileset, 32,32, 1);
+  let tilesetMatcher = new TileSetEdgeMatcher(tileset, 32,32);
 
   let imageSpecificMatcher = new MountainTileSet(tilesetMatcher);
   let layers = imageSpecificMatcher.doMatching();
@@ -91,13 +82,6 @@ function setup() {
   let useMinimum = true;
   let collapseFunction = new CollapseFunction(35, 25, view, layers, useMinimum);
 
-  try {
-    collapseFunction.init();
-  } catch (e) {
-    console.error("Couldn't init", e);
-    // don't try and collapse more.
-    collapseFunction.complete = true;
-  }
   renderer = new WFCOverlay(tilesetMatcher, collapseFunction);
 }
 

@@ -17,6 +17,60 @@ class TinyTownTileSet {
     // Read pixels from image to determine what tiles can connect to.
     this.matcher.updateTileEdges();
 
+    // do a very strict edge matching to just find the near perfect matches.
+    this.matcher.detectEdges(this.matcher.allTiles, 100, []);
+
+    this.manualFixes();
+
+    this.matcher.findAllClusters();
+
+    // for (let c of this.matcher.clusters) {
+    //   console.log("Finding impossible states in", c)
+    //   this.matcher.findImpossibilities(c);
+    // }
+
+    // TODO Clustering of edges? (Transitivity?)
+    // TODO positional awareness, my north's east is also my east's north.
+    // Make sure that tile's which fit here can line up with some of my neighbours?
+
+    this.registerEmpty();
+
+    let layers = this.matcher.getLayers();
+
+    // Default that all objects can go above all ground?
+    this.matcher.connectLayersZ(this.matcher.ground, this.matcher.objects)
+
+    return layers;
+
+    // Find clusters after we detect edges, but before we allow transparent/blank connections.
+    this.matcher.findAllClusters();
+
+    // TODO should we add some of these items to the map?
+    // Any tiles which don't connect to any others.
+    console.log("Items", this.matcher.getItems().map(function(i) { return i.name }));
+
+    // The grass/dirt cluster is the ground layer, and is used for vertical joining.
+    let grassDirtTiles = layers[0];
+    let objects = [];
+
+    for (let t of layers[1]) {
+      let sum = 0;
+      for (let d of t.getDirectionTiles()) {
+        sum += d.length;
+      }
+      // Ignore items which have no connection to anything.
+      if (sum > 0) {
+        objects.push(t);
+      }
+    }
+
+    // This is happening before blank/transparent connections for clustering of trees/fences etc.
+    this.manualVertical();
+
+    return [grassDirtTiles, objects];
+  }
+
+  manualFixes() {
     // How many pixels were matched, and how far away in color space were they on average.
     let threshold = 16 * 500;
     // Do edge detection to join tiles in specific regions.
@@ -25,17 +79,23 @@ class TinyTownTileSet {
     // trees
     this.matcher.detectEdges(this.matcher.getRect(3, 0, 11, 2), threshold, ['transparent']);
     // house 1
-    // this.detectEdges(this.getRect(0, 4, 3, 7), threshold, []);
+    this.matcher.removeConnections(this.matcher.getRect(0, 4, 3, 7))
+    // this.matcher.detectEdges(this.matcher.getRect(0, 4, 3, 7), threshold, []);
     // house 2
-    // this.detectEdges(this.getRect(4, 4, 7, 7), threshold, []);
+    this.matcher.removeConnections(this.matcher.getRect(4, 4, 7, 7))
+    // this.matcher.detectEdges(this.matcher.getRect(4, 4, 7, 7), threshold, []);
     // fence
     this.matcher.detectEdges(this.matcher.getRect(8, 3, 11, 6), threshold, []);
     // castle
     this.matcher.detectEdges(this.matcher.getRect(0, 8, 6, 10), threshold, ['transparent']);
 
-    // TODO Clustering of edges? (Transitivity?)
-    // TODO positional awareness, my north's east is also my east's north.
-    // Make sure that tile's which fit here can line up with some of my neighbours?
+    // disconnect tiles which don't join well.
+    this.matcher.removeConnections([
+      // Open house doors causing issues.
+      // this.get(2, 6),
+      // this.get(6, 6),
+      this.get(11, 7),
+    ]);
 
     // TODO try to reduce these manual fixes.
     this.fixTrees(6);
@@ -43,26 +103,9 @@ class TinyTownTileSet {
     this.fixCastle();
     this.manualHouse(0, 4);
     this.manualHouse(4, 4);
+  }
 
-    // Find clusters after we detect edges, but before we allow transparent/blank connections.
-    let clusters = this.matcher.findAllClusters();
-
-    // Get all the objects which can go above grass/dirt, should include trees, fences, houses and castle.
-    let objects = [];
-    for (let [i, cluster] of clusters.entries()) {
-      if (i > 0) {
-        for (let c of cluster) {
-          objects.push(c);
-        }
-      }
-    }
-    // TODO should we add some of these items to the map?
-    // Any tiles which don't connect to any others.
-    console.log("Items", this.matcher.getItems().map(function(i) { return i.name }));
-
-    // The grass/dirt cluster is the ground layer, and is used for vertical joining.
-    let grassDirtTiles = clusters[0];
-
+  registerEmpty() {
     // Add an empty tile to the object layer, so there is an option to have nothing above grass.
     let empty = new WFCTile(null, "Empty");
     for (let d = 0; d < 4; d++) {
@@ -72,25 +115,12 @@ class TinyTownTileSet {
     this.matcher.interchangable([empty]);
     this.matcher.addTile(empty);
 
-    // Make sure empty tile is in the objects layer.
-    objects.push(empty);
-
-    // This is happening before blank/transparent connections for clustering of trees/fences etc.
-    this.manualVertical();
-
     // Connect blank and transparent edges to the empty tile.
     // This means there is always a slight gap between things.
     this.matcher.blankEdges([empty]);
     this.matcher.transparentEdges([empty]);
 
-    // disconnect tiles which don't join well.
-    this.matcher.removeConnections([
-      // Open house doors causing issues.
-      this.get(2, 6),
-      this.get(6, 6),
-    ]);
-
-    return [grassDirtTiles, objects];
+    return empty;
   }
 
   manualVertical() {
@@ -116,6 +146,7 @@ class TinyTownTileSet {
     this.matcher.multiConnectZ(grass, allFences);
 
     let grassDirtTiles = this.matcher.findCluster(0, 0);
+    // TODO layers.
     this.matcher.setDefaultBelow(grassDirtTiles);
   }
 
@@ -154,13 +185,7 @@ class TinyTownTileSet {
     // Connect bottom left corner fence.
     this.matcher.connectZ(this.get(4, 3), this.get(8, 5));
 
-    // If a fence doesn't already have a match, allow it on all grass/dirt edges.
-    // this covers the dead end fences.
-    for (let t of allFences) {
-      if (t.below.length === 0) {
-        this.matcher.multiConnectZ(grassDirtEdges, [t]);
-      }
-    }
+    this.matcher.connectLayersZ(grassDirtEdges, allFences);
   }
 
   fixTrees(x) {
@@ -264,6 +289,8 @@ class TinyTownTileSet {
 
 
   manualHouse(x, y) {
+    let decor = this.matcher.getRect(x, y + 3, x + 1, y + 3);
+    decor.push(this.get(x + 2, y + 2));
     let layers = [{
       left: this.get(x, y),
       middle: this.get(x + 1, y),
@@ -278,7 +305,7 @@ class TinyTownTileSet {
       left: this.get(x, y + 2),
       middle: this.get(x + 1, y + 2),
       right: this.get(x + 3, y + 2),
-      decor: this.matcher.getRect(x, y + 3, x + 1, y + 3),
+      decor: decor,
       doubleDecor: [this.matcher.getRect(x+2, y + 3, x + 3, y + 3)]
     }];
 
@@ -304,7 +331,6 @@ function setup() {
   let useMinimum = false;
   let collapseFunction = new CollapseFunction(35, 25, view, layers, useMinimum);
 
-  collapseFunction.init();
   renderer = new WFCOverlay(tilesetMatcher, collapseFunction);
 }
 

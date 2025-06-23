@@ -215,53 +215,20 @@ class WFCTile {
       // Show empty tile.
       fill(255);
       noStroke();
-      text("E", x + 5, y + 15);
+      text("E", x + 5, y + h / 2 + 5);
     }
   }
+
+  getPixel(x, y) {
+    let i = (y * this.image.width + x) * 4;
+    return [this.image.pixels[i], this.image.pixels[i + 1], this.image.pixels[i + 2], this.image.pixels[i + 3]];
+  }
+
   colorString(pixel) {
     if (pixel[3] === 0) {
       // Completely transparent.
       return "0";
     }
     return pixel[0]+","+pixel[1]+","+pixel[2];
-  }
-  showEdges(x, y, scale) {
-
-    textSize(16);
-    fill('white');
-    noStroke();
-
-    text(this.edgeTypes[0], x - 20 + this.image.width * scale / 2, y);
-    text(this.edgeTypes[1], x + this.image.width * scale, y + this.image.height * scale / 2);
-    text(this.edgeTypes[2], x - 20 + this.image.width * scale / 2, y + this.image.height * scale);
-    text(this.edgeTypes[3], x, y + this.image.height * scale / 2);
-
-    textSize(10);
-
-    for (let i = 0; i < this.image.width; i++) {
-      text(this.colorString(this.edges[3][i]), x, y + scale / 2 + i * scale);
-      // 55 is about the length of a color string with 3 digits in RGB.
-      text(this.colorString(this.edges[1][i]), x + this.image.width * scale - 55, y + scale / 2 + i * scale);
-
-      let topPixel = this.edges[0][i];
-      if (topPixel[3] === 0) {
-        // transparent
-        text("0", x + i * scale, y - 30);
-      } else {
-        for (let ii = 0; ii < 3; ii++) {
-          text(topPixel[ii], x + i * scale, y - 30 + 10 * ii);
-        }
-      }
-
-      let bottomPixel = this.edges[2][i];
-      if (bottomPixel[3] === 0) {
-        // transparent
-        text("0", x + i * scale, y - 30);
-      } else {
-        for (let ii = 0; ii < 3; ii++) {
-          text(bottomPixel[ii], x + i * scale, y + this.image.width * scale + 10 + 10 * ii);
-        }
-      }
-    }
   }
 }

@@ -158,9 +158,37 @@ class TileSetEdgeMatcher {
   detectEdges(tiles, threshold, allowedEdges) {
     // Check if ground tiles can join to each other?
     for (let i1 = 0; i1 < tiles.length; i1++) {
-      for (let i2 = i1; i2 < tiles.length; i2++) {
-        this.edgeDetect(tiles[i1], tiles[i2], threshold, allowedEdges);
+      if (tiles[i1].isIsolated()) {
+        // Skip over tiles which are isolated (no cluster)
+        continue;
       }
+      for (let i2 = i1; i2 < tiles.length; i2++) {
+        if (tiles[i2].isIsolated()) {
+          // Skip over tiles which are isolated (no cluster)
+          continue;
+        }
+        let match = [0, 0, 0, 0];
+        for (let d = 0; d < 4; d++) {
+          match[d] = this.edgeMatching(d, tiles[i1], tiles[i2], threshold, allowedEdges);
+        }
+        this.connectMatches(match, tiles[i1], tiles[i2]);
+      }
+    }
+  }
+
+  connectMatches(match, t1, t2) {
+    if (match[0]) {
+      this.connectY(t2, t1);
+    }
+    if (t1 !== t2 && match[2]) {
+      this.connectY(t1, t2);
+    }
+    if (match[3]) {
+      this.connectX(t2, t1);
+    }
+    // If tiles are the same, we already connected them above.
+    if (t1 !== t2 && match[1]) {
+      this.connectX(t1, t2);
     }
   }
 
@@ -292,48 +320,19 @@ class TileSetEdgeMatcher {
     }
   }
 
-  edgeDetect(t1, t2, threshold, allowedEdges) {
-    // Match edges based on their type, or color difference threshold.
-    let match = [0, 0, 0, 0];
-    for (let d = 0; d < 4; d++) {
-      let verbose = t1.debug && t2.debug;
-      if (t1 === t2) {
-        // Don't debug matching with the same tile.
-        verbose = false;
-      }
-      match[d] = this.compareEdges(d, t1, t2, threshold, allowedEdges, verbose);
+  edgeMatching(d, t1, t2, threshold, allowedEdges) {
+    let verbose = t1.debug && t2.debug;
+    if (t1 === t2) {
+      // Don't debug matching with the same tile.
+      verbose = false;
     }
-
-    // threshold doesn't work well for all situations.
-    // Could use a better matcher?
-    // How do we avoid wood matching dirt (they are the exact same color)?
-    // Ignore no alpha pixels?
-
-    if (match[0]) {
-      this.connectY(t2, t1);
-    }
-    if (t1 !== t2 && match[2]) {
-      this.connectY(t1, t2);
-    }
-    if (match[3]) {
-      this.connectX(t2, t1);
-    }
-    // If tiles are the same, we already connected them above.
-    if (t1 !== t2 && match[1]) {
-        this.connectX(t1, t2);
-    }
-  }
-
-  compareEdges(d, t1, t2, threshold, allowedEdges, verbose) {
-    let opp = (d + 2) % 4;
-    if (allowedEdges.includes(t1.getEdgeType(d)) && t1.getEdgeType(d) === t2.getEdgeType(opp)) {
-      // If an edge type is allowed, and matches then its supported.
-      if (t1.isIsolated() || t2.isIsolated()) {
-        // Items which have no edges shouldn't connect by default.
-        return false;
-      }
+    if (this.checkAllowedEdges(d, t1, t2, allowedEdges)) {
+      // console.log("Allowed edge match", t1, t2);
       return true;
     }
+
+    // We only do full edge detection on colored/same edges?
+    let opp = (d + 2) % 4;
     if (t1.getEdgeType(d) !== "colored" && t1.getEdgeType(d) !== "same") {
       // This detector only works with colored/same edges.
       if (verbose) {
@@ -349,6 +348,25 @@ class TileSetEdgeMatcher {
       return false;
     }
 
+    // Check the color difference
+    let diff = this.compareEdgesDifference(d, t1, t2, verbose);
+    if (diff < threshold) {
+      return true;
+    }
+    return false;
+  }
+
+  checkAllowedEdges(d, t1, t2, allowedEdges) {
+    let opp = (d + 2) % 4;
+    return allowedEdges.includes(t1.getEdgeType(d)) && t1.getEdgeType(d) === t2.getEdgeType(opp);
+  }
+
+  compareEdges(d, t1, t2) {
+    // TODO new Edge Detection based check?
+  }
+
+  compareEdgesDifference(d, t1, t2, verbose) {
+    let opp = (d + 2) % 4;
     let edge = t1.edges[d];
     // The opposite direction for t2. 0 -> 2, 1 -> 3, 2 -> 0, 3 -> 1
     let edge2 = t2.edges[opp];
@@ -380,9 +398,9 @@ class TileSetEdgeMatcher {
     }
 
     if (pixelsMatched < edge.length / 8) {
-      // Not a match if 1 or less in 8 pixels match.
+      // Not a match if 1 or less in 8 pixels match?
     }
-    return edgeDiff < threshold;
+    return edgeDiff;
   }
 
   pixelColorDistance(p1, p2) {

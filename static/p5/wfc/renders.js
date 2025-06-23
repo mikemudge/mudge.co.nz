@@ -1,7 +1,24 @@
 class ClusterRenderer {
-  constructor(tilesetMatcher, size) {
+  constructor(overlay, tilesetMatcher, size) {
+    this.overlay = overlay;
     this.tilesetMatcher = tilesetMatcher;
-    this.size = size
+    this.size = size;
+
+    this.overlay.setName("Clusters");
+    this.overlay.setSpace(this.getWidth(), this.getHeight());
+    this.overlay.setRenderer(this);
+  }
+
+  getWidth() {
+    let maxCluster = this.tilesetMatcher.clusters[0].length;
+    for (let cluster of this.tilesetMatcher.clusters) {
+      maxCluster = Math.max(maxCluster, cluster.length);
+    }
+    return 20 + maxCluster * this.size.x;
+  }
+
+  getHeight() {
+    return this.tilesetMatcher.clusters.length * (this.size.y + 5);
   }
 
   show() {
@@ -24,147 +41,174 @@ class ClusterRenderer {
 }
 
 class TileRenderer {
-  constructor(size, scale) {
+  constructor(overlay, size, scale) {
     this.size = size;
     this.scale = scale;
     this.tile = null;
+    this.pixelSize = null;
+    this.overlay = overlay;
+    this.overlay.setName("Tile");
+    this.overlay.setSpace(this.getWidth(), this.getHeight());
+    this.overlay.setRenderer(this);
+    this.overlay.setDisplayed(false);
   }
 
   setTile(tile) {
     if (!tile) {
       this.tile = null;
+      this.overlay.setDisplayed(false);
     } else {
       this.tile = tile;
+      this.overlay.setDisplayed(true);
+      this.overlay.setName("Tile " + this.tile.name);
+      this.pixelSize = createVector(this.size.x / this.tile.image.width * this.scale, this.size.y / this.tile.image.height * this.scale);
     }
     console.log("Showing tile for", this.tile);
   }
 
-  // Display an enlarged tiles, along with its edge coloring.
-  // Also display the tiles it can match against in each direction.
-  show() {
-    if (!this.tile) {
-      return;
-    }
-    // Display the large view of the tile with edge pixel colors.
-    fill(159);
-    noStroke()
-    let bigSize = this.size.copy().mult(this.scale);
-    let tile = this.tile;
-    if (tile.image) {
-      // 40 margin to display the pixel colors.
-      rect(0, 0, 80 + bigSize.x, 80 + bigSize.y);
-    }
+  getWidth() {
+    return this.size.x * this.scale + 10;
+  }
 
+  getHeight() {
+    return this.size.y * this.scale + 40 + (this.size.y + 4) * 4;
+  }
+
+  // Display an enlarged tile with hover pixel colors, and the tiles it can match against in each direction.
+  show() {
+    // Display a large view of the tile.
+    let bigSize = this.size.copy().mult(this.scale);
     stroke('white');
     noSmooth();
-    // Default distance down to display the edges.
-    if (tile.image) {
-      // Override this if we are displaying a tile.
-      rect(40, 40, bigSize.x + 1, bigSize.y + 1);
-      tile.show(40, 40, bigSize.x, bigSize.y);
-      tile.showEdges(40, 40, this.scale);
+    if (this.tile.image) {
+      // draw a rectangle and display the tile within it.
+      rect(5, 5, bigSize.x + 1, bigSize.y + 1);
+      this.tile.show(5, 5, bigSize.x, bigSize.y);
+      if (this.lastClickedPixel) {
+        // Highlight the clicked pixel.
+        noFill();
+        rect(5 + this.lastClickedPixel.x * this.pixelSize.x, 5 + this.lastClickedPixel.y * this.pixelSize.y, this.pixelSize.x, this.pixelSize.y);
+      }
+    }
+
+    if (this.hoverPixel) {
+      this.showPixelColor(5, bigSize.y + 10, this.hoverPixel);
+    } else if (this.lastClickedPixel) {
+      this.showPixelColor(5, bigSize.y + 10, this.lastClickedPixel);
     }
 
     push();
-    translate(0, bigSize.y + 80);
+    translate(0, bigSize.y + 40);
     this.showConnections();
     pop();
   }
 
-  showConnections() {
-    let tile = this.tile;
-    let margin = 4;
+  showPixelColor(x, y, loc) {
+    let pixel = this.tile.getPixel(loc.x, loc.y);
 
-    textSize(16);
+    // Fill a small swatch with the color of the pixel.
+    noStroke();
+    fill(pixel);
+    rect(x, y, 10, 10);
+
+    // Then in white, display the color string.
+    fill(255);
+    text(this.tile.colorString(pixel), x + 15, y + 10);
+  }
+
+  showConnections() {
+    if (!this.tile) {
+      return;
+    }
+    // TODO could use getDirectionTiles?
+    let edges = [this.tile.up, this.tile.right, this.tile.down, this.tile.left];
+    let letters = ["U", "R", "D", "L"];
+
+    let w = (this.size.x + 4);
+    let h = (this.size.y + 4);
     fill(255);
     noStroke();
-    text("L", 6, 15);
-    text("U", 6, 15 + (this.size.y + margin) * 1);
-    text("R", 6, 15 + (this.size.y + margin) * 2);
-    text("D", 6, 15 + (this.size.y + margin) * 3);
-    text("A", 6, 15 + (this.size.y + margin) * 4);
-    text("B", 6, 15 + (this.size.y + margin) * 5);
+    textSize(16);
+    for (let [y, letter] of letters.entries()) {
+      text(letter, 6, this.size.y / 2 + 5 + h * y);
+    }
 
     stroke('white');
     noFill();
-    let edgeMax = Math.max(tile.right.length, tile.left.length, tile.up.length, tile.down.length);
-    edgeMax = Math.max(edgeMax, tile.above.length, tile.below.length);
-    for (let i = 0; i < edgeMax; i++) {
-      if (tile.left[i]) {
-        tile.left[i].show((i + 1) * (this.size.x + margin), 0, this.size.x, this.size.y)
-      }
-      if (tile.up[i]) {
-        tile.up[i].show((i + 1) * (this.size.x + margin), (this.size.y + margin), this.size.x, this.size.y)
-      }
-      if (tile.right[i]) {
-        tile.right[i].show((i + 1) * (this.size.x + margin), (this.size.y + margin) * 2, this.size.x, this.size.y)
-      }
-      if (tile.down[i]) {
-        tile.down[i].show((i + 1) * (this.size.x + margin), (this.size.y + margin) * 3, this.size.x, this.size.y)
-      }
-      if (tile.above[i]) {
-        tile.above[i].show((i + 1) * (this.size.x + margin), (this.size.y + margin) * 4, this.size.x, this.size.y)
-      }
-      if (tile.below[i]) {
-        tile.below[i].show((i + 1) * (this.size.x + margin), (this.size.y + margin) * 5, this.size.x, this.size.y)
+    for (let [y, edge] of edges.entries()) {
+      for (let i = 0; i < edge.length; i++) {
+        edge[i].show(22 + i * w, h * y, this.size.x, this.size.y);
       }
     }
-
-  }
-  click(mousePos) {
-
-  }
-}
-
-class ConnectionRenderer {
-  constructor(size) {
-    this.size = size
-    this.tile = null;
   }
 
-  setTile(tile) {
-    if (!tile) {
-      this.tile = null;
-    } else {
-      this.tile = tile;
-    }
-    console.log("Showing connections for", this.tile);
+  highlight(mousePos) {
+    this.hoverPixel = this.mouseToPixel(mousePos);
   }
 
   click(mousePos) {
+    this.lastClickedPixel = this.mouseToPixel(mousePos);
+    return true;
+  }
 
+  mouseToPixel(mousePos) {
+    // Remove the margin and scale down to 0-1.
+    let pixel = mousePos.copy().sub(5, 5).div(this.pixelSize);
+    // Then find the pixel x,y within the original image.
+    pixel.x = Math.floor(pixel.x);
+    pixel.y = Math.floor(pixel.y);
+    if (pixel.x >= 0 && pixel.x < this.tile.image.width) {
+      if (pixel.y >= 0 && pixel.y < this.tile.image.height) {
+        return pixel;
+      }
+    }
+    return null;
   }
 }
 
 class PossibleRenderer {
-  constructor(size) {
+  constructor(overlay, size) {
     this.size = size
     this.square = null;
+    this.overlay = overlay;
+    this.overlay.setName("Grid Square Possiblities");
+    this.overlay.setSpace(this.getWidth(), this.getHeight());
+    this.overlay.setRenderer(this);
+    this.overlay.setDisplayed(false);
+  }
+
+  getWidth() {
+    // Width is not clear for this, so just have space for 20 wide?
+    return this.size.x * 20;
+  }
+
+  getHeight() {
+    // TODO we can probably display a grid of possible tiles?
+    return this.size.y + 10;
   }
 
   setSquare(square) {
     if (!square) {
       this.square = null;
+      this.overlay.setDisplayed(false);
     } else {
       this.square = square;
+      this.overlay.setDisplayed(true);
     }
     console.log("Showing possible options for", this.square);
   }
 
   show() {
-    if (!this.square) {
-      return;
-    }
-
     noStroke();
     fill(255);
     if (this.square.tile) {
-      this.square.tile.show(0, 0, this.size.x * 2, this.size.y * 2);
+      this.square.tile.show(0, 5, this.size.x, this.size.y);
     } else {
       for (let [i, p] of this.square.possible.entries()) {
-        p.show(this.size.x * 2 + 8 + (this.size.x + 4) * i, y, this.size.x, this.size.y);
+        p.show(this.size.x + 5 + (this.size.x + 4) * i, 5, this.size.x, this.size.y);
       }
     }
+    textSize(10);
     text(this.square.getLocationString(), 0, 10);
   }
 
@@ -179,11 +223,15 @@ class ImpossibleRenderer {
     this.tilesetMatcher = tilesetMatcher;
   }
 
-  show() {
-    if (!this.tilesetMatcher.impossible) {
-      return;
-    }
+  getWidth() {
+    return this.size.x * 2;
+  }
 
+  getHeight() {
+    return this.size.y * 2;
+  }
+
+  show() {
     // Will always have 3 tiles.
     this.tilesetMatcher.impossible[0].show(0, size.y);
     this.tilesetMatcher.impossible[1].show(0, 0);
@@ -196,7 +244,7 @@ class ImpossibleRenderer {
 }
 
 class TilesetRenderer {
-  constructor(tilesetMatcher, tileSetters, size) {
+  constructor(overlay, tilesetMatcher, tileSetters, size) {
     this.tilesetMatcher = tilesetMatcher;
 
     this.size = size;
@@ -206,6 +254,12 @@ class TilesetRenderer {
     this.tileSetters = tileSetters;
     this.clicked = [null, null];
     this.clickIndex = 0;
+    this.overlay = overlay;
+    this.overlay.setName("Tileset");
+    this.overlay.setSpace(this.getWidth(), this.getHeight());
+    this.overlay.setRenderer(this);
+
+    this.diff = [0, 0, 0, 0];
   }
 
   getWidth() {
@@ -216,12 +270,13 @@ class TilesetRenderer {
     return this.size.y * this.gridHeight;
   }
 
-  show() {
-    // background
-    fill(159);
-    stroke(255);
-    rect(0, 0, this.getWidth(), this.getHeight())
+  updateTileMatchStats(t1, t2) {
+    for (let d = 0; d < 4; d++) {
+      this.diff[d] = this.tilesetMatcher.compareEdgesDifference(d, t1, t2, false);
+    }
+  }
 
+  show() {
     let w = this.size.y;
     let h = this.size.x;
     for (var y = 0; y < this.gridHeight; y++) {
@@ -252,6 +307,10 @@ class TilesetRenderer {
         text(x + "," + y, x * w + 3, y * h + 10);
       }
     }
+
+    for (let [i, diff] of this.diff.entries()) {
+      text(i + " " + diff, 0, this.gridHeight * h + i * 15 + 15);
+    }
   }
 
   click(pos) {
@@ -270,7 +329,14 @@ class TilesetRenderer {
       console.log("clicked on", clicked);
       this.clicked[this.clickIndex] = clicked;
       this.tileSetters[this.clickIndex].setTile(clicked);
-      this.clickIndex = (this.clickIndex + 1) % this.clicked.length;
+      this.clickIndex = this.clickIndex + 1;
+      if (this.clickIndex >= this.clicked.length) {
+        // Reset the index.
+        this.clickIndex = 0;
+        let t1 = this.clicked[0];
+        let t2 = this.clicked[1];
+        this.updateTileMatchStats(t1, t2);
+      }
       return true;
     }
   }
@@ -284,38 +350,40 @@ class WFCOverlay {
     // A place to store a tile which was clicked on.
     this.clicked = null;
 
-    let size = createVector(32, 32);
-    let size2 = createVector(16, 16);
+    this.overlays = [];
 
-    this.tileRendererA = new TileRenderer(size, 15);
-    this.tileRendererB = new TileRenderer(size, 15);
-    // this.connectionRenderer = new ConnectionRenderer(size);
-    this.squareRenderer = new PossibleRenderer(size)
-    let tilesetRenderer = new TilesetRenderer(tilesetMatcher, [this.tileRendererA, this.tileRendererB], size);
-    let clusterRenderer = new ClusterRenderer(tilesetMatcher, size2);
+    let size = createVector(16, 16);
 
-    // Wrap the renderers in an overlay at a particular location.
-    this.tilesetOverlay = new Overlay(createVector(20, 50), tilesetRenderer);
-    this.clustersOverlay = new Overlay(createVector(20, 50), clusterRenderer);
+    this.clustersOverlay = new Overlay(createVector(20, 80));
+    this.clustersOverlay.setRenderer(new ClusterRenderer(this.clustersOverlay, tilesetMatcher, size));
+    // Hide this by default.
+    this.clustersOverlay.setDisplayed(false);
+    this.overlays.push(this.clustersOverlay);
 
-    // Hide these by default.
-    this.clustersOverlay.toggleDisplay();
-    // this.tilesetOverlay.toggleDisplay();
-
-    this.overlays = [
-        this.tilesetOverlay,
-        this.clustersOverlay
+    let tileRenderers = [
+      new TileRenderer(new Overlay(createVector(0, 100)), size, 16),
+      new TileRenderer(new Overlay(createVector(0, 100)), size, 16)
     ];
+    this.overlays.push(tileRenderers[0].overlay);
+    this.overlays.push(tileRenderers[1].overlay);
 
-    // Add some more overlays which are controlled by setting a displayable on the renderer.
-    this.overlays.push(new Overlay(createVector(20, 100), this.tileRendererA));
-    this.overlays.push(new Overlay(createVector(600, 100), this.tileRendererB));
-    this.overlays.push(new Overlay(createVector(20 + tilesetRenderer.getWidth(), 50), this.squareRenderer));
+    this.tilesetOverlay = new Overlay(createVector(20, 80));
+    let tilesetRenderer = new TilesetRenderer(this.tilesetOverlay, tilesetMatcher, tileRenderers, createVector(32, 32));
+    this.overlays.push(this.tilesetOverlay);
 
+    // Update the positions to be to the right of the tileset.
+    tileRenderers[0].overlay.setPos(tilesetRenderer.getWidth() + 50, 100);
+    tileRenderers[1].overlay.setPos(tilesetRenderer.getWidth() + 316, 100);
+
+    // Add an overlay to show the collapse function grids possible set for a square.
+    this.squareRenderer = new PossibleRenderer(new Overlay(createVector(20, windowHeight - 50)), size)
+    this.overlays.push(this.squareRenderer.overlay);
 
     // Adding an impossible renderer to help discover impossible scenarios in the tileset.
-    let impossibleRenderer = new ImpossibleRenderer(size, this.tilesetMatcher);
-    this.overlays.push(new Overlay(createVector(20 + tilesetRenderer.getWidth(), 50 + tilesetRenderer.getHeight()), impossibleRenderer))
+    // let impossibleRenderer = new ImpossibleRenderer(size, this.tilesetMatcher);
+    // this.overlays.push(new Overlay(createVector(20 + tilesetRenderer.getWidth(), 50 + tilesetRenderer.getHeight()), impossibleRenderer))
+
+    this.reverseOverlays = this.overlays.toReversed();
   }
 
   update() {
@@ -326,7 +394,12 @@ class WFCOverlay {
   mouseMove(mx, my) {
     this.mousePos.set(mx, my);
 
-    // TODO check if mousePos is over an overlay first?
+    for (let overlay of this.reverseOverlays) {
+      if (overlay.highlight(this.mousePos)) {
+        return;
+      }
+    }
+
     this.collapseFunction.highlight(this.mousePos);
   }
 
@@ -338,8 +411,9 @@ class WFCOverlay {
       return;
     }
 
-    for (let overlay of this.overlays) {
+    for (let overlay of this.reverseOverlays) {
       if (overlay.click(this.mousePos)) {
+        console.log("clicked on", overlay.name);
         return;
       }
     }
@@ -348,8 +422,7 @@ class WFCOverlay {
     let click = this.collapseFunction.click(this.mousePos);
     if (click) {
       // click is a grid location within the collapse
-      this.selectedSquare = click.getData();
-      this.squareRenderer.setSquare(this.selectedSquare);
+      this.squareRenderer.setSquare(click.getData());
     }
   }
 

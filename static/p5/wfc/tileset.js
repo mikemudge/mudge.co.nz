@@ -30,6 +30,9 @@ class TileSetEdgeMatcher {
       }
     }
 
+    this.edgeDetectionImage = createImage(this.tileWidth + this.tileWidth, this.tileHeight);
+    this.tileEdgeAverage = 0;
+    this.totalEdgeAverage = 0;
     console.log("Tiles loaded", this.tiles);
   }
 
@@ -363,6 +366,53 @@ class TileSetEdgeMatcher {
 
   compareEdges(d, t1, t2) {
     // TODO new Edge Detection based check?
+    if (d !== 1) {
+      // TODO support other directions?
+      return;
+    }
+
+    // Load the image's pixels into memory.
+    this.edgeDetectionImage.loadPixels();
+
+
+    let height = t1.image.height;
+    let width = t1.image.width;
+    if (d === 2 || d === 0) {
+      height += t2.image.height;
+    } else {
+      width += t2.image.width
+    }
+    let imageHelper = new DoubleImage(t1, t2);
+    let tileEdge = 0;
+    let totalEdge = 0;
+    for (let y = 1; y < height - 1; y += 1) {
+      for (let x = 1; x < width - 1; x += 1) {
+        let edgeValue = imageHelper.getEdgeDetectionValue(x, y);
+        this.edgeDetectionImage.set(x, y, edgeValue);
+        totalEdge += edgeValue;
+        if (x === t1.image.width || x === t1.image.width - 1) {
+          tileEdge += edgeValue;
+        }
+      }
+    }
+    // Convert to averages
+    tileEdge /= t1.image.height * 2;
+    totalEdge /= t1.image.height * (t1.image.width + t2.image.width);
+
+    this.tileEdgeAverage = tileEdge;
+    this.totalEdgeAverage = totalEdge;
+
+    // Update the image's pixel values.
+    this.edgeDetectionImage.updatePixels();
+
+    // If the tileEdge is less of an edge than the average, we suspect continuity between images.
+    return tileEdge < totalEdge;
+  }
+
+  getPixelAverage(t1, x, y) {
+    let pixel = t1.getPixel(x, y);
+    // TODO handle transparent pixels?
+    return (pixel[0] + pixel[1] + pixel[2])
   }
 
   compareEdgesDifference(d, t1, t2, verbose) {
@@ -495,5 +545,45 @@ class TileSetEdgeMatcher {
       }
     }
     return list;
+  }
+}
+
+class DoubleImage {
+  constructor(t1, t2) {
+    this.t1 = t1;
+    this.t2 = t2;
+  }
+
+  getEdgeDetectionValue(x, y) {
+    let edgeDetectionValue = 0;
+    for (let rgb = 0; rgb < 3; rgb++) {
+      edgeDetectionValue += -2 * this.getPixelChannel(x - 1, y, rgb);
+      edgeDetectionValue += 2 * this.getPixelChannel(x + 1, y, rgb);
+      edgeDetectionValue += -1 * this.getPixelChannel(x - 1, y - 1, rgb);
+      edgeDetectionValue += 1 * this.getPixelChannel(x + 1, y - 1, rgb);
+      edgeDetectionValue += -1 * this.getPixelChannel(x - 1, y + 1, rgb);
+      edgeDetectionValue += 1 * this.getPixelChannel(x + 1, y + 1, rgb);
+    }
+
+    // divide by 3 channels for rgb.
+    edgeDetectionValue /= 3;
+
+    return Math.abs(edgeDetectionValue);
+  }
+
+  getPixelAverage(x, y) {
+    let pixel = this.getPixel(x, y);
+    return (pixel[0] + pixel[1] + pixel[2]) / 3;
+  }
+
+  getPixelChannel(x, y, i) {
+    return this.getPixel(x, y)[i];
+  }
+
+  getPixel(x, y) {
+    if (x < this.t1.image.width) {
+      return this.t1.getPixel(x, y);
+    }
+    return this.t2.getPixel(x - this.t1.image.width, y);
   }
 }

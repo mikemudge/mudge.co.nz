@@ -274,6 +274,8 @@ class TilesetRenderer {
     for (let d = 0; d < 4; d++) {
       this.diff[d] = this.tilesetMatcher.compareEdgesDifference(d, t1, t2, false);
     }
+
+    this.tilesetMatcher.compareEdges(1, t1, t2);
   }
 
   show() {
@@ -310,6 +312,20 @@ class TilesetRenderer {
 
     for (let [i, diff] of this.diff.entries()) {
       text(i + " " + diff, 0, this.gridHeight * h + i * 15 + 15);
+    }
+
+    // Draw the image.
+    if (this.tilesetMatcher.edgeDetectionImage) {
+      noSmooth();
+      image(this.tilesetMatcher.edgeDetectionImage, 0, this.gridHeight * h + 60, 320, 160);
+      let x = 160
+      stroke(255, 255, 0);
+      noFill();
+      rect(x - 10, this.gridHeight * h + 60, 10 * 2, 160);
+
+      text(this.tilesetMatcher.tileEdgeAverage, 0, this.gridHeight * h + 230);
+      text(this.tilesetMatcher.totalEdgeAverage, 0, this.gridHeight * h + 245);
+
     }
   }
 

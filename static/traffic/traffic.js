@@ -78,17 +78,17 @@ class Shop {
   };
 
   show(size) {
-    let r = size * 0.6;
+    let r = size * 0.3;
     fill('red');
     strokeWeight(3);
     stroke('#CC0000');
-    rect(2, 2, size * this.w * 2 - 4, size * this.h * 2 - 4, r);
+    rect(2, 2, size * this.w - 4, size * this.h - 4, r);
 
     if (this.debug) {
       noStroke()
       fill('white')
       textAlign(CENTER)
-      text("" + this.trips, (this.w - 1) * size, (this.h - 1) * size);
+      text("" + this.trips, this.w * size / 2 - 2, this.h * size / 2 + 5);
     }
   };
 }
@@ -247,17 +247,17 @@ class Factory {
     fill('red');
     strokeWeight(3);
     stroke('#CC0000');
-    rect(2, 2, size * this.w * 2 - 4, size * this.h * 2 - 4, size * 0.6);
+    rect(2, 2, size * this.w - 4, size * this.h - 4, size * 0.3);
 
     // Show processing
     if (this.processTime) {
       stroke('white');
       strokeWeight(1);
       noFill()
-      rect(0, 0, this.w * size * 2, 5);
+      rect(0, 0, this.w * size, 5);
       fill('white');
       noStroke();
-      rect(0, 0, this.w * size * 2 * this.processingTime / this.processTime, 5);
+      rect(0, 0, this.w * size * this.processingTime / this.processTime, 5);
     }
 
     if (this.debug) {
@@ -265,11 +265,11 @@ class Factory {
       fill('white')
       textAlign(CENTER)
       for (let input of this.inputs) {
-        text(input.name + ": " + this.resources[input.name], (this.w - 1) * size, (this.h - 1.5) * size);
+        text(input.name + ": " + this.resources[input.name], this.w * size / 2, 15);
       }
-      text(this.processingTime + "/" + this.processTime, (this.w - 1) * size, (this.h - .5) * size);
+      text(this.processingTime + "/" + this.processTime, this.w * size / 2, this.h * size * 3 / 6 + 8);
       for (let output of this.outputs) {
-        text(output.name + ": " + this.resources[output.name], (this.w - 1) * size, (this.h + .5) * size);
+        text(output.name + ": " + this.resources[output.name], this.w * size / 2, this.h * size - 2);
       }
     }
   }
@@ -316,12 +316,12 @@ class House {
   show(size) {
     fill('red')
     noStroke();
-    rect(1, 1, size * 2 - 2, size * 2 - 2);
+    rect(1, 1, size - 2, size - 2);
 
     if (this.debug) {
       if (this.getAvailableCar()) {
         fill('white');
-        text("c", size + 2, size + 5);
+        text("c", size / 2 + 2, size / 2 + 5);
       }
     }
   }
@@ -416,7 +416,7 @@ class Car {
     fill('green');
     // By drawing the car off to the side, it appears to be driving on the side of the road.
     // TODO we can do better than this though?
-    rect(-size / 2, - size * 3 / 4, size, size / 2);
+    rect(-size / 4, - size * 3 / 8, size / 2, size / 4);
 
     pop();
   }
@@ -450,20 +450,20 @@ class Road {
   show(size) {
     fill(this.color);
     noStroke();
-    circle(size, size, size * 2);
+    circle(size / 2, size / 2, size);
 
     let tile = this.map.getTileAtPos(this.pos);
     if (tile.north().getData() && tile.north().getData().road) {
-      rect(0, 0, 2 * size, size);
+      rect(0, 0, size, size / 2);
     }
     if (tile.south().getData() && tile.south().getData().road) {
-      rect(0, size, 2 * size, size);
+      rect(0, size / 2, size, size / 2);
     }
     if (tile.west().getData() && tile.west().getData().road) {
-      rect(0, 0, size, 2 * size);
+      rect(0, 0, size / 2, size);
     }
     if (tile.east().getData() && tile.east().getData().road) {
-      rect(size, 0, size, 2 * size);
+      rect(size / 2, 0, size / 2, size);
     }
     // TODO diagonals?
   }
@@ -641,7 +641,7 @@ class Square {
   show(size) {
     stroke("white");
     noFill();
-    rect(0, 0, size * 2, size * 2);
+    rect(0, 0, size, size);
   }
 }
 

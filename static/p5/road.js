@@ -126,10 +126,7 @@ function setup() {
   let view = new MapView(20);
   // 18px is the top div showing nav items.
   view.setScreen(windowWidth, windowHeight - 18);
-  let w = view.getCanvasWidth();
-  let h = view.getCanvasHeight();
-  let c = createCanvas(w, h);
-  console.log("setting canvas size", w, h);
+  let c = view.createCanvas();
 
   game = new RoadGame(view);
 

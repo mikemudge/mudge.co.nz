@@ -31,7 +31,7 @@ class ClusterRenderer {
       text("" + y, 0, y * (this.size.y + 5) + 15);
 
       for (let [x, tile] of cluster.entries()) {
-        tile.show(10 + x * this.size.x, y * (this.size.y + 5), this.size.x, this.size.y);
+        tile.showTileAt(10 + x * this.size.x, y * (this.size.y + 5), this.size.x, this.size.y);
       }
     }
   }
@@ -61,7 +61,12 @@ class TileRenderer {
       this.tile = tile;
       this.overlay.setDisplayed(true);
       this.overlay.setName("Tile " + this.tile.name);
-      this.pixelSize = createVector(this.size.x / this.tile.image.width * this.scale, this.size.y / this.tile.image.height * this.scale);
+      if (this.tile.image) {
+        this.pixelSize = createVector(this.size.x / this.tile.image.width * this.scale, this.size.y / this.tile.image.height * this.scale);
+      }
+      // Reset the clicked/hover pixels for the new tile.
+      this.hoverPixel = null;
+      this.lastClickedPixel = null;
     }
     console.log("Showing tile for", this.tile);
   }
@@ -83,7 +88,7 @@ class TileRenderer {
     if (this.tile.image) {
       // draw a rectangle and display the tile within it.
       rect(5, 5, bigSize.x + 1, bigSize.y + 1);
-      this.tile.show(5, 5, bigSize.x, bigSize.y);
+      this.tile.showTileAt(5, 5, bigSize.x, bigSize.y);
       if (this.lastClickedPixel) {
         // Highlight the clicked pixel.
         noFill();
@@ -137,16 +142,22 @@ class TileRenderer {
     noFill();
     for (let [y, edge] of edges.entries()) {
       for (let i = 0; i < edge.length; i++) {
-        edge[i].show(22 + i * w, h * y, this.size.x, this.size.y);
+        edge[i].showTileAt(22 + i * w, h * y, this.size.x, this.size.y);
       }
     }
   }
 
   highlight(mousePos) {
+    if (!this.tile.image) {
+      return;
+    }
     this.hoverPixel = this.mouseToPixel(mousePos);
   }
 
   click(mousePos) {
+    if (!this.tile.image) {
+      return true;
+    }
     this.lastClickedPixel = this.mouseToPixel(mousePos);
     return true;
   }
@@ -167,10 +178,11 @@ class TileRenderer {
 }
 
 class PossibleRenderer {
-  constructor(overlay, size) {
+  constructor(overlay, size, tileRenderers) {
     this.size = size
     this.square = null;
     this.overlay = overlay;
+    this.tileRenderers = tileRenderers;
     this.overlay.setName("Grid Square Possiblities");
     this.overlay.setSpace(this.getWidth(), this.getHeight());
     this.overlay.setRenderer(this);
@@ -179,12 +191,12 @@ class PossibleRenderer {
 
   getWidth() {
     // Width is not clear for this, so just have space for 20 wide?
-    return this.size.x * 20;
+    return (this.size.x + 4) * 12;
   }
 
   getHeight() {
     // TODO we can probably display a grid of possible tiles?
-    return this.size.y + 10;
+    return (this.size.y + 4) * 5;
   }
 
   setSquare(square) {
@@ -194,6 +206,9 @@ class PossibleRenderer {
     } else {
       this.square = square;
       this.overlay.setDisplayed(true);
+      if (this.square.tile) {
+        this.tileRenderers[0].setTile(this.square.tile);
+      }
     }
     console.log("Showing possible options for", this.square);
   }
@@ -202,10 +217,12 @@ class PossibleRenderer {
     noStroke();
     fill(255);
     if (this.square.tile) {
-      this.square.tile.show(0, 5, this.size.x, this.size.y);
+      this.square.tile.showTileAt(this.size.x, this.size.y, this.size.x * 4, this.size.y * 4);
     } else {
       for (let [i, p] of this.square.possible.entries()) {
-        p.show(this.size.x + 5 + (this.size.x + 4) * i, 5, this.size.x, this.size.y);
+        let x = (i % 10 + 1) * (this.size.x + 4);
+        let y = Math.floor(i / 10) * (this.size.y + 4);
+        p.showTileAt(x, y, this.size.x, this.size.y);
       }
     }
     textSize(10);
@@ -284,7 +301,7 @@ class TilesetRenderer {
     for (var y = 0; y < this.gridHeight; y++) {
       for (var x = 0; x < this.gridWidth; x++) {
         let tile = this.tilesetMatcher.get(x, y).getData();
-        tile.show(x * w, y * h, w, h);
+        tile.showTileAt(x * w, y * h, w, h);
 
         // If this one is selected, show a border around it.
         if (this.clicked[0] === tile) {
@@ -359,40 +376,42 @@ class TilesetRenderer {
 }
 
 class WFCOverlay {
-  constructor(tilesetMatcher, collapseFunction) {
-    this.tilesetMatcher = tilesetMatcher;
+  constructor(tilesetMatcher, collapseFunction, view, size) {
     this.collapseFunction = collapseFunction;
+    this.view = view;
     this.mousePos = createVector(0, 0);
+    this.mouseMapPos = createVector(0, 0);
     // A place to store a tile which was clicked on.
     this.clicked = null;
+    this.hover = null;
 
     this.overlays = [];
 
-    let size = createVector(16, 16);
+    let tileRenderers = [];
+    tileRenderers.push(new TileRenderer(new Overlay(createVector(50, 100)), size, 16));
+    tileRenderers.push(new TileRenderer(new Overlay(createVector(50 + tileRenderers[0].getWidth(), 100)), size, 16));
 
-    this.clustersOverlay = new Overlay(createVector(20, 80));
-    this.clustersOverlay.setRenderer(new ClusterRenderer(this.clustersOverlay, tilesetMatcher, size));
-    // Hide this by default.
-    this.clustersOverlay.setDisplayed(false);
-    this.overlays.push(this.clustersOverlay);
-
-    let tileRenderers = [
-      new TileRenderer(new Overlay(createVector(0, 100)), size, 16),
-      new TileRenderer(new Overlay(createVector(0, 100)), size, 16)
-    ];
     this.overlays.push(tileRenderers[0].overlay);
     this.overlays.push(tileRenderers[1].overlay);
 
-    this.tilesetOverlay = new Overlay(createVector(20, 80));
-    let tilesetRenderer = new TilesetRenderer(this.tilesetOverlay, tilesetMatcher, tileRenderers, createVector(32, 32));
-    this.overlays.push(this.tilesetOverlay);
+    if (tilesetMatcher) {
+      this.clustersOverlay = new Overlay(createVector(20, 80));
+      this.clustersOverlay.setRenderer(new ClusterRenderer(this.clustersOverlay, tilesetMatcher, size));
+      // Hide this by default.
+      this.clustersOverlay.setDisplayed(false);
+      this.overlays.push(this.clustersOverlay);
 
-    // Update the positions to be to the right of the tileset.
-    tileRenderers[0].overlay.setPos(tilesetRenderer.getWidth() + 50, 100);
-    tileRenderers[1].overlay.setPos(tilesetRenderer.getWidth() + 316, 100);
+      this.tilesetOverlay = new Overlay(createVector(20, 80));
+      let tilesetRenderer = new TilesetRenderer(this.tilesetOverlay, tilesetMatcher, tileRenderers, createVector(32, 32));
+      this.overlays.push(this.tilesetOverlay);
+
+      // Update the positions to be to the right of the tileset.
+      tileRenderers[0].overlay.setPos(tilesetRenderer.getWidth() + 50, 100);
+      tileRenderers[1].overlay.setPos(tilesetRenderer.getWidth() + 316, 100);
+    }
 
     // Add an overlay to show the collapse function grids possible set for a square.
-    this.squareRenderer = new PossibleRenderer(new Overlay(createVector(20, windowHeight - 50)), size)
+    this.squareRenderer = new PossibleRenderer(new Overlay(createVector(20, windowHeight - 100)), size, tileRenderers)
     this.overlays.push(this.squareRenderer.overlay);
 
     // Adding an impossible renderer to help discover impossible scenarios in the tileset.
@@ -403,6 +422,7 @@ class WFCOverlay {
   }
 
   update() {
+    this.view.update();
     // update should find and fill in one square each frame.
     this.collapseFunction.update();
   }
@@ -416,7 +436,12 @@ class WFCOverlay {
       }
     }
 
-    this.collapseFunction.highlight(this.mousePos);
+    let pos = this.view.toGameGridFloor(this.mousePos);
+    this.mouseMapPos = this.view.toGame(this.mousePos);
+    this.hover = this.collapseFunction.getTileAtPos(pos);
+    if (this.hover.getData() == null) {
+      this.hover = null;
+    }
   }
 
   click(mx, my) {
@@ -435,16 +460,71 @@ class WFCOverlay {
     }
 
     // Click went through to the main display.
-    let click = this.collapseFunction.click(this.mousePos);
-    if (click) {
+    let pos = this.view.toGameGridFloor(this.mousePos);
+    this.clicked = this.collapseFunction.getTileAtPos(pos);
+    if (this.clicked.getData() == null) {
+      this.clicked = null;
+    } else {
       // click is a grid location within the collapse
-      this.squareRenderer.setSquare(click.getData());
+      this.squareRenderer.setSquare(this.clicked.getData());
     }
+  }
+
+  showSquare(sq, size) {
+    if (sq.tile) {
+      sq.tile.show(size);
+    } else {
+      if (sq.possibleCounts) {
+        fill(255);
+        noStroke();
+        text(sq.possible.length, 5, 15);
+      }
+      stroke(70);
+      noFill();
+      this.view.showHighlight(size);
+    }
+    if (sq.failed) {
+      stroke(255, 0, 0);
+      strokeWeight(3);
+      noFill();
+      this.view.showHighlight(size);
+    }
+  }
+
+  vectorString(pos) {
+    return Math.round(pos.x) + ", " + Math.round(pos.y);
   }
 
   draw() {
     // Draw grid view first below overlays.
-    this.collapseFunction.drawWFC(this.tilesetMatcher);
+    for (let layer of this.collapseFunction.getLayers()) {
+      this.view.drawMapWith(layer, this.showSquare.bind(this));
+    }
+    // view.coverEdges();
+
+    // TODO this looks weird in ISO?
+    let pos = this.view.toScreen(this.view.center);
+    fill(255, 255, 0)
+    circle(pos.x, pos.y, 5, 5);
+
+    // Show select/hover for the map.
+    if (this.hover) {
+      stroke(0, 255, 0);
+      noFill();
+      this.view.showAtGridLoc(this.hover, this.view.showHighlight.bind(this.view));
+    }
+
+    let loc = this.view.toScreen(this.mouseMapPos);
+    fill(255, 255, 0);
+    noStroke();
+    text(this.vectorString(this.mouseMapPos), loc.x + 3, loc.y - 2);
+    circle(loc.x, loc.y, 5);
+
+    if (this.clicked) {
+      stroke(255, 255, 0);
+      noFill();
+      this.view.showAtGridLoc(this.clicked, this.view.showHighlight.bind(this.view));
+    }
 
     // Then draw various overlays in order (lowest to highest);
     this.drawButtons();

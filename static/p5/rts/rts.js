@@ -9,16 +9,11 @@ include("static/p5/rts/game.js");
 
 function setup() {
   view = new MapView(40);
-  view.setScreen(windowWidth, windowHeight);
-  w = view.getCanvasWidth();
-  h = view.getCanvasHeight();
-  c = createCanvas(w, h);
+  c = view.createCanvas();
   // Disable right click on the canvas so we can use it for the game.
   c.canvas.oncontextmenu = function() {
     return false;
   }
-
-  console.log("setting canvas size", w, h);
 
   game = new Game(view);
   window.onblur = function() {

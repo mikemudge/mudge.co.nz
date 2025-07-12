@@ -256,6 +256,9 @@ p5_apps['road'] = {
 p5_apps['wfc3'] = {
     'tags': ['gridview']
 }
+p5_apps['wfc-iso'] = {
+    'tags': ['gridview', 'wfc']
+}
 p5_apps['wfc-tinytown'] = {
     'tags': ['gridview', 'wfc']
 }
@@ -341,6 +344,9 @@ class ProjectAppView(MethodView):
                         entry_point = p5_conf.get('entry_point', entry_point)
                         self.updateFromConf(app, p5_conf)
 
+                # TODO app version could be improved for dev without caching.
+                # want to reuse a version to support debug in chrome dev tools.
+                app.version = os.path.getmtime('./%s' % entry_point)
                 app.scripts.append("%s?v=%s" % (entry_point, app.version))
 
         logger.info("folder setup %s" % app_path)

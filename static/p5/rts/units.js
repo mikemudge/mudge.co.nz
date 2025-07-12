@@ -194,7 +194,7 @@ class Unit {
   }
 
   show(size) {
-    let uSize = size * this.r / 10;
+    let uSize = size * this.r / 20;
     push();
     rotate(this.vel.heading());
     stroke(255);
@@ -218,7 +218,7 @@ class Archer extends Unit {
     stroke('white');
     strokeWeight(1);
     fill(this.color);
-    arc(0, 0, size * this.r / 10, size * this.r / 10, HALF_PI, PI + HALF_PI);
+    arc(0, 0, size * this.r / 20, size * this.r / 20, HALF_PI, PI + HALF_PI);
     pop();
   }
 }
@@ -230,7 +230,7 @@ class Horse extends Unit {
   }
 
   show(size) {
-    size = size * this.r / 10;
+    size = size * this.r / 20;
     push();
     rotate(this.vel.heading());
     stroke('white');

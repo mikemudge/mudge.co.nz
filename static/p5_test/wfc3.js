@@ -308,10 +308,7 @@ function preload() {
 let wfc = null;
 function setup() {
   view = new MapView(32);
-
-  w = view.getCanvasWidth();
-  h = view.getCanvasHeight();
-  createCanvas(w, h);
+  view.createCanvas();
 
   wfc = new WFC(view);
 

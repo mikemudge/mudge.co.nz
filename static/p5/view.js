@@ -115,8 +115,7 @@ class ButtonMenu {
 class MapView {
   constructor(size) {
     // Have an area of the screen which shows the game.
-    this.offsetLeft = 100;
-    this.offsetTop = 50;
+    this.offset = createVector(100, 50);
     this.offsetBottom = 100;
 
     // The size of a map tile (number of units across a single map tile is).
@@ -144,24 +143,25 @@ class MapView {
   }
 
   setScreen(width, height) {
-    this.screenWidth = width - 2 * this.offsetLeft;
-    this.screenHeight = height - this.offsetTop - this.offsetBottom;
+    this.screenWidth = width - 2 * this.offset.x;
+    this.screenHeight = height - this.offset.y - this.offsetBottom;
 
     this.halfScreen = createVector(this.screenWidth / 2, this.screenHeight / 2);
   }
 
   getCanvasWidth() {
-    return this.offsetLeft * 2 + this.screenWidth;
+    return this.offset.x * 2 + this.screenWidth;
   }
 
   getCanvasHeight() {
-    return this.offsetTop + this.offsetBottom + this.screenHeight;
+    return this.offset.y + this.offsetBottom + this.screenHeight;
   }
 
   createCanvas() {
-    let w = this.getCanvasWidth();
-    let h = this.getCanvasHeight();
-    createCanvas(w, h);
+    return createCanvas(
+        this.offset.x * 2 + this.screenWidth,
+        this.offset.y + this.offsetBottom + this.screenHeight
+    );
   }
 
   getInnerWidth() {
@@ -176,48 +176,33 @@ class MapView {
     return this.size;
   }
 
+  setSize(size) {
+    this.size = size;
+  }
+
   toScreen(pos) {
     return pos.copy().sub(this.center).mult(this.size)
-      .add(this.halfScreen).add(this.offsetLeft, this.offsetTop);
-  }
-
-  toScreenX(x) {
-    // Take the difference from the current map center scaled by the size.
-    let mapping = (x - this.center.x) * this.size;
-    return this.offsetLeft + this.halfScreen.x + mapping;
-  }
-
-  toScreenY(y) {
-    // Take the difference from the current map center scaled by the size.
-    let mapping = (y - this.center.y) * this.size;
-    // Then locate that from the center of the screen.
-    return this.offsetTop + this.halfScreen.y + mapping;
+      .add(this.halfScreen).add(this.offset);
   }
 
   /** map a screen position to its closest grid position. Aligned to map grid */
   toGameGrid(pos) {
+    let newpos = this.toGame(pos).div(this.mapSize);
     return createVector(
-        Math.floor(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
-        Math.floor(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+        Math.floor(newpos.x) * this.mapSize,
+        Math.floor(newpos.y) * this.mapSize)
   }
   toGameGridFloor(pos) {
-    return createVector(
-        Math.floor(this.toGameX(pos.x) / this.mapSize) * this.mapSize,
-        Math.floor(this.toGameY(pos.y) / this.mapSize) * this.mapSize)
+    return this.toGameGrid(pos);
   }
 
   /** map a screen position to its in game location. Not aligned to grid */
   toGame(pos) {
-    // TODO can this use vector math instead?
-    return createVector(this.toGameX(pos.x), this.toGameY(pos.y));
-  }
-
-  toGameX(x) {
-    return (x - this.offsetLeft - this.halfScreen.x) / this.size + this.center.x;
-  }
-
-  toGameY(y) {
-    return (y - this.offsetTop - this.halfScreen.y) / this.size + this.center.y;
+    return pos.copy()
+        .sub(this.offset)
+        .sub(this.halfScreen)
+        .div(this.size)
+        .add(this.center);
   }
 
   setCenter(pos) {
@@ -246,11 +231,11 @@ class MapView {
   }
 
   click() {
-    if (mouseY < this.offsetTop) {
+    if (mouseY < this.offset.y) {
       this.topMenu.click(mouseX, mouseY);
       return true;
     }
-    let my = mouseY - this.screenHeight - this.offsetTop;
+    let my = mouseY - this.screenHeight - this.offset.y;
     if (my > 0) {
       let index = Math.floor(this.bottomMenus.length * mouseX / this.getCanvasWidth());
       let mx = mouseX - (index * this.getCanvasWidth() / this.bottomMenus.length);
@@ -262,8 +247,7 @@ class MapView {
   }
 
   scale(amount) {
-    let x2 = this.toGameX(mouseX);
-    let y2 = this.toGameY(mouseY);
+    let mouseGamePos = this.toGame(createVector(mouseX, mouseY));
     // Still scale the same amount
     let preSize = this.size;
 
@@ -288,54 +272,54 @@ class MapView {
     this.size = Math.min(this.maxSize, this.size);
 
     // TODO controversial zooming?
-    let influence = 1;
-    if (preSize > this.size) {
-      // Focus on center when zooming out.
-      influence = 0;
+    if (preSize < this.size) {
+      // Focus on mouse when zooming in.
+      // We want mouseGamePos to remain under the mouse.
+      let mouseGamePos2 = this.toGame(createVector(mouseX, mouseY));
+      this.center.add(mouseGamePos.sub(mouseGamePos2));
     }
-    x2 = (x2 - this.center.x) * influence + this.center.x;
-    y2 = (y2 - this.center.y) * influence + this.center.y;
-
-    // We want x2, y2 to be in the same location.
-    // Need distance from center to x2, y2 to get scaled.
-    this.center.sub(x2, y2).mult(preSize / this.size).add(x2, y2);
-    // let off = createVector(x2, y2).sub(this.center).mult( -preSize / this.size);
-    // this.center.add(off);
   }
 
   update() {
-    // TODO should vel be scaled by size?
-    // Otherwise we move fast when zoomed in, and slow when zoomed out.
     this.center.add(this.vel);
   }
 
+  showHighlight(size) {
+    rect(0, 0, size, size);
+  }
+
   show(thing) {
-    this.showAtPos(thing, thing.pos);
+    this.showInternal(thing.pos.copy(), thing.show.bind(thing));
   }
 
   showAtGridLoc(loc, method) {
-    push();
-    let x = this.toScreenX(loc.x * this.mapSize);
-    let y = this.toScreenY(loc.y * this.mapSize);
-    translate(x, y);
-    method(this.mapSize * this.size / 2);
-    pop();
+    // A grid location needs to be scaled up by mapSize.
+    this.showInternal(createVector(loc.x, loc.y).mult(this.mapSize), method);
   }
 
   showAtPos(thing, pos) {
+    this.showInternal(pos.copy(), thing.show.bind(thing));
+  }
+
+  showInternal(pos, method) {
+    let screenLoc = this.toScreen(pos.copy());
     push();
-    let x = this.toScreenX(pos.x);
-    let y = this.toScreenY(pos.y);
-    translate(x, y);
-    thing.show(this.mapSize * this.size / 2);
+    translate(screenLoc.x, screenLoc.y);
+    method(this.mapSize * this.size);
     pop();
+  }
+
+  drawMap(map) {
+    this.drawMapWith(map, function(sq, size) {
+      sq.show(size);
+    });
   }
 
   draw(map) {
     this.drawMap(map);
   }
 
-  drawMap(map) {
+  drawMapWith(map, renderFunc) {
     // This is the number of map tiles required to draw in each direction.
     let halfMapTileHeight = (this.halfScreen.y / this.size);
     let halfMapTileWidth = (this.halfScreen.x / this.size);
@@ -352,9 +336,10 @@ class MapView {
         if (!square) {
           continue;
         }
+        let pos = this.toScreen(createVector(x, y).mult(this.mapSize));
         push();
-        translate(this.toScreenX(x * this.mapSize), this.toScreenY(y * this.mapSize));
-        square.show(this.mapSize * this.size / 2);
+        translate(pos);
+        renderFunc(square, this.mapSize * this.size);
         pop();
       }
     }
@@ -368,25 +353,86 @@ class MapView {
       fill("#333333");
       noStroke();
     }
-    rect(0, 0, this.offsetLeft, this.getCanvasHeight());
-    rect(0, 0, this.getCanvasWidth(), this.offsetTop);
-    rect(this.screenWidth + this.offsetLeft, 0, this.offsetLeft, this.getCanvasHeight());
-    rect(0, this.screenHeight + this.offsetTop, this.getCanvasWidth(), this.offsetBottom);
+    rect(0, 0, this.offset.x, this.getCanvasHeight());
+    rect(0, 0, this.getCanvasWidth(), this.offset.y);
+    rect(this.screenWidth + this.offset.x, 0, this.offset.x, this.getCanvasHeight());
+    rect(0, this.screenHeight + this.offset.y, this.getCanvasWidth(), this.offsetBottom);
 
     // After covering up the map, draw the menus overtop.
     this.topMenu.show();
 
     push()
-    translate(this.offsetLeft, this.offsetTop);
+    translate(this.offset);
     this.overlayMenu.show();
     pop();
 
     for (let i = 0; i < this.bottomMenus.length; i++) {
       let x = (i * this.getCanvasWidth() / this.bottomMenus.length);
       push()
-      translate(x, this.screenHeight + this.offsetTop);
+      translate(x, this.screenHeight + this.offset.y);
       this.bottomMenus[i].show();
       pop();
+    }
+  }
+}
+
+class IsoMapView extends MapView {
+  constructor(size) {
+    super(size);
+  }
+
+  // convert to iso space
+  toScreen(pos) {
+    let x2 = (pos.y + pos.x);
+    // we use half because ISO is 30deg, and sin(30deg) is 0.5.
+    let y2 = (pos.y - pos.x)/ 2;
+    return createVector(x2, y2).sub(this.center).mult(this.size)
+        .add(this.halfScreen).add(this.offset);
+  }
+
+  // Pos is in screen space (E.g mouse pointer), and we want the grid space.
+  // Opposite of toScreen
+  /** map a screen position to its in game location. Not aligned to grid */
+  toGame(pos) {
+    let tmp = pos.copy()
+        .sub(this.offset)
+        .sub(this.halfScreen)
+        .div(this.size)
+        .add(this.center);
+    tmp.set(tmp.x / 2 - tmp.y, tmp.y + tmp.x / 2);
+    return tmp;
+  }
+
+  showHighlight(size) {
+    beginShape()
+    vertex(0, 0);
+    vertex(size, -size / 2);
+    vertex(size * 2, 0);
+    vertex(size, size / 2);
+    endShape(CLOSE);
+  }
+
+  drawMapWith(map, renderFunc) {
+    let top = 0;
+    let left = 0;
+    let bottom = map.getHeight();
+    let right = map.getWidth();
+    // TODO ISO will have different requirements for how much do we render?
+    // Y in iso perspective is 0 at the top left, and higher at bottom right.
+    // X in iso perspective is 0 at the bottom left and positive at top right.
+    // This means that the screen Y increases with y but decreases with x.
+    for (let y = top; y < bottom; y++) {
+      for (let x = right - 1; x >= left; x--) {
+        let square = map.getTile(x, y).getData();
+        if (!square) {
+          continue;
+        }
+        push();
+        let screenLoc = this.toScreen(createVector(x, y).mult(this.mapSize));
+        translate(screenLoc.x, screenLoc.y);
+        renderFunc(square, this.mapSize * this.size);
+        pop();
+      }
     }
   }
 }

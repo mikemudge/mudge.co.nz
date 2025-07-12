@@ -77,12 +77,14 @@ function setup() {
 
   // Create a grid, and use the matched tiles to fill it in.
   view = new MapView(20);
-  createCanvas(view.getCanvasWidth(), view.getCanvasHeight());
+  view.createCanvas();
+  view.setCenter(createVector(200, 200));
 
   let useMinimum = true;
-  let collapseFunction = new CollapseFunction(35, 25, view, layers, useMinimum);
+  let collapseFunction = new CollapseFunction(35, 25, 20, layers, useMinimum);
 
-  renderer = new WFCOverlay(tilesetMatcher, collapseFunction);
+  let size = createVector(16, 16);
+  renderer = new WFCOverlay(tilesetMatcher, collapseFunction, view, size);
 }
 
 function draw() {

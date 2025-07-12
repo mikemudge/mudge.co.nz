@@ -14,7 +14,6 @@ class Square {
     this.possible = [];
     this.tile = null;
     this.failed = false;
-    this.possibleCounts = false;
   }
 
   update() {
@@ -23,9 +22,6 @@ class Square {
 
   setPossible(possible) {
     this.possible = possible;
-  }
-  showPossibleCount(possibleCounts) {
-    this.possibleCounts = possibleCounts;
   }
   collapse() {
     if (this.tile) {
@@ -65,48 +61,15 @@ class Square {
       // The provided allowed set reduced this locations possible to nothing.
       throw new ImpossibleCollapse(this, prev, allowed);
     }
+    if (this.possible.length === 1) {
+      this.tile = this.possible[0];
+    }
     // The set of possible is reduced.
     return this.possible.length < prev.length;
   }
 
   setFailed() {
     this.failed = true;
-  }
-
-  showHighlight(size) {
-    stroke(0, 255, 0);
-    noFill();
-    rect(0, 0, size * 2, size * 2);
-  }
-
-  show(size) {
-    if (!this.tile) {
-      if (this.possibleCounts) {
-        fill(255);
-        noStroke();
-        text(this.possible.length, 5, 15);
-      }
-      stroke(70);
-      noFill();
-      rect(0, 0, size * 2, size * 2);
-      if (this.failed) {
-        stroke(255, 0, 0);
-        strokeWeight(3);
-        noFill();
-        rect(0, 0, size * 2, size * 2);
-      }
-      return;
-    }
-    if (this.tile.image) {
-      image(this.tile.image, 0, 0, size * 2, size * 2);
-    }
-    if (this.failed) {
-      stroke(255, 0, 0);
-      strokeWeight(3);
-      noFill();
-      rect(0, 0, size * 2, size * 2);
-      return;
-    }
   }
 
   up() {
@@ -129,19 +92,17 @@ class Square {
 
 /* fills in a grid with Square's which collapse to a single tile using the WFCTile joins. */
 class CollapseFunction {
-  constructor(width, height, view, layers, useMinimum) {
+  constructor(width, height, size, layers, useMinimum) {
     this.width = width;
     this.height = height;
-    this.view = view;
     this.tiles = layers;
-    this.view.setCenter(createVector(200, 200));
 
     this.complete = true;
     // Whether to collapse a tile with the minimum possibility first.
     this.useMinimum = useMinimum;
     this.layers = [];
     for (let i = 0; i < layers.length; i++) {
-      this.layers.push(new Grid(width, height, view.getMapSize()));
+      this.layers.push(new Grid(width, height, size));
     }
     // Use the top layer as the interactive (click/hover) one.
     this.mainLayer = this.layers.length - 1;
@@ -157,7 +118,6 @@ class CollapseFunction {
         for (let z = 0; z < this.layers.length; z++) {
           let square = new Square(x, y, z);
           square.setPossible(this.tiles[z]);
-          square.showPossibleCount(z === this.mainLayer);
           this.layers[z].setTileData(x, y, square);
         }
       }
@@ -214,9 +174,6 @@ class CollapseFunction {
   }
 
   update() {
-
-    view.update();
-
     if (this.complete) {
       return;
     }
@@ -242,39 +199,12 @@ class CollapseFunction {
     }
   }
 
-  highlight(mousePos) {
-    let pos = this.view.toGameGridFloor(mousePos);
-    this.hover = this.layers[this.mainLayer].getTileAtPos(pos);
-    if (this.hover.getData() == null) {
-      this.hover = null;
-    }
+  getTileAtPos(gamePos) {
+    return this.layers[this.mainLayer].getTileAtPos(gamePos);
   }
 
-  click(mousePos) {
-    // translate to a grid location.
-    let pos = this.view.toGameGridFloor(mousePos);
-
-    this.clicked = this.layers[this.mainLayer].getTileAtPos(pos);
-    if (this.clicked.getData() == null) {
-      this.clicked = null;
-    }
-    return this.clicked;
-  }
-
-  drawWFC() {
-    for (let layer of this.layers) {
-      this.view.drawMap(layer);
-    }
-    // view.coverEdges();
-
-    if (this.hover) {
-      let tile = this.hover.getData();
-      this.view.showAtGridLoc(this.hover, tile.showHighlight.bind(tile));
-    }
-    if (this.clicked) {
-      let square = this.clicked.getData();
-      this.view.showAtGridLoc(this.clicked, square.showHighlight.bind(square));
-    }
+  getLayers() {
+    return this.layers;
   }
 
   reduceWrapper(loc) {

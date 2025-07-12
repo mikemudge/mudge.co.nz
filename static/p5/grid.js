@@ -113,9 +113,6 @@ class Grid {
   }
 
   setTileData(x, y, data) {
-    if (!data.show) {
-      throw new Error("No show function on data" + data);
-    }
     this.getTile(x, y).setData(data);
   }
 

@@ -16,7 +16,7 @@ class Player {
     fill(this.color);
     noStroke();
 
-    circle(0, 0, size * 1.4);
+    circle(0, 0, size * 0.7);
   }
 }
 
@@ -28,7 +28,7 @@ class Square {
 
   show(size) {
     fill(this.color);
-    rect(-size, -size, size * 2, size * 2);
+    rect(-size / 2, -size / 2, size, size);
     this.tree.show(size);
   }
 }
@@ -45,11 +45,11 @@ class Tree {
   show(size) {
     stroke("black");
     fill(this.color);
-    rect(-size, -size, size * 2 , size * 2);
+    rect(-size / 2, -size / 2, size, size);
     fill("brown");
-    rect(size * (this.treePos.x - .1), size * this.treePos.y, size * .2 , size * .5);
+    rect(size * (this.treePos.x - .1) / 2, size / 2 * this.treePos.y, size * .1 , size * .25);
     fill("ForestGreen");
-    circle(size * this.treePos.x,  size * (this.treePos.y - .25), size * .75, size * .75);
+    circle(size / 2 * this.treePos.x,  size / 2 * (this.treePos.y - .125), size * .375, size * .375);
   }
 }
 
@@ -112,10 +112,7 @@ class Game {
 
 function setup() {
   view = new MapView(40);
-  w = view.getCanvasWidth();
-  h = view.getCanvasHeight();
-  createCanvas(w, h);
-  console.log("setting canvas size", w, h);
+  view.createCanvas()
   // Must match bomb settings for countdown.
   frameRate(30);
 

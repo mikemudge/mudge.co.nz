@@ -25,7 +25,7 @@ class Circle {
   show(size) {
     noFill();
     stroke(this.color);
-    circle(0, 0, size * this.size / 20);
+    circle(0, 0, size * this.size / 40);
   }
 }
 
@@ -38,7 +38,7 @@ class Rect {
   show(size) {
     size = size * this.size / 20;
     fill(this.color);
-    rect(-size, -size, size * 2, size * 2);
+    rect(-size / 2, -size / 2, size, size);
   }
 }
 
@@ -67,21 +67,22 @@ class MouseControls {
   }
 
   mouseMove() {
-    this.mousePos.set(this.view.toGameX(mouseX), this.view.toGameY(mouseY));
+    this.mousePos.set(mouseX, mouseY);
   }
 
   mouseDrag() {
     if (mouseButton === LEFT) {
-      this.mousePos.set(this.view.toGameX(mouseX), this.view.toGameY(mouseY));
-      this.endMouse.set(mouseX, mouseY);
+      this.mousePos.set(mouseX, mouseY);
+      this.endMouse.set(this.mousePos);
     }
   }
 
   mouseDown() {
     if (mouseButton === LEFT) {
       this.mousePressed = true;
-      this.startMouse.set(mouseX, mouseY);
-      this.endMouse.set(mouseX, mouseY);
+      this.mousePos.set(mouseX, mouseY);
+      this.startMouse.set(this.mousePos);
+      this.endMouse.set(this.mousePos);
     }
   }
 
@@ -94,7 +95,8 @@ class MouseControls {
     }
 
     let buildTarget = this.placement.building;
-    buildTarget.pos.set(this.mousePos);
+    let mouseGamePos = this.view.toGame(this.mousePos);
+    buildTarget.pos.set(mouseGamePos);
     this.game.addUnit(buildTarget);
     // Once placed we set an action to make the worker build it.
     if (shift || this.placement.repeat === true) {
@@ -426,7 +428,8 @@ class MouseControls {
       if (this.placement.cost <= this.team.resourceCount) {
         color = 'green';
       }
-      this.view.showAtPos(new Rect(color, this.placement.building.r || 20), this.mousePos);
+      let mouseGamePos = this.view.toGame(this.mousePos);
+      this.view.showAtPos(new Rect(color, this.placement.building.r || 20), mouseGamePos);
     }
     if (this.lastClick) {
       this.view.showAtPos(new Circle('green', 3), this.lastClick);
@@ -438,37 +441,28 @@ class MouseControls {
       stroke('blue');
       noFill();
       if (selected.actions) {
-        let lastX = this.view.toScreenX(selected.pos.x);
-        let lastY = this.view.toScreenY(selected.pos.y);
+        let last = this.view.toScreen(selected.pos);
         if (selected.action) {
-          let pos = selected.action.getPos();
-          let x = this.view.toScreenX(pos.x);
-          let y = this.view.toScreenY(pos.y);
-          line(lastX, lastY, x, y);
-          circle(x, y, 3);
-          lastX = x;
-          lastY = y;
+          let screenPos = this.view.toScreen(selected.action.getPos());
+          line(last.x, last.y, screenPos.x, screenPos.y);
+          circle(last.x, last.y, 3);
+          last.set(screenPos);
         }
         for (let action of selected.actions) {
-          let pos = action.getPos();
-          let x = this.view.toScreenX(pos.x);
-          let y = this.view.toScreenY(pos.y);
-          line(lastX, lastY, x, y);
-          circle(x, y, 3);
-          lastX = x;
-          lastY = y;
+          let screenPos = this.view.toScreen(action.getPos());
+          line(last.x, last.y, screenPos.x, screenPos.y);
+          circle(last.x, last.y, 3);
+          last.set(screenPos);
         }
       }
 
       // Show a building's rally point.
       // TODO should rally be an action?
       if (selected.targetRally) {
-        let lastX = this.view.toScreenX(selected.pos.x);
-        let lastY = this.view.toScreenY(selected.pos.y);
-        let x = this.view.toScreenX(selected.targetRally.pos.x);
-        let y = this.view.toScreenY(selected.targetRally.pos.y);
-        line(lastX, lastY, x, y);
-        circle(x, y, 2);
+        let last = this.view.toScreen(selected.pos);
+        let screenPos = this.view.toScreen(selected.targetRally.pos);
+        line(last.x, last.y, screenPos.x, screenPos.y);
+        circle(last.x, last.y, 2);
       }
     }
   }
@@ -486,9 +480,9 @@ class Tree {
   show(size) {
     stroke("black");
     fill("brown");
-    rect(size * -.1, 0, size * .2 , size * .5);
+    rect(size * -.05, 0, size * .1 , size * .25);
     fill("ForestGreen");
-    circle(0,  size * -.25, size * .75);
+    circle(0,  size * -.125, size * .375);
   }
 }
 

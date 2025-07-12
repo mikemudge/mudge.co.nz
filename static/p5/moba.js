@@ -12,7 +12,7 @@ class Projectile {
   show(size) {
     fill(this.color);
 
-    ellipse(0, 0, size * .2);
+    ellipse(0, 0, size * .1);
   }
 }
 
@@ -65,7 +65,7 @@ class HealthBar {
 
 class Unit {
   constructor(pos, team) {
-    this.r = 8;
+    this.r = 1.6;
     this.team = team;
     this.game = team.getGame();
     this.pos = pos;
@@ -136,23 +136,19 @@ class Unit {
 
   seek(target) {
     let force = p5.Vector.sub(target, this.pos);
-    // if (force.mag() > this.maxSpeed) {
-      force.setMag(this.maxSpeed);
-    // }
+    force.setMag(this.maxSpeed);
     force.sub(this.vel)
-    // force.limit(this.maxForce)
     return force
   }
 
   show(size) {
-    let uSize = size * this.r / 10;
     push();
     rotate(this.vel.heading());
     stroke(255);
     strokeWeight(1);
     fill(lerpColor(color(0), this.color, this.health.getFraction() * .5 + .5));
 
-    ellipse(0, 0, uSize);
+    ellipse(0, 0, size * this.r);
     pop();
   }
 }
@@ -162,7 +158,7 @@ class HeroUnit extends Unit {
     super(pos, team);
     this.targetPos = null;
     this.vel.mult(0);
-    this.r = 12;
+    this.r = 2.4;
     this.maxSpeed = 3;
     this.health = new HealthBar(500);
     this.health.setRecovery(10);
@@ -202,14 +198,6 @@ class HeroUnit extends Unit {
 
   show(size) {
     super.show(size);
-
-    if (this.targetPos) {
-      // Also show the targetPos for this hero.
-      strokeWeight(2)
-      stroke("green");
-      let v = p5.Vector.sub(this.targetPos, this.pos).mult(size / 20);
-      line(0, 0, v.x, v.y);
-    }
   }
 }
 
@@ -257,7 +245,7 @@ class Tower {
   show(size) {
     fill(this.color);
 
-    circle(0, 0, size * 1.6);
+    circle(size * 1.6, size * 1.6, size * 3.2);
   }
 }
 
@@ -266,7 +254,7 @@ class Spawner {
     this.team = team;
     this.game = team.getGame();
     this.pos = pos;
-    this.r = 20;
+    this.r = 5;
     this.paths = [];
     this.time = -1;
     this.respawnTime = 200;
@@ -308,7 +296,7 @@ class Spawner {
   show(size) {
     fill(this.color);
 
-    rect(-size, -size, size * 2, size * 2);
+    rect(0, 0, size * 4, size * 4);
   }
 }
 
@@ -325,6 +313,7 @@ class Team {
 class Game {
   constructor(view) {
     this.view = view;
+    this.mousePos = createVector(0, 0);
     this.width = 1000;
     this.height = 1000;
     view.setCenter(createVector(this.width / 2, this.height / 2));
@@ -396,8 +385,8 @@ class Game {
   }
 
   click() {
-    let gamePos = createVector(view.toGameX(mouseX), view.toGameY(mouseY));
-    this.hero.targetPos = gamePos;
+    this.mousePos.set(mouseX, mouseY);
+    this.hero.targetPos = view.toGame(mousePos);
   }
 
   show() {
@@ -424,6 +413,15 @@ class Game {
       this.view.show(unit);
     }
 
+    if (this.hero.targetPos) {
+      // Also show the targetPos for this hero.
+      let v = this.view.toScreen(this.hero.pos);
+      let v2 = this.view.toScreen(this.hero.targetPos);
+      strokeWeight(2);
+      stroke("green");
+      line(v.x, v.y, v2.x, v2.y);
+    }
+
     // Render the game.
     for (let unit of this.units) {
       let health = unit.getHealth();
@@ -443,13 +441,10 @@ class Game {
 var mousePos;
 var humanControls;
 function setup() {
-  view = new MapView(40);
+  view = new MapView(10);
   // 18px is the top div showing nav items.
   view.setScreen(windowWidth, windowHeight - 18);
-  w = view.getCanvasWidth();
-  h = view.getCanvasHeight();
-  createCanvas(w, h);
-  console.log("setting canvas size", w, h);
+  view.createCanvas();
 
   logger = new Logger();
   game = new Game(view);

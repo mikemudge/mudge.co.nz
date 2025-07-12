@@ -49,7 +49,7 @@ class Building {
 
   show(size) {
     // Scale this thing based on r?
-    size = size * this.r / 20;
+    size = size * this.r / 40;
     noStroke();
     fill(this.team.color);
 
@@ -92,7 +92,7 @@ class ConstructionSite extends Building {
     size = size * this.building.r / 20;
     noFill();
     stroke(this.team.color);
-    rect(-size, -size, size * 2, size * 2);
+    rect(-size / 2, -size / 2, size, size);
   }
 
   update() {
@@ -140,7 +140,7 @@ class Tower extends Building {
   show(size) {
     fill(this.team.color);
 
-    circle(0, 0, size * 1.6);
+    circle(0, 0, size * 0.8);
   }
 }
 
@@ -250,7 +250,7 @@ class Wall extends Building {
     size = size * this.r / 20;
     noStroke();
     fill(this.team.color);
-    circle(0, 0, size * 2, size * 2);
+    circle(0, 0, size, size);
 
     stroke(this.team.color);
     if (this.lastWall) {

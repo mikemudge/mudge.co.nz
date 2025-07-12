@@ -52,7 +52,7 @@ class Player {
     noStroke();
     fill(this.color);
 
-    ellipse(size, size, size * 1.6);
+    ellipse(size / 2, size / 2, size * 0.8);
   }
 }
 
@@ -87,7 +87,7 @@ class Square {
       } else {
         fill("#fff");
       }
-      rect(0, 0, size * 2, size * 2);
+      rect(0, 0, size, size);
     } else {
       if (this.powerup) {
         if (this.powerup === 'explodeSize') {
@@ -95,7 +95,7 @@ class Square {
         } else if (this.powerup === 'numBombs') {
           fill("green");
         }
-        circle(size, size, size * .6);
+        circle(size / 2, size / 2, size * .3);
       }
     }
 
@@ -113,11 +113,11 @@ class Square {
     let scale = 1 - this.flameTime / 20;
 
     fill('yellow');
-    ellipse(size, size, size * 2 * scale);
+    ellipse(size / 2, size / 2, size * scale);
     fill('orange');
-    ellipse(size, size, size * 1.8 * scale);
+    ellipse(size / 2, size / 2, size * 0.9 * scale);
     fill('red');
-    ellipse(size, size, size * 1.4 * scale);
+    ellipse(size / 2, size / 2, size * 0.7 * scale);
   }
 }
 
@@ -190,14 +190,14 @@ class Bomb {
 
   show(size) {
     fill('#00f');
-    ellipse(size, size, size * 1.6);
+    ellipse(size / 2, size / 2, size * 0.8);
 
     noStroke()
     fill('white');
     // TODO locate where this should be better when zoomed in/out?
     // 12px for 20 size is default, and looks good.
-    textSize(size * 0.6);
-    text(ceil(this.time / this.framerate), size - 3, size + 3);
+    textSize(size * 0.3);
+    text(ceil(this.time / this.framerate), size / 2 - 3, size / 2 + 3);
   }
 }
 

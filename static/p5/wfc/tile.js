@@ -208,7 +208,13 @@ class WFCTile {
     return false;
   }
 
-  show(x, y, w, h) {
+  show(size) {
+    if (this.image) {
+      this.showTileAt(0, 0, size, size * this.image.height / this.image.width);
+    }
+  }
+
+  showTileAt(x, y, w, h) {
     if (this.image) {
       image(this.image, x, y, w, h);
     } else {

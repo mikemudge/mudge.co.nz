@@ -470,7 +470,8 @@ function setup() {
 
 
   let useMinimum = true;
-  let layers = [matcher.processAllTiles()];
+  let allTiles = matcher.processAllTiles();
+  let layers = [allTiles];
   collapseFunction = new CollapseFunction(35, 25, view.getMapSize(), layers, useMinimum);
   view.setCenter(createVector(1400, 0));
   view.setSize(0.5);
@@ -478,7 +479,13 @@ function setup() {
   // collapseFunction.reset();
   // This is ~2x1 with a little extra height for the tile depth.
   let size = createVector(32, 19);
-  renderer = new WFCOverlay(null, collapseFunction, view, size);
+  // How many tiles to show across/down
+  let grid = new Grid(10, 10);
+  for (let [i, t] of allTiles.entries()) {
+    grid.setTileData(i % grid.getWidth(), Math.floor(i / grid.getWidth()), t);
+  }
+
+  renderer = new WFCOverlay(collapseFunction, view, size, grid);
 }
 
 function draw() {
@@ -491,20 +498,27 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
-
-  view.setScreen(windowWidth, windowHeight - 18);
+  if (view) {
+    view.setScreen(windowWidth, windowHeight - 18);
+  }
 }
 
 function keyPressed() {
-  view.keys();
+  if (view) {
+    view.keys();
+  }
 }
 
 function keyReleased() {
-  view.keys();
+  if (view) {
+    view.keys();
+  }
 }
 
 function mouseWheel(event) {
-  view.scale(event.delta);
+  if (view) {
+    view.scale(event.delta);
+  }
 }
 
 function mouseMoved() {

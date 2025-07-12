@@ -84,7 +84,8 @@ function setup() {
   let collapseFunction = new CollapseFunction(35, 25, 20, layers, useMinimum);
 
   let size = createVector(16, 16);
-  renderer = new WFCOverlay(tilesetMatcher, collapseFunction, view, size);
+  renderer = new WFCOverlay(collapseFunction, view, size, tilesetMatcher.tiles);
+  renderer.addTilesetMatcher(tilesetMatcher, size);
 }
 
 function draw() {

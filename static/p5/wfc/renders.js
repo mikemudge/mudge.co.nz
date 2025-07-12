@@ -1,7 +1,7 @@
 class ClusterRenderer {
-  constructor(overlay, tilesetMatcher, size) {
+  constructor(overlay, clusters, size) {
     this.overlay = overlay;
-    this.tilesetMatcher = tilesetMatcher;
+    this.clusters = clusters;
     this.size = size;
 
     this.overlay.setName("Clusters");
@@ -10,15 +10,15 @@ class ClusterRenderer {
   }
 
   getWidth() {
-    let maxCluster = this.tilesetMatcher.clusters[0].length;
-    for (let cluster of this.tilesetMatcher.clusters) {
+    let maxCluster = this.clusters[0].length;
+    for (let cluster of this.clusters) {
       maxCluster = Math.max(maxCluster, cluster.length);
     }
     return 20 + maxCluster * this.size.x;
   }
 
   getHeight() {
-    return this.tilesetMatcher.clusters.length * (this.size.y + 5);
+    return this.clusters.length * (this.size.y + 5);
   }
 
   show() {
@@ -27,7 +27,7 @@ class ClusterRenderer {
     noStroke();
 
     // Show the clusters
-    for (let [y, cluster] of this.tilesetMatcher.clusters.entries()) {
+    for (let [y, cluster] of this.clusters.entries()) {
       text("" + y, 0, y * (this.size.y + 5) + 15);
 
       for (let [x, tile] of cluster.entries()) {
@@ -69,6 +69,10 @@ class TileRenderer {
       this.lastClickedPixel = null;
     }
     console.log("Showing tile for", this.tile);
+  }
+
+  isClicked(tile) {
+    return this.tile === tile;
   }
 
   getWidth() {
@@ -178,11 +182,11 @@ class TileRenderer {
 }
 
 class PossibleRenderer {
-  constructor(overlay, size, tileRenderers) {
+  constructor(overlay, size, tileRenderer) {
     this.size = size
     this.square = null;
     this.overlay = overlay;
-    this.tileRenderers = tileRenderers;
+    this.tileRenderer = tileRenderer;
     this.overlay.setName("Grid Square Possiblities");
     this.overlay.setSpace(this.getWidth(), this.getHeight());
     this.overlay.setRenderer(this);
@@ -207,7 +211,7 @@ class PossibleRenderer {
       this.square = square;
       this.overlay.setDisplayed(true);
       if (this.square.tile) {
-        this.tileRenderers[0].setTile(this.square.tile);
+        this.tileRenderer.setTile(this.square.tile);
       }
     }
     console.log("Showing possible options for", this.square);
@@ -261,57 +265,45 @@ class ImpossibleRenderer {
 }
 
 class TilesetRenderer {
-  constructor(overlay, tilesetMatcher, tileSetters, size) {
-    this.tilesetMatcher = tilesetMatcher;
+  constructor(overlay, grid, size) {
+    this.tileGrid = grid;
 
     this.size = size;
-    this.gridHeight = this.tilesetMatcher.tiles.getHeight();
-    this.gridWidth = this.tilesetMatcher.tiles.getWidth();
 
-    this.tileSetters = tileSetters;
-    this.clicked = [null, null];
-    this.clickIndex = 0;
+    this.tileTarget = null;
     this.overlay = overlay;
     this.overlay.setName("Tileset");
     this.overlay.setSpace(this.getWidth(), this.getHeight());
     this.overlay.setRenderer(this);
+  }
 
-    this.diff = [0, 0, 0, 0];
+  setTileTarget(tileTarget) {
+    this.tileTarget = tileTarget;
   }
 
   getWidth() {
-    return this.size.x * this.gridWidth;
+    return this.size.x * this.tileGrid.getWidth();
   }
 
   getHeight() {
-    return this.size.y * this.gridHeight;
-  }
-
-  updateTileMatchStats(t1, t2) {
-    for (let d = 0; d < 4; d++) {
-      this.diff[d] = this.tilesetMatcher.compareEdgesDifference(d, t1, t2, false);
-    }
-
-    this.tilesetMatcher.compareEdges(1, t1, t2);
+    return this.size.y * this.tileGrid.getHeight();
   }
 
   show() {
     let w = this.size.y;
     let h = this.size.x;
-    for (var y = 0; y < this.gridHeight; y++) {
-      for (var x = 0; x < this.gridWidth; x++) {
-        let tile = this.tilesetMatcher.get(x, y).getData();
+    for (var y = 0; y < this.tileGrid.getHeight(); y++) {
+      for (var x = 0; x < this.tileGrid.getWidth(); x++) {
+        let tile = this.tileGrid.getTile(x, y).getData();
+        if (!tile) {
+          continue;
+        }
         tile.showTileAt(x * w, y * h, w, h);
 
         // If this one is selected, show a border around it.
-        if (this.clicked[0] === tile) {
+        if (this.tileTarget && this.tileTarget.isClicked(tile)) {
           noFill();
           stroke(255, 0, 0);
-          rect(x * w, y * h, w, h)
-        }
-        if (this.clicked[1] === tile) {
-          noFill();
-          stroke(255, 255, 0);
           rect(x * w, y * h, w, h)
         }
       }
@@ -321,28 +313,10 @@ class TilesetRenderer {
     textSize(10);
     fill(255);
     noStroke();
-    for (var y = 0; y < this.gridHeight; y++) {
-      for (var x = 0; x < this.gridWidth; x++) {
+    for (var y = 0; y < this.tileGrid.getHeight(); y++) {
+      for (var x = 0; x < this.tileGrid.getWidth(); x++) {
         text(x + "," + y, x * w + 3, y * h + 10);
       }
-    }
-
-    for (let [i, diff] of this.diff.entries()) {
-      text(i + " " + diff, 0, this.gridHeight * h + i * 15 + 15);
-    }
-
-    // Draw the image.
-    if (this.tilesetMatcher.edgeDetectionImage) {
-      noSmooth();
-      image(this.tilesetMatcher.edgeDetectionImage, 0, this.gridHeight * h + 60, 320, 160);
-      let x = 160
-      stroke(255, 255, 0);
-      noFill();
-      rect(x - 10, this.gridHeight * h + 60, 10 * 2, 160);
-
-      text(this.tilesetMatcher.tileEdgeAverage, 0, this.gridHeight * h + 230);
-      text(this.tilesetMatcher.totalEdgeAverage, 0, this.gridHeight * h + 245);
-
     }
   }
 
@@ -350,33 +324,84 @@ class TilesetRenderer {
     let x = Math.floor(pos.x / this.size.x);
     let y = Math.floor(pos.y / this.size.y);
     // Default to no selection.
-    let clicked = null;
-
-    if (y >= 0 && y < this.gridHeight) {
-      if (x >= 0 && x < this.gridWidth) {
-        clicked = this.tilesetMatcher.get(x, y).getData();
-      }
-    }
+    let clicked = this.tileGrid.getTile(x, y).getData();
 
     if (clicked) {
-      console.log("clicked on", clicked);
-      this.clicked[this.clickIndex] = clicked;
-      this.tileSetters[this.clickIndex].setTile(clicked);
-      this.clickIndex = this.clickIndex + 1;
-      if (this.clickIndex >= this.clicked.length) {
-        // Reset the index.
-        this.clickIndex = 0;
-        let t1 = this.clicked[0];
-        let t2 = this.clicked[1];
-        this.updateTileMatchStats(t1, t2);
+      console.log("Tileset Render click on", clicked);
+      if (this.tileTarget) {
+        this.tileTarget.setTile(clicked);
       }
       return true;
     }
   }
 }
 
+class EdgeDetectionRenderer {
+  constructor(overlay, tilesetMatcher, tileSetters) {
+    this.overlay = overlay;
+    this.tilesetMatcher = tilesetMatcher;
+    this.tileSetters = tileSetters;
+    this.clicked = [null, null];
+    this.clickIndex = 0;
+    this.diff = [0, 0, 0, 0];
+
+
+    this.overlay.setName("Edge Detection");
+    this.overlay.setSpace(this.getWidth(), this.getHeight());
+    this.overlay.setRenderer(this);
+  }
+
+  getWidth() {
+    return 320;
+  }
+
+  getHeight() {
+    return 300;
+  }
+
+  setTile(tile) {
+    this.clicked[this.clickIndex] = tile;
+    this.tileSetters[this.clickIndex].setTile(tile);
+    this.clickIndex += 1;
+
+    if (this.clickIndex >= this.clicked.length) {
+      // Reset the index.
+      this.clickIndex = 0;
+      for (let d = 0; d < 4; d++) {
+        this.diff[d] = this.tilesetMatcher.compareEdgesDifference(d, this.clicked[0], this.clicked[1], false);
+      }
+
+      this.tilesetMatcher.compareEdges(1, this.clicked[0], this.clicked[1]);
+    }
+  }
+
+  isClicked(tile) {
+    return this.clicked.includes(tile);
+  }
+
+  show() {
+    for (let [i, diff] of this.diff.entries()) {
+      text(i + " " + diff, 0, i * 15 + 15);
+    }
+
+    // Draw the image.
+    if (this.tilesetMatcher.edgeDetectionImage) {
+      noSmooth();
+      image(this.tilesetMatcher.edgeDetectionImage, 0, 60, 320, 160);
+      let x = 160
+      stroke(255, 255, 0);
+      noFill();
+      rect(x - 10, 60, 10 * 2, 160);
+
+      text(this.tilesetMatcher.tileEdgeAverage, 0, 230);
+      text(this.tilesetMatcher.totalEdgeAverage, 0, 245);
+
+    }
+  }
+}
+
 class WFCOverlay {
-  constructor(tilesetMatcher, collapseFunction, view, size) {
+  constructor(collapseFunction, view, size, grid) {
     this.collapseFunction = collapseFunction;
     this.view = view;
     this.mousePos = createVector(0, 0);
@@ -385,39 +410,48 @@ class WFCOverlay {
     this.clicked = null;
     this.hover = null;
 
-    this.overlays = [];
+    this.tilesetOverlay = new Overlay(createVector(20, 80));
+    this.tilesetRenderer = new TilesetRenderer(this.tilesetOverlay, grid, createVector(32, 32));
 
-    let tileRenderers = [];
-    tileRenderers.push(new TileRenderer(new Overlay(createVector(50, 100)), size, 16));
-    tileRenderers.push(new TileRenderer(new Overlay(createVector(50 + tileRenderers[0].getWidth(), 100)), size, 16));
-
-    this.overlays.push(tileRenderers[0].overlay);
-    this.overlays.push(tileRenderers[1].overlay);
-
-    if (tilesetMatcher) {
-      this.clustersOverlay = new Overlay(createVector(20, 80));
-      this.clustersOverlay.setRenderer(new ClusterRenderer(this.clustersOverlay, tilesetMatcher, size));
-      // Hide this by default.
-      this.clustersOverlay.setDisplayed(false);
-      this.overlays.push(this.clustersOverlay);
-
-      this.tilesetOverlay = new Overlay(createVector(20, 80));
-      let tilesetRenderer = new TilesetRenderer(this.tilesetOverlay, tilesetMatcher, tileRenderers, createVector(32, 32));
-      this.overlays.push(this.tilesetOverlay);
-
-      // Update the positions to be to the right of the tileset.
-      tileRenderers[0].overlay.setPos(tilesetRenderer.getWidth() + 50, 100);
-      tileRenderers[1].overlay.setPos(tilesetRenderer.getWidth() + 316, 100);
-    }
+    let tile1 = new TileRenderer(new Overlay(createVector(50 + this.tilesetRenderer.getWidth(), 100)), size, 16);
+    this.tilesetRenderer.setTileTarget(tile1);
+    this.tileRenderer = tile1;
 
     // Add an overlay to show the collapse function grids possible set for a square.
-    this.squareRenderer = new PossibleRenderer(new Overlay(createVector(20, windowHeight - 100)), size, tileRenderers)
-    this.overlays.push(this.squareRenderer.overlay);
+    this.squareRenderer = new PossibleRenderer(new Overlay(createVector(20, windowHeight - 100)), size, tile1);
 
     // Adding an impossible renderer to help discover impossible scenarios in the tileset.
     // let impossibleRenderer = new ImpossibleRenderer(size, this.tilesetMatcher);
     // this.overlays.push(new Overlay(createVector(20 + tilesetRenderer.getWidth(), 50 + tilesetRenderer.getHeight()), impossibleRenderer))
 
+    this.overlays = [];
+
+    this.overlays.push(this.tilesetOverlay);
+    this.overlays.push(tile1.overlay);
+    this.overlays.push(this.squareRenderer.overlay);
+    this.reverseOverlays = this.overlays.toReversed();
+  }
+
+  addTilesetMatcher(tilesetMatcher, size) {
+    this.clustersOverlay = new Overlay(createVector(20, 80));
+    // TODO will tilesetMatcher.clusters be set here?
+    this.clustersOverlay.setRenderer(new ClusterRenderer(this.clustersOverlay, tilesetMatcher.clusters, size));
+    this.clustersOverlay.setDisplayed(false);
+
+    let x = 50 + this.tilesetRenderer.getWidth() + this.tileRenderer.getWidth();
+    let tile2 = new TileRenderer(new Overlay(createVector(x, 100)), size, 16);
+    let tileRenderers = [this.tileRenderer, tile2];
+
+    let overlay = new Overlay(createVector(20, this.tilesetRenderer.getHeight()));
+    let edgeDetectionRender = new EdgeDetectionRenderer(overlay, tilesetMatcher, tileRenderers);
+    this.tilesetRenderer.setTileTarget(edgeDetectionRender);
+
+    // Add extra overlays
+    this.overlays.push(this.clustersOverlay);
+    this.overlays.push(overlay);
+    this.overlays.push(tile2.overlay);
+
+    // Redo this after adding more overlays.
     this.reverseOverlays = this.overlays.toReversed();
   }
 
@@ -454,7 +488,7 @@ class WFCOverlay {
 
     for (let overlay of this.reverseOverlays) {
       if (overlay.click(this.mousePos)) {
-        console.log("clicked on", overlay.name);
+        console.log("Overlay clicked on", overlay.name);
         return;
       }
     }
@@ -563,7 +597,7 @@ class WFCOverlay {
       return true;
     }
     dx = mousePos.x - x - 100;
-    if (dy > 0 && dy < 20 && dx > 0 && dx < 100) {
+    if (this.clustersOverlay && dy > 0 && dy < 20 && dx > 0 && dx < 100) {
       console.log("Toggle clusters display");
       this.clustersOverlay.toggleDisplay();
       return true;

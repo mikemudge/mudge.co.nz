@@ -33,11 +33,12 @@ class Projectile {
 }
 
 class HealthBar {
-  constructor(maxHealth) {
+  constructor(maxHealth, r) {
     this.maxHealth = maxHealth;
     this.health = maxHealth;
     this.recovery = 0;
-    this.scale = 1;
+    // default scale is the radius of the unit + 20%.
+    this.scale = r * 1.2;
   }
 
   setScale(scale) {
@@ -80,14 +81,18 @@ class HealthBar {
     return this.health > 0;
   }
 
-  show(size) {
-    let uSize = this.scale * size;
-    fill("#0F0")
-    noStroke();
-    rect(-uSize - size / 2, -uSize - size / 2 - 2, (uSize * 2 + size) * this.health/this.maxHealth, size / 2);
+  showHealth(size) {
+    let h = Math.sqrt(this.scale) * 2 * size;
+    let scaledRadius = size * this.scale;
+
+    // Draw the outline in white.
     stroke("#FFF");
     noFill();
-    rect(-uSize - size / 2, -uSize - size / 2 - 2, (uSize * 2 + size), size / 2);
+    rect(-scaledRadius, -scaledRadius - h, scaledRadius * 2, h);
+    // Fill in the health level in green.
+    fill("#0F0")
+    noStroke();
+    rect(-scaledRadius, -scaledRadius - h, scaledRadius * 2 * this.health/this.maxHealth, h);
   }
 }
 
@@ -103,7 +108,7 @@ class Unit {
     this.maxForce = 0.25;
     this.color = team.color;
     this.attackPower = 1;
-    this.health = new HealthBar(100);
+    this.health = new HealthBar(100, this.r);
     this.attackRange = 20;
     this.sightRange = 200;
     this.buildActions = [];
@@ -139,19 +144,6 @@ class Unit {
         this.action = this.actions.shift();
       }
     }
-
-    // TODO find and attack units?
-    // if (!this.target) {
-    //   // Find a target?
-    //   var options = this.game.getNearby(this.pos, 100);
-    //   let team = this.team;
-    //   let opponents = options.filter(function(unit) {
-    //     return unit.team !== team;
-    //   });
-    //   if (opponents) {
-    //     this.target = random(opponents);
-    //   }
-    // }
 
     // Now update the speed and position based on what was calculated above.
     this.vel.add(this.acc);
@@ -194,14 +186,13 @@ class Unit {
   }
 
   show(size) {
-    let uSize = size * this.r / 20;
     push();
     rotate(this.vel.heading());
     stroke(255);
     strokeWeight(1);
     fill(lerpColor(color(0), this.color, this.health.getFraction() * .5 + .5));
 
-    ellipse(0, 0, uSize);
+    ellipse(0, 0, size * this.r * 2);
     pop();
   }
 }
@@ -218,7 +209,7 @@ class Archer extends Unit {
     stroke('white');
     strokeWeight(1);
     fill(this.color);
-    arc(0, 0, size * this.r / 20, size * this.r / 20, HALF_PI, PI + HALF_PI);
+    arc(0, 0, size * this.r * 2, size * this.r * 2, HALF_PI, PI + HALF_PI);
     pop();
   }
 }
@@ -230,13 +221,13 @@ class Horse extends Unit {
   }
 
   show(size) {
-    size = size * this.r / 20;
+    size = size * this.r;
     push();
     rotate(this.vel.heading());
     stroke('white');
     strokeWeight(1);
     fill(this.color);
-    triangle(-size, -size / 2, -size, size / 2, size, 0);
+    triangle(-size * 2, -size, -size * 2, size, size * 2, 0);
     pop();
   }
 }

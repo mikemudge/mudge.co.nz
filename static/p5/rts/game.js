@@ -1,31 +1,13 @@
-class Team {
-  constructor(game, color) {
-    this.game = game;
-    this.color = color;
-    this.headQuarters = null;
-    // TODO starting with high resources for testing.
-    this.resourceCount = 2000;
-  }
-
-  getGame() {
-    return this.game;
-  }
-
-  setHq(hq) {
-    this.headQuarters = hq;
-  }
-}
-
 class Circle {
-  constructor(color, size) {
+  constructor(color, r) {
     this.color = color;
-    this.size = size;
+    this.r = r;
   }
 
   show(size) {
     noFill();
     stroke(this.color);
-    circle(0, 0, size * this.size / 40);
+    circle(0, 0, size * this.r * 2);
   }
 }
 
@@ -36,7 +18,7 @@ class Rect {
   }
 
   show(size) {
-    size = size * this.size / 20;
+    size = size * this.size;
     fill(this.color);
     rect(-size / 2, -size / 2, size, size);
   }
@@ -50,7 +32,7 @@ class Rect {
 
 class MouseControls {
   constructor(game, team) {
-    this.game = game;
+    this.map = game.map;
     this.team = team;
     this.view = game.view;
     this.mousePos = createVector(0, 0);
@@ -65,6 +47,8 @@ class MouseControls {
     this.view.addBottomMenu(new DisplayMenu(this.showSelectedUnits.bind(this)));
     this.view.addBottomMenu(this.buildButtons);
   }
+
+  update() {}
 
   mouseMove() {
     this.mousePos.set(mouseX, mouseY);
@@ -97,14 +81,14 @@ class MouseControls {
     let buildTarget = this.placement.building;
     let mouseGamePos = this.view.toGame(this.mousePos);
     buildTarget.pos.set(mouseGamePos);
-    this.game.addUnit(buildTarget);
+    this.map.addUnit(buildTarget);
     // Once placed we set an action to make the worker build it.
     if (shift || this.placement.repeat === true) {
       this.selectedUnit.addAction(new BuildCommand(buildTarget));
     } else {
       this.selectedUnit.setAction(new BuildCommand(buildTarget));
     }
-    this.game.view.overlayMenu.addMessage("Building " + buildTarget.constructor.name);
+    this.view.overlayMenu.addMessage("Building " + buildTarget.constructor.name);
 
     // Pay for it.
     this.team.resourceCount -= this.placement.cost;
@@ -129,7 +113,7 @@ class MouseControls {
     // Looks like a selection area is being made.
 
     // TODO support for shift adding to selection?
-    let newSelection = this.game.getInArea(Math.min(v1.x, v2.x),
+    let newSelection = this.map.getInArea(Math.min(v1.x, v2.x),
       Math.min(v1.y, v2.y),
       Math.abs(v1.x - v2.x),
       Math.abs(v1.y - v2.y));
@@ -210,7 +194,7 @@ class MouseControls {
         this.handleAreaSelect();
         return;
       }
-      let nearby = this.game.getNearby(clickPos, 20);
+      let nearby = this.map.getNearby(clickPos, 20);
       if (nearby.length > 0) {
         // There was units nearby, select them.
         this.handlePointSelect(clickPos, nearby);
@@ -247,7 +231,7 @@ class MouseControls {
 
   handleAssignCommand(units, clickPos) {
     // Check for nearby targets to attack
-    let nearby = this.game.getNearby(clickPos, 20);
+    let nearby = this.map.getNearby(clickPos, 20);
     if (nearby.length > 0) {
       // TODO select best should prefer other team?
       // Or support following same team unit?
@@ -262,7 +246,7 @@ class MouseControls {
     // Check for resources to gather.
     // TODO how to tell which units can do which actions?
     // E.g buildings can't move, soldiers can't gather, workers can't fight?
-    let features = this.game.getNearbyFeatures(clickPos, 20);
+    let features = this.map.getNearbyFeatures(clickPos, 20);
     if (features.length > 0) {
       this.commandAll(this.selectedUnits, GatherCommand, features[0]);
       return;
@@ -399,6 +383,8 @@ class MouseControls {
     let resources = "Money: " + this.team.resourceCount;
     text(resources, 5, 15);
 
+    // TODO fix use of constructor here?
+    // This is just debug information for the selected units.
     if (this.selectedUnits.length > 0) {
       let units = "Selected: " + this.selectedUnits.length;
       let set = {};
@@ -413,7 +399,7 @@ class MouseControls {
     }
   }
 
-  show() {
+  draw() {
     if (this.mousePressed && this.startMouse.dist(this.endMouse) > 5) {
       noFill()
       stroke('yellow');
@@ -429,14 +415,14 @@ class MouseControls {
         color = 'green';
       }
       let mouseGamePos = this.view.toGame(this.mousePos);
-      this.view.showAtPos(new Rect(color, this.placement.building.r || 20), mouseGamePos);
+      this.view.showAtPos(new Rect(color, this.placement.building.r), mouseGamePos);
     }
     if (this.lastClick) {
       this.view.showAtPos(new Circle('green', 3), this.lastClick);
     }
     for (let selected of this.selectedUnits) {
       // Show something about the selected unit?
-      this.view.showAtPos(new Circle('green', selected.r * 2.8 + 2), selected.pos);
+      this.view.showAtPos(new Circle('green', selected.r * 1.4), selected.pos);
 
       stroke('blue');
       noFill();
@@ -480,131 +466,57 @@ class Tree {
   show(size) {
     stroke("black");
     fill("brown");
-    rect(size * -.05, 0, size * .1 , size * .25);
+    rect(size * -2, 0, size * 4, size * 10);
     fill("ForestGreen");
-    circle(0,  size * -.125, size * .375);
+    circle(0,  size * -5, size * 15);
   }
 }
 
-// TODO add resources and gathering.
-
 class Game {
-  constructor(view) {
+  constructor(view, map) {
     this.view = view;
-    this.width = 1000;
-    this.height = 1000;
-    this.units = [];
-    this.features = [];
-    this.projectiles = [];
+    this.map = map;
     this.init();
   }
 
   init() {
-    this.units = [];
+    let bounds = this.map.getBounds();
     let team = new Team(this, color('#D33430'));
     let hq = new Base(createVector(50, 50), team);
     team.setHq(hq);
-    this.units.push(hq);
+    this.map.addUnit(hq);
 
     team = new Team(this, color('#5C16C8'))
-    let teamSpawn = createVector(this.width - 50, this.height - 50);
+    let teamSpawn = createVector(bounds.x - 50, bounds.y - 50);
     let homeBase = new Base(teamSpawn, team);
     team.setHq(homeBase);
 
-    this.units.push(homeBase);
+    this.map.addUnit(homeBase);
     let pos = p5.Vector.random2D().mult(homeBase.r * 1.4 + 10).add(homeBase.pos);
-    this.units.push(new Builder(pos, team));
-    this.units.push(new Barracks(createVector(-100, 0).add(teamSpawn), team));
+    this.map.addUnit(new Builder(pos, team));
+    this.map.addUnit(new Barracks(createVector(-100, 0).add(teamSpawn), team));
 
     this.view.setCenter(teamSpawn);
     // Add human controls for one team
-    this.controls = new MouseControls(this, team);
+    this.humanControls = new MouseControls(this, team);
+    this.map.addControls(this.humanControls);
 
     pos = p5.Vector.random2D().mult(300).add(teamSpawn);
-    this.features.push(new Tree(pos));
+    this.map.addFeature(new Tree(pos));
     pos = p5.Vector.random2D().mult(20).add(pos);
-    this.features.push(new Tree(pos));
+    this.map.addFeature(new Tree(pos));
     pos = p5.Vector.random2D().mult(20).add(pos);
-    this.features.push(new Tree(pos));
+    this.map.addFeature(new Tree(pos));
 
     this.view.overlayMenu.addMessage("RTS Game init finished");
-  }
-
-  getNearby(pos, range) {
-    var result = this.units.filter(function(unit) {
-      let eRange = range;
-      if (unit.r) {
-        eRange = unit.r + range;
-      }
-      return unit.pos.dist(pos) < eRange;
-    });
-    return result;
-  }
-
-  getNearbyFeatures(pos, range) {
-    var result = this.features.filter(function(feature) {
-      return feature.pos.dist(pos) < range;
-    });
-    return result;
-  }
-
-  getInArea(x, y, w, h) {
-    var result = this.units.filter(function(unit) {
-      return unit.pos.x > x && unit.pos.x < x + w && unit.pos.y > y && unit.pos.y < y + h;
-    });
-    return result;
-  }
-
-  addUnit(unit) {
-    this.units.push(unit);
-  }
-
-  addProjectile(arrow) {
-    this.projectiles.push(arrow);
   }
 
   show() {
     this.view.update();
 
-    for (let unit of this.units) {
-      unit.update();
-    }
-    for (let i = this.units.length - 1; i >= 0; i--) {
-      if (this.units[i].finished()) {
-        this.units.splice(i, 1);
-      }
-    }
+    this.map.update();
 
-    for (let i = this.projectiles.length - 1; i >= 0; i--) {
-      this.projectiles[i].update();
-      if (this.projectiles[i].finished()) {
-        this.projectiles.splice(i, 1);
-      }
-    }
-
-    for (let feature of this.features) {
-      this.view.show(feature);
-    }
-
-    // Render the game.
-    for (let unit of this.units) {
-      this.view.show(unit);
-    }
-
-    for (let projectile of this.projectiles) {
-      this.view.show(projectile);
-    }
-
-    // Render the game.
-    for (let unit of this.units) {
-      let health = unit.getHealth();
-      health.setScale(unit.r / 20);
-      if (health.isDamaged()) {
-        this.view.showAtPos(health, unit.pos);
-      }
-    }
-
-    this.controls.show();
+    this.map.show(this.view);
 
     this.view.coverEdges();
   }

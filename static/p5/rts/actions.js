@@ -118,6 +118,13 @@ class AttackMoveCommand {
     this.destination = destination;
     this.target = null;
   }
+//     if (this.target) {
+//       if (this.target.pos.dist(this.pos) < this.range) {
+//         this.target.damage(this.attackPower);
+//         // No moving while attacking.
+//         return;
+//       }
+//       this.applyForce(this.seek(this.target.pos));
 
   update(unit) {
     if (this.target) {
@@ -137,6 +144,7 @@ class AttackMoveCommand {
         this.target = random(nearby);
       }
     }
+
     if (this.target) {
       let dis = this.target.pos.dist(unit.pos);
       if (dis < this.target.r + unit.attackRange) {
@@ -187,5 +195,32 @@ class MoveCommand {
       range = unit.maxSpeed / 2;
     }
     return unit.pos.dist(this.pos) < range;
+  }
+}
+
+class PathCommand {
+  constructor(path) {
+    this.goalIndex = 0;
+    this.pathActions = [];
+    for (let p of path.points) {
+      this.pathActions.push(new AttackMoveCommand(p));
+    }
+  }
+
+  update(unit) {
+    if (this.isComplete(unit)) {
+      unit.stop();
+      return;
+    }
+    this.pathActions[this.goalIndex].update(unit);
+
+    // If the unit completes the attack move action, move to the next one.
+    if (this.pathActions[this.goalIndex].isComplete(unit)) {
+      this.goalIndex++;
+    }
+  }
+
+  isComplete(unit) {
+    return this.goalIndex >= this.pathActions.length;
   }
 }

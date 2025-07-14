@@ -1,21 +1,14 @@
-function include(source) {
-  console.log("Should load", source);
-}
-
-include("static/p5/rts/units.js");
-include("static/p5/rts/buildings.js");
-include("static/p5/rts/actions.js");
-include("static/p5/rts/game.js");
-
 function setup() {
-  view = new MapView(40);
+  view = new MapView(10);
   c = view.createCanvas();
   // Disable right click on the canvas so we can use it for the game.
   c.canvas.oncontextmenu = function() {
     return false;
   }
 
-  game = new Game(view);
+  let gamemap = new GameMap(1000, 1000);
+  game = new Game(view, gamemap);
+  controls = game.humanControls;
   window.onblur = function() {
     game.paused = true;
     noLoop();
@@ -48,21 +41,21 @@ function mouseDragged(event) {
   if (game.paused) {
     return;
   }
-  game.controls.mouseDrag();
+  controls.mouseDrag();
 }
 
 function mouseMoved() {
   if (game.paused) {
     return;
   }
-  game.controls.mouseMove();
+  controls.mouseMove();
 }
 
 function mousePressed(event) {
   if (game.paused) {
     return;
   }
-  game.controls.mouseDown();
+  controls.mouseDown();
   return false;
 }
 
@@ -75,7 +68,7 @@ function mouseReleased() {
   if (view.click()) {
     return;
   }
-  game.controls.click();
+  controls.click();
 }
 
 function mouseWheel(event) {

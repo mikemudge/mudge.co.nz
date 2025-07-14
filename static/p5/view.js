@@ -301,11 +301,15 @@ class MapView {
     this.showInternal(pos.copy(), thing.show.bind(thing));
   }
 
+  showMethodAtPos(method, pos) {
+    this.showInternal(pos.copy(), method);
+  }
+
   showInternal(pos, method) {
     let screenLoc = this.toScreen(pos.copy());
     push();
     translate(screenLoc.x, screenLoc.y);
-    method(this.mapSize * this.size);
+    method(this.size);
     pop();
   }
 

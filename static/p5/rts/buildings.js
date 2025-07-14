@@ -2,15 +2,17 @@ class Building {
   constructor(pos, team) {
     this.team = team;
     this.game = team.getGame();
+    this.map = team.getMap();
     this.pos = pos;
     this.r = 20;
-    this.health = new HealthBar(4000);
+    this.health = new HealthBar(4000, this.r);
     this.targetRally = null;
     this.buildQueue = [];
     this.buildActions = [];
   }
 
   update() {
+    // TODO buildUnit should be an action?
     if (this.buildUnit) {
       this.buildTime--;
       if (this.buildTime <= 0) {
@@ -24,7 +26,7 @@ class Building {
           }
         }
         // unit complete.
-        this.game.addUnit(this.buildUnit);
+        this.map.addUnit(this.buildUnit);
         this.buildUnit = null;
       }
     } else if (this.buildQueue.length > 0) {
@@ -48,26 +50,26 @@ class Building {
   }
 
   show(size) {
-    // Scale this thing based on r?
-    size = size * this.r / 40;
+    // Scale
+    let r = size * this.r;
     noStroke();
     fill(this.team.color);
 
-    rect(-size, -size, size * 2, size * 2);
+    rect(-r, -r, r * 2, r * 2);
 
     if (this.buildUnit) {
       stroke('white')
       noFill();
-      rect(-size, -size, size * 2, size / 8);
+      rect(-r, -r, r * 2, r / 8);
       noStroke();
       fill('white')
-      let buildComplete = this.buildTime * size * 2 / this.buildMax;
-      rect(-size, -size, buildComplete, size / 8);
+      let buildComplete = this.buildTime * r * 2 / this.buildMax;
+      rect(-r, -r, buildComplete, r / 8);
     }
-    let tenth = size * 2 / 10;
+    let tenth = r * 2 / 10;
     stroke(this.team.color);
     for (let i = 0; i < this.buildQueue.length; i++) {
-      rect(-size + i * tenth, -size * 6 / 8, tenth, tenth);
+      rect(-r + i * tenth, -r * 6 / 8, tenth, tenth);
     }
   }
 }
@@ -89,7 +91,7 @@ class ConstructionSite extends Building {
 
   show(size) {
     // Scale this thing based on r?
-    size = size * this.building.r / 20;
+    size = size * this.building.r;
     noFill();
     stroke(this.team.color);
     rect(-size / 2, -size / 2, size, size);
@@ -119,7 +121,7 @@ class ConstructionSite extends Building {
     this.building.getHealth().heal(this.healthInc);
     if (this.isBuilt()) {
       // Add the building to the game now.
-      this.building.game.addUnit(this.building);
+      this.building.map.addUnit(this.building);
     }
   }
 
@@ -133,14 +135,10 @@ class Tower extends Building {
     super(pos, team);
   }
 
-  update() {
-    // Find targets, shoot them
-  }
-
   show(size) {
     fill(this.team.color);
 
-    circle(0, 0, size * 0.8);
+    circle(0, 0, size * this.r * 2);
   }
 }
 
@@ -148,7 +146,7 @@ class Base extends Building {
   constructor(pos, team) {
     super(pos, team);
     this.r = 40;
-    this.health = new HealthBar(10000);
+    this.health = new HealthBar(10000, this.r);
     this.buildActions.push({
       'name': 'Build Builder',
       'cost': 50,
@@ -247,7 +245,7 @@ class Wall extends Building {
 
   show(size) {
     // Scale this thing based on r?
-    size = size * this.r / 20;
+    size = size * this.r;
     noStroke();
     fill(this.team.color);
     circle(0, 0, size, size);

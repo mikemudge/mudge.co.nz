@@ -2,8 +2,8 @@ class Shop {
   constructor(pos, game) {
     this.game = game;
     this.pos = pos;
-    this.w = 3;
-    this.h = 2;
+    this.w = 60;
+    this.h = 40;
     this.chance = 0;
     this.trips = 0;
     this.debug = true;
@@ -98,8 +98,8 @@ class Factory {
     this.game = game;
     this.map = game.map;
     this.pos = pos;
-    this.w = 3;
-    this.h = 2;
+    this.w = 60;
+    this.h = 40;
     // Needs input resources to produce an output resource.
     // Also needs workers from houses.
     this.inputs = params.inputs || [{name: "logs", amount: 1}];
@@ -197,7 +197,7 @@ class Factory {
         console.log("Finding a truck route for", input);
       }
 
-      let result = this.game.find(this.pos.x, this.pos.y + this.h * 20, function(tile) {
+      let result = this.game.find(this.pos.x, this.pos.y + this.h, function(tile) {
         let square = tile.getData();
         if (!square) {
           return false;
@@ -282,8 +282,8 @@ class House {
     this.game = game;
     this.actualColor = 'red';
     this.color = this.actualColor;
-    this.w = 1;
-    this.h = 1;
+    this.w = 20;
+    this.h = 20;
     // TODO should have a singular connected road as a start point for pathing.
     this.debug = true;
   }
@@ -316,12 +316,12 @@ class House {
   show(size) {
     fill('red')
     noStroke();
-    rect(1, 1, size - 2, size - 2);
+    rect(1, 1, size * 20 - 2, size * 20 - 2);
 
     if (this.debug) {
       if (this.getAvailableCar()) {
         fill('white');
-        text("c", size / 2 + 2, size / 2 + 5);
+        text("c", size * 10 + 2, size * 10 + 5);
       }
     }
   }
@@ -416,7 +416,7 @@ class Car {
     fill('green');
     // By drawing the car off to the side, it appears to be driving on the side of the road.
     // TODO we can do better than this though?
-    rect(-size / 4, - size * 3 / 8, size / 2, size / 4);
+    rect(-size * 5, - size * 15 / 2, size * 10, size * 5);
 
     pop();
   }
@@ -435,6 +435,7 @@ class Car {
 class Road {
   constructor(pos, game) {
     this.map = game.map;
+    this.r = 10;
     this.pos = pos;
     this.actualColor = '#999999';
     this.color = this.actualColor;
@@ -450,20 +451,20 @@ class Road {
   show(size) {
     fill(this.color);
     noStroke();
-    circle(size / 2, size / 2, size);
+    circle(size * this.r, size * this.r, size * this.r * 2);
 
     let tile = this.map.getTileAtPos(this.pos);
     if (tile.north().getData() && tile.north().getData().road) {
-      rect(0, 0, size, size / 2);
+      rect(0, 0, size * this.r * 2, size * this.r);
     }
     if (tile.south().getData() && tile.south().getData().road) {
-      rect(0, size / 2, size, size / 2);
+      rect(0, size * this.r, size * this.r * 2, size * this.r);
     }
     if (tile.west().getData() && tile.west().getData().road) {
-      rect(0, 0, size / 2, size);
+      rect(0, 0, size * this.r, size* this.r * 2);
     }
     if (tile.east().getData() && tile.east().getData().road) {
-      rect(size / 2, 0, size / 2, size);
+      rect(size * this.r, 0, size * this.r, size* this.r * 2);
     }
     // TODO diagonals?
   }
@@ -731,8 +732,8 @@ class TrafficGame {
     thing.placed();
 
     // TODO support space, (I.e things which occupy multiple locations)
-    for (var y = thing.pos.y / this.gridSize; y < thing.pos.y / this.gridSize + thing.h; y++) {
-      for (var x = thing.pos.x / this.gridSize; x < thing.pos.x / this.gridSize + thing.w; x++) {
+    for (var y = thing.pos.y / this.gridSize; y < (thing.pos.y + thing.h) / this.gridSize ; y++) {
+      for (var x = thing.pos.x / this.gridSize; x < (thing.pos.x + thing.w) / this.gridSize; x++) {
         this.map.getTile(x, y).getData().building = thing;
       }
     }
@@ -822,7 +823,7 @@ class TrafficGame {
     }
     // Draw cars on top of roads, but under buildings.
     for (let car of this.cars) {
-      this.view.show(car);
+      this.view.show(car)
     }
     for (let building of this.buildings) {
       this.view.show(building);

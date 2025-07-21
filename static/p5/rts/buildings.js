@@ -1,17 +1,51 @@
+class BuildingClass {
+  constructor(name) {
+    this.name = name;
+    this.r = 20;
+    this.maxHealth = 4000;
+    this.buildUnits = [];
+    this.buildSteps = 100;
+  }
+  setBuildableUnits(units) {
+    this.buildUnits = units;
+  }
+
+  createBuilding(pos, team) {
+    return new Building(pos, team, this);
+  }
+
+  render(r) {
+    rect(-r, -r, r * 2, r * 2);
+  }
+
+  renderPlacement(size) {
+    let r = size * this.r;
+    rect(-r, -r, r * 2, r * 2);
+  }
+}
+
 class Building {
-  constructor(pos, team) {
+  constructor(pos, team, buildingClass) {
     this.team = team;
+    this.buildingClass = buildingClass;
     this.game = team.getGame();
     this.map = team.getMap();
     this.pos = pos;
-    this.r = 20;
-    this.health = new HealthBar(4000, this.r);
+    this.health = new HealthBar(buildingClass.maxHealth, buildingClass.r);
     this.targetRally = null;
     this.buildQueue = [];
-    this.buildActions = [];
+    this.action = null
   }
 
   update() {
+    if (this.action) {
+      if (this.action.isComplete(this)) {
+        this.game.view.overlayMenu.addMessage("Building completed action");
+        this.action = null;
+      } else {
+        this.action.update(this);
+      }
+    }
     // TODO buildUnit should be an action?
     if (this.buildUnit) {
       this.buildTime--;
@@ -37,6 +71,14 @@ class Building {
     }
   }
 
+  setAction(action) {
+    this.action = action;
+  }
+
+  getSize() {
+    return this.buildingClass.r
+  }
+
   getHealth() {
     return this.health;
   }
@@ -51,12 +93,13 @@ class Building {
 
   show(size) {
     // Scale
-    let r = size * this.r;
+    let r = size * this.buildingClass.r;
     noStroke();
     fill(this.team.color);
 
-    rect(-r, -r, r * 2, r * 2);
+    this.buildingClass.render(r);
 
+    // TODO render this as a building action.
     if (this.buildUnit) {
       stroke('white')
       noFill();
@@ -75,14 +118,13 @@ class Building {
 }
 
 class ConstructionSite extends Building {
-  constructor(building, buildSteps) {
-    super(building.pos, building.team);
+  constructor(building) {
+    super(building.pos, building.team, building.buildingClass);
     this.building = building;
     this.team = building.team;
     this.pos = building.pos;
-    this.r = building.r;
     this.buildProgress = 0;
-    this.buildMax = buildSteps;
+    this.buildMax = building.buildingClass.buildSteps;
     // start with 10% health;
     this.building.health.damage(this.building.health.getMax() * .9);
     // Increase health a small amount with each build step.
@@ -91,10 +133,10 @@ class ConstructionSite extends Building {
 
   show(size) {
     // Scale this thing based on r?
-    size = size * this.building.r;
+    size = size * this.building.buildingClass.r;
     noFill();
     stroke(this.team.color);
-    rect(-size / 2, -size / 2, size, size);
+    rect(-size, -size, size * 2, size * 2);
   }
 
   update() {
@@ -130,133 +172,70 @@ class ConstructionSite extends Building {
   }
 }
 
-class Tower extends Building {
-  constructor(pos, team) {
-    super(pos, team);
+class Tower extends BuildingClass {
+  constructor() {
+    super("Tower");
+    this.cost = 100;
+    this.buildSteps = 100;
   }
 
-  show(size) {
-    fill(this.team.color);
-
-    circle(0, 0, size * this.r * 2);
+  render(size) {
+    circle(0, 0, size * 2);
   }
 }
 
-class Base extends Building {
-  constructor(pos, team) {
-    super(pos, team);
+class Base extends BuildingClass {
+  constructor() {
+    super("Base");
     this.r = 40;
-    this.health = new HealthBar(10000, this.r);
-    this.buildActions.push({
-      'name': 'Build Builder',
-      'cost': 50,
-      'action': this.buildBuilder
-    });
-  }
-
-  buildBuilder() {
-    if (this.buildQueue.length < 10) {
-      // TODO should consider the r of the unit?
-      // 1.4 is ~ sqrt(2) for corners.
-      let pos = p5.Vector.random2D().mult(this.r * 1.4 + 10).add(this.pos);
-      let unit = new Builder(pos, this.team);
-      this.buildQueue.push({
-        time: 17 * 30,
-        unit: unit,
-      });
-      this.game.view.overlayMenu.addMessage("building builder");
-      return unit;
-    }
-    this.game.view.overlayMenu.addMessage("Build queue full!");
-    return null;
+    this.maxHealth = 10000;
+    this.cost = 400;
+    this.buildSteps = 800;
   }
 }
 
-class House extends Building {
-  constructor(pos, team) {
-    super(pos, team);
+class House extends BuildingClass {
+  constructor() {
+    super("House");
     this.r = 10;
+    this.cost = 100;
+    this.buildSteps = 100;
   }
 }
 
-class Barracks extends Building {
-  constructor(pos, team) {
-    super(pos, team);
+class Barracks extends BuildingClass {
+  constructor() {
+    super("Barracks");
     this.r = 30;
-    this.buildActions.push({
-      'name': 'Build Melee',
-      'cost': 75,
-      'action': this.buildMelee
-    });
-    this.buildActions.push({
-      'name': 'Build Archer',
-      'cost': 90,
-      'action': this.buildArcher
-    });
-    this.buildActions.push({
-      'name': 'Build Horse',
-      'cost': 110,
-      'action': this.buildHorse
-    });
-  }
-
-  buildMelee() {
-    let unit = new Unit(this.pos.copy(), this.team);
-    return this.build(24, unit);
-  }
-
-  buildArcher() {
-    let unit = new Archer(this.pos.copy(), this.team);
-    return this.build(24, unit);
-  }
-
-  buildHorse() {
-    let unit = new Horse(this.pos.copy(), this.team);
-    return this.build(2, unit);
-  }
-
-  build(seconds, unit) {
-    if (this.buildQueue.length < 10) {
-      // TODO should consider the r of the unit?
-      // 1.4 is ~ sqrt(2) for corners.
-      let pos = p5.Vector.random2D().mult(this.r * 1.4 + 10).add(this.pos);
-      unit.pos.set(pos);
-      this.buildQueue.push({
-        time: seconds * 30,
-        unit: unit,
-      });
-      this.game.view.overlayMenu.addMessage("Building " + unit.constructor.name);
-      return unit;
-    }
-    this.game.view.overlayMenu.addMessage("Build queue full!");
-    return null;
+    this.cost = 150;
+    this.buildSteps = 300;
   }
 }
 
-class Wall extends Building {
-  constructor(pos, team) {
-    super(pos, team);
+class Wall extends BuildingClass {
+  constructor() {
+    super("Wall");
     this.r = 10;
+    this.cost = 10;
+    this.buildSteps = 100;
   }
 
   addFrom(previousWall) {
     this.lastWall = previousWall;
   }
 
-  show(size) {
-    // Scale this thing based on r?
-    size = size * this.r;
-    noStroke();
-    fill(this.team.color);
-    circle(0, 0, size, size);
+  render(size) {
 
-    stroke(this.team.color);
-    if (this.lastWall) {
-      // Show the line to the last wall.
-      strokeWeight(4);
-      let a = p5.Vector.sub(this.lastWall.pos, this.pos);
-      console.log(a, this.pos);
-      line(a.x, a.y, 0, 0);
-    }
+    circle(0, 0, size * 2);
+
+    // TODO connected walls should be rendered differently?
+    // stroke(this.team.color);
+    // if (this.lastWall) {
+    //   // Show the line to the last wall.
+    //   strokeWeight(4);
+    //   let a = p5.Vector.sub(this.lastWall.pos, this.pos);
+    //   console.log(a, this.pos);
+    //   line(a.x, a.y, 0, 0);
+    // }
   }
 }

@@ -11,19 +11,6 @@ class Circle {
   }
 }
 
-class Rect {
-  constructor(color, size) {
-    this.color = color;
-    this.size = size;
-  }
-
-  show(size) {
-    size = size * this.size;
-    fill(this.color);
-    rect(-size / 2, -size / 2, size, size);
-  }
-}
-
 // TODO show selected units in bottom menu?
 // refactor click method of controls better.
 // Add attack move, and hold position/attack on engage.
@@ -78,9 +65,8 @@ class MouseControls {
       return;
     }
 
-    let buildTarget = this.placement.building;
     let mouseGamePos = this.view.toGame(this.mousePos);
-    buildTarget.pos.set(mouseGamePos);
+    let buildTarget = new ConstructionSite(this.placement.createBuilding(mouseGamePos, this.team));
     this.map.addUnit(buildTarget);
     // Once placed we set an action to make the worker build it.
     if (shift || this.placement.repeat === true) {
@@ -88,7 +74,7 @@ class MouseControls {
     } else {
       this.selectedUnit.setAction(new BuildCommand(buildTarget));
     }
-    this.view.overlayMenu.addMessage("Building " + buildTarget.constructor.name);
+    this.view.overlayMenu.addMessage("Building " + this.placement.name);
 
     // Pay for it.
     this.team.resourceCount -= this.placement.cost;
@@ -96,12 +82,6 @@ class MouseControls {
     // Reset placement unless shift is pressed.
     if (shift || this.placement.repeat === true) {
       // build another one.
-      this.placement = {
-        building: this.placement.action.call(this.selectedUnit, buildTarget),
-        action: this.placement.action,
-        cost: this.placement.cost,
-        repeat: this.placement.repeat || false,
-      };
     } else {
       this.placement = null;
     }
@@ -315,40 +295,50 @@ class MouseControls {
     }
   }
 
+  buildUnit(unitClass) {
+    if (this.team.resourceCount < unitClass.cost) {
+      this.view.overlayMenu.addMessage("Need more money!");
+      return;
+    }
+    // Submit a new buildUnit action?
+    // Or append to an existing buildUnit action?
+    // TODO support multiple buildings selected?
+    let building = this.selectedUnit;
+    if (building.buildQueue.length >= 10) {
+      this.view.overlayMenu.addMessage("Build queue full!");
+      return;
+    }
+
+    // 1.4 is ~ sqrt(2) for corners.
+    let pos = p5.Vector.random2D().mult(building.getSize() * 1.4 + unitClass.getSize()).add(building.pos);
+    let unit = unitClass.create(pos, building.team)
+    building.buildQueue.push({
+      time: unitClass.time * 30,
+      unit: unit,
+    });
+    this.view.overlayMenu.addMessage("Building " + unitClass.name);
+    this.team.resourceCount -= unitClass.cost;
+  }
+
+  buildBuilding(buildingClass) {
+    if (this.team.resourceCount >= buildingClass.cost) {
+      this.placement = buildingClass;
+    } else {
+      this.view.overlayMenu.addMessage("Need more money!");
+    }
+  }
+
   updateBuildButtons() {
     // Update the view menus for this unit?
-    if (this.selectedUnit.buildActions) {
-      for (let buildAction of this.selectedUnit.buildActions) {
+    if (this.selectedUnit.unitClass) {
+      for (let buildingClass of this.selectedUnit.unitClass.buildBuildings) {
         // TODO cost of each button should affect active/inactive state?
-        if (this.selectedUnit instanceof Building) {
-          // Building a unit doesn't require placement
-          let closure = function () {
-            if (this.team.resourceCount >= buildAction.cost) {
-              let buildTarget = buildAction.action.call(this.selectedUnit);
-              if (buildTarget) {
-                this.team.resourceCount -= buildAction.cost;
-              }
-            } else {
-              this.view.overlayMenu.addMessage("Need more money!");
-            }
-          }.bind(this);
-          this.buildButtons.addButton(buildAction.name, closure);
-        } else {
-          // Building a building requires placement
-          let closure = function () {
-            if (this.team.resourceCount >= buildAction.cost) {
-              this.placement = {
-                building: buildAction.action.call(this.selectedUnit),
-                action: buildAction.action,
-                cost: buildAction.cost,
-                repeat: buildAction.repeat || false
-              };
-            } else {
-              this.view.overlayMenu.addMessage("Need more money!");
-            }
-          }.bind(this);
-          this.buildButtons.addButton(buildAction.name, closure);
-        }
+        this.buildButtons.addButton(buildingClass.name, this.buildBuilding.bind(this, buildingClass));
+      }
+    }
+    if (this.selectedUnit.buildingClass) {
+      for (let unitClass of this.selectedUnit.buildingClass.buildUnits) {
+        this.buildButtons.addButton(unitClass.name, this.buildUnit.bind(this, unitClass));
       }
     }
   }
@@ -372,7 +362,11 @@ class MouseControls {
       noStroke();
       fill('white');
       textSize(10);
-      text(this.selectedUnits[i].constructor.name, x, y, size, size);
+      if (this.selectedUnits[i].unitClass) {
+        text(this.selectedUnits[i].unitClass.name, x, y, size, size);
+      } else {
+        text(this.selectedUnits[i].buildingClass.name, x, y, size, size);
+      }
     }
   }
 
@@ -410,19 +404,20 @@ class MouseControls {
         Math.abs(this.startMouse.y - this.endMouse.y))
     }
     if (this.placement) {
-      let color = 'red';
       if (this.placement.cost <= this.team.resourceCount) {
-        color = 'green';
+        fill('green');
+      } else {
+        fill('red');
       }
       let mouseGamePos = this.view.toGame(this.mousePos);
-      this.view.showAtPos(new Rect(color, this.placement.building.r), mouseGamePos);
+      this.view.showMethodAtPos(this.placement.renderPlacement.bind(this.placement), mouseGamePos);
     }
     if (this.lastClick) {
       this.view.showAtPos(new Circle('green', 3), this.lastClick);
     }
     for (let selected of this.selectedUnits) {
       // Show something about the selected unit?
-      this.view.showAtPos(new Circle('green', selected.r * 1.4), selected.pos);
+      this.view.showAtPos(new Circle('green', selected.getSize() * 1.4), selected.pos);
 
       stroke('blue');
       noFill();
@@ -480,21 +475,36 @@ class Game {
   }
 
   init() {
+
+    let base = new Base();
+    let builder = new Builder();
+    let house = new House();
+    let barracks = new Barracks();
+    let wall = new Wall();
+    let tower = new Tower();
+    let melee = new UnitClass("Melee");
+    let archer = new Archer();
+    let horse = new Horse();
+
+    base.setBuildableUnits([builder]);
+    barracks.setBuildableUnits([melee, archer, horse]);
+    builder.setBuildableBuilding([base, house, barracks, wall, tower]);
+
     let bounds = this.map.getBounds();
     let team = new Team(this, color('#D33430'));
-    let hq = new Base(createVector(50, 50), team);
+    let hq = base.createBuilding(createVector(50, 50), team);
     team.setHq(hq);
     this.map.addUnit(hq);
 
     team = new Team(this, color('#5C16C8'))
     let teamSpawn = createVector(bounds.x - 50, bounds.y - 50);
-    let homeBase = new Base(teamSpawn, team);
+    let homeBase = base.createBuilding(teamSpawn, team);
     team.setHq(homeBase);
 
     this.map.addUnit(homeBase);
-    let pos = p5.Vector.random2D().mult(homeBase.r * 1.4 + 10).add(homeBase.pos);
-    this.map.addUnit(new Builder(pos, team));
-    this.map.addUnit(new Barracks(createVector(-100, 0).add(teamSpawn), team));
+    let pos = p5.Vector.random2D().mult(homeBase.getSize() * 1.4 + 10).add(homeBase.pos);
+    this.map.addUnit(builder.create(pos, team));
+    this.map.addUnit(barracks.createBuilding(createVector(-100, 0).add(teamSpawn), team));
 
     this.view.setCenter(teamSpawn);
     // Add human controls for one team

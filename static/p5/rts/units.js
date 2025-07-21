@@ -96,22 +96,50 @@ class HealthBar {
   }
 }
 
-class Unit {
-  constructor(pos, team) {
+class UnitClass {
+  constructor(name) {
+    this.name = name;
     this.r = 8;
+    this.maxHealth = 100;
+    this.maxSpeed = 1.5;
+    this.maxForce = 0.25;
+    this.attackPower = 1;
+    this.attackRange = 20;
+    this.sightRange = 200;
+
+    // The time and cost to build this.
+    this.cost = 75;
+    this.time = 24;
+    // What this unit can build.
+    this.buildBuildings = [];
+  }
+  getSize() {
+    return this.r;
+  }
+
+  setBuildableBuilding(buildings) {
+    this.buildBuildings = buildings;
+  }
+
+  create(pos, team) {
+    return new Unit(pos, team, this);
+  }
+
+  render(size) {
+    ellipse(0, 0, size * 2);
+  }
+}
+
+class Unit {
+  constructor(pos, team, unitClass) {
+    this.unitClass = unitClass;
     this.team = team;
     this.game = team.getGame();
     this.pos = pos;
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
-    this.maxSpeed = 1.5;
-    this.maxForce = 0.25;
     this.color = team.color;
-    this.attackPower = 1;
-    this.health = new HealthBar(100, this.r);
-    this.attackRange = 20;
-    this.sightRange = 200;
-    this.buildActions = [];
+    this.health = new HealthBar(this.unitClass.maxHealth, this.unitClass.r);
     this.actions = [];
   }
 
@@ -127,6 +155,9 @@ class Unit {
   }
 
   update() {
+    if (this.unitClass instanceof HeroUnit) {
+      console.log("Hero update");
+    }
     if (this.action) {
       if (this.action.isComplete(this)) {
         this.game.view.overlayMenu.addMessage("Unit completed action");
@@ -144,10 +175,12 @@ class Unit {
         this.action = this.actions.shift();
       }
     }
+    // Needed to hurt/recover health over time.
+    this.health.update();
 
     // Now update the speed and position based on what was calculated above.
     this.vel.add(this.acc);
-    this.vel.limit(this.maxSpeed);
+    this.vel.limit(this.unitClass.maxSpeed);
 
     this.pos.add(this.vel);
     this.acc.set(0, 0);
@@ -155,6 +188,10 @@ class Unit {
 
   damage(attack) {
     this.health.damage(attack);
+  }
+
+  getSize() {
+    return this.unitClass.r
   }
 
   getHealth() {
@@ -177,102 +214,58 @@ class Unit {
 
   seek(target) {
     let force = p5.Vector.sub(target, this.pos);
-    if (force.mag() > this.maxSpeed) {
-      force.setMag(this.maxSpeed);
+    if (force.mag() > this.unitClass.maxSpeed) {
+      force.setMag(this.unitClass.maxSpeed);
     }
     force.sub(this.vel)
-    force.limit(this.maxForce)
+    force.limit(this.unitClass.maxForce)
     return force
   }
 
   show(size) {
     push();
     rotate(this.vel.heading());
-    stroke(255);
+    stroke('white');
     strokeWeight(1);
+    // Fill with transparency based on health.
     fill(lerpColor(color(0), this.color, this.health.getFraction() * .5 + .5));
 
-    ellipse(0, 0, size * this.r * 2);
+    this.unitClass.render(size * this.unitClass.r);
     pop();
   }
 }
 
-class Archer extends Unit {
-  constructor(pos, team) {
-    super(pos, team);
+class Archer extends UnitClass {
+  constructor() {
+    super("Archer");
+    this.time = 24;
+    this.cost = 90;
     this.attackRange = 40;
   }
 
-  show(size) {
-    push();
-    rotate(this.vel.heading());
-    stroke('white');
-    strokeWeight(1);
-    fill(this.color);
-    arc(0, 0, size * this.r * 2, size * this.r * 2, HALF_PI, PI + HALF_PI);
-    pop();
+  render(size) {
+    arc(0, 0, size * 2, size * 2, HALF_PI, PI + HALF_PI);
   }
 }
 
-class Horse extends Unit {
-  constructor(pos, team) {
-    super(pos, team);
+class Horse extends UnitClass {
+  constructor() {
+    super("Cavalry");
+    this.time = 2;
+    this.cost = 110;
     this.maxSpeed = 3.4;
   }
 
-  show(size) {
-    size = size * this.r;
-    push();
-    rotate(this.vel.heading());
-    stroke('white');
-    strokeWeight(1);
-    fill(this.color);
+  render(size) {
     triangle(-size * 2, -size, -size * 2, size, size * 2, 0);
-    pop();
   }
 }
 
-class Builder extends Unit {
-  constructor(pos, team) {
-    super(pos, team);
-    this.buildActions.push({
-      'name': 'Build Base',
-      'cost': 400,
-      'action': this.buildBase
-    }, {
-      'name': 'Build House',
-      'cost': 100,
-      'action': this.buildHouse
-    }, {
-      'name': 'Build Barracks',
-      'cost': 150,
-      'action': this.buildBarracks
-    }, {
-      'name': 'Build Wall',
-      'cost': 10,
-      'action': this.buildWall,
-      'repeat': true
-    }, {
-      'name': 'Build Tower',
-      'cost': 100,
-      'action': this.buildTower
-    });
-  }
-
-  buildBarracks() {
-    return new ConstructionSite(new Barracks(this.pos.copy(), this.team), 300);
-  }
-
-  buildBase() {
-    return new ConstructionSite(new Base(this.pos.copy(), this.team), 800);
-  }
-
-  buildHouse() {
-    return new ConstructionSite(new House(this.pos.copy(), this.team), 100);
-  }
-
-  buildTower() {
-    return new ConstructionSite(new Tower(this.pos.copy(), this.team), 100);
+class Builder extends UnitClass {
+  constructor() {
+    super("Builder");
+    this.cost = 50;
+    this.time = 24;
   }
 
   buildWall(lastBuildTarget) {
@@ -283,25 +276,6 @@ class Builder extends Unit {
       console.log("Build wall from", lastBuildTarget, this.pos);
       wall.addFrom(lastBuildTarget.building);
     }
-    return new ConstructionSite(wall, 100);
-  }
-
-  update() {
-    // Check your current action?
-
-    if (this.buildTarget) {
-      if (this.buildTarget.pos.dist(this.pos) < this.r) {
-        this.buildProgress++;
-        if (this.buildProgress >= this.buildMax) {
-          // Finish building.
-          this.buildTarget = null;
-          // TODO move to next action in queue?
-        }
-      } else {
-        // Need to walk over to it first.
-        this.target = this.buildTarget;
-      }
-    }
-    super.update();
+    return new ConstructionSite(wall);
   }
 }

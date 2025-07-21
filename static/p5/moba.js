@@ -7,7 +7,7 @@ class ClickControl {
   }
 
   end(mousePos) {
-    this.controlled.targetPos = this.view.toGame(mousePos);
+    this.game.moveToTarget(this.controlled, this.view.toGame(mousePos));
   }
 
   update() {
@@ -16,11 +16,11 @@ class ClickControl {
 
   draw() {
     // Also display the hero's targeting?
-    // TODO this should be part of controls?
-    if (this.controlled.targetPos) {
+    // TODO should this be part of action?
+    if (this.controlled.action) {
       // Also show the targetPos for this hero.
       let v = this.view.toScreen(this.controlled.pos);
-      let v2 = this.view.toScreen(this.controlled.targetPos);
+      let v2 = this.view.toScreen(this.controlled.action.pos);
       strokeWeight(2);
       stroke("green");
       line(v.x, v.y, v2.x, v2.y);

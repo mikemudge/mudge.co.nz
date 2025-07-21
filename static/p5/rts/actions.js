@@ -5,7 +5,7 @@ class BuildCommand {
   }
 
   update(unit) {
-    let range = this.building.r * 1.4;
+    let range = this.building.getSize() * 1.4 + unit.getSize();
     if (unit.pos.dist(this.building.pos) < range) {
       this.building.build();
       unit.stop();
@@ -45,7 +45,7 @@ class GatherCommand {
   update(unit) {
     if (this.phase === 0) {
       // TODO resource radius (currently hard coded as 10)?
-      if (unit.pos.dist(this.resource.pos) < 10 + unit.r) {
+      if (unit.pos.dist(this.resource.pos) < 10 + unit.getSize()) {
         unit.stop();
         // unit.game.view.overlayMenu.addMessage("Unit gathering resource at " + Util.vectorString(unit.pos));
         this.phase = 1;
@@ -63,7 +63,7 @@ class GatherCommand {
     } else if (this.phase === 2) {
       // Make the unit move to the pos.
       unit.applyForce(unit.seek(this.dropOff.pos));
-      if (unit.pos.dist(this.dropOff.pos) < this.dropOff.r + unit.r + 10) {
+      if (unit.pos.dist(this.dropOff.pos) < this.dropOff.getSize() + unit.getSize() + 10) {
         // TODO which resource type?
         unit.team.resourceCount += 5;
         this.time = 0;
@@ -89,14 +89,11 @@ class AttackCommand {
   }
 
   update(unit) {
-    let range = unit.attackRange;
-    if (this.target.r) {
-      // If the target has a radius we only need to get in range of that to attack it.
-      range += this.target.r;
-    }
+    // If the target has a size we only need to get within range of that to attack it.
+    let range = unit.unitClass.attackRange + this.target.getSize();
     if (this.target.pos.dist(unit.pos) < range) {
       unit.stop();
-      this.target.damage(unit.attackPower);
+      this.target.damage(unit.unitClass.attackPower);
       return;
     }
     // Make the unit move to the pos.
@@ -118,13 +115,6 @@ class AttackMoveCommand {
     this.destination = destination;
     this.target = null;
   }
-//     if (this.target) {
-//       if (this.target.pos.dist(this.pos) < this.range) {
-//         this.target.damage(this.attackPower);
-//         // No moving while attacking.
-//         return;
-//       }
-//       this.applyForce(this.seek(this.target.pos));
 
   update(unit) {
     if (this.target) {
@@ -136,7 +126,7 @@ class AttackMoveCommand {
     // TODO can we make target acquisition less frequent?
     if (!this.target) {
       // Assume a sight of 200 for all?
-      let nearby = unit.game.getNearby(unit.pos, unit.sightRange);
+      let nearby = unit.game.getNearby(unit.pos, unit.unitClass.sightRange);
       nearby = nearby.filter(function(target) {
         return target.team !== unit.team
       });
@@ -147,10 +137,10 @@ class AttackMoveCommand {
 
     if (this.target) {
       let dis = this.target.pos.dist(unit.pos);
-      if (dis < this.target.r + unit.attackRange) {
-        this.target.damage(unit.attackPower);
+      if (dis < this.target.getSize() + unit.unitClass.attackRange) {
+        this.target.damage(unit.unitClass.attackPower);
         unit.stop();
-      } else if (dis > unit.sightRange) {
+      } else if (dis > unit.unitClass.sightRange) {
         // Give up, lost sight of it.
         this.target = null;
       } else {
@@ -171,7 +161,7 @@ class AttackMoveCommand {
   }
 
   isComplete(unit) {
-    return this.destination.dist(unit.pos) < unit.maxSpeed;
+    return this.destination.dist(unit.pos) < unit.unitClass.maxSpeed;
   }
 }
 
@@ -191,8 +181,8 @@ class MoveCommand {
 
   isComplete(unit) {
     let range = 1;
-    if (unit.maxSpeed) {
-      range = unit.maxSpeed / 2;
+    if (unit.unitClass.maxSpeed) {
+      range = unit.unitClass.maxSpeed / 2;
     }
     return unit.pos.dist(this.pos) < range;
   }
@@ -202,7 +192,7 @@ class PathCommand {
   constructor(path) {
     this.goalIndex = 0;
     this.pathActions = [];
-    for (let p of path.points) {
+    for (let p of path) {
       this.pathActions.push(new AttackMoveCommand(p));
     }
   }
@@ -222,5 +212,33 @@ class PathCommand {
 
   isComplete(unit) {
     return this.goalIndex >= this.pathActions.length;
+  }
+}
+
+class SpawnCommand {
+  constructor(paths) {
+    this.paths = paths;
+    this.time = -1;
+    this.respawnTime = 200;
+
+    this.unit = new UnitClass();
+  }
+
+  update(building) {
+    this.time++;
+    if (this.time % this.respawnTime === 0) {
+      for (let i = 0; i < 4; i++) {
+        for (let path of this.paths) {
+          let pos = p5.Vector.random2D().mult(building.getSize() / 10).add(building.pos);
+          let unit = this.unit.create(pos, building.team);
+          unit.setAction(new PathCommand(path));
+          building.map.addUnit(unit);
+        }
+      }
+    }
+  }
+
+  isComplete(unit) {
+    return false;
   }
 }

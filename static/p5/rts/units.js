@@ -155,9 +155,6 @@ class Unit {
   }
 
   update() {
-    if (this.unitClass instanceof HeroUnit) {
-      console.log("Hero update");
-    }
     if (this.action) {
       if (this.action.isComplete(this)) {
         this.game.view.overlayMenu.addMessage("Unit completed action");

@@ -126,7 +126,7 @@ class AttackMoveCommand {
     // TODO can we make target acquisition less frequent?
     if (!this.target) {
       // Assume a sight of 200 for all?
-      let nearby = unit.game.getNearby(unit.pos, unit.unitClass.sightRange);
+      let nearby = unit.team.map.getNearby(unit.pos, unit.unitClass.sightRange);
       nearby = nearby.filter(function(target) {
         return target.team !== unit.team
       });
@@ -216,12 +216,12 @@ class PathCommand {
 }
 
 class SpawnCommand {
-  constructor(paths) {
+  constructor(unit, paths) {
     this.paths = paths;
     this.time = -1;
     this.respawnTime = 200;
 
-    this.unit = new UnitClass();
+    this.unit = unit;
   }
 
   update(building) {

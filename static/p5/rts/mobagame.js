@@ -17,21 +17,6 @@ class HeroUnit extends UnitClass {
   }
 }
 
-class Path {
-  constructor(points) {
-    this.points = points;
-  }
-
-  show() {
-    stroke(255);
-    for (let i = 1; i < this.points.length; i++) {
-      line(x, y, this.points[i].x, this.points[i].y);
-      x = this.points[i].x;
-      y = this.points[i].y;
-    }
-  }
-}
-
 class Spawner extends BuildingClass {
   constructor() {
     super("Spawner");
@@ -56,9 +41,12 @@ class MobaGame {
 
     let tower = new Tower();
     let spawner = new Spawner();
+    let spawnUnit = new UnitClass();
+    spawnUnit.sightRange = 100;
+
     let redTeam = new Team(this, color('#D33430'));
     let redSpawner = spawner.createBuilding(createVector(50, 50), redTeam);
-    redSpawner.setAction(new SpawnCommand([
+    redSpawner.setAction(new SpawnCommand(spawnUnit, [
       [bottomRight],
       [bottomLeft, bottomRight],
       [topRight, bottomRight]
@@ -74,7 +62,7 @@ class MobaGame {
 
     let blueTeam = new Team(this, color('#5C16C8'))
     let blueSpawner = spawner.createBuilding(createVector(bounds.x - 50, bounds.y - 50), blueTeam);
-    blueSpawner.setAction(new SpawnCommand([
+    blueSpawner.setAction(new SpawnCommand(spawnUnit, [
       [topLeft],
       [bottomLeft, topLeft],
       [topRight, topLeft]
@@ -84,10 +72,6 @@ class MobaGame {
     this.map.addUnit(tower.createBuilding(createVector(bounds.x - 50, bounds.y - 150), blueTeam));
     this.map.addUnit(tower.createBuilding(createVector(bounds.x / 2, bounds.y - 50), blueTeam));
     this.map.addUnit(tower.createBuilding(createVector(bounds.x - 50, bounds.y / 2), blueTeam));
-  }
-
-  getNearby(pos, range) {
-    return this.map.getNearby(pos, range);
   }
 
   applyControl(unit, force) {

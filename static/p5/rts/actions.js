@@ -189,11 +189,17 @@ class MoveCommand {
 }
 
 class PathCommand {
-  constructor(path) {
+  constructor(path, attack) {
     this.goalIndex = 0;
     this.pathActions = [];
-    for (let p of path) {
-      this.pathActions.push(new AttackMoveCommand(p));
+    if (attack) {
+      for (let p of path) {
+        this.pathActions.push(new AttackMoveCommand(p));
+      }
+    } else {
+      for (let p of path) {
+        this.pathActions.push(new MoveCommand(p));
+      }
     }
   }
 
@@ -231,7 +237,7 @@ class SpawnCommand {
         for (let path of this.paths) {
           let pos = p5.Vector.random2D().mult(building.getSize() / 10).add(building.pos);
           let unit = this.unit.create(pos, building.team);
-          unit.setAction(new PathCommand(path));
+          unit.setAction(new PathCommand(path, true));
           building.map.addUnit(unit);
         }
       }

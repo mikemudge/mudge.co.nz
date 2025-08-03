@@ -35,6 +35,12 @@ SCRIPTS = {
         "/static/p5/wfc/overlay.js",
         "/static/p5/wfc/renders.js",
     ],
+    'rts': [
+        '/static/p5/rts/map.js',
+        '/static/p5/rts/units.js',
+        '/static/p5/rts/buildings.js',
+        '/static/p5/rts/actions.js',
+    ],
     'poly': [
         "/static/p5/poly.js"
     ]
@@ -234,27 +240,22 @@ p5_apps['bomberman'] = {
     'tags': ['gridview']
 }
 p5_apps['rts'] = {
-    'tags': ['gridview'],
+    'tags': ['gridview', 'rts'],
     'entry_point': '/static/p5/rts/rts.js',
     'scripts': [
-        '/static/p5/rts/map.js',
-        '/static/p5/rts/units.js',
-        '/static/p5/rts/buildings.js',
-        '/static/p5/rts/actions.js',
         '/static/p5/rts/game.js'
     ]
 }
 p5_apps['moba'] = {
-    'tags': ['gridview'],
+    'tags': ['gridview', 'rts'],
     'scripts': [
         '/static/shared/logger.js',
         '/static/shared/swipecontrols.js',
-        '/static/p5/rts/map.js',
-        '/static/p5/rts/units.js',
-        '/static/p5/rts/buildings.js',
-        '/static/p5/rts/actions.js',
         '/static/p5/rts/mobagame.js'
     ]
+}
+p5_apps['city'] = {
+    'tags': ['gridview', 'rts']
 }
 p5_apps['road'] = {
     'tags': ['gridview']

@@ -157,7 +157,6 @@ class Unit {
   update() {
     if (this.action) {
       if (this.action.isComplete(this)) {
-        this.game.view.overlayMenu.addMessage("Unit completed action");
         this.action = null;
         this.stop();
         if (this.actions.length > 0) {

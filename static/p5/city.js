@@ -2,16 +2,20 @@ class CitySquare {
   constructor() {
     this.color = color(100 + random(100), 0, 0);
     this.solid = false;
-    this.tower = null;
+    this.tower = 0;
   }
 
   show(size) {
     if (this.solid) {
       fill('darkgrey');
       rect(0, 0, size, size);
-      if (this.tower) {
+      if (this.tower > 0) {
         fill('green');
         circle(size / 2, size / 2, size);
+        // TODO show better tower levels?
+        fill('white');
+        textSize(size);
+        text(this.tower, size / 2, size * .85);
       }
     } else {
       fill(this.color);
@@ -23,20 +27,22 @@ class CitySquare {
 class MazeRouter {
   constructor(map, target) {
     this.map = map;
-    this.grid = new Grid(map.getWidth(), map.getHeight(), map.getSize());
+    this.grid = new Grid(map.getWidth(), map.getHeight());
     this.target = target;
     this.calculate();
   }
 
   calculate() {
     this.grid.reset();
+
+    this.grid.getTile(this.target.x, this.target.y).setData({"end": true});
     // Start at the target and explore the map.
     let explore = [this.target];
     while (explore.length > 0) {
       let next = [];
       for (let e of explore) {
-        if (e.solid) {
-          // Can't walk over solid tiles.
+        if (!e.getData() || e.getData().solid) {
+          // Can't walk over OOB or solid tiles.
           continue;
         }
         for (let t of e.getCardinalTiles()) {
@@ -52,11 +58,14 @@ class MazeRouter {
   }
 
   getTarget(unit) {
-    let t = this.grid.getTileAtPosWithSize(unit.pos, 10);
-    if (t.getData()) {
-      return t.getData().next;
+    let size = 10;
+    let t = this.grid.getTileAtPosWithSize(unit.pos, size);
+    if (!t.getData() || !t.getData().next) {
+      return null;
     }
-    return null;
+    let t2 = t.getData().next;
+    // Scale up by size, and then offset to the center of the square.
+    return createVector(t2.x, t2.y).mult(size).add(size / 2, size / 2);
   }
 }
 
@@ -70,19 +79,20 @@ class EnemyPath {
 
     // Randomly choose a path.
     this.start = this.map.getRandomTile();
+    this.start.getData().solid = false;
     // Add checkpoints?
     this.checkpoints = [];
+    this.mazeRoutes = [];
     for (let i = 0; i < random(4); i++) {
-      this.checkpoints.push(this.map.getRandomTile());
+      let c = this.map.getRandomTile();
+      c.getData().solid = false;
+      this.mazeRoutes.push(new MazeRouter(this.map, c));
+      this.checkpoints.push(c);
     }
     this.finish = this.map.getRandomTile();
-    this.path = [];
-    this.mazeRoutes = [];
-    for (let c of this.checkpoints) {
-      this.mazeRoutes.push(new MazeRouter(this.map, c));
-      this.path.push(this.convertGrid(c));
-    }
-    this.path.push(this.convertGrid(this.finish));
+    this.finish.getData().solid = false;
+    this.mazeRoutes.push(new MazeRouter(this.map, this.finish));
+
     this.units = [];
   }
 
@@ -95,7 +105,9 @@ class EnemyPath {
     if (this.time % 100 === 0) {
       // spawn a new minion to follow the path?
       let unit = new Unit(createVector(this.start.x * 10, this.start.y * 10), this.team, this.unitClass);
-      unit.setAction(new FollowCommand(this.mazeRoutes[0]));
+      for (let r of this.mazeRoutes) {
+        unit.addAction(new FollowCommand(r));
+      }
       this.units.push(unit);
     }
 
@@ -104,9 +116,12 @@ class EnemyPath {
     }
     for (let i = this.units.length - 1; i >= 0; i--) {
       let unit = this.units[i];
-      if (unit.action == null) {
+      if (!unit.getHealth().isAlive()) {
+        // Remove units which have expired.
+        this.units.splice(i, 1);
+      } else if (unit.action == null) {
         // Unit reached the end?
-        // TODO also need to remove units which died on the path.
+        // TODO have a cost of leaking?
         this.units.splice(i, 1);
         continue;
       }
@@ -135,6 +150,12 @@ class EnemyPath {
       this.view.show(unit);
     }
   }
+
+  updateRoutes() {
+    for (let r of this.mazeRoutes) {
+      r.calculate();
+    }
+  }
 }
 
 class CityGame {
@@ -158,6 +179,21 @@ class CityGame {
     this.enemyPath = new EnemyPath(view, this.map);
   }
 
+  click(mousePos) {
+    let clicked = this.map.getTileAtPos(this.view.toGameGrid(mousePos));
+    if (!clicked.getData()) {
+      // Clicked outside the area.
+      return;
+    }
+    let square = clicked.getData();
+    if (!square.solid) {
+      square.solid = true;
+      this.enemyPath.updateRoutes();
+    } else {
+      square.tower++;
+    }
+  }
+
   show() {
     this.view.update();
 
@@ -173,23 +209,24 @@ class CityGame {
 
 var mousePos;
 var view;
+var cityGame;
 function setup() {
   view = new MapView(10);
   view.createCanvas();
   mousePos = createVector(0, 0);
 
-  game = new CityGame(view);
-  // window.onblur = function() {
-  //   game.paused = true;
-  //   noLoop();
-  // }
+  cityGame = new CityGame(view);
+  window.onblur = function() {
+    cityGame.paused = true;
+    noLoop();
+  }
 
 }
 
 function draw() {
   background(0);
 
-  game.show();
+  cityGame.show();
 }
 
 function windowResized() {
@@ -217,7 +254,13 @@ function mouseDragged() {
 }
 
 function mouseReleased() {
+  if (cityGame.paused) {
+    cityGame.paused = false;
+    loop();
+    return;
+  }
   mousePos.set(mouseX, mouseY);
+  cityGame.click(mousePos);
 }
 
 function mouseWheel(event) {

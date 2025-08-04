@@ -71,9 +71,9 @@ class Grid {
     this.height = height;
     this.tiles = [];
     this.boundryTile = new Tile(this, Infinity, Infinity, null);
-    this.reset();
+    this.init();
   }
-  reset() {
+  init() {
     for (let y = 0; y < this.height; y++) {
       this.tiles.push([]);
       for (let x = 0; x < this.width; x++) {
@@ -82,6 +82,15 @@ class Grid {
       }
     }
   }
+
+  reset() {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        this.getTile(x, y).setData(null);
+      }
+    }
+  }
+
 
   update() {
     for (let y = 0; y < this.height; y++) {

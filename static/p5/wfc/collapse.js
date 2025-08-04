@@ -92,7 +92,7 @@ class Square {
 
 /* fills in a grid with Square's which collapse to a single tile using the WFCTile joins. */
 class CollapseFunction {
-  constructor(width, height, size, layers, useMinimum) {
+  constructor(width, height, layers, useMinimum) {
     this.width = width;
     this.height = height;
     this.tiles = layers;
@@ -102,7 +102,7 @@ class CollapseFunction {
     this.useMinimum = useMinimum;
     this.layers = [];
     for (let i = 0; i < layers.length; i++) {
-      this.layers.push(new Grid(width, height, size));
+      this.layers.push(new Grid(width, height));
     }
     // Use the top layer as the interactive (click/hover) one.
     this.mainLayer = this.layers.length - 1;
@@ -199,8 +199,8 @@ class CollapseFunction {
     }
   }
 
-  getTileAtPos(gamePos) {
-    return this.layers[this.mainLayer].getTileAtPos(gamePos);
+  getMainLayer() {
+    return this.layers[this.mainLayer];
   }
 
   getLayers() {

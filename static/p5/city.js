@@ -20,6 +20,46 @@ class CitySquare {
   }
 }
 
+class MazeRouter {
+  constructor(map, target) {
+    this.map = map;
+    this.grid = new Grid(map.getWidth(), map.getHeight(), map.getSize());
+    this.target = target;
+    this.calculate();
+  }
+
+  calculate() {
+    this.grid.reset();
+    // Start at the target and explore the map.
+    let explore = [this.target];
+    while (explore.length > 0) {
+      let next = [];
+      for (let e of explore) {
+        if (e.solid) {
+          // Can't walk over solid tiles.
+          continue;
+        }
+        for (let t of e.getCardinalTiles()) {
+          if (this.grid.getTile(t.x, t.y).getData()) {
+            continue;
+          }
+          this.grid.getTile(t.x, t.y).setData({"next": e});
+          next.push(t);
+        }
+      }
+      explore = next;
+    }
+  }
+
+  getTarget(unit) {
+    let t = this.grid.getTileAtPosWithSize(unit.pos, 10);
+    if (t.getData()) {
+      return t.getData().next;
+    }
+    return null;
+  }
+}
+
 class EnemyPath {
   constructor(view, map) {
     this.view = view;
@@ -37,7 +77,9 @@ class EnemyPath {
     }
     this.finish = this.map.getRandomTile();
     this.path = [];
+    this.mazeRoutes = [];
     for (let c of this.checkpoints) {
+      this.mazeRoutes.push(new MazeRouter(this.map, c));
       this.path.push(this.convertGrid(c));
     }
     this.path.push(this.convertGrid(this.finish));
@@ -53,7 +95,7 @@ class EnemyPath {
     if (this.time % 100 === 0) {
       // spawn a new minion to follow the path?
       let unit = new Unit(createVector(this.start.x * 10, this.start.y * 10), this.team, this.unitClass);
-      unit.setAction(new PathCommand(this.path, false));
+      unit.setAction(new FollowCommand(this.mazeRoutes[0]));
       this.units.push(unit);
     }
 
@@ -73,7 +115,6 @@ class EnemyPath {
   }
 
   showText(textString, size) {
-    size = size * 10;
     textSize(size);
     text(textString, size / 2, size * .85);
     noFill();
@@ -99,7 +140,7 @@ class EnemyPath {
 class CityGame {
   constructor(view) {
     this.view = view;
-    this.map = new Grid(50, 50);
+    this.map = new Grid(50, 50, 1);
     for (let y = 0; y < this.map.getHeight(); y++) {
       for (let x = 0; x < this.map.getWidth(); x++) {
         let square = new CitySquare();

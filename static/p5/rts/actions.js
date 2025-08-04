@@ -188,6 +188,25 @@ class MoveCommand {
   }
 }
 
+class FollowCommand {
+  constructor(targeter) {
+    this.targeter = targeter;
+  }
+
+  update(unit) {
+    let pos = this.targeter.getTarget(unit);
+    if (pos) {
+      // Make the unit move to the pos.
+      unit.applyForce(unit.seek(pos));
+    }
+  }
+
+  isComplete(unit) {
+    let pos = this.targeter.getTarget(unit);
+    return !pos;
+  }
+}
+
 class PathCommand {
   constructor(path, attack) {
     this.goalIndex = 0;

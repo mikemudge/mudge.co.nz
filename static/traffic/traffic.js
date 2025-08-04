@@ -282,8 +282,8 @@ class House {
     this.game = game;
     this.actualColor = 'red';
     this.color = this.actualColor;
-    this.w = 20;
-    this.h = 20;
+    this.w = game.gridSize;
+    this.h = game.gridSize;
     // TODO should have a singular connected road as a start point for pathing.
     this.debug = true;
   }
@@ -331,8 +331,9 @@ class Car {
   constructor(house, game) {
     this.house = house;
     this.game = game;
+    this.size = game.gridSize;
     this.map = game.map;
-    this.pos = house.pos.copy().add(10, 10);
+    this.pos = house.pos.copy().add(this.size / 2, this.size / 2);
     this.vel = createVector(0, 0);
     this.maxSpeed = 1.7;
     this.targets = [];
@@ -348,11 +349,11 @@ class Car {
 
     let road = this.target.getData().road;
     if (road) {
-      this.vel = road.pos.copy().add(10, 10).sub(this.pos);
+      this.vel = road.pos.copy().add(this.size / 2, this.size / 2).sub(this.pos);
     } else {
       // Arrived at a building.
       let building = this.target.getData().building;
-      this.vel = building.pos.copy().add(10, 10).sub(this.pos);
+      this.vel = building.pos.copy().add(this.size / 2, this.size / 2).sub(this.pos);
     }
     if (this.vel.magSq() < 9) {
       this.target = this.getNextLocation();
@@ -372,13 +373,13 @@ class Car {
     path.forEach(function(s) {
       toShop.push(s);
     });
-    toShop.push(this.map.getTileAtPosFloor(shop.pos));
+    toShop.push(this.map.getTileAtPosWithSize(shop.pos, this.size));
 
     let returnPath = [];
     path.reverse().forEach(function(s) {
       returnPath.push(s);
     });
-    returnPath.push(this.map.getTileAtPosFloor(this.house.pos));
+    returnPath.push(this.map.getTileAtPosWithSize(this.house.pos, this.size));
 
     this.setPath(toShop);
     this.returnPath = returnPath;
@@ -434,6 +435,7 @@ class Car {
 
 class Road {
   constructor(pos, game) {
+    this.game = game;
     this.map = game.map;
     this.r = 10;
     this.pos = pos;
@@ -453,7 +455,7 @@ class Road {
     noStroke();
     circle(size * this.r, size * this.r, size * this.r * 2);
 
-    let tile = this.map.getTileAtPos(this.pos);
+    let tile = this.map.getTileAtPosWithSize(this.pos, this.game.gridSize);
     if (tile.north().getData() && tile.north().getData().road) {
       rect(0, 0, size * this.r * 2, size * this.r);
     }
@@ -572,7 +574,7 @@ class MouseControls {
       return;
     }
     // convert to game pos, then gridify.
-    this.build.pos.set(this.view.toGameGrid(createVector(this.mx, this.my)));
+    this.build.pos.set(this.view.toGameSnappedToGrid(createVector(this.mx, this.my)));
 
     // this.build.x = Math.floor(this.mx / this.game.gridSize) * this.game.gridSize;
     // this.build.y = Math.floor(this.my / this.game.gridSize) * this.game.gridSize;
@@ -606,7 +608,7 @@ class MouseControls {
     }
 
     // convert to game pos, then gridify.
-    this.build.pos.set(this.view.toGameGrid(createVector(this.mx, this.my)));
+    this.build.pos.set(this.view.toGameSnappedToGrid(createVector(this.mx, this.my)));
 
     // Indicates that this was a left click?
     if (event.button === 0) {
@@ -651,13 +653,12 @@ class TrafficGame {
     this.view = view;
     this.pause = false;
     this.debug = false;
-    // TODO remove this?
     this.gridSize = view.getMapSize();
     this.mapVersion = 0;
 
     this.width = 50;
     this.height = 30;
-    this.map = new Grid(this.width, this.height, view.getMapSize());
+    this.map = new Grid(this.width, this.height);
     // Center in the middle of the grid.
     view.setCenter(createVector(25 * view.getMapSize(), 15 * view.getMapSize()));
 
@@ -723,7 +724,7 @@ class TrafficGame {
   addRoad(thing) {
     thing.placed();
 
-    let square = this.map.getTileAtPos(thing.pos).getData();
+    let square = this.map.getTileAtPosWithSize(thing.pos, this.gridSize).getData();
     square.road = thing;
     this.roads.push(thing);
   };
@@ -745,7 +746,7 @@ class TrafficGame {
   }
 
   isEmpty(pos) {
-    let square = this.map.getTileAtPos(pos).getData();
+    let square = this.map.getTileAtPosWithSize(pos, this.gridSize).getData();
     return square && !square.road && !square.building;
   };
 
@@ -765,7 +766,7 @@ class TrafficGame {
   find(x, y, condition) {
     this.resetFrom();
     // TODO need navigation methods?
-    let start = this.map.getTileAtPos(createVector(x, y));
+    let start = this.map.getTileAtPos(createVector(x, y).div(this.gridSize));
     start.getData().dis = 1;
     let possibles = [start];
     while (possibles.length > 0) {

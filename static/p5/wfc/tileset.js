@@ -9,7 +9,7 @@ class TileSetEdgeMatcher {
     if (tileWidth !== tileHeight) {
       console.warn("non square tiles are not currently well supported");
     }
-    this.tiles = new Grid(tilesAcross, tilesDown, tileWidth);
+    this.tiles = new Grid(tilesAcross, tilesDown);
     console.log("Tile set loaded", tilesAcross, tilesDown);
     for (var y = 0; y < tilesDown; y += 1) {
       for (var x = 0; x < tilesAcross; x += 1) {

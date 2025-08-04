@@ -58,7 +58,7 @@ class Game {
     this.debug = false;
     this.width = 30;
     this.height = 20;
-    this.map = new Grid(this.width, this.height, view.getMapSize());
+    this.map = new Grid(this.width, this.height);
     this.setupNewGame();
 
     this.view = view;

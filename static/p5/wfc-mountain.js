@@ -81,7 +81,7 @@ function setup() {
   view.setCenter(createVector(200, 200));
 
   let useMinimum = true;
-  let collapseFunction = new CollapseFunction(35, 25, 20, layers, useMinimum);
+  let collapseFunction = new CollapseFunction(35, 25, layers, useMinimum);
 
   let size = createVector(16, 16);
   renderer = new WFCOverlay(collapseFunction, view, size, tilesetMatcher.tiles);

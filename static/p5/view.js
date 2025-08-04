@@ -188,12 +188,12 @@ class MapView {
   /** map a screen position to its closest grid position. Aligned to map grid */
   toGameGrid(pos) {
     let newpos = this.toGame(pos).div(this.mapSize);
-    return createVector(
-        Math.floor(newpos.x) * this.mapSize,
-        Math.floor(newpos.y) * this.mapSize)
+    return createVector(Math.floor(newpos.x), Math.floor(newpos.y))
   }
-  toGameGridFloor(pos) {
-    return this.toGameGrid(pos);
+
+  toGameSnappedToGrid(pos) {
+    let newpos = this.toGame(pos).div(this.mapSize);
+    return createVector(Math.floor(newpos.x), Math.floor(newpos.y)).mult(this.mapSize)
   }
 
   /** map a screen position to its in game location. Not aligned to grid */
@@ -289,27 +289,27 @@ class MapView {
   }
 
   show(thing) {
-    this.showInternal(thing.pos.copy(), thing.show.bind(thing));
+    this.showInternal(thing.pos.copy(), thing.show.bind(thing), this.size);
   }
 
   showAtGridLoc(loc, method) {
     // A grid location needs to be scaled up by mapSize.
-    this.showInternal(createVector(loc.x, loc.y).mult(this.mapSize), method);
+    this.showInternal(createVector(loc.x, loc.y).mult(this.mapSize), method, this.size * this.mapSize);
   }
 
   showAtPos(thing, pos) {
-    this.showInternal(pos.copy(), thing.show.bind(thing));
+    this.showInternal(pos.copy(), thing.show.bind(thing), this.size);
   }
 
   showMethodAtPos(method, pos) {
-    this.showInternal(pos.copy(), method);
+    this.showInternal(pos.copy(), method, this.size);
   }
 
-  showInternal(pos, method) {
+  showInternal(pos, method, size) {
     let screenLoc = this.toScreen(pos.copy());
     push();
     translate(screenLoc.x, screenLoc.y);
-    method(this.size);
+    method(size);
     pop();
   }
 

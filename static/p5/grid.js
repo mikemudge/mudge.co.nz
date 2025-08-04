@@ -63,8 +63,10 @@ class Tile {
 
 // A data structure which represents a grid.
 class Grid {
-  constructor(width, height, size) {
-    this.size = size;
+  constructor(width, height) {
+    if (!width || !height) {
+      throw new Error('All grid fields must be provided');
+    }
     this.width = width;
     this.height = height;
     this.tiles = [];
@@ -116,18 +118,12 @@ class Grid {
     this.getTile(x, y).setData(data);
   }
 
-  getTileAtPos(pos) {
-    let gx = Math.round(pos.x / this.size);
-    let gy = Math.round(pos.y / this.size);
-
-    return this.getTile(gx, gy);
+  getTileAtPosWithSize(pos, size) {
+    return this.getTileAtPos(pos.copy().div(size));
   }
 
-  getTileAtPosFloor(pos) {
-    let gx = Math.floor(pos.x / this.size);
-    let gy = Math.floor(pos.y / this.size);
-
-    return this.getTile(gx, gy);
+  getTileAtPos(pos) {
+    return this.getTile(Math.floor(pos.x), Math.floor(pos.y));
   }
 
   getTile(x, y) {

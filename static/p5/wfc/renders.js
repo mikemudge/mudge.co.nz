@@ -430,6 +430,8 @@ class WFCOverlay {
     this.overlays.push(tile1.overlay);
     this.overlays.push(this.squareRenderer.overlay);
     this.reverseOverlays = this.overlays.toReversed();
+
+    this.collapseGrid = this.collapseFunction.getMainLayer();
   }
 
   addTilesetMatcher(tilesetMatcher, size) {
@@ -470,9 +472,9 @@ class WFCOverlay {
       }
     }
 
-    let pos = this.view.toGameGridFloor(this.mousePos);
+    let pos = this.view.toGameGrid(this.mousePos);
     this.mouseMapPos = this.view.toGame(this.mousePos);
-    this.hover = this.collapseFunction.getTileAtPos(pos);
+    this.hover = this.collapseGrid.getTileAtPos(pos);
     if (this.hover.getData() == null) {
       this.hover = null;
     }
@@ -494,8 +496,9 @@ class WFCOverlay {
     }
 
     // Click went through to the main display.
-    let pos = this.view.toGameGridFloor(this.mousePos);
-    this.clicked = this.collapseFunction.getTileAtPos(pos);
+    let pos = this.view.toGameGrid(this.mousePos);
+    this.clicked = this.collapseGrid.getTileAtPos(pos);
+
     if (this.clicked.getData() == null) {
       this.clicked = null;
     } else {

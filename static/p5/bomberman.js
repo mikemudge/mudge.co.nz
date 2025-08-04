@@ -1,7 +1,8 @@
 class Player {
-  constructor(map, x, y) {
+  constructor(map, pos, size) {
     this.map = map;
-    this.pos = createVector(x, y);
+    this.pos = pos;
+    this.size = size;
     this.color = color(255);
     this.bombs = [];
     this.flameRange = 1;
@@ -11,7 +12,7 @@ class Player {
   setVel(vel) {
     this.vel = vel;
     this.pos.add(this.vel);
-    let t = this.map.getTileAtPos(this.pos).getData();
+    let t = this.map.getTileAtPosWithSize(this.pos, this.size).getData();
     if (!t || t.solid) {
       this.pos.sub(this.vel);
       return;
@@ -31,7 +32,7 @@ class Player {
     }
     let bomb = new Bomb(this);
     this.bombs.push(bomb);
-    this.map.getTileAtPos(this.pos).getData().addBomb(bomb);
+    this.map.getTileAtPosWithSize(this.pos, this.size).getData().addBomb(bomb);
   }
 
   update() {
@@ -52,7 +53,7 @@ class Player {
     noStroke();
     fill(this.color);
 
-    ellipse(size / 2, size / 2, size * 0.8);
+    ellipse(size * this.size / 2, size * this.size / 2, size * this.size * 0.8);
   }
 }
 
@@ -134,8 +135,9 @@ class Bomb {
     if (this.time === 0) {
       // explode to flames.
       let map = this.player.map;
-      this.player.map.getTileAtPosFloor(this.pos).getData().solid = false;
-      this.player.map.getTileAtPosFloor(this.pos).getData().bomb = null;
+      let square = map.getTileAtPosWithSize(this.pos, this.player.size).getData();
+      square.solid = false;
+      square.bomb = null;
       this.propegateFlames(map, this.player.flameRange);
     }
   }
@@ -166,7 +168,7 @@ class Bomb {
 
   propegateFlames(map, range) {
     let flameTime = this.framerate / 2;
-    let tile = map.getTileAtPos(this.pos);
+    let tile = map.getTileAtPosWithSize(this.pos, this.player.size);
     tile.getData().setFlame(flameTime);
 
     // Propagate flames in each direction.
@@ -207,11 +209,12 @@ class Game {
     this.width = 21;
     this.height = 21;
     this.bombs = 0;
-    this.map = new Grid(this.width, this.height, 40);
+    this.size = 40;
+    this.map = new Grid(this.width, this.height);
     this.setupNewGame();
 
     this.view = view;
-    this.humanPlayer = new Player(this.map, 40, 40);
+    this.humanPlayer = new Player(this.map, createVector(this.size, this.size), this.size);
     this.humanPlayer.color = color('red')
     this.players = [this.humanPlayer];
 

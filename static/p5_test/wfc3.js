@@ -149,7 +149,7 @@ class WFC {
   constructor() {
     this.width = 40;
     this.height = 40;
-    this.map = new Grid(this.width, this.height, view.getMapSize());
+    this.map = new Grid(this.width, this.height);
 
     this.view = view;
     this.view.setCenter(createVector(this.width, this.height).mult(view.getMapSize() / 2));
@@ -230,8 +230,8 @@ class WFC {
   chooseTile() {
     let seenAtCurrentBest = 0;
     let best = null;
-    for (let y = 0; y < this.map.height; y++) {
-      for (let x = 0; x < this.map.width; x++) {
+    for (let y = 0; y < this.map.getHeight(); y++) {
+      for (let x = 0; x < this.map.getWidth(); x++) {
         let opt = this.map.getTile(x, y);
         if (opt.getData().type != null) {
           // Already collapsed

@@ -254,7 +254,7 @@ p5_apps['moba'] = {
         '/static/p5/rts/mobagame.js'
     ]
 }
-p5_apps['city'] = {
+p5_apps['randomTD'] = {
     'tags': ['gridview', 'rts']
 }
 p5_apps['road'] = {
@@ -348,6 +348,7 @@ class ProjectAppView(MethodView):
                     app.template = 'app.tmpl'
                     p5_conf = p5_apps.get(sample)
                     if p5_conf:
+                        logger.info("Loading p5 app for %s", sample)
                         entry_point = p5_conf.get('entry_point', entry_point)
                         self.updateFromConf(app, p5_conf)
 

@@ -1,4 +1,4 @@
-class CitySquare {
+class RandomSquare {
   constructor() {
     this.color = color(100 + random(100), 0, 0);
     this.solid = false;
@@ -76,6 +76,7 @@ class EnemyPath {
     this.team = new Team(map, color(0,0,255));
     this.time = 0;
     this.unitClass = new UnitClass("Minion");
+    this.unitClass.r = 4;
 
     // Randomly choose a path.
     this.start = this.map.getRandomTile();
@@ -158,13 +159,13 @@ class EnemyPath {
   }
 }
 
-class CityGame {
+class RandomTdGame {
   constructor(view) {
     this.view = view;
     this.map = new Grid(50, 50, 1);
     for (let y = 0; y < this.map.getHeight(); y++) {
       for (let x = 0; x < this.map.getWidth(); x++) {
-        let square = new CitySquare();
+        let square = new RandomSquare();
         if (x === 0 || y === 0 || x === this.map.getWidth() - 1 || y === this.map.getHeight() - 1) {
           square.solid = true;
         } else {
@@ -179,7 +180,7 @@ class CityGame {
     this.enemyPath = new EnemyPath(view, this.map);
   }
 
-  click(mousePos) {
+  clickStart(mousePos) {
     let clicked = this.map.getTileAtPos(this.view.toGameGrid(mousePos));
     if (!clicked.getData()) {
       // Clicked outside the area.
@@ -187,10 +188,31 @@ class CityGame {
     }
     let square = clicked.getData();
     if (!square.solid) {
+      this.clickAction = 0;
+    } else {
+      this.clickAction = square.tower++;
+    }
+  }
+
+  clickMove(mousePos) {
+    this.upgradeToClickAction(mousePos);
+  }
+  clickEnd(mousePos) {
+    this.upgradeToClickAction(mousePos);
+  }
+
+  upgradeToClickAction(mousePos) {
+    let clicked = this.map.getTileAtPos(this.view.toGameGrid(mousePos));
+    if (!clicked.getData()) {
+      // Clicked outside the area.
+      return;
+    }
+    let square = clicked.getData();
+    if (!square.solid && this.clickAction === 0) {
       square.solid = true;
       this.enemyPath.updateRoutes();
-    } else {
-      square.tower++;
+    } else if (square.tower + 1 === this.clickAction) {
+      square.tower = this.clickAction;
     }
   }
 
@@ -209,15 +231,15 @@ class CityGame {
 
 var mousePos;
 var view;
-var cityGame;
+var randomGame;
 function setup() {
   view = new MapView(10);
   view.createCanvas();
   mousePos = createVector(0, 0);
 
-  cityGame = new CityGame(view);
+  randomGame = new RandomTdGame(view);
   window.onblur = function() {
-    cityGame.paused = true;
+    randomGame.paused = true;
     noLoop();
   }
 
@@ -226,7 +248,7 @@ function setup() {
 function draw() {
   background(0);
 
-  cityGame.show();
+  randomGame.show();
 }
 
 function windowResized() {
@@ -247,20 +269,22 @@ function keyReleased() {
 // TODO handle multiple touches? Would need touchStarted, touchMoved and touchedEnded.
 function mousePressed() {
   mousePos.set(mouseX, mouseY);
+  randomGame.clickStart(mousePos);
 }
 
 function mouseDragged() {
   mousePos.set(mouseX, mouseY);
+  randomGame.clickMove(mousePos);
 }
 
 function mouseReleased() {
-  if (cityGame.paused) {
-    cityGame.paused = false;
+  if (randomGame.paused) {
+    randomGame.paused = false;
     loop();
     return;
   }
   mousePos.set(mouseX, mouseY);
-  cityGame.click(mousePos);
+  randomGame.clickEnd(mousePos);
 }
 
 function mouseWheel(event) {

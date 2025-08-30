@@ -162,7 +162,9 @@ class EnemyPath {
 class RandomTdGame {
   constructor(view) {
     this.view = view;
-    this.map = new Grid(50, 50, 1);
+    this.map = new Grid(50, 50);
+    // Set center to half of the map scaled up by size.
+    view.setCenter(createVector(this.map.getWidth(), this.map.getHeight()).mult(10 / 2));
     for (let y = 0; y < this.map.getHeight(); y++) {
       for (let x = 0; x < this.map.getWidth(); x++) {
         let square = new RandomSquare();

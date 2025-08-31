@@ -3,24 +3,22 @@
     <div class="intro">
       <div class="info">
         <div class="title">Michael Mudge</div>
-        <div>Wellington NZ</div>
-        <div><span>+64</span> <span>27</span><span>3896828</span></div>
+        <div>San Diego, USA</div>
+        <div><span>+1</span> <span>858</span><span>3055705</span></div>
         <div>mike.mudge@gmail.com</div>
       </div>
     </div>
     <div class="about section">
       <p>
-
-        I’m a software engineer with over 10 years of experience, with a wide range of knowledge and a sound understanding of the
+        I’m a software engineer with over 15 years of experience, with a wide range of knowledge and a sound understanding of the
         complexities in modern application development. Having worked in both large international companies and
-        smaller local startups, I have a proven record of making quick decisions under
-        pressure in order to maintain quality while still delivering within tight deadlines.
+        smaller local startups, I have a proven record of making quick decisions under pressure in order to maintain quality while still delivering within tight deadlines.
       </p>
       <p>
-        As a tech lead, I mentor engineers on my team and cross-functional teams, influencing them to adopt consistent software patterns.
+        As a Staff Engineer, I mentor engineers from several teams, influencing them to adopt consistent software patterns,
+        architect solutions which handle scale, managing potential failure modes, backwards compatibility.
         I find tackling the hardest challenges to be the most satisfactory, and love to innovate and optimize my solutions to unique problems.
-        I like the variety in supporting multiple services and applications across the board to gain a full view of the
-        company’s products.
+        I like the variety in supporting multiple services and applications across the board to gain a full view of the company’s products.
       </p>
       <p>
       </p>
@@ -31,27 +29,29 @@
         <div class="company">Sailthru</div>
         <div class="year">2018-present</div>
         <p>
-          I joined Sailthru as a Site Reliability Engineer, supporting a large number of products to enable Personalized Marketing via Email, Onsite and Push notifications.
+          I joined Sailthru as a Site Reliability Engineer, was promoted twice, currently a Staff Engineer.
+          I support multiple teams, with a wide variety of products to enable Personalized Marketing via Email, Sms, Onsite and Push notifications.
         </p>
 
         <div>
           <p class="project">Cloud Migration</p>
-          With a company goal to migrate our data center to AWS, I led the migration of Sailthru's php applications, consisting of 6 web services, 20 queue consumers and many cronjobs.
+          With a company goal to migrate our data center to AWS, I led the migration of Sailthru's legacy php applications, consisting of 6 web services, ~20 processes (E.g queue consumers) and around 90 cronjobs.
           Dependencies such as Mongo DB, Active MQ and Kafka were also migrated as part of this effort.<br>
           Key results I delivered include:
         </div>
         <ul>
-          <li>Introduced CI pipeline, dependency management and staging environment</li>
-          <li>Upgraded PHP to a supported version</li>
-          <li>Redesigned applications to follow cloud standard</li>
+          <li>Upgraded PHP to a supported version (Php 5 -> 7)</li>
+          <li>Introduced new CI pipeline, dependency management (composer) and staging environment</li>
+          <li>Containerized applications so they could be run with docker and EKS. </li>
+          <li>Refactored stateful applications to use s3 to be able to be run in a stateless manner </li>
           <li>Parallelized deployments to reduce duration from ~40m to 5m </li>
-          <li>Improved logging, monitoring and alerts</li>
+          <li>Improved logging, monitoring and alerts to ensure application health throughout migration</li>
           <li>Zero downtime migration to kubernetes (EKS)</li>
         </ul>
 
         <div>
           <p class="project">Incident Management</p>
-          The SRE team has the most in-depth knowledge of the Sailthru stack, while on the team I:
+          The Platform team has the most in-depth knowledge of the Sailthru stack, while on this team I:
           <ul>
             <li>Handled tickets escalated to us, which were the most difficult ones
               <ul>
@@ -59,7 +59,7 @@
                 <li>Investigated complex race conditions across multiple applications</li>
               </ul>
             </li>
-            <li>On-call for a large number of legacy services with limited observability</li>
+            <li>Was On-call for a number of legacy services with limited observability</li>
             <li>Navigated unfamiliar code to quickly identify root causes during incident remediation</li>
             <li>Balanced short term workarounds and long term redesigning of system components</li>
             <li>Designed and implemented rollout plans for risky changes</li>
@@ -70,7 +70,7 @@
           <p class="project">Best Practices</p>
           Working with legacy code has made me advocate for consistency through better processes:
           <ul>
-              <li>Documentation, architecture diagrams and RFC's</li>
+              <li>Documentation, diagrams and ADR's (Architecture Decision Records)</li>
               <li>Observability - health checks, metrics, logging and traces</li>
               <li>Application design - API's, exception handling, idempotency, design patterns</li>
               <li>CI/CD, unit testing and run books</li>
@@ -79,12 +79,14 @@
 
         <div>
           <p class="project">Leadership</p>
-          Being the first remote worker with a 6-8 hour time difference from the New York team, I helped create processes to enable effective communication.
-          As the processes matured, I worked with team leads to onboard new hires across timezones.
+          Onboarding new Teams, Omnichannel and Subscriber Experience.
+          Supporting Platform and Devops Teams for Migration/Upgrade
+          Key Engineering resource during Big Room (Product/Engineering) Quarterly Planning.
+          As the first remote worker, I helped establish processes to aid cross timezone communication challenges.
           <ul>
-            <li>Mentored coworkers from multiple teams</li>
-            <li>Code reviews across engineering teams, driving for readability</li>
-            <li>Documentation to help developers navigate local development setup</li>
+            <li>Team prioritization, working with Engineering Managers/Product Managers</li>
+            <li>Mentoring coworkers across teams</li>
+            <li>Code reviews across engineering teams, driving for readability and consistency</li>
           </ul>
         </div>
       </div>

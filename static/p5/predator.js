@@ -1,4 +1,3 @@
-
 class Creature {
   constructor(world) {
     this.size = 5;

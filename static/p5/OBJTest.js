@@ -1,4 +1,10 @@
 
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  // Local copy uses a more recent version of p5
+  app.loadTags(['p5_local']);
+}
+
 class Game {
   constructor() {
     this.width = 10;

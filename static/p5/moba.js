@@ -1,3 +1,13 @@
+
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  app.loadScript("/static/p5/rts/mobagame.js");
+  app.loadScript("/static/shared/swipecontrols.js");
+  app.loadScript("/static/shared/logger.js");
+
+  app.loadTags(['gridview', 'rts']);
+}
+
 class ClickControl {
   constructor(game, controllable) {
     this.game = game;

@@ -1,3 +1,9 @@
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+
+  app.loadTags(['gridview']);
+}
+
 class Road {
   constructor(start) {
     this.start = start;

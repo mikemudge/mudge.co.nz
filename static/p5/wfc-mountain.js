@@ -1,4 +1,10 @@
 
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+
+  app.loadTags(['gridview', 'wfc']);
+}
+
 class MountainTileSet {
   constructor(matcher) {
     this.matcher = matcher;

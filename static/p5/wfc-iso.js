@@ -1,20 +1,8 @@
-class IsoTile extends WFCTile {
-  constructor(image, name, direction) {
-    super(image, name + direction);
-    this.direction = direction;
-  }
 
-  show(size) {
-    // h is just the image height scaled to the current size.
-    let h = size * 2 * this.image.height / this.image.width;
-    let dirtDepth = size * .15;
-    image(this.image, 0, size / 2 - h + dirtDepth, size * 2, h);
-  }
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
 
-  showTileAt(x, y, w, h) {
-    let h2 = w * this.image.height / this.image.width;
-    image(this.image, x, y + (h - h2) / 2, w, h2);
-  }
+  app.loadTags(['gridview', 'wfc']);
 }
 
 let imageLoader

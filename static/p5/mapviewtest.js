@@ -1,3 +1,9 @@
+
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  app.loadTags(['gridview']);
+}
+
 class Player {
   constructor(x, y) {
     this.pos = createVector(x, y);

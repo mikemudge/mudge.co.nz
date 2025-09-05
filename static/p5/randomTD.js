@@ -1,3 +1,10 @@
+
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+
+  app.loadTags(['gridview', 'rts']);
+}
+
 class RandomSquare {
   constructor() {
     this.color = color(100 + random(100), 0, 0);

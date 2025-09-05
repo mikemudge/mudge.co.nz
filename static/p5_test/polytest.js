@@ -1,4 +1,10 @@
 
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  app.loadScript("/static/p5/lib/poly.js");
+  app.loadTags(['p5']);
+}
+
 let polys = [];
 let mousePos = null;
 let hoverPoly = null

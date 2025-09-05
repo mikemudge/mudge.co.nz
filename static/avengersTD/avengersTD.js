@@ -1,3 +1,9 @@
+
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  app.loadTags(['p5']);
+}
+
 class TowerBuilder {
   constructor(buildables) {
     this.buildables = buildables;

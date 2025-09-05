@@ -1,3 +1,9 @@
+
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  app.loadScript("/static/shared/logger.js");
+}
+
 class Planet {
   constructor(radius, pos) {
     this.radius = radius;

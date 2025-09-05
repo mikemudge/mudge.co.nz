@@ -25,8 +25,8 @@ SCRIPTS = {
         '/static/p5/p5.min.js',
     ],
     'gridview': [
-        "/static/p5/grid.js",
-        "/static/p5/view.js"
+        "/static/p5/lib/grid.js",
+        "/static/p5/lib/view.js"
     ],
     'wfc': [
         "/static/p5/wfc/tile.js",
@@ -41,9 +41,6 @@ SCRIPTS = {
         '/static/p5/rts/buildings.js',
         '/static/p5/rts/actions.js',
     ],
-    'poly': [
-        "/static/p5/poly.js"
-    ]
 }
 
 STYLES = {
@@ -134,10 +131,6 @@ apps['tournament'] = {
     'img': 'tournament.png',
     'tags': ['api', 'login', 'common', 'style1'],
 }
-apps['bomberman'] = {
-    'img': 'bomberman.png',
-    'tags': ['common']
-}
 
 # apps['slack_history'] = {
 #     'tags': ['common']
@@ -221,22 +214,14 @@ apps['color_war'] = {
     'img': 'color_war.png'
 }
 
-apps['p5_test'] = {
-    'tags': ['p5']
-}
-
-apps['p5'] = {
-    'tags': ['p5'],
-    'styles': ['/static/p5/p5.css']
-}
-
 p5_apps['mapviewtest'] = {
     'tags': ['gridview']
 }
 p5_apps['polytest'] = {
-    'tags': ['poly']
+    'scripts': ["/static/p5/lib/poly.js"]
 }
 p5_apps['bomberman'] = {
+    'img': 'bomberman.png',
     'tags': ['gridview']
 }
 p5_apps['rts'] = {
@@ -264,7 +249,8 @@ p5_apps['wfc3'] = {
     'tags': ['gridview']
 }
 p5_apps['wfc-iso'] = {
-    'tags': ['gridview', 'wfc']
+    'tags': ['gridview', 'wfc'],
+    'scripts': ['/static/p5/lib/wfc-iso-tile.js']
 }
 p5_apps['wfc-tinytown'] = {
     'tags': ['gridview', 'wfc']
@@ -280,20 +266,41 @@ p5_apps['planets'] = {
 
 p5_apps['minesweeper'] = {
     'img': 'minesweeper.png',
-    'scripts': ["/static/p5/grid.js"]
+    'scripts': ["/static/p5/lib/grid.js"]
 }
 
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
 
 
+class ProjectV2View(MethodView):
+    def get(self, path):
+        # TODO load meta tags for a path?
+
+        config = {
+            'API_URL': current_app.config.get('API_URL'),
+            'DEBUG': current_app.config.get('DEBUG'),
+            'ENV': current_app.config.get('ENV'),
+            'GOOGLE_CLIENT_ID': current_app.config.get('GOOGLE_CLIENT_ID'),
+            'AUTH_COOKIE_ID': current_app.config.get('AUTH_COOKIE_ID'),
+            # The web client id and secret for basic auth.
+            'CLIENT_ID': current_app.config.get('CLIENT_ID'),
+            'CLIENT_SECRET': current_app.config.get('CLIENT_SECRET'),
+        }
+        config['LOGIN_URL'] = request.url_root
+        return render_template('projectsV2.tmpl', **{
+            'config': config
+        })
+
 # Project endpoints.
 class ProjectAppsListView(MethodView):
     def get(self):
         result = []
+        sorted_games = sorted(p5_apps.items())
         sorted_apps = sorted(apps.items())
 
         return render_template('projects.tmpl', **{
+            'games': [a for a in sorted_games if 'hidden' not in a[1] or not a[1]['hidden']],
             'apps': [a for a in sorted_apps if 'hidden' not in a[1] or not a[1]['hidden']]
         })
 
@@ -341,25 +348,15 @@ class ProjectAppView(MethodView):
             self.updateFromConf(app, conf)
 
             if sample:
+                logger.info("Does sample still get used? %s" % app_path)
                 entry_point = "%s/%s.js" % (app_path, sample)
-                # Sample is an app within an app group, load a script for it.
-
-                if app_name == 'p5' or app_name == 'p5_test':
-                    app.template = 'app.tmpl'
-                    p5_conf = p5_apps.get(sample)
-                    if p5_conf:
-                        logger.info("Loading p5 app for %s", sample)
-                        entry_point = p5_conf.get('entry_point', entry_point)
-                        self.updateFromConf(app, p5_conf)
-
                 # TODO app version could be improved for dev without caching.
                 # want to reuse a version to support debug in chrome dev tools.
                 app.version = os.path.getmtime('./%s' % entry_point)
                 app.scripts.append("%s?v=%s" % (entry_point, app.version))
 
         logger.info("folder setup %s" % app_path)
-        if app_name != 'p5' or app_name != 'p5_test' or sample == None:
-            app.setupFolder(app_path)
+        app.setupFolder(app_path)
 
         return app.render()
 

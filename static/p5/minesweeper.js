@@ -1,4 +1,9 @@
 
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  app.loadScript("/static/p5/lib/grid.js");
+}
+
 class Square {
   constructor() {
     this.bomb = false;

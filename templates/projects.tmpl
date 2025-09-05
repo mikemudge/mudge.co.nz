@@ -7,6 +7,22 @@
   <link rel="stylesheet" type="text/css" href="/static/projects/projects.css" />
 </head>
 <body>
+  {% for key, app in games if app.img %}
+    <div class='project'>
+      <a href="/games/p5/{{ key }}">
+        <h4>
+          {{ key | capitalize | replace('_',' ') | replace('-',' ') }}
+        </h4>
+        <span>{{ app.tags | join(' ') }}</span>
+        {% if app.img %}
+          <div class='image'>
+            <img src='/static/img/projects/{{ app.img }}'>
+          </div>
+        {% endif %}
+      </a>
+    </div>
+  {% endfor %}
+
   {% for key, app in apps if app.img %}
     <div class='project'>
       <a href="/projects/{{ key }}">

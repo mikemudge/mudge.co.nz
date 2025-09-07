@@ -1,15 +1,12 @@
 
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-  app.loadScript("/static/p5/lib/poly.js");
-  app.loadTags(['p5']);
-}
+import {Path} from "../p5/lib/poly.js";
 
 let polys = [];
 let mousePos = null;
 let hoverPoly = null
 let hoverPoint = null;
-function setup() {
+
+export function setup() {
   let c = createCanvas(windowWidth, windowHeight - 18);
 
   mousePos = createVector(0, 0);
@@ -28,17 +25,17 @@ function setup() {
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
-  for (path of polys) {
+  for (let path of polys) {
     path.showComplete();
   }
   if (buildPoly) {
     buildPoly.showInProgress();
 
     stroke('green');
-    for (path of polys) {
-      connector = buildPoly.connectTo(path);
+    for (let path of polys) {
+      let connector = buildPoly.connectTo(path);
       line(connector[0].x, connector[0].y, connector[1].x, connector[1].y);
     }
   }
@@ -58,7 +55,7 @@ function draw() {
 let clicked = null;
 let clickedPoly = null;
 let buildPoly = null
-function mousePressed() {
+export function mousePressed() {
   // select a point based on click.
   mousePos.set(mouseX, mouseY);
   console.log("Click ", mousePos);
@@ -75,7 +72,7 @@ function mousePressed() {
   }
 
   // If there is no poly being built we check to see if any existing one is clicked on.
-  for (path of polys.reverse()) {
+  for (let path of polys.reverse()) {
     // Check if a point was clicked.
     clicked = path.click(mousePos);
     if (clicked) {
@@ -99,11 +96,11 @@ function mousePressed() {
   }
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   hoverPoint = null;
   hoverPoly = null;
   mousePos.set(mouseX, mouseY);
-  for (path of polys) {
+  for (let path of polys) {
     hoverPoint = path.click(mousePos);
     if (path.isInside(mousePos)) {
       // This is a click on an existing polygon.
@@ -113,7 +110,7 @@ function mouseMoved() {
   }
 }
 
-function mouseDragged() {
+export function mouseDragged() {
   if (clicked) {
     // TODO need to update the poly here as well.
     // Otherwise min/max are not updated.
@@ -125,7 +122,7 @@ function mouseDragged() {
   }
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (clicked) {
     clicked.set(mouseX, mouseY);
     clicked = null;

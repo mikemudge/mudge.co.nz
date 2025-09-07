@@ -169,7 +169,11 @@ class Path {
   }
 }
 
-function setup() {
+let agents;
+let vehicle;
+let path;
+
+export function setup() {
   createCanvas(400, 400);
   agents = [];
   vehicle = new Agent(100, 100, 16)
@@ -179,7 +183,7 @@ function setup() {
   path = new Path(0, 200, 400, 200)
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   // path.end.x = mouseX;

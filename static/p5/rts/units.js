@@ -1,5 +1,5 @@
 
-class Util {
+export class Util {
   static vectorString(pos) {
     return Math.round(pos.x) + ", " + Math.round(pos.y);
   }
@@ -32,7 +32,7 @@ class Projectile {
   }
 }
 
-class HealthBar {
+export class HealthBar {
   constructor(maxHealth, r) {
     this.maxHealth = maxHealth;
     this.health = maxHealth;
@@ -96,7 +96,7 @@ class HealthBar {
   }
 }
 
-class UnitClass {
+export class UnitClass {
   constructor(name) {
     this.name = name;
     this.r = 8;
@@ -130,7 +130,7 @@ class UnitClass {
   }
 }
 
-class Unit {
+export class Unit {
   constructor(pos, team, unitClass) {
     this.unitClass = unitClass;
     this.team = team;
@@ -231,7 +231,7 @@ class Unit {
   }
 }
 
-class Archer extends UnitClass {
+export class Archer extends UnitClass {
   constructor() {
     super("Archer");
     this.time = 24;
@@ -244,7 +244,7 @@ class Archer extends UnitClass {
   }
 }
 
-class Horse extends UnitClass {
+export class Horse extends UnitClass {
   constructor() {
     super("Cavalry");
     this.time = 2;
@@ -257,7 +257,7 @@ class Horse extends UnitClass {
   }
 }
 
-class Builder extends UnitClass {
+export class Builder extends UnitClass {
   constructor() {
     super("Builder");
     this.cost = 50;

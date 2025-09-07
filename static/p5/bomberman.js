@@ -1,8 +1,5 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-  app.loadTags(['gridview']);
-}
+import {Grid} from './lib/grid.js';
+import {MapView} from './lib/view.js';
 
 class Player {
   constructor(map, pos, size) {
@@ -295,7 +292,9 @@ class Game {
   }
 }
 
-function setup() {
+let view;
+let game;
+export function setup() {
   view = new MapView(40);
   view.createCanvas();
   // Must match bomb settings for countdown.
@@ -303,14 +302,14 @@ function setup() {
   game = new Game(view);
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
 
   // TODO set screen should compensate for offsets?
   view.setScreen(windowWidth, windowHeight - 18);
 }
 
-function keyPressed() {
+export function keyPressed() {
   game.keys(keyCode);
 }
 
@@ -318,7 +317,7 @@ function keyPressed() {
 //   view.scale(event.delta);
 // }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.update();

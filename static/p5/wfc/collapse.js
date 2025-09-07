@@ -1,3 +1,5 @@
+import {Grid} from "../lib/grid.js";
+
 class ImpossibleCollapse extends Error {
   constructor(square, possible, allowed) {
     super();
@@ -91,7 +93,7 @@ class Square {
 }
 
 /* fills in a grid with Square's which collapse to a single tile using the WFCTile joins. */
-class CollapseFunction {
+export class CollapseFunction {
   constructor(width, height, layers, useMinimum) {
     this.width = width;
     this.height = height;

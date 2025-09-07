@@ -1,7 +1,7 @@
 /**
  * A javascript class to help use the gamepad controller in games.
  **/
-export class GameControls {
+class GameControls {
   constructor(config) {
 
     this.config = config || {};

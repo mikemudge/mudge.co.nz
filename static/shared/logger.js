@@ -1,7 +1,7 @@
 /**
  * A javascript class to help log on mobile devices (with no developer tools).
  **/
-class Logger {
+export class Logger {
 
   constructor() {
     this.logs = [];

@@ -10,7 +10,6 @@ def routes(app):
     app.add_url_rule('/projects/<app_name>/', view_func=p_view)
     app.add_url_rule('/projects/<app_name>/<path:path>', view_func=p_view)
 
-    # TODO show game list?
     app.add_url_rule('/games/', view_func=list_view)
     app.add_url_rule('/games/<path:path>', view_func=ProjectV2View.as_view('games'))
 

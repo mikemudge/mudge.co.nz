@@ -1,12 +1,8 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-  app.loadScript("/static/p5/rts/mobagame.js");
-  app.loadScript("/static/shared/swipecontrols.js");
-  app.loadScript("/static/shared/logger.js");
-
-  app.loadTags(['gridview', 'rts']);
-}
+import {MapView} from "./lib/view.js";
+import {GameMap} from "./rts/map.js";
+import {MobaGame} from "./rts/mobagame.js";
+import {Logger} from "../shared/logger.js";
+import {SwipeJoystick} from "../shared/swipecontrols.js";
 
 class ClickControl {
   constructor(game, controllable) {
@@ -38,9 +34,15 @@ class ClickControl {
   }
 }
 
-var mousePos;
-var humanControls;
-function setup() {
+let mousePos;
+let touchPos;
+let humanControls;
+let view
+let gamemap;
+let game;
+let clickControl;
+let logger;
+export function setup() {
   view = new MapView(10);
   // 18px is the top div showing nav items.
   view.setScreen(windowWidth, windowHeight);
@@ -68,31 +70,21 @@ function setup() {
   touchPos = createVector(0, 0);
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 
   view.setScreen(windowWidth, windowHeight);
 }
 
-// Disable key controls because the view follows the hero unit.
-// TODO could use keys to move the unit instead?
-// function keyPressed() {
-//   view.keys();
-// }
-//
-// function keyReleased() {
-//   view.keys();
-// }
-
 // TODO move this setup into the swipecontrol.js class?
 // TODO handle multiple touches? Would need touchStarted, touchMoved and touchedEnded.
-function mousePressed() {
+export function mousePressed() {
   mousePos.set(mouseX, mouseY);
   logger.debug("Mouse Pressed " + mousePos.x.toFixed(2) + "," + mousePos.y.toFixed(2));
   // humanControls.start(mousePos);
 }
 
-function touchStarted() {
+export function touchStarted() {
   touchPos.set(touches[0].x, touches[0].y);
   logger.debug("Touch Started " + numberFormat(touchPos.x) + "," + numberFormat(touchPos.y));
   humanControls.start(touchPos);
@@ -100,23 +92,23 @@ function touchStarted() {
   return false;
 }
 
-function numberFormat(num) {
+export function numberFormat(num) {
   return "" + Math.round(num * 100) / 100;
 }
 
-function touchMoved() {
+export function touchMoved() {
   touchPos.set(touches[0].x, touches[0].y);
   logger.debug("Touch Moved " + numberFormat(touchPos.x) + "," + numberFormat(touchPos.y));
   humanControls.move(touchPos);
 }
 
-function mouseDragged() {
+export function mouseDragged() {
   mousePos.set(mouseX, mouseY);
   logger.debug("Mouse Drag " + numberFormat(mousePos.x) + "," + numberFormat(mousePos.y));
   // humanControls.move(mousePos);
 }
 
-function touchEnded() {
+export function touchEnded() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -127,7 +119,7 @@ function touchEnded() {
   humanControls.end(touchPos);
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -141,11 +133,11 @@ function mouseReleased() {
 
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   view.scale(event.delta);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.show();

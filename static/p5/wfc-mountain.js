@@ -1,9 +1,7 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-
-  app.loadTags(['gridview', 'wfc']);
-}
+import {TileSetEdgeMatcher} from "./wfc/tileset.js";
+import {MapView} from "./lib/view.js";
+import {CollapseFunction} from "./wfc/collapse.js";
+import {WFCOverlay} from "./wfc/renders.js";
 
 class MountainTileSet {
   constructor(matcher) {
@@ -70,12 +68,14 @@ class MountainTileSet {
   }
 }
 
-function preload() {
+let tileset;
+let view;
+export function preload() {
   tileset = loadImage('/static/p5/game/tilesets/mountain_landscape.png');
 }
 
 let renderer;
-function setup() {
+export function setup() {
   let tilesetMatcher = new TileSetEdgeMatcher(tileset, 32,32);
 
   let imageSpecificMatcher = new MountainTileSet(tilesetMatcher);
@@ -94,35 +94,35 @@ function setup() {
   renderer.addTilesetMatcher(tilesetMatcher, size);
 }
 
-function draw() {
+export function draw() {
   background(127);
 
   renderer.update();
   renderer.draw();
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
 
   view.setScreen(windowWidth, windowHeight - 18);
 }
 
-function keyPressed() {
+export function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   view.keys();
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   view.scale(event.delta);
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   renderer.mouseMove(mouseX, mouseY);
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   renderer.click(mouseX, mouseY);
 }

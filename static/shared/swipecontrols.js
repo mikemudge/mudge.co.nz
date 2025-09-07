@@ -1,7 +1,7 @@
 /**
  * A javascript class to help use mouse/touch.
  **/
-class SwipeControls {
+export class SwipeControls {
   constructor(game, controllable) {
     this.game = game;
     this.controllable = controllable;
@@ -81,7 +81,7 @@ class SwipeControls {
   }
 }
 
-class SwipeJoystick {
+export class SwipeJoystick {
 
   constructor(game, controllable) {
     this.game = game;

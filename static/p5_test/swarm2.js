@@ -66,7 +66,7 @@ class Unit {
     }
 
     // Then limit the force so its not massive.
-    force.limit(unit.maxForce);
+    force.limit(this.maxForce);
     return force;
   }
 
@@ -83,17 +83,18 @@ class Unit {
   }
 }
 
-function setup() {
+let units;
+export function setup() {
   createCanvas(400, 400);
-  c = color('#63A4F0');
+  let c = color('#63A4F0');
   units = [];
   for (let i = 0; i < 50; i++) {
-    unit = new Unit(random(width), random(height), 8, c);
+    let unit = new Unit(random(width), random(height), 8, c);
     units.push(unit);
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   for (let unit of units) {

@@ -1,9 +1,8 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-
-  app.loadTags(['gridview', 'rts']);
-}
+import {Grid} from "./lib/grid.js";
+import {MapView} from "./lib/view.js";
+import {FollowCommand} from "./rts/actions.js";
+import {Unit, UnitClass} from "./rts/units.js";
+import {Team} from "./rts/map.js";
 
 class RandomSquare {
   constructor() {
@@ -241,7 +240,7 @@ class RandomTdGame {
 var mousePos;
 var view;
 var randomGame;
-function setup() {
+export function setup() {
   view = new MapView(10);
   view.createCanvas();
   mousePos = createVector(0, 0);
@@ -254,39 +253,39 @@ function setup() {
 
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   randomGame.show();
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 
   view.setScreen(windowWidth, windowHeight);
 }
 
-function keyPressed() {
+export function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   view.keys();
 }
 
 // TODO move this setup into the swipecontrol.js class?
 // TODO handle multiple touches? Would need touchStarted, touchMoved and touchedEnded.
-function mousePressed() {
+export function mousePressed() {
   mousePos.set(mouseX, mouseY);
   randomGame.clickStart(mousePos);
 }
 
-function mouseDragged() {
+export function mouseDragged() {
   mousePos.set(mouseX, mouseY);
   randomGame.clickMove(mousePos);
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (randomGame.paused) {
     randomGame.paused = false;
     loop();
@@ -296,6 +295,6 @@ function mouseReleased() {
   randomGame.clickEnd(mousePos);
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   view.scale(event.delta);
 }

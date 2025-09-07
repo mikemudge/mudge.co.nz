@@ -111,15 +111,6 @@ apps['seconds'] = {
 apps['workouttime'] = {
     'tags': ['common']
 }
-apps['soccer'] = {
-    'img': 'soccer.png',
-    'tags': ['common', 'p5'],
-    'scripts': [
-        '/static/shared/gamecontrols.js',
-        '/static/shared/logger.js',
-        '/static/shared/swipecontrols.js',
-    ]
-}
 apps['predator'] = {
     'img': 'predator.png',
     'tags': ['p5']
@@ -151,7 +142,7 @@ apps['racer'] = {
     'img': 'racer.png',
     'tags': ['threejs', 'common'],
     'scripts': [
-        '/static/shared/gamecontrols.js',
+        '/static/shared/gamecontrols-old.js',
         '/static/js/three.js/BinaryLoader.js',
         '/static/racer/cars.js'
     ]
@@ -214,59 +205,24 @@ apps['color_war'] = {
     'img': 'color_war.png'
 }
 
-p5_apps['mapviewtest'] = {
-    'tags': ['gridview']
-}
-p5_apps['polytest'] = {
-    'scripts': ["/static/p5/lib/poly.js"]
+# Show the featured games using an image tile in projects list view.
+p5_apps['breakout'] = {
+    'img': 'breakout.png',
 }
 p5_apps['bomberman'] = {
     'img': 'bomberman.png',
-    'tags': ['gridview']
 }
-p5_apps['rts'] = {
-    'tags': ['gridview', 'rts'],
-    'entry_point': '/static/p5/rts/rts.js',
-    'scripts': [
-        '/static/p5/rts/game.js'
-    ]
+p5_apps['soccer'] = {
+    'img': 'soccer.png',
 }
-p5_apps['moba'] = {
-    'tags': ['gridview', 'rts'],
-    'scripts': [
-        '/static/shared/logger.js',
-        '/static/shared/swipecontrols.js',
-        '/static/p5/rts/mobagame.js'
-    ]
-}
-p5_apps['randomTD'] = {
-    'tags': ['gridview', 'rts']
-}
-p5_apps['road'] = {
-    'tags': ['gridview']
-}
-p5_apps['wfc3'] = {
-    'tags': ['gridview']
-}
-p5_apps['wfc-iso'] = {
-    'tags': ['gridview', 'wfc'],
-    'scripts': ['/static/p5/lib/wfc-iso-tile.js']
-}
-p5_apps['wfc-tinytown'] = {
-    'tags': ['gridview', 'wfc']
-}
-p5_apps['wfc-mountain'] = {
-    'tags': ['gridview', 'wfc']
+p5_apps['connect4'] = {
+    'img': 'connect4.png',
 }
 p5_apps['planets'] = {
-    'scripts': [
-        '/static/shared/logger.js',
-    ]
+    'img': 'planets.png',
 }
-
 p5_apps['minesweeper'] = {
     'img': 'minesweeper.png',
-    'scripts': ["/static/p5/lib/grid.js"]
 }
 
 def gmaps():
@@ -296,11 +252,10 @@ class ProjectV2View(MethodView):
 class ProjectAppsListView(MethodView):
     def get(self):
         result = []
-        sorted_games = sorted(p5_apps.items())
         sorted_apps = sorted(apps.items())
 
         return render_template('projects.tmpl', **{
-            'games': [a for a in sorted_games if 'hidden' not in a[1] or not a[1]['hidden']],
+            'games': [a for a in p5_apps.items() if 'hidden' not in a[1] or not a[1]['hidden']],
             'apps': [a for a in sorted_apps if 'hidden' not in a[1] or not a[1]['hidden']]
         })
 

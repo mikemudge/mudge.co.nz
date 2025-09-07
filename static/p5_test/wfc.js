@@ -111,26 +111,28 @@ class Grid {
   }
 }
 
-function setup() {
+let grid;
+let time;
+export function setup() {
   createCanvas(800, 600);
 
   grid = new Grid(35, 25, 20);
   time = 0;
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   time++;
   if (time % 10 == 0) {
     // TODO pick from remaining grid locations (prevent dups)
-    idx = time / 10 - 1;
-    x = idx % grid.width;
-    y = int(idx / grid.width);
+    let idx = time / 10 - 1;
+    let x = idx % grid.width;
+    let y = int(idx / grid.width);
     // x = int(random(grid.width));
     // y = int(random(grid.height));
     // Set the type of one square every second.
-    loc = grid.get(x, y);
+    let loc = grid.get(x, y);
     loc.collapse();
     console.log("Collapsing", x, y, "as", loc.type)
     grid.get(x + 1, y).reducePossible(loc.type);

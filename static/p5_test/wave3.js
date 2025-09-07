@@ -19,15 +19,16 @@ class Wave {
   }
 }
 
-function setup() {
+let waves;
+export function setup() {
   createCanvas(600, 400);
   waves = [];
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     waves.push(new Wave(random(20, 80), random(100, 600), random(0, TWO_PI)));
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   for (let wave of waves) {

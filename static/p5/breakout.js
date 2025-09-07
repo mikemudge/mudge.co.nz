@@ -376,11 +376,13 @@ class Game {
   }
 }
 
-function mouseClicked() {
+export function mouseClicked() {
   game.paused = false;
 }
 
-function setup() {
+let args;
+let game;
+export function setup() {
   createCanvas(500, 500);
 
   args = new URLSearchParams(location.search);
@@ -390,7 +392,7 @@ function setup() {
   game.reset();
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.show();

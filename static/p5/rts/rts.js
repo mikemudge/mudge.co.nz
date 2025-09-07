@@ -1,6 +1,13 @@
-function setup() {
+import {GameMap} from './map.js'
+import {Game} from './game.js'
+import {MapView} from "../lib/view.js";
+
+let view;
+let game;
+let controls;
+export function setup() {
   view = new MapView(10);
-  c = view.createCanvas();
+  var c = view.createCanvas();
   // Disable right click on the canvas so we can use it for the game.
   c.canvas.oncontextmenu = function() {
     return false;
@@ -19,13 +26,13 @@ function setup() {
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight - 18);
+export function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 
-  view.setScreen(windowWidth, windowHeight - 18);
+  view.setScreen(windowWidth, windowHeight);
 }
 
-function keyPressed() {
+export function keyPressed() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -33,25 +40,25 @@ function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   view.keys();
 }
 
-function mouseDragged(event) {
+export function mouseDragged(event) {
   if (game.paused) {
     return;
   }
   controls.mouseDrag();
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   if (game.paused) {
     return;
   }
   controls.mouseMove();
 }
 
-function mousePressed(event) {
+export function mousePressed(event) {
   if (game.paused) {
     return;
   }
@@ -59,7 +66,7 @@ function mousePressed(event) {
   return false;
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -71,14 +78,14 @@ function mouseReleased() {
   controls.click();
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   if (game.paused) {
     return;
   }
   view.scale(event.delta);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.show();

@@ -1,4 +1,4 @@
-class WFCTile {
+export class WFCTile {
   constructor(img, name) {
     this.image = img;
     this.name = name;
@@ -239,7 +239,7 @@ class WFCTile {
   }
 }
 
-class IsoTile extends WFCTile {
+export class IsoTile extends WFCTile {
   constructor(image, name, direction) {
     super(image, name + direction);
     this.direction = direction;

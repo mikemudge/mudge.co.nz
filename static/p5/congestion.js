@@ -72,17 +72,19 @@ class Car {
   }
 }
 
-function setup() {
+let lastCar;
+let cars;
+export function setup() {
   createCanvas(1000, 400);
   lastCar = new Car(createVector(-20, 200));
   cars = [lastCar];
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   if (lastCar.pos.x > lastCar.r * 4) {
-    car = new Car(createVector(-20, 200));
+    let car = new Car(createVector(-20, 200));
     car.target = lastCar;
     cars.push(car);
     lastCar = car;

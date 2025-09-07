@@ -1,8 +1,5 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-  app.loadTags(['gridview']);
-}
+import {Grid} from "./lib/grid.js";
+import {MapView} from "./lib/view.js";
 
 class Player {
   constructor(x, y) {
@@ -116,7 +113,9 @@ class Game {
   }
 }
 
-function setup() {
+let view;
+let game;
+export function setup() {
   view = new MapView(40);
   view.createCanvas()
   // Must match bomb settings for countdown.
@@ -127,25 +126,25 @@ function setup() {
   window.onfocus = game.unpause;
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
 
   view.setScreen(windowWidth, windowHeight - 18);
 }
 
-function keyPressed() {
+export function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   view.keys();
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   view.scale(event.delta);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.update();

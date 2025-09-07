@@ -19,16 +19,17 @@ class Wave {
   }
 }
 
-function setup() {
+let waves;
+export function setup() {
   createCanvas(600, 400);
   waves = [];
-  for (i = 1; i < 10; i++) {
-    harmonic = 2 * i - 1;
+  for (let i = 1; i < 10; i++) {
+    let harmonic = 2 * i - 1;
     waves.push(new Wave(200 / harmonic, 600 / harmonic, 0));
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   for (let wave of waves) {

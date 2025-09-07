@@ -1,3 +1,7 @@
+import {MoveCommand, SpawnCommand} from "./actions.js";
+import {UnitClass} from "./units.js";
+import {Team} from "./map.js";
+import {BuildingClass, Tower} from "./buildings.js";
 
 class HeroUnit extends UnitClass {
   constructor() {
@@ -25,7 +29,7 @@ class Spawner extends BuildingClass {
   }
 }
 
-class MobaGame {
+export class MobaGame {
   constructor(view, map) {
     this.view = view;
     this.map = map;

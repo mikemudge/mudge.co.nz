@@ -70,7 +70,9 @@ class Unit {
   }
 }
 
-function setup() {
+let teams;
+let left, right;
+export function setup() {
   createCanvas(400, 400);
   left = {
     'units': [],
@@ -85,7 +87,7 @@ function setup() {
     left['units'].push(new Unit(random(50, 150), random(height), 4, left['color']));
   }
   for (let i = 0; i < 15; i++) {
-    unit = new Unit(random(250, 350), random(height), 4, right['color']);
+    let unit = new Unit(random(250, 350), random(height), 4, right['color']);
     unit.target = random(left.units);
     right['units'].push(unit);
   }
@@ -97,7 +99,7 @@ function setup() {
 
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   // Retarget occasinally.

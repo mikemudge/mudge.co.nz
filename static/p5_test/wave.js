@@ -2,12 +2,12 @@
 let angle = 0;
 let angleV = 0;
 
-function setup() {
+export function setup() {
   createCanvas(400, 400);
   angleV = TWO_PI / 180;
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   translate(200, 200);

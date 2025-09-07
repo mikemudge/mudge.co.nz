@@ -1,8 +1,4 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-  app.loadScript("/static/p5/lib/grid.js");
-}
+import {Grid} from "./lib/grid.js";
 
 class Square {
   constructor() {
@@ -234,9 +230,10 @@ class Game {
   }
 }
 
-function setup() {
-  size = 50 * 2 + 20 * 2 * 10;
-  c = createCanvas(size, size);
+let game;
+export function setup() {
+  let size = 50 * 2 + 20 * 2 * 10;
+  let c = createCanvas(size, size);
   c.canvas.oncontextmenu = function() {
     return false;
   }
@@ -245,7 +242,7 @@ function setup() {
   game = new Game();
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (mouseButton === "left") {
     game.click(mouseX, mouseY)
   }
@@ -254,11 +251,11 @@ function mouseReleased() {
   }
 }
 
-function doubleClicked() {
+export function doubleClicked() {
   game.doubleClick(mouseX, mouseY);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.update();

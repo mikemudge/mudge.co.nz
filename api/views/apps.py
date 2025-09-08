@@ -64,7 +64,7 @@ apps = {}
 p5_apps = {}
 
 apps['3dprint'] = {
-    'img': '3dprint.png',
+#     'img': '3dprint.png',
     'tags': ['p5', 'threejs', 'objexport'],
     'scripts': [
         'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.js',
@@ -74,7 +74,7 @@ apps['3dprint'] = {
 
 }
 apps['ar'] = {
-    'img': 'ar.png',
+#     'img': 'ar.png',
     'tags': ['threejs'],
     'scripts': [
         '/static/js/three.js/OrbitControls.js',
@@ -85,10 +85,6 @@ apps['ar'] = {
         '/static/rts/game.js',
         '/static/ar/ar.js',
     ]
-}
-apps['avengersTD'] = {
-    'img': 'avengersTD.png',
-    'tags': ['p5']
 }
 
 # TODO ar should just be a plugin for rts.
@@ -201,9 +197,9 @@ apps['traffic'] = {
     'tags': ['p5', 'gridview']
 }
 
-apps['color_war'] = {
-    'img': 'color_war.png'
-}
+# apps['color_war'] = {
+#     'img': 'color_war.png'
+# }
 
 # Show the featured games using an image tile in projects list view.
 p5_apps['breakout'] = {
@@ -223,6 +219,10 @@ p5_apps['planets'] = {
 }
 p5_apps['minesweeper'] = {
     'img': 'minesweeper.png',
+}
+p5_apps['avengersTD'] = {
+    'img': 'avengersTD.png',
+    'title': 'Avengers Tower Defence'
 }
 
 def gmaps():

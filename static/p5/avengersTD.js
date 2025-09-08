@@ -1,9 +1,3 @@
-
-if (window.mudgemi && window.mudgemi.init) {
-  app = window.mudgemi.init.app;
-  app.loadTags(['p5']);
-}
-
 class TowerBuilder {
   constructor(buildables) {
     this.buildables = buildables;
@@ -762,20 +756,23 @@ class TowerBuildButton {
   }
 }
 
-function preload() {
-  spiderman = loadImage('/static/avengersTD/assets/spiderman.jpeg');
-  hawkeye = loadImage('/static/avengersTD/assets/hawkeye.jpeg');
-  captain = loadImage('/static/avengersTD/assets/captain america.jpeg')
-  thor = loadImage('/static/avengersTD/assets/thor.jpeg');
-  ironman = loadImage('/static/avengersTD/assets/ironman.jpeg');
-  avengers = loadImage('/static/avengersTD/assets/avengers facility.jpeg');
+let spiderman, hawkeye, captain, thor, ironman, avengers;
+export function preload() {
+  spiderman = loadImage('/static/img/avengersTD/spiderman.jpeg');
+  hawkeye = loadImage('/static/img/avengersTD/hawkeye.jpeg');
+  captain = loadImage('/static/img/avengersTD/captain america.jpeg')
+  thor = loadImage('/static/img/avengersTD/thor.jpeg');
+  ironman = loadImage('/static/img/avengersTD/ironman.jpeg');
+  avengers = loadImage('/static/img/avengersTD/avengers facility.jpeg');
 }
 
-function windowResized() {
+export function windowResized() {
    resizeCanvas(windowWidth, windowHeight);
 }
 
-function setup() {
+let waveSpawn;
+let towerBuilder;
+export function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(30);
 
@@ -797,7 +794,7 @@ function setup() {
 
   let waves = [];
   for (let i =0; i <= 50; i++) {
-    wave = {
+    let wave = {
       count: i + 5,
       spawnRate: 4,
       speed: int(5 + 5 * i / 50),
@@ -830,6 +827,7 @@ function setup() {
   waveSpawn = new WaveSpawn(path, waves);
   waveSpawn.home = avengers;
 
+  let h,s,ca,t,im;
   towerBuilder = new TowerBuilder([
     h = new TowerBuildButton('Hawkeye', hawkeye),
     s = new TowerBuildButton('Spiderman', spiderman),
@@ -875,12 +873,12 @@ function setup() {
   }
 }
 
-function mouseClicked() {
+export function mouseClicked() {
   towerBuilder.click();
   return false;
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   waveSpawn.update();
@@ -904,9 +902,3 @@ function draw() {
 
   // TODO skip button?
 }
-
-// Angular trys to load this modules.
-angular.module('avengersTD', [
-  'config',
-  'ngRoute'
-])

@@ -11,9 +11,8 @@
     <div class='project'>
       <a href="/games/p5/{{ key }}">
         <h4>
-          {{ key | capitalize | replace('_',' ') | replace('-',' ') }}
+          {{ app.title | default(key) | capitalize | replace('_',' ') | replace('-',' ') }}
         </h4>
-        <span>{{ app.tags | join(' ') }}</span>
         {% if app.img %}
           <div class='image'>
             <img src='/static/img/projects/{{ app.img }}'>
@@ -29,7 +28,6 @@
         <h4>
           {{ key | capitalize | replace('_',' ') | replace('-',' ') }}
         </h4>
-        <span>{{ app.tags | join(' ') }}</span>
         {% if app.img %}
           <div class='image'>
             <img src='/static/img/projects/{{ app.img }}'>

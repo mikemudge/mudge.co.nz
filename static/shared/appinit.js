@@ -1,8 +1,9 @@
 // Represents a single frontend app.
 class App {
-  constructor(path, name) {
+  constructor(path, name, query) {
     this.path = path;
     this.name = name;
+    this.query = query;
     this.version = 0;
   }
 
@@ -34,7 +35,13 @@ class App {
     // Automatically load p5 for files within the p5 or p5_test folder.
     let parts = this.path.split("/");
     if (parts[2] === 'p5' || parts[2] === 'p5_test') {
-      this.loadTags(['p5']);
+      if (this.query.get("offline")) {
+        // Can use a local version of p5 for offline development?
+        this.loadScript('/static/p5/p5.min.js');
+      } else {
+        // TODO support version control for this?
+        this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.5/p5.min.js');
+      }
     }
   }
 
@@ -64,7 +71,7 @@ class AppInit {
 
   constructor(windowLocation) {
     this.path = windowLocation.pathname;
-    this.query = windowLocation.search;
+    this.query = new URLSearchParams(windowLocation.search);
     this.local = windowLocation.hash;
   }
 
@@ -79,7 +86,7 @@ class AppInit {
     }
 
     let name = parts[parts.length - 1];
-    this.app = new App(this.path, name);
+    this.app = new App(this.path, name, this.query);
     // Support overriding some config here?
     this.app.loadMain();
   }

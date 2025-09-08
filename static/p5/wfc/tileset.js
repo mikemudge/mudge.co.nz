@@ -1,5 +1,8 @@
 /* goes through a tileset and creates WFCTile's with possible tiles in each direction */
-class TileSetEdgeMatcher {
+import {Grid} from "../lib/grid.js";
+import {WFCTile} from "./tile.js";
+
+export class TileSetEdgeMatcher {
 
   constructor(tileset, tileWidth, tileHeight) {
     let tilesAcross = tileset.width / tileWidth;

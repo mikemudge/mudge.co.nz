@@ -1,24 +1,11 @@
-class IsoTile extends WFCTile {
-  constructor(image, name, direction) {
-    super(image, name + direction);
-    this.direction = direction;
-  }
-
-  show(size) {
-    // h is just the image height scaled to the current size.
-    let h = size * 2 * this.image.height / this.image.width;
-    let dirtDepth = size * .15;
-    image(this.image, 0, size / 2 - h + dirtDepth, size * 2, h);
-  }
-
-  showTileAt(x, y, w, h) {
-    let h2 = w * this.image.height / this.image.width;
-    image(this.image, x, y + (h - h2) / 2, w, h2);
-  }
-}
+import {CollapseFunction} from "./wfc/collapse.js";
+import {WFCOverlay} from "./wfc/renders.js";
+import {IsoTile} from "./wfc/tile.js";
+import {IsoMapView} from "./lib/view.js";
+import {Grid} from "./lib/grid.js";
 
 let imageLoader
-function preload() {
+export function preload() {
   let path = '/static/p5/game/tilesets/roadTiles_nova/png/';
   imageLoader = new ImageLoader(path);
   let diag = ['NE', 'ES', 'SW', 'NW'];
@@ -460,7 +447,8 @@ class IsoTownMatcher {
 
 let renderer;
 let view;
-function setup() {
+let collapseFunction;
+export function setup() {
 
   let matcher = new IsoTownMatcher();
   matcher.addImages(imageLoader.getImages());
@@ -472,7 +460,7 @@ function setup() {
   let useMinimum = true;
   let allTiles = matcher.processAllTiles();
   let layers = [allTiles];
-  collapseFunction = new CollapseFunction(35, 25, view.getMapSize(), layers, useMinimum);
+  collapseFunction = new CollapseFunction(35, 25, layers, useMinimum);
   view.setCenter(createVector(1400, 0));
   view.setSize(0.5);
 
@@ -488,7 +476,7 @@ function setup() {
   renderer = new WFCOverlay(collapseFunction, view, size, grid);
 }
 
-function draw() {
+export function draw() {
   background(127);
 
   noSmooth();
@@ -496,37 +484,37 @@ function draw() {
   renderer.draw();
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
   if (view) {
     view.setScreen(windowWidth, windowHeight - 18);
   }
 }
 
-function keyPressed() {
+export function keyPressed() {
   if (view) {
     view.keys();
   }
 }
 
-function keyReleased() {
+export function keyReleased() {
   if (view) {
     view.keys();
   }
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   if (view) {
     view.scale(event.delta);
   }
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   if (renderer) {
     renderer.mouseMove(mouseX, mouseY);
   }
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   renderer.click(mouseX, mouseY);
 }

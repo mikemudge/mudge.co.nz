@@ -117,26 +117,27 @@ class Mover {
   }
 }
 
-function setup() {
+let movers, attractors
+export function setup() {
   createCanvas(600, 600);
   movers = [];
   attractors = [];
 
-  for (i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     // mass = random(1, 8);
-    mass = 50;
-    x = random(width);
-    y = random(height);
+    let mass = 50;
+    let x = random(width);
+    let y = random(height);
     // x = 50;
     // y = 50;
     mass = random(10, 250);
-    mover = new Mover(x, y, mass)
+    let mover = new Mover(x, y, mass)
 
     movers.push(mover);
 
     // Calculate the speed to get a perfect orbit.
-    vel = createVector(width / 2, height / 2).sub(mover.pos);
-    dis = vel.mag();
+    let vel = createVector(width / 2, height / 2).sub(mover.pos);
+    let dis = vel.mag();
     let strength = Math.sqrt(5 * 100 / dis);
     vel.setMag(strength);
     mover.vel = createVector(vel.y, -vel.x);
@@ -145,7 +146,7 @@ function setup() {
   attractors.push(new Attractor(width/2, height/2, 100));
 }
 
-function draw() {
+export function draw() {
   background(0, 5);
 
   // render a half screen filled "high drag" zone.
@@ -153,7 +154,7 @@ function draw() {
   // noStroke();
   // rect(0, height / 2, width, height / 2);
 
-  wind = createVector(.1, 0)
+  let wind = createVector(.1, 0)
 
   for (let a of attractors) {
     a.show();

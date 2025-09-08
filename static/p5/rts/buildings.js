@@ -1,4 +1,8 @@
-class BuildingClass {
+import {HealthBar} from "./units.js";
+import {Resource} from "./map.js";
+import {AttackCommand, GatherCommand, MoveCommand} from "./actions.js";
+
+export class BuildingClass {
   constructor(name) {
     this.name = name;
     this.r = 20;
@@ -24,7 +28,7 @@ class BuildingClass {
   }
 }
 
-class Building {
+export class Building {
   constructor(pos, team, buildingClass) {
     this.team = team;
     this.buildingClass = buildingClass;
@@ -50,7 +54,7 @@ class Building {
     if (this.buildUnit) {
       this.buildTime--;
       if (this.buildTime <= 0) {
-        if (this.targetRally instanceof Tree) {
+        if (this.targetRally instanceof Resource) {
           this.buildUnit.setAction(new GatherCommand(this.targetRally, this.team.headQuarters));
         } else if (this.targetRally) {
           if (this.targetRally.team && this.targetRally.team !== this.team) {
@@ -117,7 +121,7 @@ class Building {
   }
 }
 
-class ConstructionSite extends Building {
+export class ConstructionSite extends Building {
   constructor(building) {
     super(building.pos, building.team, building.buildingClass);
     this.building = building;
@@ -172,7 +176,7 @@ class ConstructionSite extends Building {
   }
 }
 
-class Tower extends BuildingClass {
+export class Tower extends BuildingClass {
   constructor() {
     super("Tower");
     this.cost = 100;
@@ -184,7 +188,7 @@ class Tower extends BuildingClass {
   }
 }
 
-class Base extends BuildingClass {
+export class Base extends BuildingClass {
   constructor() {
     super("Base");
     this.r = 40;
@@ -194,7 +198,7 @@ class Base extends BuildingClass {
   }
 }
 
-class House extends BuildingClass {
+export class House extends BuildingClass {
   constructor() {
     super("House");
     this.r = 10;
@@ -203,7 +207,7 @@ class House extends BuildingClass {
   }
 }
 
-class Barracks extends BuildingClass {
+export class Barracks extends BuildingClass {
   constructor() {
     super("Barracks");
     this.r = 30;
@@ -212,7 +216,7 @@ class Barracks extends BuildingClass {
   }
 }
 
-class Wall extends BuildingClass {
+export class Wall extends BuildingClass {
   constructor() {
     super("Wall");
     this.r = 10;

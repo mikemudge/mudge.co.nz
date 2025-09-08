@@ -528,14 +528,16 @@ class Unit {
   }
 }
 
-function setup() {
+let paused;
+let board;
+export function setup() {
   createCanvas(800, 600);
   paused = false;
   board = new Board();
   board.initStart();
 }
 
-function draw() {
+export function draw() {
   background(color(192, 192, 192));
 
   board.show();
@@ -543,6 +545,6 @@ function draw() {
   board.update();
 }
 
-function mouseClicked() {
+export function mouseClicked() {
   board.click(mouseX, mouseY);
 }

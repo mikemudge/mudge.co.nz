@@ -52,17 +52,19 @@ class Particle {
   }
 }
 
-function setup() {
+let gravity;
+let particles;
+export function setup() {
   createCanvas(400, 400);
   gravity = createVector(0, 0.2);
   particles = [];
 }
 
 
-function draw() {
+export function draw() {
   background(0);
 
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     particles.push(new Particle(mouseX, mouseY, 4));
   }
 

@@ -1,3 +1,5 @@
+import {MapView} from "./lib/view.js";
+
 class Road {
   constructor(start) {
     this.start = start;
@@ -24,11 +26,12 @@ class RoadControls {
   constructor(game) {
     this.game = game;
     this.view = game.view;
+    this.selectedNode = null;
   }
 
   click() {
     if (mouseButton !== LEFT) {
-      selectedNode = null;
+      this.selectedNode = null;
       return;
     }
 
@@ -122,7 +125,9 @@ class RoadGame {
   }
 }
 
-function setup() {
+let game;
+let controls;
+export function setup() {
   let view = new MapView(20);
   // 18px is the top div showing nav items.
   view.setScreen(windowWidth, windowHeight - 18);
@@ -143,7 +148,7 @@ function setup() {
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.update();
@@ -151,6 +156,6 @@ function draw() {
   game.show();
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   controls.click();
 }

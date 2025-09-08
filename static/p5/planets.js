@@ -1,3 +1,5 @@
+import {Logger} from "../shared/logger.js";
+
 class Planet {
   constructor(radius, pos) {
     this.radius = radius;
@@ -371,7 +373,10 @@ class PlanetControl {
 
 var mousePos;
 var humanControls;
-function setup() {
+let logger
+let game;
+let touchPos;
+export function setup() {
 
   logger = new Logger();
   game = new PlanetsGame();
@@ -395,7 +400,7 @@ function setup() {
   touchPos = createVector(0, 0);
 }
 
-function mousePressed() {
+export function mousePressed() {
   if (game.paused) {
     return;
   }
@@ -404,13 +409,13 @@ function mousePressed() {
   humanControls.start(mousePos);
 }
 
-function mouseDragged() {
+export function mouseDragged() {
   mousePos.set(mouseX, mouseY);
   // logger.debug("Mouse Drag " + logger.vectorf(mousePos));
   humanControls.move(mousePos);
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -421,7 +426,7 @@ function mouseReleased() {
   humanControls.end(mousePos);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.show();

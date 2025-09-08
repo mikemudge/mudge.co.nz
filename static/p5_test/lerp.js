@@ -114,7 +114,8 @@ class Path {
 
 let step = 0.02;
 let mousePos = null;
-function setup() {
+let path;
+export function setup() {
   let c = createCanvas(windowWidth, windowHeight - 18);
 
   mousePos = createVector(0, 0);
@@ -196,7 +197,7 @@ function calculatePos(train) {
   return p6;
 }
 
-function draw() {
+export function draw() {
   background(0);
   path.show();
 
@@ -206,7 +207,7 @@ function draw() {
 
 let clicked = null;
 let lerpPoint = null;
-function mousePressed() {
+export function mousePressed() {
   // select a point based on click.
   mousePos.set(mouseX, mouseY);
   for (let p of path.points) {
@@ -221,7 +222,7 @@ function mousePressed() {
     }
   }
 }
-function mouseDragged() {
+export function mouseDragged() {
   if (clicked) {
     clicked.set(mouseX, mouseY);
     if (lerpPoint) {
@@ -230,7 +231,7 @@ function mouseDragged() {
   }
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (clicked) {
     clicked.set(mouseX, mouseY);
     if (lerpPoint) {

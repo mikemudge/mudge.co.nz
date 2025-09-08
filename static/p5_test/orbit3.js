@@ -63,7 +63,8 @@ class Mover {
   }
 }
 
-function setup() {
+let bodies;
+export function setup() {
   createCanvas(600, 600);
 
   // sun mass = 2 * 10 ^ 30 kg
@@ -76,13 +77,13 @@ function setup() {
 
   bodies = [];
 
-  x = random(width);
-  y = random(height);
-  mass = 2 * 10 ^ 24;
-  body = new Mover(x, y, mass, 3, 'blue');
+  let x = random(width);
+  let y = random(height);
+  let mass = 2 * 10 ^ 24;
+  let body = new Mover(x, y, mass, 3, 'blue');
   bodies.push(body);
 
-  for (i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     x = random(width);
     y = random(height);
 
@@ -91,8 +92,8 @@ function setup() {
     bodies.push(body);
 
     // Calculate the speed to get a perfect orbit.
-    vel = createVector(width / 2, height / 2).sub(body.pos);
-    dis = vel.mag();
+    let vel = createVector(width / 2, height / 2).sub(body.pos);
+    let dis = vel.mag();
     let strength = Math.sqrt(.2 * 100 / dis);
     vel.setMag(strength);
     body.vel = createVector(vel.y, -vel.x);
@@ -100,7 +101,7 @@ function setup() {
 }
 
 let debug = true;
-function draw() {
+export function draw() {
   background(0);
 
   for (let b of bodies) {
@@ -110,7 +111,9 @@ function draw() {
   for (let b of bodies) {
 
     for (let b2 of bodies) {
-      b.attract(b2);
+      if (b !== b2) {
+        b.attract(b2);
+      }
     }
   }
   for (let b of bodies) {

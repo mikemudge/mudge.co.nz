@@ -89,17 +89,18 @@ class Emitter {
 
 let img
 
-function preload() {
+export function preload() {
   img = loadImage('/static/p5_test/texture.png');
 }
 
-function setup() {
+let emitters;
+export function setup() {
   createCanvas(400, 400);
   emitters = [];
   emitters.push(new Emitter(200, 375));
 }
 
-function draw() {
+export function draw() {
   clear();
   background(0);
   blendMode(ADD);

@@ -1,3 +1,9 @@
+import {Archer, Builder, Horse, UnitClass, Util} from "./units.js";
+import {Team, Resource} from "./map.js";
+import {Barracks, Base, Building, ConstructionSite, House, Tower, Wall} from "./buildings.js";
+import {ButtonMenu, DisplayMenu} from "../lib/view.js";
+import {AttackCommand, AttackMoveCommand, BuildCommand, GatherCommand, MoveCommand} from "./actions.js";
+
 class Circle {
   constructor(color, r) {
     this.color = color;
@@ -17,7 +23,7 @@ class Circle {
 // add hotkeys for shortcuts.
 
 
-class MouseControls {
+export class MouseControls {
   constructor(game, team) {
     this.map = game.map;
     this.team = team;
@@ -449,8 +455,9 @@ class MouseControls {
   }
 }
 
-class Tree {
+class Tree extends Resource {
   constructor(pos) {
+    super();
     // lawn green is #7CFC00
     // green is #008000
     this.pos = pos;
@@ -467,7 +474,7 @@ class Tree {
   }
 }
 
-class Game {
+export class Game {
   constructor(view, map) {
     this.view = view;
     this.map = map;

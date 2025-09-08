@@ -1,4 +1,4 @@
-class Team {
+export class Team {
   constructor(game, color) {
     this.game = game;
     this.map = game.map;
@@ -20,7 +20,11 @@ class Team {
   }
 }
 
-class GameMap {
+export class Resource {
+
+}
+
+export class GameMap {
   constructor(width, height) {
     this.bounds = createVector(width, height);
     // Units and buildings (attackable targets).

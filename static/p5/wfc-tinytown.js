@@ -1,3 +1,8 @@
+import {TileSetEdgeMatcher} from "./wfc/tileset.js";
+import {WFCTile} from "./wfc/tile.js";
+import {MapView} from "./lib/view.js";
+import {CollapseFunction} from "./wfc/collapse.js";
+import {WFCOverlay} from "./wfc/renders.js";
 
 class TinyTownTileSet {
   constructor(tileset, matcher) {
@@ -313,13 +318,15 @@ class TinyTownTileSet {
   }
 }
 
-function preload() {
+let tileset;
+export function preload() {
   tileset = loadImage('/static/p5/game/tilesets/tinytown_packed.png');
 }
 
 let renderer;
 let view;
-function setup() {
+let tilesetMatcher
+export function setup() {
   tilesetMatcher = new TileSetEdgeMatcher(tileset, 16,16, 2);
 
   let imageSpecificMatcher = new TinyTownTileSet(tileset, tilesetMatcher);
@@ -338,35 +345,35 @@ function setup() {
   renderer.addTilesetMatcher(tilesetMatcher, size);
 }
 
-function draw() {
+export function draw() {
   background(127);
 
   renderer.update();
   renderer.draw();
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight - 18);
 
   view.setScreen(windowWidth, windowHeight - 18);
 }
 
-function keyPressed() {
+export function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   view.keys();
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   view.scale(event.delta);
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   renderer.mouseMove(mouseX, mouseY);
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   renderer.click(mouseX, mouseY);
 }

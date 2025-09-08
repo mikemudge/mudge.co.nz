@@ -1,3 +1,6 @@
+import {Grid} from "../p5/lib/grid.js";
+import {MapView} from "../p5/lib/view.js";
+
 class Square {
   constructor(x, y, tiles) {
     this.pos = createVector(x, y);
@@ -91,11 +94,11 @@ class Square {
       }
       stroke(70);
       noFill();
-      rect(-size, -size, size * 2, size * 2);
+      rect(0, 0, size, size);
       return;
     }
     let tile = this.tiles[this.type];
-    image(tile.img, -size, -size, size * 2 - 1, size * 2 - 1);
+    image(tile.img, 0, 0, size, size);
 
     // Show what this collapsed to
     if (this.debugCollapseType) {
@@ -301,12 +304,14 @@ class WFC {
   }
 }
 
-function preload() {
+let allimages;
+let view;
+export function preload() {
   allimages = loadImage('/static/p5/wfc/tileset.png');
 }
 
 let wfc = null;
-function setup() {
+export function setup() {
   view = new MapView(32);
   view.createCanvas();
 
@@ -459,7 +464,7 @@ function setup() {
   wfc.load(tiles)
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   wfc.update();
@@ -467,24 +472,24 @@ function draw() {
   wfc.draw();
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 
   view.setScreen(windowWidth, windowHeight);
 }
 
-function keyPressed() {
+export function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   view.keys();
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   view.scale(event.delta);
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   wfc.click();
 }

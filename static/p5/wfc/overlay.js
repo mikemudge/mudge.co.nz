@@ -1,4 +1,4 @@
-class Overlay {
+export class Overlay {
   constructor(pos) {
     this.pos = pos;
     this.display = true;

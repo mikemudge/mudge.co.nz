@@ -245,21 +245,22 @@ class Connect4 {
   }
 }
 
-function setup() {
+let board;
+export function setup() {
   createCanvas(800, 600);
   board = new Connect4();
 }
 
-function draw() {
+export function draw() {
   background(color(80, 80, 80));
 
   board.show();
 }
 
-function mouseClicked() {
+export function mouseClicked() {
   board.click(mouseX, mouseY);
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   board.hover(mouseX, mouseY);
 }

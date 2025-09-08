@@ -1,5 +1,5 @@
 
-class BuildCommand {
+export class BuildCommand {
   constructor(building) {
     this.building = building;
   }
@@ -24,7 +24,7 @@ class BuildCommand {
   }
 }
 
-class GatherCommand {
+export class GatherCommand {
   constructor(resource) {
     this.resource = resource;
     this.phase = 0;
@@ -83,7 +83,7 @@ class GatherCommand {
   }
 }
 
-class AttackCommand {
+export class AttackCommand {
   constructor(target) {
     this.target = target;
   }
@@ -109,7 +109,7 @@ class AttackCommand {
   }
 }
 
-class AttackMoveCommand {
+export class AttackMoveCommand {
   constructor(destination) {
     // destination is a position to move to, target is a unit to attack on the way.
     this.destination = destination;
@@ -165,7 +165,7 @@ class AttackMoveCommand {
   }
 }
 
-class MoveCommand {
+export class MoveCommand {
   constructor(pos) {
     this.pos = pos;
   }
@@ -188,7 +188,7 @@ class MoveCommand {
   }
 }
 
-class FollowCommand {
+export class FollowCommand {
   constructor(targeter) {
     this.targeter = targeter;
   }
@@ -207,7 +207,7 @@ class FollowCommand {
   }
 }
 
-class PathCommand {
+export class PathCommand {
   constructor(path, attack) {
     this.goalIndex = 0;
     this.pathActions = [];
@@ -240,7 +240,7 @@ class PathCommand {
   }
 }
 
-class SpawnCommand {
+export class SpawnCommand {
   constructor(unit, paths) {
     this.paths = paths;
     this.time = -1;

@@ -172,7 +172,8 @@ function riversAndRoads() {
   ];
 }
 
-function preload() {
+let blank, straight, corner, tee, cross, straightRoad, cornerRoad, bridgeRoad;
+export function preload() {
   blank = loadImage('/static/p5/wfc/blank.png');
   straight = loadImage('/static/p5/wfc/straight.png');
   corner = loadImage('/static/p5/wfc/corner.png');
@@ -183,7 +184,9 @@ function preload() {
   bridgeRoad = loadImage('/static/p5/wfc/bridgeRoad.png');
 }
 
-function setup() {
+let params, tileSet, tiles;
+let grid, time, rate;
+export function setup() {
   createCanvas(800, 600);
 
   params = new URLSearchParams(window.location.search);
@@ -197,9 +200,9 @@ function setup() {
     tiles = riversAndRoads();
   }
 
-  size = 10;
-  w = 700 / 2 / size;
-  h = 500 / 2 / size;
+  let size = 10;
+  let w = 700 / 2 / size;
+  let h = 500 / 2 / size;
   grid = new Grid(w, h, size, tiles);
   time = 0;
   // How many frames between collapses.
@@ -230,7 +233,7 @@ function debugTiles() {
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   if (params.get('debug')) {
@@ -240,14 +243,14 @@ function draw() {
   time++;
   if (time % rate == 0) {
     // TODO pick from remaining grid locations (prevent dups)
-    idx = time / rate - 1;
-    x = idx % grid.width;
-    y = int(idx / grid.width);
+    let idx = time / rate - 1;
+    let x = idx % grid.width;
+    let y = int(idx / grid.width);
     if (y >= grid.height) {
       noLoop();
     } else {
       // Set the type of one square every second.
-      loc = grid.collapse(x, y);
+      grid.collapse(x, y);
     }
   }
 

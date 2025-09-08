@@ -139,7 +139,10 @@ class Agent {
   }
 }
 
-function setup() {
+let agents;
+let pursuer;
+let target;
+export function setup() {
   createCanvas(400, 400);
   agents = [];
   // for (let i = 0; i < 1; i++) {
@@ -153,7 +156,7 @@ function setup() {
   // agents.push(target);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   pursuer.wander();

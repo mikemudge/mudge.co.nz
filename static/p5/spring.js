@@ -168,11 +168,11 @@ let nodes;
 let selectedNode;
 let running = false;
 
-function setup() {
+export function setup() {
   let c = createCanvas(800, 600);
   nodes = [];
 
-  fixedNode = new Node(createVector(400, 100));
+  let fixedNode = new Node(createVector(400, 100));
   fixedNode.fixed = true;
   nodes.push(fixedNode);
 
@@ -190,7 +190,7 @@ function setup() {
   }
 }
 
-function draw() {
+export function draw() {
   background(color(192, 192, 192));
 
   for (let node of nodes) {
@@ -209,7 +209,7 @@ function draw() {
   }
 }
 
-function keyPressed() {
+export function keyPressed() {
   if (key === ' ') {
     // Run a frame?
     for (let node of nodes) {
@@ -222,7 +222,7 @@ function keyPressed() {
   }
 }
 
-function mouseReleased() {
+export function mouseReleased() {
   if (mouseButton !== LEFT) {
     selectedNode = null;
     return;

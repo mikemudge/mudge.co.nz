@@ -1,4 +1,3 @@
-
 class Creature {
   constructor(world) {
     this.size = 5;
@@ -99,7 +98,8 @@ class Creature {
   }
 }
 
-function setup() {
+let world
+export function setup() {
   createCanvas(windowWidth, windowHeight);
   world = {
     creatures: [],
@@ -110,12 +110,12 @@ function setup() {
   }
 
   for (var i = 0; i < world.maxCreatures / 2; i++) {
-    creature = new Creature(world);
+    let creature = new Creature(world);
     world.creatures.push(creature);
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   for (let unit of world.creatures) {

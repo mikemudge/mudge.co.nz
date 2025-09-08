@@ -246,7 +246,12 @@ class Spawner {
   }
 }
 
-function setup() {
+let path;
+let spawner;
+let paused;
+let units;
+let tower;
+export function setup() {
   createCanvas(800, 600);
   paused = false;
   units = [];
@@ -262,7 +267,7 @@ function setup() {
   units.push(spawner);
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   for (let unit of units) {
@@ -271,7 +276,7 @@ function draw() {
   }
 }
 
-function keyPressed() {
+export function keyPressed() {
   if (key === ' ') {
     if (paused) {
       paused = false;
@@ -283,7 +288,7 @@ function keyPressed() {
   }
 }
 
-function mouseClicked() {
+export function mouseClicked() {
   if (paused) {
     return;
   }

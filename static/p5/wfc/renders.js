@@ -1,3 +1,5 @@
+import {Overlay} from "./overlay.js";
+
 class ClusterRenderer {
   constructor(overlay, clusters, size) {
     this.overlay = overlay;
@@ -400,7 +402,7 @@ class EdgeDetectionRenderer {
   }
 }
 
-class WFCOverlay {
+export class WFCOverlay {
   constructor(collapseFunction, view, size, grid) {
     this.collapseFunction = collapseFunction;
     this.view = view;

@@ -1,4 +1,10 @@
 
+if (window.mudgemi && window.mudgemi.init) {
+  app = window.mudgemi.init.app;
+  // Local copy uses a more recent version of p5
+  app.loadTags(['p5_local']);
+}
+
 class Game {
   constructor() {
     this.width = 10;
@@ -15,13 +21,13 @@ class Game {
 }
 let shape;
 
-function preload() {
+export function preload() {
   shape = loadModel('/static/p5/game/OBJTest/conveyor-bars-sides.obj', true);
   material = loadImage('/static/p5/game/OBJTest/Textures/colormap.png');
   console.log(shape);
 }
 
-function setup() {
+export function setup() {
   c = createCanvas(500, 500, WEBGL);
   describe("A Factory Game with conveyor belts");
   c.canvas.oncontextmenu = function() {
@@ -36,7 +42,7 @@ function setup() {
   // game = new Game();
 }
 
-function draw() {
+export function draw() {
   background(100);
 
   // Enable orbiting with the mouse.

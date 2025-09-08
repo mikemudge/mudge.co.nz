@@ -37,17 +37,5 @@
     </div>
   {% endfor %}
 
-  <h3> Projects missing images.</h3>
-
-  {% for key, app in apps if not app.img %}
-    <div class='project'>
-      <a href="/projects/{{ key }}">
-        <h4>
-          {{ key | capitalize | replace('_',' ') | replace('-',' ') }}
-        </h4>
-        <span>{{ app.tags | join(' ') }}</span>
-      </a>
-    </div>
-  {% endfor %}
 </body>
 </html>

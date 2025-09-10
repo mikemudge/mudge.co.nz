@@ -224,6 +224,10 @@ p5_apps['avengersTD'] = {
     'img': 'avengersTD.png',
     'title': 'Avengers Tower Defence'
 }
+p5_apps['carai'] = {
+    'img': 'carai.png',
+    'title': 'Driving Evolution Neural Net'
+}
 
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
@@ -252,7 +256,10 @@ class ProjectV2View(MethodView):
 class ProjectAppsListView(MethodView):
     def get(self):
         result = []
-        sorted_apps = sorted(apps.items())
+
+        sorted_apps = []
+        if request.path.startswith("/projects"):
+            sorted_apps = sorted(apps.items())
 
         return render_template('projects.tmpl', **{
             'games': [a for a in p5_apps.items() if 'hidden' not in a[1] or not a[1]['hidden']],

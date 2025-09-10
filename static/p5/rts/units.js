@@ -1,10 +1,4 @@
 
-export class Util {
-  static vectorString(pos) {
-    return Math.round(pos.x) + ", " + Math.round(pos.y);
-  }
-}
-
 class Projectile {
   constructor(pos, vel) {
     this.pos = pos;

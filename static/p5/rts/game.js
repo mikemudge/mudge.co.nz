@@ -1,4 +1,5 @@
-import {Archer, Builder, Horse, UnitClass, Util} from "./units.js";
+import {Archer, Builder, Horse, UnitClass} from "./units.js";
+import {Util} from "../lib/util.js";
 import {Team, Resource} from "./map.js";
 import {Barracks, Base, Building, ConstructionSite, House, Tower, Wall} from "./buildings.js";
 import {ButtonMenu, DisplayMenu} from "../lib/view.js";

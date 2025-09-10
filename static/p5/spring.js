@@ -1,5 +1,8 @@
+import {Util} from "./lib/util.js";
+
 class Node {
-  constructor(pos) {
+  constructor(game, pos) {
+    this.game = game;
     this.pos = pos;
     this.vel = createVector(0, 0);
     this.size = 8;
@@ -10,7 +13,18 @@ class Node {
     this.mass = 1;
   }
 
-  update() {
+  calculateEnergy() {
+
+    // Spring potential energy is
+    // PE = ½kx²
+
+    // GPE
+    return this.mass * this.gravity.mag() * -this.pos.y
+    // KE
+        + .5 * this.mass * this.vel.magSq();
+  }
+
+  update(time) {
     if (this.fixed) {
       // Fixed points don't move for any forces.
       return;
@@ -26,7 +40,7 @@ class Node {
 
     // Then add the forces towards the natural length of the connections.
     for (let conn of this.connections) {
-      let f = conn.springForce(this);
+      let f = conn.springForce(this, this.game.time);
       force.add(f);
     }
 
@@ -48,6 +62,15 @@ class Node {
     let t = 1 / 10;
     force.mult(t);
     this.vel.add(force);
+
+    // gravity overwhelms this, but then the ground cancels it out.
+    if (this.vel.mag() < this.game.staticFriction) {
+      // If the friction force is greater than the speed, the object stops moving.
+      this.vel.set(0, 0);
+    } else {
+      // Otherwise we apply some kinetic friction to slow down the object.
+      this.vel.add(this.vel.copy().setMag(-this.game.kineticFriction));
+    }
 
     // delta x = v * t?
     this.pos.add(this.vel.copy().mult(t));
@@ -95,12 +118,11 @@ class Node {
     } else {
       circle(this.pos.x, this.pos.y, this.size * 2);
     }
+  }
 
+  showForces(time) {
     if (this.fixed) {
       // don't show forces on fixed nodes as they don't apply.
-      return;
-    }
-    if (this !== selectedNode) {
       return;
     }
     // Show forces acting on the node.
@@ -112,7 +134,7 @@ class Node {
     let force = this.gravity.copy().add(resistance)
     for (let conn of this.connections) {
       // Show the full force from each connection.
-      let f = conn.springForce(this);
+      let f = conn.springForce(this, time);
       force.add(f);
       this.showForce('purple', f);
     }
@@ -128,17 +150,21 @@ class Connection {
     this.to = to;
     this.rigidity = 5;
     this.length = this.from.pos.dist(this.to.pos);
+    this.amplitude = 0;
+    this.period = 100;
   }
 
-  springForce(node) {
+  springForce(node, time) {
     // The current actual length of a spring;
     let x = this.to.pos.dist(this.from.pos);
-    let off = x - this.length;
-    if (Math.abs(off) < 0.01) {
-      // No force should apply if the offset is minimal.
-      off = 0;
+
+    let expectedLength = this.length + Math.sin(time / this.period) * this.amplitude;
+    this.stress = x - expectedLength;
+    if (Math.abs(this.stress) < 0.01) {
+      // No force should apply if the offset is minimal?
+      this.stress = 0;
     }
-    let forceMag = -this.rigidity * off;
+    let forceMag = -this.rigidity * this.stress;
     if (node === this.from) {
       // The direction of the force is based on which node is affected by it.
       return this.from.pos.copy().sub(this.to.pos).setMag(forceMag);
@@ -152,11 +178,9 @@ class Connection {
     // Red if the length is stretched or compressed.
     let green = color(0,255,0);
     let red = color(255,0,0);
-    // Calculate the absolute difference between the actual and ideal length.
-    let diff = (this.from.pos.dist(this.to.pos) - this.length);
     // At 0, amt = 1 - 1/1 is 0 (no stress)
     // As diff increases this approaches 1 (max stress).
-    let amt = 1 - (10 / (10 + diff));
+    let amt = 1 - (10 / (10 + this.stress));
     let col = lerpColor(green, red, amt);
     stroke(col);
     strokeWeight(2);
@@ -164,21 +188,116 @@ class Connection {
   }
 }
 
-let nodes;
-let selectedNode;
-let running = false;
+class SpringGame {
+  constructor() {
+    this.running = false;
+    // Add an initial fixed node to connect to.
+    let fixedNode = new Node(this, createVector(400, 100));
+    fixedNode.fixed = true;
+    this.nodes = [fixedNode];
+    // Start with the fixed node selected?
+    this.selectedNode = fixedNode;
+    this.kineticFriction = 0.01;
+    this.staticFriction = 0.05;
+    this.time = 0;
+
+    // TODO "clear/reset" button.
+  }
+
+  draw() {
+    if (this.running) {
+      this.time++;
+      for (let node of this.nodes) {
+        node.update(this.time);
+      }
+
+      let totalEnergy = 0;
+      for (let node of this.nodes) {
+        totalEnergy += node.calculateEnergy();
+      }
+
+      noStroke();
+      fill(0);
+      text("Energy: " + totalEnergy, 5, 15);
+    }
+
+    // Show connections first, so that nodes are rendered on top.
+    for (let node of this.nodes) {
+      node.showConnections();
+    }
+    for (let node of this.nodes) {
+      node.show();
+    }
+    if (this.selectedNode) {
+      this.selectedNode.showForces(this.time)
+      this.selectedNode.showSelected();
+      this.showNode(this.selectedNode);
+    }
+  }
+
+  showNode(node) {
+    noStroke();
+    fill(0);
+    text("Pos: " + Util.vectorString(node.pos), 5, 30);
+    text("Vel: " + Util.vectorString(node.vel), 5, 45);
+  }
+
+  keyPressed(key) {
+    if (key === ' ') {
+      // Run a frame?
+      this.time++;
+      for (let node of this.nodes) {
+        node.update(this.time);
+      }
+      this.running = false;
+    }
+    if (keyCode === ENTER) {
+      this.running = !this.running;
+    }
+  }
+
+  getNodeAt(pos) {
+    // Determine if a node was clicked.
+    let clickedNode = null;
+    for (let node of this.nodes) {
+      if (pos.dist(node.pos) < 16) {
+        clickedNode = node;
+      }
+    }
+    return clickedNode;
+  }
+
+  click(mousePos, mouseButton) {
+    if (mouseButton !== LEFT) {
+      this.selectedNode = null;
+      return;
+    }
+
+    let clickedNode = this.getNodeAt(mousePos);
+    // If there is no node at the click location, create a new one.
+    if (!clickedNode) {
+      clickedNode = new Node(this, mousePos);
+      this.nodes.push(clickedNode);
+    }
+
+    if (this.selectedNode) {
+      if (this.selectedNode.alreadyConnected(clickedNode)) {
+        // prevent connecting the same nodes again.
+        console.log("prevented adding existing connection")
+      } else {
+        let c = new Connection(this.selectedNode, clickedNode);
+        this.selectedNode.addConnection(c);
+        clickedNode.addConnection(c);
+      }
+    }
+    // Always select the node at the location which was clicked.
+    this.selectedNode = clickedNode;
+  }
+}
+let game;
 
 export function setup() {
   let c = createCanvas(800, 600);
-  nodes = [];
-
-  let fixedNode = new Node(createVector(400, 100));
-  fixedNode.fixed = true;
-  nodes.push(fixedNode);
-
-  // Start with the fixed node selected?
-  selectedNode = fixedNode;
-
   c.canvas.oncontextmenu = function() {
     return false;
   }
@@ -188,73 +307,21 @@ export function setup() {
   window.onfocus = function() {
     loop();
   }
+
+  game = new SpringGame();
 }
 
 export function draw() {
-  background(color(192, 192, 192));
+  background(192);
 
-  for (let node of nodes) {
-    node.showConnections();
-  }
-  for (let node of nodes) {
-    node.show();
-  }
-  if (selectedNode) {
-    selectedNode.showSelected();
-  }
-  if (running) {
-    for (let node of nodes) {
-      node.update();
-    }
-  }
+  game.draw();
 }
 
 export function keyPressed() {
-  if (key === ' ') {
-    // Run a frame?
-    for (let node of nodes) {
-      node.update();
-    }
-    running = false;
-  }
-  if (keyCode === ENTER) {
-    running = !running;
-  }
+  game.keyPressed(key);
 }
 
 export function mouseReleased() {
-  if (mouseButton !== LEFT) {
-    selectedNode = null;
-    return;
-  }
-
   let loc = createVector(mouseX, mouseY);
-
-  // Determine if a node was clicked.
-  let clickedNode = null;
-  for (let node of nodes) {
-    if (loc.dist(node.pos) < 16) {
-      clickedNode = node;
-    }
-  }
-
-  let shift = keyIsDown(16);
-  // If there is no node at the click location, create a new one.
-  if (!clickedNode) {
-    clickedNode = new Node(loc);
-    nodes.push(clickedNode);
-  }
-
-  if (selectedNode) {
-    if (selectedNode.alreadyConnected(clickedNode)) {
-      // prevent connecting the same nodes again.
-      console.log("prevented adding existing connection")
-    } else {
-      let c = new Connection(selectedNode, clickedNode);
-      selectedNode.addConnection(c);
-      clickedNode.addConnection(c);
-    }
-  }
-  // Always select the node at the location which was clicked.
-  selectedNode = clickedNode;
+  game.click(loc, mouseButton);
 }

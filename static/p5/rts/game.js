@@ -1,8 +1,8 @@
 import {Archer, Builder, Horse, UnitClass} from "./units.js";
-import {Util} from "../lib/util.js";
+import {Util} from "../jslib/util.js";
 import {Team, Resource} from "./map.js";
 import {Barracks, Base, Building, ConstructionSite, House, Tower, Wall} from "./buildings.js";
-import {ButtonMenu, DisplayMenu} from "../lib/view.js";
+import {ButtonMenu, DisplayMenu} from "../jslib/view.js";
 import {AttackCommand, AttackMoveCommand, BuildCommand, GatherCommand, MoveCommand} from "./actions.js";
 
 class Circle {

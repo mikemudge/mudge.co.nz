@@ -1,8 +1,8 @@
 import {CollapseFunction} from "./wfc/collapse.js";
 import {WFCOverlay} from "./wfc/renders.js";
 import {IsoTile} from "./wfc/tile.js";
-import {IsoMapView} from "./lib/view.js";
-import {Grid} from "./lib/grid.js";
+import {IsoMapView} from "./jslib/view.js";
+import {Grid} from "./jslib/grid.js";
 
 let imageLoader
 export function preload() {

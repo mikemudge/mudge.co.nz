@@ -1,5 +1,5 @@
 
-import {Path} from "../p5/lib/poly.js";
+import {Path} from "../p5/jslib/poly.js";
 
 let polys = [];
 let mousePos = null;

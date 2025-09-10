@@ -1,5 +1,5 @@
-import {Grid} from "./lib/grid.js";
-import {MapView} from "./lib/view.js";
+import {Grid} from "./jslib/grid.js";
+import {MapView} from "./jslib/view.js";
 import {FollowCommand} from "./rts/actions.js";
 import {Unit, UnitClass} from "./rts/units.js";
 import {Team} from "./rts/map.js";

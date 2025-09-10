@@ -1,6 +1,6 @@
 import {TileSetEdgeMatcher} from "./wfc/tileset.js";
 import {WFCTile} from "./wfc/tile.js";
-import {MapView} from "./lib/view.js";
+import {MapView} from "./jslib/view.js";
 import {CollapseFunction} from "./wfc/collapse.js";
 import {WFCOverlay} from "./wfc/renders.js";
 

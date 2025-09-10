@@ -1,4 +1,4 @@
-import {MapView} from "./lib/view.js";
+import {MapView} from "./jslib/view.js";
 
 class Road {
   constructor(start) {

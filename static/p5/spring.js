@@ -1,4 +1,4 @@
-import {Util} from "./lib/util.js";
+import {Util} from "./jslib/util.js";
 
 class Node {
   constructor(game, pos) {

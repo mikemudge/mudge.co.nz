@@ -1,4 +1,4 @@
-import {Grid} from "../lib/grid.js";
+import {Grid} from "../jslib/grid.js";
 
 class ImpossibleCollapse extends Error {
   constructor(square, possible, allowed) {

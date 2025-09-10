@@ -1,5 +1,5 @@
 /* goes through a tileset and creates WFCTile's with possible tiles in each direction */
-import {Grid} from "../lib/grid.js";
+import {Grid} from "../jslib/grid.js";
 import {WFCTile} from "./tile.js";
 
 export class TileSetEdgeMatcher {

@@ -1,4 +1,4 @@
-import {MapView} from "./lib/view.js";
+import {MapView} from "./jslib/view.js";
 import {GameMap} from "./rts/map.js";
 import {MobaGame} from "./rts/mobagame.js";
 import {Logger} from "../shared/logger.js";

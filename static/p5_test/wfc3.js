@@ -1,5 +1,5 @@
-import {Grid} from "../p5/lib/grid.js";
-import {MapView} from "../p5/lib/view.js";
+import {Grid} from "../p5/jslib/grid.js";
+import {MapView} from "../p5/jslib/view.js";
 
 class Square {
   constructor(x, y, tiles) {

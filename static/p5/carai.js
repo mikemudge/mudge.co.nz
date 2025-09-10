@@ -1,4 +1,4 @@
-import {NeuralNet, NeuralNetRender} from "./lib/nn.js"
+import {NeuralNet, NeuralNetRender} from "./jslib/nn.js"
 
 class Track {
   constructor(image) {

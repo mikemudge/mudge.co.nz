@@ -1,6 +1,6 @@
 import {GameMap} from './map.js'
 import {Game} from './game.js'
-import {MapView} from "../lib/view.js";
+import {MapView} from "../jslib/view.js";
 
 let view;
 let game;

@@ -1,5 +1,5 @@
-import {Grid} from "./lib/grid.js";
-import {MapView} from "./lib/view.js";
+import {Grid} from "./jslib/grid.js";
+import {MapView} from "./jslib/view.js";
 
 class Player {
   constructor(x, y) {

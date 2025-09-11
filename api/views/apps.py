@@ -25,8 +25,8 @@ SCRIPTS = {
         '/static/p5/p5.min.js',
     ],
     'gridview': [
-        "/static/p5/lib/grid.js",
-        "/static/p5/lib/view.js"
+        "/static/p5/jslib/grid.js",
+        "/static/p5/jslib/view.js"
     ],
     'wfc': [
         "/static/p5/wfc/tile.js",
@@ -188,11 +188,6 @@ apps['test'] = {
     'tags': ['common']
 }
 
-apps['traffic'] = {
-    'img': 'traffic.png',
-    'tags': ['p5', 'gridview']
-}
-
 # apps['color_war'] = {
 #     'img': 'color_war.png'
 # }
@@ -230,6 +225,9 @@ p5_apps['carai'] = {
     'img': 'carai.png',
     'title': 'Driving Evolution Neural Net'
 }
+# p5_apps['traffic'] = {
+#     'img': 'traffic.png'
+# }
 
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
@@ -310,14 +308,6 @@ class ProjectAppView(MethodView):
                 app.meta['image'] = '/static/img/projects/%s' % conf.get('img')
 
             self.updateFromConf(app, conf)
-
-            if sample:
-                logger.info("Does sample still get used? %s" % app_path)
-                entry_point = "%s/%s.js" % (app_path, sample)
-                # TODO app version could be improved for dev without caching.
-                # want to reuse a version to support debug in chrome dev tools.
-                app.version = os.path.getmtime('./%s' % entry_point)
-                app.scripts.append("%s?v=%s" % (entry_point, app.version))
 
         logger.info("folder setup %s" % app_path)
         app.setupFolder(app_path)

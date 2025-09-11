@@ -1,3 +1,6 @@
+import {ButtonMenu, DisplayMenu, MapView} from "../p5/jslib/view.js";
+import {Grid} from "../p5/jslib/grid.js";
+
 class Shop {
   constructor(pos, game) {
     this.game = game;
@@ -846,7 +849,9 @@ class TrafficGame {
   }
 }
 
-function setup() {
+let view;
+let game;
+export function setup() {
   view = new MapView(20);
   view.createCanvas();
   game = new TrafficGame(view);
@@ -861,7 +866,7 @@ function setup() {
   }
 }
 
-function draw() {
+export function draw() {
   background(0);
 
   game.update();
@@ -869,13 +874,13 @@ function draw() {
   game.show();
 }
 
-function windowResized() {
+export function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 
   view.setScreen(windowWidth, windowHeight);
 }
 
-function keyPressed() {
+export function keyPressed() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -884,7 +889,7 @@ function keyPressed() {
   view.keys();
 }
 
-function keyReleased() {
+export function keyReleased() {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -893,28 +898,28 @@ function keyReleased() {
   view.keys();
 }
 
-function mouseDragged(event) {
+export function mouseDragged(event) {
   if (game.paused) {
     return;
   }
   game.controls.onMouseMove(mouseX, mouseY, event.buttons);
 }
 
-function mouseMoved() {
+export function mouseMoved() {
   if (game.paused) {
     return;
   }
   game.controls.onMouseMove(mouseX, mouseY, false);
 }
 
-function mousePressed() {
+export function mousePressed() {
   if (game.paused) {
     return;
   }
   game.controls.onMouseDown(mouseX, mouseY);
 }
 
-function mouseReleased(event) {
+export function mouseReleased(event) {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -923,7 +928,7 @@ function mouseReleased(event) {
   game.controls.onMouseUp(mouseX, mouseY, event);
 }
 
-function mouseWheel(event) {
+export function mouseWheel(event) {
   if (game.paused) {
     game.paused = false;
     loop();
@@ -931,9 +936,3 @@ function mouseWheel(event) {
   }
   view.scale(event.delta);
 }
-
-// Angular trys to load this modules.
-angular.module('traffic', [
-  'config',
-  'ngRoute'
-])

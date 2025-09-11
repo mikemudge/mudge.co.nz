@@ -107,10 +107,6 @@ apps['seconds'] = {
 apps['workouttime'] = {
     'tags': ['common']
 }
-apps['predator'] = {
-    'img': 'predator.png',
-    'tags': ['p5']
-}
 apps['game'] = {
     'img': 'game.png',
 }
@@ -217,6 +213,12 @@ p5_apps['connect4'] = {
 p5_apps['planets'] = {
     'img': 'planets.png',
 }
+# p5_apps['predator'] = {
+#     'img': 'predator.png',
+# }
+# p5_apps['predator2'] = {
+#     'img': 'predator2.png',
+# }
 p5_apps['minesweeper'] = {
     'img': 'minesweeper.png',
 }

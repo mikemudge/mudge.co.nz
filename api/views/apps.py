@@ -188,10 +188,6 @@ apps['test'] = {
     'tags': ['common']
 }
 
-# apps['color_war'] = {
-#     'img': 'color_war.png'
-# }
-
 # Show the featured games using an image tile in projects list view.
 p5_apps['breakout'] = {
     'img': 'breakout.png',
@@ -224,6 +220,9 @@ p5_apps['avengersTD'] = {
 p5_apps['carai'] = {
     'img': 'carai.png',
     'title': 'Driving Evolution Neural Net'
+}
+apps['color_war'] = {
+    'img': 'color_war.png'
 }
 # p5_apps['traffic'] = {
 #     'img': 'traffic.png'

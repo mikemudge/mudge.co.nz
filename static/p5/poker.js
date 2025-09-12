@@ -177,11 +177,11 @@ class PokerGame {
       if (fullHouse) {
         player.setScore('Full House ' + Card.NAME_VALUES[bestCountCard.value] + '\'s and ' + Card.NAME_VALUES[fullHouse] + '\'s');
       } else {
-        player.setScore('3 of a kind (' + Card.NAME_VALUES[bestCountCard.value] + '\'s)');
+        player.setScore('3 of a kind ' + Card.NAME_VALUES[bestCountCard.value] + '\'s');
       }
     }
     if (flushSuit) {
-      player.setScore('Flush ' + flushSuit + Card.NAME_VALUES[bestCountCard.value] + ' high');
+      player.setScore('Flush ' + flushSuit + ' ' + Card.NAME_VALUES[bestCountCard.value] + ' high');
     }
     // Check 4 of a kind.
     if (maxCount === 4) {
@@ -214,7 +214,7 @@ class PokerGame {
     }
 
     for (let i = 0; i < this.players.length; i++) {
-      this.players[i].showHand(120 * i, 250);
+      this.players[i].showHand(150 * i, 250);
     }
   }
 }

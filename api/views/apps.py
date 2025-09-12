@@ -221,7 +221,7 @@ p5_apps['carai'] = {
     'img': 'carai.png',
     'title': 'Driving Evolution Neural Net'
 }
-apps['color_war'] = {
+p5_apps['color_war'] = {
     'img': 'color_war.png'
 }
 # p5_apps['traffic'] = {

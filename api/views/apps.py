@@ -122,10 +122,6 @@ apps['user'] = {
     'img': 'user.png',
     'tags': ['font-awesome', 'login', 'api', 'common']
 }
-apps['poker'] = {
-    'img': 'poker.png',
-    'tags': ['common']
-}
 apps['cards-workout'] = {
     'img': 'cards-workout.png',
     'tags': ['common', 'font-awesome']
@@ -137,13 +133,6 @@ apps['racer'] = {
         '/static/shared/gamecontrols-old.js',
         '/static/js/three.js/BinaryLoader.js',
         '/static/racer/cars.js'
-    ]
-}
-apps['carai'] = {
-    'img': 'carai.png',
-    'tags': ['threejs', 'common'],
-    'scripts': [
-        '/static/racer/racer.js'
     ]
 }
 apps['sheets'] = {
@@ -187,13 +176,6 @@ apps['test'] = {
     'img': 'test.png',
     'tags': ['common']
 }
-apps['soccer'] = {
-    'img': 'soccer.png',
-    'scripts': [
-        '/static/shared/gamecontrols-old.js'
-    ],
-    'tags': ['p5']
-}
 
 # Show the featured games using an image tile in projects list view.
 p5_apps['breakout'] = {
@@ -231,6 +213,9 @@ p5_apps['carai'] = {
 p5_apps['color_war'] = {
     'img': 'color_war.png'
 }
+# p5_apps['poker'] = {
+#     'img': 'poker.png',
+# }
 # p5_apps['traffic'] = {
 #     'img': 'traffic.png'
 # }

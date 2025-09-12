@@ -187,6 +187,13 @@ apps['test'] = {
     'img': 'test.png',
     'tags': ['common']
 }
+apps['soccer'] = {
+    'img': 'soccer.png',
+    'scripts': [
+        '/static/shared/gamecontrols-old.js'
+    ],
+    'tags': ['p5']
+}
 
 # Show the featured games using an image tile in projects list view.
 p5_apps['breakout'] = {

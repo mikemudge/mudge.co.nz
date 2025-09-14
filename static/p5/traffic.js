@@ -1,5 +1,5 @@
-import {ButtonMenu, DisplayMenu, MapView} from "../p5/jslib/view.js";
-import {Grid} from "../p5/jslib/grid.js";
+import {ButtonMenu, DisplayMenu, MapView} from "./jslib/view.js";
+import {Grid} from "./jslib/grid.js";
 
 class Shop {
   constructor(pos, game) {
@@ -43,6 +43,7 @@ class Shop {
 
     // TODO shops connections to roads are not straight forward
     // This uses y + this.map.gridSize * 2 to connect to the road at the bottom left of the shop.
+    // TODO routing for a destination should be the responsibility of the destination?
     let result = this.game.find(this.pos.x, this.pos.y + 40, function(tile) {
       let square = tile.getData();
       if (!square) {
@@ -278,7 +279,6 @@ class Factory {
   }
 }
 
-
 class House {
   constructor(pos, game) {
     this.pos = pos;
@@ -350,13 +350,13 @@ class Car {
       return;
     }
 
-    let road = this.target.getData().road;
-    if (road) {
-      this.vel = road.pos.copy().add(this.size / 2, this.size / 2).sub(this.pos);
-    } else {
+    let currentTile = this.target.getData();
+    if (currentTile.building) {
       // Arrived at a building.
-      let building = this.target.getData().building;
-      this.vel = building.pos.copy().add(this.size / 2, this.size / 2).sub(this.pos);
+      this.vel = currentTile.building.pos.copy().add(this.size / 2, this.size / 2).sub(this.pos);
+    } else {
+      // Assume its a road (or was when the route was planned).
+      this.vel = createVector(this.target.x + .5, this.target.y + .5).mult(this.size).sub(this.pos);
     }
     if (this.vel.magSq() < 9) {
       this.target = this.getNextLocation();
@@ -417,10 +417,14 @@ class Car {
     // Translate is already done by the view, but we need to rotate the car to draw it facing in the right direction.
     rotate(this.vel.heading());
 
-    fill('green');
     // By drawing the car off to the side, it appears to be driving on the side of the road.
     // TODO we can do better than this though?
-    rect(-size * 5, - size * 15 / 2, size * 10, size * 5);
+    if (this.game.car) {
+      image(this.game.car, -size * 5, - size * 15 / 2, size * 10, size * 5);
+    } else {
+      fill('green');
+      rect(-size * 5, - size * 15 / 2, size * 10, size * 5);
+    }
 
     pop();
   }
@@ -480,6 +484,7 @@ class MouseControls {
     this.game = game;
     this.view = view;
     this.build = null;
+    this.mousePos = createVector(0, 0);
   
     this.resources = {
       "wood": {
@@ -503,7 +508,11 @@ class MouseControls {
     buildMenu.addButton("factory", closure);
     buildMenu.addButton("shop", closure);
 
-    this.menu.addButton("delete", function() {});
+    this.menu.addButton("delete", function() {
+      console.log("delete clicked");
+      this.bulldoze = true;
+      this.build = null;
+    }.bind(this));
 
     this.view.topMenu = new DisplayMenu(this.showResources.bind(this));
   };
@@ -515,6 +524,7 @@ class MouseControls {
   buttonClick(buttonName) {
     console.log("clicked button", buttonName, this.game);
     this.building = buttonName;
+    this.bulldoze = false;
     if (buttonName === "road") {
       this.build = new Road(createVector(-20, -20), this.game);
       this.build.color = '#CCCCCC';
@@ -527,6 +537,13 @@ class MouseControls {
   }
 
   display() {
+    if (this.bulldoze) {
+      this.view.showAtPos({show: function(size) {
+        fill('#CC0000');
+        textSize(size * 20);
+        text("X");
+      }}, this.mousePos);
+    }
     if (this.build !== null) {
       if (this.game.isEmpty(this.build.pos)) {
         this.view.show(this.build);
@@ -563,12 +580,14 @@ class MouseControls {
   onMouseDown(mx, my) {
     this.mx = mx;
     this.my = my;
+    this.mousePos.set(mx, my);
     this.down = true;
   };
 
   onMouseMove(mx, my, buttons) {
     this.mx = mx;
     this.my = my;
+    this.mousePos.set(mx, my);
     if (this.build === null) {
       return;
     }
@@ -602,8 +621,18 @@ class MouseControls {
   onMouseUp(mx, my, event) {
     this.mx = mx;
     this.my = my;
+    this.mousePos.set(mx, my);
     if (this.view.click(mx, my)) {
       // Click was consumed by the view
+      return;
+    }
+    if (this.bulldoze) {
+      // Remove at current location.
+      let pos = this.view.toGameGrid(createVector(this.mx, this.my));
+      let tile = this.game.map.getTileAtPos(pos).getData();
+      game.removeRoad(tile);
+      game.removeBuilding(tile);
+      // TODO delete causes routing issues which break the game
       return;
     }
     if (this.build === null) {
@@ -656,14 +685,12 @@ class TrafficGame {
     this.view = view;
     this.pause = false;
     this.debug = false;
-    this.gridSize = view.getMapSize();
+    this.gridSize = 20;
     this.mapVersion = 0;
 
     this.width = 50;
     this.height = 30;
     this.map = new Grid(this.width, this.height);
-    // Center in the middle of the grid.
-    view.setCenter(createVector(25 * view.getMapSize(), 15 * view.getMapSize()));
 
     for (let y = 0; y < this.map.getHeight(); y++) {
       for (let x = 0; x < this.map.getWidth(); x++) {
@@ -735,14 +762,29 @@ class TrafficGame {
   addBuilding(thing) {
     thing.placed();
 
-    // TODO support space, (I.e things which occupy multiple locations)
-    for (var y = thing.pos.y / this.gridSize; y < (thing.pos.y + thing.h) / this.gridSize ; y++) {
-      for (var x = thing.pos.x / this.gridSize; x < (thing.pos.x + thing.w) / this.gridSize; x++) {
-        this.map.getTile(x, y).getData().building = thing;
-      }
+    let tiles = this.map.getRect(thing.pos.copy().div(this.gridSize), createVector(thing.w, thing.h).div(this.gridSize));
+    for (let tile of tiles) {
+      tile.getData().building = thing;
     }
     this.buildings.push(thing);
   };
+
+  removeRoad(tile) {
+    if (tile.road) {
+      this.roads = this.roads.filter((r) => r !== tile.road);
+      tile.road = null;
+    }
+  }
+  removeBuilding(tile) {
+    if (tile.building) {
+      this.buildings = this.buildings.filter((b) => b !== tile.building);
+
+      let tiles = this.map.getRect(tile.building.pos.copy().div(this.gridSize), createVector(tile.building.w, tile.building.h).div(this.gridSize));
+      for (let t of tiles) {
+        t.getData().building = null;
+      }
+    }
+  }
 
   addCar(car) {
     this.cars.push(car);
@@ -819,6 +861,10 @@ class TrafficGame {
     console.log(msg);
   };
 
+  setCarModel(car) {
+    this.car = car;
+  }
+
   show() {
     this.view.draw(this.map);
 
@@ -827,7 +873,7 @@ class TrafficGame {
     }
     // Draw cars on top of roads, but under buildings.
     for (let car of this.cars) {
-      this.view.show(car)
+      this.view.show(car);
     }
     for (let building of this.buildings) {
       this.view.show(building);
@@ -849,12 +895,24 @@ class TrafficGame {
   }
 }
 
+let carImage;
+export function preload() {
+  carImage = loadImage('/static/img/traffic/red_car.svg');
+}
+
 let view;
 let game;
 export function setup() {
   view = new MapView(20);
   view.createCanvas();
+
   game = new TrafficGame(view);
+  game.setCarModel(carImage);
+
+  // Center in the middle of the grid.
+  // TODO game.grid?
+  view.setCenter(createVector(25 * view.getMapSize(), 15 * view.getMapSize()));
+
 
   window.onblur = function() {
     game.paused = true;
@@ -906,7 +964,7 @@ export function mouseDragged(event) {
 }
 
 export function mouseMoved() {
-  if (game.paused) {
+  if (game && game.paused) {
     return;
   }
   game.controls.onMouseMove(mouseX, mouseY, false);

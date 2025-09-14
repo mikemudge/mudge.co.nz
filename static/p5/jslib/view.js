@@ -57,6 +57,15 @@ export class ButtonMenu {
     // TODO can we handle submenus better?
     if (this.subMenu) {
       this.subMenu.show();
+
+      let i = this.subMenu.buttons.length;
+      // Also show a back button to return to the menu before this one.
+      stroke('white')
+      noFill();
+      rect(this.buttonSize * i, 0, this.buttonSize, this.buttonSize);
+      fill('white');
+      noStroke();
+      text("Back", this.buttonSize * i + this.buttonSize / 2, 20);
     } else {
       stroke('white')
       noFill();
@@ -74,6 +83,12 @@ export class ButtonMenu {
 
   click(mx, my) {
     if (this.subMenu) {
+      let buttonIdx = Math.floor(mx / this.subMenu.buttonSize);
+      if (buttonIdx === this.subMenu.buttons.length) {
+        // Clicked the back button within a submenu?
+        this.subMenu = null;
+        return;
+      }
       this.subMenu.click(mx, my);
       return;
     }

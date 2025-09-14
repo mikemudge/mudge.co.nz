@@ -144,4 +144,14 @@ export class Grid {
     }
     return this.tiles[y][x];
   }
+
+  getRect(pos, size) {
+    let tiles = [];
+    for (var y = pos.y; y < pos.y + size.y; y++) {
+      for (var x = pos.x; x < pos.x + size.x; x++) {
+        tiles.push(this.getTile(x, y));
+      }
+    }
+    return tiles;
+  }
 }

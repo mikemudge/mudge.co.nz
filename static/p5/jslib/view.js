@@ -46,84 +46,86 @@ export class ChatMenu {
   }
 }
 
+export class Button {
+  constructor(name, action) {
+    this.name = name;
+    this.action = action;
+  }
+
+  show(x, y, size) {
+    // For a simple button display a rectangle with text inside it.
+    stroke('white')
+    noFill();
+    rect(x, y, size, size);
+    fill('white');
+    noStroke();
+    textAlign(CENTER);
+    text(this.name, x, y + 10, size, size - 20);
+  }
+
+  click(name) {
+    this.action(name);
+  }
+}
 export class ButtonMenu {
   constructor() {
     this.buttons = [];
     this.subMenu = null;
     this.buttonSize = 60;
+
+    this.backButton = new Button("Back", function() {
+      this.subMenu = null;
+    }.bind(this));
+  }
+
+  addButton(button, clickHandler) {
+    this.buttons.push(button);
+  }
+
+  addSubMenu(name, buttons) {
+    let nestedMenu = new ButtonMenu();
+    nestedMenu.addButton(this.backButton);
+    for (let button of buttons) {
+      nestedMenu.addButton(button);
+    }
+    this.buttons.push(new Button(name, function() {
+      this.subMenu = nestedMenu;
+    }.bind(this)));
   }
 
   show() {
-    // TODO can we handle submenus better?
     if (this.subMenu) {
       this.subMenu.show();
-
-      let i = this.subMenu.buttons.length;
-      // Also show a back button to return to the menu before this one.
-      stroke('white')
-      noFill();
-      rect(this.buttonSize * i, 0, this.buttonSize, this.buttonSize);
-      fill('white');
-      noStroke();
-      text("Back", this.buttonSize * i + this.buttonSize / 2, 20);
-    } else {
-      stroke('white')
-      noFill();
-      this.buttons.forEach(function(button, i) {
-        rect(this.buttonSize * i, 0, this.buttonSize, this.buttonSize);
-      }, this);
-      fill('white');
-      textAlign(CENTER);
-      noStroke();
-      this.buttons.forEach(function(button, i) {
-        text(button.name, this.buttonSize * i, 10, this.buttonSize, this.buttonSize - 20);
-      }, this);
+      return;
+    }
+    for (let [i, button] of this.buttons.entries()) {
+      button.show(this.buttonSize * i, 0, this.buttonSize);
     }
   }
 
   click(mx, my) {
     if (this.subMenu) {
-      let buttonIdx = Math.floor(mx / this.subMenu.buttonSize);
-      if (buttonIdx === this.subMenu.buttons.length) {
-        // Clicked the back button within a submenu?
-        this.subMenu = null;
-        return;
-      }
       this.subMenu.click(mx, my);
       return;
     }
 
-    if (my > this.buttonSize) {
-      console.log("my > buttonSize", my, this.buttonSize);
-      // Didn't click the button?
+    let bx = Math.floor(mx / this.buttonSize);
+    let by = Math.floor(bx / this.buttonSize);
+
+    if (by > 1) {
+      // Not currently supported.
+      console.log("Clicked on a second row", by, my, this.buttonSize);
       return;
     }
-    let buttonIdx = Math.floor(mx / this.buttonSize);
-    let button = this.buttons[buttonIdx];
-    if (button) {
-      button.click(button.name);
+    if (bx < this.buttons.length) {
+      this.buttons[bx].click(this.buttons[bx].name);
     } else {
-      console.log("clicked menu on no button");
+      console.log("clicked menu on no button", mx, this.buttonSize);
     }
-  }
-
-  registerSubMenu(name) {
-    let subMenu = new ButtonMenu();
-    this.addButton(name, function() {
-      this.subMenu = subMenu;
-    }.bind(this));
-    return subMenu;
   }
 
   reset() {
     this.buttons = [];
-  }
-
-  addButton(name, clickHandler) {
-    this.buttons.push({
-      'name': name,
-      'click': clickHandler
-    });
   }
 }
 
@@ -244,6 +246,11 @@ export class MapView {
     }
     this.vel = vel;
   }
+
+  // When using view, all mouse interactions should be registered by default?
+  // some settings to enable/disable certain interactions can be possible as well?
+  // E.g scaling on mouseWheel?
+  // clicks (mousePressed, mouseDragged, mouseReleased, mouseClicked etc should all be automatic)
 
   click() {
     if (mouseY < this.offset.y) {

@@ -1,5 +1,5 @@
 import {Grid} from "./jslib/grid.js";
-import {MapView} from "./jslib/view.js";
+import {Button, ButtonMenu, MapView} from "./jslib/view.js";
 
 class Player {
   constructor(x, y) {
@@ -68,8 +68,21 @@ class Game {
     this.humanPlayer = new Player(view.getMapSize(), view.getMapSize());
     this.humanPlayer.color = color('red')
     this.players = [this.humanPlayer];
+    this.time = 0;
 
     // Add keys for player?
+
+    // Add menus
+    this.logger = this.view.overlayMenu;
+
+    let logFn = function(name, context) {
+      console.log(name, context);
+    }
+    // Button Menu is good for mouse based games.
+    let buttonMenu = new ButtonMenu();
+    buttonMenu.addSubMenu("menu1", [new Button("button1", logFn), new Button("button2", logFn)]);
+    buttonMenu.addButton(new Button("button", logFn));
+    this.view.addBottomMenu(buttonMenu);
   }
 
   pause() {
@@ -97,6 +110,10 @@ class Game {
     // TODO need to disconnect tile updates from display?
     view.update();
 
+    this.time++;
+    if (this.time % 100 === 0) {
+      this.logger.addMessage("logger test");
+    }
     for (let player of this.players) {
       player.update();
     }
@@ -138,6 +155,10 @@ export function keyPressed() {
 
 export function keyReleased() {
   view.keys();
+}
+
+export function mouseReleased() {
+  view.click()
 }
 
 export function mouseWheel(event) {

@@ -2,7 +2,7 @@ import {Archer, Builder, Horse, UnitClass} from "./units.js";
 import {Util} from "../jslib/util.js";
 import {Team, Resource} from "./map.js";
 import {Barracks, Base, Building, ConstructionSite, House, Tower, Wall} from "./buildings.js";
-import {ButtonMenu, DisplayMenu} from "../jslib/view.js";
+import {Button, ButtonMenu, DisplayMenu} from "../jslib/view.js";
 import {AttackCommand, AttackMoveCommand, BuildCommand, GatherCommand, MoveCommand} from "./actions.js";
 
 class Circle {
@@ -340,12 +340,12 @@ export class MouseControls {
     if (this.selectedUnit.unitClass) {
       for (let buildingClass of this.selectedUnit.unitClass.buildBuildings) {
         // TODO cost of each button should affect active/inactive state?
-        this.buildButtons.addButton(buildingClass.name, this.buildBuilding.bind(this, buildingClass));
+        this.buildButtons.addButton(new Button(buildingClass.name, this.buildBuilding.bind(this, buildingClass)));
       }
     }
     if (this.selectedUnit.buildingClass) {
       for (let unitClass of this.selectedUnit.buildingClass.buildUnits) {
-        this.buildButtons.addButton(unitClass.name, this.buildUnit.bind(this, unitClass));
+        this.buildButtons.addButton(new Button(unitClass.name, this.buildUnit.bind(this, unitClass)));
       }
     }
   }

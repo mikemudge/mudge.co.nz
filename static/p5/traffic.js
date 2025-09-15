@@ -1,4 +1,4 @@
-import {ButtonMenu, DisplayMenu, MapView} from "./jslib/view.js";
+import {Button, ButtonMenu, DisplayMenu, MapView} from "./jslib/view.js";
 import {Grid} from "./jslib/grid.js";
 
 class Shop {
@@ -501,18 +501,19 @@ class MouseControls {
     this.view.addBottomMenu(this.menu);
 
     // Build a menu for actions.
-    let buildMenu = this.menu.registerSubMenu("build");
     let closure = this.buttonClick.bind(this);
-    buildMenu.addButton("road", closure);
-    buildMenu.addButton("house", closure);
-    buildMenu.addButton("factory", closure);
-    buildMenu.addButton("shop", closure);
+    this.menu.addSubMenu("build", [
+      new Button("road", closure),
+      new Button("house", closure),
+      new Button("factory", closure),
+      new Button("shop", closure)
+    ]);
 
-    this.menu.addButton("delete", function() {
+    this.menu.addButton(new Button("delete", function() {
       console.log("delete clicked");
       this.bulldoze = true;
       this.build = null;
-    }.bind(this));
+    }.bind(this)));
 
     this.view.topMenu = new DisplayMenu(this.showResources.bind(this));
   };

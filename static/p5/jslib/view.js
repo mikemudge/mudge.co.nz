@@ -226,6 +226,11 @@ export class MapView {
     this.center.set(pos);
   }
 
+  // Center view on the center of a grid.
+  setGridCenter(grid) {
+    this.setCenter(createVector(grid.getWidth(), grid.getHeight()).mult(this.mapSize / 2));
+  }
+
   translate(vel) {
     this.center.add(vel);
   }

@@ -1,5 +1,5 @@
 import {Grid} from "../p5/jslib/grid.js";
-import {MapView} from "../p5/jslib/view.js";
+import {Button, MapView} from "../p5/jslib/view.js";
 
 class Car {
   constructor(game, pos) {
@@ -55,6 +55,7 @@ class Car {
     rectMode(CENTER);
     rotate(this.vel.heading());
     fill(color(255,255,150,50));
+    noStroke();
     // d is how far from center the light comes from.
     let d = r / 3;
     arc(r / 2, d, r * 10, r * 10, -.1, .15);
@@ -70,17 +71,30 @@ class Square {
   constructor() {
     this.directions = [];
   }
+
+  addDirection(direction) {
+    if (this.directions.includes(direction)) {
+      return;
+    }
+    this.directions.push(direction);
+  }
+  clearDirections() {
+    this.directions = [];
+  }
+
   show(size) {
     if (this.road) {
       noStroke();
       fill('grey');
       rect(0, 0, size, size);
     }
-    // if (this.directions) {
-    //   textSize(size / 2);
-    //   fill('white')
-    //   text(this.directions, 5, 15);
-    // }
+
+    // TODO show directions nicer?
+    if (this.directions) {
+      textSize(size / 2);
+      fill('white')
+      text(this.directions, size / 4, size * 0.85);
+    }
   }
 }
 
@@ -112,7 +126,7 @@ class MazeRouter {
             continue;
           }
           let opp = (d + 2) % 4;
-          if (t.getData() && t.getData().directions) {
+          if (t.getData() && t.getData().directions.length > 0) {
             if (!t.getData().directions.includes(opp)) {
               // The square has directions, and opp is not one of them.
               continue;
@@ -151,14 +165,16 @@ class CongestionGame {
     // Move the center of the view to the center of the grid its looking at.
     this.view.setGridCenter(this.grid);
 
+    this.view.topMenu.addButton(new Button("restart", this.restart.bind(this)));
+
     this.spawners = [];
     // Init road tiles.
     for (let y = 0; y < this.grid.getHeight(); y++) {
       for (let x = 0; x < this.grid.getWidth(); x++) {
+        let square = new Square();
+        this.grid.setTileData(x, y, square);
         if (x % 15 === 7 || y % 15 === 7 || x % 15 === 8 || y % 15 === 8) {
-          let square = new Square();
           square.road = true;
-          this.grid.setTileData(x, y, square);
           if (x % 15 === 7) {
             square.directions.push(0);
           }
@@ -200,7 +216,22 @@ class CongestionGame {
     this.addDestination('#8000FF', this.grid.getTile(7, 0));
     this.addDestination('#FF00FF', this.grid.getTile(22, 0));
     this.addDestination('#FF0080', this.grid.getTile(37, 0));
-    // this.addDestination('#800080', this.grid.getTile(34, 0));
+  }
+
+  restart() {
+    // Clear all cars.
+    for (let car of this.cars) {
+      let b4 = this.grid.getTileAtPosWithSize(car.pos, this.size);
+      b4.getData().car = null;
+    }
+    this.cars = [];
+
+    // Recalculate routes.
+    for (let dest of this.destinations) {
+      dest.calculate();
+    }
+
+    // TODO should validate that all routes are possible before starting?
   }
 
   addDestination(color, target) {
@@ -248,11 +279,87 @@ class CongestionGame {
     }
   }
 
-  show() {
+  mouseStart(pos) {
+    if (this.paused) {
+      return;
+    }
+    this.mouse1 = pos.copy();
+    this.mouse2 = pos;
+    this.clicked = this.grid.getTileAtPos(this.view.toGameGrid(pos));
 
+    if (!this.clicked.getData()) {
+      // outside of the grid.
+      return;
+    }
+    // TODO set clickMode?
+    // Either directional (when tile was already a road), or road painting.
+    this.arrowMode = this.clicked.getData().road;
+  }
+
+  mouseDrag(pos) {
+    if (this.paused) {
+      return;
+    }
+    this.mouse2 = pos;
+    if (!this.arrowMode) {
+      let t = this.grid.getTileAtPos(this.view.toGameGrid(pos));
+      // If the mouse is within the grid, set the tiles to be roads.
+      if (t.getData()) {
+        t.getData().road = true;
+      }
+    }
+  }
+
+  mouseEnd(pos) {
+    if (this.paused) {
+      return;
+    }
+    if (this.view.click()) {
+      // click was handled by a menu.
+      return;
+    }
+
+    this.mouse2 = pos;
+
+    if (this.arrowMode) {
+      if (mouseButton === "right") {
+        this.clicked.getData().clearDirections();
+      } else {
+        // Apply change.
+        let direction = this.getDirection(this.mouse2.copy().sub(this.mouse1));
+        if (direction !== null) {
+          this.clicked.getData().addDirection(direction);
+        }
+      }
+    }
+
+    this.mouse1 = null;
+    this.clicked = null;
+    this.mouse2 = null;
+  }
+
+
+  show() {
+    textAlign(LEFT);
     this.view.drawMap(this.grid);
     for (let car of this.cars) {
       this.view.show(car);
+    }
+
+    // Draw mouse actions, highlight clicked.
+    if (this.arrowMode && this.clicked) {
+      noFill();
+      stroke('#CFCFCF')
+      this.view.showAtGridLoc(this.clicked, this.view.showHighlight.bind(this.view));
+      // TODO draw on "clicked" based on its current state + the direction the mouse is.
+      let direction = this.getDirection(this.mouse2.copy().sub(this.mouse1));
+      if (direction !== null) {
+        // show addition of direction to this.clicked
+        this.view.showAtGridLoc(this.clicked, function(size) {
+          let dir = p5.Vector.fromAngle(- Math.PI / 2 + Math.PI / 2 * direction, size / 3);
+          line(size / 2, size / 2, size / 2 + dir.x, size / 2 + dir.y);
+        });
+      }
     }
 
     noStroke();
@@ -283,15 +390,48 @@ class CongestionGame {
       text("Click to resume", windowWidth / 2, windowHeight / 2 + 20);
     }
   }
+
+  getDirection(direction) {
+    if (direction.mag() <= 5) {
+      // ignore small directions.
+      return null;
+    }
+    if (Math.abs(direction.x) > Math.abs(direction.y)) {
+      // direction is horizontal.
+      if (direction.x < 0) {
+        // left
+        return 3;
+      } else {
+        // right
+        return 1;
+      }
+    } else {
+      // direction is vertical
+      if (direction.y < 0) {
+        // up
+        return 0;
+      } else {
+        // down
+        return 2;
+      }
+    }
+  }
 }
 
 let game;
 let view;
+let mousePos;
 export function setup() {
   view = new MapView(20);
-  view.createCanvas()
+  let c = view.createCanvas();
+
+  mousePos = createVector(0, 0);
 
   game = new CongestionGame(view);
+
+  c.canvas.oncontextmenu = function() {
+    return false;
+  }
 
   window.onblur = function() {
     game.paused = true;
@@ -305,6 +445,20 @@ export function draw() {
   game.update();
   game.show();
 }
+
+export function mousePressed() {
+  mousePos.set(mouseX, mouseY);
+  game.mouseStart(mousePos);
+}
+export function mouseDragged() {
+  mousePos.set(mouseX, mouseY);
+  game.mouseDrag(mousePos);
+}
+export function mouseReleased() {
+  mousePos.set(mouseX, mouseY);
+  game.mouseEnd(mousePos);
+}
+
 export function mouseClicked() {
   if (game.paused) {
     game.paused = false;

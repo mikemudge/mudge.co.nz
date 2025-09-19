@@ -78,6 +78,12 @@ class Square {
     }
     this.directions.push(direction);
   }
+
+  clear() {
+    this.directions = [];
+    this.road = false;
+  }
+
   clearDirections() {
     this.directions = [];
   }
@@ -91,10 +97,29 @@ class Square {
 
     // TODO show directions nicer?
     if (this.directions) {
-      textSize(size / 2);
-      fill('white')
-      text(this.directions, size / 4, size * 0.85);
+      // textSize(size / 2);
+      // fill('white')
+      // text(this.directions, size / 4, size * 0.85);
+      let mid = createVector(size / 2, size / 2);
+      stroke('#FFFFFF');
+      strokeWeight(1);
+      fill('#FFFFFF');
+      for (let d of this.directions) {
+        this.drawArrow(d, size);
+      }
     }
+  }
+
+  drawArrow(d, size) {
+    let vec = p5.Vector.fromAngle(-Math.PI / 2 + Math.PI / 2 * d, size / 3);
+    push();
+    translate(size / 2, size / 2);
+    line(0, 0, vec.x, vec.y);
+    rotate(vec.heading());
+    let arrowSize = size / 6;
+    translate(vec.mag() - arrowSize, 0);
+    triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+    pop();
   }
 }
 
@@ -287,26 +312,42 @@ class CongestionGame {
     this.mouse2 = pos;
     this.clicked = this.grid.getTileAtPos(this.view.toGameGrid(pos));
 
-    if (!this.clicked.getData()) {
+    let t = this.clicked.getData();
+    if (!t) {
       // outside of the grid.
       return;
     }
-    // TODO set clickMode?
-    // Either directional (when tile was already a road), or road painting.
-    this.arrowMode = this.clicked.getData().road;
+    if (mouseButton === "right") {
+      this.arrowMode = false;
+      if (t.directions.length > 0) {
+        // remove arrows.
+        t.clearDirections();
+      } else {
+        // remove road.
+        t.clear();
+      }
+    } else {
+      this.arrowMode = t.road;
+    }
   }
-
   mouseDrag(pos) {
     if (this.paused) {
       return;
     }
     this.mouse2 = pos;
-    if (!this.arrowMode) {
-      let t = this.grid.getTileAtPos(this.view.toGameGrid(pos));
+    let t = this.grid.getTileAtPos(this.view.toGameGrid(pos)).getData();
+    if (!t) {
+      // outside of grid.
+      return;
+    }
+    if (mouseButton === "right") {
+      t.clear();
+    } else if (this.arrowMode) {
+      // No specific action needed for this?
+      // We could determine the direction here?
+    } else {
       // If the mouse is within the grid, set the tiles to be roads.
-      if (t.getData()) {
-        t.getData().road = true;
-      }
+      t.road = true;
     }
   }
 
@@ -322,14 +363,12 @@ class CongestionGame {
     this.mouse2 = pos;
 
     if (this.arrowMode) {
-      if (mouseButton === "right") {
-        this.clicked.getData().clearDirections();
-      } else {
-        // Apply change.
-        let direction = this.getDirection(this.mouse2.copy().sub(this.mouse1));
-        if (direction !== null) {
-          this.clicked.getData().addDirection(direction);
-        }
+      // If the mouse is within the grid, set this tile to be road.
+      let t = this.clicked.getData();
+      // Apply change.
+      let direction = this.getDirection(this.mouse2.copy().sub(this.mouse1));
+      if (direction !== null) {
+        t.addDirection(direction);
       }
     }
 
@@ -350,15 +389,14 @@ class CongestionGame {
     if (this.arrowMode && this.clicked) {
       noFill();
       stroke('#CFCFCF')
+
       this.view.showAtGridLoc(this.clicked, this.view.showHighlight.bind(this.view));
       // TODO draw on "clicked" based on its current state + the direction the mouse is.
       let direction = this.getDirection(this.mouse2.copy().sub(this.mouse1));
-      if (direction !== null) {
+      let square = this.clicked.getData();
+      if (square && direction !== null) {
         // show addition of direction to this.clicked
-        this.view.showAtGridLoc(this.clicked, function(size) {
-          let dir = p5.Vector.fromAngle(- Math.PI / 2 + Math.PI / 2 * direction, size / 3);
-          line(size / 2, size / 2, size / 2 + dir.x, size / 2 + dir.y);
-        });
+        this.view.showAtGridLoc(this.clicked, square.drawArrow.bind(square, direction));
       }
     }
 

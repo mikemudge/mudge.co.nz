@@ -1,38 +1,91 @@
 import {Grid} from "../p5/jslib/grid.js";
 import {Button, MapView} from "../p5/jslib/view.js";
 
-class Car {
-  constructor(game, pos) {
+
+// City TD is a city builder combined with a tower defence.
+
+// Waves of enemies will periodically attack your city.
+// Strength will be based on how wealthy your city is (Variable difficulty).
+// To stop them you need towers, but to power those towers you need population.
+// population requires feeding, as well as other resources to help expand and grow your city.
+
+// building resources - stones, wood -> concrete, steel.
+// basic resources - food (meat, fruit, vege), clothing, tools etc.
+// luxury resources - gold, jewels, beer/wine, cigars, coffee etc.
+// enemy resources? - primarily obtained from defeating enemies?
+
+// Logistics, enemies will follow paths, but workers also follow paths.
+// Longer paths (mazes) will slow down enemies, but also make longer supply chains routes.
+// shipment sizes are variable, but it takes population to run each shipment.
+// Road type affects speed of enemies and suppliers on it. Bigger bonuses for suppliers?
+
+
+// Towers consume goods to shoot at enemies, and defeating enemies provides other goods.
+// Population is needed to produce, transform and supply goods.
+// Population consumes goods, requires housing (bigger cities).
+// Factories transform basic goods into advanced goods.
+
+// Should there be phases? Day/Night? enemies come at night, supply runs at day?
+// Avoids the path conflicts between enemies and suppliers.
+
+// TODO buildings (rectangles) which occupy a number of grid squares? (add and remove).
+// these will require a connection to a road.
+
+// Buildings will be supply and demand points, will need a prioritisation system for logistics.
+// Vehicles will make trips between locations.
+// Houses will add workers.
+// Workers are required to run factories, use towers, and run supply lines (from producing facilities?).
+
+// Enemy waves come from multiple directions, and will steal resources if they are successful.
+// TODO the spawn point for these should move further away as the city expands.
+// We don't want a long delay before waves can be attacked, but also don't want waves which spawn within city limits?
+// Use the max distance at which a significant (non road/path) building has been placed?
+
+class WaveSpawner {
+  constructor(game, townsquare) {
+    // Randomly pick a direction to come from each wave.
+    this.attackVec = p5.Vector.random2D();
+    this.game = game;
+    this.target = new MazeRouter(this.game.grid, townsquare);
+  }
+
+  update(time) {
+    if (time % 5000 === 0) {
+      let pos = this.attackVec.mult(this.game.getCityRange())
+      this.game.addUnit(new Enemy(this.game, pos.copy(), this.target));
+      // Calculate where the next wave is coming from so it can be displayed.
+      this.attackVec = p5.Vector.random2D();
+    }
+  }
+
+  show() {
+    // TODO figure out how to display an icon at the edge of the screen to show an offscreen location?
+    this.attackVec.setMag(this.game.getCityRange());
+    this.attackVec.limit(windowHeight / 2 - 100);
+    fill('red');
+    circle(windowWidth / 2 - this.attackVec.x, windowHeight / 2 - this.attackVec.y, 10);
+  }
+}
+class CommonUnit {
+  constructor(game, pos, target) {
     this.game = game;
     this.pos = pos;
     this.vel = createVector(0, 0);
     this.maxSpeed = 2;
     this.maxForce = 0.3;
-    this.r = 8;
-    this.color = 'green';
+    this.size = 4;
+    this.target = target;
   }
 
   update() {
-    // Get the map location where you are currently.
-    // Get the map location you want to move to.
-    // Check how much space there is for you to proceed.
-    // Use this space to decide how fast to proceed.
-
     let pos = this.target.getTarget(this);
-    // TODO collisions.
     if (pos) {
       // Make the unit move to the pos.
       this.applyForce(this.seek(pos));
     }
 
     this.pos.add(this.vel);
-    let next = this.game.grid.getTileAtPosWithSize(this.pos, this.game.size);
-    if (next.getData().car && next.getData().car !== this) {
-      // Can't move forward as there is already a car there.
-      this.pos.sub(this.vel);
-    }
   }
-
 
   seek(target) {
     let force = p5.Vector.sub(target, this.pos);
@@ -45,23 +98,48 @@ class Car {
   applyForce(force) {
     this.vel.add(force);
   }
-  
+}
+
+class Enemy extends CommonUnit {
+  constructor(game, pos, target) {
+    super(game, pos, target);
+    this.size = 4;
+    this.color = 'red';
+  }
+
+  show(size) {
+    let r = this.size * size;
+    fill(this.color);
+    rect(-r, -r, r * 2, r * 2);
+  }
+}
+
+class Car extends CommonUnit {
+  constructor(game, pos) {
+    super(game, pos);
+    this.size = 8;
+    this.color = 'green';
+  }
+
+  update() {
+    super.update();
+
+    // Cars can collide with each other (and cause traffic);
+    // TODO better intersection logic for this to avoid deadlock?
+    let next = this.game.grid.getTileAtPosWithSize(this.pos, this.game.size);
+    if (next.getData().car && next.getData().car !== this) {
+      // Can't move forward as there is already a car there.
+      this.pos.sub(this.vel);
+    }
+  }
+
   finished() {
     return !this.target.getTarget(this);
   }
 
   show(size) {
-    let r = this.r * size;
+    let r = this.size * size;
     rectMode(CENTER);
-    rotate(this.vel.heading());
-    fill(color(255,255,150,50));
-    noStroke();
-    // d is how far from center the light comes from.
-    let d = r / 3;
-    arc(r / 2, d, r * 10, r * 10, -.1, .15);
-    arc(r / 2, -d, r * 10, r * 10, -.15, .1);
-
-    // draw the car on top of the light.
     fill(this.color);
     rect(0, 0, r * 2, r);
   }
@@ -89,18 +167,20 @@ class Square {
   }
 
   show(size) {
-    if (this.road) {
-      noStroke();
-      fill('grey');
+    if (!this.road) {
+      // Show the grid.
+      stroke('#666');
+      noFill();
       rect(0, 0, size, size);
+      return;
     }
+
+    noStroke();
+    fill('grey');
+    rect(0, 0, size, size);
 
     // TODO show directions nicer?
     if (this.directions) {
-      // textSize(size / 2);
-      // fill('white')
-      // text(this.directions, size / 4, size * 0.85);
-      let mid = createVector(size / 2, size / 2);
       stroke('#FFFFFF');
       strokeWeight(1);
       fill('#FFFFFF');
@@ -199,7 +279,7 @@ class CarSpawn {
   }
 }
 
-class CongestionGame {
+class CityTdGame {
   constructor(view) {
     const params = new URLSearchParams(window.location.search);
     this.view = view;
@@ -210,89 +290,26 @@ class CongestionGame {
 
     this.view.topMenu.addButton(new Button("restart", this.restart.bind(this)));
 
-    this.setupGrid(15, 10);
+    this.setupGrid(100, 100);
+    let townsquare = this.grid.getTile(50, 50);
+    this.enemySpawn = new WaveSpawner(this, townsquare);
+  }
 
-    this.setupLevel1();
+  getCityRange() {
+    // TODO this should grow as the city does.
+    return 50 * this.size;
   }
 
   setupGrid(width, height) {
     this.grid = new Grid(width, height);
+    this.grid.initWithData(Square);
     // Move the center of the view to the center of the grid its looking at.
     this.view.setGridCenter(this.grid);
-    for (let y = 0; y < this.grid.getHeight(); y++) {
-      for (let x = 0; x < this.grid.getWidth(); x++) {
-        let square = new Square();
-        this.grid.setTileData(x, y, square);
-      }
-    }
 
     this.spawners = [];
     this.destinations = [];
     this.time = 0;
     this.cars = [];
-  }
-
-  setupDemo() {
-    this.setupGrid(45, 28);
-
-    // Init road tiles.
-    for (let y = 0; y < this.grid.getHeight(); y++) {
-      for (let x = 0; x < this.grid.getWidth(); x++) {
-        let square = new Square();
-        this.grid.setTileData(x, y, square);
-        if (x % 15 === 7 || y % 15 === 7 || x % 15 === 8 || y % 15 === 8) {
-          square.road = true;
-          if (x % 15 === 7 && (y % 15 === 7 || y % 15 === 8)) {
-            square.directions.push(0);
-          }
-          if (x % 15 === 8 && (y % 15 === 7 || y % 15 === 8)) {
-            square.directions.push(2);
-          }
-          if (y % 15 === 7 && (x % 15 === 7 || x % 15 === 8)) {
-            square.directions.push(1);
-          }
-          if (y % 15 === 8 && (x % 15 === 7 || x % 15 === 8)) {
-            square.directions.push(3);
-          }
-        }
-      }
-    }
-
-    // Setup spawn locations
-    this.spawners.push(this.grid.getTile(this.grid.getWidth() - 1, 8))
-    this.spawners.push(this.grid.getTile(this.grid.getWidth() - 1, 23))
-    this.spawners.push(this.grid.getTile(0, 7))
-    this.spawners.push(this.grid.getTile(0, 22))
-
-    this.spawners.push(this.grid.getTile(7, this.grid.getHeight() - 1));
-    this.spawners.push(this.grid.getTile(22, this.grid.getHeight() - 1));
-    this.spawners.push(this.grid.getTile(37, this.grid.getHeight() - 1));
-    this.spawners.push(this.grid.getTile(8, 0));
-    this.spawners.push(this.grid.getTile(23, 0));
-    this.spawners.push(this.grid.getTile(38, 0));
-
-    // Now setup some destinations with routes.
-    this.addDestination('#FF0000', this.grid.getTile(this.grid.getWidth() - 1, 7));
-    this.addDestination('#FF8000', this.grid.getTile(this.grid.getWidth() - 1, 22));
-    this.addDestination('#FFFF00', this.grid.getTile(0, 8));
-    this.addDestination('#00FF00', this.grid.getTile(0, 23));
-
-    this.addDestination('#00FFFF', this.grid.getTile(8, this.grid.getHeight() - 1));
-    this.addDestination('#0080FF', this.grid.getTile(23, this.grid.getHeight() - 1));
-    this.addDestination('#0000FF', this.grid.getTile(38, this.grid.getHeight() - 1));
-    this.addDestination('#8000FF', this.grid.getTile(7, 0));
-    this.addDestination('#FF00FF', this.grid.getTile(22, 0));
-    this.addDestination('#FF0080', this.grid.getTile(37, 0));
-  }
-
-  setupLevel1() {
-    this.addDestination('#FF0000', this.grid.getTile(this.grid.getWidth() - 1, 1));
-    this.addDestination('#FF8000', this.grid.getTile(8, this.grid.getHeight() - 1));
-    this.addDestination('#FFFF00', this.grid.getTile(0, 2));
-
-    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1,  2), 3,[this.destinations[1], this.destinations[2]]);
-    this.addSpawner(this.grid.getTile(7,  this.grid.getHeight() - 1), 0, [this.destinations[0], this.destinations[2]]);
-    this.addSpawner(this.grid.getTile(0,  1), 1, [this.destinations[0], this.destinations[1]]);
   }
 
   restart() {
@@ -338,6 +355,7 @@ class CongestionGame {
         this.cars.push(spawn.createNewCar());
       }
     }
+    this.enemySpawn.update(this.time);
 
     for (let car of this.cars) {
       let b4 = this.grid.getTileAtPosWithSize(car.pos, this.size);
@@ -381,6 +399,9 @@ class CongestionGame {
       }
     } else {
       this.arrowMode = t.road;
+      if (!t.road) {
+        t.road = true;
+      }
     }
   }
   mouseDrag(pos) {
@@ -456,16 +477,7 @@ class CongestionGame {
     noStroke();
     fill('#FFFFFF');
 
-    for (let spawn of this.spawners) {
-      this.view.show(spawn);
-    }
-    textSize(this.view.getSize() * 20);
-    for (let dest of this.destinations) {
-      this.view.showAtGridLoc(dest.target, function(size) {
-        fill(dest.color);
-        text("F", size / 4, size * .85);
-      });
-    }
+    this.enemySpawn.show();
 
     this.view.coverEdges();
 
@@ -516,10 +528,7 @@ export function setup() {
 
   mousePos = createVector(0, 0);
 
-  game = new CongestionGame(view);
-
-  // TODO support other levels?
-  // game.setupDemo();
+  game = new CityTdGame(view);
 
   c.canvas.oncontextmenu = function() {
     return false;

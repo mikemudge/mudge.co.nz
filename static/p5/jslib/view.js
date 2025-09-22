@@ -59,6 +59,7 @@ export class Button {
     rect(x, y, size, size);
     fill('white');
     noStroke();
+    textSize(16);
     textAlign(CENTER);
     text(this.name, x, y + 10, size, size - 20);
   }

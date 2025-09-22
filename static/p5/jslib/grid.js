@@ -82,6 +82,14 @@ export class Grid {
       }
     }
   }
+  initWithData(dataType) {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        let square = new dataType();
+        this.setTileData(x, y, square);
+      }
+    }
+  }
 
   reset() {
     for (let y = 0; y < this.height; y++) {

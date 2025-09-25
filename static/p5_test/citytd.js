@@ -60,6 +60,7 @@ class WaveSpawner {
 
   show() {
     // TODO figure out how to display an icon at the edge of the screen to show an offscreen location?
+    // TODO this could be part of view?
     this.attackVec.setMag(this.game.getCityRange());
     this.attackVec.limit(windowHeight / 2 - 100);
     fill('red');
@@ -293,6 +294,7 @@ class CityTdGame {
     this.setupGrid(100, 100);
     let townsquare = this.grid.getTile(50, 50);
     this.enemySpawn = new WaveSpawner(this, townsquare);
+
   }
 
   getCityRange() {

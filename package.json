@@ -1,0 +1,21 @@
+{
+  "name": "mudge.co.nz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Front-end JS tooling for mudge.co.nz (the site itself is a Flask app; this only covers linting)",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-mikemudge:mikemudge/mudge.co.nz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
+  }
+}

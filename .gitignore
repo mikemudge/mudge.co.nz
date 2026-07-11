@@ -82,3 +82,6 @@ local_config.py
 
 # Intellij configs.
 .idea
+
+# Node / ESLint tooling
+node_modules/

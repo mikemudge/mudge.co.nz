@@ -1,4 +1,5 @@
 import {Overlay} from "./overlay.js";
+import {EAST, SOUTH} from "./tile.js";
 
 class ClusterRenderer {
   constructor(overlay, clusters, size) {
@@ -45,9 +46,16 @@ class ClusterRenderer {
 class TileRenderer {
   constructor(overlay, size, scale) {
     this.size = size;
-    this.scale = scale;
+    // The focused tile is shown smaller, and its possible neighbours a bit larger (but
+    // capped well below the main tile's scale so a whole row still fits on screen).
+    this.mainScale = scale / 2;
+    this.neighbourScale = 2;
+    this.labelWidth = 70;
     this.tile = null;
     this.pixelSize = null;
+    this.hoverPixel = null;
+    this.hoverNeighbour = null;
+    this.lastClickedPixel = null;
     this.overlay = overlay;
     this.overlay.setName("Tile");
     this.overlay.setSpace(this.getWidth(), this.getHeight());
@@ -64,11 +72,14 @@ class TileRenderer {
       this.overlay.setDisplayed(true);
       this.overlay.setName("Tile " + this.tile.name);
       if (this.tile.image) {
-        this.pixelSize = createVector(this.size.x / this.tile.image.width * this.scale, this.size.y / this.tile.image.height * this.scale);
+        this.pixelSize = createVector(this.size.x / this.tile.image.width * this.mainScale, this.size.y / this.tile.image.height * this.mainScale);
       }
-      // Reset the clicked/hover pixels for the new tile.
+      // Reset the clicked/hover state for the new tile.
       this.hoverPixel = null;
+      this.hoverNeighbour = null;
       this.lastClickedPixel = null;
+      // The overlay needs to grow/shrink to fit however many neighbours this tile has.
+      this.overlay.setSpace(this.getWidth(), this.getHeight());
     }
     console.log("Showing tile for", this.tile);
   }
@@ -77,18 +88,37 @@ class TileRenderer {
     return this.tile === tile;
   }
 
+  getBigSize() {
+    return this.size.copy().mult(this.mainScale);
+  }
+
+  getNeighbourSize() {
+    return this.size.copy().mult(this.neighbourScale);
+  }
+
+  maxNeighbourCount() {
+    if (!this.tile) {
+      return 0;
+    }
+    return Math.max(this.tile.up.length, this.tile.right.length, this.tile.down.length, this.tile.left.length);
+  }
+
   getWidth() {
-    return this.size.x * this.scale + 10;
+    let neighbourSize = this.getNeighbourSize();
+    let neighbourWidth = this.labelWidth + this.maxNeighbourCount() * (neighbourSize.x + 4);
+    return Math.max(this.getBigSize().x + 10, neighbourWidth);
   }
 
   getHeight() {
-    return this.size.y * this.scale + 40 + (this.size.y + 4) * 4;
+    let neighbourSize = this.getNeighbourSize();
+    // Tile preview + pixel colour swatch, then 4 direction rows, then a line for the hover tooltip.
+    return this.getBigSize().y + 40 + (neighbourSize.y + 4) * 4 + 16;
   }
 
   // Display an enlarged tile with hover pixel colors, and the tiles it can match against in each direction.
   show() {
     // Display a large view of the tile.
-    let bigSize = this.size.copy().mult(this.scale);
+    let bigSize = this.getBigSize();
     stroke('white');
     noSmooth();
     if (this.tile.image) {
@@ -107,6 +137,17 @@ class TileRenderer {
     } else if (this.lastClickedPixel) {
       this.showPixelColor(5, bigSize.y + 10, this.lastClickedPixel);
     }
+
+    // The z-layer (ground vs object) determines which layer's grid this tile can actually
+    // appear in — surface it here since it's not otherwise visible. Prefer the classification
+    // TileSetEdgeMatcher.findAllClusters() actually assigned (zLayer), since an opaque tile
+    // can still end up classified as an object if it connects to one; fall back to the raw
+    // pixel check for tiles that haven't been through classification yet (e.g. solo items).
+    let layerLabel = !this.tile.image ? "empty" : (this.tile.zLayer || (this.tile.hasTransparentPixel() ? "object" : "ground"));
+    fill(255);
+    noStroke();
+    textSize(12);
+    text("Layer: " + layerLabel, 5, bigSize.y + 35);
 
     push();
     translate(0, bigSize.y + 40);
@@ -131,29 +172,87 @@ class TileRenderer {
     if (!this.tile) {
       return;
     }
-    // TODO could use getDirectionTiles?
     let edges = [this.tile.up, this.tile.right, this.tile.down, this.tile.left];
-    let letters = ["U", "R", "D", "L"];
+    let labels = ["Up", "Right", "Down", "Left"];
+    let neighbourSize = this.getNeighbourSize();
+    let w = neighbourSize.x + 4;
+    let h = neighbourSize.y + 4;
 
-    let w = (this.size.x + 4);
-    let h = (this.size.y + 4);
-    fill(255);
+    // Alternating row backgrounds so each direction's neighbours are easy to tell apart.
     noStroke();
-    textSize(16);
-    for (let [y, letter] of letters.entries()) {
-      text(letter, 6, this.size.y / 2 + 5 + h * y);
+    for (let [y, edge] of edges.entries()) {
+      fill(y % 2 === 0 ? 50 : 40);
+      rect(0, h * y, this.labelWidth + edge.length * w, h);
     }
 
-    stroke('white');
+    fill(255);
+    noStroke();
+    textSize(11);
+    for (let [y, label] of labels.entries()) {
+      text(label + " (" + edges[y].length + ")", 4, h * y + h / 2 + 4);
+    }
+
+    stroke(255);
     noFill();
     for (let [y, edge] of edges.entries()) {
       for (let i = 0; i < edge.length; i++) {
-        edge[i].showTileAt(22 + i * w, h * y, this.size.x, this.size.y);
+        let x = this.labelWidth + i * w;
+        edge[i].showTileAt(x, h * y, neighbourSize.x, neighbourSize.y);
+        rect(x, h * y, neighbourSize.x, neighbourSize.y);
+      }
+    }
+
+    // Highlight the hovered neighbour and show its name, so it's clear what you're
+    // about to click through to.
+    if (this.hoverNeighbour) {
+      for (let [y, edge] of edges.entries()) {
+        let i = edge.indexOf(this.hoverNeighbour);
+        if (i !== -1) {
+          stroke(255, 255, 0);
+          noFill();
+          rect(this.labelWidth + i * w, h * y, neighbourSize.x, neighbourSize.y);
+          noStroke();
+          fill(255);
+          textSize(12);
+          text(this.hoverNeighbour.name, 4, h * edges.length + 12);
+          break;
+        }
       }
     }
   }
 
+  // Maps a mouse position (relative to the top of the connections area) to the neighbour
+  // tile drawn there, or null if it's not over one.
+  neighbourAt(x, y) {
+    if (!this.tile) {
+      return null;
+    }
+    let edges = [this.tile.up, this.tile.right, this.tile.down, this.tile.left];
+    let neighbourSize = this.getNeighbourSize();
+    let w = neighbourSize.x + 4;
+    let h = neighbourSize.y + 4;
+    let row = Math.floor(y / h);
+    if (row < 0 || row >= edges.length) {
+      return null;
+    }
+    let col = Math.floor((x - this.labelWidth) / w);
+    if (col < 0 || col >= edges[row].length) {
+      return null;
+    }
+    return edges[row][col];
+  }
+
   highlight(mousePos) {
+    if (!this.tile) {
+      return;
+    }
+    let connectionsY = this.getBigSize().y + 40;
+    if (mousePos.y >= connectionsY) {
+      this.hoverNeighbour = this.neighbourAt(mousePos.x, mousePos.y - connectionsY);
+      this.hoverPixel = null;
+      return;
+    }
+    this.hoverNeighbour = null;
     if (!this.tile.image) {
       return;
     }
@@ -161,6 +260,19 @@ class TileRenderer {
   }
 
   click(mousePos) {
+    if (!this.tile) {
+      return true;
+    }
+    let connectionsY = this.getBigSize().y + 40;
+    if (mousePos.y >= connectionsY) {
+      // Clicking a neighbour jumps to it, so the connection graph can be explored by
+      // clicking through it rather than needing a separate global view.
+      let neighbour = this.neighbourAt(mousePos.x, mousePos.y - connectionsY);
+      if (neighbour) {
+        this.setTile(neighbour);
+      }
+      return true;
+    }
     if (!this.tile.image) {
       return true;
     }
@@ -267,10 +379,11 @@ class ImpossibleRenderer {
 }
 
 class TilesetRenderer {
-  constructor(overlay, grid, size) {
+  constructor(overlay, grid, size, edgeScoreThreshold = 1.0) {
     this.tileGrid = grid;
 
     this.size = size;
+    this.edgeScoreThreshold = edgeScoreThreshold;
 
     this.tileTarget = null;
     this.overlay = overlay;
@@ -281,6 +394,10 @@ class TilesetRenderer {
 
   setTileTarget(tileTarget) {
     this.tileTarget = tileTarget;
+  }
+
+  setEdgeScoreThreshold(threshold) {
+    this.edgeScoreThreshold = threshold;
   }
 
   getWidth() {
@@ -310,6 +427,37 @@ class TilesetRenderer {
         }
       }
     }
+
+    // Overlay lines on the shared border between adjacent tiles in the sheet, coloured by
+    // whether WFCTile.edgeScore is at/below (green) or above (red) the threshold used for
+    // auto-detection — a quick visual sanity check on which spritesheet-adjacent tiles the
+    // detector considers a good join.
+    strokeWeight(2);
+    for (let y = 0; y < this.tileGrid.getHeight(); y++) {
+      for (let x = 0; x < this.tileGrid.getWidth(); x++) {
+        let tile = this.tileGrid.getTile(x, y).getData();
+        if (!tile) {
+          continue;
+        }
+        if (x + 1 < this.tileGrid.getWidth()) {
+          let right = this.tileGrid.getTile(x + 1, y).getData();
+          if (right) {
+            let score = tile.edgeScore(EAST, right);
+            stroke(score <= this.edgeScoreThreshold ? color(0, 255, 0) : color(255, 0, 0));
+            line((x + 1) * w, y * h, (x + 1) * w, (y + 1) * h);
+          }
+        }
+        if (y + 1 < this.tileGrid.getHeight()) {
+          let down = this.tileGrid.getTile(x, y + 1).getData();
+          if (down) {
+            let score = tile.edgeScore(SOUTH, down);
+            stroke(score <= this.edgeScoreThreshold ? color(0, 255, 0) : color(255, 0, 0));
+            line(x * w, (y + 1) * h, (x + 1) * w, (y + 1) * h);
+          }
+        }
+      }
+    }
+    strokeWeight(1);
 
     // Overlay the index of each tile to aid debugging.
     textSize(10);
@@ -346,6 +494,7 @@ class EdgeDetectionRenderer {
     this.clicked = [null, null];
     this.clickIndex = 0;
     this.diff = [0, 0, 0, 0];
+    this.edgeScores = [0, 0, 0, 0];
 
 
     this.overlay.setName("Edge Detection");
@@ -371,9 +520,10 @@ class EdgeDetectionRenderer {
       this.clickIndex = 0;
       for (let d = 0; d < 4; d++) {
         this.diff[d] = this.tilesetMatcher.compareEdgesDifference(d, this.clicked[0], this.clicked[1], false);
+        this.edgeScores[d] = this.clicked[0].edgeScore(d, this.clicked[1]);
       }
 
-      this.tilesetMatcher.compareEdges(1, this.clicked[0], this.clicked[1]);
+      this.tilesetMatcher.compareEdges(EAST, this.clicked[0], this.clicked[1]);
     }
   }
 
@@ -382,8 +532,9 @@ class EdgeDetectionRenderer {
   }
 
   show() {
+    const directionLabels = ["N", "E", "S", "W"];
     for (let [i, diff] of this.diff.entries()) {
-      text(i + " " + diff, 0, i * 15 + 15);
+      text(directionLabels[i] + " " + diff + " score:" + this.edgeScores[i].toFixed(2), 0, i * 15 + 15);
     }
 
     // Draw the image.
@@ -449,6 +600,8 @@ export class WFCOverlay {
     let overlay = new Overlay(createVector(20, this.tilesetRenderer.getHeight()));
     let edgeDetectionRender = new EdgeDetectionRenderer(overlay, tilesetMatcher, tileRenderers);
     this.tilesetRenderer.setTileTarget(edgeDetectionRender);
+    this.edgeDetectionOverlay = overlay;
+    this.edgeDetectionOverlay.setDisplayed(false);
 
     // Add extra overlays
     this.overlays.push(this.clustersOverlay);
@@ -582,13 +735,15 @@ export class WFCOverlay {
     text("show tiles", x, y + 15);
     text("show clusters", x + 100, y + 15);
     text("reset", x + 200, y + 15);
+    text("show edges", x + 300, y + 15);
 
     // Rectangles around the button.
     noFill();
     stroke(255);
     rect(x, y, 100, 20);
     rect(x + 100, y, 100, 20);
-    rect(x + 200, y, 200, 20);
+    rect(x + 200, y, 100, 20);
+    rect(x + 300, y, 100, 20);
   }
 
   clickButtons(mousePos) {
@@ -611,6 +766,12 @@ export class WFCOverlay {
     if (dy > 0 && dy < 20 && dx > 0 && dx < 100) {
       console.log("clicked on reset");
       this.collapseFunction.reset();
+      return true;
+    }
+    dx = mousePos.x - x - 300;
+    if (this.edgeDetectionOverlay && dy > 0 && dy < 20 && dx > 0 && dx < 100) {
+      console.log("Toggle edge detection display");
+      this.edgeDetectionOverlay.toggleDisplay();
       return true;
     }
   }

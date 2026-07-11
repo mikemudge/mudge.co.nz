@@ -180,25 +180,70 @@ export class CollapseFunction {
       return;
     }
 
-    // Collapse will pick a tile from the possible ones.
     let collapsable = this.getCollapsable(this.useMinimum);
 
-    if (collapsable.length > 0) {
-      let loc = random(collapsable);
-      loc.getData().collapse();
-      try {
-        this.reduceWrapper(loc);
-      } catch (e) {
-        loc.getData().setFailed();
-        console.log("Failed to fill in", loc);
-        console.error(e);
-        // Stop filling in.
-        this.complete = true;
-      }
-    } else {
+    if (collapsable.length === 0) {
       console.log("All filled in");
       this.complete = true;
+      return;
     }
+
+    let loc = random(collapsable);
+    let square = loc.getData();
+
+    // Try each tile option in random order. If a choice causes an impossible
+    // propagation, replay the undo log to restore only the affected squares,
+    // then try the next option.
+    let options = shuffle([...square.possible]);
+    for (let tile of options) {
+      this._startLog();
+      this._log(square);
+      square.possible = [tile];
+      square.tile = tile;
+      try {
+        this.reduceWrapper(loc);
+        this._clearLog();
+        return;  // Propagation succeeded — keep this choice.
+      } catch (e) {
+        if (e instanceof ImpossibleCollapse) {
+          this._replayLog();
+        } else {
+          throw e;
+        }
+      }
+    }
+
+    // Every option caused an impossible state — this cell is genuinely stuck.
+    square.setFailed();
+    square.possible = [];
+  }
+
+  // Log only the squares actually touched during a collapse attempt, so rollback
+  // is proportional to propagation extent rather than total grid size.
+  _startLog() {
+    this._undoLog = [];
+    this._undoSet = new Set();
+  }
+
+  _log(sq) {
+    if (!this._undoSet.has(sq)) {
+      this._undoSet.add(sq);
+      this._undoLog.push({ sq, possible: [...sq.possible], tile: sq.tile, failed: sq.failed });
+    }
+  }
+
+  _replayLog() {
+    for (const { sq, possible, tile, failed } of this._undoLog) {
+      sq.possible = possible;
+      sq.tile = tile;
+      sq.failed = failed;
+    }
+    this._clearLog();
+  }
+
+  _clearLog() {
+    this._undoLog = null;
+    this._undoSet = null;
   }
 
   getMainLayer() {
@@ -223,14 +268,12 @@ export class CollapseFunction {
           }
         } catch (error) {
           if (error instanceof ImpossibleCollapse) {
+            if (this._undoLog) this._log(error.square);
             error.square.setFailed();
+            if (this._undoLog) this._log(gridLoc.getData());
             gridLoc.getData().setFailed();
-            console.log("Error while collapsing reducing ", gridLoc.getLocationString(),
-                "Square", error.square.pos.x + ",", error.square.pos.y + ",", error.square.z, "has its possible set allowed", error.allowed.map(function (a) {
-                  return a.name;
-                })
-            );
           }
+          // Always re-throw so update() can catch it and try a different tile.
           throw error;
         }
       }
@@ -274,10 +317,15 @@ export class CollapseFunction {
       // out of bounds?
       return false;
     }
+    if (loc.getData().tile) {
+      // Already collapsed — no need to reduce.
+      return false;
+    }
     // We should never restrict a tile to no options at all.
     if (allowed.length === 0) {
       throw new ImpossibleCollapse(loc.getData(), loc.getData().possible, allowed);
     }
+    if (this._undoLog) this._log(loc.getData());
     return loc.getData().reducePossible(allowed);
   }
 }

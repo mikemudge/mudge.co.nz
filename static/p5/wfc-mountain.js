@@ -2,6 +2,11 @@ import {TileSetEdgeMatcher} from "./wfc/tileset.js";
 import {MapView} from "./jslib/view.js";
 import {CollapseFunction} from "./wfc/collapse.js";
 import {WFCOverlay} from "./wfc/renders.js";
+import {EAST, SOUTH} from "./wfc/tile.js";
+
+// Max WFCTile.edgeScore allowed for an auto-detected connection — also used by
+// TilesetRenderer to colour the borders between spritesheet-adjacent tiles.
+const EDGE_SCORE_THRESHOLD = 0.7;
 
 class MountainTileSet {
   constructor(matcher) {
@@ -13,35 +18,21 @@ class MountainTileSet {
   }
 
   doMatching() {
-    // Get additional logging during edge detection for debug tiles.
-    this.matcher.debug(13, 0);
-    this.matcher.debug(13, 1);
-
-    // Read pixels from image to determine what tiles can connect to.
     this.matcher.updateTileEdges();
 
-    let threshold = this.matcher.tileWidth * 700;
+    this.matcher.setGroundRegion(10, 0, 15, 4);
+    this.matcher.setGroundRegion(11, 15, 15, 6);
+    this.matcher.setGroundRegion(8, 7, 15, 9);
+    this.matcher.setGroundRegion(9, 10, 13, 11);
+    this.matcher.setGroundRegion(7, 11, 8, 12);
 
-    // Grass/Stone (ground)
-    console.log("Grass/Stone threshold:", threshold);
-    let grassStone = this.matcher.getRect(11, 0, 13, 2);
-    for (let t of this.matcher.getRect(14, 6, 15, 7)) {
-      grassStone.push(t);
-    }
-    this.matcher.detectEdges(grassStone, threshold, []);
+    this.matcher.detectEdgesByOtsu([], EDGE_SCORE_THRESHOLD);
 
-    // Cliffs.
-    threshold = this.matcher.tileWidth * 2000;
-    this.matcher.detectEdges(this.matcher.getRect(0, 0, 5, 6), threshold, []);
-    // this.matcher.detectEdges(this.matcher.getRect(6, 0, 9, 6), threshold, []);
+    this.matcher.forceMatch(2,6, EAST, 3, 6);
+    this.matcher.forceMatch(3,6, EAST, 4, 6);
 
-    // Trees
-    threshold = this.matcher.tileWidth * 8000;
-    this.matcher.detectEdges(this.matcher.getRect(4, 12, 6, 15), threshold, []);
-    this.matcher.detectEdges(this.matcher.getRect(7, 13, 8, 15), threshold, []);
-    this.matcher.detectEdges(this.matcher.getRect(9, 12, 10, 15), threshold, []);
-
-    // this.manualFixes();
+    this.matcher.forceNonMatch(4, 9, SOUTH, 7, 15);
+    this.matcher.forceNonMatch(7, 15, EAST, 6, 11);
 
     this.matcher.findAllClusters();
 
@@ -91,6 +82,7 @@ export function setup() {
 
   let size = createVector(16, 16);
   renderer = new WFCOverlay(collapseFunction, view, size, tilesetMatcher.tiles);
+  renderer.tilesetRenderer.setEdgeScoreThreshold(EDGE_SCORE_THRESHOLD);
   renderer.addTilesetMatcher(tilesetMatcher, size);
 }
 

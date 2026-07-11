@@ -1,3 +1,14 @@
+// Direction convention used throughout the WFC code — edges, connections, edgeScore, etc.
+export const NORTH = 0;
+export const EAST = 1;
+export const SOUTH = 2;
+export const WEST = 3;
+
+// Sum of per-channel absolute RGB differences between two [r,g,b,a] pixels.
+function rgbAbsDiff(p1, p2) {
+  return Math.abs(p1[0] - p2[0]) + Math.abs(p1[1] - p2[1]) + Math.abs(p1[2] - p2[2]);
+}
+
 export class WFCTile {
   constructor(img, name) {
     this.image = img;
@@ -13,6 +24,11 @@ export class WFCTile {
     this.edgeTypeCounts = {};
     this.edgeTypes = [];
     this.debug = false;
+    // Set by TileSetEdgeMatcher.findAllClusters() to "ground" or "object" — null until then.
+    this.zLayer = null;
+    // Set by TileSetEdgeMatcher.setGroundRegion() to pin this tile to ground regardless of
+    // what it connects to — see findAllClusters() for how this acts as a propagation barrier.
+    this.forcedGround = false;
   }
   copy() {
     let t = new WFCTile(this.image, this.name + " copy");
@@ -127,6 +143,34 @@ export class WFCTile {
     }
   }
 
+  // Average absolute RGB gradient between adjacent pixels, ignoring transparent pixels.
+  // Measures how "busy" a tile is internally — used to normalise seam comparisons.
+  computeInteriorGradient() {
+    let grad = 0;
+    let count = 0;
+    const w = this.image.width;
+    const h = this.image.height;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w - 1; x++) {
+        const p1 = this.getPixel(x, y);
+        const p2 = this.getPixel(x + 1, y);
+        if (this.isTransparent(p1) || this.isTransparent(p2)) continue;
+        grad += Math.abs(p1[0]-p2[0]) + Math.abs(p1[1]-p2[1]) + Math.abs(p1[2]-p2[2]);
+        count += 3;
+      }
+    }
+    for (let y = 0; y < h - 1; y++) {
+      for (let x = 0; x < w; x++) {
+        const p1 = this.getPixel(x, y);
+        const p2 = this.getPixel(x, y + 1);
+        if (this.isTransparent(p1) || this.isTransparent(p2)) continue;
+        grad += Math.abs(p1[0]-p2[0]) + Math.abs(p1[1]-p2[1]) + Math.abs(p1[2]-p2[2]);
+        count += 3;
+      }
+    }
+    this.interiorGradient = count > 0 ? grad / count : 0;
+  }
+
   classifyEdges() {
     this.edgeTypeCounts = {};
     this.edgeTypes = ["", "", "", ""];
@@ -194,6 +238,50 @@ export class WFCTile {
   isTransparent(pixel) {
     return pixel[3] === 0;
   }
+
+  // Compatibility score for placing `other` in direction `d` from this tile (0=up/N, 1=right/E,
+  // 2=down/S, 3=left/W). Lower is better: 0 means the seam is invisible, 1 means the seam is as
+  // rough as the tiles' own internal detail, >1 means the join stands out as a discontinuity.
+  // Self-normalising, so the same score is comparable across tiles of very different busyness
+  // (a noisy cliff tile and a smooth grass tile use the same scale).
+  //
+  // Requires calculateEdges()/classifyEdges()/computeInteriorGradient() to have been run on both
+  // tiles first (TileSetEdgeMatcher.updateTileEdges() does this for a whole tileset).
+  edgeScore(d, other) {
+    const opp = (d + 2) % 4;
+    const edge1 = this.edges[d];
+    const edge2 = other.edges[opp];
+    let seamDiff = 0;
+    let count = 0;
+
+    for (let i = 0; i < edge1.length; i++) {
+      const p = edge1[i];
+      const q = edge2[i];
+      if (this.isTransparent(p) && other.isTransparent(q)) continue;
+      if ((this.isBlank(p) && other.isTransparent(q)) || (this.isTransparent(p) && other.isBlank(q))) continue;
+
+      // Absolute RGB diff with a ±1 pixel diagonal tolerance, so a one-pixel shift in a
+      // diagonal pattern doesn't get penalised as a mismatch.
+      let diff = rgbAbsDiff(p, q);
+      if (i > 0) {
+        diff = Math.min(diff, rgbAbsDiff(p, edge2[i - 1]), rgbAbsDiff(edge1[i - 1], q));
+      }
+      if (i < edge1.length - 1) {
+        diff = Math.min(diff, rgbAbsDiff(p, edge2[i + 1]), rgbAbsDiff(edge1[i + 1], q));
+      }
+      seamDiff += diff;
+      count += 3; // 3 channels per pixel
+    }
+
+    if (count === 0) return 0; // all transparent — compatible
+
+    const seamAvg = seamDiff / count;
+    const interiorAvg = (this.interiorGradient + other.interiorGradient) / 2;
+
+    if (interiorAvg === 0) return seamAvg > 0 ? Infinity : 0;
+
+    return seamAvg / interiorAvg;
+  }
   isIsolated() {
     // If the number of colored and same edges is 0 then this is an isolated tile.
     return (this.edgeTypeCounts['same'] ?? 0) + (this.edgeTypeCounts['colored'] ?? 0) === 0;
@@ -218,10 +306,13 @@ export class WFCTile {
     if (this.image) {
       image(this.image, x, y, w, h);
     } else {
-      // Show empty tile.
+      // Show empty tile. Scoped with push/pop so the fill/stroke change here doesn't leak
+      // into whatever the caller draws next (e.g. a border rect around the following tile).
+      push();
       fill(255);
       noStroke();
       text("E", x + 5, y + h / 2 + 5);
+      pop();
     }
   }
 

@@ -4,6 +4,14 @@ import {MapView} from "./jslib/view.js";
 import {CollapseFunction} from "./wfc/collapse.js";
 import {WFCOverlay} from "./wfc/renders.js";
 
+// Flip to true to try the new Otsu-based edgeScore detector instead of the original
+// raw-threshold detectEdges() call, for comparing the two detectors on this tileset.
+const USE_NEW_EDGE_MATCHING = false;
+// Max WFCTile.edgeScore allowed for an auto-detected connection when USE_NEW_EDGE_MATCHING
+// is true — also used by TilesetRenderer to colour the borders between spritesheet-adjacent
+// tiles. See wfc-mountain.js for where this same value is used.
+const EDGE_SCORE_THRESHOLD = 0.7;
+
 class TinyTownTileSet {
   constructor(tileset, matcher) {
     this.tileset = tileset;
@@ -22,8 +30,12 @@ class TinyTownTileSet {
     // Read pixels from image to determine what tiles can connect to.
     this.matcher.updateTileEdges();
 
-    // do a very strict edge matching to just find the near perfect matches.
-    this.matcher.detectEdges(this.matcher.allTiles, 100, []);
+    if (USE_NEW_EDGE_MATCHING) {
+      this.matcher.detectEdgesByOtsu([], EDGE_SCORE_THRESHOLD);
+    } else {
+      // do a very strict edge matching to just find the near perfect matches.
+      this.matcher.detectEdges(this.matcher.allTiles, 100, []);
+    }
 
     this.manualFixes();
 
@@ -342,6 +354,7 @@ export function setup() {
 
   let size = createVector(16, 16);
   renderer = new WFCOverlay(collapseFunction, view, size, tilesetMatcher.tiles);
+  renderer.tilesetRenderer.setEdgeScoreThreshold(EDGE_SCORE_THRESHOLD);
   renderer.addTilesetMatcher(tilesetMatcher, size);
 }
 

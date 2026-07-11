@@ -1,4 +1,4 @@
-from flask import current_app, abort, request
+from flask import current_app, abort, request, jsonify
 from flask import render_template
 from flask.views import MethodView
 from shared.helpers.angular import Angular
@@ -193,12 +193,13 @@ p5_apps['connect4'] = {
 p5_apps['planets'] = {
     'img': 'planets.png',
 }
-# p5_apps['predator'] = {
-#     'img': 'predator.png',
-# }
-# p5_apps['predator2'] = {
-#     'img': 'predator2.png',
-# }
+p5_apps['predator'] = {
+    'img': 'predator.png',
+    'status': 'wip',
+}
+p5_apps['predator2'] = {
+    'status': 'wip',
+}
 p5_apps['minesweeper'] = {
     'img': 'minesweeper.png',
 }
@@ -213,12 +214,22 @@ p5_apps['carai'] = {
 p5_apps['color_war'] = {
     'img': 'color_war.png'
 }
-# p5_apps['poker'] = {
-#     'img': 'poker.png',
-# }
-# p5_apps['traffic'] = {
-#     'img': 'traffic.png'
-# }
+p5_apps['poker'] = {
+    'img': 'poker.png',
+    'status': 'wip',
+}
+p5_apps['traffic'] = {
+    'img': 'traffic.png',
+    'status': 'wip',
+}
+
+# Work in progress. Shown on /workshop instead of /projects and /games.
+# img is optional here (unlike finished apps, where it's required to show up).
+p5_apps['citytd'] = {
+    'title': 'City TD',
+    'path': 'p5_test/citytd',
+    'status': 'wip',
+}
 
 def gmaps():
     return "https://maps.googleapis.com/maps/api/js?key=%s&v=3.exp&amp;libraries=geometry" % current_app.config.get('GOOGLE_MAPS_API_KEY')
@@ -244,17 +255,50 @@ class ProjectV2View(MethodView):
         })
 
 # Project endpoints.
-class ProjectAppsListView(MethodView):
+# Renders the shell page for a project/game listing. The listing itself is
+# fetched and rendered client side (see static/projects/apps.js), reusing
+# the same pattern as ProjectV2View for individual games.
+class ProjectsShellView(MethodView):
+    def __init__(self, status='done', show_apps=True, title='Projects', back_link=None, back_link_label=None):
+        self.status = status
+        self.show_apps = show_apps
+        self.title = title
+        self.back_link = back_link
+        self.back_link_label = back_link_label
+
     def get(self):
-        result = []
+        return render_template('projects_shell.tmpl', **{
+            'status': self.status,
+            'show_apps': 'true' if self.show_apps else 'false',
+            'title': self.title,
+            'back_link': self.back_link,
+            'back_link_label': self.back_link_label,
+        })
 
-        sorted_apps = []
-        if request.path.startswith("/projects"):
-            sorted_apps = sorted(apps.items())
 
-        return render_template('projects.tmpl', **{
-            'games': [a for a in p5_apps.items() if 'hidden' not in a[1] or not a[1]['hidden']],
-            'apps': [a for a in sorted_apps if 'hidden' not in a[1] or not a[1]['hidden']]
+class ProjectAppsApiView(MethodView):
+    def get(self):
+        status = request.args.get('status', 'done')
+
+        def matches_status(item):
+            conf = item[1]
+            if conf.get('hidden'):
+                return False
+            item_status = 'wip' if conf.get('status') == 'wip' else 'done'
+            return item_status == status
+
+        def serialize(item):
+            key, conf = item
+            return {
+                'key': key,
+                'title': conf.get('title', key),
+                'img': conf.get('img'),
+                'path': conf.get('path'),
+            }
+
+        return jsonify({
+            'games': [serialize(a) for a in p5_apps.items() if matches_status(a)],
+            'apps': [serialize(a) for a in sorted(apps.items()) if matches_status(a)],
         })
 
 

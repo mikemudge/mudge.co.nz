@@ -85,3 +85,6 @@ local_config.py
 
 # Node / ESLint tooling
 node_modules/
+
+# Third-party art/asset packs kept locally for inspiration, not source.
+static/p5/game/considering/

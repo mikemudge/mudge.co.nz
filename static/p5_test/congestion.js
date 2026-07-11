@@ -70,6 +70,9 @@ class Car {
 class Square {
   constructor() {
     this.directions = [];
+    // When set (e.g. 'rock', 'tree', 'building') this square can never
+    // become a road, and blocks routing like any other non-road tile.
+    this.obstacle = null;
   }
 
   addDirection(direction) {
@@ -80,6 +83,10 @@ class Square {
   }
 
   clear() {
+    if (this.obstacle) {
+      // Obstacles are permanent level geometry, not player editable.
+      return;
+    }
     this.directions = [];
     this.road = false;
   }
@@ -93,6 +100,16 @@ class Square {
       noStroke();
       fill('grey');
       rect(0, 0, size, size);
+    } else if (!this.obstacle) {
+      // A subtle grid line to help line up roads while drawing them.
+      noFill();
+      stroke(255, 255, 255, 30);
+      strokeWeight(1);
+      rect(0, 0, size, size);
+    }
+
+    if (this.obstacle) {
+      this.showObstacle(size);
     }
 
     // TODO show directions nicer?
@@ -108,6 +125,34 @@ class Square {
         this.drawArrow(d, size);
       }
     }
+  }
+
+  showObstacle(size) {
+    push();
+    noStroke();
+    rectMode(CORNER);
+    ellipseMode(CENTER);
+    if (this.obstacle === 'tree') {
+      fill('#6B4226');
+      rect(size * 0.42, size * 0.45, size * 0.16, size * 0.5);
+      fill('#2E7D32');
+      ellipse(size / 2, size * 0.4, size * 0.85, size * 0.85);
+    } else if (this.obstacle === 'building') {
+      fill('#8A8A8A');
+      rect(size * 0.08, size * 0.08, size * 0.84, size * 0.84);
+      fill('#4A4A4A');
+      rect(size * 0.2, size * 0.24, size * 0.22, size * 0.22);
+      rect(size * 0.58, size * 0.24, size * 0.22, size * 0.22);
+      rect(size * 0.2, size * 0.58, size * 0.22, size * 0.22);
+      rect(size * 0.58, size * 0.58, size * 0.22, size * 0.22);
+    } else {
+      // Default to a rock.
+      fill('#8D8D8D');
+      ellipse(size / 2, size * 0.55, size * 0.8, size * 0.6);
+      fill('#A5A5A5');
+      ellipse(size * 0.4, size * 0.45, size * 0.4, size * 0.3);
+    }
+    pop();
   }
 
   drawArrow(d, size) {
@@ -208,11 +253,29 @@ class CongestionGame {
     this.spawnRate = params.get("spawnRate") || 100;
     this.cars = [];
 
-    this.view.topMenu.addButton(new Button("restart", this.restart.bind(this)));
+    // Start in editing mode: roads can be drawn but no cars spawn. Toggling
+    // to "test" mode spawns/drives cars but disables editing, so you don't
+    // accidentally redraw roads while watching traffic.
+    this.editing = true;
+    this.modeButton = new Button("Test", this.toggleMode.bind(this));
+    this.view.topMenu.addButton(this.modeButton);
+    this.view.topMenu.addButton(new Button("routes", this.toggleUnreachableRoutes.bind(this)));
+    this.showUnreachable = false;
 
     this.setupGrid(15, 10);
 
-    this.setupLevel1();
+    let level = params.get("level");
+    if (params.get("demo")) {
+      this.setupDemo();
+    } else if (level === "2") {
+      this.setupLevel2();
+    } else if (level === "3") {
+      this.setupLevel3();
+    } else if (level === "4") {
+      this.setupLevel4();
+    } else {
+      this.setupLevel1();
+    }
   }
 
   setupGrid(width, height) {
@@ -258,19 +321,6 @@ class CongestionGame {
       }
     }
 
-    // Setup spawn locations
-    this.spawners.push(this.grid.getTile(this.grid.getWidth() - 1, 8))
-    this.spawners.push(this.grid.getTile(this.grid.getWidth() - 1, 23))
-    this.spawners.push(this.grid.getTile(0, 7))
-    this.spawners.push(this.grid.getTile(0, 22))
-
-    this.spawners.push(this.grid.getTile(7, this.grid.getHeight() - 1));
-    this.spawners.push(this.grid.getTile(22, this.grid.getHeight() - 1));
-    this.spawners.push(this.grid.getTile(37, this.grid.getHeight() - 1));
-    this.spawners.push(this.grid.getTile(8, 0));
-    this.spawners.push(this.grid.getTile(23, 0));
-    this.spawners.push(this.grid.getTile(38, 0));
-
     // Now setup some destinations with routes.
     this.addDestination('#FF0000', this.grid.getTile(this.grid.getWidth() - 1, 7));
     this.addDestination('#FF8000', this.grid.getTile(this.grid.getWidth() - 1, 22));
@@ -283,6 +333,20 @@ class CongestionGame {
     this.addDestination('#8000FF', this.grid.getTile(7, 0));
     this.addDestination('#FF00FF', this.grid.getTile(22, 0));
     this.addDestination('#FF0080', this.grid.getTile(37, 0));
+
+    // Setup spawn locations
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 8), 1, this.destinations)
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 23), 1, this.destinations)
+    this.addSpawner(this.grid.getTile(0, 7), 3, this.destinations)
+    this.addSpawner(this.grid.getTile(0, 22), 3, this.destinations)
+
+    this.addSpawner(this.grid.getTile(7, this.grid.getHeight() - 1), 0, this.destinations);
+    this.addSpawner(this.grid.getTile(22, this.grid.getHeight() - 1), 0, this.destinations);
+    this.addSpawner(this.grid.getTile(37, this.grid.getHeight() - 1), 0, this.destinations);
+    this.addSpawner(this.grid.getTile(8, 0), 2, this.destinations);
+    this.addSpawner(this.grid.getTile(23, 0), 2, this.destinations);
+    this.addSpawner(this.grid.getTile(38, 0), 2, this.destinations);
+
   }
 
   setupLevel1() {
@@ -293,6 +357,81 @@ class CongestionGame {
     this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1,  2), 3,[this.destinations[1], this.destinations[2]]);
     this.addSpawner(this.grid.getTile(7,  this.grid.getHeight() - 1), 0, [this.destinations[0], this.destinations[2]]);
     this.addSpawner(this.grid.getTile(0,  1), 1, [this.destinations[0], this.destinations[1]]);
+  }
+
+  setupLevel2() {
+    // Same size grid as level 1, but with a destination/spawner on all four
+    // edges instead of three.
+    let top = this.addDestination('#FF0000', this.grid.getTile(7, 0));
+    let right = this.addDestination('#FF8000', this.grid.getTile(this.grid.getWidth() - 1, 4));
+    let bottom = this.addDestination('#FFFF00', this.grid.getTile(7, this.grid.getHeight() - 1));
+    let left = this.addDestination('#00FF00', this.grid.getTile(0, 4));
+
+    this.addSpawner(this.grid.getTile(8, 0), 2, this.allExcept(top));
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 5), 3, this.allExcept(right));
+    this.addSpawner(this.grid.getTile(8, this.grid.getHeight() - 1), 0, this.allExcept(bottom));
+    this.addSpawner(this.grid.getTile(0, 5), 1, this.allExcept(left));
+  }
+
+  setupLevel3() {
+    // A bigger grid with 5 destinations, spread out unevenly so routes are
+    // less symmetric than levels 1 and 2.
+    this.setupGrid(20, 14);
+
+    let red = this.addDestination('#FF0000', this.grid.getTile(this.grid.getWidth() - 1, 2));
+    let orange = this.addDestination('#FF8000', this.grid.getTile(this.grid.getWidth() - 1, 11));
+    let yellow = this.addDestination('#FFFF00', this.grid.getTile(0, 3));
+    let green = this.addDestination('#00FF00', this.grid.getTile(0, 10));
+    let blue = this.addDestination('#00FFFF', this.grid.getTile(10, this.grid.getHeight() - 1));
+
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 3), 3, this.allExcept(red));
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 10), 3, this.allExcept(orange));
+    this.addSpawner(this.grid.getTile(0, 2), 1, this.allExcept(yellow));
+    this.addSpawner(this.grid.getTile(0, 11), 1, this.allExcept(green));
+    this.addSpawner(this.grid.getTile(9, this.grid.getHeight() - 1), 0, this.allExcept(blue));
+
+    // A building blocking the middle of the map, plus some scattered scenery.
+    this.addObstacleRect(8, 5, 3, 3, 'building');
+    this.addObstacle(this.grid.getTile(4, 7), 'rock');
+    this.addObstacle(this.grid.getTile(15, 6), 'tree');
+  }
+
+  setupLevel4() {
+    // The largest, hardest level: 6 destinations on a big grid.
+    this.setupGrid(24, 16);
+
+    let red = this.addDestination('#FF0000', this.grid.getTile(this.grid.getWidth() - 1, 3));
+    let orange = this.addDestination('#FF8000', this.grid.getTile(this.grid.getWidth() - 1, 12));
+    let yellow = this.addDestination('#FFFF00', this.grid.getTile(0, 4));
+    let green = this.addDestination('#00FF00', this.grid.getTile(0, 11));
+    let blue = this.addDestination('#00FFFF', this.grid.getTile(6, this.grid.getHeight() - 1));
+    let purple = this.addDestination('#8000FF', this.grid.getTile(17, 0));
+
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 4), 3, this.allExcept(red));
+    this.addSpawner(this.grid.getTile(this.grid.getWidth() - 1, 11), 3, this.allExcept(orange));
+    this.addSpawner(this.grid.getTile(0, 3), 1, this.allExcept(yellow));
+    this.addSpawner(this.grid.getTile(0, 10), 1, this.allExcept(green));
+    this.addSpawner(this.grid.getTile(7, this.grid.getHeight() - 1), 0, this.allExcept(blue));
+    this.addSpawner(this.grid.getTile(16, 0), 2, this.allExcept(purple));
+  }
+
+  // Every destination other than the given one, used so spawners can send
+  // cars to all destinations except their own.
+  allExcept(dest) {
+    return this.destinations.filter((d) => d !== dest);
+  }
+
+  toggleUnreachableRoutes() {
+    this.showUnreachable = !this.showUnreachable;
+  }
+
+  toggleMode() {
+    this.editing = !this.editing;
+    this.modeButton.name = this.editing ? "Test" : "Edit";
+    // Recalculate routes from the current roads and clear any cars, so both
+    // switching to test (pick up new roads) and back to edit (clean slate)
+    // start fresh.
+    this.restart();
   }
 
   restart() {
@@ -324,6 +463,22 @@ class CongestionGame {
     router.color = color;
     target.getData().road = true;
     this.destinations.push(router);
+    return router;
+  }
+
+  // Mark a tile as permanent scenery (e.g. 'rock', 'tree', 'building') that
+  // can never become a road.
+  addObstacle(target, type) {
+    target.getData().obstacle = type || 'rock';
+  }
+
+  // Block a rectangular area of tiles, useful for buildings or larger scenery.
+  addObstacleRect(x, y, width, height, type) {
+    for (let dy = 0; dy < height; dy++) {
+      for (let dx = 0; dx < width; dx++) {
+        this.addObstacle(this.grid.getTile(x + dx, y + dy), type);
+      }
+    }
   }
 
   getTile(pos) {
@@ -331,6 +486,10 @@ class CongestionGame {
   }
 
   update() {
+    if (this.editing) {
+      // No cars spawn/move while editing roads.
+      return;
+    }
     this.time++;
     // Add new cars when appropriate
     if (this.time % this.spawnRate === 1) {
@@ -358,7 +517,7 @@ class CongestionGame {
   }
 
   mouseStart(pos) {
-    if (this.paused) {
+    if (!this.editing) {
       return;
     }
     this.mouse1 = pos.copy();
@@ -384,7 +543,7 @@ class CongestionGame {
     }
   }
   mouseDrag(pos) {
-    if (this.paused) {
+    if (!this.editing) {
       return;
     }
     this.mouse2 = pos;
@@ -398,18 +557,18 @@ class CongestionGame {
     } else if (this.arrowMode) {
       // No specific action needed for this?
       // We could determine the direction here?
-    } else {
+    } else if (!t.obstacle) {
       // If the mouse is within the grid, set the tiles to be roads.
       t.road = true;
     }
   }
 
   mouseEnd(pos) {
-    if (this.paused) {
+    if (this.view.click()) {
+      // click was handled by a menu - buttons work in either mode.
       return;
     }
-    if (this.view.click()) {
-      // click was handled by a menu.
+    if (!this.editing) {
       return;
     }
 
@@ -436,6 +595,10 @@ class CongestionGame {
     this.view.drawMap(this.grid);
     for (let car of this.cars) {
       this.view.show(car);
+    }
+
+    if (this.showUnreachable) {
+      this.showUnreachableRoutes();
     }
 
     // Draw mouse actions, highlight clicked.
@@ -468,16 +631,29 @@ class CongestionGame {
     }
 
     this.view.coverEdges();
+  }
 
-    // TODO can this become part of a common game class?
-    if (this.paused) {
-      textAlign(CENTER);
-      textSize(20);
-      fill('#FFFFFF');
-      text("Paused!", windowWidth / 2, windowHeight / 2);
-      textSize(10)
-      text("Click to resume", windowWidth / 2, windowHeight / 2 + 20);
+  // Draw a dashed line, colored to match each destination, between a spawner
+  // and any destination it currently has no road route to. Toggled via the
+  // "routes" button since it's off by default.
+  showUnreachableRoutes() {
+    strokeWeight(2);
+    drawingContext.setLineDash([6, 6]);
+    for (let spawn of this.spawners) {
+      for (let dest of spawn.destinations) {
+        if (dest.getTarget({pos: spawn.pos})) {
+          // A car starting here could still make progress towards dest.
+          continue;
+        }
+        let lineColor = color(dest.color);
+        lineColor.setAlpha(200);
+        stroke(lineColor);
+        let from = this.view.toScreen(spawn.pos);
+        let to = this.view.toScreen(createVector(dest.target.x + 0.5, dest.target.y + 0.5).mult(this.size));
+        line(from.x, from.y, to.x, to.y);
+      }
     }
+    drawingContext.setLineDash([]);
   }
 
   getDirection(direction) {
@@ -525,14 +701,18 @@ export function setup() {
     return false;
   }
 
+  // Stop rendering while the tab isn't visible, and pick back up on focus.
+  // This is unrelated to the edit/test mode toggle.
   window.onblur = function() {
-    game.paused = true;
     noLoop();
+  }
+  window.onfocus = function() {
+    loop();
   }
 }
 
 export function draw() {
-  background(0);
+  background('#1B3B1B');
 
   game.update();
   game.show();
@@ -549,14 +729,6 @@ export function mouseDragged() {
 export function mouseReleased() {
   mousePos.set(mouseX, mouseY);
   game.mouseEnd(mousePos);
-}
-
-export function mouseClicked() {
-  if (game.paused) {
-    game.paused = false;
-    loop();
-    return;
-  }
 }
 
 export function windowResized() {

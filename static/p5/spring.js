@@ -24,7 +24,7 @@ class Node {
         + .5 * this.mass * this.vel.magSq();
   }
 
-  update(time) {
+  computeForce(time) {
     if (this.fixed) {
       // Fixed points don't move for any forces.
       return;
@@ -39,10 +39,25 @@ class Node {
     force.add(resistance);
 
     // Then add the forces towards the natural length of the connections.
+    // This must be computed from every node's position *before* any node
+    // moves this step, otherwise the two ends of a spring disagree about
+    // where the other end was and Newton's third law breaks down - that
+    // asymmetry pumps energy into the system, more so the more nodes/
+    // connections there are.
     for (let conn of this.connections) {
-      let f = conn.springForce(this, this.game.time);
+      let f = conn.springForce(this, time);
       force.add(f);
     }
+
+    this.force = force;
+  }
+
+  applyForce(t) {
+    if (this.fixed) {
+      return;
+    }
+
+    let force = this.force;
 
     if (this.pos.y + this.size > 600) {
       if (this.vel.y > 0) {
@@ -57,9 +72,6 @@ class Node {
     // a = f / m;
     force.mult(1 / this.mass);
     // delta v = a * t;
-    // t is 1/30 due to frameRate.
-    // delta v = f * 1/30
-    let t = 1 / 10;
     force.mult(t);
     this.vel.add(force);
 
@@ -91,7 +103,7 @@ class Node {
 
   showConnections() {
     for (let conn of this.from) {
-      conn.show();
+      conn.show(this.game.debug);
     }
   }
 
@@ -173,16 +185,19 @@ class Connection {
     }
   }
 
-  show() {
-    // Green if the length is accurate.
-    // Red if the length is stretched or compressed.
-    let green = color(0,255,0);
-    let red = color(255,0,0);
-    // At 0, amt = 1 - 1/1 is 0 (no stress)
-    // As diff increases this approaches 1 (max stress).
-    let amt = 1 - (10 / (10 + this.stress));
-    let col = lerpColor(green, red, amt);
-    stroke(col);
+  show(debug) {
+    if (debug) {
+      // Green if the length is accurate.
+      // Red if the length is stretched or compressed.
+      let green = color(0,255,0);
+      let red = color(255,0,0);
+      // At 0, amt = 1 - 1/1 is 0 (no stress)
+      // As diff increases this approaches 1 (max stress).
+      let amt = 1 - (10 / (10 + this.stress));
+      stroke(lerpColor(green, red, amt));
+    } else {
+      stroke(0);
+    }
     strokeWeight(2);
     line(this.from.pos.x, this.from.pos.y, this.to.pos.x, this.to.pos.y);
   }
@@ -200,16 +215,36 @@ class SpringGame {
     this.kineticFriction = 0.01;
     this.staticFriction = 0.05;
     this.time = 0;
+    // Number of physics substeps per frame. Splitting the (fixed) frame
+    // step into smaller substeps keeps the integrator stable even when
+    // several springs stack up on one node and raise its effective
+    // stiffness.
+    this.substeps = 8;
+    // Toggled with 'd'; shows the per-force debug vectors on the selected node.
+    this.debug = false;
 
     // TODO "clear/reset" button.
   }
 
+  step() {
+    this.time++;
+    let dt = (1 / 10) / this.substeps;
+    for (let i = 0; i < this.substeps; i++) {
+      // Two passes: compute every node's force from the current frozen
+      // state, then apply them all. Doing compute-then-apply per node
+      // instead would make each spring's force depend on update order.
+      for (let node of this.nodes) {
+        node.computeForce(this.time);
+      }
+      for (let node of this.nodes) {
+        node.applyForce(dt);
+      }
+    }
+  }
+
   draw() {
     if (this.running) {
-      this.time++;
-      for (let node of this.nodes) {
-        node.update(this.time);
-      }
+      this.step();
 
       let totalEnergy = 0;
       for (let node of this.nodes) {
@@ -229,7 +264,9 @@ class SpringGame {
       node.show();
     }
     if (this.selectedNode) {
-      this.selectedNode.showForces(this.time)
+      if (this.debug) {
+        this.selectedNode.showForces(this.time);
+      }
       this.selectedNode.showSelected();
       this.showNode(this.selectedNode);
     }
@@ -245,14 +282,17 @@ class SpringGame {
   keyPressed(key) {
     if (key === ' ') {
       // Run a frame?
-      this.time++;
-      for (let node of this.nodes) {
-        node.update(this.time);
-      }
+      this.step();
       this.running = false;
+    }
+    if (key === 'd') {
+      this.debug = !this.debug;
     }
     if (keyCode === ENTER) {
       this.running = !this.running;
+    }
+    if (keyCode === ESCAPE) {
+      this.selectedNode = null;
     }
   }
 

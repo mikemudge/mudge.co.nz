@@ -1,0 +1,331 @@
+{
+  "static/3dprint/3dprint.js": {
+    "no-global-assign": {
+      "count": 2
+    },
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "static/3dprint/ObjExporter.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/3dprint/straight.js": {
+    "no-global-assign": {
+      "count": 1
+    }
+  },
+  "static/admin/admin.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/ar/ar.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/game/game.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/jack/jack.js": {
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "static/jack/track.js": {
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "static/p5/OBJTest.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/avengersTD.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/breakout.js": {
+    "no-unused-vars": {
+      "count": 5
+    }
+  },
+  "static/p5/chess.js": {
+    "no-unused-vars": {
+      "count": 4
+    }
+  },
+  "static/p5/color_war.js": {
+    "no-empty": {
+      "count": 1
+    },
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "static/p5/connect4.js": {
+    "no-redeclare": {
+      "count": 2
+    },
+    "no-unused-vars": {
+      "count": 4
+    },
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/p5/farm.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/jslib/nn.js": {
+    "no-redeclare": {
+      "count": 1
+    }
+  },
+  "static/p5/jslib/poly.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/p5/jslib/view.js": {
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "static/p5/planets.js": {
+    "no-unused-vars": {
+      "count": 2
+    },
+    "no-useless-assignment": {
+      "count": 2
+    }
+  },
+  "static/p5/predator2.js": {
+    "no-dupe-else-if": {
+      "count": 1
+    }
+  },
+  "static/p5/rts/actions.js": {
+    "no-unused-vars": {
+      "count": 5
+    }
+  },
+  "static/p5/rts/rts.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/p5/rts/units.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/soccer.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/p5/spring.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/td.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/traffic.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/wfc-iso.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5/wfc-tinytown.js": {
+    "no-unreachable": {
+      "count": 2
+    }
+  },
+  "static/p5/wfc/renders.js": {
+    "no-redeclare": {
+      "count": 2
+    },
+    "no-unused-vars": {
+      "count": 4
+    }
+  },
+  "static/p5/wfc/tile.js": {
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/p5/wfc/tileset.js": {
+    "no-redeclare": {
+      "count": 2
+    },
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5_test/agents.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5_test/agents2.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/p5_test/agents3.js": {
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/p5_test/congestion.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5_test/fight.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5_test/orbit.js": {
+    "no-unused-vars": {
+      "count": 1
+    },
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/p5_test/orbit2.js": {
+    "no-unused-vars": {
+      "count": 1
+    },
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/p5_test/p5_test.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/p5_test/wave2.js": {
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/p5_test/wave3.js": {
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/p5_test/wave_square.js": {
+    "no-useless-assignment": {
+      "count": 1
+    }
+  },
+  "static/projects/projects.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/racer/racer.js": {
+    "no-redeclare": {
+      "count": 2
+    },
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/recipe/recipe.js": {
+    "no-unsafe-negation": {
+      "count": 1
+    }
+  },
+  "static/ring/ObjExporter.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/rock/dashboard.js": {
+    "no-unused-vars": {
+      "count": 3
+    }
+  },
+  "static/rock/rock.js": {
+    "no-unused-vars": {
+      "count": 4
+    }
+  },
+  "static/rts/game.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/rts/rts.js": {
+    "no-redeclare": {
+      "count": 1
+    }
+  },
+  "static/rts/units.js": {
+    "no-redeclare": {
+      "count": 3
+    }
+  },
+  "static/shared/login.js": {
+    "no-unused-vars": {
+      "count": 4
+    }
+  },
+  "static/shared/swipecontrols.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/sheets/sheets.js": {
+    "no-redeclare": {
+      "count": 1
+    },
+    "no-unused-vars": {
+      "count": 2
+    }
+  },
+  "static/tournament/tournament.js": {
+    "no-dupe-keys": {
+      "count": 1
+    },
+    "no-unused-vars": {
+      "count": 1
+    }
+  },
+  "static/trail/trail.js": {
+    "no-redeclare": {
+      "count": 1
+    },
+    "no-unused-vars": {
+      "count": 5
+    }
+  },
+  "static/user/user.js": {
+    "no-unused-vars": {
+      "count": 1
+    }
+  }
+}

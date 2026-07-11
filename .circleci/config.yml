@@ -72,6 +72,33 @@ jobs:
             . venv/bin/activate
             pytest tests
 
+  lint:
+    docker:
+      - image: cimg/node:24.18
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-npm-dependencies-{{ checksum "package-lock.json" }}
+          - v1-npm-dependencies-
+
+      - run:
+          name: install npm dependencies
+          command: npm ci
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-npm-dependencies-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: run eslint
+          command: npm run lint
+
   deploy:
     docker:
       - image: cimg/base:2021.04
@@ -100,9 +127,11 @@ workflows:
       - test:
           requires:
             - install_deps
+      - lint
       - deploy:
           requires:
             - test
+            - lint
           filters:
             branches:
               only:

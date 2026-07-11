@@ -1,9 +1,6 @@
 import {Grid} from "../p5/jslib/grid.js";
 import {Button, MapView} from "../p5/jslib/view.js";
 
-// Deliberately unused variable to test the ESLint CircleCI job catches new violations.
-const lintTestUnusedVar = 42;
-
 
 // City TD is a city builder combined with a tower defence.
 

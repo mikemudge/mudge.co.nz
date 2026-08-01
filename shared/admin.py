@@ -1,7 +1,7 @@
 from flask_admin.contrib.sqla import ModelView
 from flask import redirect, url_for, request
 from flask_login import current_user
-from jinja2 import Markup
+from markupsafe import Markup
 
 
 def get_admin(app):

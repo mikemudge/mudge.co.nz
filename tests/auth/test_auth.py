@@ -32,7 +32,7 @@ class TestLogin(BaseTestCase):
         self.assertEqual(len(clients[0].scopes), 0)
 
     def test_init(self):
-        init_command.auth()
+        init_command.create_auth_client()
 
         client_id = current_app.config.get('CLIENT_ID')
         client = Client.query.filter_by(client_id=client_id).one()
@@ -48,7 +48,7 @@ class TestLogin(BaseTestCase):
     def test_no_user_without_profile(self):
         u = User()
         db.session.add(u)
-        message = 'null value in column "profile_id" violates not-null constraint'
+        message = 'null value in column "profile_id".*violates not-null constraint'
         with self.assertRaisesRegex(sqlalchemy.exc.IntegrityError, message):
             db.session.commit()
 

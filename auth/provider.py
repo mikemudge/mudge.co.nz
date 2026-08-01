@@ -1,29 +1,27 @@
 from .models import Client, User
 from calendar import timegm
 from datetime import datetime
-from flask import current_app, jsonify
-from flask_oauthlib.provider import OAuth2Provider
-from jose import jwt
+from functools import wraps
+from flask import current_app, jsonify, request
 from shared.exceptions import AuthenticationException
 
-oauth = OAuth2Provider()
+import jwt
 
-# TODO this might be bad???
 def setup(app):
-    app.config.setdefault('OAUTH2_PROVIDER_TOKEN_GENERATOR', create_token_generator)
+    pass
 
-@oauth.clientgetter
-def load_client(client_id):
-    return Client.query.filter_by(client_id=client_id).first()
+def _basic_auth_client():
+    if not request.authorization:
+        raise AuthenticationException(['Bad basic auth'])
 
-@oauth.usergetter
-def get_user(email, password, *args, **kwargs):
-    user = User.query.filter_by(email=email).first()
+    client_id = request.authorization.get('username')
+    client_secret = request.authorization.get('password')
+    client = Client.query.filter_by(client_id=client_id).first()
 
-    if not user or not user.check_password(password):
-        raise AuthenticationException(['Not a valid user'])
+    if not client or client.client_secret != client_secret:
+        raise AuthenticationException(['Invalid client'])
 
-    return user
+    return client
 
 class Token():
     def __init__(self, data, access_token):
@@ -39,62 +37,9 @@ class Token():
         self._scopes = data.get("scopes")
         self.expires = datetime.utcfromtimestamp(data.get('exp'))
 
-    def delete(self):
-        print('delete', self.scopes)
-        # TODO can this work?
-        pass
-
-    # The scopes property must be a string for require_oauth to work.refresh_token
-    # Just magic shit you are supposed to know.
     @property
     def scopes(self):
         return self._scopes.split()
-
-
-@oauth.tokengetter
-def load_token(access_token=None, refresh_token=None):
-    if access_token:
-        # Validate the access_token jwt.
-        # pull any pieces out of it, e.g user_id->user?
-        # This is what is loaded into request.oauth
-        data = validate_token(access_token)
-        token = Token(data, access_token)
-        return token
-    elif refresh_token:
-        print('Unsupported refresh token?')
-    else:
-        raise AuthenticationException(['No token found'])
-
-@oauth.tokensetter
-def save_token(token, request, *args, **kwargs):
-    # We don't actually care about this as we expect clients to keep them.
-    return token
-
-# We don't deal in grants, but this thing won't work without them?
-@oauth.grantgetter
-def load_grant(client_id, code):
-    return None
-
-@oauth.grantsetter
-def save_grant(client_id, code, request, *args, **kwargs):
-    return None
-
-@oauth.invalid_response
-def invalid_require_oauth(req):
-    # TODO throw exceptions which get handled with the default handler?
-    # Get better error messages than the default abort(401)
-
-    scopes_required = req.scopes
-    print(req.scopes)
-    # TODO can we get a list of scopes which the current user does have?
-    response = jsonify({
-        'message': req.error_message,
-        'detail': 'Missing the scope(s) required for this endpoint [%s]' % ','.join(scopes_required),
-        'status_code': 403
-    })
-    # TODO this could probably be a 401 sometimes?
-    response.status_code = 403
-    return response
 
 def validate_token(token):
     try:
@@ -103,31 +48,20 @@ def validate_token(token):
         pass
 
     try:
-        token_body = jwt.decode(
-            token=token,
+        return jwt.decode(
+            token,
             key=current_app.config.get('JWT_TOKEN_SECRET_KEY'),
-            algorithms=current_app.config.get('JWT_TOKEN_ALGORITHM'),
-            # Skip some of the validations.
-            options={
-                'verify_nbf': False,
-                'verify_sub': False,
-                'verify_jti': False,
-            },
+            algorithms=[current_app.config.get('JWT_TOKEN_ALGORITHM')],
             audience='mudge.co.nz',
             issuer='mudge.co.nz'
         )
 
-        return token_body
-
     except jwt.ExpiredSignatureError:
         raise AuthenticationException(['expired jwt'])
 
-    except jwt.JWTError:
+    except jwt.PyJWTError:
         # JWT can't be verified, maybe signed with a different key?
         raise AuthenticationException(['Invalid jwt'])
-
-def create_token_generator(request):
-    return create_token(request, request.client, request.user)
 
 def create_token(request, client, user):
     token_body = _create_token_body(request, client, user)
@@ -138,7 +72,7 @@ def create_token(request, client, user):
             current_app.config.get('JWT_TOKEN_SECRET_KEY'),
             algorithm=current_app.config.get('JWT_TOKEN_ALGORITHM'))
 
-    except jwt.JWSError as e:
+    except jwt.PyJWTError as e:
         print(e)
         raise AuthenticationException(['Invalid jwt signing'])
 
@@ -154,13 +88,11 @@ def _create_token_body(request, client, user):
         'iss': 'mudge.co.nz',
     }
 
-    # Add some client stuff to the token?
     scopes = [s.name for s in client.scopes]
     if user and user.admin:
         scopes.append('admin')
 
     token['scopes'] = ' '.join(scopes)
-    # TODO use the magic serializer?
     token['client_id'] = client.client_id
     token['client'] = {
         'id': str(client.id),
@@ -173,3 +105,62 @@ def _create_token_body(request, client, user):
     }
 
     return token
+
+class OAuth2Provider():
+
+    def init_app(self, app):
+        pass
+
+    # Protects a view, requiring a valid Bearer token with the given scopes.
+    def require_oauth(self, *scopes):
+        def wrapper(f):
+            @wraps(f)
+            def decorated(*args, **kwargs):
+                auth_header = request.headers.get('Authorization', '')
+                if not auth_header.startswith('Bearer '):
+                    raise AuthenticationException(['No token found'])
+
+                access_token = auth_header[len('Bearer '):]
+                data = validate_token(access_token)
+                token = Token(data, access_token)
+
+                missing_scopes = [s for s in scopes if s not in token.scopes]
+                if missing_scopes:
+                    response = jsonify({
+                        'message': 'Insufficient scope.',
+                        'detail': 'Missing the scope(s) required for this endpoint [%s]' % ','.join(missing_scopes),
+                        'status_code': 403
+                    })
+                    response.status_code = 403
+                    return response
+
+                request.oauth = token
+                return f(*args, **kwargs)
+            return decorated
+        return wrapper
+
+    # Implements the OAuth2 "password" grant, the only grant type this app issues.
+    def token_handler(self, f):
+        @wraps(f)
+        def decorated(*args, **kwargs):
+            if request.form.get('grant_type') != 'password':
+                raise AuthenticationException(['Unsupported grant_type'])
+
+            client = _basic_auth_client()
+
+            email = request.form.get('username')
+            password = request.form.get('password')
+            user = User.query.filter_by(email=email).first()
+            if not user or not user.check_password(password):
+                raise AuthenticationException(['Not a valid user'])
+
+            access_token = create_token(request, client, user)
+            return jsonify({
+                'access_token': access_token,
+                'refresh_token': access_token,
+                'expires_in': 3600,
+                'token_type': 'Bearer'
+            })
+        return decorated
+
+oauth = OAuth2Provider()

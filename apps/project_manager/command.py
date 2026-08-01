@@ -1,12 +1,14 @@
 import os
 
-from flask_script import Manager
+import click
+from flask.cli import AppGroup
 from shared.database import db
 from .models import Project, FileUrl
 
-ProjectCommand = Manager(usage='Perform initialization tasks for projects.')
+ProjectCommand = AppGroup('project', help='Perform initialization tasks for projects.')
 
-@ProjectCommand.command
+@ProjectCommand.command('import-projects')
+@click.argument('path')
 def import_projects(path):
 
     projects = {}

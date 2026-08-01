@@ -1,26 +1,25 @@
 from flask import jsonify
 from flask_marshmallow import Marshmallow
-from marshmallow_sqlalchemy import ModelSchema
-from marshmallow_sqlalchemy import ModelSchemaOpts
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchemaOpts
 from marshmallow import fields
-from sqlalchemy.orm import scoped_session, sessionmaker
 
 from shared.database import db
 
-# Make marshmallow sqlalchemy friendly.
-Session = scoped_session(sessionmaker())
-
 ma = Marshmallow()
 
-class BaseOpts(ModelSchemaOpts):
-    def __init__(self, meta, ordered):
+class BaseOpts(SQLAlchemyAutoSchemaOpts):
+    def __init__(self, meta, *args, **kwargs):
         # We need to do this because nested schemas do not pass the session correctly.
         # https://github.com/marshmallow-code/marshmallow-sqlalchemy/issues/67
         if not hasattr(meta, 'sqla_session'):
             meta.sqla_session = db.session
-        super(BaseOpts, self).__init__(meta)
+        # SQLAlchemyAutoSchema only builds model instances on load() when this is set.
+        if not hasattr(meta, 'load_instance'):
+            meta.load_instance = True
+        super(BaseOpts, self).__init__(meta, *args, **kwargs)
 
-class BaseSchema(ModelSchema):
+class BaseSchema(SQLAlchemyAutoSchema):
     class Meta:
         exclude = ['date_updated', 'date_created']
 

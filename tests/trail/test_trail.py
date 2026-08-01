@@ -118,7 +118,7 @@ class TestTrail(BaseTestCase):
     def test_delete_profile(self):
         profile = TrailProfile.get_or_create(user=self.user, trail=self.trail)
         db.session.add(profile)
-        TrailProgress(trail_profile=profile, distance=1.0)
+        db.session.add(TrailProgress(trail_profile=profile, distance=1.0))
         db.session.commit()
 
         self.assertEquals(TrailProgress.query.count(), 1)

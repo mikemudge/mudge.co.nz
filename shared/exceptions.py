@@ -1,12 +1,27 @@
 from flask import jsonify, request
 from marshmallow.exceptions import ValidationError
-from raven.contrib.flask import Sentry
+
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 import traceback
 import json
 
 
-sentry = Sentry()
+class SentryShim:
+    def init_app(self, app, logging=True):
+        dsn = app.config.get('SENTRY_DSN')
+        if dsn:
+            sentry_sdk.init(dsn=dsn, integrations=[FlaskIntegration()])
+
+    def captureException(self):
+        sentry_sdk.capture_exception()
+
+    def captureMessage(self, message):
+        sentry_sdk.capture_message(message)
+
+
+sentry = SentryShim()
 
 class ErrorCodes:
     MALFORMED_OR_MISSING_BASIC_AUTH = 'MALFORMED_OR_MISSING_BASIC_AUTH'

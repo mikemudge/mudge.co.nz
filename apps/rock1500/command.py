@@ -1,13 +1,13 @@
 from flask import current_app
-from flask_script import Manager
+from flask.cli import AppGroup
 from shared.database import db
 from .models import Rock1500Pick, Rock1500Song, Rock1500Artist, Rock1500Album
 
 import difflib
 
-Command = Manager(usage='Perform rock1500 tasks.')
+Command = AppGroup('rock1500', help='Perform rock1500 tasks.')
 
-@Command.command
+@Command.command('reset')
 def reset():
     # The order of these is important.
     Rock1500Pick.query.delete()
@@ -17,7 +17,7 @@ def reset():
 
     db.session.commit()
 
-@Command.command
+@Command.command('importLatest')
 def importLatest():
     # Importing this at the start breaks the webserver.
     # I don't understand the error it gives well though.
@@ -29,7 +29,7 @@ def importLatest():
         return
     current_app.logger.info("got no result");
 
-@Command.command
+@Command.command('consolidateAlbums')
 def consolidateAlbums():
     # Find any albums with 0 songs and remove them all.
     query = Rock1500Album.query.filter(~Rock1500Album.songs.any())
@@ -40,7 +40,7 @@ def consolidateAlbums():
 
     # TODO find and deduplicate other albums?
 
-@Command.command
+@Command.command('consolidateArtists')
 def consolidateArtists():
     # Find any albums with 0 songs and remove them all.
     query = Rock1500Artist.query.filter(~Rock1500Artist.songs.any())
@@ -51,7 +51,7 @@ def consolidateArtists():
 
     # TODO find and deduplicate other artists?
 
-@Command.command
+@Command.command('resetRankThisYear')
 def resetRankThisYear():
     # This will unset the rank for this year's countdown.
     # Should migrate the DB first and add a new field for this years countdown.
@@ -59,7 +59,7 @@ def resetRankThisYear():
         song.rankThisYear = None
     db.session.commit()
 
-@Command.command
+@Command.command('import2016')
 def import2016():
     import csv
     with open('apps/rock1500/data/Rock 1500 - 2016.csv', 'r') as csvfile:

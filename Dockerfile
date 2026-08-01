@@ -1,5 +1,5 @@
 # This matches the version which is run on my droplet (not using docker)
-FROM python:3.6.9
+FROM python:3.12
 MAINTAINER Michael Mudge "michael@mudge.co.nz"
 
 RUN pip3 install --upgrade pip

@@ -48,12 +48,12 @@ DB migrations
 To create a migration file use
 ```docker-compose exec app bash```
 
-```./manage.py db migrate -m "Migration Name"```
+```flask db migrate -m "Migration Name"```
 Then to apply the migrations (after reviewing the created file) use
-./manage.py db upgrade
+flask db upgrade
 You should test this before deploying where it will happen automatically.
 Also check that you can downgrade from the new revision.
-./manage.py db downgrade
+flask db downgrade
 
 ### Packages/Dependencies
 Using pip
@@ -75,9 +75,9 @@ docker compose up -d
 # Connect to the app container and run some initialization commands.
 docker compose exec app bash
 
-./manage.py db upgrade
-./manage.py init auth
-./manage.py init create_user mike.mudge@gmail.com
+flask db upgrade
+flask init auth
+flask init create-user mike.mudge@gmail.com
 
 # Local Config
 create settings/local_config.py

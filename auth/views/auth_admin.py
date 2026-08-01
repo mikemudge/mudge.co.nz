@@ -3,14 +3,14 @@ from shared.admin import get_admin
 from shared.admin import BaseView
 from shared.database import db
 
-from wtforms.fields import StringField, TextField
+from wtforms.fields import StringField
 
 from wtforms import validators
 from wtforms import Form
 
 
 class NewUser(Form):
-    email = TextField(u'Email', validators=[validators.DataRequired()])
+    email = StringField(u'Email', validators=[validators.DataRequired()])
 
     firstname = StringField(u'First Name', validators=[validators.DataRequired()])
     lastname = StringField(u'Last Name', validators=[validators.DataRequired()])

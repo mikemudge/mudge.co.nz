@@ -15,7 +15,8 @@ pip3 install -r frozen_requirements.txt
 
 echo 'Updating database.'
 export APP_SETTINGS=settings.production
-./manage.py db upgrade
+export FLASK_APP=manage.py
+flask db upgrade
 
 echo 'Restarting webserver.'
 sudo systemctl restart webserver.service

@@ -40,7 +40,8 @@ class RoundSchema(BaseSchema):
 class TournamentSchema(BaseSchema):
     class Meta:
         model = Tournament
-        exclude = ['date_created']
+        # creator is set server-side from the authenticated user, never from client input.
+        exclude = ['date_created', 'creator']
         include_relationships = True
         load_instance = True
 

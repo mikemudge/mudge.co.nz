@@ -6,7 +6,7 @@ version: 2
 jobs:
   install_deps:
     docker:
-      - image: cimg/python:3.6.9
+      - image: cimg/python:3.12
         environment:
           APP_SETTINGS: settings.test
 
@@ -37,14 +37,14 @@ jobs:
 
   test:
     docker:
-      - image: cimg/python:3.6.9
+      - image: cimg/python:3.12
         environment:
           APP_SETTINGS: settings.test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:9.6-ram
+      - image: cimg/postgres:16.4
         environment:
           POSTGRES_USER: mudgeconzTest
           POSTGRES_DB: mudgeconzTest

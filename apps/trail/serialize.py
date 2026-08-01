@@ -15,7 +15,7 @@ class TrailProgressSchema(BaseSchema):
 
     date = fields.DateTime()
 
-    editDate = fields.Boolean(optional=True)
+    editDate = fields.Boolean()
 
 class TrailProfileSchema(BaseSchema):
     class Meta:
@@ -60,3 +60,4 @@ class TrailSchema(BaseSchema):
     class Meta:
         model = Trail
         exclude = BaseSchema.Meta.exclude
+        include_relationships = True

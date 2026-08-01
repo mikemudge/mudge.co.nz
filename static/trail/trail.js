@@ -20,6 +20,16 @@ WalkerService.prototype.getTrailProfile = function(trail_id) {
   });
 }
 
+// Picks black or white, whichever contrasts better against the given "#rrggbb" color.
+WalkerService.prototype.contrastColor = function(hex) {
+  hex = hex.replace('#', '');
+  var r = parseInt(hex.substring(0, 2), 16);
+  var g = parseInt(hex.substring(2, 4), 16);
+  var b = parseInt(hex.substring(4, 6), 16);
+  var brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? '#000000' : '#ffffff';
+};
+
 WalkerService.prototype.convertDate = function(walk) {
   var date = walk.date;
   walk.date = new Date(date);
@@ -44,9 +54,12 @@ WalkerService.prototype.loadPerson = function(map, person) {
 
   angular.forEach(person.progress, this.convertDate.bind(this));
 
+  var background = "#" + ("000000" + person.color.toString(16)).slice(-6);
   var pin = new google.maps.marker.PinElement({
-    glyph: person.name.charAt(0),
-    background: "#" + ("000000" + person.color.toString(16)).slice(-6),
+    glyphText: person.name.charAt(0),
+    background: background,
+    borderColor: "#ffffff",
+    glyphColor: this.contrastColor(background),
   });
 
   person.marker = new google.maps.marker.AdvancedMarkerElement({

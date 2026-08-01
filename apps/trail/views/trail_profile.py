@@ -3,6 +3,7 @@ import random
 from auth.provider import oauth
 from auth.models import User
 from flask import request, abort
+from sqlalchemy.orm import aliased
 
 from ..models import TrailProfile
 from ..serialize import TrailProfileSchema
@@ -28,9 +29,10 @@ class TrailProfileView(DBModelView):
             if data.get('friends'):
                 # Make sure the profiles user is friends with this user.
                 # Query the backref here because we are looking for TrailProfiles which have a relation back to your user id.
-                query = query.join(User) \
-                    .join(User.friended_you, aliased=True) \
-                    .filter(User.id == request.oauth.user.id)
+                FriendedYou = aliased(User)
+                query = query.join(TrailProfile.user) \
+                    .join(User.friended_you.of_type(FriendedYou)) \
+                    .filter(FriendedYou.id == request.oauth.user.id)
 
             # Order by created date.
             query = query.order_by(TrailProfile.date_created.desc())

@@ -28,7 +28,9 @@ WalkerService.prototype.contrastColor = function(hex) {
   var g = parseInt(hex.substring(2, 4), 16);
   var b = parseInt(hex.substring(4, 6), 16);
   var brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness > 90 ? '#000000' : '#ffffff';
+  // Pure red (#ff0000) scores ~76 on this scale despite reading as a bright
+  // color, so keep the bar low enough that it still gets black text.
+  return brightness > 70 ? '#000000' : '#ffffff';
 };
 
 WalkerService.prototype.convertDate = function(walk) {

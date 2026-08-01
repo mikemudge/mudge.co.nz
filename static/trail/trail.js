@@ -21,13 +21,14 @@ WalkerService.prototype.getTrailProfile = function(trail_id) {
 }
 
 // Picks black or white, whichever contrasts better against the given "#rrggbb" color.
+// Biased towards black - only really dark colors get white text.
 WalkerService.prototype.contrastColor = function(hex) {
   hex = hex.replace('#', '');
   var r = parseInt(hex.substring(0, 2), 16);
   var g = parseInt(hex.substring(2, 4), 16);
   var b = parseInt(hex.substring(4, 6), 16);
   var brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness > 150 ? '#000000' : '#ffffff';
+  return brightness > 90 ? '#000000' : '#ffffff';
 };
 
 WalkerService.prototype.convertDate = function(walk) {

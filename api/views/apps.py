@@ -221,7 +221,10 @@ p5_apps['color_war'] = {
 # }
 
 def gmaps():
-    return "https://maps.googleapis.com/maps/api/js?key=%s&v=weekly&amp;libraries=geometry,marker" % current_app.config.get('GOOGLE_MAPS_API_KEY')
+    # loading=async + callback lets the browser load this off the main
+    # thread. Code using google.maps must wait for the callback
+    # (see trail.js's googleMapsReady) since it may run before this loads.
+    return "https://maps.googleapis.com/maps/api/js?key=%s&v=weekly&libraries=geometry,marker&loading=async&callback=initGoogleMaps" % current_app.config.get('GOOGLE_MAPS_API_KEY')
 
 
 class ProjectV2View(MethodView):
@@ -310,7 +313,7 @@ class ProjectAppView(MethodView):
         tags = conf.get('tags', [])
 
         if 'gmaps' in tags:
-            app.scripts += [gmaps()]
+            app.async_scripts += [gmaps()]
 
         for tag in tags:
             if tag in SCRIPTS:

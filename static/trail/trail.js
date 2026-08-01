@@ -1,3 +1,11 @@
+// The maps script tag loads with the async attribute, so it may not have
+// finished loading by the time this file runs. Anything touching
+// google.maps must wait on this promise, which the script's callback param
+// resolves once google.maps (and the requested libraries) are ready.
+var googleMapsReady = new Promise(function(resolve) {
+  window.initGoogleMaps = resolve;
+});
+
 var WalkerService = function(config, $resource) {
   this.$resource = $resource;
   this.Trail = $resource('/api/trail/v1/trail/:id', {
@@ -66,7 +74,7 @@ WalkerService.prototype.loadPerson = function(map, person) {
   });
 
   person.marker = new google.maps.marker.AdvancedMarkerElement({
-    content: pin.element,
+    content: pin,
     map: map,
     title: person.name
   });
@@ -157,20 +165,24 @@ var MainController = function(loginService, trailService, walkerService, config,
     color: this.randomColor()
   });
 
-  // default center and zoom shows all of nz.
-  // TODO trail should indicate a good center point???
-  this.map = new google.maps.Map(document.getElementById('map'), {
-    // Required by AdvancedMarkerElement. DEMO_MAP_ID is fine without cloud-based map styling.
-    mapId: 'DEMO_MAP_ID',
-    center: {lat: -40.827947614929464, lng: 175.30749883440649},
-    zoom: 5
-  });
+  // Everything below touches google.maps, so wait until it (and the
+  // marker/geometry libraries) have actually finished loading.
+  googleMapsReady.then(function() {
+    // default center and zoom shows all of nz.
+    // TODO trail should indicate a good center point???
+    this.map = new google.maps.Map(document.getElementById('map'), {
+      // Required by AdvancedMarkerElement. DEMO_MAP_ID is fine without cloud-based map styling.
+      mapId: 'DEMO_MAP_ID',
+      center: {lat: -40.827947614929464, lng: 175.30749883440649},
+      zoom: 5
+    });
 
-  this.trail_data = this.walkerService.Trail.get({id: trail_id});
+    this.trail_data = this.walkerService.Trail.get({id: trail_id});
 
-  this.trail_data.$promise.then(this.trailLoaded.bind(this));
+    this.trail_data.$promise.then(this.trailLoaded.bind(this));
 
-  this.loadProfiles(trail_id);
+    this.loadProfiles(trail_id);
+  }.bind(this));
 
   this.addProgress = new walkerService.TrailProgress();
 }

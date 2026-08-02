@@ -41,3 +41,29 @@ services:
 #    local https mode.
 #    command: ["/app/run_https.py"]
     # command: sleep infinity
+
+  # Runs the app the way production does (uwsgi, worker scaling) instead
+  # of the Flask dev server, for testing prod-like behaviour while
+  # iterating. `docker compose up app-uwsgi` - localhost:5002.
+  app-uwsgi:
+    container_name: app-uwsgi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    ports:
+      - 5002:5002
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - APP_SETTINGS=settings.dev
+      - ENV=dev
+      - PYTHONIOENCODING=utf-8
+      - PYTHONUNBUFFERED=true
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
+    command: ["/app/docker/run_prod_like.sh"]

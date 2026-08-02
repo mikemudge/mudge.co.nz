@@ -1,0 +1,21 @@
+# Not needed at runtime - the app is bind-mounted from the repo checkout
+# in both local dev (docker-compose.yml) and production, so none of this
+# needs to be baked into the image.
+.git
+node_modules
+.local_postgres
+static
+tests
+
+# Never bake secrets into an image layer.
+settings/local_config.py
+
+# Runtime-generated, not meaningful at build time.
+.commithash
+
+__pycache__
+*.py[cod]
+.idea
+.DS_Store
+.venv*
+venv

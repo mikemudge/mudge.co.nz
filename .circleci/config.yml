@@ -1,8 +1,8 @@
-# Python CircleCI 2.0 configuration file
+# Python CircleCI configuration file
 #
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   install_deps:
     docker:
@@ -120,7 +120,6 @@ jobs:
             ssh mudge@mudge.co.nz "cd projects/pyauto && git pull && ./deploy.sh"
 
 workflows:
-  version: 2
   build_and_deploy:
     jobs:
       - install_deps

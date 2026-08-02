@@ -40,17 +40,15 @@ def get_ip_from_request(req):
 
 
 def check_flask_admin_ip_access_restriction(req):
-    _ip_restriction = app.config.get("RESTRICT_FLASK_ADMIN")
+    # Deny by default - unset or empty both mean no IPs are allowed.
+    _ip_restriction = app.config.get("RESTRICT_FLASK_ADMIN") or []
     _ip_address = get_ip_from_request(req)
 
-    if _ip_restriction:
-        if _ip_address in _ip_restriction:
-            return True
+    if _ip_address in _ip_restriction:
+        return True
 
-        print(_ip_address)
-        raise AuthenticationException('IP_RESTRICTED ' + _ip_address)
-
-    return True
+    print(_ip_address)
+    raise AuthenticationException('IP_RESTRICTED ' + _ip_address)
 
 
 class CustomAdminIndexView(AdminIndexView):

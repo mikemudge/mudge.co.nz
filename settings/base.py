@@ -36,4 +36,7 @@ SQLALCHEMY_DATABASE_URI = None
 CLIENT_ID = None
 CLIENT_SECRET = None
 
+# Deny by default (see auth/custom_flask_admin.py) - list the IPs allowed
+# to reach /flask-admin. dev.py adds local Docker IPs; local_config.py is
+# where you'd temporarily add your own IP for a production session.
 RESTRICT_FLASK_ADMIN = []

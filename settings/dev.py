@@ -20,6 +20,13 @@ SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:password@db/postgres'
 DEBUG = True
 
 LOG_LEVEL="DEBUG"
+
+RESTRICT_FLASK_ADMIN = [
+    '172.18.0.1',  # for docker
+    '192.168.65.1', # for docker
+    '127.0.0.1',
+]
+
 try:
     # import the local config to override for local settings
     from settings.local_config import *

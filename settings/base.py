@@ -36,9 +36,4 @@ SQLALCHEMY_DATABASE_URI = None
 CLIENT_ID = None
 CLIENT_SECRET = None
 
-# TODO could just put this on prod?
-RESTRICT_FLASK_ADMIN = [
-    '172.18.0.1',  # for docker
-    '192.168.65.1', # for docker
-    '127.0.0.1',
-]
+RESTRICT_FLASK_ADMIN = []

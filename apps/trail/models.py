@@ -13,7 +13,7 @@ class Trail(BaseModel):
     trail_url = db.Column(db.String)
 
     def __repr__(self):
-        return "<Trail: %s>" % self.name
+        return self.name
 
 # Allows custom profile for users on each Trail.
 # Connects a user to a trail.
@@ -55,7 +55,7 @@ class TrailProfile(BaseModel):
     color = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return "<TrailProfile: %s on %s>" % (self.user.email, self.trail.name)
+        return "%s on %s" % (self.user, self.trail)
 
     # deprecated
     @classmethod

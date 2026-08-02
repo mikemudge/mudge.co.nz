@@ -10,6 +10,9 @@ SENTRY_DSN = None
 
 # Configuration
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+# Transparently replace dead pooled connections (e.g. after the DB restarts)
+# instead of raising on the next query that tries to use one.
+SQLALCHEMY_ENGINE_OPTIONS = {'pool_pre_ping': True}
 DEBUG = False
 USERNAME = 'admin'
 PASSWORD = 'default'
@@ -36,5 +39,6 @@ CLIENT_SECRET = None
 # TODO could just put this on prod?
 RESTRICT_FLASK_ADMIN = [
     '172.18.0.1',  # for docker
+    '192.168.65.1', # for docker
     '127.0.0.1',
 ]

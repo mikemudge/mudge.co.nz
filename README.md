@@ -83,13 +83,22 @@ https://gist.github.com/jexchan/2351996
 ### Production
 
 The app image is built once in CI and pushed to a DigitalOcean Container
-Registry, tagged by commit SHA. Both prod and staging pull that same tag -
-deploy.sh/deploy-staging.sh extract static/ and their nginx config straight
-out of the pulled image at deploy time, rather than relying on a git checkout
-of app code. The only thing genuinely per-environment on the droplet now is
-`settings/local_config.py` - everything else (code, static assets, nginx
-config, ini files) comes from the image, so there's no way for the two
-environments to drift apart in what they're running.
+Registry under fixed, reused tag names rather than one new tag per build -
+`staging` is always the newest build; `prod` is whatever's been promoted to
+production; `prev_prod` is the previous prod, kept as a rollback point.
+Reusing fixed names (instead of tagging every build by commit SHA) avoids
+ever-growing registry storage from tags that just accumulate - the registry's
+free tier is small (500MiB) relative to the image size (~128MiB), so keeping
+a tag per build wasn't sustainable. Deleting/moving a tag doesn't reclaim
+space by itself though - see Garbage collection below.
+
+deploy.sh/deploy-staging.sh pull their tag (`prod`/`staging`) and extract
+static/ and nginx config straight out of the pulled image at deploy time,
+rather than relying on a git checkout of app code. The only thing genuinely
+per-environment on the droplet now is `settings/local_config.py` -
+everything else (code, static assets, nginx config, ini files) comes from
+the image, so there's no way for the two environments to drift apart in what
+they're running.
 
 `~/projects/pyauto` is still a real git checkout (tracking main) since it
 holds deploy.sh/deploy-staging.sh themselves and prod's local_config.py.
@@ -110,18 +119,32 @@ sudo /etc/init.d/nginx reload
 
 # Deployment
 A push to main runs install_deps -> test -> lint -> build_and_push ->
-deploy_staging -> deploy: builds the image once, pushes it to the registry
-tagged with the commit SHA, deploys that tag to staging first, then to prod
-only if staging deployed cleanly.
+deploy_staging -> deploy: builds the image, pushes it as the `staging` tag,
+deploys that to staging, and only if that succeeds, promotes it to prod
+(shifting the current `prod` tag to `prev_prod` first) and deploys it there.
 
 To deploy any other branch to staging (e.g. to preview something before it's
 on main), use CircleCI's "Trigger Pipeline" in the web UI (or the API): pick
 the branch, set the `deploy_stage` parameter to true. That runs
 install_deps -> test -> lint -> build_and_push -> deploy_staging on that
-branch, without touching prod.
+branch, without touching prod - it just overwrites the `staging` tag.
 
-To roll back manually, SSH in and re-run the deploy script with an older SHA:
-ssh mudge@mudge.co.nz "cd projects/pyauto && ./deploy.sh <previous-sha>"
+To roll back prod manually, promote `prev_prod` back to `prod` and redeploy:
+docker pull registry.digitalocean.com/mikemudge/mudgeconz-app:prev_prod
+docker tag registry.digitalocean.com/mikemudge/mudgeconz-app:prev_prod registry.digitalocean.com/mikemudge/mudgeconz-app:prod
+docker push registry.digitalocean.com/mikemudge/mudgeconz-app:prod
+ssh mudge@mudge.co.nz "cd projects/pyauto && ./deploy.sh"
+(only one rollback step back is kept this way - for anything further, revert
+the commit on main and let it redeploy normally.)
+
+# Garbage collection
+Moving/deleting a registry tag doesn't reclaim its storage - the old content
+just becomes "dangling" until garbage collection actually runs, and GC can
+take 15+ minutes and makes the whole registry briefly read-only for pushes.
+So it's not triggered on every deploy - instead there's a `garbage_collect_registry`
+job gated on a `run_gc` pipeline parameter, meant to be fired by a CircleCI
+Scheduled Trigger (Project Settings -> Triggers) on whatever cadence makes
+sense (e.g. weekly), rather than after every push.
 
 #DB Backups
 Run daily @ 4am in mudge@mudge.co.nz crontab.

@@ -5,8 +5,7 @@
 
 set -e
 
-IMAGE_TAG="$1"
-IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:${IMAGE_TAG}"
+IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:staging"
 
 echo 'Pulling the app image.'
 docker pull "$IMAGE"

@@ -2,8 +2,7 @@
 
 set -e
 
-IMAGE_TAG="$1"
-IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:${IMAGE_TAG}"
+IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:prod"
 
 cd ~/projects/pyauto
 

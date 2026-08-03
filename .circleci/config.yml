@@ -23,6 +23,30 @@ commands:
             sudo mv doctl /usr/local/bin/
             doctl auth init -t "$DOCR_TOKEN"
 
+  docker_login:
+    steps:
+      - run:
+          name: Docker login to DO registry
+          command: |
+            echo "$DOCR_TOKEN" | docker login registry.digitalocean.com -u "$DOCR_TOKEN" --password-stdin
+
+  push_with_retry:
+    parameters:
+      image:
+        type: string
+    steps:
+      - run:
+          name: "Push << parameters.image >>"
+          command: |
+            # A rare concurrent manual/scheduled GC run makes the registry
+            # briefly read-only for pushes - retry with backoff just in case.
+            for i in $(seq 1 30); do
+              docker push "<< parameters.image >>" && exit 0
+              echo "Push failed (attempt $i/30) - registry may be read-only from garbage collection, retrying in 60s..."
+              sleep 60
+            done
+            exit 1
+
 jobs:
   install_deps:
     docker:
@@ -129,59 +153,17 @@ jobs:
       - checkout
 
       - setup_remote_docker
+      - docker_login
 
       - run:
-          name: Docker login to DO registry
-          command: |
-            echo "$DOCR_TOKEN" | docker login registry.digitalocean.com -u "$DOCR_TOKEN" --password-stdin
-      - run:
-          name: Build and push image
+          name: Build image
           command: |
             docker build \
               --build-arg GIT_SHA=$CIRCLE_SHA1 \
-              -t registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1 \
-              -t registry.digitalocean.com/mikemudge/mudgeconz-app:latest \
+              -t registry.digitalocean.com/mikemudge/mudgeconz-app:staging \
               .
-
-            # A rare concurrent manual/scheduled GC run (see garbage_collect_registry
-            # below) makes the registry briefly read-only for pushes - retry with
-            # backoff just in case.
-            push_with_retry() {
-              for i in $(seq 1 30); do
-                docker push "$1" && return 0
-                echo "Push failed (attempt $i/30) - registry may be read-only from garbage collection, retrying in 60s..."
-                sleep 60
-              done
-              return 1
-            }
-            push_with_retry registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1
-            push_with_retry registry.digitalocean.com/mikemudge/mudgeconz-app:latest
-
-      - install_doctl
-      - run:
-          name: Prune old image tags (keep newest 2)
-          command: |
-            # Best-effort cleanup - a failure here must never fail the deploy.
-            # Only deletes tag references; garbage_collect_registry (run on a
-            # schedule, not here) is what actually reclaims the freed space.
-            set +e
-            KEEP=2
-            REPO=mudgeconz-app
-
-            OLD_TAGS=$(doctl registry repository list-tags "$REPO" --output json \
-              | jq -r --argjson keep "$KEEP" '
-                  map(select(.tag != "latest"))
-                  | sort_by(.updated_at) | reverse
-                  | .[$keep:]
-                  | .[].tag
-                ')
-
-            if [ -n "$OLD_TAGS" ]; then
-              echo "$OLD_TAGS" | xargs -r -I{} doctl registry repository delete-tag "$REPO" {} --force
-            else
-              echo "Nothing to prune."
-            fi
-            exit 0
+      - push_with_retry:
+          image: registry.digitalocean.com/mikemudge/mudgeconz-app:staging
 
   garbage_collect_registry:
     docker:
@@ -211,6 +193,35 @@ jobs:
     steps:
       - checkout
 
+      - setup_remote_docker
+      - docker_login
+
+      - run:
+          name: Preserve today's prod as prev_prod, if one exists yet
+          command: |
+            IMAGE=registry.digitalocean.com/mikemudge/mudgeconz-app
+
+            if ! docker pull "$IMAGE:prod"; then
+              echo "No existing prod tag yet (first deploy?) - nothing to preserve as prev_prod."
+              exit 0
+            fi
+            docker tag "$IMAGE:prod" "$IMAGE:prev_prod"
+
+            for i in $(seq 1 30); do
+              docker push "$IMAGE:prev_prod" && exit 0
+              echo "Push failed (attempt $i/30) - registry may be read-only from garbage collection, retrying in 60s..."
+              sleep 60
+            done
+            exit 1
+      - run:
+          name: Tag staging as the new prod
+          command: |
+            IMAGE=registry.digitalocean.com/mikemudge/mudgeconz-app
+            docker pull "$IMAGE:staging"
+            docker tag "$IMAGE:staging" "$IMAGE:prod"
+      - push_with_retry:
+          image: registry.digitalocean.com/mikemudge/mudgeconz-app:prod
+
       - add_ssh_keys
       - run:
           name: Keyscan Github (HACK)
@@ -218,7 +229,7 @@ jobs:
       - run:
           name: deploy via ssh, git pull and deploy.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy.sh $CIRCLE_SHA1"
+            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy.sh"
 
   deploy_staging:
     docker:
@@ -238,7 +249,7 @@ jobs:
       - run:
           name: deploy via ssh, git pull and deploy-staging.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy-staging.sh $CIRCLE_SHA1"
+            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy-staging.sh"
 
 workflows:
   build_and_deploy:
@@ -267,6 +278,7 @@ workflows:
               only:
                 - main
       - deploy:
+          context: Build
           requires:
             - deploy_staging
           filters:

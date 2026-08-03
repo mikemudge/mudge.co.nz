@@ -128,8 +128,20 @@ jobs:
               -t registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1 \
               -t registry.digitalocean.com/mikemudge/mudgeconz-app:latest \
               .
-            docker push registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1
-            docker push registry.digitalocean.com/mikemudge/mudgeconz-app:latest
+
+            # Garbage collection (triggered below, after every push) makes the
+            # whole registry read-only for pushes while it runs - retry with
+            # backoff in case a previous build's GC is still finishing up.
+            push_with_retry() {
+              for i in $(seq 1 20); do
+                docker push "$1" && return 0
+                echo "Push failed (attempt $i/20) - registry may be read-only from garbage collection, retrying in 30s..."
+                sleep 30
+              done
+              return 1
+            }
+            push_with_retry registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1
+            push_with_retry registry.digitalocean.com/mikemudge/mudgeconz-app:latest
 
       - run:
           name: Prune old image tags (keep newest 2) and garbage collect

@@ -190,7 +190,6 @@ workflows:
             branches:
               only:
                 - main
-                - staging
       - deploy_staging:
           requires:
             - build_and_push
@@ -198,7 +197,6 @@ workflows:
             branches:
               only:
                 - main
-                - staging
       - deploy:
           requires:
             - deploy_staging

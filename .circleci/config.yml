@@ -8,6 +8,20 @@ parameters:
   deploy_stage:
     type: boolean
     default: false
+  run_gc:
+    type: boolean
+    default: false
+
+commands:
+  install_doctl:
+    steps:
+      - run:
+          name: Install and authenticate doctl
+          command: |
+            DOCTL_VERSION=$(curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest | jq -r .tag_name | sed 's/^v//')
+            curl -sL "https://github.com/digitalocean/doctl/releases/download/v${DOCTL_VERSION}/doctl-${DOCTL_VERSION}-linux-amd64.tar.gz" | tar xz
+            sudo mv doctl /usr/local/bin/
+            doctl auth init -t "$DOCR_TOKEN"
 
 jobs:
   install_deps:
@@ -129,32 +143,30 @@ jobs:
               -t registry.digitalocean.com/mikemudge/mudgeconz-app:latest \
               .
 
-            # Garbage collection (triggered below, after every push) makes the
-            # whole registry read-only for pushes while it runs - retry with
-            # backoff in case a previous build's GC is still finishing up.
+            # A rare concurrent manual/scheduled GC run (see garbage_collect_registry
+            # below) makes the registry briefly read-only for pushes - retry with
+            # backoff just in case.
             push_with_retry() {
-              for i in $(seq 1 20); do
+              for i in $(seq 1 30); do
                 docker push "$1" && return 0
-                echo "Push failed (attempt $i/20) - registry may be read-only from garbage collection, retrying in 30s..."
-                sleep 30
+                echo "Push failed (attempt $i/30) - registry may be read-only from garbage collection, retrying in 60s..."
+                sleep 60
               done
               return 1
             }
             push_with_retry registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1
             push_with_retry registry.digitalocean.com/mikemudge/mudgeconz-app:latest
 
+      - install_doctl
       - run:
-          name: Prune old image tags (keep newest 2) and garbage collect
+          name: Prune old image tags (keep newest 2)
           command: |
             # Best-effort cleanup - a failure here must never fail the deploy.
+            # Only deletes tag references; garbage_collect_registry (run on a
+            # schedule, not here) is what actually reclaims the freed space.
             set +e
             KEEP=2
             REPO=mudgeconz-app
-
-            DOCTL_VERSION=$(curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest | jq -r .tag_name | sed 's/^v//')
-            curl -sL "https://github.com/digitalocean/doctl/releases/download/v${DOCTL_VERSION}/doctl-${DOCTL_VERSION}-linux-amd64.tar.gz" | tar xz
-            sudo mv doctl /usr/local/bin/
-            doctl auth init -t "$DOCR_TOKEN"
 
             OLD_TAGS=$(doctl registry repository list-tags "$REPO" --output json \
               | jq -r --argjson keep "$KEEP" '
@@ -169,13 +181,24 @@ jobs:
             else
               echo "Nothing to prune."
             fi
+            exit 0
 
+  garbage_collect_registry:
+    docker:
+      - image: cimg/base:2021.04
+
+    working_directory: ~/repo
+
+    steps:
+      - install_doctl
+      - run:
+          name: Start registry garbage collection
+          command: |
             if doctl registry garbage-collection get-active --output json | jq -e 'length == 0' > /dev/null; then
               doctl registry garbage-collection start --include-untagged-manifests --force
             else
               echo "Garbage collection already running, skipping."
             fi
-            exit 0
 
   deploy:
     docker:
@@ -271,3 +294,16 @@ workflows:
       - deploy_staging:
           requires:
             - build_and_push
+
+  # Not triggered by pushes at all - set up a CircleCI Scheduled Trigger
+  # (Project Settings -> Triggers) on whatever cadence you want (e.g.
+  # weekly), targeting any branch, with the run_gc parameter set to true.
+  # Kept separate from build_and_push since a GC run can take 15+ minutes
+  # and makes the registry briefly read-only for pushes - not something
+  # every deploy should have to wait through.
+  garbage_collect:
+    when:
+      << pipeline.parameters.run_gc >>
+    jobs:
+      - garbage_collect_registry:
+          context: Build

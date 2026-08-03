@@ -1,9 +1,14 @@
-# Not needed at runtime - local dev (docker-compose.yml) bind-mounts the
-# repo checkout over the image anyway, so none of this needs to be baked in.
+# Not needed at runtime. static/ is served straight from the git checkout
+# on the droplet (nginx serves it directly; deploy.sh/deploy-staging.sh
+# don't touch it), not baked into the image - it's ~90MiB of largely
+# static game assets that rarely change, so a single COPY layer shared
+# with constantly-changing code would re-store/re-transfer it on nearly
+# every build.
 .git
 node_modules
 .local_postgres
 tests
+static
 
 # Never bake secrets into an image layer.
 settings/local_config.py

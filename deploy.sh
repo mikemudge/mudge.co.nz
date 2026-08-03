@@ -16,18 +16,6 @@ docker run --rm --network host \
   -e FLASK_APP=manage.py \
   "$IMAGE" flask db upgrade
 
-echo 'Extracting static assets and nginx config from the image.'
-mkdir -p ~/projects/pyauto/nginx
-docker create --name mudgeconz-extract "$IMAGE" > /dev/null
-rm -rf ~/projects/pyauto/static-new
-docker cp mudgeconz-extract:/app/static ~/projects/pyauto/static-new
-docker cp mudgeconz-extract:/app/nginx/mudge.co.nz.conf ~/projects/pyauto/nginx/mudge.co.nz.conf
-docker rm mudgeconz-extract > /dev/null
-
-mkdir -p ~/projects/pyauto/static
-rsync -a --delete --exclude=.well-known ~/projects/pyauto/static-new/ ~/projects/pyauto/static/
-rm -rf ~/projects/pyauto/static-new
-
 echo 'Updating nginx config.'
 # Source path matches the existing /etc/sudoers.d/<username> NOPASSWD grant.
 sudo cp ~/projects/pyauto/nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz

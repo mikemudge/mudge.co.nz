@@ -1,7 +1,8 @@
 # Run all the things which are needed to deploy this code to staging.
-# Lives only in the pyauto checkout - stage-mudge is no longer a git
-# checkout, just a plain directory holding local_config.py and the
-# assets extracted from the image below.
+# Lives only in the pyauto checkout - stage-mudge is not a git checkout,
+# just a plain directory holding staging's local_config.py. static/ and
+# nginx config are shared from pyauto's checkout (same as prod's), since
+# they're not meaningfully different per-environment content.
 
 set -e
 
@@ -17,21 +18,10 @@ docker run --rm --network host \
   -e FLASK_APP=manage.py \
   "$IMAGE" flask db upgrade
 
-echo 'Extracting static assets and nginx config from the image.'
-mkdir -p ~/projects/stage-mudge/nginx
-docker create --name mudgeconz-staging-extract "$IMAGE" > /dev/null
-rm -rf ~/projects/stage-mudge/static-new
-docker cp mudgeconz-staging-extract:/app/static ~/projects/stage-mudge/static-new
-docker cp mudgeconz-staging-extract:/app/nginx/stage.mudge.co.nz.conf ~/projects/stage-mudge/nginx/stage.mudge.co.nz.conf
-docker rm mudgeconz-staging-extract > /dev/null
-
-mkdir -p ~/projects/stage-mudge/static
-rsync -a --delete --exclude=.well-known ~/projects/stage-mudge/static-new/ ~/projects/stage-mudge/static/
-rm -rf ~/projects/stage-mudge/static-new
-
 echo 'Updating nginx config.'
-# Source path matches the existing /etc/sudoers.d/<username> NOPASSWD grant.
-sudo cp ~/projects/stage-mudge/nginx/stage.mudge.co.nz.conf /etc/nginx/sites-available/stage-mudge
+# Source path matches the /etc/sudoers.d/<username> NOPASSWD grant - update
+# it if this path ever changes.
+sudo cp ~/projects/pyauto/nginx/stage.mudge.co.nz.conf /etc/nginx/sites-available/stage-mudge
 sudo nginx -t
 
 echo 'Restarting the app container.'

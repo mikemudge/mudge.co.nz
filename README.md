@@ -92,19 +92,26 @@ free tier is small (500MiB) relative to the image size (~128MiB), so keeping
 a tag per build wasn't sustainable. Deleting/moving a tag doesn't reclaim
 space by itself though - see Garbage collection below.
 
-deploy.sh/deploy-staging.sh pull their tag (`prod`/`staging`) and extract
-static/ and nginx config straight out of the pulled image at deploy time,
-rather than relying on a git checkout of app code. The only thing genuinely
-per-environment on the droplet now is `settings/local_config.py` -
-everything else (code, static assets, nginx config, ini files) comes from
-the image, so there's no way for the two environments to drift apart in what
-they're running.
+deploy.sh/deploy-staging.sh pull their tag (`prod`/`staging`) and run it -
+the image contains app code and ini files, but not static/ (~90MiB of
+largely-static game assets, excluded via .dockerignore) or nginx config.
+Those are served/copied straight from the `~/projects/pyauto` git checkout
+(tracking main, kept fresh by `git pull` before every deploy) for *both*
+environments - nginx's `/static` location for stage.mudge.co.nz points at
+pyauto's checkout too, not a separate one, since static assets aren't
+meaningfully different per-environment. The only thing genuinely
+per-environment on the droplet is `settings/local_config.py`.
 
-`~/projects/pyauto` is still a real git checkout (tracking main) since it
-holds deploy.sh/deploy-staging.sh themselves and prod's local_config.py.
-`~/projects/stage-mudge` is just a plain directory now (not a git checkout) -
-it only needs staging's local_config.py; static/nginx config get written
-there by deploy-staging.sh on every deploy.
+`~/projects/stage-mudge` is not a git checkout - just a plain directory
+holding staging's `local_config.py`, plus a `static/.well-known/` directory
+that certbot's ACME webroot validation writes to for stage.mudge.co.nz's
+cert renewal (kept separate from pyauto's for that reason, even though app
+static assets are shared).
+
+One trade-off: deploying an arbitrary branch to staging via the
+`deploy_stage` pipeline parameter (see Deployment below) only reflects that
+branch's *code* - static assets and nginx config still come from whatever's
+on `main` in the pyauto checkout, not the tested branch.
 
 Restart the app container manually.
 docker restart mudgeconz-app

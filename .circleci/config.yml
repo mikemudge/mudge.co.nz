@@ -139,26 +139,6 @@ jobs:
           command:
             ssh mudge@mudge.co.nz "cd projects/stage-mudge && git pull && ./deploy-staging.sh"
 
-  sync_staging:
-    docker:
-      - image: cimg/base:2021.04
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-
-      - run:
-          name: Merge main into staging and push
-          command: |
-            git config user.email "ci@mudge.co.nz"
-            git config user.name "CircleCI"
-            git fetch --unshallow origin 2>/dev/null || true
-            git fetch origin main staging
-            git checkout staging
-            git merge origin/main --no-edit
-            git push origin staging
-
 workflows:
   build_and_deploy:
     jobs:
@@ -168,14 +148,6 @@ workflows:
             - install_deps
       - lint
       - deploy:
-          requires:
-            - test
-            - lint
-          filters:
-            branches:
-              only:
-                - main
-      - sync_staging:
           requires:
             - test
             - lint

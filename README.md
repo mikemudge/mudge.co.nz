@@ -11,7 +11,11 @@ once .dockerignore + the multi-stage build were added). Natural fit
 alongside automating the CircleCI deploy - build+push the image in CI,
 have the droplet just `docker pull` instead of building there. Not done
 yet since it needs registry auth wired up on both ends and this was a
-one-off manual cutover.
+one-off manual cutover. Would also make it easy to auto-deploy staging
+whenever main deploys (build once, push, both droplet checkouts just
+pull the same image tag) without CI needing write access back to
+GitHub - tried a git-merge-and-push approach for that and hit a
+permission error, dropped for now in favor of doing it this way instead.
 
 ### Development
 Uses docker.

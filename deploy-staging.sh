@@ -27,7 +27,7 @@ docker run -d --name mudgeconz-app-staging \
   mudgeconz-app-staging uwsgi --ini /app/staging.ini
 
 echo 'Updating nginx config.'
-sudo cp nginx/stage.mudge.co.nz.conf /etc/nginx/sites-available/stage-mudge
+sudo cp ~/projects/stage-mudge/nginx/stage.mudge.co.nz.conf /etc/nginx/sites-available/stage-mudge
 sudo nginx -t
 
 echo 'Restart nginx to serve the new static files.'

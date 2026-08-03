@@ -28,7 +28,7 @@ docker run -d --name mudgeconz-app \
   mudgeconz-app uwsgi --ini /app/mudgeconz.ini
 
 echo 'Updating nginx config.'
-sudo cp nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz
+sudo cp ~/projects/pyauto/nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz
 sudo nginx -t
 
 echo 'Restart nginx to serve the new static files.'

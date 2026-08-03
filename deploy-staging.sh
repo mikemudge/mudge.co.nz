@@ -26,6 +26,10 @@ docker run -d --name mudgeconz-app-staging \
   -v ~/projects/stage-mudge:/app \
   mudgeconz-app-staging uwsgi --ini /app/staging.ini
 
+echo 'Updating nginx config.'
+sudo cp nginx/stage.mudge.co.nz.conf /etc/nginx/sites-available/stage-mudge
+sudo nginx -t
+
 echo 'Restart nginx to serve the new static files.'
-# This command is allowed passwordless due to changes to /etc/sudoers.d/<username>
+# These commands are allowed passwordless due to changes to /etc/sudoers.d/<username>
 sudo /etc/init.d/nginx reload

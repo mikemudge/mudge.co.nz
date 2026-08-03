@@ -13,23 +13,6 @@ have the droplet just `docker pull` instead of building there. Not done
 yet since it needs registry auth wired up on both ends and this was a
 one-off manual cutover.
 
-Modernize production's SSL cipher config
-mudgeconz's nginx block has a ~2016-era hand-written ssl_ciphers list
-including legacy algorithms (DES-CBC3-SHA, CAMELLIA, etc) that a modern
-OpenSSL build rejects outright with "invalid command" - hit this exact
-error setting up staging's nginx block and worked around it there by just
-dropping the explicit ssl_protocols/ssl_ciphers lines entirely (modern
-nginx defaults are secure and simpler). Prod's copy still works for now,
-so this wasn't touched reactively - but worth doing deliberately at some
-point, validating with `nginx -t` before ever reloading.
-
-Clean up the pre-Docker rollback fallbacks
-~/virtualenvs/mudgeconz and webserver.service (venv-based) are still on
-the droplet, deliberately left in place as a rollback path after the
-Docker cutover. Safe to remove once the containerized app's been stable
-for a week or two - same caution period used for the old Postgres 9.3
-cluster before it was dropped.
-
 ### Development
 Uses docker.
 

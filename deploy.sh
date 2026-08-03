@@ -27,6 +27,10 @@ docker run -d --name mudgeconz-app \
   -v ~/projects/pyauto:/app \
   mudgeconz-app uwsgi --ini /app/mudgeconz.ini
 
+echo 'Updating nginx config.'
+sudo cp nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz
+sudo nginx -t
+
 echo 'Restart nginx to serve the new static files.'
-# This command is allowed passwordless due to changes to /etc/sudoers.d/<username>
+# These commands are allowed passwordless due to changes to /etc/sudoers.d/<username>
 sudo /etc/init.d/nginx reload

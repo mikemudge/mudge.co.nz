@@ -183,13 +183,6 @@ workflows:
               only:
                 - main
                 - staging
-      - deploy:
-          requires:
-            - build_and_push
-          filters:
-            branches:
-              only:
-                - main
       - deploy_staging:
           requires:
             - build_and_push
@@ -198,3 +191,10 @@ workflows:
               only:
                 - main
                 - staging
+      - deploy:
+          requires:
+            - deploy_staging
+          filters:
+            branches:
+              only:
+                - main

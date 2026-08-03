@@ -249,7 +249,7 @@ jobs:
       - run:
           name: deploy via ssh, git pull and deploy-staging.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy-staging.sh"
+            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy-staging.sh $CIRCLE_BRANCH"
 
 workflows:
   build_and_deploy:

@@ -95,23 +95,17 @@ space by itself though - see Garbage collection below.
 deploy.sh/deploy-staging.sh pull their tag (`prod`/`staging`) and run it -
 the image contains app code and ini files, but not static/ (~90MiB of
 largely-static game assets, excluded via .dockerignore) or nginx config.
-Those are served/copied straight from the `~/projects/pyauto` git checkout
-(tracking main, kept fresh by `git pull` before every deploy) for *both*
-environments - nginx's `/static` location for stage.mudge.co.nz points at
-pyauto's checkout too, not a separate one, since static assets aren't
-meaningfully different per-environment. The only thing genuinely
-per-environment on the droplet is `settings/local_config.py`.
+Those are served/copied straight from a git checkout instead: `~/projects/pyauto`
+for prod (tracking main), `~/projects/stage-mudge` for staging. The only
+thing genuinely per-environment on the droplet beyond that is
+`settings/local_config.py`.
 
-`~/projects/stage-mudge` is not a git checkout - just a plain directory
-holding staging's `local_config.py`, plus a `static/.well-known/` directory
-that certbot's ACME webroot validation writes to for stage.mudge.co.nz's
-cert renewal (kept separate from pyauto's for that reason, even though app
-static assets are shared).
-
-One trade-off: deploying an arbitrary branch to staging via the
-`deploy_stage` pipeline parameter (see Deployment below) only reflects that
-branch's *code* - static assets and nginx config still come from whatever's
-on `main` in the pyauto checkout, not the tested branch.
+deploy-staging.sh takes a branch name and checks stage-mudge out to it
+before deploying, so static assets/nginx config on staging match whatever
+branch's *code* was actually built - for a plain main push this is just
+"main"; for a `deploy_stage` pipeline-parameter trigger (see Deployment
+below) it's whatever branch was picked, so a test deploy reflects that
+branch fully, not just its code.
 
 Restart the app container manually.
 docker restart mudgeconz-app

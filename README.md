@@ -149,15 +149,17 @@ Tables which depend on user have issues as users are different in prod and sandb
 E.g rock1500_picks will not restore in sandbox.
 
 #SSL Certificate
-/etc/letsencrypt/live/mudge.co.nz/fullchain.pem
-Using letsencrypt
-https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
-Auto renew
-/opt/letsencrypt/letsencrypt-auto renew
-cron this, weekly
-Needs to be root cron to reload the nginx.
-30 2 * * 1 /opt/letsencrypt/letsencrypt-auto renew >> /var/log/le-renew.log
-35 2 * * 1 /etc/init.d/nginx reload
+Uses certbot now (not the old letsencrypt-auto script). Certs for both
+mudge.co.nz and stage.mudge.co.nz live under /etc/letsencrypt/live/.
+
+Auto renew happens two ways, both currently active:
+- certbot's own systemd timer (certbot.timer -> certbot.service) runs
+  `certbot renew` automatically, ~twice a day - but doesn't reload nginx.
+- root's crontab also runs /root/update_certs.sh daily at 2pm, which does
+  `certbot renew && service nginx reload` - redundant with the timer above,
+  but it's the thing that actually reloads nginx to pick up a renewed cert
+  (nginx doesn't notice a renewed cert file on its own). `certbot renew`
+  is safe to run from both - it just skips any cert not yet due.
 
 #Mail Server
 config is at.

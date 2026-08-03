@@ -131,6 +131,40 @@ jobs:
             docker push registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1
             docker push registry.digitalocean.com/mikemudge/mudgeconz-app:latest
 
+      - run:
+          name: Prune old image tags (keep newest 2) and garbage collect
+          command: |
+            # Best-effort cleanup - a failure here must never fail the deploy.
+            set +e
+            KEEP=2
+            REPO=mudgeconz-app
+
+            DOCTL_VERSION=$(curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest | jq -r .tag_name | sed 's/^v//')
+            curl -sL "https://github.com/digitalocean/doctl/releases/download/v${DOCTL_VERSION}/doctl-${DOCTL_VERSION}-linux-amd64.tar.gz" | tar xz
+            sudo mv doctl /usr/local/bin/
+            doctl auth init -t "$DOCR_TOKEN"
+
+            OLD_TAGS=$(doctl registry repository list-tags "$REPO" --output json \
+              | jq -r --argjson keep "$KEEP" '
+                  map(select(.tag != "latest"))
+                  | sort_by(.updated_at) | reverse
+                  | .[$keep:]
+                  | .[].tag
+                ')
+
+            if [ -n "$OLD_TAGS" ]; then
+              echo "$OLD_TAGS" | xargs -r -I{} doctl registry repository delete-tag "$REPO" {} --force
+            else
+              echo "Nothing to prune."
+            fi
+
+            if doctl registry garbage-collection get-active --output json | jq -e 'length == 0' > /dev/null; then
+              doctl registry garbage-collection start --include-untagged-manifests --force
+            else
+              echo "Garbage collection already running, skipping."
+            fi
+            exit 0
+
   deploy:
     docker:
       - image: cimg/base:2021.04

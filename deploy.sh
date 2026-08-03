@@ -2,21 +2,37 @@
 
 set -e
 
+IMAGE_TAG="$1"
+IMAGE="registry.digitalocean.com/mudgeconz/mudgeconz-app:${IMAGE_TAG}"
+
 cd ~/projects/pyauto
 
-# put the git hash in a file, used for caching.
-# TODO is there a better version id we can use?
-git --git-dir=.git --work-tree=. rev-parse HEAD > .commithash
-
-echo 'Building the app image.'
-docker build -t mudgeconz-app .
+echo 'Pulling the app image.'
+docker pull "$IMAGE"
 
 echo 'Updating database.'
 docker run --rm --network host \
-  -v ~/projects/pyauto:/app \
+  -v ~/projects/pyauto/settings/local_config.py:/app/settings/local_config.py:ro \
   -e APP_SETTINGS=settings.production \
   -e FLASK_APP=manage.py \
-  mudgeconz-app flask db upgrade
+  "$IMAGE" flask db upgrade
+
+echo 'Extracting static assets and nginx config from the image.'
+mkdir -p ~/projects/pyauto/nginx
+docker create --name mudgeconz-extract "$IMAGE" > /dev/null
+rm -rf ~/projects/pyauto/static-new
+docker cp mudgeconz-extract:/app/static ~/projects/pyauto/static-new
+docker cp mudgeconz-extract:/app/nginx/mudge.co.nz.conf ~/projects/pyauto/nginx/mudge.co.nz.conf
+docker rm mudgeconz-extract > /dev/null
+
+mkdir -p ~/projects/pyauto/static
+rsync -a --delete --exclude=.well-known ~/projects/pyauto/static-new/ ~/projects/pyauto/static/
+rm -rf ~/projects/pyauto/static-new
+
+echo 'Updating nginx config.'
+# Source path matches the existing /etc/sudoers.d/<username> NOPASSWD grant.
+sudo cp ~/projects/pyauto/nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz
+sudo nginx -t
 
 echo 'Restarting the app container.'
 docker stop mudgeconz-app || true
@@ -24,12 +40,8 @@ docker rm mudgeconz-app || true
 docker run -d --name mudgeconz-app \
   --restart unless-stopped \
   --network host \
-  -v ~/projects/pyauto:/app \
-  mudgeconz-app uwsgi --ini /app/mudgeconz.ini
-
-echo 'Updating nginx config.'
-sudo cp ~/projects/pyauto/nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz
-sudo nginx -t
+  -v ~/projects/pyauto/settings/local_config.py:/app/settings/local_config.py:ro \
+  "$IMAGE" uwsgi --ini /app/mudgeconz.ini
 
 echo 'Restart nginx to serve the new static files.'
 # These commands are allowed passwordless due to changes to /etc/sudoers.d/<username>

@@ -99,6 +99,32 @@ jobs:
           name: run eslint
           command: npm run lint
 
+  build_and_push:
+    docker:
+      - image: cimg/base:2021.04
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - setup_remote_docker
+
+      - run:
+          name: Docker login to DO registry
+          command: |
+            echo "$DOCR_TOKEN" | docker login registry.digitalocean.com -u "$DOCR_TOKEN" --password-stdin
+      - run:
+          name: Build and push image
+          command: |
+            docker build \
+              --build-arg GIT_SHA=$CIRCLE_SHA1 \
+              -t registry.digitalocean.com/mudgeconz/mudgeconz-app:$CIRCLE_SHA1 \
+              -t registry.digitalocean.com/mudgeconz/mudgeconz-app:latest \
+              .
+            docker push registry.digitalocean.com/mudgeconz/mudgeconz-app:$CIRCLE_SHA1
+            docker push registry.digitalocean.com/mudgeconz/mudgeconz-app:latest
+
   deploy:
     docker:
       - image: cimg/base:2021.04
@@ -117,7 +143,7 @@ jobs:
       - run:
           name: deploy via ssh, git pull and deploy.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/pyauto && git pull && ./deploy.sh"
+            ssh mudge@mudge.co.nz "cd projects/pyauto && git pull && ./deploy.sh $CIRCLE_SHA1"
 
   deploy_staging:
     docker:
@@ -137,7 +163,7 @@ jobs:
       - run:
           name: deploy via ssh, git pull and deploy-staging.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/stage-mudge && git pull && ./deploy-staging.sh"
+            ssh mudge@mudge.co.nz "cd projects/pyauto && git pull && ./deploy-staging.sh $CIRCLE_SHA1"
 
 workflows:
   build_and_deploy:
@@ -147,7 +173,7 @@ workflows:
           requires:
             - install_deps
       - lint
-      - deploy:
+      - build_and_push:
           requires:
             - test
             - lint
@@ -155,11 +181,19 @@ workflows:
             branches:
               only:
                 - main
-      - deploy_staging:
+                - staging
+      - deploy:
           requires:
-            - test
-            - lint
+            - build_and_push
           filters:
             branches:
               only:
+                - main
+      - deploy_staging:
+          requires:
+            - build_and_push
+          filters:
+            branches:
+              only:
+                - main
                 - staging

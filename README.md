@@ -5,18 +5,6 @@ Your client application uses one of the Google One Tap prompt UI status methods 
 https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment
 https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment
 
-Consider a DigitalOcean container registry for the app image
-Free tier fits (image is ~250-400MB, comfortably under the 500MiB limit
-once .dockerignore + the multi-stage build were added). Natural fit
-alongside automating the CircleCI deploy - build+push the image in CI,
-have the droplet just `docker pull` instead of building there. Not done
-yet since it needs registry auth wired up on both ends and this was a
-one-off manual cutover. Would also make it easy to auto-deploy staging
-whenever main deploys (build once, push, both droplet checkouts just
-pull the same image tag) without CI needing write access back to
-GitHub - tried a git-merge-and-push approach for that and hit a
-permission error, dropped for now in favor of doing it this way instead.
-
 ### Development
 Uses docker.
 
@@ -94,34 +82,43 @@ https://gist.github.com/jexchan/2351996
 
 ### Production
 
-nginx configs for prod and staging live in nginx/*.conf in this repo, mirroring
-/etc/nginx/sites-available/ on the droplet. They're not auto-deployed - after
-editing one, copy it to sites-available/, `sudo nginx -t`, then reload nginx.
-Keep the checked-in copy and the droplet's in sync manually.
+The app image is built once in CI and pushed to a DigitalOcean Container
+Registry, tagged by commit SHA. Both prod and staging pull that same tag -
+deploy.sh/deploy-staging.sh extract static/ and their nginx config straight
+out of the pulled image at deploy time, rather than relying on a git checkout
+of app code. The only thing genuinely per-environment on the droplet now is
+`settings/local_config.py` - everything else (code, static assets, nginx
+config, ini files) comes from the image, so there's no way for the two
+environments to drift apart in what they're running.
 
-Restart the python app.
-sudo systemctl restart webserver.service
+`~/projects/pyauto` is still a real git checkout (tracking main) since it
+holds deploy.sh/deploy-staging.sh themselves and prod's local_config.py.
+`~/projects/stage-mudge` is just a plain directory now (not a git checkout) -
+it only needs staging's local_config.py; static/nginx config get written
+there by deploy-staging.sh on every deploy.
 
-Restart nginx
-sudo service nginx restart
+Restart the app container manually.
+docker restart mudgeconz-app
+docker restart mudgeconz-app-staging
 
-Logs location on server.
-sudo systemctl status webserver.service
-# Follow logs
-journalctl -u webserver.service -f
+Follow logs.
+docker logs -f mudgeconz-app
+docker logs -f mudgeconz-app-staging
 
-See setup here.
-https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
-
-Systemctl configs live in
-/etc/systemd/system/
+Reload nginx.
+sudo /etc/init.d/nginx reload
 
 # Deployment
-Uses a git hook to auto deploy.
-/home/mudge/repos/pyauto.git/hooks
-Pulls the repo to a test folder and tests it.
-Then if tests pass will pull to the prod folder and run deploy.sh
-See deploy.sh for what commands run.
+CircleCI runs install_deps -> test -> lint -> build_and_push -> deploy (prod,
+main branch only) + deploy_staging (main or staging branch). build_and_push
+builds the image once and pushes it to the registry tagged with the commit
+SHA; deploy/deploy_staging SSH in, `docker pull` that tag, and run
+deploy.sh/deploy-staging.sh. A push to main deploys to both prod and staging
+automatically; pushing directly to staging deploys only there, useful for
+previewing something before it's on main.
+
+To roll back manually, SSH in and re-run the deploy script with an older SHA:
+ssh mudge@mudge.co.nz "cd projects/pyauto && ./deploy.sh <previous-sha>"
 
 #DB Backups
 Run daily @ 4am in mudge@mudge.co.nz crontab.

@@ -1,10 +1,8 @@
-# Not needed at runtime - the app is bind-mounted from the repo checkout
-# in both local dev (docker-compose.yml) and production, so none of this
-# needs to be baked into the image.
+# Not needed at runtime - local dev (docker-compose.yml) bind-mounts the
+# repo checkout over the image anyway, so none of this needs to be baked in.
 .git
 node_modules
 .local_postgres
-static
 tests
 
 # Never bake secrets into an image layer.

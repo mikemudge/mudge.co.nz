@@ -25,6 +25,10 @@ RUN --mount=type=bind,from=builder,source=/wheels,target=/wheels \
 
 COPY . /app
 
+# get_env_version() in app.py reads this for staging/prod version reporting.
+ARG GIT_SHA=unknown
+RUN echo "$GIT_SHA" > /app/.commithash
+
 CMD docker/run_app.sh
 
 EXPOSE 5000

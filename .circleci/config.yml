@@ -119,11 +119,11 @@ jobs:
           command: |
             docker build \
               --build-arg GIT_SHA=$CIRCLE_SHA1 \
-              -t registry.digitalocean.com/mudgeconz/mudgeconz-app:$CIRCLE_SHA1 \
-              -t registry.digitalocean.com/mudgeconz/mudgeconz-app:latest \
+              -t registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1 \
+              -t registry.digitalocean.com/mikemudge/mudgeconz-app:latest \
               .
-            docker push registry.digitalocean.com/mudgeconz/mudgeconz-app:$CIRCLE_SHA1
-            docker push registry.digitalocean.com/mudgeconz/mudgeconz-app:latest
+            docker push registry.digitalocean.com/mikemudge/mudgeconz-app:$CIRCLE_SHA1
+            docker push registry.digitalocean.com/mikemudge/mudgeconz-app:latest
 
   deploy:
     docker:

@@ -109,13 +109,16 @@ Reload nginx.
 sudo /etc/init.d/nginx reload
 
 # Deployment
-CircleCI runs install_deps -> test -> lint -> build_and_push -> deploy (prod,
-main branch only) + deploy_staging (main or staging branch). build_and_push
-builds the image once and pushes it to the registry tagged with the commit
-SHA; deploy/deploy_staging SSH in, `docker pull` that tag, and run
-deploy.sh/deploy-staging.sh. A push to main deploys to both prod and staging
-automatically; pushing directly to staging deploys only there, useful for
-previewing something before it's on main.
+A push to main runs install_deps -> test -> lint -> build_and_push ->
+deploy_staging -> deploy: builds the image once, pushes it to the registry
+tagged with the commit SHA, deploys that tag to staging first, then to prod
+only if staging deployed cleanly.
+
+To deploy any other branch to staging (e.g. to preview something before it's
+on main), use CircleCI's "Trigger Pipeline" in the web UI (or the API): pick
+the branch, set the `deploy_stage` parameter to true. That runs
+install_deps -> test -> lint -> build_and_push -> deploy_staging on that
+branch, without touching prod.
 
 To roll back manually, SSH in and re-run the deploy script with an older SHA:
 ssh mudge@mudge.co.nz "cd projects/pyauto && ./deploy.sh <previous-sha>"

@@ -1,21 +1,12 @@
 # Run all the things which are needed to deploy this code to staging.
-# Lives in the pyauto checkout, but stage-mudge is its own git checkout too
-# (for static/nginx config) - pass the branch that was actually deployed
-# (matches the app image's code) so static/nginx reflect it as well,
-# instead of always trailing whatever's on main.
+# Runs from the stage-mudge checkout itself (already switched to the branch
+# being deployed, by the SSH command that invokes this) - not the pyauto
+# checkout - so a branch's own version of this script is what actually
+# executes, not always whatever's on main.
 
 set -e
 
-BRANCH="${1:-main}"
 IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:staging"
-
-echo "Updating stage-mudge checkout to $BRANCH."
-(
-  flock 9
-  cd ~/projects/stage-mudge
-  git fetch origin "$BRANCH"
-  git checkout -B "$BRANCH" "origin/$BRANCH"
-) 9>/tmp/stage-mudge-git.lock
 
 echo 'Pulling the app image.'
 docker pull "$IMAGE"

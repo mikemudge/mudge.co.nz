@@ -100,12 +100,12 @@ for prod (tracking main), `~/projects/stage-mudge` for staging. The only
 thing genuinely per-environment on the droplet beyond that is
 `settings/local_config.py`.
 
-deploy-staging.sh takes a branch name and checks stage-mudge out to it
-before deploying, so static assets/nginx config on staging match whatever
-branch's *code* was actually built - for a plain main push this is just
-"main"; for a `deploy_stage` pipeline-parameter trigger (see Deployment
-below) it's whatever branch was picked, so a test deploy reflects that
-branch fully, not just its code.
+deploy-staging.sh itself runs *from* the stage-mudge checkout, not
+pyauto's - the deploy_staging CI job checks stage-mudge out to whatever
+branch was actually built before invoking it, so it's always that branch's
+own version of the script (and its static assets/nginx config) that runs,
+not always whatever's on main. deploy.sh (prod) stays in pyauto, which only
+ever tracks main, so no equivalent branch-switching is needed there.
 
 Restart the app container manually.
 docker restart mudgeconz-app

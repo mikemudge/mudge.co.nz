@@ -247,9 +247,9 @@ jobs:
           name: Keyscan Github (HACK)
           command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
       - run:
-          name: deploy via ssh, git pull and deploy-staging.sh
+          name: deploy via ssh, checkout branch and deploy-staging.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy-staging.sh $CIRCLE_BRANCH"
+            ssh mudge@mudge.co.nz "cd projects/stage-mudge && flock /tmp/stage-mudge-git.lock -c 'git fetch origin $CIRCLE_BRANCH && git checkout -B $CIRCLE_BRANCH origin/$CIRCLE_BRANCH' && ./deploy-staging.sh"
 
 workflows:
   build_and_deploy:

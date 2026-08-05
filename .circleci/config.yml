@@ -156,6 +156,22 @@ jobs:
       - docker_login
 
       - run:
+          name: Skip build if only static/docs changed since the last image
+          command: |
+            git fetch --unshallow origin 2>/dev/null || true
+
+            docker pull registry.digitalocean.com/mikemudge/mudgeconz-app:staging 2>/dev/null || true
+            LAST_SHA=$(docker run --rm registry.digitalocean.com/mikemudge/mudgeconz-app:staging cat /app/.commithash 2>/dev/null || echo "")
+
+            if [ -z "$LAST_SHA" ] || ! git cat-file -e "$LAST_SHA" 2>/dev/null; then
+              echo "No usable previous build found - building."
+            elif git diff --name-only "$LAST_SHA" HEAD -- . ':!static' ':!nginx' ':!README.md' | grep -q .; then
+              echo "Backend changes found since $LAST_SHA - building."
+            else
+              echo "Only static/nginx/README changed since $LAST_SHA - skipping image build."
+              circleci-agent step halt
+            fi
+      - run:
           name: Build image
           command: |
             docker build \

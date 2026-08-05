@@ -124,6 +124,15 @@ deploy_staging -> deploy: builds the image, pushes it as the `staging` tag,
 deploys that to staging, and only if that succeeds, promotes it to prod
 (shifting the current `prod` tag to `prev_prod` first) and deploys it there.
 
+build_and_push skips the actual build/push (via `circleci-agent step halt`,
+which still counts as success - deploy_staging/deploy run normally against
+whatever image already exists) if nothing changed outside static/, nginx/,
+and README.md since the commit baked into the current `staging` image's
+`.commithash`. deploy_staging/deploy still run either way, so git-checkout-served
+static assets/nginx config still get updated and reloaded - only the
+image build itself is skipped. If a new top-level directory is added that
+also doesn't need a rebuild, add it to the pathspec exclusions in that step.
+
 To deploy any other branch to staging (e.g. to preview something before it's
 on main), use CircleCI's "Trigger Pipeline" in the web UI (or the API): pick
 the branch, set the `deploy_stage` parameter to true. That runs

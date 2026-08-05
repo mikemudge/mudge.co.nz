@@ -270,7 +270,9 @@ jobs:
 workflows:
   build_and_deploy:
     when:
-      not: << pipeline.parameters.deploy_stage >>
+      and:
+        - not: << pipeline.parameters.deploy_stage >>
+        - not: << pipeline.parameters.run_gc >>
     jobs:
       - install_deps
       - test:

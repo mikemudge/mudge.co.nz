@@ -1,5 +1,15 @@
 ### TODO
 
+Use crane instead of docker pull/tag/push for prod promotion
+deploy's "preserve prod as prev_prod" and "tag staging as the new prod"
+steps currently pull the full image (~80MiB) locally just to re-tag and
+re-push it, even though the content already exists in the registry - a
+tag is just a pointer, moving one shouldn't need to transfer any image
+bytes at all. `crane tag registry.../mudgeconz-app:staging prod` (from
+google/go-containerregistry) does this via the registry API directly,
+no pull needed. Not urgent - the current approach works, just wastes
+bandwidth/time on every prod deploy.
+
 Update google auth (again)
 Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes.
 https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment

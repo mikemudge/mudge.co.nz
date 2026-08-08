@@ -44,11 +44,11 @@ class TestRock(BaseTestCase):
 
         rock_picker = User.create("rocker")
         for i in range(4):
-            Rock1500Pick(
+            db.session.add(Rock1500Pick(
                 song=Rock1500Song.find_by_name('Song %s' % (i + 1), artist=a),
                 position=i,
                 user=rock_picker,
-            )
+            ))
 
         db.session.add(rock_picker)
         db.session.commit()

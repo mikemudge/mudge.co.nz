@@ -1,3 +1,11 @@
+// The maps script tag loads with the async attribute, so it may not have
+// finished loading by the time this file runs. Anything touching
+// google.maps must wait on this promise, which the script's callback param
+// resolves once google.maps (and the requested libraries) are ready.
+var googleMapsReady = new Promise(function(resolve) {
+  window.initGoogleMaps = resolve;
+});
+
 var WalkerService = function(config, $resource) {
   this.$resource = $resource;
   this.Trail = $resource('/api/trail/v1/trail/:id', {
@@ -19,6 +27,19 @@ WalkerService.prototype.getTrailProfile = function(trail_id) {
     progress: true,
   });
 }
+
+// Picks black or white, whichever contrasts better against the given "#rrggbb" color.
+// Biased towards black - only really dark colors get white text.
+WalkerService.prototype.contrastColor = function(hex) {
+  hex = hex.replace('#', '');
+  var r = parseInt(hex.substring(0, 2), 16);
+  var g = parseInt(hex.substring(2, 4), 16);
+  var b = parseInt(hex.substring(4, 6), 16);
+  var brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  // Pure red (#ff0000) scores ~76 on this scale despite reading as a bright
+  // color, so keep the bar low enough that it still gets black text.
+  return brightness > 70 ? '#000000' : '#ffffff';
+};
 
 WalkerService.prototype.convertDate = function(walk) {
   var date = walk.date;
@@ -44,18 +65,23 @@ WalkerService.prototype.loadPerson = function(map, person) {
 
   angular.forEach(person.progress, this.convertDate.bind(this));
 
-  var chld = person.name.charAt(0) + "|" + ("000000" + person.color.toString(16)).slice(-6)
+  var background = "#" + ("000000" + person.color.toString(16)).slice(-6);
+  var pin = new google.maps.marker.PinElement({
+    glyphText: person.name.charAt(0),
+    background: background,
+    borderColor: "#ffffff",
+    glyphColor: this.contrastColor(background),
+  });
 
-  person.marker = new google.maps.Marker({
-    icon: new google.maps.MarkerImage(
-        "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + chld),
+  person.marker = new google.maps.marker.AdvancedMarkerElement({
+    content: pin,
     map: map,
     title: person.name
   });
   person.infowindow = new google.maps.InfoWindow({
     content: person.name
   });
-  person.marker.addListener('click', angular.bind(this, function(person) {
+  person.marker.addEventListener('gmp-click', angular.bind(this, function(person) {
     person.infowindow.open(map, person.marker);
   }, person));
 };
@@ -139,18 +165,24 @@ var MainController = function(loginService, trailService, walkerService, config,
     color: this.randomColor()
   });
 
-  // default center and zoom shows all of nz.
-  // TODO trail should indicate a good center point???
-  this.map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -40.827947614929464, lng: 175.30749883440649},
-    zoom: 5
-  });
+  // Everything below touches google.maps, so wait until it (and the
+  // marker/geometry libraries) have actually finished loading.
+  googleMapsReady.then(function() {
+    // default center and zoom shows all of nz.
+    // TODO trail should indicate a good center point???
+    this.map = new google.maps.Map(document.getElementById('map'), {
+      // Required by AdvancedMarkerElement. DEMO_MAP_ID is fine without cloud-based map styling.
+      mapId: 'DEMO_MAP_ID',
+      center: {lat: -40.827947614929464, lng: 175.30749883440649},
+      zoom: 5
+    });
 
-  this.trail_data = this.walkerService.Trail.get({id: trail_id});
+    this.trail_data = this.walkerService.Trail.get({id: trail_id});
 
-  this.trail_data.$promise.then(this.trailLoaded.bind(this));
+    this.trail_data.$promise.then(this.trailLoaded.bind(this));
 
-  this.loadProfiles(trail_id);
+    this.loadProfiles(trail_id);
+  }.bind(this));
 
   this.addProgress = new walkerService.TrailProgress();
 }
@@ -303,10 +335,10 @@ MainController.prototype.deleteWalk = function(person, walk) {
 
 MainController.prototype.showPerson = function(person) {
   console.info('Viewing profile', person);
-  if (person.marker && person.marker.getPosition()) {
+  if (person.marker && person.marker.position) {
     // If close enough this will animate but other times it just jumps.
     this.map.setZoom(10);
-    this.map.panTo(person.marker.getPosition());
+    this.map.panTo(person.marker.position);
   } else {
     console.warn('showPerson called before marker had a position');
   }
@@ -354,7 +386,7 @@ MainController.prototype.updatePerson = function(person) {
     // Set location to last point of the trail.
     var lastTrack = this.trail.tracks[this.trail.tracks.length - 1]
     var lastPoint = lastTrack.getPath().getArray()[lastTrack.getPath().getArray().length - 1]
-    person.marker.setPosition(lastPoint);
+    person.marker.position = lastPoint;
     return;
   }
   person.track = onTrack;
@@ -380,8 +412,8 @@ MainController.prototype.updatePerson = function(person) {
     lastPoint = point;
   });
 
-  person.marker.setPosition(
-      google.maps.geometry.spherical.interpolate(lastPoint, curPoint, walkedMeters / pointDiff));
+  person.marker.position =
+      google.maps.geometry.spherical.interpolate(lastPoint, curPoint, walkedMeters / pointDiff);
 }
 
 MainController.prototype.beginTrail = function() {

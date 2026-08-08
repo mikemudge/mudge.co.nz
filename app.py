@@ -2,9 +2,10 @@ from auth.provider import oauth, setup as setup_auth
 from datetime import datetime
 from flask import Flask
 from flask_admin import Admin
+from flask_admin.theme import Bootstrap4Theme
 from shared import exceptions
 from shared.database import db
-from shared.marshmallow import ma, Session
+from shared.marshmallow import ma
 
 # Import routes.
 from api.routes import routes as api_routes
@@ -113,9 +114,8 @@ def create_app(config=None):
             url='/flask-admin',
             endpoint='admin'
         ),
-        template_mode='bootstrap3',
+        theme=Bootstrap4Theme(base_template='admin/master.html'),
         static_url_path="static",
-        base_template='admin/master.html'
     )
 
     routes(app)
@@ -125,9 +125,6 @@ def create_app(config=None):
 
     exceptions.registerHandlers(app)
 
-    # This should be updating the session objects.
-    # But it doesn't seem too?
-    Session.configure(binds=db.get_binds(app))
     ma.init_app(app)
 
     oauth.init_app(app)

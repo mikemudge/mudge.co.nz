@@ -2,6 +2,14 @@ from marshmallow import fields
 from shared.marshmallow import BaseSchema
 from .models import Trail, TrailProgress, TrailProfile
 
+class TrailProgressDate(fields.Date):
+    # The frontend sends a full ISO datetime (JS Date.toJSON()), but the
+    # column is date-only, so drop any time component before parsing.
+    def _deserialize(self, value, attr, data, **kwargs):
+        if isinstance(value, str):
+            value = value.split('T')[0]
+        return super()._deserialize(value, attr, data, **kwargs)
+
 class TrailProgressSchema(BaseSchema):
     class Meta:
         model = TrailProgress
@@ -13,9 +21,9 @@ class TrailProgressSchema(BaseSchema):
     # Identify the profile the progress was for.
     trail_profile_id = fields.Str(load_only=True)
 
-    date = fields.DateTime()
+    date = TrailProgressDate()
 
-    editDate = fields.Boolean(optional=True)
+    editDate = fields.Boolean()
 
 class TrailProfileSchema(BaseSchema):
     class Meta:
@@ -60,3 +68,4 @@ class TrailSchema(BaseSchema):
     class Meta:
         model = Trail
         exclude = BaseSchema.Meta.exclude
+        include_relationships = True

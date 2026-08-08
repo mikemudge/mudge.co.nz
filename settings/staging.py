@@ -2,7 +2,7 @@ from settings.base import *
 
 ENV = 'staging'
 
-API_URL = 'http://159.203.245.129/'
+API_URL = 'https://stage.mudge.co.nz/'
 
 try:
     # import the local config to override for local settings

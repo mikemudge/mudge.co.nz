@@ -1,12 +1,56 @@
-# Python CircleCI 2.0 configuration file
+# Python CircleCI configuration file
 #
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 #
-version: 2
+version: 2.1
+
+parameters:
+  deploy_stage:
+    type: boolean
+    default: false
+  run_gc:
+    type: boolean
+    default: false
+
+commands:
+  install_doctl:
+    steps:
+      - run:
+          name: Install and authenticate doctl
+          command: |
+            DOCTL_VERSION=$(curl -s https://api.github.com/repos/digitalocean/doctl/releases/latest | jq -r .tag_name | sed 's/^v//')
+            curl -sL "https://github.com/digitalocean/doctl/releases/download/v${DOCTL_VERSION}/doctl-${DOCTL_VERSION}-linux-amd64.tar.gz" | tar xz
+            sudo mv doctl /usr/local/bin/
+            doctl auth init -t "$DOCR_TOKEN"
+
+  docker_login:
+    steps:
+      - run:
+          name: Docker login to DO registry
+          command: |
+            echo "$DOCR_TOKEN" | docker login registry.digitalocean.com -u "$DOCR_TOKEN" --password-stdin
+
+  push_with_retry:
+    parameters:
+      image:
+        type: string
+    steps:
+      - run:
+          name: "Push << parameters.image >>"
+          command: |
+            # A rare concurrent manual/scheduled GC run makes the registry
+            # briefly read-only for pushes - retry with backoff just in case.
+            for i in $(seq 1 30); do
+              docker push "<< parameters.image >>" && exit 0
+              echo "Push failed (attempt $i/30) - registry may be read-only from garbage collection, retrying in 60s..."
+              sleep 60
+            done
+            exit 1
+
 jobs:
   install_deps:
     docker:
-      - image: cimg/python:3.6.9
+      - image: cimg/python:3.12
         environment:
           APP_SETTINGS: settings.test
 
@@ -18,9 +62,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "frozen_requirements.txt" }}
+          - v3-dependencies-{{ checksum "frozen_requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+          - v3-dependencies-
 
       - run:
           name: install dependencies
@@ -33,18 +77,18 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v2-dependencies-{{ checksum "frozen_requirements.txt" }}
+          key: v3-dependencies-{{ checksum "frozen_requirements.txt" }}
 
   test:
     docker:
-      - image: cimg/python:3.6.9
+      - image: cimg/python:3.12
         environment:
           APP_SETTINGS: settings.test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:9.6-ram
+      - image: cimg/postgres:16.4
         environment:
           POSTGRES_USER: mudgeconzTest
           POSTGRES_DB: mudgeconzTest
@@ -58,9 +102,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "frozen_requirements.txt" }}
+          - v3-dependencies-{{ checksum "frozen_requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+          - v3-dependencies-
 
       - run:
           name: add commithash version
@@ -99,7 +143,122 @@ jobs:
           name: run eslint
           command: npm run lint
 
+  build_and_push:
+    docker:
+      - image: cimg/base:2021.04
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - setup_remote_docker
+      - docker_login
+
+      - run:
+          name: Skip build if only static/docs changed since the last image
+          command: |
+            git fetch --unshallow origin 2>/dev/null || true
+
+            docker pull registry.digitalocean.com/mikemudge/mudgeconz-app:staging 2>/dev/null || true
+            LAST_SHA=$(docker run --rm registry.digitalocean.com/mikemudge/mudgeconz-app:staging cat /app/.commithash 2>/dev/null || echo "")
+
+            if [ -z "$LAST_SHA" ] || ! git cat-file -e "$LAST_SHA" 2>/dev/null; then
+              echo "No usable previous build found - building."
+            elif git diff --name-only "$LAST_SHA" HEAD -- . ':!static' ':!nginx' ':!README.md' | grep -q .; then
+              echo "Backend changes found since $LAST_SHA - building."
+            else
+              echo "Only static/nginx/README changed since $LAST_SHA - skipping image build."
+              circleci-agent step halt
+            fi
+      - run:
+          name: Build image
+          command: |
+            docker build \
+              --build-arg GIT_SHA=$CIRCLE_SHA1 \
+              -t registry.digitalocean.com/mikemudge/mudgeconz-app:staging \
+              .
+      - push_with_retry:
+          image: registry.digitalocean.com/mikemudge/mudgeconz-app:staging
+
+  garbage_collect_registry:
+    docker:
+      - image: cimg/base:2021.04
+
+    working_directory: ~/repo
+
+    steps:
+      - install_doctl
+      - run:
+          name: Start registry garbage collection
+          command: |
+            if doctl registry garbage-collection get-active --output json | jq -e 'length == 0' > /dev/null; then
+              doctl registry garbage-collection start --include-untagged-manifests --force
+            else
+              echo "Garbage collection already running, skipping."
+            fi
+
   deploy:
+    docker:
+      - image: cimg/base:2021.04
+        environment:
+          APP_SETTINGS: settings.test
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - setup_remote_docker
+      - docker_login
+
+      - run:
+          name: Promote staging to prod, unless prod already matches it
+          command: |
+            IMAGE=registry.digitalocean.com/mikemudge/mudgeconz-app
+
+            push_with_retry() {
+              for i in $(seq 1 30); do
+                docker push "$1" && return 0
+                echo "Push failed (attempt $i/30) - registry may be read-only from garbage collection, retrying in 60s..."
+                sleep 60
+              done
+              return 1
+            }
+
+            docker pull "$IMAGE:staging"
+            STAGING_SHA=$(docker run --rm "$IMAGE:staging" cat /app/.commithash)
+
+            PROD_SHA=""
+            if docker pull "$IMAGE:prod"; then
+              PROD_SHA=$(docker run --rm "$IMAGE:prod" cat /app/.commithash 2>/dev/null || echo "")
+            fi
+
+            if [ -n "$PROD_SHA" ] && [ "$STAGING_SHA" = "$PROD_SHA" ]; then
+              echo "prod already matches staging ($STAGING_SHA) - nothing to promote. (deploy.sh below still runs, to pick up any static/nginx-only changes.)"
+              exit 0
+            fi
+
+            if [ -n "$PROD_SHA" ]; then
+              docker tag "$IMAGE:prod" "$IMAGE:prev_prod"
+              push_with_retry "$IMAGE:prev_prod" || exit 1
+            else
+              echo "No existing prod tag yet (first deploy?) - nothing to preserve as prev_prod."
+            fi
+
+            docker tag "$IMAGE:staging" "$IMAGE:prod"
+            push_with_retry "$IMAGE:prod" || exit 1
+
+      - add_ssh_keys
+      - run:
+          name: Keyscan Github (HACK)
+          command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
+      - run:
+          name: deploy via ssh, git pull and deploy.sh
+          command:
+            ssh mudge@mudge.co.nz "cd projects/pyauto && flock /tmp/pyauto-git.lock -c 'git pull' && ./deploy.sh"
+
+  deploy_staging:
     docker:
       - image: cimg/base:2021.04
         environment:
@@ -115,20 +274,24 @@ jobs:
           name: Keyscan Github (HACK)
           command: ssh-keyscan -H mudge.co.nz >> ~/.ssh/known_hosts
       - run:
-          name: deploy via ssh, git pull and deploy.sh
+          name: deploy via ssh, checkout branch and deploy-staging.sh
           command:
-            ssh mudge@mudge.co.nz "cd projects/pyauto && git pull && ./deploy.sh"
+            ssh mudge@mudge.co.nz "cd projects/stage-mudge && flock /tmp/stage-mudge-git.lock -c 'git fetch origin $CIRCLE_BRANCH && git checkout -B $CIRCLE_BRANCH origin/$CIRCLE_BRANCH' && ./deploy-staging.sh"
 
 workflows:
-  version: 2
   build_and_deploy:
+    when:
+      and:
+        - not: << pipeline.parameters.deploy_stage >>
+        - not: << pipeline.parameters.run_gc >>
     jobs:
       - install_deps
       - test:
           requires:
             - install_deps
       - lint
-      - deploy:
+      - build_and_push:
+          context: Build
           requires:
             - test
             - lint
@@ -136,3 +299,52 @@ workflows:
             branches:
               only:
                 - main
+      - deploy_staging:
+          requires:
+            - build_and_push
+          filters:
+            branches:
+              only:
+                - main
+      - deploy:
+          context: Build
+          requires:
+            - deploy_staging
+          filters:
+            branches:
+              only:
+                - main
+
+  # Triggered manually (CircleCI web UI "Trigger Pipeline", or the API) with
+  # the deploy_stage parameter set true, on whatever branch you pick - lets
+  # any branch deploy to staging without needing it on main or staging first.
+  deploy_stage_manual:
+    when:
+      << pipeline.parameters.deploy_stage >>
+    jobs:
+      - install_deps
+      - test:
+          requires:
+            - install_deps
+      - lint
+      - build_and_push:
+          context: Build
+          requires:
+            - test
+            - lint
+      - deploy_staging:
+          requires:
+            - build_and_push
+
+  # Not triggered by pushes at all - set up a CircleCI Scheduled Trigger
+  # (Project Settings -> Triggers) on whatever cadence you want (e.g.
+  # weekly), targeting any branch, with the run_gc parameter set to true.
+  # Kept separate from build_and_push since a GC run can take 15+ minutes
+  # and makes the registry briefly read-only for pushes - not something
+  # every deploy should have to wait through.
+  garbage_collect:
+    when:
+      << pipeline.parameters.run_gc >>
+    jobs:
+      - garbage_collect_registry:
+          context: Build

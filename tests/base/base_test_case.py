@@ -7,12 +7,8 @@ import os
 from app import create_app
 from auth.models import Client, Scope, User
 from flask_testing import TestCase
-from jose import jwt
+import jwt
 from shared.database import db
-
-# Turn down logging.
-logging.getLogger('oauthlib').setLevel(logging.WARN)
-logging.getLogger('flask_oauthlib').setLevel(logging.WARN)
 
 def create_test_app():
     config = 'settings.test'
@@ -71,7 +67,7 @@ class BaseTestCase(TestCase):
             super(TestCase, self).assertEqual(got, expected)
 
     def parseJwt(self, token):
-        return jwt.get_unverified_claims(token)
+        return jwt.decode(token, options={'verify_signature': False})
 
     # Use jsonClient.post instead.
     def postJson(self, url, jsonObj):

@@ -10,6 +10,9 @@ SENTRY_DSN = None
 
 # Configuration
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+# Transparently replace dead pooled connections (e.g. after the DB restarts)
+# instead of raising on the next query that tries to use one.
+SQLALCHEMY_ENGINE_OPTIONS = {'pool_pre_ping': True}
 DEBUG = False
 USERNAME = 'admin'
 PASSWORD = 'default'
@@ -33,8 +36,7 @@ SQLALCHEMY_DATABASE_URI = None
 CLIENT_ID = None
 CLIENT_SECRET = None
 
-# TODO could just put this on prod?
-RESTRICT_FLASK_ADMIN = [
-    '172.18.0.1',  # for docker
-    '127.0.0.1',
-]
+# Deny by default (see auth/custom_flask_admin.py) - list the IPs allowed
+# to reach /flask-admin. dev.py adds local Docker IPs; local_config.py is
+# where you'd temporarily add your own IP for a production session.
+RESTRICT_FLASK_ADMIN = []

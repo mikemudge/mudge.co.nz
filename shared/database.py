@@ -26,19 +26,19 @@ db = SQLAlchemy(metadata=metadata)
 # http://docs.sqlalchemy.org/en/rel_0_8/core/types.html#backend-agnostic-guid-type
 class UUID(types.TypeDecorator):
     impl = MSBinary
+    cache_ok = True
 
     def __init__(self, length=None):
         if length:
             self.impl.length = length
         else:
             self.impl.length = 64
-        self.cache_ok = True
 
         types.TypeDecorator.__init__(self, length=self.impl.length)
 
     def load_dialect_impl(self, dialect):
         if dialect.name == 'postgresql':
-            return dialect.type_descriptor(postgresUUID())
+            return dialect.type_descriptor(postgresUUID(as_uuid=False))
         else:
             return dialect.type_descriptor(CHAR(64))
 

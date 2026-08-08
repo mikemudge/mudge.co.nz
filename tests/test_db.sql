@@ -1,4 +1,4 @@
-DROP DATABASE "mudgeconztest";
+DROP DATABASE IF EXISTS "mudgeconztest";
 CREATE DATABASE "mudgeconztest";
 DROP ROLE IF EXISTS "mudgeconztest";
 CREATE USER "mudgeconztest" WITH PASSWORD 'test_password';

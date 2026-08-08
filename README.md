@@ -1,17 +1,19 @@
 ### TODO
 
+Use crane instead of docker pull/tag/push for prod promotion
+deploy's "preserve prod as prev_prod" and "tag staging as the new prod"
+steps currently pull the full image (~80MiB) locally just to re-tag and
+re-push it, even though the content already exists in the registry - a
+tag is just a pointer, moving one shouldn't need to transfer any image
+bytes at all. `crane tag registry.../mudgeconz-app:staging prod` (from
+google/go-containerregistry) does this via the registry API directly,
+no pull needed. Not urgent - the current approach works, just wastes
+bandwidth/time on every prod deploy.
+
 Update google auth (again)
 Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes.
 https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment
 https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment
-
-Update Trail app.
-As of February 21st, 2024, google.maps.Marker is deprecated. 
-Please use google.maps.marker.AdvancedMarkerElement instead. 
-At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. 
-While google.maps.Marker will continue to receive bug fixes for any major regressions, existing bugs in google.maps.Marker will not be addressed. 
-At least 12 months notice will be given before support is discontinued. 
-Please see https://developers.google.com/maps/deprecations for additional details and https://developers.google.com/maps/documentation/javascript/advanced-markers/migration for the migration guide.
 
 ### Development
 Uses docker.
@@ -48,12 +50,12 @@ DB migrations
 To create a migration file use
 ```docker-compose exec app bash```
 
-```./manage.py db migrate -m "Migration Name"```
+```flask db migrate -m "Migration Name"```
 Then to apply the migrations (after reviewing the created file) use
-./manage.py db upgrade
+flask db upgrade
 You should test this before deploying where it will happen automatically.
 Also check that you can downgrade from the new revision.
-./manage.py db downgrade
+flask db downgrade
 
 ### Packages/Dependencies
 Using pip
@@ -75,9 +77,9 @@ docker compose up -d
 # Connect to the app container and run some initialization commands.
 docker compose exec app bash
 
-./manage.py db upgrade
-./manage.py init auth
-./manage.py init create_user mike.mudge@gmail.com
+flask db upgrade
+flask init auth
+flask init create-user mike.mudge@gmail.com
 
 # Local Config
 create settings/local_config.py
@@ -90,29 +92,79 @@ https://gist.github.com/jexchan/2351996
 
 ### Production
 
-Restart the python app.
-sudo systemctl restart webserver.service
+The app image is built once in CI and pushed to a DigitalOcean Container
+Registry under fixed, reused tag names rather than one new tag per build -
+`staging` is always the newest build; `prod` is whatever's been promoted to
+production; `prev_prod` is the previous prod, kept as a rollback point.
+Reusing fixed names (instead of tagging every build by commit SHA) avoids
+ever-growing registry storage from tags that just accumulate - the registry's
+free tier is small (500MiB) relative to the image size (~128MiB), so keeping
+a tag per build wasn't sustainable. Deleting/moving a tag doesn't reclaim
+space by itself though - see Garbage collection below.
 
-Restart nginx
-sudo service nginx restart
+deploy.sh/deploy-staging.sh pull their tag (`prod`/`staging`) and run it -
+the image contains app code and ini files, but not static/ (~90MiB of
+largely-static game assets, excluded via .dockerignore) or nginx config.
+Those are served/copied straight from a git checkout instead: `~/projects/pyauto`
+for prod (tracking main), `~/projects/stage-mudge` for staging. The only
+thing genuinely per-environment on the droplet beyond that is
+`settings/local_config.py`.
 
-Logs location on server.
-sudo systemctl status webserver.service
-# Follow logs
-journalctl -u webserver.service -f
+deploy-staging.sh itself runs *from* the stage-mudge checkout, not
+pyauto's - the deploy_staging CI job checks stage-mudge out to whatever
+branch was actually built before invoking it, so it's always that branch's
+own version of the script (and its static assets/nginx config) that runs,
+not always whatever's on main. deploy.sh (prod) stays in pyauto, which only
+ever tracks main, so no equivalent branch-switching is needed there.
 
-See setup here.
-https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
+Restart the app container manually.
+docker restart mudgeconz-app
+docker restart mudgeconz-app-staging
 
-Systemctl configs live in
-/etc/systemd/system/
+Follow logs.
+docker logs -f mudgeconz-app
+docker logs -f mudgeconz-app-staging
+
+Reload nginx.
+sudo /etc/init.d/nginx reload
 
 # Deployment
-Uses a git hook to auto deploy.
-/home/mudge/repos/pyauto.git/hooks
-Pulls the repo to a test folder and tests it.
-Then if tests pass will pull to the prod folder and run deploy.sh
-See deploy.sh for what commands run.
+A push to main runs install_deps -> test -> lint -> build_and_push ->
+deploy_staging -> deploy: builds the image, pushes it as the `staging` tag,
+deploys that to staging, and only if that succeeds, promotes it to prod
+(shifting the current `prod` tag to `prev_prod` first) and deploys it there.
+
+build_and_push skips the actual build/push (via `circleci-agent step halt`,
+which still counts as success - deploy_staging/deploy run normally against
+whatever image already exists) if nothing changed outside static/, nginx/,
+and README.md since the commit baked into the current `staging` image's
+`.commithash`. deploy_staging/deploy still run either way, so git-checkout-served
+static assets/nginx config still get updated and reloaded - only the
+image build itself is skipped. If a new top-level directory is added that
+also doesn't need a rebuild, add it to the pathspec exclusions in that step.
+
+To deploy any other branch to staging (e.g. to preview something before it's
+on main), use CircleCI's "Trigger Pipeline" in the web UI (or the API): pick
+the branch, set the `deploy_stage` parameter to true. That runs
+install_deps -> test -> lint -> build_and_push -> deploy_staging on that
+branch, without touching prod - it just overwrites the `staging` tag.
+
+To roll back prod manually, promote `prev_prod` back to `prod` and redeploy:
+docker pull registry.digitalocean.com/mikemudge/mudgeconz-app:prev_prod
+docker tag registry.digitalocean.com/mikemudge/mudgeconz-app:prev_prod registry.digitalocean.com/mikemudge/mudgeconz-app:prod
+docker push registry.digitalocean.com/mikemudge/mudgeconz-app:prod
+ssh mudge@mudge.co.nz "cd projects/pyauto && ./deploy.sh"
+(only one rollback step back is kept this way - for anything further, revert
+the commit on main and let it redeploy normally.)
+
+# Garbage collection
+Moving/deleting a registry tag doesn't reclaim its storage - the old content
+just becomes "dangling" until garbage collection actually runs, and GC can
+take 15+ minutes and makes the whole registry briefly read-only for pushes.
+So it's not triggered on every deploy - instead there's a `garbage_collect_registry`
+job gated on a `run_gc` pipeline parameter, meant to be fired by a CircleCI
+Scheduled Trigger (Project Settings -> Triggers) on whatever cadence makes
+sense (e.g. weekly), rather than after every push.
 
 #DB Backups
 Run daily @ 4am in mudge@mudge.co.nz crontab.
@@ -140,15 +192,17 @@ Tables which depend on user have issues as users are different in prod and sandb
 E.g rock1500_picks will not restore in sandbox.
 
 #SSL Certificate
-/etc/letsencrypt/live/mudge.co.nz/fullchain.pem
-Using letsencrypt
-https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
-Auto renew
-/opt/letsencrypt/letsencrypt-auto renew
-cron this, weekly
-Needs to be root cron to reload the nginx.
-30 2 * * 1 /opt/letsencrypt/letsencrypt-auto renew >> /var/log/le-renew.log
-35 2 * * 1 /etc/init.d/nginx reload
+Uses certbot now (not the old letsencrypt-auto script). Certs for both
+mudge.co.nz and stage.mudge.co.nz live under /etc/letsencrypt/live/.
+
+Auto renew happens two ways, both currently active:
+- certbot's own systemd timer (certbot.timer -> certbot.service) runs
+  `certbot renew` automatically, ~twice a day - but doesn't reload nginx.
+- root's crontab also runs /root/update_certs.sh daily at 2pm, which does
+  `certbot renew && service nginx reload` - redundant with the timer above,
+  but it's the thing that actually reloads nginx to pick up a renewed cert
+  (nginx doesn't notice a renewed cert file on its own). `certbot renew`
+  is safe to run from both - it just skips any cert not yet due.
 
 #Mail Server
 config is at.

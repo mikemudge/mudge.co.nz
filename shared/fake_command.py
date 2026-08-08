@@ -1,13 +1,15 @@
+import click
 from apps.tournament_app.models import Tournament, Team, Match, Round
 from apps.tournament_app.helpers import tournament as tournament_helper
 from auth.models import User
-from flask_script import Manager
+from flask.cli import AppGroup
 from shared.database import db
 
-FakeCommand = Manager(usage='Populate some fake data for testing.')
+FakeCommand = AppGroup('fake', help='Populate some fake data for testing.')
 
-@FakeCommand.command
-def friends(reset=False):
+@FakeCommand.command('friends')
+@click.option('--reset', is_flag=True, default=False)
+def friends(reset):
 
     if reset:
         print("Reset not supported for users.")
@@ -18,8 +20,9 @@ def friends(reset=False):
         db.session.add(user)
     db.session.commit()
 
-@FakeCommand.command
-def tournaments(reset=False):
+@FakeCommand.command('tournaments')
+@click.option('--reset', is_flag=True, default=False)
+def tournaments(reset):
 
     if reset:
         print("Removing all Tournament models")

@@ -1,19 +1,18 @@
 alembic
 bcrypt
-flask==1.1.2
+flask
 Flask-Admin
 Flask-Login
 flask-marshmallow
 Flask-Migrate
-flask-oauthlib
-flask-script
 Flask-SQLAlchemy
 marshmallow
 marshmallow-sqlalchemy
 psycopg2-binary
-python-jose
+PyJWT
 pytz
-sqlalchemy < 1.4.0
+requests
+sqlalchemy
 SQLAlchemy-Utils
 WTForms
 
@@ -23,15 +22,11 @@ jsonschema
 # For local https testing.
 pyOpenSSL
 
-# Frozen due to https://github.com/jarus/flask-testing/issues/143
-werkzeug==0.16.1
-
 # For running prod.
 uwsgi
 
 # For sentry
-raven
-blinker
+sentry-sdk[flask]
 
 # For testing
 pytest

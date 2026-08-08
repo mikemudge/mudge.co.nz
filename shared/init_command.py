@@ -1,14 +1,18 @@
-from flask_script import Manager
+import click
 from flask import current_app
+from flask.cli import AppGroup
 
 from shared.database import db
 from auth.models import Client, Scope, User
 from apps.trail.models import Trail
 
-InitCommand = Manager(usage='Perform initialization tasks.')
+InitCommand = AppGroup('init', help='Perform initialization tasks.')
 
-@InitCommand.command
+@InitCommand.command('auth')
 def auth():
+    create_auth_client()
+
+def create_auth_client():
     client = Client.create("Web client")
     scopes = {s.name: s for s in Scope.query.all()}
     client.scopes = [
@@ -35,8 +39,11 @@ def auth():
     db.session.commit()
 
 
-@InitCommand.command
-def create_user(email, password=None, admin=False):
+@InitCommand.command('create-user')
+@click.argument('email')
+@click.option('--password', default=None)
+@click.option('--admin', is_flag=True, default=False)
+def create_user(email, password, admin):
 
     user = User.query.filter_by(email=email).first()
 
@@ -53,7 +60,7 @@ def create_user(email, password=None, admin=False):
 
     db.session.commit()
 
-@InitCommand.command
+@InitCommand.command('trails')
 def trails():
     trail = Trail(
         name='Te Araroa',

@@ -2,24 +2,34 @@
 
 set -e
 
-source ~/virtualenvs/mudgeconz/bin/activate
+IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:prod"
 
 cd ~/projects/pyauto
 
-# put the git hash in a file, used for caching.
-# TODO is there a better version id we can use?
-git --git-dir=.git --work-tree=. rev-parse HEAD > .commithash
-
-echo 'Installing pip3 dependencies.'
-pip3 install -r frozen_requirements.txt
+echo 'Pulling the app image.'
+docker pull "$IMAGE"
 
 echo 'Updating database.'
-export APP_SETTINGS=settings.production
-./manage.py db upgrade
+docker run --rm --network host \
+  -v ~/projects/pyauto/settings/local_config.py:/app/settings/local_config.py:ro \
+  -e APP_SETTINGS=settings.production \
+  -e FLASK_APP=manage.py \
+  "$IMAGE" flask db upgrade
 
-echo 'Restarting webserver.'
-sudo systemctl restart webserver.service
+echo 'Updating nginx config.'
+# Source path matches the existing /etc/sudoers.d/<username> NOPASSWD grant.
+sudo cp ~/projects/pyauto/nginx/mudge.co.nz.conf /etc/nginx/sites-available/mudgeconz
+sudo nginx -t
+
+echo 'Restarting the app container.'
+docker stop mudgeconz-app || true
+docker rm mudgeconz-app || true
+docker run -d --name mudgeconz-app \
+  --restart unless-stopped \
+  --network host \
+  -v ~/projects/pyauto/settings/local_config.py:/app/settings/local_config.py:ro \
+  "$IMAGE" uwsgi --ini /app/mudgeconz.ini
 
 echo 'Restart nginx to serve the new static files.'
-# This command is allowed passwordless due to changes to /etc/sudoers.d/<username>
+# These commands are allowed passwordless due to changes to /etc/sudoers.d/<username>
 sudo /etc/init.d/nginx reload

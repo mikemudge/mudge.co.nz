@@ -81,11 +81,6 @@
       "count": 1
     }
   },
-  "static/p5/farm.js": {
-    "no-unused-vars": {
-      "count": 1
-    }
-  },
   "static/p5/jslib/nn.js": {
     "no-redeclare": {
       "count": 1
@@ -132,11 +127,6 @@
   "static/p5/soccer.js": {
     "no-unused-vars": {
       "count": 2
-    }
-  },
-  "static/p5/spring.js": {
-    "no-unused-vars": {
-      "count": 1
     }
   },
   "static/p5/td.js": {

@@ -24,7 +24,7 @@ class Node {
         + .5 * this.mass * this.vel.magSq();
   }
 
-  update(time) {
+  computeForce(time) {
     if (this.fixed) {
       // Fixed points don't move for any forces.
       return;
@@ -39,10 +39,25 @@ class Node {
     force.add(resistance);
 
     // Then add the forces towards the natural length of the connections.
+    // This must be computed from every node's position *before* any node
+    // moves this step, otherwise the two ends of a spring disagree about
+    // where the other end was and Newton's third law breaks down - that
+    // asymmetry pumps energy into the system, more so the more nodes/
+    // connections there are.
     for (let conn of this.connections) {
-      let f = conn.springForce(this, this.game.time);
+      let f = conn.springForce(this, time);
       force.add(f);
     }
+
+    this.force = force;
+  }
+
+  applyForce(t) {
+    if (this.fixed) {
+      return;
+    }
+
+    let force = this.force;
 
     if (this.pos.y + this.size > 600) {
       if (this.vel.y > 0) {
@@ -57,9 +72,6 @@ class Node {
     // a = f / m;
     force.mult(1 / this.mass);
     // delta v = a * t;
-    // t is 1/30 due to frameRate.
-    // delta v = f * 1/30
-    let t = 1 / 10;
     force.mult(t);
     this.vel.add(force);
 
@@ -91,7 +103,7 @@ class Node {
 
   showConnections() {
     for (let conn of this.from) {
-      conn.show();
+      conn.show(this.game.debug);
     }
   }
 
@@ -151,14 +163,19 @@ class Connection {
     this.rigidity = 5;
     this.length = this.from.pos.dist(this.to.pos);
     this.amplitude = 0;
-    this.period = 100;
+    this.period = 10;
+    this.offset = 0;
   }
 
   springForce(node, time) {
     // The current actual length of a spring;
     let x = this.to.pos.dist(this.from.pos);
 
-    let expectedLength = this.length + Math.sin(time / this.period) * this.amplitude;
+    // amplitude/offset are stored as percentages: amplitude of the
+    // connection's natural length, and offset of a full period.
+    let amplitude = this.length * (this.amplitude / 100);
+    let offsetRadians = (this.offset / 100) * 2 * Math.PI;
+    let expectedLength = this.length + Math.sin(time / this.period + offsetRadians) * amplitude;
     this.stress = x - expectedLength;
     if (Math.abs(this.stress) < 0.01) {
       // No force should apply if the offset is minimal?
@@ -173,18 +190,36 @@ class Connection {
     }
   }
 
-  show() {
-    // Green if the length is accurate.
-    // Red if the length is stretched or compressed.
-    let green = color(0,255,0);
-    let red = color(255,0,0);
-    // At 0, amt = 1 - 1/1 is 0 (no stress)
-    // As diff increases this approaches 1 (max stress).
-    let amt = 1 - (10 / (10 + this.stress));
-    let col = lerpColor(green, red, amt);
-    stroke(col);
+  show(debug) {
+    if (debug) {
+      // Green if the length is accurate.
+      // Red if the length is stretched or compressed.
+      let green = color(0,255,0);
+      let red = color(255,0,0);
+      // At 0, amt = 1 - 1/1 is 0 (no stress)
+      // As diff increases this approaches 1 (max stress).
+      let amt = 1 - (10 / (10 + this.stress));
+      stroke(lerpColor(green, red, amt));
+    } else {
+      stroke(0);
+    }
     strokeWeight(2);
     line(this.from.pos.x, this.from.pos.y, this.to.pos.x, this.to.pos.y);
+  }
+
+  showSelected() {
+    stroke('blue');
+    strokeWeight(4);
+    line(this.from.pos.x, this.from.pos.y, this.to.pos.x, this.to.pos.y);
+  }
+
+  // Perpendicular distance from pos to the (clamped) line segment,
+  // used for click hit-testing.
+  distanceTo(pos) {
+    let ab = this.to.pos.copy().sub(this.from.pos);
+    let t = ab.magSq() === 0 ? 0 : constrain(pos.copy().sub(this.from.pos).dot(ab) / ab.magSq(), 0, 1);
+    let closest = this.from.pos.copy().add(ab.mult(t));
+    return pos.dist(closest);
   }
 }
 
@@ -197,19 +232,71 @@ class SpringGame {
     this.nodes = [fixedNode];
     // Start with the fixed node selected?
     this.selectedNode = fixedNode;
+    this.selectedConnection = null;
     this.kineticFriction = 0.01;
     this.staticFriction = 0.05;
     this.time = 0;
+    // Number of physics substeps per frame. Splitting the (fixed) frame
+    // step into smaller substeps keeps the integrator stable even when
+    // several springs stack up on one node and raise its effective
+    // stiffness.
+    this.substeps = 8;
+    // Toggled with 'd'; shows the per-force debug vectors on the selected node.
+    this.debug = false;
+    // Snapshot of pos/vel/time taken when running starts, restored when it stops.
+    this.initialState = null;
+    // The node currently being dragged (only while running), and whether
+    // it was fixed before the drag temporarily forced it fixed.
+    this.draggedNode = null;
+    this.draggedNodeWasFixed = false;
 
     // TODO "clear/reset" button.
   }
 
+  captureState() {
+    this.initialState = new Map();
+    for (let node of this.nodes) {
+      this.initialState.set(node, {
+        pos: node.pos.copy(),
+        vel: node.vel.copy(),
+      });
+    }
+    this.initialTime = this.time;
+  }
+
+  restoreState() {
+    if (!this.initialState) {
+      return;
+    }
+    for (let node of this.nodes) {
+      let saved = this.initialState.get(node);
+      if (saved) {
+        node.pos = saved.pos.copy();
+        node.vel = saved.vel.copy();
+      }
+    }
+    this.time = this.initialTime;
+  }
+
+  step() {
+    this.time++;
+    let dt = (1 / 10) / this.substeps;
+    for (let i = 0; i < this.substeps; i++) {
+      // Two passes: compute every node's force from the current frozen
+      // state, then apply them all. Doing compute-then-apply per node
+      // instead would make each spring's force depend on update order.
+      for (let node of this.nodes) {
+        node.computeForce(this.time);
+      }
+      for (let node of this.nodes) {
+        node.applyForce(dt);
+      }
+    }
+  }
+
   draw() {
     if (this.running) {
-      this.time++;
-      for (let node of this.nodes) {
-        node.update(this.time);
-      }
+      this.step();
 
       let totalEnergy = 0;
       for (let node of this.nodes) {
@@ -229,9 +316,15 @@ class SpringGame {
       node.show();
     }
     if (this.selectedNode) {
-      this.selectedNode.showForces(this.time)
+      if (this.debug) {
+        this.selectedNode.showForces(this.time);
+      }
       this.selectedNode.showSelected();
       this.showNode(this.selectedNode);
+    }
+    if (this.selectedConnection) {
+      this.selectedConnection.showSelected();
+      this.showConnection(this.selectedConnection);
     }
   }
 
@@ -240,19 +333,97 @@ class SpringGame {
     fill(0);
     text("Pos: " + Util.vectorString(node.pos), 5, 30);
     text("Vel: " + Util.vectorString(node.vel), 5, 45);
+    if (!node.fixed) {
+      text("(backspace to delete)", 5, 60);
+    }
+  }
+
+  showConnection(conn) {
+    noStroke();
+    fill(0);
+    text("Amplitude: " + conn.amplitude + "% (up/down)", 5, 30);
+    text("Period: " + conn.period + " (left/right)", 5, 45);
+    text("Offset: " + conn.offset + "% (,/.)", 5, 60);
+    text("(backspace to delete)", 5, 75);
+  }
+
+  // Detach conn from both endpoints and forget it.
+  removeConnection(conn) {
+    conn.from.connections = conn.from.connections.filter(c => c !== conn);
+    conn.from.from = conn.from.from.filter(c => c !== conn);
+    conn.to.connections = conn.to.connections.filter(c => c !== conn);
+
+    if (this.selectedConnection === conn) {
+      this.selectedConnection = null;
+    }
+  }
+
+  removeNode(node) {
+    if (node.fixed) {
+      // Keep at least the anchor node around.
+      return;
+    }
+
+    // Copy first since removeConnection mutates node.connections as it goes.
+    for (let conn of [...node.connections]) {
+      this.removeConnection(conn);
+    }
+    this.nodes = this.nodes.filter(n => n !== node);
+
+    if (this.selectedNode === node) {
+      this.selectedNode = null;
+    }
   }
 
   keyPressed(key) {
     if (key === ' ') {
       // Run a frame?
-      this.time++;
-      for (let node of this.nodes) {
-        node.update(this.time);
-      }
+      this.step();
       this.running = false;
     }
+    if (key === 'd') {
+      this.debug = !this.debug;
+    }
     if (keyCode === ENTER) {
-      this.running = !this.running;
+      if (this.running) {
+        this.running = false;
+        this.restoreState();
+      } else {
+        this.captureState();
+        this.running = true;
+      }
+    }
+    if (keyCode === ESCAPE) {
+      this.selectedNode = null;
+      this.selectedConnection = null;
+    }
+    if (keyCode === BACKSPACE || keyCode === DELETE) {
+      if (this.selectedConnection) {
+        this.removeConnection(this.selectedConnection);
+      } else if (this.selectedNode) {
+        this.removeNode(this.selectedNode);
+      }
+    }
+    if (this.selectedConnection) {
+      if (keyCode === UP_ARROW) {
+        this.selectedConnection.amplitude += 5;
+      }
+      if (keyCode === DOWN_ARROW) {
+        this.selectedConnection.amplitude = Math.max(0, this.selectedConnection.amplitude - 5);
+      }
+      if (keyCode === RIGHT_ARROW) {
+        this.selectedConnection.period += 10;
+      }
+      if (keyCode === LEFT_ARROW) {
+        this.selectedConnection.period = Math.max(5, this.selectedConnection.period - 10);
+      }
+      // Phase offset, as a percentage of a full period, wrapped to [0, 100).
+      if (key === '.') {
+        this.selectedConnection.offset = (this.selectedConnection.offset + 5) % 100;
+      }
+      if (key === ',') {
+        this.selectedConnection.offset = (this.selectedConnection.offset - 5 + 100) % 100;
+      }
     }
   }
 
@@ -267,18 +438,78 @@ class SpringGame {
     return clickedNode;
   }
 
+  getConnectionAt(pos) {
+    // Determine if a connection line was clicked, picking whichever is closest.
+    let closestConnection = null;
+    let closestDist = 8;
+    for (let node of this.nodes) {
+      for (let conn of node.from) {
+        let dist = conn.distanceTo(pos);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestConnection = conn;
+        }
+      }
+    }
+    return closestConnection;
+  }
+
+  mousePressed(mousePos, mouseButton) {
+    if (mouseButton !== LEFT || !this.running) {
+      // Dragging only applies while the simulation is running; otherwise
+      // clicks are handled as node/connection creation on release.
+      return;
+    }
+    let node = this.getNodeAt(mousePos);
+    if (node) {
+      this.draggedNode = node;
+      this.draggedNodeWasFixed = node.fixed;
+      node.fixed = true;
+      node.vel.set(0, 0);
+    }
+  }
+
+  mouseDragged(mousePos) {
+    if (this.draggedNode) {
+      this.draggedNode.pos = mousePos.copy();
+    }
+  }
+
+  mouseReleased(mousePos, mouseButton) {
+    if (this.draggedNode) {
+      this.draggedNode.fixed = this.draggedNodeWasFixed;
+      this.selectedNode = this.draggedNode;
+      this.selectedConnection = null;
+      this.draggedNode = null;
+      return;
+    }
+    this.click(mousePos, mouseButton);
+  }
+
   click(mousePos, mouseButton) {
     if (mouseButton !== LEFT) {
       this.selectedNode = null;
+      this.selectedConnection = null;
       return;
     }
 
     let clickedNode = this.getNodeAt(mousePos);
-    // If there is no node at the click location, create a new one.
     if (!clickedNode) {
+      let clickedConnection = this.getConnectionAt(mousePos);
+      if (clickedConnection) {
+        this.selectedNode = null;
+        this.selectedConnection = clickedConnection;
+        return;
+      }
+      if (this.running) {
+        // Don't add new nodes while the simulation is running.
+        return;
+      }
+      // If there is no node or connection at the click location, create a new node.
       clickedNode = new Node(this, mousePos);
       this.nodes.push(clickedNode);
     }
+    this.selectedConnection = null;
 
     if (this.selectedNode) {
       if (this.selectedNode.alreadyConnected(clickedNode)) {
@@ -321,7 +552,17 @@ export function keyPressed() {
   game.keyPressed(key);
 }
 
+export function mousePressed() {
+  let loc = createVector(mouseX, mouseY);
+  game.mousePressed(loc, mouseButton);
+}
+
+export function mouseDragged() {
+  let loc = createVector(mouseX, mouseY);
+  game.mouseDragged(loc);
+}
+
 export function mouseReleased() {
   let loc = createVector(mouseX, mouseY);
-  game.click(loc, mouseButton);
+  game.mouseReleased(loc, mouseButton);
 }

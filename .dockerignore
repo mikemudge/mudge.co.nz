@@ -1,0 +1,24 @@
+# Not needed at runtime. static/ is served straight from the git checkout
+# on the droplet (nginx serves it directly; deploy.sh/deploy-staging.sh
+# don't touch it), not baked into the image - it's ~90MiB of largely
+# static game assets that rarely change, so a single COPY layer shared
+# with constantly-changing code would re-store/re-transfer it on nearly
+# every build.
+.git
+node_modules
+.local_postgres
+tests
+static
+
+# Never bake secrets into an image layer.
+settings/local_config.py
+
+# Runtime-generated, not meaningful at build time.
+.commithash
+
+__pycache__
+*.py[cod]
+.idea
+.DS_Store
+.venv*
+venv

@@ -9,26 +9,56 @@
   <!-- Some min/max/step might be good -->
   <div>
     <label>
-      Acceleration
-      <input ng-model="ctrl.Player.ACCELERATION" />
+      Engine Force
+      <input ng-model="ctrl.Player.ENGINE_FORCE" />
     </label>
   </div>
   <div>
     <label>
-      Friction
-      <input ng-model="ctrl.Player.FRICTION" />
+      Engine Power
+      <input ng-model="ctrl.Player.ENGINE_POWER" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Brake Force
+      <input ng-model="ctrl.Player.BRAKE_FORCE" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Drag
+      <input ng-model="ctrl.Player.DRAG" />
     </label>
   </div>
   <div>
     <label>
       Turn Speed
-      <input ng-model="ctrl.Player.TURN_SPEED" />
+      <input ng-model="ctrl.Player.MAX_TURN_RATE" />
     </label>
   </div>
   <div>
     <label>
-      Slipperiness
-      <input ng-model="ctrl.Player.SLIP_FACTOR" />
+      Cornering Stiffness
+      <input ng-model="ctrl.Player.CORNERING_STIFFNESS" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Max Traction
+      <input ng-model="ctrl.Player.MAX_TRACTION" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Grip Coefficient (Off Track)
+      <input ng-model="ctrl.Player.GRIP_COEFFICIENT_OFF_TRACK" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Rolling Resistance (Off Track)
+      <input ng-model="ctrl.Player.ROLLING_RESISTANCE_OFF_TRACK" />
     </label>
   </div>
   <p>

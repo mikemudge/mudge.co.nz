@@ -21,8 +21,10 @@ class GameControls {
       left: 65,
       up: 87,
       right: 68,
-      down: 83
+      down: 83,
+      toggleView: 86,
     };
+
     if (this.config.keys) {
       keys = this.config.keys;
     }
@@ -275,15 +277,24 @@ class KeyControls {
   constructor(keySettings) {
     this.keys = keySettings;
     this.down = {};
+    this.lastToggleView = false;
   }
 
 // TODO this part should go somewhere else to support multiple players on the same keyboard?
   get() {
+    // toggleView should fire once per press, not for the whole time the
+    // key is held - same rising-edge check as ControllerControls does for
+    // its button3 above.
+    var toggleViewDown = this.down[this.keys.toggleView];
+    var toggleView = toggleViewDown && !this.lastToggleView;
+    this.lastToggleView = toggleViewDown;
+
     return {
       'up': this.down[this.keys.up],
       'down': this.down[this.keys.down],
       'left': this.down[this.keys.left],
-      'right': this.down[this.keys.right]
+      'right': this.down[this.keys.right],
+      'toggleView': toggleView,
     }
   }
 

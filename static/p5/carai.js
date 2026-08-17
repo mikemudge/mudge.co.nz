@@ -25,7 +25,7 @@ class Track {
     for (let [i, angle_offset] of angle_offsets.entries()) {
       for (var d = 1; d < 200; d += 5) {
         var imageData = this.getPixel(p5.Vector.fromAngle(car.angle + angle_offset, d).add(car.pos));
-        if (imageData[0] > 192) {
+        if (imageData[0] < 192) {
           inputs[i] = d;
           break;
         }
@@ -41,8 +41,8 @@ class Track {
 }
 
 class Car {
-  constructor(track) {
-    this.track = track;
+  constructor(mask) {
+    this.mask = mask;
     this.enabled = true;
     this.speed = 2;
     this.angle = 0;
@@ -51,7 +51,7 @@ class Car {
     this.verbose = false;
     this.pos = createVector(0, 0);
     this.raytraceDistances = [200, 200, 200];
-    this.nn = new NeuralNet(3, 5, 2);
+    this.nn = new NeuralNet(3, 5, 3);
   };
 
   reset(pos, angle) {
@@ -67,28 +67,34 @@ class Car {
       return;
     }
 
-    this.raytraceDistances = this.track.getRayDistances(this);
+    this.raytraceDistances = this.mask.getRayDistances(this);
 
     // This is the pixel color for that location px, pz.
-    let pixel = this.track.getPixel(this.pos);
-    if (pixel[0] > 192) {
+    let pixel = this.mask.getPixel(this.pos);
+    if (pixel[0] < 192) {
       this.crashed = true;
       return;
     }
 
-    let turnSignals = this.nn.play(this.raytraceDistances);
+    let actionSignals = this.nn.play(this.raytraceDistances);
 
     if (this.verbose) {
-      console.log("AI has", turnSignals);
+      console.log("AI has", actionSignals);
     }
 
-    if (turnSignals[0] > 0.5 && turnSignals[0] > turnSignals[1]) {
+    if (actionSignals[0] > 0.5 && actionSignals[0] > actionSignals[1]) {
       // Must be more than 0.5 and more than the signal to turn right.
       this.angle -= 0.05;
-    } else if (turnSignals[1] > 0.5) {
+    } else if (actionSignals[1] > 0.5) {
       this.angle += 0.05;
     } else {
       // Not turning
+    }
+    // Speed up, slow down.
+    if (actionSignals[2] > 0.7) {
+      this.speed += 0.5;
+    } else if (actionSignals[2] < 0.3) {
+      this.speed -= 0.5;
     }
 
     // Move forward in the direction of angle, by an amount of speed.
@@ -121,15 +127,17 @@ class CarAISim {
   constructor(track) {
     this.cars = [];
     this.track = track;
+    this.mask = mask;
     this.track.setPos(createVector(100, 50));
+    this.mask.setPos(createVector(100, 50));
     this.nnRender = new NeuralNetRender();
 
     var numCars = 20;
     for (let i = 0; i < numCars; i++) {
-      let car = new Car(this.track);
+      let car = new Car(this.mask);
       this.cars.push(car);
       // Put cars on the start line, with a little variation.
-      car.reset(createVector(175, 280).add(p5.Vector.random2D().mult(2)), Math.PI / 2);
+      car.reset(createVector(175, 280).add(p5.Vector.random2D().mult(2)), Math.PI * 3 / 2);
     }
 
     this.params = new URLSearchParams(window.location.search);
@@ -160,7 +168,7 @@ class CarAISim {
 
     for (let car of this.cars) {
       // Restart cars to the start line, with a little variation.
-      car.reset(createVector(175, 280).add(p5.Vector.random2D().mult(2)), Math.PI / 2);
+      car.reset(createVector(175, 280).add(p5.Vector.random2D().mult(2)), Math.PI * 3 / 2);
 
       if (car !== this.winner) {
         // Copy the entire winner, or just a single feature of it.
@@ -234,8 +242,10 @@ class CarAISim {
 }
 
 let track;
+let mask;
 export function preload() {
-  track = new Track(loadImage("/static/img/Track.jpg?v=1"));
+  track = new Track(loadImage("/static/racer/assets/img/Track.jpg?v=1"));
+  mask = new Track(loadImage("/static/racer/assets/img/TrackMask.png?v=1"));
 }
 
 let game;

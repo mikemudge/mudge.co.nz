@@ -148,6 +148,38 @@ var MainController = function($scope) {
 
   loadCar(callback);
 
+  // A second copy of the same model, driven by GhostCar instead of the
+  // player - see MainController.prototype.updateGhost.
+  var ghostCallback = function(car) {
+    // Translucent, so it's clearly not the car you're actually driving.
+    car.material.materials.forEach(function(material) {
+      material.transparent = true;
+      material.opacity = 0.35;
+    });
+
+    // Offset sideways from the start line so it doesn't spawn on top of
+    // the player's car.
+    var normal = { x: Math.cos(MainController.START_HEADING), z: -Math.sin(MainController.START_HEADING) };
+    car.position.x = MainController.START_POSITION.x + normal.x * MainController.GHOST_SPAWN_OFFSET;
+    car.position.y = 0.207;
+    car.position.z = MainController.START_POSITION.z + normal.z * MainController.GHOST_SPAWN_OFFSET;
+    car.rotation.y = Math.PI + MainController.START_HEADING;
+
+    this.ghostCar = new GhostCar(car);
+    this.scene.add(car);
+  }.bind(this);
+
+  loadCar(ghostCallback);
+
+  this.lapRecorder = new LapRecorder();
+  this.lastCompletedLap = null;
+  this.lapElapsed = 0;
+  this.lastLineCrossingAlong = null;
+  this.isOnTrackFn = this.isOnTrack.bind(this);
+  // The ghost/lap clock don't start until the player first presses
+  // forward, rather than the instant the scene loads.
+  this.raceStarted = false;
+
   window.addEventListener('resize', angular.bind(this, this.resize));
 
   // Pause if the window loses focus
@@ -200,6 +232,20 @@ MainController.TRACK_MASK_URL = "/static/racer/assets/img/TrackMask.png?v=1";
 // coordinate space as everywhere else - see MainController.prototype.track.
 MainController.START_POSITION = { x: -35.203, z: 5.804 };
 MainController.START_HEADING = 0;
+
+// How far sideways the ghost car spawns from the player's start position.
+MainController.GHOST_SPAWN_OFFSET = 3;
+// A lap is only considered "crossed" near the start line itself - the line
+// extends infinitely as a plain (x, z) projection, and the track loops
+// back close to itself elsewhere, so without this a crossing anywhere else
+// that happens to line up would falsely trigger it too. The road is ~9.5
+// units wide at the start line, and the two nearest other sections of
+// track are ~10 units away, so this needs to clear the full road width
+// (so it triggers wherever you are across it) while staying well short of
+// those other sections (so it doesn't trigger on them instead).
+MainController.LAP_LINE_RADIUS = 8;
+// localStorage key a completed lap is saved to/loaded from.
+MainController.GHOST_STORAGE_KEY = 'racer.ghostLap';
 
 MainController.prototype.track = function() {
   var size = MainController.TRACK_SIZE;
@@ -255,6 +301,65 @@ MainController.prototype.isOnTrack = function(x, z) {
   return brightness > 127;
 };
 
+// Records the player's lap, detects when it's complete (crossing the start
+// line again), and drives the ghost car - either replaying the lap you
+// just finished, or the autopilot if none has been recorded yet.
+MainController.prototype.updateGhost = function(dt) {
+  if (!this.ghostCar || dt <= 0 || !this.raceStarted) {
+    return;
+  }
+
+  this.lapElapsed += dt;
+  this.lapRecorder.sample(this.lapElapsed, this.cube.position.x, this.cube.position.z, this.cube.rotation.y);
+
+  // Signed distance along the start line's facing direction, from the
+  // start point - crossing from negative to positive means driving over
+  // the line the right way round.
+  var tangent = { x: Math.sin(MainController.START_HEADING), z: Math.cos(MainController.START_HEADING) };
+  var dx = this.cube.position.x - MainController.START_POSITION.x;
+  var dz = this.cube.position.z - MainController.START_POSITION.z;
+  var along = dx * tangent.x + dz * tangent.z;
+  var nearLine = Math.sqrt(dx * dx + dz * dz) < MainController.LAP_LINE_RADIUS;
+
+  if (nearLine && this.lastLineCrossingAlong != null && this.lastLineCrossingAlong < 0 && along >= 0 && this.lapElapsed > 2) {
+    var lapTime = this.lapElapsed;
+    this.lastCompletedLap = this.lapRecorder.samples;
+    this.lapRecorder.reset();
+    this.lapElapsed = 0;
+
+    // Only take over as the ghost if it's actually faster than whatever
+    // the ghost's currently running - so it tracks your best lap, not
+    // just your most recent one. No current recording (still on the
+    // autopilot) counts as infinitely slow, so the first completed lap
+    // always takes over.
+    var ghostRecording = this.ghostCar.recording;
+    var ghostLapTime = ghostRecording && ghostRecording.length ? ghostRecording[ghostRecording.length - 1].t : Infinity;
+    if (lapTime < ghostLapTime) {
+      this.ghostCar.recording = this.lastCompletedLap;
+    }
+  }
+  if (nearLine) {
+    this.lastLineCrossingAlong = along;
+  }
+
+  this.ghostCar.update(this.lapElapsed, this.isOnTrackFn, dt);
+};
+
+MainController.prototype.saveGhostLap = function() {
+  if (!this.lastCompletedLap) {
+    return;
+  }
+  localStorage.setItem(MainController.GHOST_STORAGE_KEY, JSON.stringify(this.lastCompletedLap));
+};
+
+MainController.prototype.loadGhostLap = function() {
+  var saved = localStorage.getItem(MainController.GHOST_STORAGE_KEY);
+  if (!saved || !this.ghostCar) {
+    return;
+  }
+  this.ghostCar.recording = JSON.parse(saved);
+};
+
 MainController.prototype.resize = function() {
   this.camera.aspect = window.innerWidth / window.innerHeight;
   this.camera.updateProjectionMatrix();
@@ -273,6 +378,7 @@ MainController.prototype.render = function(time) {
     this.lastTime = time;
 
     this.updatePhysics(this.humanControls.get(), dt);
+    this.updateGhost(dt);
 
     // Loosely follow the car, but don't change camera height.
     // TODO support follow distance? With variable height too?
@@ -309,6 +415,11 @@ MainController.prototype.updatePhysics = function(keys, dt) {
   if (keys.pause) {
     this.pause = true;
     this.$scope.$apply();
+  }
+
+  if (keys.up) {
+    // The ghost/lap clock waits for this - see updateGhost.
+    this.raceStarted = true;
   }
 
   if (dt <= 0) {

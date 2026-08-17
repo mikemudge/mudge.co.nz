@@ -62,6 +62,14 @@
     </label>
   </div>
   <p>
+    <div class="button" ng-click="ctrl.saveGhostLap()" ng-if="ctrl.lastCompletedLap">
+      Save Ghost Lap
+    </div>
+    <div class="button" ng-click="ctrl.loadGhostLap()">
+      Load Ghost Lap
+    </div>
+  </p>
+  <p>
     <div class="button" ng-click="ctrl.start()">
       Continue
     </div>

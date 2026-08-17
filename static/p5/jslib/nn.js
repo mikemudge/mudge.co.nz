@@ -106,16 +106,20 @@ export class NeuralNetRender {
   draw(x, y, nn) {
     strokeWeight(2);
 
+    // Assuming a display width of 100 pixels.
+    let iWidth = 100 / (nn.weights1.length + 1);
+    let hWidth = 100 / (nn.weights2.length + 1);
+    let oWidth = 100 / (nn.weights2[0].length + 1);
+
     for (var i = 0; i < nn.weights1.length; i++) {
       for (var h = 0; h < nn.weights1[i].length; h++) {
         let colStrength = nn.weights1[i][h] * 10 + 127;
         // Limit the col between 0-255
         let g = Math.min(Math.max(colStrength, 0), 255);
         stroke(255 - g, g, 0);
-        line(x + 20 + i * 20, y + 15, x + 10 + h * 15 , y + 55);
+        line(x + iWidth + i * iWidth, y + 15, x + hWidth + h * hWidth , y + 55);
       }
     }
-
 
     for (var h = 0; h < nn.weights2.length; h++) {
       for (var o = 0; o < nn.weights2[h].length; o++) {
@@ -123,7 +127,7 @@ export class NeuralNetRender {
         // Limit the col between 0-255
         let g = Math.min(Math.max(colStrength, 0), 255);
         stroke(255 - g, g, 0);
-        line(x + 10 + h * 15, y + 55, x + 30 + o * 40 , y + 90);
+        line(x + hWidth + h * hWidth, y + 55, x + oWidth + o * oWidth , y + 90);
       }
     }
   }

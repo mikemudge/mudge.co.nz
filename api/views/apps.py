@@ -132,7 +132,8 @@ apps['racer'] = {
     'scripts': [
         '/static/shared/gamecontrols-old.js',
         '/static/js/three.js/BinaryLoader.js',
-        '/static/racer/cars.js'
+        '/static/racer/cars.js',
+        '/static/racer/ghost.js'
     ]
 }
 apps['sheets'] = {

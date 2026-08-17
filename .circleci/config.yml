@@ -72,9 +72,15 @@ jobs:
             # --upgrade repairs a restored cache's venv in place (e.g. its
             # bin/python3 symlink pointing at a python patch version that
             # no longer exists after cimg/python:3.12 gets updated) rather
-            # than erroring out - cheap, and safe on a fresh/missing venv
-            # too (falls back to a normal create).
-            python3 -m venv --upgrade venv
+            # than erroring out. It's only for repairing an *existing*
+            # venv though - on a cache miss (nothing restored) it sets up
+            # python/pip but skips bin/activate, so a plain create is
+            # still needed for that case.
+            if [ -d venv ]; then
+              python3 -m venv --upgrade venv
+            else
+              python3 -m venv venv
+            fi
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r frozen_requirements.txt

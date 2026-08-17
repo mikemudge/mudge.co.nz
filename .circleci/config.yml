@@ -62,14 +62,19 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v3-dependencies-{{ checksum "frozen_requirements.txt" }}
+          - v4-dependencies-{{ checksum "frozen_requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v3-dependencies-
+          - v4-dependencies-
 
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
+            # --upgrade repairs a restored cache's venv in place (e.g. its
+            # bin/python3 symlink pointing at a python patch version that
+            # no longer exists after cimg/python:3.12 gets updated) rather
+            # than erroring out - cheap, and safe on a fresh/missing venv
+            # too (falls back to a normal create).
+            python3 -m venv --upgrade venv
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r frozen_requirements.txt
@@ -77,7 +82,7 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v3-dependencies-{{ checksum "frozen_requirements.txt" }}
+          key: v4-dependencies-{{ checksum "frozen_requirements.txt" }}
 
   test:
     docker:
@@ -102,9 +107,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v3-dependencies-{{ checksum "frozen_requirements.txt" }}
+          - v4-dependencies-{{ checksum "frozen_requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
-          - v3-dependencies-
+          - v4-dependencies-
 
       - run:
           name: add commithash version

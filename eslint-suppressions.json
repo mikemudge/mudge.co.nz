@@ -236,14 +236,6 @@
       "count": 1
     }
   },
-  "static/racer/racer.js": {
-    "no-redeclare": {
-      "count": 2
-    },
-    "no-unused-vars": {
-      "count": 2
-    }
-  },
   "static/recipe/recipe.js": {
     "no-unsafe-negation": {
       "count": 1

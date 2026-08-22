@@ -41,9 +41,32 @@ html, body {
   white-space: pre;
 }
 
-/* Placeholder death screen for this iteration - a plain full-screen message,
-   no restart/run-summary yet (that's a later iteration). Hidden until JS
-   adds the .visible class (state.status becomes 'dead'). */
+/* Equipment/potion HUD (loot.js-driven) - see updateInventoryHud() in
+   main.js. Sits opposite the debug HUD so neither crowds the other. */
+#delve-inventory-hud {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  min-width: 180px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: right;
+}
+
+#delve-inventory-hud .delve-hint {
+  opacity: 0.6;
+  font-size: 11px;
+}
+
+/* Run-end overlay: a summary + "Play Again" restart prompt, replacing
+   iteration 2's bare "You Died" message. Hidden until JS adds the .visible
+   class (state.status becomes 'dead') - see showDeathOverlay()/restartRun()
+   in main.js. pointer-events is re-enabled here since the #delve-ui parent
+   is pointer-events:none (so the HUD/overlay never intercepts mouse-aim),
+   but the restart button needs to be clickable. */
 #delve-death-overlay {
   display: none;
   position: absolute;
@@ -53,14 +76,49 @@ html, body {
   height: 100%;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 0, 4, 0.55);
+  background: rgba(10, 0, 4, 0.65);
+  pointer-events: auto;
+}
+
+#delve-death-overlay.visible {
+  display: flex;
+}
+
+.delve-death-panel {
+  min-width: 320px;
+  padding: 32px 48px;
+  text-align: center;
+  background: rgba(20, 8, 12, 0.9);
+  border: 1px solid rgba(255, 82, 82, 0.4);
+  border-radius: 8px;
+}
+
+.delve-death-panel h1 {
+  margin: 0 0 18px;
   color: #ff5252;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: bold;
   letter-spacing: 4px;
   text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
 }
 
-#delve-death-overlay.visible {
-  display: flex;
+#delve-death-stats p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+#delve-restart-btn {
+  margin-top: 22px;
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1a0a0a;
+  background: #ff5252;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#delve-restart-btn:hover {
+  background: #ff7b7b;
 }

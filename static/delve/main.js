@@ -1,14 +1,17 @@
 // main.js - Delve entry point. Loads three.js, builds the scene/DOM, wires
 // up input, and owns the game loop. Iteration 1 delivered procedural dungeon
 // + 3D rendering + player movement/collision + a fixed follow camera.
-// Iteration 2 (this one) adds mouse-aim melee combat, player HP/death,
-// enemies (enemies.js), and floor progression via a stairs beacon - see
+// Iteration 2 added mouse-aim melee combat, player HP/death, enemies
+// (enemies.js), and floor progression via a stairs beacon. Iteration 3 (this
+// one) adds ground loot + a ranged weapon (loot.js, combat.js), armor/
+// consumable effects, an inventory HUD, and a real run-end/restart flow - see
 // `state` below for the fields later iterations should build on.
 
 import { generateDungeon, buildDungeonMeshes, CELL_SIZE } from './dungeon.js';
 import { Player } from './player.js';
 import { spawnEnemiesForDungeon, updateEnemies } from './enemies.js';
-import { updateEnemyProjectiles } from './combat.js';
+import { updateEnemyProjectiles, updatePlayerProjectiles } from './combat.js';
+import { spawnLootForDungeon, updateGroundItems, maybeDropLoot } from './loot.js';
 import { damp, clamp, distance2D } from './utils.js';
 
 // ---------------------------------------------------------------------------
@@ -105,16 +108,31 @@ export const state = {
 
   // Flat list of non-player entities - this iteration, Crawler/Spitter
   // instances from enemies.js (position, radius, mesh, dead, takeDamage(),
-  // an update(dt, dungeon, player, scene, enemyProjectiles) method). Loot
-  // pickups may join this list in a later iteration.
+  // an update(dt, dungeon, player, scene, enemyProjectiles) method). Ground
+  // loot pickups are NOT entities - see state.groundItems below.
   entities: [],
 
-  // Enemy-fired projectiles in flight (see combat.js spawnProjectile/
-  // updateEnemyProjectiles) - plain {position, velX, velZ, radius, damage,
-  // mesh, ...} records, not full entities. state.playerProjectiles is
-  // reserved for a future ranged player weapon; nothing populates it yet.
+  // Enemy-fired and player-fired projectiles in flight (see combat.js
+  // spawnProjectile/updateEnemyProjectiles/updatePlayerProjectiles) - plain
+  // {position, velX, velZ, radius, damage, mesh, ...} records, not full
+  // entities. playerProjectiles is populated by Player.attack() when
+  // player.weapon.type === 'ranged' (see player.js).
   enemyProjectiles: [],
   playerProjectiles: [],
+
+  // Ground loot: chest placements (spawned per-floor in loadFloor) and enemy
+  // death drops (rolled in the onDeathFinalized callback below), both via
+  // loot.js. Plain {itemSpec, position, mesh, bobPhase} records, not full
+  // entities - see loot.js for the full shape and pickup resolution.
+  groundItems: [],
+
+  // Run-level counters, reset to 0 by restartRun() alongside a fresh Player -
+  // NOT persisted anywhere (no meta-progression this iteration). kills is
+  // incremented once per enemy exactly when its death is finalized (see
+  // updateEnemies's onDeathFinalized callback below); runTime accumulates
+  // dt only while state.status === 'playing'.
+  kills: 0,
+  runTime: 0,
 
   // Current mouse-aim world point (ground-plane raycast, y=0), updated every
   // frame in the loop below. Player facing follows this each frame.
@@ -161,21 +179,34 @@ function buildDom() {
   ui.id = 'delve-ui';
   document.body.appendChild(ui);
 
-  // Debug HUD - see the comment in delve.css; purely a development aid for
-  // this iteration, attached inside #delve-ui so it's obvious where later
-  // HUD/inventory elements should also attach.
+  // Debug HUD - see the comment in delve.css; a development aid (fps/floor/
+  // hp/pos/etc), kept alongside (not replaced by) the inventory HUD below.
   const hud = document.createElement('div');
   hud.id = 'delve-debug-hud';
   ui.appendChild(hud);
 
-  // Death placeholder - a plain full-screen message, no restart/summary yet
-  // (that's a later iteration). Hidden until state.status becomes 'dead'.
+  // Equipment/potion HUD - see updateInventoryHud().
+  const inventoryHud = document.createElement('div');
+  inventoryHud.id = 'delve-inventory-hud';
+  ui.appendChild(inventoryHud);
+
+  // Run-end overlay: hidden until state.status becomes 'dead' (see
+  // showDeathOverlay(), which fills in #delve-death-stats). The restart
+  // button is wired to restartRun() once main() resolves (see the bottom of
+  // this file) - it needs pointer-events re-enabled since #delve-ui as a
+  // whole is pointer-events:none (see delve.css) so it doesn't intercept
+  // mouse-aim.
   const deathOverlay = document.createElement('div');
   deathOverlay.id = 'delve-death-overlay';
-  deathOverlay.textContent = 'You Died';
+  deathOverlay.innerHTML =
+    '<div class="delve-death-panel">' +
+      '<h1>You Died</h1>' +
+      '<div id="delve-death-stats"></div>' +
+      '<button id="delve-restart-btn" type="button">Play Again</button>' +
+    '</div>';
   ui.appendChild(deathOverlay);
 
-  return { canvas, ui, hud, deathOverlay };
+  return { canvas, ui, hud, inventoryHud, deathOverlay };
 }
 
 function setupInput(input) {
@@ -216,6 +247,17 @@ function setupInput(input) {
   });
   window.addEventListener('mouseup', (e) => {
     if (e.button === 0) input.attack = false;
+  });
+
+  // Potion keybind ('E', discoverable via the inventory HUD - see
+  // updateInventoryHud). Handled directly here (rather than as a polled
+  // input.* flag like movement/attack) since a potion should be consumed
+  // once per press, not continuously while held - `!e.repeat` guards against
+  // the OS's key-repeat re-firing it while held.
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'KeyE' && !e.repeat && state.status === 'playing' && state.player) {
+      state.player.usePotion();
+    }
   });
 }
 
@@ -323,9 +365,10 @@ function disposeObject3D(object3D) {
   });
 }
 
-// Builds a full floor's contents (dungeon meshes, stairs beacon, enemies)
-// and wires them into `state` + `scene`. Shared by main()'s initial load and
-// advanceFloor()'s floor transition so the two can't drift apart.
+// Builds a full floor's contents (dungeon meshes, stairs beacon, enemies,
+// ground loot) and wires them into `state` + `scene`. Shared by main()'s
+// initial load, advanceFloor()'s floor transition, and restartRun()'s full
+// reset so none of the three can drift apart.
 function loadFloor(THREE, scene, dungeon, floor) {
   const dungeonGroup = buildDungeonMeshes(dungeon, THREE);
   scene.add(dungeonGroup);
@@ -337,19 +380,23 @@ function loadFloor(THREE, scene, dungeon, floor) {
   const entities = spawnEnemiesForDungeon(THREE, dungeon, floor);
   for (const enemy of entities) scene.add(enemy.mesh);
 
+  const groundItems = spawnLootForDungeon(THREE, scene, dungeon, floor);
+
   state.dungeon = dungeon;
   state.dungeonGroup = dungeonGroup;
   state.stairsMarker = stairsMarker;
   state.entities = entities;
+  state.groundItems = groundItems;
   state.floor = floor;
 }
 
-// Tears down the current floor's dungeon/beacon/entities/projectiles and
-// replaces them with a freshly generated floor, repositioning the player at
-// the new dungeon's start and bumping state.floor. Triggered when the
-// player reaches the stairs beacon (see the loop below).
-function advanceFloor() {
-  const { THREE, scene } = state.three;
+// Tears down everything loadFloor() built for the current floor - dungeon
+// meshes, stairs beacon, entities, both projectile lists, and ground loot -
+// disposing GPU resources and removing from `scene`. Shared by advanceFloor()
+// (which then generates and loads the next floor) and restartRun() (which
+// additionally tears down and replaces the player - see below).
+function teardownFloor() {
+  const { scene } = state.three;
 
   disposeObject3D(state.dungeonGroup);
   scene.remove(state.dungeonGroup);
@@ -364,8 +411,39 @@ function advanceFloor() {
     disposeObject3D(projectile.mesh);
     scene.remove(projectile.mesh);
   }
+  for (const projectile of state.playerProjectiles) {
+    disposeObject3D(projectile.mesh);
+    scene.remove(projectile.mesh);
+  }
+  for (const item of state.groundItems) {
+    disposeObject3D(item.mesh);
+    scene.remove(item.mesh);
+  }
   state.enemyProjectiles.length = 0;
   state.playerProjectiles.length = 0;
+  state.groundItems.length = 0;
+}
+
+// Creates a fresh Player at `dungeon.startPos`, adds its mesh to `scene`, and
+// wires it into `state` (including resetting the aim point to the player's
+// own position, matching the "aim point starts where the player stands"
+// no-lerp behavior main() previously did inline). Shared by main()'s initial
+// setup and restartRun()'s full reset.
+function spawnFreshPlayer(THREE, scene, dungeon) {
+  const player = new Player(THREE, dungeon.startPos);
+  scene.add(player.mesh);
+  state.player = player;
+  state.aimPoint.x = player.position.x;
+  state.aimPoint.z = player.position.z;
+  return player;
+}
+
+// Replaces the current floor with a freshly generated one, repositioning the
+// player at the new dungeon's start and bumping state.floor. Triggered when
+// the player reaches the stairs beacon (see the loop below).
+function advanceFloor() {
+  const { THREE, scene, camera } = state.three;
+  teardownFloor();
 
   const dungeon = generateDungeon();
   loadFloor(THREE, scene, dungeon, state.floor + 1);
@@ -379,7 +457,6 @@ function advanceFloor() {
   // Snap the camera to the new position instead of letting it damp/lerp
   // across the map from the old floor's location, mirroring the initial
   // no-lerp-in-from-the-origin placement in main().
-  const { camera } = state.three;
   camera.position.set(
     dungeon.startPos.x + CAMERA_OFFSET.x,
     CAMERA_OFFSET.y,
@@ -387,6 +464,35 @@ function advanceFloor() {
   );
 
   floorToastTimer = FLOOR_TOAST_DURATION;
+}
+
+// Fully resets the run: tears down the current floor AND the current player,
+// then rebuilds both from scratch (floor 1, a brand-new Player with default
+// stats/weapon/no bonuses/no potions, run-level counters back to 0). Wired
+// to the death overlay's "Play Again" button (see the bottom of this file).
+function restartRun() {
+  const { THREE, scene, camera } = state.three;
+  teardownFloor();
+
+  disposeObject3D(state.player.mesh);
+  scene.remove(state.player.mesh);
+
+  const dungeon = generateDungeon();
+  loadFloor(THREE, scene, dungeon, 1);
+  spawnFreshPlayer(THREE, scene, dungeon);
+
+  state.kills = 0;
+  state.runTime = 0;
+  state.status = 'playing';
+
+  camera.position.set(
+    dungeon.startPos.x + CAMERA_OFFSET.x,
+    CAMERA_OFFSET.y,
+    dungeon.startPos.z + CAMERA_OFFSET.z
+  );
+
+  if (deathOverlayEl) deathOverlayEl.classList.remove('visible');
+  floorToastTimer = 0;
 }
 
 let floorToastTimer = 0;
@@ -421,11 +527,7 @@ async function main() {
   setupLighting(THREE, scene, dungeon);
   loadFloor(THREE, scene, dungeon, 1);
 
-  const player = new Player(THREE, dungeon.startPos);
-  scene.add(player.mesh);
-  state.player = player;
-  state.aimPoint.x = player.position.x;
-  state.aimPoint.z = player.position.z;
+  const player = spawnFreshPlayer(THREE, scene, dungeon);
 
   lookAtTarget = new THREE.Vector3();
   aimRaycaster = new THREE.Raycaster();
@@ -502,6 +604,15 @@ function updateCamera(dt) {
   camera.lookAt(lookAtTarget);
 }
 
+// Formats seconds as "M:SS" - shared by the debug HUD, the inventory HUD
+// (not currently, but kept here for a single source of truth), and the death
+// overlay's run summary.
+function formatRunTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
 function updateHud(hud, fps) {
   const { player } = state;
   let text =
@@ -509,6 +620,8 @@ function updateHud(hud, fps) {
     `floor: ${state.floor}\n` +
     `hp: ${player.hp}/${player.maxHp}\n` +
     `enemies: ${state.entities.length}\n` +
+    `kills: ${state.kills}\n` +
+    `time: ${formatRunTime(state.runTime)}\n` +
     `pos: ${player.position.x.toFixed(1)}, ${player.position.z.toFixed(1)}\n` +
     `facing: ${player.facingAngle.toFixed(2)} rad`;
   if (floorToastTimer > 0) {
@@ -517,9 +630,41 @@ function updateHud(hud, fps) {
   hud.textContent = text;
 }
 
+// Equipped weapon / active armor bonuses / potion count - the loot system's
+// player-facing readout. Deliberately separate from the plain-text debug HUD
+// above (different audience: this one's meant to read cleanly for a player,
+// not just a developer).
+function updateInventoryHud(el) {
+  const { player } = state;
+  const bonuses = [];
+  if (player.bonusMaxHp) bonuses.push(`+${player.bonusMaxHp} Max HP`);
+  if (player.bonusSpeed) bonuses.push(`+${player.bonusSpeed.toFixed(1)} Speed`);
+  if (player.bonusDamage) bonuses.push(`+${player.bonusDamage} Damage`);
+
+  el.innerHTML =
+    `<div><strong>${player.weapon.name}</strong> <span class="delve-hint">(${player.weapon.type})</span></div>` +
+    `<div>${bonuses.length ? bonuses.join(' &middot; ') : 'No bonuses yet'}</div>` +
+    `<div>Potions: ${player.potionCount} <span class="delve-hint">[E]</span></div>`;
+}
+
+// Fills in the run summary and reveals the death overlay - called once, the
+// frame state.player.hp reaches 0 (see the loop below). restartRun() hides
+// it again via the 'visible' class.
+function showDeathOverlay() {
+  if (deathStatsEl) {
+    deathStatsEl.innerHTML =
+      `<p>Floor reached: ${state.floor}</p>` +
+      `<p>Enemies defeated: ${state.kills}</p>` +
+      `<p>Time survived: ${formatRunTime(state.runTime)}</p>`;
+  }
+  if (deathOverlayEl) deathOverlayEl.classList.add('visible');
+}
+
 let hudEl = null;
+let inventoryHudEl = null;
 let hudAccum = 0;
 let deathOverlayEl = null;
+let deathStatsEl = null;
 
 function loop(now) {
   requestAnimationFrame(loop);
@@ -530,16 +675,28 @@ function loop(now) {
   state.clock.elapsed += dt;
 
   if (state.status === 'playing') {
+    state.runTime += dt;
     updateAimPoint(state.three.camera);
 
     const inputDir = computeInputDir(state.input);
     state.player.update(dt, inputDir, state.dungeon, state.aimPoint);
     if (state.input.attack) {
-      state.player.attack(state.clock.elapsed, state.entities);
+      state.player.attack(state.clock.elapsed, state.entities, state.three.scene, state.playerProjectiles);
     }
 
-    updateEnemies(state.entities, dt, state.dungeon, state.player, state.three.scene, state.enemyProjectiles);
+    updateEnemies(
+      state.entities, dt, state.dungeon, state.player, state.three.scene, state.enemyProjectiles,
+      (enemy) => {
+        state.kills++;
+        maybeDropLoot(
+          Math.random, state.three.THREE, state.three.scene, state.groundItems,
+          enemy.position.x, enemy.position.z
+        );
+      }
+    );
     updateEnemyProjectiles(state.enemyProjectiles, dt, state.dungeon, state.three.scene, state.player);
+    updatePlayerProjectiles(state.playerProjectiles, dt, state.dungeon, state.three.scene, state.entities);
+    updateGroundItems(state.groundItems, state.clock.elapsed, state.player, state.three.scene);
 
     updateStairsMarker(state.stairsMarker, state.clock.elapsed);
     updateCamera(dt);
@@ -548,7 +705,7 @@ function loop(now) {
 
     if (state.player.hp <= 0) {
       state.status = 'dead';
-      if (deathOverlayEl) deathOverlayEl.classList.add('visible');
+      showDeathOverlay();
     } else {
       const distToStairs = distance2D(
         state.player.position.x, state.player.position.z,
@@ -564,16 +721,22 @@ function loop(now) {
   renderer.render(scene, camera);
 
   hudAccum += dt;
-  if (hudEl && hudAccum > 0.2) {
+  if (hudAccum > 0.2) {
     hudAccum = 0;
-    updateHud(hudEl, dt > 0 ? 1 / dt : 0);
+    if (hudEl) updateHud(hudEl, dt > 0 ? 1 / dt : 0);
+    if (inventoryHudEl) updateInventoryHud(inventoryHudEl);
   }
 }
 
 // Kick things off. buildDom() runs synchronously up front so #delve-canvas
-// exists immediately; hudEl/deathOverlayEl are grabbed once main() has
-// created them.
+// exists immediately; the HUD/overlay element refs and the restart button's
+// click handler are wired up once main() has created them.
 main().then(() => {
   hudEl = document.getElementById('delve-debug-hud');
+  inventoryHudEl = document.getElementById('delve-inventory-hud');
   deathOverlayEl = document.getElementById('delve-death-overlay');
+  deathStatsEl = document.getElementById('delve-death-stats');
+
+  const restartBtn = document.getElementById('delve-restart-btn');
+  restartBtn.addEventListener('click', restartRun);
 });

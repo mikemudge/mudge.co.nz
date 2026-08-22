@@ -336,8 +336,9 @@ export class Spitter extends EnemyBase {
 // L-shaped-adjacent to corridors in ways that make naive corner picks land
 // on a wall) - falls back to the room's center, and to null if even that
 // isn't floor (shouldn't happen for a room from generateDungeon, but cheap
-// to guard).
-function pickSpawnPointInRoom(dungeon, room) {
+// to guard). Exported so loot.js can reuse the exact same rule for chest
+// placement rather than reimplementing it.
+export function pickSpawnPointInRoom(dungeon, room) {
   const { minX, minZ, maxX, maxZ } = room.worldBounds;
   const loX = minX + SPAWN_MARGIN;
   const hiX = maxX - SPAWN_MARGIN;
@@ -417,14 +418,22 @@ export function spawnEnemiesForDungeon(THREE, dungeon, floor) {
  * ones age out their death-burst visual and are then spliced out of
  * `entities` and removed from `scene`. Mutates `entities` and
  * `enemyProjectiles` in place.
+ *
+ * `onDeathFinalized(enemy)`, if given, is called exactly once per enemy at
+ * the moment its death is finalized (deathTimer reaching 0, right before it's
+ * removed) - this module intentionally knows nothing about kill counters or
+ * loot (no `state` import here), so main.js passes a callback that bumps
+ * state.kills and rolls a loot.js drop, keeping that state-aware wiring out
+ * of this otherwise state-agnostic module.
  */
-export function updateEnemies(entities, dt, dungeon, player, scene, enemyProjectiles) {
+export function updateEnemies(entities, dt, dungeon, player, scene, enemyProjectiles, onDeathFinalized) {
   for (let i = entities.length - 1; i >= 0; i--) {
     const enemy = entities[i];
     if (enemy.dead) {
       enemy.deathTimer -= dt;
       enemy.updateDeathVisual();
       if (enemy.deathTimer <= 0) {
+        if (onDeathFinalized) onDeathFinalized(enemy);
         scene.remove(enemy.mesh);
         entities.splice(i, 1);
       }

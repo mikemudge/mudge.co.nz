@@ -7,7 +7,9 @@
 
 import { isFloorCell } from './dungeon.js';
 import { clamp } from './utils.js';
-import { createMeleeWeapon, collectMaterials, triggerHitFlash, updateHitFlash } from './combat.js';
+import {
+  createMeleeWeapon, collectMaterials, triggerHitFlash, updateHitFlash, spawnProjectile,
+} from './combat.js';
 
 // Collision radius, in world units. CELL_SIZE is 2, so this comfortably
 // clears corridors (width 2) while still feeling snug in tight spots.
@@ -26,6 +28,11 @@ export const PLAYER_MAX_HP = 100;
 // otherwise standing in a crowd (or in a projectile's path) could melt the
 // player's HP within a single frame.
 export const PLAYER_INVULN_DURATION = 0.6;
+
+// How much a single Healing Potion (see loot.js) restores. Lives here
+// (rather than loot.js) since Player.usePotion() is what actually applies it;
+// loot.js only needs to know potions occupy player.potionCount.
+export const POTION_HEAL_AMOUNT = 40;
 
 // How long the melee swing effect mesh stays visible/fading after an attack
 // actually fires (not the attack cooldown itself - see combat.js).
@@ -149,8 +156,17 @@ function buildSwingMesh(THREE, range, arcHalf) {
 
 export class Player {
   constructor(THREE, startPos) {
+    // Kept around so attack() can spawn a ranged weapon's projectile mesh
+    // without main.js needing to thread THREE through every call.
+    this.THREE = THREE;
+
     this.position = { x: startPos.x, z: startPos.z };
     this.radius = PLAYER_RADIUS;
+
+    // this.speed is the effective (base + bonus) move speed actually used by
+    // update() below; addBonusSpeed() keeps it in sync whenever
+    // this.bonusSpeed changes (see loot.js armor pickups).
+    this.bonusSpeed = 0;
     this.speed = PLAYER_SPEED;
     // Facing angle in radians. 0 means facing world +Z; the mesh's "nose" is
     // built pointing +Z at rotation 0, and rotation.y = facingAngle rotates
@@ -161,17 +177,30 @@ export class Player {
     // facing (and attacking toward) the cursor.
     this.facingAngle = 0;
 
+    // this.maxHp is likewise the effective (base + bonus) value; see
+    // addBonusMaxHp().
+    this.bonusMaxHp = 0;
     this.maxHp = PLAYER_MAX_HP;
     this.hp = PLAYER_MAX_HP;
     this.invulnTimer = 0;
     this.hitFlashTimer = 0;
     this.dead = false;
 
-    // The current weapon descriptor (see combat.js createMeleeWeapon). A
-    // later loot system can swap this out for a different descriptor shape
-    // (e.g. a ranged weapon) without Player.attack() needing to change, as
-    // long as it exposes the same `use(now, x, z, facingAngle, targets)`
-    // contract.
+    // Flat damage bonus from armor/accessory pickups (see loot.js), added to
+    // whatever weapon is currently equipped - see getEffectiveDamage().
+    this.bonusDamage = 0;
+
+    // Carried Healing Potion count (see loot.js pickups); consumed via
+    // usePotion() (see main.js's 'E' keybind), not on pickup.
+    this.potionCount = 0;
+
+    // The current weapon descriptor (see combat.js createMeleeWeapon /
+    // createRangedWeapon). Loot pickups (loot.js) swap this out wholesale -
+    // "picking up a weapon replaces your current one" rather than a real
+    // multi-weapon inventory - as long as the new descriptor exposes the same
+    // `use(now, x, z, facingAngle, targets)` contract. attack() below
+    // branches on `this.weapon.type` to know whether a fired result should
+    // resolve as instant melee hits or a spawned projectile.
     this.weapon = createMeleeWeapon();
     this.swingTimer = 0;
 
@@ -234,24 +263,94 @@ export class Player {
   }
 
   /**
-   * Attempts a melee attack toward the current facing direction against
-   * `targets` (any array of {position, radius, dead, takeDamage(amount)} -
+   * Attempts an attack toward the current facing direction against `targets`
+   * (any array of {position, radius, dead, takeDamage(amount)} -
    * state.entities in practice). Safe to call every frame (e.g. while the
    * mouse button is held) - internally cooldown-gated by this.weapon, so it
-   * only actually fires (and only then plays the swing visual and applies
-   * damage) once the cooldown has elapsed. Returns true if it fired.
+   * only actually fires once the cooldown has elapsed. Returns true if it
+   * fired.
+   *
+   * Dispatches on `this.weapon.type`:
+   * - 'melee' (createMeleeWeapon): identical to iteration 2 - the swing
+   *   visual plays and `result.hits` (resolved synchronously by the weapon's
+   *   cone hit test) take damage immediately.
+   * - 'ranged' (createRangedWeapon): no swing visual; instead
+   *   `result.projectile` (a plain spec, not yet a projectile) is handed to
+   *   spawnProjectile, which builds the mesh, adds it to `scene`, and pushes
+   *   the resulting projectile record onto `playerProjectiles` - resolved
+   *   against enemies frame-by-frame later by combat.js's
+   *   updatePlayerProjectiles (called from main.js's loop).
+   * `scene`/`playerProjectiles` are only required for a ranged weapon (main.js
+   * passes state.three.scene/state.playerProjectiles every call; unused by
+   * the melee path).
    */
-  attack(now, targets) {
+  attack(now, targets, scene, playerProjectiles) {
     const result = this.weapon.use(now, this.position.x, this.position.z, this.facingAngle, targets);
-    if (result.fired) {
+    if (!result.fired) return false;
+
+    if (this.weapon.type === 'melee') {
       this.swingTimer = SWING_VISUAL_DURATION;
       this.swingMesh.visible = true;
       this.swingMesh.material.opacity = SWING_MAX_OPACITY;
       for (const target of result.hits) {
-        target.takeDamage(this.weapon.damage);
+        target.takeDamage(this.getEffectiveDamage());
       }
+    } else if (result.projectile) {
+      spawnProjectile(this.THREE, scene, playerProjectiles, {
+        x: this.position.x,
+        z: this.position.z,
+        dirX: result.projectile.dirX,
+        dirZ: result.projectile.dirZ,
+        speed: result.projectile.speed,
+        damage: this.getEffectiveDamage(),
+        radius: result.projectile.radius,
+        lifetime: result.projectile.lifetime,
+        color: result.projectile.color,
+      });
     }
-    return result.fired;
+
+    return true;
+  }
+
+  // The weapon's own .damage plus any armor/accessory bonusDamage (see
+  // loot.js) - used instead of reading this.weapon.damage directly so a
+  // damage bonus actually affects combat, not just a cosmetic HUD number.
+  getEffectiveDamage() {
+    return this.weapon.damage + this.bonusDamage;
+  }
+
+  // Armor/accessory bonus appliers (see loot.js applyArmorBonus) - each
+  // keeps a `bonusX` field (for HUD display / reset-on-restart) in sync with
+  // the actual stat it affects.
+  addBonusMaxHp(amount) {
+    this.bonusMaxHp += amount;
+    this.maxHp += amount;
+    this.hp = Math.min(this.maxHp, this.hp + amount);
+  }
+
+  addBonusSpeed(amount) {
+    this.bonusSpeed += amount;
+    this.speed = PLAYER_SPEED + this.bonusSpeed;
+  }
+
+  addBonusDamage(amount) {
+    this.bonusDamage += amount;
+  }
+
+  // Adds to the carried potion count (see loot.js consumable pickups).
+  addPotions(amount) {
+    this.potionCount += amount;
+  }
+
+  /**
+   * Consumes one carried Healing Potion, if any, restoring POTION_HEAL_AMOUNT
+   * hp (capped at maxHp). Returns true if a potion was actually consumed.
+   */
+  usePotion() {
+    if (this.potionCount <= 0) return false;
+    this.potionCount--;
+    this.hp = Math.min(this.maxHp, this.hp + POTION_HEAL_AMOUNT);
+    return true;
   }
 
   /**

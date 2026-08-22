@@ -92,6 +92,7 @@ export function coneHitTest(originX, originZ, facingAngle, range, arcHalf, targe
 export function createMeleeWeapon(options = {}) {
   return {
     type: 'melee',
+    name: options.name ?? 'Blade',
     range: options.range ?? DEFAULT_MELEE_RANGE,
     arcHalf: options.arcHalf ?? DEFAULT_MELEE_ARC_HALF,
     damage: options.damage ?? DEFAULT_MELEE_DAMAGE,
@@ -107,13 +108,71 @@ export function createMeleeWeapon(options = {}) {
 }
 
 // ---------------------------------------------------------------------------
+// Ranged: a weapon descriptor with the same cooldown-gated `use(...)` shape
+// as createMeleeWeapon, but instead of resolving an instant cone-hit it
+// returns a `projectile` spec describing what to fire toward `facingAngle` -
+// Player.attack() (player.js) is the one that actually calls spawnProjectile
+// with it, since only the caller has THREE/scene/the target projectile list
+// in scope. `targets` is accepted (for signature parity with the melee
+// descriptor, so Player.attack() can call either uniformly) but unused here -
+// a fired projectile is resolved later, frame by frame, by
+// updatePlayerProjectiles below.
+// ---------------------------------------------------------------------------
+
+export const DEFAULT_RANGED_DAMAGE = 12;
+export const DEFAULT_RANGED_COOLDOWN = 0.55;
+export const DEFAULT_RANGED_PROJECTILE_SPEED = 14;
+export const DEFAULT_RANGED_PROJECTILE_RADIUS = 0.18;
+export const DEFAULT_RANGED_PROJECTILE_LIFETIME = 3;
+export const DEFAULT_RANGED_COLOR = 0xffe066;
+
+/**
+ * Creates a ranged "weapon" descriptor for Player.attack() to delegate to.
+ * `use(now, originX, originZ, facingAngle, targets)` mirrors
+ * createMeleeWeapon's contract (cooldown-gated, returns `{ fired, hits }`)
+ * but `hits` is always empty and, when fired, an additional `projectile`
+ * field describes the shot to spawn: `{ dirX, dirZ, damage, speed, radius,
+ * lifetime, color }`.
+ */
+export function createRangedWeapon(options = {}) {
+  return {
+    type: 'ranged',
+    name: options.name ?? 'Bow',
+    damage: options.damage ?? DEFAULT_RANGED_DAMAGE,
+    cooldown: options.cooldown ?? DEFAULT_RANGED_COOLDOWN,
+    projectileSpeed: options.projectileSpeed ?? DEFAULT_RANGED_PROJECTILE_SPEED,
+    projectileRadius: options.projectileRadius ?? DEFAULT_RANGED_PROJECTILE_RADIUS,
+    projectileLifetime: options.projectileLifetime ?? DEFAULT_RANGED_PROJECTILE_LIFETIME,
+    color: options.color ?? DEFAULT_RANGED_COLOR,
+    lastUsed: -Infinity,
+    use(now, originX, originZ, facingAngle /*, targets - unused, see comment above */) {
+      if (now - this.lastUsed < this.cooldown) return { fired: false, hits: [] };
+      this.lastUsed = now;
+      return {
+        fired: true,
+        hits: [],
+        projectile: {
+          dirX: Math.sin(facingAngle),
+          dirZ: Math.cos(facingAngle),
+          damage: this.damage,
+          speed: this.projectileSpeed,
+          radius: this.projectileRadius,
+          lifetime: this.projectileLifetime,
+          color: this.color,
+        },
+      };
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Projectiles: plain data objects (not entities) with a mesh, a straight-line
-// velocity, and a lifetime. Currently only spawned by the Spitter enemy (see
-// enemies.js) and resolved against the player in updateEnemyProjectiles, but
-// kept generic (scene/list passed in rather than assumed) so a later ranged
-// player weapon could reuse spawnProjectile + a parallel
-// updatePlayerProjectiles(list, dt, dungeon, scene, entities) without changes
-// here.
+// velocity, and a lifetime. spawnProjectile is shared by both directions:
+// the Spitter enemy (see enemies.js) spawns into state.enemyProjectiles,
+// resolved against the player each frame by updateEnemyProjectiles; the
+// ranged player weapon above (via Player.attack(), see player.js) spawns
+// into state.playerProjectiles, resolved against enemies by
+// updatePlayerProjectiles below.
 // ---------------------------------------------------------------------------
 
 /**
@@ -175,6 +234,49 @@ export function updateEnemyProjectiles(list, dt, dungeon, scene, player) {
       if (dx * dx + dz * dz <= rr * rr) {
         player.takeDamage(p.damage);
         remove = true;
+      }
+    }
+
+    if (remove) {
+      scene.remove(p.mesh);
+      list.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Player-owned counterpart to updateEnemyProjectiles: advances every
+ * projectile in `list` by dt, removing (and detaching from `scene`) any
+ * that: exceed their lifetime, hit a dungeon wall, or hit a live (non-`dead`)
+ * entity in `entities` (circle-vs-circle on the XZ plane) - the latter also
+ * applies damage via `entity.takeDamage`. A projectile is consumed by the
+ * first entity it overlaps (no piercing).
+ */
+export function updatePlayerProjectiles(list, dt, dungeon, scene, entities) {
+  for (let i = list.length - 1; i >= 0; i--) {
+    const p = list[i];
+    p.age += dt;
+    p.position.x += p.velX * dt;
+    p.position.z += p.velZ * dt;
+    p.mesh.position.x = p.position.x;
+    p.mesh.position.z = p.position.z;
+
+    let remove = false;
+    if (p.age > p.lifetime) {
+      remove = true;
+    } else if (isSolidWorld(dungeon, p.position.x, p.position.z)) {
+      remove = true;
+    } else {
+      for (const entity of entities) {
+        if (entity.dead) continue;
+        const dx = entity.position.x - p.position.x;
+        const dz = entity.position.z - p.position.z;
+        const rr = p.radius + entity.radius;
+        if (dx * dx + dz * dz <= rr * rr) {
+          entity.takeDamage(p.damage);
+          remove = true;
+          break;
+        }
       }
     }
 

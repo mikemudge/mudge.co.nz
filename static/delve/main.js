@@ -2,16 +2,22 @@
 // up input, and owns the game loop. Iteration 1 delivered procedural dungeon
 // + 3D rendering + player movement/collision + a fixed follow camera.
 // Iteration 2 added mouse-aim melee combat, player HP/death, enemies
-// (enemies.js), and floor progression via a stairs beacon. Iteration 3 (this
-// one) adds ground loot + a ranged weapon (loot.js, combat.js), armor/
-// consumable effects, an inventory HUD, and a real run-end/restart flow - see
-// `state` below for the fields later iterations should build on.
+// (enemies.js), and floor progression via a stairs beacon. Iteration 3 added
+// ground loot + a ranged weapon (loot.js, combat.js), armor/consumable
+// effects, and an inventory HUD. Iteration 4 (this one) adds persistent
+// meta-progression (progression.js: an Essence currency + permanent perk
+// levels, both saved to localStorage) and a menu screen, turning the loop
+// into menu -> run -> death -> menu (see `state.status` below) instead of
+// booting straight into a run.
 
 import { generateDungeon, buildDungeonMeshes, CELL_SIZE } from './dungeon.js';
 import { Player } from './player.js';
 import { spawnEnemiesForDungeon, updateEnemies } from './enemies.js';
 import { updateEnemyProjectiles, updatePlayerProjectiles } from './combat.js';
 import { spawnLootForDungeon, updateGroundItems, maybeDropLoot } from './loot.js';
+import {
+  loadMeta, saveMeta, computeEssenceReward, applyPerksToPlayer, purchasePerk, getPerkCost, PERKS,
+} from './progression.js';
 import { damp, clamp, distance2D } from './utils.js';
 
 // ---------------------------------------------------------------------------
@@ -72,12 +78,16 @@ let aimHitPoint = null;
 // ---------------------------------------------------------------------------
 
 export const state = {
-  // Simple state-machine field. 'dead' is set once state.player.hp reaches 0
-  // (see the loop below) and freezes simulation updates - rendering keeps
-  // going so the death overlay has the last frame behind it. Later work can
-  // add e.g. 'paused' / 'levelling' without needing to touch how this field
-  // is read elsewhere.
-  status: 'playing',
+  // Simple state-machine field. Boots into 'menu' (see main()) and only
+  // becomes 'playing' once the player clicks "Descend" (see startRun()).
+  // 'dead' is set once state.player.hp reaches 0 (see the loop below) and
+  // freezes simulation updates - rendering keeps going so the death overlay
+  // has the last frame behind it. From 'dead', the death overlay's button
+  // returns to 'menu' (see goToMenu()) rather than straight back into a new
+  // run, so the player can spend what they just earned first. While
+  // status === 'menu', state.player/state.dungeon/etc. below are all null -
+  // see the guards in loop()/updateHud()/updateInventoryHud().
+  status: 'menu',
 
   // three.js plumbing, all in one place.
   three: {
@@ -126,13 +136,20 @@ export const state = {
   // entities - see loot.js for the full shape and pickup resolution.
   groundItems: [],
 
-  // Run-level counters, reset to 0 by restartRun() alongside a fresh Player -
-  // NOT persisted anywhere (no meta-progression this iteration). kills is
+  // Run-level counters, reset to 0 by startRun() alongside a fresh Player -
+  // NOT persisted (see state.meta below for what IS persisted). kills is
   // incremented once per enemy exactly when its death is finalized (see
   // updateEnemies's onDeathFinalized callback below); runTime accumulates
   // dt only while state.status === 'playing'.
   kills: 0,
   runTime: 0,
+
+  // Persistent meta-progression (see progression.js): { essence, perkLevels }
+  // loaded once at startup (see main()) and written back to localStorage
+  // (via saveMeta) any time it changes - a run's Essence reward on death, or
+  // a perk purchase in the menu. Survives across runs AND page reloads;
+  // state.kills/state.runTime above do not.
+  meta: null,
 
   // Current mouse-aim world point (ground-plane raycast, y=0), updated every
   // frame in the loop below. Player facing follows this each frame.
@@ -191,22 +208,39 @@ function buildDom() {
   ui.appendChild(inventoryHud);
 
   // Run-end overlay: hidden until state.status becomes 'dead' (see
-  // showDeathOverlay(), which fills in #delve-death-stats). The restart
-  // button is wired to restartRun() once main() resolves (see the bottom of
-  // this file) - it needs pointer-events re-enabled since #delve-ui as a
-  // whole is pointer-events:none (see delve.css) so it doesn't intercept
-  // mouse-aim.
+  // showDeathOverlay(), which fills in #delve-death-stats). The button
+  // returns to the menu (goToMenu(), wired once main() resolves - see the
+  // bottom of this file) rather than starting a new run directly, so the
+  // player can spend the Essence they just earned first. Needs pointer-events
+  // re-enabled since #delve-ui as a whole is pointer-events:none (see
+  // delve.css) so it doesn't intercept mouse-aim.
   const deathOverlay = document.createElement('div');
   deathOverlay.id = 'delve-death-overlay';
   deathOverlay.innerHTML =
     '<div class="delve-death-panel">' +
       '<h1>You Died</h1>' +
       '<div id="delve-death-stats"></div>' +
-      '<button id="delve-restart-btn" type="button">Play Again</button>' +
+      '<button id="delve-death-continue-btn" type="button">Continue</button>' +
     '</div>';
   ui.appendChild(deathOverlay);
 
-  return { canvas, ui, hud, inventoryHud, deathOverlay };
+  // Menu overlay: shown whenever state.status === 'menu' (initial boot, and
+  // again after every death via goToMenu()) - see showMenuOverlay()/
+  // hideMenuOverlay()/renderMenu() below. #delve-menu-perks is populated
+  // dynamically by renderMenu() rather than built here, since it needs to
+  // re-render after every purchase.
+  const menuOverlay = document.createElement('div');
+  menuOverlay.id = 'delve-menu-overlay';
+  menuOverlay.innerHTML =
+    '<div class="delve-menu-panel">' +
+      '<h1>Delve</h1>' +
+      '<div id="delve-menu-essence"></div>' +
+      '<div id="delve-menu-perks"></div>' +
+      '<button id="delve-start-btn" type="button">Descend</button>' +
+    '</div>';
+  ui.appendChild(menuOverlay);
+
+  return { canvas, ui, hud, inventoryHud, deathOverlay, menuOverlay };
 }
 
 function setupInput(input) {
@@ -366,9 +400,9 @@ function disposeObject3D(object3D) {
 }
 
 // Builds a full floor's contents (dungeon meshes, stairs beacon, enemies,
-// ground loot) and wires them into `state` + `scene`. Shared by main()'s
-// initial load, advanceFloor()'s floor transition, and restartRun()'s full
-// reset so none of the three can drift apart.
+// ground loot) and wires them into `state` + `scene`. Shared by
+// advanceFloor()'s floor transition and startRun()'s fresh-run setup so
+// neither can drift apart.
 function loadFloor(THREE, scene, dungeon, floor) {
   const dungeonGroup = buildDungeonMeshes(dungeon, THREE);
   scene.add(dungeonGroup);
@@ -393,8 +427,9 @@ function loadFloor(THREE, scene, dungeon, floor) {
 // Tears down everything loadFloor() built for the current floor - dungeon
 // meshes, stairs beacon, entities, both projectile lists, and ground loot -
 // disposing GPU resources and removing from `scene`. Shared by advanceFloor()
-// (which then generates and loads the next floor) and restartRun() (which
-// additionally tears down and replaces the player - see below).
+// (which then generates and loads the next floor), startRun() (which tears
+// down a lingering previous run before generating a new floor 1), and
+// goToMenu() (which tears down without loading anything new).
 function teardownFloor() {
   const { scene } = state.three;
 
@@ -427,8 +462,8 @@ function teardownFloor() {
 // Creates a fresh Player at `dungeon.startPos`, adds its mesh to `scene`, and
 // wires it into `state` (including resetting the aim point to the player's
 // own position, matching the "aim point starts where the player stands"
-// no-lerp behavior main() previously did inline). Shared by main()'s initial
-// setup and restartRun()'s full reset.
+// no-lerp behavior). Called by startRun() - NOT perk-aware itself; the caller
+// is responsible for calling applyPerksToPlayer() afterward (see startRun()).
 function spawnFreshPlayer(THREE, scene, dungeon) {
   const player = new Player(THREE, dungeon.startPos);
   scene.add(player.mesh);
@@ -466,20 +501,26 @@ function advanceFloor() {
   floorToastTimer = FLOOR_TOAST_DURATION;
 }
 
-// Fully resets the run: tears down the current floor AND the current player,
-// then rebuilds both from scratch (floor 1, a brand-new Player with default
-// stats/weapon/no bonuses/no potions, run-level counters back to 0). Wired
-// to the death overlay's "Play Again" button (see the bottom of this file).
-function restartRun() {
+// Starts a brand-new run from floor 1: tears down whatever floor/player is
+// still lingering from a previous run (there's nothing to tear down on the
+// very first call, straight from main()'s initial boot - both guards below
+// are no-ops then), generates a fresh dungeon, and spawns a fresh Player with
+// every currently-owned perk level applied (see applyPerksToPlayer in
+// progression.js) - this is what keeps a purchased perk from ever drifting
+// out of sync between the initial boot and a subsequent run. Wired to the
+// menu's "Descend" button (see the bottom of this file).
+function startRun() {
   const { THREE, scene, camera } = state.three;
-  teardownFloor();
-
-  disposeObject3D(state.player.mesh);
-  scene.remove(state.player.mesh);
+  if (state.dungeon) teardownFloor();
+  if (state.player) {
+    disposeObject3D(state.player.mesh);
+    scene.remove(state.player.mesh);
+  }
 
   const dungeon = generateDungeon();
   loadFloor(THREE, scene, dungeon, 1);
-  spawnFreshPlayer(THREE, scene, dungeon);
+  const player = spawnFreshPlayer(THREE, scene, dungeon);
+  applyPerksToPlayer(player, state.meta.perkLevels);
 
   state.kills = 0;
   state.runTime = 0;
@@ -490,15 +531,103 @@ function restartRun() {
     CAMERA_OFFSET.y,
     dungeon.startPos.z + CAMERA_OFFSET.z
   );
+  lookAtTarget.set(dungeon.startPos.x, CAMERA_LOOK_HEIGHT, dungeon.startPos.z);
+  camera.lookAt(lookAtTarget);
+
+  hideMenuOverlay();
+  floorToastTimer = 0;
+}
+
+// Returns to the menu after a run ends: tears down the just-finished floor
+// and player entirely (state.dungeon/state.player go back to null, matching
+// the menu-state contract other code guards on - see loop()/updateHud()/
+// updateInventoryHud()) and shows the (freshly re-rendered, so it reflects
+// the Essence/perks the player just earned/bought) menu overlay. Wired to the
+// death overlay's "Continue" button (see the bottom of this file).
+function goToMenu() {
+  const { scene } = state.three;
+  teardownFloor();
+  disposeObject3D(state.player.mesh);
+  scene.remove(state.player.mesh);
+
+  state.dungeon = null;
+  state.dungeonGroup = null;
+  state.stairsMarker = null;
+  state.entities = [];
+  state.player = null;
+  state.status = 'menu';
+  floorToastTimer = 0;
 
   if (deathOverlayEl) deathOverlayEl.classList.remove('visible');
-  floorToastTimer = 0;
+  showMenuOverlay();
+}
+
+// Populates #delve-menu-essence/#delve-menu-perks from current state.meta.
+// Called on every show (showMenuOverlay) and again after every purchase, so
+// the displayed Essence/level/cost never needs a page reload to catch up -
+// see the "Buy" button handler built below.
+function renderMenu() {
+  if (!menuEssenceEl || !menuPerksEl) return;
+
+  menuEssenceEl.textContent = `Essence: ${state.meta.essence}`;
+
+  menuPerksEl.innerHTML = '';
+  for (const perk of PERKS) {
+    const level = state.meta.perkLevels[perk.id] ?? 0;
+    const maxed = level >= perk.maxLevel;
+
+    const row = document.createElement('div');
+    row.className = 'delve-perk-row';
+
+    const info = document.createElement('div');
+    info.className = 'delve-perk-info';
+    info.innerHTML =
+      `<strong>${perk.name}</strong> <span class="delve-hint">Lv ${level}/${perk.maxLevel}</span><br>` +
+      `<span class="delve-hint">${perk.formatPerLevel()} per level</span>`;
+    row.appendChild(info);
+
+    if (maxed) {
+      const maxedLabel = document.createElement('span');
+      maxedLabel.className = 'delve-perk-maxed';
+      maxedLabel.textContent = 'MAX';
+      row.appendChild(maxedLabel);
+    } else {
+      const cost = getPerkCost(perk, level);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'delve-perk-buy-btn';
+      btn.textContent = `Buy (${cost})`;
+      btn.disabled = state.meta.essence < cost;
+      btn.addEventListener('click', () => {
+        if (purchasePerk(state.meta, perk.id)) {
+          saveMeta(state.meta);
+          renderMenu();
+        }
+      });
+      row.appendChild(btn);
+    }
+
+    menuPerksEl.appendChild(row);
+  }
+}
+
+function showMenuOverlay() {
+  renderMenu();
+  if (menuOverlayEl) menuOverlayEl.classList.add('visible');
+  if (uiEl) uiEl.classList.add('menu-active');
+}
+
+function hideMenuOverlay() {
+  if (menuOverlayEl) menuOverlayEl.classList.remove('visible');
+  if (uiEl) uiEl.classList.remove('menu-active');
 }
 
 let floorToastTimer = 0;
 
 async function main() {
   const { canvas } = buildDom();
+
+  state.meta = loadMeta();
 
   await loadScript('/static/js/three.js/84/three.min.js');
   const THREE = window.THREE;
@@ -523,25 +652,27 @@ async function main() {
   state.three.scene = scene;
   state.three.camera = camera;
 
-  const dungeon = generateDungeon();
-  setupLighting(THREE, scene, dungeon);
-  loadFloor(THREE, scene, dungeon, 1);
-
-  const player = spawnFreshPlayer(THREE, scene, dungeon);
+  // Bootstrapped up front so there's something lit to render behind the menu
+  // overlay, same as always - but NOT loaded into state/scene as a real
+  // floor (no dungeon meshes, no entities, no loot): state.dungeon/
+  // state.player stay null until the player actually clicks "Descend" (see
+  // startRun(), wired to the menu below). Only used to size the shadow
+  // camera/sun in setupLighting and to give the idle menu camera somewhere
+  // sensible to point.
+  const bootDungeon = generateDungeon();
+  setupLighting(THREE, scene, bootDungeon);
 
   lookAtTarget = new THREE.Vector3();
   aimRaycaster = new THREE.Raycaster();
   aimGroundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   aimHitPoint = new THREE.Vector3();
 
-  // Place the camera immediately behind the player on the first frame
-  // instead of lerping in from the origin.
   camera.position.set(
-    player.position.x + CAMERA_OFFSET.x,
+    bootDungeon.startPos.x + CAMERA_OFFSET.x,
     CAMERA_OFFSET.y,
-    player.position.z + CAMERA_OFFSET.z
+    bootDungeon.startPos.z + CAMERA_OFFSET.z
   );
-  lookAtTarget.set(player.position.x, CAMERA_LOOK_HEIGHT, player.position.z);
+  lookAtTarget.set(bootDungeon.startPos.x, CAMERA_LOOK_HEIGHT, bootDungeon.startPos.z);
   camera.lookAt(lookAtTarget);
 
   setupInput(state.input);
@@ -647,15 +778,17 @@ function updateInventoryHud(el) {
     `<div>Potions: ${player.potionCount} <span class="delve-hint">[E]</span></div>`;
 }
 
-// Fills in the run summary and reveals the death overlay - called once, the
-// frame state.player.hp reaches 0 (see the loop below). restartRun() hides
-// it again via the 'visible' class.
-function showDeathOverlay() {
+// Fills in the run summary (including the Essence this run just earned, see
+// the loop below) and reveals the death overlay - called once, the frame
+// state.player.hp reaches 0. goToMenu() hides it again via the 'visible'
+// class.
+function showDeathOverlay(essenceEarned) {
   if (deathStatsEl) {
     deathStatsEl.innerHTML =
       `<p>Floor reached: ${state.floor}</p>` +
       `<p>Enemies defeated: ${state.kills}</p>` +
-      `<p>Time survived: ${formatRunTime(state.runTime)}</p>`;
+      `<p>Time survived: ${formatRunTime(state.runTime)}</p>` +
+      `<p>Essence earned: ${essenceEarned}</p>`;
   }
   if (deathOverlayEl) deathOverlayEl.classList.add('visible');
 }
@@ -665,6 +798,10 @@ let inventoryHudEl = null;
 let hudAccum = 0;
 let deathOverlayEl = null;
 let deathStatsEl = null;
+let uiEl = null;
+let menuOverlayEl = null;
+let menuEssenceEl = null;
+let menuPerksEl = null;
 
 function loop(now) {
   requestAnimationFrame(loop);
@@ -705,7 +842,10 @@ function loop(now) {
 
     if (state.player.hp <= 0) {
       state.status = 'dead';
-      showDeathOverlay();
+      const essenceEarned = computeEssenceReward(state.floor, state.kills);
+      state.meta.essence += essenceEarned;
+      saveMeta(state.meta);
+      showDeathOverlay(essenceEarned);
     } else {
       const distToStairs = distance2D(
         state.player.position.x, state.player.position.z,
@@ -723,20 +863,34 @@ function loop(now) {
   hudAccum += dt;
   if (hudAccum > 0.2) {
     hudAccum = 0;
-    if (hudEl) updateHud(hudEl, dt > 0 ? 1 / dt : 0);
-    if (inventoryHudEl) updateInventoryHud(inventoryHudEl);
+    // state.player is null while status === 'menu' - both HUDs are also
+    // hidden via CSS then (see #delve-ui.menu-active in delve.css), but guard
+    // here too since they'd otherwise throw reading player fields.
+    if (hudEl && state.player) updateHud(hudEl, dt > 0 ? 1 / dt : 0);
+    if (inventoryHudEl && state.player) updateInventoryHud(inventoryHudEl);
   }
 }
 
 // Kick things off. buildDom() runs synchronously up front so #delve-canvas
-// exists immediately; the HUD/overlay element refs and the restart button's
-// click handler are wired up once main() has created them.
+// exists immediately; the HUD/overlay element refs and the menu/death
+// buttons' click handlers are wired up once main() has created them. The
+// menu overlay itself is shown last, once everything above is ready to
+// react to it (renderMenu() reads state.meta, set earlier in main()).
 main().then(() => {
+  uiEl = document.getElementById('delve-ui');
   hudEl = document.getElementById('delve-debug-hud');
   inventoryHudEl = document.getElementById('delve-inventory-hud');
   deathOverlayEl = document.getElementById('delve-death-overlay');
   deathStatsEl = document.getElementById('delve-death-stats');
+  menuOverlayEl = document.getElementById('delve-menu-overlay');
+  menuEssenceEl = document.getElementById('delve-menu-essence');
+  menuPerksEl = document.getElementById('delve-menu-perks');
 
-  const restartBtn = document.getElementById('delve-restart-btn');
-  restartBtn.addEventListener('click', restartRun);
+  const continueBtn = document.getElementById('delve-death-continue-btn');
+  continueBtn.addEventListener('click', goToMenu);
+
+  const startBtn = document.getElementById('delve-start-btn');
+  startBtn.addEventListener('click', startRun);
+
+  showMenuOverlay();
 });

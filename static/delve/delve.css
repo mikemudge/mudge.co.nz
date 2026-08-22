@@ -61,6 +61,14 @@ html, body {
   font-size: 11px;
 }
 
+/* Both in-run HUDs are meaningless while state.status === 'menu' (there's no
+   state.player to read - see main.js's showMenuOverlay()/hideMenuOverlay(),
+   which toggle this class on #delve-ui alongside the menu overlay itself). */
+#delve-ui.menu-active #delve-debug-hud,
+#delve-ui.menu-active #delve-inventory-hud {
+  display: none;
+}
+
 /* Run-end overlay: a summary + "Play Again" restart prompt, replacing
    iteration 2's bare "You Died" message. Hidden until JS adds the .visible
    class (state.status becomes 'dead') - see showDeathOverlay()/restartRun()
@@ -107,7 +115,7 @@ html, body {
   font-size: 16px;
 }
 
-#delve-restart-btn {
+#delve-death-continue-btn {
   margin-top: 22px;
   padding: 10px 30px;
   font-size: 16px;
@@ -119,6 +127,126 @@ html, body {
   cursor: pointer;
 }
 
-#delve-restart-btn:hover {
+#delve-death-continue-btn:hover {
   background: #ff7b7b;
+}
+
+/* Menu overlay: shown whenever state.status === 'menu' - see
+   showMenuOverlay()/hideMenuOverlay()/renderMenu() in main.js. Same
+   overlay/panel pattern as #delve-death-overlay above (full-bleed dim
+   backdrop, pointer-events re-enabled since #delve-ui is pointer-events:none
+   as a whole), styled in a neutral/teal palette instead of death-red so the
+   two overlays read as visually distinct at a glance. */
+#delve-menu-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 10, 12, 0.75);
+  pointer-events: auto;
+}
+
+#delve-menu-overlay.visible {
+  display: flex;
+}
+
+.delve-menu-panel {
+  min-width: 340px;
+  max-width: 420px;
+  padding: 32px 40px;
+  text-align: center;
+  background: rgba(10, 16, 20, 0.92);
+  border: 1px solid rgba(90, 209, 255, 0.4);
+  border-radius: 8px;
+}
+
+.delve-menu-panel h1 {
+  margin: 0 0 10px;
+  color: #5ad1ff;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px rgba(90, 209, 255, 0.5);
+}
+
+#delve-menu-essence {
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffd23f;
+}
+
+#delve-menu-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.delve-perk-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.delve-perk-info .delve-hint {
+  opacity: 0.65;
+  font-size: 11px;
+}
+
+.delve-perk-buy-btn {
+  flex: 0 0 auto;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #06222c;
+  background: #5ad1ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.delve-perk-buy-btn:hover:not(:disabled) {
+  background: #8ae2ff;
+}
+
+.delve-perk-buy-btn:disabled {
+  background: #3a4a50;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.delve-perk-maxed {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: bold;
+  color: #4dff88;
+  letter-spacing: 1px;
+}
+
+#delve-start-btn {
+  padding: 12px 36px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #06222c;
+  background: #5ad1ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#delve-start-btn:hover {
+  background: #8ae2ff;
 }

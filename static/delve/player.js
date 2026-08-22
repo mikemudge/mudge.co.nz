@@ -10,6 +10,7 @@ import { clamp } from './utils.js';
 import {
   createMeleeWeapon, collectMaterials, triggerHitFlash, updateHitFlash, spawnProjectile,
 } from './combat.js';
+import { playSound } from './audio.js';
 
 // Collision radius, in world units. CELL_SIZE is 2, so this comfortably
 // clears corridors (width 2) while still feeling snug in tight spots.
@@ -26,8 +27,14 @@ export const PLAYER_MAX_HP = 100;
 
 // Brief window after being hit during which further damage is ignored -
 // otherwise standing in a crowd (or in a projectile's path) could melt the
-// player's HP within a single frame.
-export const PLAYER_INVULN_DURATION = 0.6;
+// player's HP within a single frame. This is a GLOBAL cooldown on the player
+// (any further hit is ignored, not just further hits from the same
+// attacker), so it's also the real bottleneck on how fast several enemies
+// converging on the player can chain-damage them: worst case is one hit
+// landing roughly every PLAYER_INVULN_DURATION regardless of attacker count.
+// Widened from 0.6 (iteration 4) after playtesting found 2+ aggroed
+// Crawlers could chain-hit faster than felt fair for a floor 1 encounter.
+export const PLAYER_INVULN_DURATION = 0.9;
 
 // How much a single Healing Potion (see loot.js) restores. Lives here
 // (rather than loot.js) since Player.usePotion() is what actually applies it;
@@ -289,6 +296,7 @@ export class Player {
     if (!result.fired) return false;
 
     if (this.weapon.type === 'melee') {
+      playSound('swing');
       this.swingTimer = SWING_VISUAL_DURATION;
       this.swingMesh.visible = true;
       this.swingMesh.material.opacity = SWING_MAX_OPACITY;
@@ -296,6 +304,7 @@ export class Player {
         target.takeDamage(this.getEffectiveDamage());
       }
     } else if (result.projectile) {
+      playSound('shot');
       spawnProjectile(this.THREE, scene, playerProjectiles, {
         x: this.position.x,
         z: this.position.z,
@@ -350,6 +359,7 @@ export class Player {
     if (this.potionCount <= 0) return false;
     this.potionCount--;
     this.hp = Math.min(this.maxHp, this.hp + POTION_HEAL_AMOUNT);
+    playSound('potion');
     return true;
   }
 
@@ -364,6 +374,7 @@ export class Player {
     this.hp = Math.max(0, this.hp - amount);
     this.invulnTimer = PLAYER_INVULN_DURATION;
     triggerHitFlash(this);
+    playSound('hit');
     if (this.hp <= 0) {
       this.dead = true;
     }

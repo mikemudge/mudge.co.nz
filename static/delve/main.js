@@ -19,6 +19,7 @@ import {
   loadMeta, saveMeta, computeEssenceReward, applyPerksToPlayer, purchasePerk, getPerkCost, PERKS,
 } from './progression.js';
 import { damp, clamp, distance2D } from './utils.js';
+import { initAudio, playSound } from './audio.js';
 
 // ---------------------------------------------------------------------------
 // Tunables
@@ -39,6 +40,17 @@ const CAMERA_FOLLOW_RATE = 6;
 const CAMERA_FOV = 50;
 const CAMERA_NEAR = 0.1;
 const CAMERA_FAR = 200;
+
+// Screen shake tunables (see triggerScreenShake()/updateCamera()) - a brief
+// small positional jolt applied on top of the normal follow-cam position.
+// Kept deliberately subtle (well under a world unit) so it reads as impact
+// feedback, not disorientation. Player-hit shake is stronger/longer than the
+// kill shake, since taking damage is the moment that most needs to *feel*
+// like something happened.
+const SHAKE_HIT_INTENSITY = 0.18;
+const SHAKE_HIT_DURATION = 0.22;
+const SHAKE_KILL_INTENSITY = 0.08;
+const SHAKE_KILL_DURATION = 0.12;
 
 // Max dt per frame (seconds) - guards against a huge simulation step after
 // e.g. the tab was backgrounded.
@@ -69,6 +81,23 @@ let lookAtTarget = null;
 let aimRaycaster = null;
 let aimGroundPlane = null;
 let aimHitPoint = null;
+
+// Screen-shake bookkeeping (see triggerScreenShake()/updateCamera()).
+// shakeTimer counts down to 0; shakeDuration is the duration of whichever
+// shake is currently active, used to compute the 1 -> 0 falloff fraction.
+let shakeTimer = 0;
+let shakeDuration = 0;
+let shakeIntensity = 0;
+
+// Requests a brief camera jolt, applied on top of the normal follow-cam
+// position in updateCamera() below. If a shake is already in progress, keeps
+// whichever is stronger/longer rather than resetting to a weaker one (so a
+// hit shake arriving mid-kill-shake, or vice versa, doesn't get cut short).
+function triggerScreenShake(intensity, duration) {
+  shakeIntensity = Math.max(shakeIntensity, intensity);
+  shakeDuration = Math.max(shakeDuration, duration);
+  shakeTimer = Math.max(shakeTimer, duration);
+}
 
 // ---------------------------------------------------------------------------
 // Central game state - the contract later iterations (combat/enemies,
@@ -207,6 +236,20 @@ function buildDom() {
   inventoryHud.id = 'delve-inventory-hud';
   ui.appendChild(inventoryHud);
 
+  // HP bar - a colored fill readable at a glance, alongside (not replacing)
+  // the plain-text "hp: X/Y" line in the debug HUD above. Updated every
+  // frame (see updateHpBar(), called directly from loop() rather than on the
+  // throttled hudAccum cadence the text HUDs use) so a burst of damage reads
+  // immediately rather than a moment later.
+  const hpBar = document.createElement('div');
+  hpBar.id = 'delve-hp-bar';
+  hpBar.innerHTML =
+    '<div id="delve-hp-bar-track">' +
+      '<div id="delve-hp-bar-fill"></div>' +
+      '<div id="delve-hp-bar-label"></div>' +
+    '</div>';
+  ui.appendChild(hpBar);
+
   // Run-end overlay: hidden until state.status becomes 'dead' (see
   // showDeathOverlay(), which fills in #delve-death-stats). The button
   // returns to the menu (goToMenu(), wired once main() resolves - see the
@@ -234,6 +277,10 @@ function buildDom() {
   menuOverlay.innerHTML =
     '<div class="delve-menu-panel">' +
       '<h1>Delve</h1>' +
+      '<p id="delve-menu-hint">' +
+        'Move: <strong>WASD</strong> / Arrows &middot; Aim: <strong>Mouse</strong> &middot; ' +
+        'Attack: <strong>Click</strong> &middot; Potion: <strong>E</strong>' +
+      '</p>' +
       '<div id="delve-menu-essence"></div>' +
       '<div id="delve-menu-perks"></div>' +
       '<button id="delve-start-btn" type="button">Descend</button>' +
@@ -275,8 +322,13 @@ function setupInput(input) {
 
   // Left mouse button gates the melee attack - held is fine, Player.attack()
   // is cooldown-gated internally so this can't spam faster than the weapon
-  // allows.
+  // allows. Also doubles as the audio unlock gesture: browsers block audio
+  // until a user gesture occurs, and this fires on the very first click
+  // anywhere (including the menu's "Descend"/perk buttons, since mousedown
+  // bubbles up to window) - initAudio() is cheap/idempotent to call again on
+  // every subsequent click.
   window.addEventListener('mousedown', (e) => {
+    initAudio();
     if (e.button === 0) input.attack = true;
   });
   window.addEventListener('mouseup', (e) => {
@@ -499,6 +551,7 @@ function advanceFloor() {
   );
 
   floorToastTimer = FLOOR_TOAST_DURATION;
+  playSound('floor');
 }
 
 // Starts a brand-new run from floor 1: tears down whatever floor/player is
@@ -600,6 +653,7 @@ function renderMenu() {
       btn.disabled = state.meta.essence < cost;
       btn.addEventListener('click', () => {
         if (purchasePerk(state.meta, perk.id)) {
+          playSound('perkBuy');
           saveMeta(state.meta);
           renderMenu();
         }
@@ -731,6 +785,16 @@ function updateCamera(dt) {
   camera.position.y = damp(camera.position.y, targetY, CAMERA_FOLLOW_RATE, dt);
   camera.position.z = damp(camera.position.z, targetZ, CAMERA_FOLLOW_RATE, dt);
 
+  if (shakeTimer > 0) {
+    shakeTimer = Math.max(0, shakeTimer - dt);
+    // Linear 1 -> 0 falloff over the shake's duration, so it fades out
+    // rather than cutting off abruptly.
+    const magnitude = shakeIntensity * (shakeTimer / shakeDuration);
+    camera.position.x += (Math.random() * 2 - 1) * magnitude;
+    camera.position.y += (Math.random() * 2 - 1) * magnitude * 0.5;
+    camera.position.z += (Math.random() * 2 - 1) * magnitude;
+  }
+
   lookAtTarget.set(player.position.x, CAMERA_LOOK_HEIGHT, player.position.z);
   camera.lookAt(lookAtTarget);
 }
@@ -778,6 +842,20 @@ function updateInventoryHud(el) {
     `<div>Potions: ${player.potionCount} <span class="delve-hint">[E]</span></div>`;
 }
 
+// Updates the HP bar's fill width/color and numeric label. Color sweeps
+// green (full) -> red (empty) via HSL hue so "am I in danger" reads at a
+// glance without parsing the numbers, per the polish-pass brief. Called
+// every frame from loop() (not throttled like the text HUDs) so it snaps to
+// a hit immediately rather than lagging half a beat behind.
+function updateHpBar() {
+  if (!hpBarFillEl || !hpBarLabelEl) return;
+  const { player } = state;
+  const pct = clamp(player.hp / player.maxHp, 0, 1);
+  hpBarFillEl.style.width = `${pct * 100}%`;
+  hpBarFillEl.style.background = `hsl(${pct * 120}, 85%, 45%)`;
+  hpBarLabelEl.textContent = `${Math.ceil(player.hp)} / ${player.maxHp}`;
+}
+
 // Fills in the run summary (including the Essence this run just earned, see
 // the loop below) and reveals the death overlay - called once, the frame
 // state.player.hp reaches 0. goToMenu() hides it again via the 'visible'
@@ -795,6 +873,8 @@ function showDeathOverlay(essenceEarned) {
 
 let hudEl = null;
 let inventoryHudEl = null;
+let hpBarFillEl = null;
+let hpBarLabelEl = null;
 let hudAccum = 0;
 let deathOverlayEl = null;
 let deathStatsEl = null;
@@ -814,6 +894,13 @@ function loop(now) {
   if (state.status === 'playing') {
     state.runTime += dt;
     updateAimPoint(state.three.camera);
+
+    // Snapshot hp/kills before this frame's updates so a screen-shake trigger
+    // (below) can just diff against the after-values, rather than every
+    // damage/kill call site needing to know about the camera - see
+    // triggerScreenShake().
+    const hpBeforeFrame = state.player.hp;
+    const killsBeforeFrame = state.kills;
 
     const inputDir = computeInputDir(state.input);
     state.player.update(dt, inputDir, state.dungeon, state.aimPoint);
@@ -836,7 +923,17 @@ function loop(now) {
     updateGroundItems(state.groundItems, state.clock.elapsed, state.player, state.three.scene);
 
     updateStairsMarker(state.stairsMarker, state.clock.elapsed);
+
+    // A hit lands as an hp decrease (Player.takeDamage() only ever lowers
+    // hp); a kill lands as state.kills incrementing (bumped by
+    // updateEnemies's onDeathFinalized callback above) - diffing against the
+    // snapshot taken at the top of this block catches either without every
+    // call site needing a camera reference.
+    if (state.player.hp < hpBeforeFrame) triggerScreenShake(SHAKE_HIT_INTENSITY, SHAKE_HIT_DURATION);
+    if (state.kills > killsBeforeFrame) triggerScreenShake(SHAKE_KILL_INTENSITY, SHAKE_KILL_DURATION);
+
     updateCamera(dt);
+    updateHpBar();
 
     if (floorToastTimer > 0) floorToastTimer = Math.max(0, floorToastTimer - dt);
 
@@ -880,6 +977,8 @@ main().then(() => {
   uiEl = document.getElementById('delve-ui');
   hudEl = document.getElementById('delve-debug-hud');
   inventoryHudEl = document.getElementById('delve-inventory-hud');
+  hpBarFillEl = document.getElementById('delve-hp-bar-fill');
+  hpBarLabelEl = document.getElementById('delve-hp-bar-label');
   deathOverlayEl = document.getElementById('delve-death-overlay');
   deathStatsEl = document.getElementById('delve-death-stats');
   menuOverlayEl = document.getElementById('delve-menu-overlay');
@@ -890,7 +989,10 @@ main().then(() => {
   continueBtn.addEventListener('click', goToMenu);
 
   const startBtn = document.getElementById('delve-start-btn');
-  startBtn.addEventListener('click', startRun);
+  startBtn.addEventListener('click', () => {
+    playSound('descend');
+    startRun();
+  });
 
   showMenuOverlay();
 });

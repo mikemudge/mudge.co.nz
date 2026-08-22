@@ -10,6 +10,7 @@
 import { pickSpawnPointInRoom } from './enemies.js';
 import { createRangedWeapon } from './combat.js';
 import { clamp } from './utils.js';
+import { playSound } from './audio.js';
 
 // ---------------------------------------------------------------------------
 // Item categories/kinds
@@ -278,6 +279,7 @@ export function updateGroundItems(list, elapsed, player, scene) {
     const rr = PICKUP_RADIUS + player.radius;
     if (dx * dx + dz * dz <= rr * rr) {
       applyItemPickup(player, item.itemSpec);
+      playSound('pickup');
       disposeGroundItemMesh(item.mesh);
       scene.remove(item.mesh);
       list.splice(i, 1);

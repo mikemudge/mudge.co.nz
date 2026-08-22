@@ -9,6 +9,7 @@ import { resolveMove } from './player.js';
 import { isFloorWorld } from './dungeon.js';
 import { randRange, randInt, clamp } from './utils.js';
 import { collectMaterials, triggerHitFlash, updateHitFlash, spawnProjectile } from './combat.js';
+import { playSound } from './audio.js';
 
 // ---------------------------------------------------------------------------
 // Tunables
@@ -17,25 +18,41 @@ import { collectMaterials, triggerHitFlash, updateHitFlash, spawnProjectile } fr
 export const CRAWLER_BASE_HP = 25;
 export const CRAWLER_RADIUS = 0.4;
 export const CRAWLER_SPEED = 3.2;
-export const CRAWLER_AGGRO_RADIUS = 8;
+// Tightened from 8 (iteration 4): a fresh player in the very first rooms
+// could get simultaneously noticed by Crawlers in adjacent rooms before ever
+// seeing them coming - see the balance-pass note on enemyCountForRoom() below
+// for the spawn-density half of this same fix.
+export const CRAWLER_AGGRO_RADIUS = 7;
 export const CRAWLER_DEAGGRO_RADIUS = 13;
-export const CRAWLER_BASE_CONTACT_DAMAGE = 8;
+// Cut from 8 (iteration 4) - at 8 damage, 2+ Crawlers converging on a fresh
+// 100 hp player could chain-hit (see PLAYER_INVULN_DURATION's comment in
+// player.js) for a rate that felt like an unavoidable hp-melt rather than a
+// dodgeable threat on floor 1.
+export const CRAWLER_BASE_CONTACT_DAMAGE = 6;
 // Per-target cooldown before a Crawler can deal contact damage again - so
-// standing inside a Crawler doesn't melt hp every single frame.
-export const CRAWLER_CONTACT_COOLDOWN = 0.8;
+// standing inside a Crawler doesn't melt hp every single frame. Raised from
+// 0.8 to sit just above PLAYER_INVULN_DURATION (0.9, see player.js), so a
+// lone Crawler's own cooldown - not just the player's shared invuln window -
+// is what caps its sustained damage rate at roughly 1 hit/second.
+export const CRAWLER_CONTACT_COOLDOWN = 1.0;
 
 export const SPITTER_BASE_HP = 16;
 export const SPITTER_RADIUS = 0.4;
 export const SPITTER_SPEED = 2.2;
-export const SPITTER_AGGRO_RADIUS = 11;
-export const SPITTER_DEAGGRO_RADIUS = 16;
+// Reduced from 11/16 (iteration 4, same ~1.45x aggro/deaggro ratio kept) -
+// a Spitter noticing the player from far off let ranged pressure open up a
+// second front while a Crawler was already engaging in melee.
+export const SPITTER_AGGRO_RADIUS = 9;
+export const SPITTER_DEAGGRO_RADIUS = 14;
 // Spitter tries to stay within this band of the player: backs away if
 // closer than the min, closes in if farther than the max.
 export const SPITTER_PREFERRED_MIN = 4.5;
 export const SPITTER_PREFERRED_MAX = 8;
 export const SPITTER_FIRE_COOLDOWN = 2.2;
 export const SPITTER_PROJECTILE_SPEED = 4.5;
-export const SPITTER_BASE_PROJECTILE_DAMAGE = 10;
+// Cut from 10 (iteration 4) to sit at/below Crawler contact damage rather
+// than above it, so ranged hits don't spike burst damage higher than melee.
+export const SPITTER_BASE_PROJECTILE_DAMAGE = 8;
 export const SPITTER_PROJECTILE_RADIUS = 0.22;
 export const SPITTER_PROJECTILE_LIFETIME = 6;
 
@@ -130,6 +147,9 @@ class EnemyBase {
     if (this.hp <= 0) {
       this.hp = 0;
       this.startDeath();
+      playSound('enemyDeath');
+    } else {
+      playSound('hit');
     }
   }
 
@@ -364,7 +384,17 @@ export function pickSpawnPointInRoom(dungeon, room) {
 function enemyCountForRoom(depth, floor) {
   const base = Math.floor(depth / 2) + Math.floor((floor - 1) / 2);
   const roll = randInt(Math.random, 0, 1);
-  return clamp(base + roll, 0, MAX_ENEMIES_PER_ROOM);
+  const count = clamp(base + roll, 0, MAX_ENEMIES_PER_ROOM);
+
+  // Balance pass: playtesting found a fresh, un-perked player could already
+  // face 2 enemies (able to converge and chain-hit - see
+  // PLAYER_INVULN_DURATION in player.js) in a room just one or two steps
+  // from the start, before finding any loot or perks. Floor 1's first couple
+  // of rooms specifically are capped at 1 enemy so the earliest encounters
+  // stay a fair introduction rather than an immediate pile-on; depth 3+ rooms
+  // (and every room on floor 2+) are untouched.
+  if (floor === 1 && depth <= 2) return Math.min(count, 1);
+  return count;
 }
 
 function statScaleForRoom(depth, floor) {

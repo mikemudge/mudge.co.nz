@@ -40,3 +40,27 @@ html, body {
   line-height: 1.5;
   white-space: pre;
 }
+
+/* Placeholder death screen for this iteration - a plain full-screen message,
+   no restart/run-summary yet (that's a later iteration). Hidden until JS
+   adds the .visible class (state.status becomes 'dead'). */
+#delve-death-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 0, 4, 0.55);
+  color: #ff5252;
+  font-size: 64px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+#delve-death-overlay.visible {
+  display: flex;
+}

@@ -231,6 +231,11 @@ p5_apps['citytd'] = {
     'path': 'p5_test/citytd',
     'status': 'wip',
 }
+p5_apps['delve'] = {
+    'img': 'delve.png',
+    'title': 'Delve',
+    'path': 'delve/main',
+}
 
 def gmaps():
     # loading=async + callback lets the browser load this off the main

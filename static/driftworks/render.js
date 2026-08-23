@@ -6,6 +6,7 @@
 // only draws the canvas world: water, land, eroding tiles, resource nodes,
 // buildings (via each building's own documented `draw()`), the placement
 // ghost, and the particle layer.
+import { getSourceResourceKinds } from './items.js';
 
 // --- Shared constants -------------------------------------------------------
 // items.js/grid.js/simulation.js (Agent 1) are not written yet and utils.js's
@@ -77,11 +78,117 @@ function tileHash(x, y) {
   return n - Math.floor(n);
 }
 
-const RESOURCE_COLORS = {
+export const RESOURCE_COLORS = {
   ore: '#b08a5a',
   crystal: '#a06bd6',
   organic: '#6fcf6a',
 };
+
+// --- Resource node iconography -------------------------------------------
+// Small canvas-primitive glyphs distinguishing the three raw resource kinds
+// at a glance, on top of a soft backing disc. Drawn in local (cx, cy)
+// coordinates scaled by `r` so the same functions work for both the small
+// map nodes (render below) and the tiny legend swatches (ui.js, via
+// drawResourceKindIcon) at whatever pixel size they're given.
+function drawOreIcon(ctx, cx, cy, r, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  // Angular, faceted rock silhouette.
+  ctx.beginPath();
+  const pts = [
+    [0, -r], [r * 0.85, -r * 0.25], [r * 0.6, r * 0.85],
+    [-r * 0.5, r * 0.9], [-r * 0.95, r * 0.05], [-r * 0.4, -r * 0.75],
+  ];
+  pts.forEach(([px, py], i) => (i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py)));
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(30, 20, 10, 0.6)';
+  ctx.lineWidth = Math.max(1, r * 0.12);
+  ctx.stroke();
+  // Single facet highlight line for an angular, faceted look.
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+  ctx.lineWidth = Math.max(1, r * 0.08);
+  ctx.beginPath();
+  ctx.moveTo(0, -r * 0.9);
+  ctx.lineTo(-r * 0.2, r * 0.3);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawCrystalIcon(ctx, cx, cy, r, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  // Faceted gem outline (diamond).
+  ctx.beginPath();
+  ctx.moveTo(0, -r);
+  ctx.lineTo(r * 0.7, 0);
+  ctx.lineTo(0, r);
+  ctx.lineTo(-r * 0.7, 0);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.globalAlpha = 0.75;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.lineWidth = Math.max(1, r * 0.12);
+  ctx.stroke();
+  // Gem-sparkle highlight line down the middle.
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+  ctx.lineWidth = Math.max(1, r * 0.08);
+  ctx.beginPath();
+  ctx.moveTo(0, -r * 0.6);
+  ctx.lineTo(0, r * 0.5);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawOrganicIcon(ctx, cx, cy, r, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(-Math.PI / 5);
+  // Leaf/sprout shape - two mirrored curves meeting at a point top and bottom.
+  ctx.beginPath();
+  ctx.moveTo(0, r);
+  ctx.quadraticCurveTo(r * 0.9, r * 0.3, 0, -r);
+  ctx.quadraticCurveTo(-r * 0.9, r * 0.3, 0, r);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.globalAlpha = 0.85;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = 'rgba(20, 50, 10, 0.6)';
+  ctx.lineWidth = Math.max(1, r * 0.1);
+  ctx.stroke();
+  // Center vein.
+  ctx.beginPath();
+  ctx.moveTo(0, r * 0.85);
+  ctx.lineTo(0, -r * 0.85);
+  ctx.stroke();
+  ctx.restore();
+}
+
+const RESOURCE_ICON_DRAWERS = {
+  ore: drawOreIcon,
+  crystal: drawCrystalIcon,
+  organic: drawOrganicIcon,
+};
+
+// Shared entry point so ui.js's legend can render the exact same glyphs
+// (into a small <canvas>) that the map nodes use below, at whatever radius
+// fits its swatch.
+export function drawResourceKindIcon(ctx, kind, cx, cy, r) {
+  const color = RESOURCE_COLORS[kind] || '#ffffff';
+  const draw = RESOURCE_ICON_DRAWERS[kind];
+  if (draw) {
+    draw(ctx, cx, cy, r, color);
+  } else {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
 
 function getTileMap(snapshot) {
   // Tile[][] indexing order isn't specified by the contract (row-major by x
@@ -153,20 +260,36 @@ function drawErosionOverlay(ctx, sx, sy, size, erosion, time) {
   ctx.stroke();
 }
 
-function drawResourceNode(ctx, sx, sy, size, resource) {
-  const color = RESOURCE_COLORS[resource.kind] || '#ffffff';
-  const cx = sx + size / 2;
-  const cy = sy + size / 2;
-  const r = size * (0.12 + resource.richness * 0.05);
-  ctx.fillStyle = color;
-  ctx.globalAlpha = 0.85;
+// Pulsing ring (sine-driven, same style as the erosion countdown pulse
+// above) drawn around resource nodes whose kind is needed - even
+// transitively - for the current quota, so a new player can see at a glance
+// which glowing tiles to extract from.
+function drawResourceHighlightRing(ctx, cx, cy, size, time) {
+  const pulse = 0.5 + 0.5 * Math.sin(time * 3.2);
+  const r = size * 0.44;
+  ctx.save();
+  ctx.strokeStyle = `rgba(255, 240, 140, ${0.35 + pulse * 0.45})`;
+  ctx.lineWidth = Math.max(2, size * (0.04 + pulse * 0.02));
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.globalAlpha = 1;
-  ctx.strokeStyle = 'rgba(0,0,0,0.35)';
-  ctx.lineWidth = 1.5;
   ctx.stroke();
+  ctx.restore();
+}
+
+function drawResourceNode(ctx, sx, sy, size, resource, highlighted, time) {
+  const cx = sx + size / 2;
+  const cy = sy + size / 2;
+  const r = size * (0.16 + resource.richness * 0.05);
+
+  // Soft backing disc so the icon reads clearly against the land tile.
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 1.3, 0, Math.PI * 2);
+  ctx.fill();
+
+  drawResourceKindIcon(ctx, resource.kind, cx, cy, r);
+
+  if (highlighted) drawResourceHighlightRing(ctx, cx, cy, size, time);
 }
 
 // Seawall protection is a pure derived visual here (own tile + 4-neighbors,
@@ -208,6 +331,11 @@ export function drawWorld(ctx, canvas, camera, snapshot, view) {
   const [minX, minY, maxX, maxY] = visibleGridRange(camera, canvas);
   const time = view.time || 0;
 
+  // Which raw kinds are needed - even transitively, e.g. Metal needs ore -
+  // for the currently active quota, so their nodes can pulse on the map.
+  const quotaItem = snapshot.economy?.currentQuota?.item;
+  const quotaKinds = quotaItem ? getSourceResourceKinds(quotaItem) : null;
+
   for (let gy = minY; gy <= maxY; gy++) {
     for (let gx = minX; gx <= maxX; gx++) {
       const tile = tileMap.get(`${gx},${gy}`);
@@ -217,7 +345,10 @@ export function drawWorld(ctx, canvas, camera, snapshot, view) {
         continue;
       }
       drawLandTile(ctx, sx, sy, size, gx, gy);
-      if (tile.resource) drawResourceNode(ctx, sx, sy, size, tile.resource);
+      if (tile.resource) {
+        const highlighted = !!(quotaKinds && quotaKinds.has(tile.resource.kind));
+        drawResourceNode(ctx, sx, sy, size, tile.resource, highlighted, time);
+      }
       if (tile.erosion && tile.erosion.cracking) drawErosionOverlay(ctx, sx, sy, size, tile.erosion, time);
     }
   }

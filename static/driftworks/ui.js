@@ -9,8 +9,16 @@
 // space passes clicks through to the canvas underneath for pan/zoom/build;
 // individual panels/buttons opt back in with `pointer-events: auto`.
 import { BUILDING_DEFS } from './buildings.js';
-import { ITEMS, TECH_TREE } from './items.js';
+import { ITEMS, TECH_TREE, RESOURCE_NODE_YIELDS } from './items.js';
 import { BULLDOZE_TOOL } from './input.js';
+import { drawResourceKindIcon } from './render.js';
+
+const HOW_TO_PLAY_STEPS = [
+  'Place an Extractor on a glowing resource tile (glowing = needed for your current quota).',
+  'Lay Conveyors to route it to a Dock — fulfilling quotas earns Tech Points.',
+  'Metal runs out fast: route ore through a Processor into a Storage Silo to keep your stockpile topped up for bigger builds.',
+  'Watch the edges — cracked tiles will crumble unless you build a Seawall nearby.',
+];
 
 function fmtTime(seconds) {
   const s = Math.max(0, Math.ceil(seconds));
@@ -45,6 +53,7 @@ export class UI {
     this._buildHud();
     this._buildPause();
     this._buildGameOver();
+    this._buildHowToPlay();
 
     this.setStatus('start');
   }
@@ -94,12 +103,18 @@ export class UI {
     const top = el('div', 'dw-topbar');
 
     const quotaBox = el('div', 'dw-quota');
+    const quotaLabelRow = el('div', 'dw-quota-label-row');
+    this.quotaIcon = el('span', 'dw-quota-icon');
+    this.quotaIcon.hidden = true;
     this.quotaLabel = el('div', 'dw-quota-label', 'Quota: —');
+    quotaLabelRow.append(this.quotaIcon, this.quotaLabel);
     const track = el('div', 'dw-bar-track');
     this.quotaBarFill = el('div', 'dw-bar-fill dw-bar-quota');
     track.appendChild(this.quotaBarFill);
     this.quotaTimeLabel = el('div', 'dw-quota-time', '');
-    quotaBox.append(this.quotaLabel, track, this.quotaTimeLabel);
+    this.hintLine = el('div', 'dw-hint-line', '');
+    this.hintLine.hidden = true;
+    quotaBox.append(quotaLabelRow, track, this.quotaTimeLabel, this.hintLine);
     top.appendChild(quotaBox);
 
     const stats = el('div', 'dw-stats');
@@ -113,11 +128,17 @@ export class UI {
     techToggleBtn.addEventListener('click', () => this._toggleTechPanel());
     top.appendChild(techToggleBtn);
 
+    const howToPlayBtn = el('button', 'dw-btn dw-howto-btn', '?');
+    howToPlayBtn.title = 'How to Play';
+    howToPlayBtn.addEventListener('click', () => this.showHowToPlay());
+    top.appendChild(howToPlayBtn);
+
     const pauseBtn = el('button', 'dw-btn dw-pause-btn', 'Pause');
     pauseBtn.addEventListener('click', () => this.callbacks.onPause?.());
     top.appendChild(pauseBtn);
 
     hud.appendChild(top);
+    hud.appendChild(this._buildLegend());
     hud.appendChild(this._buildPalette());
 
     const stockpile = el('div', 'dw-stockpile');
@@ -130,6 +151,26 @@ export class UI {
 
     this.root.appendChild(hud);
     this.hud = hud;
+  }
+
+  // Always-visible legend mapping each raw resource kind's map icon+color to
+  // its name, drawn with the exact same canvas glyphs the map nodes use
+  // (render.js's drawResourceKindIcon) so the two stay visually consistent.
+  _buildLegend() {
+    const legend = el('div', 'dw-legend');
+    for (const kind of Object.keys(RESOURCE_NODE_YIELDS)) {
+      const row = el('div', 'dw-legend-row');
+      const canvas = document.createElement('canvas');
+      canvas.className = 'dw-legend-icon';
+      canvas.width = 36;
+      canvas.height = 36;
+      const iconCtx = canvas.getContext('2d');
+      drawResourceKindIcon(iconCtx, kind, 18, 18, 14);
+      row.appendChild(canvas);
+      row.appendChild(el('span', 'dw-legend-name', kind[0].toUpperCase() + kind.slice(1)));
+      legend.appendChild(row);
+    }
+    return legend;
   }
 
   _buildPalette() {
@@ -239,6 +280,35 @@ export class UI {
     this.finalBestEl.classList.toggle('dw-new-best', !!isNewBest);
   }
 
+  // --- How to Play overlay ---------------------------------------------
+  // A dismissible overlay reachable at any time via the "?" HUD button.
+  // Whether it also auto-opens on a player's first-ever Play click is
+  // decided by the caller (main.js, which owns the localStorage gate) -
+  // this class just knows how to show/hide the panel itself.
+  _buildHowToPlay() {
+    const s = el('div', 'dw-howto');
+    s.hidden = true;
+    const card = el('div', 'dw-howto-card');
+    card.appendChild(el('h2', null, 'How to Play'));
+    const list = el('ol', 'dw-howto-list');
+    for (const step of HOW_TO_PLAY_STEPS) list.appendChild(el('li', null, step));
+    card.appendChild(list);
+    const closeBtn = el('button', 'dw-btn dw-btn-primary dw-howto-close', 'Got it');
+    closeBtn.addEventListener('click', () => this.hideHowToPlay());
+    card.appendChild(closeBtn);
+    s.appendChild(card);
+    this.root.appendChild(s);
+    this.howToPlayScreen = s;
+  }
+
+  showHowToPlay() {
+    this.howToPlayScreen.hidden = false;
+  }
+
+  hideHowToPlay() {
+    this.howToPlayScreen.hidden = true;
+  }
+
   // --- Per-frame refresh -----------------------------------------------
   // Reads only the documented Economy fields (stockpile, techPoints,
   // unlockedTech, currentQuota, quotaTimer, strikes); a quota's per-item
@@ -252,12 +322,15 @@ export class UI {
       const delivered = quota.delivered ?? quota.progress ?? quota.deliveredQty ?? 0;
       const pct = quota.qty ? Math.min(1, delivered / quota.qty) : 0;
       const itemName = ITEMS[quota.item]?.name ?? quota.item;
+      this.quotaIcon.style.background = ITEMS[quota.item]?.color ?? '#888';
+      this.quotaIcon.hidden = false;
       this.quotaLabel.textContent = `Quota: ${delivered}/${quota.qty} ${itemName}`;
       this.quotaBarFill.style.width = `${Math.round(pct * 100)}%`;
       const timeLeft = Math.max(0, (quota.deadline ?? 0) - (economy.quotaTimer ?? 0));
       this.quotaTimeLabel.textContent = `${fmtTime(timeLeft)} left`;
       this.quotaTimeLabel.classList.toggle('dw-urgent', timeLeft < 10);
     } else {
+      this.quotaIcon.hidden = true;
       this.quotaLabel.textContent = 'No active quota';
       this.quotaBarFill.style.width = '0%';
       this.quotaTimeLabel.textContent = '';
@@ -268,7 +341,36 @@ export class UI {
     this.techPointsEl.textContent = `Tech: ${economy.techPoints ?? 0}`;
 
     this._updateStockpile(economy.stockpile || {});
+    this._updateHint(snapshot);
     if (!this.techPanel.hidden) this._updateTechRows(economy);
+  }
+
+  // --- Contextual hint line -------------------------------------------
+  // Low-noise onboarding nudge derived purely from snapshot state already
+  // read elsewhere (buildings list, stockpile) - hidden once the player
+  // clearly has things moving so an experienced-looking factory isn't
+  // nagged.
+  _updateHint(snapshot) {
+    const buildings = snapshot.buildings || [];
+    const stockpile = (snapshot.economy || {}).stockpile || {};
+    let text = '';
+    if (buildings.length === 0) {
+      text = 'Place an Extractor on a glowing tile to start production.';
+    } else if (!buildings.some((b) => b.type === 'dock')) {
+      text = 'Place a Dock, then connect it with Conveyors.';
+    } else {
+      const metal = stockpile.metal ?? 0;
+      const hasProcessor = buildings.some((b) => b.type === 'processor');
+      const hasSilo = buildings.some((b) => b.type === 'silo');
+      if (metal < 10 && !hasProcessor && !hasSilo) {
+        // Kept short (fits one line even on a narrow phone topbar) so it
+        // doesn't grow the HUD's topbar and disturb the mobile layout fix
+        // in the @media (max-width: 720px) block below.
+        text = 'Metal runs low — route ore through a Processor into a Silo.';
+      }
+    }
+    this.hintLine.textContent = text;
+    this.hintLine.hidden = !text;
   }
 
   _updateStockpile(stockpile) {

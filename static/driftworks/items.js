@@ -205,3 +205,26 @@ export function generateQuota(waveNumber) {
     rewardStockpile,
   };
 }
+
+// Pure lookup: which raw resource kind(s) (RESOURCE_NODE_YIELDS keys, i.e.
+// 'ore'/'crystal'/'organic') does `itemId` ultimately trace back to? Raw
+// items resolve to their own single kind; a processed/assembled item
+// recurses through every RECIPES entry that can produce it and every input
+// of each such recipe, unioning results (an assembler recipe has two input
+// items which may trace back to different raw kinds, and some outputs - e.g.
+// 'metal', 'gel' - are produced by more than one recipe).
+export function getSourceResourceKinds(itemId) {
+  const ownKind = Object.keys(RESOURCE_NODE_YIELDS).find(
+    (kind) => RESOURCE_NODE_YIELDS[kind] === itemId,
+  );
+  if (ownKind) return new Set([ownKind]);
+
+  const kinds = new Set();
+  for (const recipe of Object.values(RECIPES)) {
+    if (!recipe.outputs.some((out) => out.item === itemId)) continue;
+    for (const input of recipe.inputs) {
+      for (const kind of getSourceResourceKinds(input.item)) kinds.add(kind);
+    }
+  }
+  return kinds;
+}

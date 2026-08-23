@@ -86,6 +86,103 @@ function itemColor(itemId) {
   return (ITEMS[itemId] && ITEMS[itemId].color) || '#cccccc';
 }
 
+// --- Shared draw helpers -----------------------------------------------------
+// Small building-agnostic pieces reused across draw() methods below so
+// buildings stay legible at a glance — and consistent with each other —
+// even at small zoomed-out tile sizes.
+
+// Soft dark ellipse under a building's footprint for contrast against grass.
+function drawGroundShadow(ctx2d, cx, cy, radiusX, radiusY) {
+  ctx2d.save();
+  ctx2d.fillStyle = 'rgba(8, 14, 10, 0.32)';
+  ctx2d.beginPath();
+  ctx2d.ellipse(cx, cy + radiusY * 0.15, radiusX, radiusY, 0, 0, Math.PI * 2);
+  ctx2d.fill();
+  ctx2d.restore();
+}
+
+// A solid signpost-style arrow, drawn pointing "up" in local space and then
+// rotated to face `dir` (0=up/1=right/2=down/3=left, same convention as
+// `rotation`/DIR_VECTORS above). Used as a static output-direction
+// indicator on extractor/belt/splitter/merger so flow direction reads at a
+// glance even while idle/empty, before anything has moved yet.
+function drawOutputChevron(ctx2d, cx, cy, size, dir, color, alpha = 1, outline = 'rgba(15,18,22,0.8)') {
+  ctx2d.save();
+  ctx2d.globalAlpha = alpha;
+  ctx2d.translate(cx, cy);
+  ctx2d.rotate((dir * Math.PI) / 2);
+  ctx2d.beginPath();
+  ctx2d.moveTo(0, -size * 0.55);
+  ctx2d.lineTo(size * 0.42, size * 0.05);
+  ctx2d.lineTo(size * 0.16, size * 0.05);
+  ctx2d.lineTo(size * 0.16, size * 0.5);
+  ctx2d.lineTo(-size * 0.16, size * 0.5);
+  ctx2d.lineTo(-size * 0.16, size * 0.05);
+  ctx2d.lineTo(-size * 0.42, size * 0.05);
+  ctx2d.closePath();
+  ctx2d.fillStyle = color;
+  ctx2d.fill();
+  if (outline) {
+    ctx2d.lineWidth = Math.max(1, size * 0.08);
+    ctx2d.strokeStyle = outline;
+    ctx2d.stroke();
+  }
+  ctx2d.restore();
+}
+
+// Small corner pip marking a building instance as an upgraded tier (tier >
+// 0 — e.g. the assembler/reclaimer, or a belt bumped to a faster tier via
+// tech). Purely cosmetic: `this.tier` / BUILDING_DEFS.tier remain the only
+// source of truth for gating and speed, this just reflects that value.
+function drawTierPip(ctx2d, screenX, screenY, tileSizePx, tier) {
+  if (!tier) return;
+  const r = tileSizePx * (0.08 + Math.min(tier, 2) * 0.02);
+  const bx = screenX + tileSizePx - r * 1.5;
+  const by = screenY + r * 1.5;
+  ctx2d.save();
+  ctx2d.fillStyle = tier >= 2 ? '#ffe066' : '#8be06a';
+  ctx2d.beginPath();
+  ctx2d.arc(bx, by, r, 0, Math.PI * 2);
+  ctx2d.fill();
+  ctx2d.strokeStyle = 'rgba(18,22,26,0.85)';
+  ctx2d.lineWidth = Math.max(1, tileSizePx * 0.018);
+  ctx2d.stroke();
+  ctx2d.restore();
+}
+
+// Ring showing craft progress (0..1) around a processor/assembler. draw()
+// has no wall-clock time source available — render.js's drawWorld() calls
+// `building.draw(ctx, sx, sy, size, camera)`, but `camera` is just
+// `{x, y, zoom}` (see render.js worldToScreen/tilePx), not a clock — so
+// rather than a true animation this renders as a static arc reflecting
+// whatever fraction of `recipe.time` the instance has already spent on
+// `craftTimer`, which IS available on the instance.
+function drawCraftProgressRing(ctx2d, cx, cy, radius, progress, color) {
+  ctx2d.save();
+  ctx2d.strokeStyle = 'rgba(255,255,255,0.22)';
+  ctx2d.lineWidth = Math.max(1.5, radius * 0.24);
+  ctx2d.beginPath();
+  ctx2d.arc(cx, cy, radius, 0, Math.PI * 2);
+  ctx2d.stroke();
+  ctx2d.strokeStyle = color;
+  ctx2d.lineCap = 'round';
+  ctx2d.beginPath();
+  ctx2d.arc(cx, cy, radius, -Math.PI / 2, -Math.PI / 2 + Math.max(0.02, progress) * Math.PI * 2);
+  ctx2d.stroke();
+  ctx2d.restore();
+}
+
+// Which item's color to surface as a quick "what am I working on" swatch:
+// the recipe currently being crafted if one is running, otherwise whatever
+// item is sitting in the input buffer waiting for a recipe to unlock.
+function activeCraftSwatchItem(instance) {
+  if (instance.craftingRecipe) return instance.craftingRecipe.outputs[0].item;
+  for (const id of Object.keys(instance.inputBuffers)) {
+    if (instance.inputBuffers[id] > 0) return id;
+  }
+  return null;
+}
+
 // Attempts to push an item onto whatever building sits at `dir` from
 // (x, y). Returns true if the neighbor accepted it.
 function pushForward(ctx, dir, itemId) {
@@ -129,32 +226,42 @@ function createExtractor(x, y, rotation) {
       const cx = screenX + tileSizePx / 2;
       const cy = screenY + tileSizePx / 2;
       const pad = tileSizePx * 0.12;
+      drawGroundShadow(ctx2d, cx, cy, tileSizePx * 0.4, tileSizePx * 0.16);
       // Base pylon.
-      ctx2d.fillStyle = '#5a6470';
+      ctx2d.fillStyle = '#69768a';
       ctx2d.fillRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
-      ctx2d.strokeStyle = '#2c333b';
-      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
+      ctx2d.strokeStyle = '#20252c';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.035);
       ctx2d.strokeRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
-      // Drill bit pointing in the output direction.
+      // Drill bit doubles as a static output-direction chevron, pointing
+      // toward the rotation the extractor feeds items into — visible even
+      // while idle/empty, before anything has been produced yet.
       ctx2d.save();
       ctx2d.translate(cx, cy);
       ctx2d.rotate((this.rotation * Math.PI) / 2);
-      ctx2d.fillStyle = '#e8b23d';
-      const r = tileSizePx * 0.22;
+      ctx2d.fillStyle = '#ffcf5c';
+      ctx2d.strokeStyle = '#20252c';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.025);
+      const r = tileSizePx * 0.24;
       ctx2d.beginPath();
       ctx2d.moveTo(0, -r * 1.6);
-      ctx2d.lineTo(r * 0.8, r * 0.6);
-      ctx2d.lineTo(-r * 0.8, r * 0.6);
+      ctx2d.lineTo(r * 0.85, r * 0.6);
+      ctx2d.lineTo(-r * 0.85, r * 0.6);
       ctx2d.closePath();
       ctx2d.fill();
+      ctx2d.stroke();
       ctx2d.restore();
       // Held output item indicator.
       if (this.outputItem) {
         ctx2d.fillStyle = itemColor(this.outputItem);
         ctx2d.beginPath();
-        ctx2d.arc(cx, cy, tileSizePx * 0.09, 0, Math.PI * 2);
+        ctx2d.arc(cx, cy, tileSizePx * 0.1, 0, Math.PI * 2);
         ctx2d.fill();
+        ctx2d.strokeStyle = 'rgba(15,18,22,0.85)';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.02);
+        ctx2d.stroke();
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -206,33 +313,41 @@ function createBelt(x, y, rotation) {
     },
     draw(ctx2d, screenX, screenY, tileSizePx) {
       const pad = tileSizePx * 0.1;
-      ctx2d.fillStyle = '#3d4550';
+      const hasItems = this.items.length > 0;
+      // Lane body gets brighter/greener per tier so an upgraded (faster)
+      // belt reads differently from a base one at a glance.
+      const laneColors = ['#454e59', '#4c6a56', '#5c7a4a'];
+      ctx2d.fillStyle = laneColors[this.tier] || laneColors[0];
       ctx2d.fillRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
-      // Direction arrow.
-      ctx2d.save();
-      ctx2d.translate(screenX + tileSizePx / 2, screenY + tileSizePx / 2);
-      ctx2d.rotate((this.rotation * Math.PI) / 2);
-      ctx2d.strokeStyle = '#8fa0b3';
-      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.05);
-      const half = tileSizePx * 0.22;
-      ctx2d.beginPath();
-      ctx2d.moveTo(0, -half);
-      ctx2d.lineTo(0, half);
-      ctx2d.moveTo(-half * 0.5, half * 0.3);
-      ctx2d.lineTo(0, half);
-      ctx2d.lineTo(half * 0.5, half * 0.3);
-      ctx2d.stroke();
-      ctx2d.restore();
+      ctx2d.strokeStyle = '#1c2126';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.02);
+      ctx2d.strokeRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
+      // Static direction arrow: full strength while idle so route planning
+      // reads clearly before anything is flowing; dimmed (never hidden)
+      // once items are riding the belt so it doesn't fight with them.
+      drawOutputChevron(
+        ctx2d,
+        screenX + tileSizePx / 2,
+        screenY + tileSizePx / 2,
+        tileSizePx * 0.62,
+        this.rotation,
+        '#dce6f0',
+        hasItems ? 0.45 : 0.9
+      );
       // Items riding the belt, positioned along the travel direction.
       const { dx, dy } = forwardVector(this.rotation);
       for (const item of this.items) {
         const t = Math.min(item.progress, 1);
         const ix = screenX + tileSizePx / 2 + dx * (t - 0.5) * tileSizePx;
         const iy = screenY + tileSizePx / 2 + dy * (t - 0.5) * tileSizePx;
+        const s = tileSizePx * 0.18;
         ctx2d.fillStyle = itemColor(item.itemId);
-        const s = tileSizePx * 0.16;
         ctx2d.fillRect(ix - s / 2, iy - s / 2, s, s);
+        ctx2d.strokeStyle = 'rgba(15,18,22,0.85)';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.018);
+        ctx2d.strokeRect(ix - s / 2, iy - s / 2, s, s);
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -271,25 +386,30 @@ function createSplitter(x, y, rotation) {
     draw(ctx2d, screenX, screenY, tileSizePx) {
       const cx = screenX + tileSizePx / 2;
       const cy = screenY + tileSizePx / 2;
-      ctx2d.fillStyle = '#4a5568';
+      drawGroundShadow(ctx2d, cx, cy, tileSizePx * 0.42, tileSizePx * 0.2);
+      ctx2d.fillStyle = '#525d70';
       ctx2d.beginPath();
       ctx2d.arc(cx, cy, tileSizePx * 0.4, 0, Math.PI * 2);
       ctx2d.fill();
-      ctx2d.strokeStyle = '#e2e8f0';
-      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.04);
+      ctx2d.strokeStyle = '#1c2126';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
+      ctx2d.stroke();
+      // Static output chevrons — clear even before the splitter has ever
+      // fired, and both sides are shown at once (unlike the merger, a
+      // splitter always feeds both outputs in alternation).
       for (const dir of this.outputs) {
-        const { dx, dy } = forwardVector(dir);
-        ctx2d.beginPath();
-        ctx2d.moveTo(cx, cy);
-        ctx2d.lineTo(cx + dx * tileSizePx * 0.4, cy + dy * tileSizePx * 0.4);
-        ctx2d.stroke();
+        drawOutputChevron(ctx2d, cx, cy, tileSizePx * 0.62, dir, '#e2e8f0', 0.9);
       }
       if (this.buffer) {
         ctx2d.fillStyle = itemColor(this.buffer);
         ctx2d.beginPath();
-        ctx2d.arc(cx, cy, tileSizePx * 0.14, 0, Math.PI * 2);
+        ctx2d.arc(cx, cy, tileSizePx * 0.15, 0, Math.PI * 2);
         ctx2d.fill();
+        ctx2d.strokeStyle = 'rgba(15,18,22,0.85)';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.02);
+        ctx2d.stroke();
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -328,23 +448,40 @@ function createMerger(x, y, rotation) {
     draw(ctx2d, screenX, screenY, tileSizePx) {
       const cx = screenX + tileSizePx / 2;
       const cy = screenY + tileSizePx / 2;
-      ctx2d.fillStyle = '#4a5568';
+      drawGroundShadow(ctx2d, cx, cy, tileSizePx * 0.42, tileSizePx * 0.2);
+      // Wedge body, rotated to point toward the merger's single output side
+      // (previously always drawn pointing straight up regardless of
+      // `rotation`, which misrepresented flow direction at a glance).
+      ctx2d.save();
+      ctx2d.translate(cx, cy);
+      ctx2d.rotate((this.rotation * Math.PI) / 2);
+      ctx2d.fillStyle = '#525d70';
       ctx2d.beginPath();
-      ctx2d.moveTo(cx, cy - tileSizePx * 0.4);
-      ctx2d.lineTo(cx + tileSizePx * 0.4, cy + tileSizePx * 0.3);
-      ctx2d.lineTo(cx - tileSizePx * 0.4, cy + tileSizePx * 0.3);
+      ctx2d.moveTo(0, -tileSizePx * 0.4);
+      ctx2d.lineTo(tileSizePx * 0.4, tileSizePx * 0.3);
+      ctx2d.lineTo(-tileSizePx * 0.4, tileSizePx * 0.3);
       ctx2d.closePath();
       ctx2d.fill();
+      ctx2d.strokeStyle = '#1c2126';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
+      ctx2d.stroke();
+      ctx2d.restore();
+      // Static output chevron toward the merged output side.
+      drawOutputChevron(ctx2d, cx, cy, tileSizePx * 0.56, this.rotation, '#e2e8f0', 0.9);
       for (const side of this.inputs) {
         const item = this.inputBuffer[side];
         if (item) {
           const { dx, dy } = forwardVector(side);
           ctx2d.fillStyle = itemColor(item);
           ctx2d.beginPath();
-          ctx2d.arc(cx + dx * tileSizePx * 0.28, cy + dy * tileSizePx * 0.28, tileSizePx * 0.1, 0, Math.PI * 2);
+          ctx2d.arc(cx + dx * tileSizePx * 0.28, cy + dy * tileSizePx * 0.28, tileSizePx * 0.11, 0, Math.PI * 2);
           ctx2d.fill();
+          ctx2d.strokeStyle = 'rgba(15,18,22,0.85)';
+          ctx2d.lineWidth = Math.max(1, tileSizePx * 0.018);
+          ctx2d.stroke();
         }
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -431,34 +568,63 @@ function createCrafter(type, x, y, rotation) {
       const cx = screenX + tileSizePx / 2;
       const cy = screenY + tileSizePx / 2;
       const pad = tileSizePx * 0.1;
+      const isActive = !!this.craftingRecipe;
+      // No wall-clock time reaches draw() (see drawCraftProgressRing above),
+      // so "in progress" is read off state already tracked on the instance.
+      const progress = isActive ? Math.min(1, this.craftTimer / this.craftingRecipe.time) : 0;
+      drawGroundShadow(ctx2d, cx, cy, tileSizePx * 0.42, tileSizePx * 0.18);
       if (type === 'processor') {
         // Furnace-like blob: rounded body with a glowing core.
         ctx2d.fillStyle = '#6b4a3d';
         ctx2d.beginPath();
         ctx2d.ellipse(cx, cy, tileSizePx * 0.38, tileSizePx * 0.32, 0, 0, Math.PI * 2);
         ctx2d.fill();
-        const glow = this.craftingRecipe ? 0.9 : 0.35;
+        ctx2d.strokeStyle = '#241a15';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
+        ctx2d.stroke();
+        const glow = isActive ? 0.95 : 0.3;
         ctx2d.fillStyle = `rgba(255, 140, 40, ${glow})`;
         ctx2d.beginPath();
-        ctx2d.arc(cx, cy, tileSizePx * 0.16, 0, Math.PI * 2);
+        ctx2d.arc(cx, cy, tileSizePx * 0.17, 0, Math.PI * 2);
         ctx2d.fill();
+        if (isActive) drawCraftProgressRing(ctx2d, cx, cy, tileSizePx * 0.3, progress, '#ffb54d');
       } else {
-        // Assembler: geared box.
+        // Assembler: geared box, trim brightens once tiered up.
         ctx2d.fillStyle = '#3f5568';
         ctx2d.fillRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
-        ctx2d.strokeStyle = '#cbd5e1';
-        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
+        ctx2d.strokeStyle = this.tier > 0 ? '#7fd8ff' : '#cbd5e1';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.035);
         ctx2d.strokeRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
-        const spin = this.craftingRecipe ? this.craftTimer * 4 : 0;
+        const spin = isActive ? this.craftTimer * 4 : 0;
         drawGear(ctx2d, cx, cy, tileSizePx * 0.22, 8, spin);
+        if (isActive) drawCraftProgressRing(ctx2d, cx, cy, tileSizePx * 0.34, progress, '#7fe0ff');
+      }
+      // "What am I working on" swatch: colored to match the active recipe's
+      // output, or whatever's queued in the input buffer if nothing's
+      // crafting yet — readable without a tooltip.
+      const swatchItem = activeCraftSwatchItem(this);
+      if (swatchItem) {
+        const sx = screenX + tileSizePx * 0.22;
+        const sy = screenY + tileSizePx * 0.22;
+        ctx2d.fillStyle = itemColor(swatchItem);
+        ctx2d.beginPath();
+        ctx2d.arc(sx, sy, tileSizePx * 0.09, 0, Math.PI * 2);
+        ctx2d.fill();
+        ctx2d.strokeStyle = 'rgba(15,18,22,0.85)';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.018);
+        ctx2d.stroke();
       }
       if (this.pendingOutput) {
         ctx2d.fillStyle = itemColor(this.pendingOutput.itemId);
         const { dx, dy } = forwardVector(this.rotation);
         ctx2d.beginPath();
-        ctx2d.arc(cx + dx * tileSizePx * 0.3, cy + dy * tileSizePx * 0.3, tileSizePx * 0.09, 0, Math.PI * 2);
+        ctx2d.arc(cx + dx * tileSizePx * 0.3, cy + dy * tileSizePx * 0.3, tileSizePx * 0.1, 0, Math.PI * 2);
         ctx2d.fill();
+        ctx2d.strokeStyle = 'rgba(15,18,22,0.85)';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.018);
+        ctx2d.stroke();
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -516,24 +682,27 @@ function createSilo(x, y, rotation) {
       const top = screenY + tileSizePx * 0.12;
       const bottom = screenY + tileSizePx * 0.88;
       const w = tileSizePx * 0.32;
-      ctx2d.fillStyle = '#7a8896';
+      drawGroundShadow(ctx2d, cx, bottom, w * 1.1, tileSizePx * 0.08);
+      ctx2d.fillStyle = '#8c9aa8';
       ctx2d.fillRect(cx - w, top, w * 2, bottom - top);
       ctx2d.beginPath();
       ctx2d.ellipse(cx, top, w, tileSizePx * 0.08, 0, 0, Math.PI * 2);
+      ctx2d.fillStyle = '#a3b0bc';
       ctx2d.fill();
       ctx2d.fillStyle = '#5a6672';
       ctx2d.beginPath();
       ctx2d.ellipse(cx, bottom, w, tileSizePx * 0.08, 0, 0, Math.PI, false);
       ctx2d.fill();
-      ctx2d.strokeStyle = '#3a4148';
-      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.025);
+      ctx2d.strokeStyle = '#22262b';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
       ctx2d.strokeRect(cx - w, top, w * 2, bottom - top);
       const totalHeld = Object.values(this.buffer).reduce((a, b) => a + b, 0);
       if (totalHeld > 0) {
-        ctx2d.fillStyle = '#e8d95c';
+        ctx2d.fillStyle = '#f0dd6a';
         const fillH = Math.min(1, totalHeld / 20) * (bottom - top - 6);
         ctx2d.fillRect(cx - w + 3, bottom - 3 - fillH, w * 2 - 6, fillH);
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -575,11 +744,15 @@ function createDock(x, y, rotation) {
     },
     draw(ctx2d, screenX, screenY, tileSizePx) {
       const pad = tileSizePx * 0.08;
+      drawGroundShadow(ctx2d, screenX + tileSizePx / 2, screenY + tileSizePx * 0.9, tileSizePx * 0.42, tileSizePx * 0.14);
       ctx2d.fillStyle = '#4a4030';
       ctx2d.fillRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
+      ctx2d.strokeStyle = '#221c14';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.03);
+      ctx2d.strokeRect(screenX + pad, screenY + pad, tileSizePx - pad * 2, tileSizePx - pad * 2);
       // Jetty planks.
-      ctx2d.strokeStyle = '#8a7050';
-      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.04);
+      ctx2d.strokeStyle = '#a5825a';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.045);
       const plankCount = 4;
       for (let i = 0; i < plankCount; i++) {
         const t = (i + 0.5) / plankCount;
@@ -595,6 +768,7 @@ function createDock(x, y, rotation) {
         ctx2d.arc(screenX + tileSizePx / 2, screenY + tileSizePx / 2, tileSizePx * 0.42, 0, Math.PI * 2);
         ctx2d.fill();
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -612,21 +786,26 @@ function createSeawall(x, y, rotation) {
     // placed seawalls (this tile + 4-neighbors). Nothing to do per-tick.
     tick() {},
     draw(ctx2d, screenX, screenY, tileSizePx) {
-      ctx2d.fillStyle = '#8a8f96';
+      drawGroundShadow(ctx2d, screenX + tileSizePx / 2, screenY + tileSizePx * 0.92, tileSizePx * 0.46, tileSizePx * 0.12);
+      ctx2d.fillStyle = '#9aa1a8';
       const blocks = 3;
       const bw = tileSizePx / blocks;
       for (let i = 0; i < blocks; i++) {
         const bx = screenX + i * bw;
         ctx2d.fillRect(bx + 1, screenY + tileSizePx * 0.3, bw - 2, tileSizePx * 0.65);
-        ctx2d.strokeStyle = '#5a5f66';
-        ctx2d.lineWidth = 1;
+        ctx2d.strokeStyle = '#33373c';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.025);
         ctx2d.strokeRect(bx + 1, screenY + tileSizePx * 0.3, bw - 2, tileSizePx * 0.65);
       }
-      ctx2d.fillStyle = '#9aa0a6';
+      ctx2d.fillStyle = '#aeb4ba';
       for (let i = 0; i < blocks - 1; i++) {
         const bx = screenX + bw / 2 + i * bw;
         ctx2d.fillRect(bx, screenY + tileSizePx * 0.1, bw - 2, tileSizePx * 0.25);
+        ctx2d.strokeStyle = '#33373c';
+        ctx2d.lineWidth = Math.max(1, tileSizePx * 0.02);
+        ctx2d.strokeRect(bx, screenY + tileSizePx * 0.1, bw - 2, tileSizePx * 0.25);
       }
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }
@@ -660,24 +839,29 @@ function createReclaimer(x, y, rotation) {
     draw(ctx2d, screenX, screenY, tileSizePx) {
       const cx = screenX + tileSizePx / 2;
       const baseY = screenY + tileSizePx * 0.85;
-      ctx2d.fillStyle = '#5a6470';
+      drawGroundShadow(ctx2d, cx, baseY + tileSizePx * 0.04, tileSizePx * 0.32, tileSizePx * 0.12);
+      ctx2d.fillStyle = '#66727e';
       ctx2d.fillRect(cx - tileSizePx * 0.06, screenY + tileSizePx * 0.15, tileSizePx * 0.12, tileSizePx * 0.7);
+      ctx2d.strokeStyle = '#20252c';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.015);
+      ctx2d.strokeRect(cx - tileSizePx * 0.06, screenY + tileSizePx * 0.15, tileSizePx * 0.12, tileSizePx * 0.7);
       ctx2d.save();
       ctx2d.translate(cx, screenY + tileSizePx * 0.2);
       ctx2d.rotate(Math.sin(this.craneAngle) * 0.35 + (this.rotation * Math.PI) / 2);
-      ctx2d.strokeStyle = '#e8b23d';
-      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.05);
+      ctx2d.strokeStyle = '#ffcf5c';
+      ctx2d.lineWidth = Math.max(1, tileSizePx * 0.055);
       ctx2d.beginPath();
       ctx2d.moveTo(0, 0);
       ctx2d.lineTo(tileSizePx * 0.32, tileSizePx * 0.1);
       ctx2d.stroke();
-      ctx2d.fillStyle = '#3a3f45';
+      ctx2d.fillStyle = '#20252c';
       ctx2d.beginPath();
-      ctx2d.arc(tileSizePx * 0.32, tileSizePx * 0.1, tileSizePx * 0.05, 0, Math.PI * 2);
+      ctx2d.arc(tileSizePx * 0.32, tileSizePx * 0.1, tileSizePx * 0.055, 0, Math.PI * 2);
       ctx2d.fill();
       ctx2d.restore();
-      ctx2d.fillStyle = '#3a3f45';
+      ctx2d.fillStyle = '#20252c';
       ctx2d.fillRect(cx - tileSizePx * 0.16, baseY, tileSizePx * 0.32, tileSizePx * 0.08);
+      drawTierPip(ctx2d, screenX, screenY, tileSizePx, this.tier);
     },
   };
 }

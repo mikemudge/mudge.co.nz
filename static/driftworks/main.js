@@ -14,6 +14,7 @@ import { UI } from './ui.js';
 import { ParticleSystem } from './particles.js';
 
 const BEST_SCORE_KEY = 'driftworks_best';
+const INTRO_SEEN_KEY = 'driftworks_seen_intro';
 const AUTOSAVE_INTERVAL = 8; // seconds
 
 // --- DOM bootstrap ----------------------------------------------------------
@@ -54,6 +55,22 @@ function saveBestScore(score) {
   }
 }
 
+// --- First-time "How to Play" gating ----------------------------------
+function hasSeenIntro() {
+  try {
+    return localStorage.getItem(INTRO_SEEN_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+function markIntroSeen() {
+  try {
+    localStorage.setItem(INTRO_SEEN_KEY, '1');
+  } catch {
+    // localStorage unavailable (private mode etc) - intro just reshows next time.
+  }
+}
+
 // --- Shared state ------------------------------------------------------
 // Passed by reference into InputController (which mutates camera/selection/
 // hover) and read by the render/UI loop each frame.
@@ -73,7 +90,16 @@ const state = {
 
 // --- UI + input wiring -------------------------------------------------
 const ui = new UI({
-  onPlay: () => startGame(),
+  onPlay: () => {
+    startGame();
+    // Gated on a localStorage flag so it only ever auto-shows once, on a
+    // player's first-ever Play click; the HUD's "?" button reopens it any
+    // time regardless of this flag.
+    if (!hasSeenIntro()) {
+      markIntroSeen();
+      ui.showHowToPlay();
+    }
+  },
   onPlayAgain: () => startGame(),
   onPause: () => setPaused(true),
   onResume: () => setPaused(false),

@@ -321,7 +321,8 @@ export function visibleGridRange(camera, canvas) {
   ];
 }
 
-// view: { ghost: {type, x, y, rotation, valid} | null, particles, time }
+// view: { ghost: {type, x, y, rotation, mode, valid} | null, particles, time }
+// (mode is 'place' | 'reorient' | 'replace' - see main.js's computeGhost)
 export function drawWorld(ctx, canvas, camera, snapshot, view) {
   ctx.fillStyle = '#04121c';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -401,13 +402,29 @@ function drawBulldozeHighlight(ctx, camera, ghost, size) {
   }
 }
 
+// Three ghost treatments beyond plain valid/invalid: 'reorient' (free
+// in-place rotation change - a slightly cooler green than a fresh 'place'
+// so it still reads as "safe to click" but distinguishably so) and
+// 'replace' (an amber warning - clicking here destroys a different,
+// possibly valuable, existing building with no refund, so it needs to
+// stand out from ordinary green/red before the player commits). Any
+// invalid ghost, regardless of mode, still just reads as red - nothing
+// will happen on click either way, so there's nothing to warn about yet.
+const GHOST_COLORS = {
+  place: { fill: '#7ee787', stroke: '#2ecc55' },
+  reorient: { fill: '#8fe7cf', stroke: '#2ecc8f' },
+  replace: { fill: '#ffb84d', stroke: '#e0872e' },
+  invalid: { fill: '#ff6b6b', stroke: '#e63c3c' },
+};
+
 function drawGhost(ctx, camera, ghost, size) {
   const [sx, sy] = gridToScreen(camera, ghost.x, ghost.y);
+  const { fill, stroke } = GHOST_COLORS[ghost.valid ? (ghost.mode || 'place') : 'invalid'];
   ctx.globalAlpha = 0.55;
-  ctx.fillStyle = ghost.valid ? '#7ee787' : '#ff6b6b';
+  ctx.fillStyle = fill;
   ctx.fillRect(sx, sy, size, size);
   ctx.globalAlpha = 1;
-  ctx.strokeStyle = ghost.valid ? '#2ecc55' : '#e63c3c';
+  ctx.strokeStyle = stroke;
   ctx.lineWidth = 2;
   ctx.strokeRect(sx + 1, sy + 1, size - 2, size - 2);
 

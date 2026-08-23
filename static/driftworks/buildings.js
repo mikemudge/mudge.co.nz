@@ -31,6 +31,29 @@ function forwardVector(dir) {
   return DIR_VECTORS[dir];
 }
 
+// Applies a free in-place rotation change to an already-placed building
+// (used when re-placing the same building type over itself with a new
+// rotation - see Simulation.placeBuilding). Most building types read
+// `this.rotation` fresh every tick()/draw() call, so a plain assignment is
+// enough. Splitter and merger are the exception: they cache their
+// output/input sides (`outputs`/`inputSide`, `inputs`/`inputBuffer`) once
+// at construction time from `rotation`, so those caches must be
+// recomputed here or they'd silently keep pointing at the pre-rotation
+// sides. A merger's inputBuffer is reset to empty for the (now different)
+// input sides rather than remapped, since an item queued on an old input
+// side has no well-defined new side to land on - equivalent to "no refund"
+// for whatever was in flight, same spirit as the Remove tool.
+export function reorientBuilding(building, rotation) {
+  building.rotation = rotation;
+  if (building.type === 'splitter') {
+    building.outputs = perpDirs(rotation);
+    building.inputSide = rotation;
+  } else if (building.type === 'merger') {
+    building.inputs = perpDirs(rotation);
+    building.inputBuffer = { [building.inputs[0]]: null, [building.inputs[1]]: null };
+  }
+}
+
 // --- Tunable constants -------------------------------------------------------
 
 const BELT_CAPACITY = 4; // max items evenly spaced along one belt tile

@@ -169,11 +169,37 @@ function computeGhost() {
     return { tool: 'bulldoze', x, y, valid: !!(tile && tile.building) };
   }
 
-  const def = BUILDING_DEFS[state.selectedBuildingType];
+  const type = state.selectedBuildingType;
+  const def = BUILDING_DEFS[type];
   const tile = grid.getTile(x, y);
-  const valid = !!tile && grid.isLand(x, y) && !tile.building && economy.canAfford(def.cost);
+  const rotation = state.ghostRotation;
+  const onLand = !!tile && grid.isLand(x, y);
+  const existing = onLand ? tile.building : null;
+
+  if (existing && existing.type === type) {
+    // Same building type already on this tile: identical rotation is a
+    // no-op (shown the same as any other "can't place here" tile), a
+    // different rotation is a free in-place reorient - always valid since
+    // nothing is being bought, no cost/tier gate applies.
+    const sameRotation = existing.rotation === rotation;
+    return {
+      type, x, y, rotation, mode: sameRotation ? 'place' : 'reorient', valid: !sameRotation,
+    };
+  }
+
+  if (existing) {
+    // A different building type occupies this tile: placing here would
+    // replace it outright (no refund for the old one), so it still needs
+    // the normal tier-unlock/affordability checks a fresh placement needs.
+    const valid = onLand && def.tier <= economy.getMaxBuildingTier(type) && economy.canAfford(def.cost);
+    return {
+      type, x, y, rotation, mode: 'replace', valid,
+    };
+  }
+
+  const valid = onLand && economy.canAfford(def.cost);
   return {
-    type: state.selectedBuildingType, x, y, rotation: state.ghostRotation, valid,
+    type, x, y, rotation, mode: 'place', valid,
   };
 }
 

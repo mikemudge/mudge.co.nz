@@ -3,7 +3,7 @@
 import { Grid } from './grid.js';
 import { Economy } from './economy.js';
 import { tileKey } from './utils.js';
-import { BUILDING_DEFS, createBuilding } from './buildings.js';
+import { BUILDING_DEFS, createBuilding, reorientBuilding } from './buildings.js';
 
 const SAVE_KEY = 'driftworks_save';
 const BEST_KEY = 'driftworks_best';
@@ -47,9 +47,26 @@ export class Simulation {
     if (!this.grid.isLand(x, y)) return false;
 
     const tile = this.grid.getTile(x, y);
-    if (!tile || tile.building) return false;
+    if (!tile) return false;
+
+    // Re-placing over an already-occupied tile: same type + same rotation
+    // is a no-op (nothing would change), same type + different rotation is
+    // a free in-place reorient (no cost, no tier/afford gate - it's just
+    // pointing an already-built thing a different way), and anything else
+    // falls through to a normal placement that replaces the existing
+    // building outright (no refund, same as the Remove tool) once the new
+    // building's own tier/afford checks pass below.
+    const existing = tile.building;
+    if (existing && existing.type === type) {
+      if (existing.rotation === rotation) return false;
+      reorientBuilding(existing, rotation);
+      return true;
+    }
+
     if (def.tier > this.economy.getMaxBuildingTier(type)) return false;
     if (!this.economy.canAfford(def.cost)) return false;
+
+    if (existing) this.removeBuilding(x, y);
 
     this.economy.spend(def.cost);
     const building = createBuilding(type, x, y, rotation);

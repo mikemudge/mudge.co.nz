@@ -228,6 +228,12 @@ p5_apps['overrun'] = {
     'title': 'Overrun',
     'path': 'overrun/main',
 }
+p5_apps['driftworks'] = {
+    'img': 'driftworks.png',
+    'title': 'Driftworks',
+    'path': 'driftworks/main',
+    'status': 'wip',
+}
 
 # Work in progress. Shown on /workshop instead of /projects and /games.
 # img is optional here (unlike finished apps, where it's required to show up).

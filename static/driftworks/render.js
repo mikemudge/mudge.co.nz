@@ -1,0 +1,442 @@
+// Camera + world rendering for Driftworks. Grid/building code never touches
+// pixels (per the design contract) - all pan/zoom/pixel math lives here and
+// in input.js, which imports the same camera helpers from this module.
+//
+// The HUD/palette/panels are DOM overlay elements (see ui.js); this module
+// only draws the canvas world: water, land, eroding tiles, resource nodes,
+// buildings (via each building's own documented `draw()`), the placement
+// ghost, and the particle layer.
+import { getSourceResourceKinds } from './items.js';
+
+// --- Shared constants -------------------------------------------------------
+// items.js/grid.js/simulation.js (Agent 1) are not written yet and utils.js's
+// export shape isn't part of the documented contract, so these are defined
+// locally per the design doc's "use these exact values/names everywhere"
+// instruction rather than imported from an unverified module.
+export const TILE_SIZE = 64;
+export const GRID_SIZE = 48;
+export const MIN_ZOOM = 0.4;
+export const MAX_ZOOM = 2.5;
+
+function clamp(v, min, max) {
+  return v < min ? min : v > max ? max : v;
+}
+
+// --- Camera -------------------------------------------------------------
+// camera = {x, y, zoom} - x/y are the world-px point that maps to screen
+// (0, 0) at the current zoom. This makes zoom-to-cursor a simple two-line
+// operation (see zoomAt) and panning a simple screen-delta/zoom subtraction.
+export function createCamera() {
+  return { x: 0, y: 0, zoom: 1 };
+}
+
+export function centerCameraOnGrid(camera, canvas, gx = GRID_SIZE / 2, gy = GRID_SIZE / 2) {
+  camera.x = gx * TILE_SIZE - canvas.width / (2 * camera.zoom);
+  camera.y = gy * TILE_SIZE - canvas.height / (2 * camera.zoom);
+}
+
+export function worldToScreen(camera, wx, wy) {
+  return [(wx - camera.x) * camera.zoom, (wy - camera.y) * camera.zoom];
+}
+
+export function screenToWorld(camera, sx, sy) {
+  return [sx / camera.zoom + camera.x, sy / camera.zoom + camera.y];
+}
+
+export function screenToGrid(camera, sx, sy) {
+  const [wx, wy] = screenToWorld(camera, sx, sy);
+  return [Math.floor(wx / TILE_SIZE), Math.floor(wy / TILE_SIZE)];
+}
+
+export function gridToScreen(camera, gx, gy) {
+  return worldToScreen(camera, gx * TILE_SIZE, gy * TILE_SIZE);
+}
+
+export function tilePx(camera) {
+  return TILE_SIZE * camera.zoom;
+}
+
+// Zoom by `factor` while keeping the world point under (screenX, screenY)
+// fixed on screen - the standard "zoom to cursor" feel, reused by wheel and
+// pinch handling in input.js.
+export function zoomAt(camera, screenX, screenY, factor) {
+  const [wxBefore, wyBefore] = screenToWorld(camera, screenX, screenY);
+  camera.zoom = clamp(camera.zoom * factor, MIN_ZOOM, MAX_ZOOM);
+  const [wxAfter, wyAfter] = screenToWorld(camera, screenX, screenY);
+  camera.x += wxBefore - wxAfter;
+  camera.y += wyBefore - wyAfter;
+}
+
+export function panCamera(camera, dxScreen, dyScreen) {
+  camera.x -= dxScreen / camera.zoom;
+  camera.y -= dyScreen / camera.zoom;
+}
+
+// --- Small deterministic per-tile shading, so land/water aren't flat -------
+function tileHash(x, y) {
+  const n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
+  return n - Math.floor(n);
+}
+
+export const RESOURCE_COLORS = {
+  ore: '#b08a5a',
+  crystal: '#a06bd6',
+  organic: '#6fcf6a',
+};
+
+// --- Resource node iconography -------------------------------------------
+// Small canvas-primitive glyphs distinguishing the three raw resource kinds
+// at a glance, on top of a soft backing disc. Drawn in local (cx, cy)
+// coordinates scaled by `r` so the same functions work for both the small
+// map nodes (render below) and the tiny legend swatches (ui.js, via
+// drawResourceKindIcon) at whatever pixel size they're given.
+function drawOreIcon(ctx, cx, cy, r, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  // Angular, faceted rock silhouette.
+  ctx.beginPath();
+  const pts = [
+    [0, -r], [r * 0.85, -r * 0.25], [r * 0.6, r * 0.85],
+    [-r * 0.5, r * 0.9], [-r * 0.95, r * 0.05], [-r * 0.4, -r * 0.75],
+  ];
+  pts.forEach(([px, py], i) => (i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py)));
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(30, 20, 10, 0.6)';
+  ctx.lineWidth = Math.max(1, r * 0.12);
+  ctx.stroke();
+  // Single facet highlight line for an angular, faceted look.
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+  ctx.lineWidth = Math.max(1, r * 0.08);
+  ctx.beginPath();
+  ctx.moveTo(0, -r * 0.9);
+  ctx.lineTo(-r * 0.2, r * 0.3);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawCrystalIcon(ctx, cx, cy, r, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  // Faceted gem outline (diamond).
+  ctx.beginPath();
+  ctx.moveTo(0, -r);
+  ctx.lineTo(r * 0.7, 0);
+  ctx.lineTo(0, r);
+  ctx.lineTo(-r * 0.7, 0);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.globalAlpha = 0.75;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.lineWidth = Math.max(1, r * 0.12);
+  ctx.stroke();
+  // Gem-sparkle highlight line down the middle.
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+  ctx.lineWidth = Math.max(1, r * 0.08);
+  ctx.beginPath();
+  ctx.moveTo(0, -r * 0.6);
+  ctx.lineTo(0, r * 0.5);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawOrganicIcon(ctx, cx, cy, r, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(-Math.PI / 5);
+  // Leaf/sprout shape - two mirrored curves meeting at a point top and bottom.
+  ctx.beginPath();
+  ctx.moveTo(0, r);
+  ctx.quadraticCurveTo(r * 0.9, r * 0.3, 0, -r);
+  ctx.quadraticCurveTo(-r * 0.9, r * 0.3, 0, r);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.globalAlpha = 0.85;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = 'rgba(20, 50, 10, 0.6)';
+  ctx.lineWidth = Math.max(1, r * 0.1);
+  ctx.stroke();
+  // Center vein.
+  ctx.beginPath();
+  ctx.moveTo(0, r * 0.85);
+  ctx.lineTo(0, -r * 0.85);
+  ctx.stroke();
+  ctx.restore();
+}
+
+const RESOURCE_ICON_DRAWERS = {
+  ore: drawOreIcon,
+  crystal: drawCrystalIcon,
+  organic: drawOrganicIcon,
+};
+
+// Shared entry point so ui.js's legend can render the exact same glyphs
+// (into a small <canvas>) that the map nodes use below, at whatever radius
+// fits its swatch.
+export function drawResourceKindIcon(ctx, kind, cx, cy, r) {
+  const color = RESOURCE_COLORS[kind] || '#ffffff';
+  const draw = RESOURCE_ICON_DRAWERS[kind];
+  if (draw) {
+    draw(ctx, cx, cy, r, color);
+  } else {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function getTileMap(snapshot) {
+  // Tile[][] indexing order isn't specified by the contract (row-major by x
+  // or by y) - every Tile carries its own x/y though, so build a lookup keyed
+  // on those instead of guessing the array's orientation.
+  const map = new Map();
+  const rows = snapshot.tiles || [];
+  for (const row of rows) {
+    for (const tile of row) {
+      if (tile) map.set(`${tile.x},${tile.y}`, tile);
+    }
+  }
+  return map;
+}
+
+function drawWaterTile(ctx, sx, sy, size, time, gx, gy) {
+  const h = tileHash(gx, gy);
+  const base = 20 + Math.round(h * 10);
+  ctx.fillStyle = `rgb(${base}, ${90 + Math.round(h * 15)}, ${150 + Math.round(h * 20)})`;
+  ctx.fillRect(sx, sy, size, size);
+
+  // Subtle animated wave lines - cheap sine-offset strokes, not a real sim.
+  ctx.strokeStyle = 'rgba(200, 235, 255, 0.18)';
+  ctx.lineWidth = Math.max(1, size * 0.03);
+  const waveY = sy + size * 0.5 + Math.sin(time * 1.4 + gx * 0.7 + gy * 0.4) * size * 0.12;
+  ctx.beginPath();
+  ctx.moveTo(sx, waveY);
+  ctx.lineTo(sx + size, waveY + Math.sin(time * 1.4 + gx * 0.7 + gy * 0.4 + 1.5) * size * 0.06);
+  ctx.stroke();
+}
+
+function drawLandTile(ctx, sx, sy, size, gx, gy) {
+  const h = tileHash(gx, gy);
+  const g = 110 + Math.round(h * 40);
+  const r = 90 + Math.round(h * 30);
+  ctx.fillStyle = `rgb(${r}, ${g}, ${60 + Math.round(h * 20)})`;
+  ctx.fillRect(sx, sy, size, size);
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.12)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(sx + 0.5, sy + 0.5, size - 1, size - 1);
+}
+
+function drawErosionOverlay(ctx, sx, sy, size, erosion, time) {
+  const t = clamp(erosion.timer / erosion.duration, 0, 1);
+  const pulse = 0.35 + 0.25 * Math.sin(time * 6);
+  ctx.fillStyle = `rgba(200, 40, 30, ${0.15 + t * 0.35})`;
+  ctx.fillRect(sx, sy, size, size);
+
+  // Crack lines radiating from the tile center, more of them as t increases.
+  const cx = sx + size / 2;
+  const cy = sy + size / 2;
+  ctx.strokeStyle = `rgba(60, 10, 5, ${0.5 + t * 0.4})`;
+  ctx.lineWidth = Math.max(1, size * 0.02);
+  const crackCount = 3 + Math.floor(t * 4);
+  for (let i = 0; i < crackCount; i++) {
+    const angle = (i / crackCount) * Math.PI * 2 + t * 2;
+    const len = size * (0.2 + 0.3 * t);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(angle) * len, cy + Math.sin(angle) * len);
+    ctx.stroke();
+  }
+
+  // Pulsing countdown ring so the player can eyeball time remaining.
+  ctx.strokeStyle = `rgba(255, 90, 60, ${pulse})`;
+  ctx.lineWidth = Math.max(2, size * 0.05);
+  ctx.beginPath();
+  ctx.arc(cx, cy, size * 0.32 * (1 - t) + size * 0.08, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - t));
+  ctx.stroke();
+}
+
+// Pulsing ring (sine-driven, same style as the erosion countdown pulse
+// above) drawn around resource nodes whose kind is needed - even
+// transitively - for the current quota, so a new player can see at a glance
+// which glowing tiles to extract from.
+function drawResourceHighlightRing(ctx, cx, cy, size, time) {
+  const pulse = 0.5 + 0.5 * Math.sin(time * 3.2);
+  const r = size * 0.44;
+  ctx.save();
+  ctx.strokeStyle = `rgba(255, 240, 140, ${0.35 + pulse * 0.45})`;
+  ctx.lineWidth = Math.max(2, size * (0.04 + pulse * 0.02));
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawResourceNode(ctx, sx, sy, size, resource, highlighted, time) {
+  const cx = sx + size / 2;
+  const cy = sy + size / 2;
+  const r = size * (0.16 + resource.richness * 0.05);
+
+  // Soft backing disc so the icon reads clearly against the land tile.
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 1.3, 0, Math.PI * 2);
+  ctx.fill();
+
+  drawResourceKindIcon(ctx, resource.kind, cx, cy, r);
+
+  if (highlighted) drawResourceHighlightRing(ctx, cx, cy, size, time);
+}
+
+// Seawall protection is a pure derived visual here (own tile + 4-neighbors,
+// per the buildings.js contract) - duplicating that rule for rendering only
+// is safe since it can never desync gameplay, only the highlight.
+function seawallProtectedSet(buildings) {
+  const set = new Set();
+  for (const b of buildings) {
+    if (b.type !== 'seawall') continue;
+    set.add(`${b.x},${b.y}`);
+    set.add(`${b.x + 1},${b.y}`);
+    set.add(`${b.x - 1},${b.y}`);
+    set.add(`${b.x},${b.y + 1}`);
+    set.add(`${b.x},${b.y - 1}`);
+  }
+  return set;
+}
+
+// Computes the [minX, minY, maxX, maxY] grid range currently visible on
+// screen (with a 1-tile margin), clamped to the grid bounds.
+export function visibleGridRange(camera, canvas) {
+  const [x0, y0] = screenToGrid(camera, 0, 0);
+  const [x1, y1] = screenToGrid(camera, canvas.width, canvas.height);
+  return [
+    clamp(Math.min(x0, x1) - 1, 0, GRID_SIZE - 1),
+    clamp(Math.min(y0, y1) - 1, 0, GRID_SIZE - 1),
+    clamp(Math.max(x0, x1) + 1, 0, GRID_SIZE - 1),
+    clamp(Math.max(y0, y1) + 1, 0, GRID_SIZE - 1),
+  ];
+}
+
+// view: { ghost: {type, x, y, rotation, mode, valid} | null, particles, time }
+// (mode is 'place' | 'reorient' | 'replace' - see main.js's computeGhost)
+export function drawWorld(ctx, canvas, camera, snapshot, view) {
+  ctx.fillStyle = '#04121c';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const tileMap = getTileMap(snapshot);
+  const size = tilePx(camera);
+  const [minX, minY, maxX, maxY] = visibleGridRange(camera, canvas);
+  const time = view.time || 0;
+
+  // Which raw kinds are needed - even transitively, e.g. Metal needs ore -
+  // for the currently active quota, so their nodes can pulse on the map.
+  const quotaItem = snapshot.economy?.currentQuota?.item;
+  const quotaKinds = quotaItem ? getSourceResourceKinds(quotaItem) : null;
+
+  for (let gy = minY; gy <= maxY; gy++) {
+    for (let gx = minX; gx <= maxX; gx++) {
+      const tile = tileMap.get(`${gx},${gy}`);
+      const [sx, sy] = gridToScreen(camera, gx, gy);
+      if (!tile || tile.type === 'water') {
+        drawWaterTile(ctx, sx, sy, size, time, gx, gy);
+        continue;
+      }
+      drawLandTile(ctx, sx, sy, size, gx, gy);
+      if (tile.resource) {
+        const highlighted = !!(quotaKinds && quotaKinds.has(tile.resource.kind));
+        drawResourceNode(ctx, sx, sy, size, tile.resource, highlighted, time);
+      }
+      if (tile.erosion && tile.erosion.cracking) drawErosionOverlay(ctx, sx, sy, size, tile.erosion, time);
+    }
+  }
+
+  // Seawall protection highlight, drawn under buildings.
+  const protectedSet = seawallProtectedSet(snapshot.buildings || []);
+  if (protectedSet.size) {
+    ctx.strokeStyle = 'rgba(120, 210, 255, 0.5)';
+    ctx.lineWidth = Math.max(1, size * 0.04);
+    for (const key of protectedSet) {
+      const [gx, gy] = key.split(',').map(Number);
+      if (gx < minX || gx > maxX || gy < minY || gy > maxY) continue;
+      const [sx, sy] = gridToScreen(camera, gx, gy);
+      ctx.strokeRect(sx + 2, sy + 2, size - 4, size - 4);
+    }
+  }
+
+  for (const building of snapshot.buildings || []) {
+    if (building.x < minX - 1 || building.x > maxX + 1 || building.y < minY - 1 || building.y > maxY + 1) continue;
+    const [sx, sy] = gridToScreen(camera, building.x, building.y);
+    building.draw(ctx, sx, sy, size, camera);
+  }
+
+  if (view.ghost) {
+    if (view.ghost.tool === 'bulldoze') {
+      drawBulldozeHighlight(ctx, camera, view.ghost, size);
+    } else {
+      drawGhost(ctx, camera, view.ghost, size);
+    }
+  }
+
+  if (view.particles) view.particles.draw(ctx, camera);
+}
+
+function drawBulldozeHighlight(ctx, camera, ghost, size) {
+  const [sx, sy] = gridToScreen(camera, ghost.x, ghost.y);
+  ctx.globalAlpha = ghost.valid ? 0.4 : 0.12;
+  ctx.fillStyle = '#ff3b3b';
+  ctx.fillRect(sx, sy, size, size);
+  ctx.globalAlpha = 1;
+  if (ghost.valid) {
+    ctx.strokeStyle = '#ff3b3b';
+    ctx.lineWidth = Math.max(2, size * 0.06);
+    ctx.beginPath();
+    ctx.moveTo(sx + size * 0.2, sy + size * 0.2);
+    ctx.lineTo(sx + size * 0.8, sy + size * 0.8);
+    ctx.moveTo(sx + size * 0.8, sy + size * 0.2);
+    ctx.lineTo(sx + size * 0.2, sy + size * 0.8);
+    ctx.stroke();
+  }
+}
+
+// Three ghost treatments beyond plain valid/invalid: 'reorient' (free
+// in-place rotation change - a slightly cooler green than a fresh 'place'
+// so it still reads as "safe to click" but distinguishably so) and
+// 'replace' (an amber warning - clicking here destroys a different,
+// possibly valuable, existing building with no refund, so it needs to
+// stand out from ordinary green/red before the player commits). Any
+// invalid ghost, regardless of mode, still just reads as red - nothing
+// will happen on click either way, so there's nothing to warn about yet.
+const GHOST_COLORS = {
+  place: { fill: '#7ee787', stroke: '#2ecc55' },
+  reorient: { fill: '#8fe7cf', stroke: '#2ecc8f' },
+  replace: { fill: '#ffb84d', stroke: '#e0872e' },
+  invalid: { fill: '#ff6b6b', stroke: '#e63c3c' },
+};
+
+function drawGhost(ctx, camera, ghost, size) {
+  const [sx, sy] = gridToScreen(camera, ghost.x, ghost.y);
+  const { fill, stroke } = GHOST_COLORS[ghost.valid ? (ghost.mode || 'place') : 'invalid'];
+  ctx.globalAlpha = 0.55;
+  ctx.fillStyle = fill;
+  ctx.fillRect(sx, sy, size, size);
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = stroke;
+  ctx.lineWidth = 2;
+  ctx.strokeRect(sx + 1, sy + 1, size - 2, size - 2);
+
+  // Small arrow indicating the building's rotation/output direction.
+  const cx = sx + size / 2;
+  const cy = sy + size / 2;
+  const dirs = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+  const [dx, dy] = dirs[ghost.rotation] || dirs[0];
+  ctx.strokeStyle = '#0a2f10';
+  ctx.lineWidth = Math.max(2, size * 0.06);
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + dx * size * 0.3, cy + dy * size * 0.3);
+  ctx.stroke();
+}

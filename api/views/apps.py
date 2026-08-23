@@ -229,6 +229,7 @@ p5_apps['overrun'] = {
     'path': 'overrun/main',
 }
 p5_apps['driftworks'] = {
+    'img': 'driftworks.png',
     'title': 'Driftworks',
     'path': 'driftworks/main',
     'status': 'wip',

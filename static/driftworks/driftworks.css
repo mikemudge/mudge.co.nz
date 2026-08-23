@@ -215,6 +215,48 @@ html, body {
   text-overflow: ellipsis;
 }
 
+/* Recipe chain readout: how to make the current quota's item, shown only
+   when it's a processed/assembled good (see ui.js's _updateChain). Capped
+   height + scroll so an unusually deep chain can't grow the quota box
+   without bound. */
+.dw-chain {
+  margin-top: 4px;
+  max-height: 92px;
+  overflow-y: auto;
+}
+
+.dw-chain-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #cfe8f2;
+}
+
+.dw-chain-swatch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.dw-chain-arrow {
+  color: #7fa0ad;
+}
+
+.dw-chain-building {
+  color: #ffd35a;
+  font-weight: 600;
+}
+
+.dw-chain-inputs {
+  color: #9fd6ff;
+}
+
 .dw-bar-track {
   width: 100%;
   height: 10px;
@@ -334,6 +376,22 @@ html, body {
 .dw-palette-btn.dw-bulldoze.dw-active {
   border-color: #ff6b6b;
   box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.5);
+}
+
+/* Marks a build-palette button whose building type is somewhere in the
+   current quota's crafting chain (see ui.js's _updateChain) - the same
+   pulsing gold used by the resource-node highlight rings (render.js) and
+   the quota bar's fill color, so the visual language reads as one system:
+   "this glows = relevant to your quota" whether it's a map tile or a
+   palette button. */
+.dw-palette-btn.dw-quota-needed {
+  border-color: #ffd35a;
+  animation: dw-quota-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes dw-quota-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 211, 90, 0.3), 0 0 6px rgba(255, 211, 90, 0.3); }
+  50% { box-shadow: 0 0 0 2px rgba(255, 211, 90, 0.8), 0 0 14px rgba(255, 211, 90, 0.7); }
 }
 
 .dw-palette-name {
@@ -581,6 +639,12 @@ html, body {
     font-size: 11px;
   }
   .dw-hint-line {
+    font-size: 10px;
+  }
+  .dw-chain {
+    max-height: 64px;
+  }
+  .dw-chain-row {
     font-size: 10px;
   }
 

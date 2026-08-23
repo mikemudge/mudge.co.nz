@@ -9,7 +9,9 @@
 // space passes clicks through to the canvas underneath for pan/zoom/build;
 // individual panels/buttons opt back in with `pointer-events: auto`.
 import { BUILDING_DEFS } from './buildings.js';
-import { ITEMS, TECH_TREE, RESOURCE_NODE_YIELDS } from './items.js';
+import {
+  ITEMS, TECH_TREE, RESOURCE_NODE_YIELDS, getRecipeChain,
+} from './items.js';
 import { BULLDOZE_TOOL } from './input.js';
 import { drawResourceKindIcon } from './render.js';
 
@@ -44,6 +46,10 @@ export class UI {
     this.itemRows = new Map();
     this.techRowEls = new Map();
     this.paletteButtons = new Map();
+    // Tracks which quota item the chain readout/palette highlight were last
+    // built for, so both are only rebuilt on a quota change rather than
+    // every frame.
+    this._chainItemId = undefined;
 
     this.root = el('div');
     this.root.id = 'driftworks-ui';
@@ -114,7 +120,9 @@ export class UI {
     this.quotaTimeLabel = el('div', 'dw-quota-time', '');
     this.hintLine = el('div', 'dw-hint-line', '');
     this.hintLine.hidden = true;
-    quotaBox.append(quotaLabelRow, track, this.quotaTimeLabel, this.hintLine);
+    this.chainPanel = el('div', 'dw-chain');
+    this.chainPanel.hidden = true;
+    quotaBox.append(quotaLabelRow, track, this.quotaTimeLabel, this.hintLine, this.chainPanel);
     top.appendChild(quotaBox);
 
     const stats = el('div', 'dw-stats');
@@ -329,11 +337,13 @@ export class UI {
       const timeLeft = Math.max(0, (quota.deadline ?? 0) - (economy.quotaTimer ?? 0));
       this.quotaTimeLabel.textContent = `${fmtTime(timeLeft)} left`;
       this.quotaTimeLabel.classList.toggle('dw-urgent', timeLeft < 10);
+      this._updateChain(quota.item);
     } else {
       this.quotaIcon.hidden = true;
       this.quotaLabel.textContent = 'No active quota';
       this.quotaBarFill.style.width = '0%';
       this.quotaTimeLabel.textContent = '';
+      this._updateChain(null);
     }
 
     this.strikesEl.textContent = `Strikes: ${economy.strikes ?? 0} / 3`;
@@ -371,6 +381,60 @@ export class UI {
     }
     this.hintLine.textContent = text;
     this.hintLine.hidden = !text;
+  }
+
+  // --- Recipe chain readout ---------------------------------------------
+  // For a processed/assembled quota item, shows the full crafting path
+  // (item <- building <- inputs, recursively down to raw goods) right in
+  // the quota panel, and mirrors which building type(s) it needs onto the
+  // build-palette buttons - closing the loop from "what do I need" to "what
+  // do I build" without sending the player to the Tech Tree. Raw-item
+  // quotas are untouched: getRecipeChain returns raw: true immediately and
+  // this hides the panel exactly as before this feature existed. Only
+  // rebuilt when the quota's item actually changes, not every frame.
+  _updateChain(itemId) {
+    if (itemId === this._chainItemId) return;
+    this._chainItemId = itemId;
+
+    this.chainPanel.textContent = '';
+    const chain = itemId ? getRecipeChain(itemId) : null;
+    const neededBuildings = new Set();
+
+    if (chain && !chain.raw) {
+      this._appendChainRows(chain, 0, neededBuildings);
+      this.chainPanel.hidden = false;
+    } else {
+      this.chainPanel.hidden = true;
+    }
+
+    for (const [type, btn] of this.paletteButtons) {
+      btn.classList.toggle('dw-quota-needed', neededBuildings.has(type));
+    }
+  }
+
+  // One row per crafted step: "<Item>  <-  <Building>  <-  <Input, Input>",
+  // indented per recursion depth; branches (an assembler recipe's two
+  // distinct inputs) each get their own sub-row directly below, so a
+  // two-input chain like Bio-Gel reads as three short rows rather than one
+  // long one.
+  _appendChainRows(chain, depth, neededBuildings) {
+    if (chain.raw) return;
+    neededBuildings.add(chain.building);
+
+    const row = el('div', 'dw-chain-row');
+    row.style.paddingLeft = `${depth * 12}px`;
+    const swatch = el('span', 'dw-chain-swatch');
+    swatch.style.background = ITEMS[chain.item]?.color ?? '#888';
+    row.appendChild(swatch);
+    row.appendChild(el('span', 'dw-chain-name', ITEMS[chain.item]?.name ?? chain.item));
+    row.appendChild(el('span', 'dw-chain-arrow', '←'));
+    row.appendChild(el('span', 'dw-chain-building', BUILDING_DEFS[chain.building]?.name ?? chain.building));
+    row.appendChild(el('span', 'dw-chain-arrow', '←'));
+    const inputNames = chain.inputs.map((input) => ITEMS[input.item]?.name ?? input.item).join(' + ');
+    row.appendChild(el('span', 'dw-chain-inputs', inputNames));
+    this.chainPanel.appendChild(row);
+
+    for (const input of chain.inputs) this._appendChainRows(input, depth + 1, neededBuildings);
   }
 
   _updateStockpile(stockpile) {

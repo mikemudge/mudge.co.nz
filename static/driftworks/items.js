@@ -228,3 +228,38 @@ export function getSourceResourceKinds(itemId) {
   }
   return kinds;
 }
+
+// Pure lookup: how is `itemId` made? Returns a recursive, JSON-serializable
+// description of one full crafting path down to raw goods:
+//   { item, raw: true }
+//   { item, raw: false, recipeId, building: 'processor'|'assembler', inputs: [...] }
+// Some outputs (e.g. 'metal', 'gel') have more than one recipe that can
+// produce them; like getSourceResourceKinds above, this walks RECIPES in
+// declaration order and takes the first matching one, so callers always see
+// a single consistent path rather than every possible one.
+export function getRecipeChain(itemId) {
+  const ownKind = Object.keys(RESOURCE_NODE_YIELDS).find(
+    (kind) => RESOURCE_NODE_YIELDS[kind] === itemId,
+  );
+  if (ownKind) return { item: itemId, raw: true };
+
+  const recipe = Object.values(RECIPES).find(
+    (r) => r.outputs.some((out) => out.item === itemId),
+  );
+  // No recipe and no resource-node yield: treat as a leaf rather than throw,
+  // so a malformed/unknown itemId still renders as "nothing more to show"
+  // instead of breaking the UI.
+  if (!recipe) return { item: itemId, raw: true };
+
+  const seenInputs = new Set();
+  const inputs = [];
+  for (const input of recipe.inputs) {
+    if (seenInputs.has(input.item)) continue;
+    seenInputs.add(input.item);
+    inputs.push(getRecipeChain(input.item));
+  }
+
+  return {
+    item: itemId, raw: false, recipeId: recipe.id, building: recipe.building, inputs,
+  };
+}

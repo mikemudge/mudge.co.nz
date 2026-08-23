@@ -16,6 +16,7 @@ const modulePatterns = [
   "static/p5_test/**/*.js",
   "static/shared/**/*.js",
   "static/overrun/**/*.js",
+  "static/driftworks/**/*.js",
 ];
 
 // Vendored third-party code and known legacy plain scripts that live inside

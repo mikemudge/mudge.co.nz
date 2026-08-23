@@ -52,16 +52,19 @@ export class Simulation {
     // Re-placing over an already-occupied tile: same type + same rotation
     // is a no-op (nothing would change), same type + different rotation is
     // a free in-place reorient (no cost, no tier/afford gate - it's just
-    // pointing an already-built thing a different way), and anything else
-    // falls through to a normal placement that replaces the existing
-    // building outright (no refund, same as the Remove tool) once the new
-    // building's own tier/afford checks pass below.
+    // pointing an already-built thing a different way). A different type
+    // is only allowed to replace outright (no refund, same as the Remove
+    // tool, once the new building's own tier/afford checks pass below) when
+    // the existing occupant is a belt - belts are cheap enough that a
+    // one-click overwrite is a convenience, not a trap. Anything more
+    // valuable must be cleared with the Remove tool first.
     const existing = tile.building;
     if (existing && existing.type === type) {
       if (existing.rotation === rotation) return false;
       reorientBuilding(existing, rotation);
       return true;
     }
+    if (existing && existing.type !== 'belt') return false;
 
     if (def.tier > this.economy.getMaxBuildingTier(type)) return false;
     if (!this.economy.canAfford(def.cost)) return false;

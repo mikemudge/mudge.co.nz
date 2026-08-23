@@ -322,7 +322,7 @@ export class UI {
   // unlockedTech, currentQuota, quotaTimer, strikes); a quota's per-item
   // delivered progress isn't named explicitly in the contract, so this
   // checks a few plausible field names and falls back to 0.
-  update(snapshot) {
+  update(snapshot, ghost) {
     const economy = snapshot.economy || {};
     const quota = economy.currentQuota;
 
@@ -351,7 +351,7 @@ export class UI {
     this.techPointsEl.textContent = `Tech: ${economy.techPoints ?? 0}`;
 
     this._updateStockpile(economy.stockpile || {});
-    this._updateHint(snapshot);
+    this._updateHint(snapshot, ghost);
     if (!this.techPanel.hidden) this._updateTechRows(economy);
   }
 
@@ -359,8 +359,16 @@ export class UI {
   // Low-noise onboarding nudge derived purely from snapshot state already
   // read elsewhere (buildings list, stockpile) - hidden once the player
   // clearly has things moving so an experienced-looking factory isn't
-  // nagged.
-  _updateHint(snapshot) {
+  // nagged. The one exception is immediate hover feedback: hovering a
+  // protected building with a different type selected always explains why
+  // the click will do nothing, regardless of progress.
+  _updateHint(snapshot, ghost) {
+    if (ghost && ghost.mode === 'replace' && ghost.blockedProtected) {
+      this.hintLine.textContent = 'Use the Remove tool to clear this first.';
+      this.hintLine.hidden = false;
+      return;
+    }
+
     const buildings = snapshot.buildings || [];
     const stockpile = (snapshot.economy || {}).stockpile || {};
     let text = '';

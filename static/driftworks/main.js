@@ -188,9 +188,16 @@ function computeGhost() {
   }
 
   if (existing) {
-    // A different building type occupies this tile: placing here would
-    // replace it outright (no refund for the old one), so it still needs
-    // the normal tier-unlock/affordability checks a fresh placement needs.
+    // A different building type occupies this tile. Only a belt is cheap
+    // enough to allow a one-click replace (no refund for the old one, and
+    // it still needs the normal tier-unlock/affordability checks a fresh
+    // placement needs); anything more valuable is blocked here so it shows
+    // as invalid - the player must Remove it explicitly first.
+    if (existing.type !== 'belt') {
+      return {
+        type, x, y, rotation, mode: 'replace', valid: false, blockedProtected: true,
+      };
+    }
     const valid = onLand && def.tier <= economy.getMaxBuildingTier(type) && economy.canAfford(def.cost);
     return {
       type, x, y, rotation, mode: 'replace', valid,
@@ -270,7 +277,7 @@ function update(dt) {
   state.lastSnapshot = snapshot;
   state.prevMeta = processSnapshotEvents(state.prevMeta, snapshot);
   state.particles.update(dt);
-  ui.update(snapshot);
+  ui.update(snapshot, computeGhost());
 
   state.autosaveTimer -= dt;
   if (state.autosaveTimer <= 0) {

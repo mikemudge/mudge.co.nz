@@ -529,15 +529,29 @@ html, body {
   margin-top: 8px;
 }
 
-/* --- Resource legend ---------------------------------------------------
-   Always-visible during play; sits top-left, below the topbar and above
-   the build palette, so it never collides with the topbar/stockpile/
-   tech-tree panels on desktop. */
-.dw-legend {
+/* --- Left-side panel column ---------------------------------------------
+   Shared positioning wrapper for the resource legend and the Getting
+   Started checklist: stacking them in a flex column (rather than giving
+   each a hand-tuned absolute `top`) means adding/removing a card here can't
+   silently overlap the other. Sits top-left, below the topbar and above the
+   build palette, so it never collides with the topbar/stockpile/tech-tree
+   panels on desktop. */
+.dw-left-panels {
   position: absolute;
   top: 84px;
   left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.dw-left-panels > * {
   pointer-events: auto;
+}
+
+/* Always-visible during play. */
+.dw-legend {
   background: rgba(6, 22, 32, 0.78);
   border: 1px solid rgba(140, 210, 255, 0.2);
   border-radius: 8px;
@@ -564,6 +578,87 @@ html, body {
 
 .dw-legend-name {
   white-space: nowrap;
+}
+
+/* --- Getting Started checklist -------------------------------------------
+   Compact per-run onboarding nudge, secondary to (not part of) the quota
+   panel above it - own green accent rather than the quota's gold, and no
+   background/border shared with .dw-quota, so it reads as a distinct card.
+   Shown from the start of every run; fades out for good once main.js's
+   gettingStartedDone latch goes true (see ui.js's _updateGettingStarted). */
+.dw-getting-started {
+  background: rgba(6, 26, 18, 0.78);
+  border: 1px solid rgba(126, 231, 135, 0.3);
+  border-radius: 8px;
+  padding: 6px 10px;
+  max-width: 200px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.dw-getting-started[hidden] {
+  display: none;
+}
+
+.dw-getting-started.dw-getting-started-complete {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.96);
+}
+
+.dw-getting-started-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7ee787;
+  margin-bottom: 4px;
+}
+
+.dw-getting-started-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dw-getting-started-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #cfe8f2;
+}
+
+.dw-getting-started-check {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid rgba(140, 210, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: bold;
+  color: transparent;
+}
+
+.dw-getting-started-check::before {
+  content: '✓';
+}
+
+.dw-getting-started-row.dw-getting-started-checked .dw-getting-started-check {
+  background: #7ee787;
+  border-color: #7ee787;
+  color: #04210c;
+}
+
+.dw-getting-started-row.dw-getting-started-checked .dw-getting-started-label {
+  color: #8fe3a0;
+  text-decoration: line-through;
+  text-decoration-color: rgba(143, 227, 160, 0.6);
 }
 
 /* --- How to Play overlay ------------------------------------------------ */
@@ -713,11 +808,15 @@ html, body {
     right: 6vw;
   }
 
-  /* Legend: mirrors the stockpile's placement on the opposite corner, below
-     the (now two-row) topbar, so it never overlaps the topbar/stockpile. */
-  .dw-legend {
+  /* Legend + Getting Started column: mirrors the stockpile's placement on
+     the opposite corner, below the (now two-row) topbar, so it never
+     overlaps the topbar/stockpile. */
+  .dw-left-panels {
     top: 150px;
     left: 0;
+    gap: 6px;
+  }
+  .dw-legend {
     padding: 5px 8px;
     border-radius: 0 8px 8px 0;
     gap: 3px;
@@ -729,6 +828,26 @@ html, body {
   .dw-legend-icon {
     width: 14px;
     height: 14px;
+  }
+
+  /* Getting Started: shrunk to match the legend above it so the stacked
+     column stays compact on a 390px-wide phone. */
+  .dw-getting-started {
+    max-width: 160px;
+    padding: 5px 8px;
+    border-radius: 0 8px 8px 0;
+  }
+  .dw-getting-started-title {
+    font-size: 9px;
+  }
+  .dw-getting-started-row {
+    font-size: 10px;
+    gap: 4px;
+  }
+  .dw-getting-started-check {
+    width: 11px;
+    height: 11px;
+    font-size: 8px;
   }
 
   .dw-howto-card {

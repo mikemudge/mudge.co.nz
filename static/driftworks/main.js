@@ -86,6 +86,11 @@ const state = {
   prevMeta: null,
   time: 0,
   autosaveTimer: AUTOSAVE_INTERVAL,
+  // Per-run latch for the HUD's "Getting Started" checklist - reset in
+  // startGame() below, NOT a driftworks_seen_intro-style once-ever flag, so
+  // a fresh run always shows the checklist again even after a previous run
+  // completed it.
+  gettingStartedDone: false,
 };
 
 // --- UI + input wiring -------------------------------------------------
@@ -136,8 +141,10 @@ function startGame() {
   state.prevMeta = null;
   state.time = 0;
   state.autosaveTimer = AUTOSAVE_INTERVAL;
+  state.gettingStartedDone = false;
   state.status = 'playing';
   ui.setSelectedBuilding(null);
+  ui.resetGettingStarted();
   ui.setStatus('playing');
 }
 
@@ -210,6 +217,29 @@ function computeGhost() {
   };
 }
 
+// --- "Getting Started" checklist completion -----------------------------
+// Light-touch existence check (not flow-validation) mirroring ui.js's own
+// GETTING_STARTED_TYPES list/order for its checklist rows - kept as a
+// separate literal here since this is the simulation-facing half (deciding
+// *when* it's done and where to place the completion flourish), while
+// ui.js's copy is purely presentational (labels/order). Once latched true,
+// state.gettingStartedDone never resets within a run, so the checklist stays
+// gone even if the player later bulldozes one of these buildings.
+const GETTING_STARTED_TYPES = ['extractor', 'processor', 'silo'];
+function checkGettingStarted(snapshot) {
+  if (state.gettingStartedDone) return;
+  const buildings = snapshot.buildings || [];
+  if (!GETTING_STARTED_TYPES.every((type) => buildings.some((b) => b.type === type))) return;
+
+  state.gettingStartedDone = true;
+  const relevant = buildings.filter((b) => GETTING_STARTED_TYPES.includes(b.type));
+  if (relevant.length) {
+    const cx = relevant.reduce((sum, b) => sum + b.x + 0.5, 0) / relevant.length;
+    const cy = relevant.reduce((sum, b) => sum + b.y + 0.5, 0) / relevant.length;
+    state.particles.gettingStartedComplete(cx * TILE_SIZE, cy * TILE_SIZE);
+  }
+}
+
 // --- Event detection for particle "juice" -------------------------------
 // The documented getSnapshot() shape has no discrete event log, so juice
 // events (quota fulfilled/missed, a delivery landing, a tile finishing
@@ -276,8 +306,9 @@ function update(dt) {
   const snapshot = state.simulation.getSnapshot();
   state.lastSnapshot = snapshot;
   state.prevMeta = processSnapshotEvents(state.prevMeta, snapshot);
+  checkGettingStarted(snapshot);
   state.particles.update(dt);
-  ui.update(snapshot, computeGhost());
+  ui.update(snapshot, computeGhost(), state.gettingStartedDone);
 
   state.autosaveTimer -= dt;
   if (state.autosaveTimer <= 0) {

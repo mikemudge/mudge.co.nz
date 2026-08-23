@@ -22,6 +22,14 @@ const HOW_TO_PLAY_STEPS = [
   'Watch the edges — cracked tiles will crumble unless you build a Seawall nearby.',
 ];
 
+// Order + labels for the "Getting Started" checklist (see _buildGettingStarted
+// below). main.js keeps its own literal copy of these same three type ids
+// for completion-detection/particle-centroid purposes, since that's a
+// simulation-facing concern rather than a presentation one - the two lists
+// must stay in sync if this ever changes.
+const GETTING_STARTED_TYPES = ['extractor', 'processor', 'silo'];
+const startsWithVowelSound = (s) => /^[aeiou]/i.test(s);
+
 function fmtTime(seconds) {
   const s = Math.max(0, Math.ceil(seconds));
   const m = Math.floor(s / 60);
@@ -146,7 +154,16 @@ export class UI {
     top.appendChild(pauseBtn);
 
     hud.appendChild(top);
-    hud.appendChild(this._buildLegend());
+
+    // Legend + Getting Started share a left-side column below the topbar so
+    // they stack without needing hand-tuned pixel offsets between them (see
+    // .dw-left-panels in driftworks.css) - this keeps Getting Started "near"
+    // the quota panel above it while staying a visually separate card.
+    const leftPanels = el('div', 'dw-left-panels');
+    leftPanels.appendChild(this._buildLegend());
+    leftPanels.appendChild(this._buildGettingStarted());
+    hud.appendChild(leftPanels);
+
     hud.appendChild(this._buildPalette());
 
     const stockpile = el('div', 'dw-stockpile');
@@ -179,6 +196,65 @@ export class UI {
       legend.appendChild(row);
     }
     return legend;
+  }
+
+  // --- "Getting Started" checklist -----------------------------------
+  // A compact, non-blocking per-run nudge toward the single most important
+  // early discovery (route ore -> Processor -> Silo to keep Metal flowing)
+  // - distinct from the once-ever "How to Play" modal: main.js resets this
+  // every startGame() (see resetGettingStarted) so it reappears each run
+  // regardless of whether a *previous* run ever completed it. Completion is
+  // a light-touch existence check owned by main.js (it also needs the
+  // buildings list to place the completion particle flourish), so this
+  // class only renders whatever checked/done state it's given each frame.
+  _buildGettingStarted() {
+    const card = el('div', 'dw-getting-started');
+    card.appendChild(el('div', 'dw-getting-started-title', 'Getting Started'));
+    const list = el('ul', 'dw-getting-started-list');
+    this.gettingStartedRows = new Map();
+    for (const type of GETTING_STARTED_TYPES) {
+      const row = el('li', 'dw-getting-started-row');
+      row.appendChild(el('span', 'dw-getting-started-check'));
+      const name = BUILDING_DEFS[type].name;
+      const article = startsWithVowelSound(name) ? 'an' : 'a';
+      row.appendChild(el('span', 'dw-getting-started-label', `Place ${article} ${name}`));
+      list.appendChild(row);
+      this.gettingStartedRows.set(type, row);
+    }
+    card.appendChild(list);
+    this._gettingStartedFading = false;
+    this.gettingStartedCard = card;
+    return card;
+  }
+
+  // Called by main.js on every startGame() - this is per-run state, not the
+  // once-ever driftworks_seen_intro flag, so a fresh run always shows the
+  // checklist again even if a previous run completed it.
+  resetGettingStarted() {
+    this._gettingStartedFading = false;
+    this.gettingStartedCard.hidden = false;
+    this.gettingStartedCard.classList.remove('dw-getting-started-complete');
+    for (const row of this.gettingStartedRows.values()) row.classList.remove('dw-getting-started-checked');
+  }
+
+  // `done` comes from main.js's own latch (true forever once all three
+  // building types have existed at least once this run, even if one is
+  // later bulldozed) - once done, this fades the card out and leaves it
+  // hidden for the rest of the run rather than re-deriving checked state
+  // from `buildings` any further.
+  _updateGettingStarted(buildings, done) {
+    if (done) {
+      if (!this._gettingStartedFading) {
+        this._gettingStartedFading = true;
+        this.gettingStartedCard.classList.add('dw-getting-started-complete');
+        setTimeout(() => { this.gettingStartedCard.hidden = true; }, 650);
+      }
+      return;
+    }
+    for (const type of GETTING_STARTED_TYPES) {
+      const has = buildings.some((b) => b.type === type);
+      this.gettingStartedRows.get(type).classList.toggle('dw-getting-started-checked', has);
+    }
   }
 
   _buildPalette() {
@@ -322,7 +398,7 @@ export class UI {
   // unlockedTech, currentQuota, quotaTimer, strikes); a quota's per-item
   // delivered progress isn't named explicitly in the contract, so this
   // checks a few plausible field names and falls back to 0.
-  update(snapshot, ghost) {
+  update(snapshot, ghost, gettingStartedDone) {
     const economy = snapshot.economy || {};
     const quota = economy.currentQuota;
 
@@ -352,6 +428,7 @@ export class UI {
 
     this._updateStockpile(economy.stockpile || {});
     this._updateHint(snapshot, ghost);
+    this._updateGettingStarted(snapshot.buildings || [], !!gettingStartedDone);
     if (!this.techPanel.hidden) this._updateTechRows(economy);
   }
 

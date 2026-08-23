@@ -105,6 +105,15 @@ export class ParticleSystem {
     this.texts.push(new FloatingText(worldX, worldY - 20, 'missed!', '#ff8a8a'));
   }
 
+  // The "Getting Started" checklist (Extractor -> Processor -> Silo) was
+  // completed - a small one-off flourish, calmer than quotaFulfilled since
+  // this is an onboarding milestone rather than a scored event.
+  gettingStartedComplete(worldX, worldY) {
+    this.burst(worldX, worldY, '#8fe3a0', 14, [30, 100], [0.3, 0.6]);
+    this.rings.push(new Ring(worldX, worldY, '#8fe3a0', 40, 0.45, 3));
+    this.texts.push(new FloatingText(worldX, worldY - 20, 'Metal chain online!', '#c8f5d0'));
+  }
+
   // An item reached the Dock - a tiny bright sparkle, cheap enough to spam.
   deliverySparkle(worldX, worldY, color = '#8fe3ff') {
     this.burst(worldX, worldY, color, 4, [15, 45], [0.2, 0.4]);

@@ -223,6 +223,11 @@ p5_apps['traffic'] = {
     'img': 'traffic.png',
     'status': 'wip',
 }
+p5_apps['overrun'] = {
+    'img': 'overrun.png',
+    'title': 'Overrun',
+    'path': 'overrun/main',
+}
 
 # Work in progress. Shown on /workshop instead of /projects and /games.
 # img is optional here (unlike finished apps, where it's required to show up).

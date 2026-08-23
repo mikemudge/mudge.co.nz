@@ -96,14 +96,6 @@
       "count": 3
     }
   },
-  "static/p5/planets.js": {
-    "no-unused-vars": {
-      "count": 2
-    },
-    "no-useless-assignment": {
-      "count": 2
-    }
-  },
   "static/p5/predator2.js": {
     "no-dupe-else-if": {
       "count": 1

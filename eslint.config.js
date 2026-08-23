@@ -15,6 +15,7 @@ const modulePatterns = [
   "static/p5/**/*.js",
   "static/p5_test/**/*.js",
   "static/shared/**/*.js",
+  "static/delve/**/*.js",
   "static/overrun/**/*.js",
 ];
 

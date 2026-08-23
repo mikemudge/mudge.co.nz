@@ -39,6 +39,7 @@ export class Economy {
     if (!node) return false;
     if (this.unlockedTech.has(techId)) return false;
     if (this.techPoints < node.cost) return false;
+    if (node.requires?.some((reqId) => !this.unlockedTech.has(reqId))) return false;
 
     this.techPoints -= node.cost;
     this.unlockedTech.add(techId);

@@ -15,6 +15,29 @@ import {
 import { BULLDOZE_TOOL } from './input.js';
 import { drawResourceKindIcon } from './render.js';
 
+// Renders the tech list in an order where every prerequisite appears before
+// the node(s) that require it (a DFS postorder over `requires`), so the
+// panel reads top-to-bottom as a sensible unlock order rather than the
+// arbitrary declaration order in items.js. Falls back safely - a node with
+// no requirements, or whose requirement isn't found, is just placed as soon
+// as it's reached.
+function topoSortTechTree(tree) {
+  const byId = new Map(tree.map((t) => [t.id, t]));
+  const visited = new Set();
+  const ordered = [];
+  const visit = (node) => {
+    if (visited.has(node.id)) return;
+    visited.add(node.id);
+    for (const reqId of node.requires || []) {
+      const reqNode = byId.get(reqId);
+      if (reqNode) visit(reqNode);
+    }
+    ordered.push(node);
+  };
+  for (const node of tree) visit(node);
+  return ordered;
+}
+
 const HOW_TO_PLAY_STEPS = [
   'Place an Extractor on a glowing resource tile (glowing = needed for your current quota).',
   'Lay Conveyors to route it to a Dock — fulfilling quotas earns Tech Points.',
@@ -308,10 +331,13 @@ export class UI {
     panel.hidden = true;
     panel.appendChild(el('div', 'dw-panel-title', 'Tech Tree'));
     this.techList = el('div', 'dw-tech-list');
-    for (const tech of TECH_TREE) {
+    for (const tech of topoSortTechTree(TECH_TREE)) {
       const row = el('div', 'dw-tech-row');
       row.appendChild(el('div', 'dw-tech-name', tech.name));
       row.appendChild(el('div', 'dw-tech-desc', tech.description || ''));
+      const requiresLabel = el('div', 'dw-tech-requires');
+      requiresLabel.hidden = true;
+      row.appendChild(requiresLabel);
       const footer = el('div', 'dw-tech-footer');
       footer.appendChild(el('span', 'dw-tech-cost', `${tech.cost} tech`));
       const btn = el('button', 'dw-btn dw-tech-unlock', 'Unlock');
@@ -319,7 +345,7 @@ export class UI {
       footer.appendChild(btn);
       row.appendChild(footer);
       this.techList.appendChild(row);
-      this.techRowEls.set(tech.id, { row, btn });
+      this.techRowEls.set(tech.id, { row, btn, requiresLabel });
     }
     panel.appendChild(this.techList);
     const closeBtn = el('button', 'dw-btn dw-tech-close', 'Close');
@@ -548,13 +574,26 @@ export class UI {
   _updateTechRows(economy) {
     const unlocked = economy.unlockedTech;
     const techPoints = economy.techPoints ?? 0;
+    const isTechUnlocked = (id) => (unlocked?.has ? unlocked.has(id) : !!unlocked?.[id]);
     for (const tech of TECH_TREE) {
       const refs = this.techRowEls.get(tech.id);
       if (!refs) continue;
-      const isUnlocked = unlocked?.has ? unlocked.has(tech.id) : !!unlocked?.[tech.id];
+      const isUnlocked = isTechUnlocked(tech.id);
+      const missingReqs = (tech.requires || []).filter((reqId) => !isTechUnlocked(reqId));
       refs.row.classList.toggle('dw-tech-unlocked', isUnlocked);
-      refs.btn.disabled = isUnlocked || techPoints < tech.cost;
+      refs.row.classList.toggle('dw-tech-locked', !isUnlocked && missingReqs.length > 0);
+      // Distinguish "blocked by an unmet dependency" from "can't afford yet"
+      // - different problems with different fixes, so a dependency-blocked
+      // node stays disabled even if the player could otherwise afford it.
+      refs.btn.disabled = isUnlocked || missingReqs.length > 0 || techPoints < tech.cost;
       refs.btn.textContent = isUnlocked ? 'Unlocked' : 'Unlock';
+      if (!isUnlocked && missingReqs.length > 0) {
+        const names = missingReqs.map((reqId) => TECH_TREE.find((t) => t.id === reqId)?.name ?? reqId);
+        refs.requiresLabel.textContent = `Requires: ${names.join(', ')}`;
+        refs.requiresLabel.hidden = false;
+      } else {
+        refs.requiresLabel.hidden = true;
+      }
     }
   }
 }

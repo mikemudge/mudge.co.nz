@@ -92,6 +92,13 @@ export const RECIPES = {
 
 // ~8-10 nodes: cheap early unlocks (a better recipe, erosion buffs) up to
 // pricier building-tier gates and stacked erosion mitigation late-game.
+//
+// `requires` encodes prerequisite tech ids that must already be unlocked
+// before this node can be (Economy.unlockTech enforces it) - this keeps a
+// player from spending points on e.g. an Assembler recipe before the
+// Assembler building itself is unlocked, which would otherwise leave them
+// holding a recipe they have no building to run. Roots (foundational nodes
+// that only need raw goods or grant a standalone buff) omit it.
 export const TECH_TREE = [
   {
     id: 'ironWorks',
@@ -127,6 +134,7 @@ export const TECH_TREE = [
     cost: 55,
     description: 'Unlocks Hull Plate assembly from metal + resin - a heavier shipment good.',
     unlocks: { recipes: ['craftHull'] },
+    requires: ['assemblyLine'],
   },
   {
     id: 'polymerGel',
@@ -134,6 +142,7 @@ export const TECH_TREE = [
     cost: 55,
     description: 'Unlocks Bio-Gel assembly from resin + glass.',
     unlocks: { recipes: ['craftGel'] },
+    requires: ['assemblyLine'],
   },
   {
     id: 'landReclamation',
@@ -148,6 +157,7 @@ export const TECH_TREE = [
     cost: 85,
     description: 'Unlocks a high-yield alternate Bio-Gel recipe using raw crystal.',
     unlocks: { recipes: ['gelCompound'] },
+    requires: ['polymerGel'],
   },
   {
     id: 'tidalBarriers',
@@ -155,6 +165,7 @@ export const TECH_TREE = [
     cost: 100,
     description: 'Advanced barriers further slow coastal erosion, stacking with Seawall Engineering.',
     unlocks: { buffs: { erosionIntervalMult: 1.25 } },
+    requires: ['seawallEngineering'],
   },
 ];
 

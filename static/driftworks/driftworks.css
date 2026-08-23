@@ -524,6 +524,16 @@ html, body {
   color: #7ee787;
 }
 
+.dw-tech-requires {
+  font-size: 11px;
+  color: #ff8a65;
+  margin: -2px 0 6px;
+}
+
+.dw-tech-row.dw-tech-locked .dw-tech-name {
+  color: #8a9aa5;
+}
+
 .dw-tech-close {
   width: 100%;
   margin-top: 8px;

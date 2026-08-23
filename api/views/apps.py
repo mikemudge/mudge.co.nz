@@ -237,6 +237,33 @@ p5_apps['citytd'] = {
     'status': 'wip',
 }
 
+# These were only linked from the old static/p5/p5.tpl.html index page and
+# had no entry here, so they never showed up on /games, /projects or
+# /workshop. Added as wip pending a check of which ones are actually done.
+p5_apps['moba'] = {
+    'status': 'wip',
+}
+p5_apps['chess'] = {
+    'status': 'wip',
+}
+p5_apps['congestion'] = {
+    'path': 'p5_test/congestion',
+    'status': 'wip',
+}
+p5_apps['rts_p5'] = {
+    # Named to avoid colliding with the unrelated three.js apps['rts'] above.
+    'title': 'RTS (p5)',
+    'path': 'p5/rts/rts',
+    'status': 'wip',
+}
+p5_apps['td'] = {
+    'status': 'wip',
+}
+p5_apps['wfc-tinytown'] = {
+    'title': 'WFC Tiny Town',
+    'status': 'wip',
+}
+
 def gmaps():
     # loading=async + callback lets the browser load this off the main
     # thread. Code using google.maps must wait for the callback

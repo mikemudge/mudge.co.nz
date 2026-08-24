@@ -1,0 +1,874 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #04121c;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+#driftworks-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: #04121c;
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#driftworks-ui {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  color: #eaf6ff;
+}
+
+#driftworks-ui button {
+  font-family: inherit;
+}
+
+.dw-btn {
+  pointer-events: auto;
+  cursor: pointer;
+  border: 1px solid rgba(140, 210, 255, 0.4);
+  background: rgba(10, 30, 45, 0.85);
+  color: #eaf6ff;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.dw-btn:hover {
+  background: rgba(30, 60, 85, 0.95);
+}
+
+.dw-btn:active {
+  transform: scale(0.97);
+}
+
+.dw-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dw-btn-primary {
+  background: #2ecc55;
+  border-color: #2ecc55;
+  color: #04210c;
+  font-size: 18px;
+  padding: 12px 32px;
+}
+
+.dw-btn-primary:hover {
+  background: #39e065;
+}
+
+/* --- Full-screen overlay states (start/pause/gameover) ------------------- */
+.dw-screen {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  background: rgba(2, 8, 14, 0.72);
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* `.dw-screen`'s `display: flex` ties in specificity with the UA default
+   `[hidden] { display: none }` rule, and author styles win ties - without
+   this, toggling the `hidden` attribute in ui.js has no visual effect. */
+.dw-screen[hidden] {
+  display: none;
+}
+
+.dw-start {
+  background: linear-gradient(180deg, rgba(4, 18, 28, 0.95), rgba(4, 30, 40, 0.95));
+}
+
+.dw-title {
+  font-size: clamp(32px, 7vw, 56px);
+  letter-spacing: 4px;
+  margin: 0;
+  color: #7ee787;
+  text-shadow: 0 0 18px rgba(126, 231, 135, 0.6);
+}
+
+.dw-title-sm {
+  font-size: 28px;
+  margin: 0;
+  color: #eaf6ff;
+}
+
+.dw-subtitle {
+  max-width: 520px;
+  color: #bcd6e0;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dw-hint {
+  color: #7fa0ad;
+  font-size: 12px;
+  margin: 0;
+}
+
+.dw-best {
+  margin: 0;
+  font-size: 14px;
+  color: #9fd6ff;
+}
+
+.dw-best-value {
+  font-weight: bold;
+  color: #ffd35a;
+}
+
+.dw-final-score {
+  font-size: 20px;
+  margin: 0;
+}
+
+.dw-final-best {
+  font-size: 15px;
+  color: #9aa;
+  margin: 0 0 8px;
+}
+
+.dw-final-best.dw-new-best {
+  color: #ffd35a;
+  font-weight: bold;
+}
+
+/* --- Playing HUD ------------------------------------------------------ */
+.dw-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dw-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: linear-gradient(180deg, rgba(2, 10, 16, 0.85), rgba(2, 10, 16, 0));
+  pointer-events: none;
+}
+
+.dw-topbar > * {
+  pointer-events: auto;
+}
+
+.dw-quota {
+  flex: 1 1 auto;
+  min-width: 180px;
+  max-width: 360px;
+  background: rgba(6, 22, 32, 0.75);
+  border: 1px solid rgba(140, 210, 255, 0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.dw-quota-label-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.dw-quota-icon {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.dw-quota-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dw-hint-line {
+  font-size: 11px;
+  color: #ffd35a;
+  line-height: 1.3;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Recipe chain readout: how to make the current quota's item, shown only
+   when it's a processed/assembled good (see ui.js's _updateChain). Capped
+   height + scroll so an unusually deep chain can't grow the quota box
+   without bound. */
+.dw-chain {
+  margin-top: 4px;
+  max-height: 92px;
+  overflow-y: auto;
+}
+
+.dw-chain-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #cfe8f2;
+}
+
+.dw-chain-swatch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.dw-chain-arrow {
+  color: #7fa0ad;
+}
+
+.dw-chain-building {
+  color: #ffd35a;
+  font-weight: 600;
+}
+
+.dw-chain-inputs {
+  color: #9fd6ff;
+}
+
+.dw-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dw-bar-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.2s;
+}
+
+.dw-bar-quota {
+  background: #ffd35a;
+}
+
+.dw-quota-time {
+  font-size: 11px;
+  color: #9fd6ff;
+  margin-top: 3px;
+}
+
+.dw-quota-time.dw-urgent {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.dw-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dw-strikes {
+  color: #ff9a8a;
+}
+
+.dw-tech-points {
+  color: #a6e3ff;
+}
+
+.dw-pause-btn, .dw-tech-toggle, .dw-howto-btn {
+  padding: 6px 14px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.dw-howto-btn {
+  padding: 6px 12px;
+}
+
+/* --- Build palette --------------------------------------------------- */
+.dw-palette {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 62vw;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  pointer-events: none;
+}
+
+.dw-palette-section {
+  pointer-events: auto;
+  background: rgba(6, 22, 32, 0.78);
+  border: 1px solid rgba(140, 210, 255, 0.2);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.dw-palette-category {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7fa0ad;
+  margin-bottom: 4px;
+}
+
+.dw-palette-row {
+  display: flex;
+  gap: 6px;
+}
+
+.dw-palette-btn {
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+  min-width: 64px;
+  border: 1px solid rgba(140, 210, 255, 0.3);
+  background: rgba(20, 40, 55, 0.9);
+  color: #eaf6ff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 11px;
+}
+
+.dw-palette-btn:hover {
+  background: rgba(35, 65, 85, 0.95);
+}
+
+.dw-palette-btn.dw-active {
+  border-color: #7ee787;
+  box-shadow: 0 0 0 2px rgba(126, 231, 135, 0.5);
+}
+
+.dw-palette-btn.dw-bulldoze {
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.dw-palette-btn.dw-bulldoze.dw-active {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.5);
+}
+
+/* Marks a build-palette button whose building type is somewhere in the
+   current quota's crafting chain (see ui.js's _updateChain) - the same
+   pulsing gold used by the resource-node highlight rings (render.js) and
+   the quota bar's fill color, so the visual language reads as one system:
+   "this glows = relevant to your quota" whether it's a map tile or a
+   palette button. */
+.dw-palette-btn.dw-quota-needed {
+  border-color: #ffd35a;
+  animation: dw-quota-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes dw-quota-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 211, 90, 0.3), 0 0 6px rgba(255, 211, 90, 0.3); }
+  50% { box-shadow: 0 0 0 2px rgba(255, 211, 90, 0.8), 0 0 14px rgba(255, 211, 90, 0.7); }
+}
+
+.dw-palette-name {
+  font-weight: 600;
+}
+
+.dw-palette-cost {
+  color: #9fd6ff;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.dw-palette-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ffd35a;
+  color: #201800;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Stockpile panel --------------------------------------------------- */
+.dw-stockpile {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 190px;
+  max-height: 40vh;
+  overflow-y: auto;
+  pointer-events: auto;
+  background: rgba(6, 22, 32, 0.78);
+  border: 1px solid rgba(140, 210, 255, 0.2);
+  border-radius: 8px 0 0 0;
+  padding: 8px 10px;
+  margin: 10px 0 0 0;
+}
+
+.dw-panel-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7fa0ad;
+  margin-bottom: 6px;
+}
+
+.dw-stockpile-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 2px 0;
+}
+
+.dw-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.dw-stockpile-name {
+  flex: 1 1 auto;
+  color: #cfe8f2;
+}
+
+.dw-stockpile-qty {
+  font-weight: bold;
+  color: #eaf6ff;
+}
+
+/* --- Tech tree panel --------------------------------------------------- */
+.dw-tech-panel {
+  position: absolute;
+  top: 84px;
+  right: 12px;
+  width: 300px;
+  max-height: 70vh;
+  overflow-y: auto;
+  pointer-events: auto;
+  background: rgba(6, 18, 28, 0.95);
+  border: 1px solid rgba(140, 210, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dw-tech-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
+}
+
+.dw-tech-row:last-child {
+  border-bottom: none;
+}
+
+.dw-tech-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.dw-tech-desc {
+  font-size: 11px;
+  color: #9fbccb;
+  margin: 3px 0 6px;
+}
+
+.dw-tech-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dw-tech-cost {
+  font-size: 11px;
+  color: #ffd35a;
+}
+
+.dw-tech-unlock {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+.dw-tech-row.dw-tech-unlocked .dw-tech-name {
+  color: #7ee787;
+}
+
+.dw-tech-requires {
+  font-size: 11px;
+  color: #ff8a65;
+  margin: -2px 0 6px;
+}
+
+.dw-tech-row.dw-tech-locked .dw-tech-name {
+  color: #8a9aa5;
+}
+
+.dw-tech-close {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* --- Left-side panel column ---------------------------------------------
+   Shared positioning wrapper for the resource legend and the Getting
+   Started checklist: stacking them in a flex column (rather than giving
+   each a hand-tuned absolute `top`) means adding/removing a card here can't
+   silently overlap the other. Sits top-left, below the topbar and above the
+   build palette, so it never collides with the topbar/stockpile/tech-tree
+   panels on desktop. */
+.dw-left-panels {
+  position: absolute;
+  top: 84px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.dw-left-panels > * {
+  pointer-events: auto;
+}
+
+/* Always-visible during play. */
+.dw-legend {
+  background: rgba(6, 22, 32, 0.78);
+  border: 1px solid rgba(140, 210, 255, 0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dw-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #cfe8f2;
+}
+
+.dw-legend-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.dw-legend-name {
+  white-space: nowrap;
+}
+
+/* --- Getting Started checklist -------------------------------------------
+   Compact per-run onboarding nudge, secondary to (not part of) the quota
+   panel above it - own green accent rather than the quota's gold, and no
+   background/border shared with .dw-quota, so it reads as a distinct card.
+   Shown from the start of every run; fades out for good once main.js's
+   gettingStartedDone latch goes true (see ui.js's _updateGettingStarted). */
+.dw-getting-started {
+  background: rgba(6, 26, 18, 0.78);
+  border: 1px solid rgba(126, 231, 135, 0.3);
+  border-radius: 8px;
+  padding: 6px 10px;
+  max-width: 200px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.dw-getting-started[hidden] {
+  display: none;
+}
+
+.dw-getting-started.dw-getting-started-complete {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.96);
+}
+
+.dw-getting-started-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7ee787;
+  margin-bottom: 4px;
+}
+
+.dw-getting-started-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dw-getting-started-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #cfe8f2;
+}
+
+.dw-getting-started-check {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid rgba(140, 210, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: bold;
+  color: transparent;
+}
+
+.dw-getting-started-check::before {
+  content: '✓';
+}
+
+.dw-getting-started-row.dw-getting-started-checked .dw-getting-started-check {
+  background: #7ee787;
+  border-color: #7ee787;
+  color: #04210c;
+}
+
+.dw-getting-started-row.dw-getting-started-checked .dw-getting-started-label {
+  color: #8fe3a0;
+  text-decoration: line-through;
+  text-decoration-color: rgba(143, 227, 160, 0.6);
+}
+
+/* --- How to Play overlay ------------------------------------------------ */
+.dw-howto {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 8, 14, 0.6);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dw-howto[hidden] {
+  display: none;
+}
+
+.dw-howto-card {
+  background: rgba(6, 18, 28, 0.97);
+  border: 1px solid rgba(140, 210, 255, 0.3);
+  border-radius: 10px;
+  padding: 20px 24px;
+  max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dw-howto-card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #7ee787;
+}
+
+.dw-howto-list {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #cfe8f2;
+}
+
+.dw-howto-list li {
+  margin-bottom: 6px;
+}
+
+.dw-howto-close {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  /* Topbar: let it wrap onto two lines instead of squeezing/clipping the
+     tech-tree and pause buttons off the right edge. Quota box takes its own
+     full-width row; stats + buttons wrap to the row below. */
+  .dw-topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+  .dw-quota {
+    flex: 1 1 100%;
+    max-width: none;
+    min-width: 0;
+  }
+  .dw-stats {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .dw-pause-btn, .dw-tech-toggle, .dw-howto-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  .dw-hint-line {
+    font-size: 10px;
+  }
+  .dw-chain {
+    max-height: 64px;
+  }
+  .dw-chain-row {
+    font-size: 10px;
+  }
+
+  /* Build palette: instead of stacking every category section vertically
+     (which ate most of the viewport height on phones), lay sections out as
+     a single non-wrapping row and let the row scroll horizontally. Each
+     section keeps `flex: none` so its buttons never get squashed — the
+     strip just scrolls instead of growing tall. */
+  .dw-palette {
+    max-width: 100vw;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
+    gap: 8px;
+    padding: 6px 8px;
+  }
+  .dw-palette-section {
+    flex: none;
+    padding: 5px 6px;
+  }
+  .dw-palette-category {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+  .dw-palette-row {
+    gap: 4px;
+  }
+  .dw-palette-btn {
+    min-width: 50px;
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+  .dw-palette-cost {
+    font-size: 8px;
+  }
+  .dw-palette-badge {
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+    top: -5px;
+    right: -5px;
+  }
+
+  /* Stockpile: was pinned bottom-right, which is now where the build
+     palette strip lives (and where its right-most "Remove" button used to
+     poke into it). Move it to the top-right, under the (now taller,
+     wrapped) topbar, and shrink it so it stays out of the way. The topbar
+     can wrap to 3 rows here (quota box, stats, buttons) plus the optional
+     single-line contextual hint under the quota bar, so this sits a bit
+     lower than the topbar's un-hinted height to clear all of that. */
+  .dw-stockpile {
+    top: 150px;
+    right: 0;
+    bottom: auto;
+    width: 120px;
+    max-height: 24vh;
+    margin: 0;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .dw-tech-panel {
+    top: 150px;
+    width: 88vw;
+    right: 6vw;
+  }
+
+  /* Legend + Getting Started column: mirrors the stockpile's placement on
+     the opposite corner, below the (now two-row) topbar, so it never
+     overlaps the topbar/stockpile. */
+  .dw-left-panels {
+    top: 150px;
+    left: 0;
+    gap: 6px;
+  }
+  .dw-legend {
+    padding: 5px 8px;
+    border-radius: 0 8px 8px 0;
+    gap: 3px;
+  }
+  .dw-legend-row {
+    font-size: 10px;
+    gap: 4px;
+  }
+  .dw-legend-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Getting Started: shrunk to match the legend above it so the stacked
+     column stays compact on a 390px-wide phone. */
+  .dw-getting-started {
+    max-width: 160px;
+    padding: 5px 8px;
+    border-radius: 0 8px 8px 0;
+  }
+  .dw-getting-started-title {
+    font-size: 9px;
+  }
+  .dw-getting-started-row {
+    font-size: 10px;
+    gap: 4px;
+  }
+  .dw-getting-started-check {
+    width: 11px;
+    height: 11px;
+    font-size: 8px;
+  }
+
+  .dw-howto-card {
+    padding: 16px 18px;
+    max-width: 92vw;
+  }
+  .dw-howto-card h2 {
+    font-size: 17px;
+  }
+  .dw-howto-list {
+    font-size: 12px;
+    padding-left: 18px;
+  }
+}

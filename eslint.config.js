@@ -17,6 +17,7 @@ const modulePatterns = [
   "static/shared/**/*.js",
   "static/delve/**/*.js",
   "static/overrun/**/*.js",
+  "static/driftworks/**/*.js",
   "static/wildergrove/**/*.js",
 ];
 

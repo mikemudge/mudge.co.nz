@@ -1,0 +1,788 @@
+/* Wildergrove DOM overlay: dark-wood/parchment rustic-RPG theme.
+   Root sits over the canvas with pointer-events:none (see driftworks.css
+   for the same pattern) so empty space passes clicks through to the world;
+   every clickable piece of chrome below opts back in explicitly. */
+
+#wildergrove-ui {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  color: #f0e6d2;
+  font-family: Georgia, 'Times New Roman', serif;
+  --wg-panel-bg: #3a2b22;
+  --wg-panel-bg-soft: rgba(58, 43, 34, 0.92);
+  --wg-border: #5c4531;
+  --wg-text: #f0e6d2;
+  --wg-text-dim: #c9b899;
+  --wg-accent: #d4af37;
+  --wg-accent-dim: #8a7222;
+  --wg-danger: #b3462c;
+}
+
+#wildergrove-ui button {
+  font-family: inherit;
+  color: inherit;
+}
+
+.wg-btn {
+  pointer-events: auto;
+  cursor: pointer;
+  border: 1px solid var(--wg-border);
+  background: var(--wg-panel-bg-soft);
+  color: var(--wg-text);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.wg-btn:hover {
+  background: #4a3830;
+  border-color: var(--wg-accent-dim);
+}
+
+.wg-btn:active {
+  transform: scale(0.97);
+}
+
+/* --- HUD ---------------------------------------------------------------- */
+.wg-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.wg-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, rgba(20, 14, 10, 0.85), rgba(20, 14, 10, 0));
+}
+
+.wg-topbar > * {
+  pointer-events: auto;
+}
+
+.wg-stamina-box {
+  min-width: 160px;
+  max-width: 260px;
+  flex: 1 1 auto;
+  background: var(--wg-panel-bg-soft);
+  border: 1px solid var(--wg-border);
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.wg-stamina-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--wg-text-dim);
+  margin-bottom: 3px;
+}
+
+.wg-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.wg-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8a9a3f, #c9d46a);
+  transition: width 0.2s;
+}
+
+.wg-bar-fill.wg-bar-low {
+  background: linear-gradient(90deg, #8a3a2c, #d4602c);
+}
+
+/* --- Watering-can capacity bar (inside the stamina box) -------------------
+   Reuses .wg-bar-track/.wg-bar-fill/.wg-bar-low as-is (see ui.js) - only the
+   normal-level color needs its own rule (blue, not the stamina bar's green),
+   since .wg-bar-fill.wg-bar-low's higher specificity already wins over this
+   when the can runs low, giving the same amber/red warning for free. */
+.wg-water-box {
+  margin-top: 6px;
+}
+
+.wg-water-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--wg-text-dim);
+  margin-bottom: 3px;
+}
+
+.wg-bar-fill-water {
+  background: linear-gradient(90deg, #2f7fa8, #7fc4e0);
+}
+
+/* --- Active buff indicators (inside the stamina box) --------------------- */
+.wg-buff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 5px;
+}
+
+.wg-buff-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--wg-text-dim);
+}
+
+.wg-buff-icon {
+  flex: 0 0 auto;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.wg-buff-bar-track {
+  flex: 1 1 auto;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 30px;
+}
+
+.wg-buff-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--wg-accent-dim), var(--wg-accent));
+  transition: width 0.2s linear;
+}
+
+.wg-buff-time {
+  flex: 0 0 auto;
+  min-width: 2em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.wg-day {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--wg-accent);
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.wg-menu-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.wg-menu-btn {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* --- Hotbar --------------------------------------------------------------- */
+.wg-hotbar {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+  background: var(--wg-panel-bg-soft);
+  border: 1px solid var(--wg-border);
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.wg-hotbar-slot {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  border: 2px solid var(--wg-border);
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wg-hotbar-slot:hover {
+  border-color: var(--wg-accent-dim);
+}
+
+.wg-hotbar-slot.wg-active {
+  border-color: var(--wg-accent);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4), 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+.wg-slot-badge {
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  font-size: 9px;
+  color: var(--wg-text-dim);
+}
+
+.wg-slot-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.wg-slot-qty {
+  position: absolute;
+  bottom: 1px;
+  right: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--wg-text);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.wg-slot-empty .wg-slot-swatch {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* --- Panel shell (inventory/crafting/cooking/building/quest log) --------- */
+.wg-panel {
+  position: absolute;
+  top: 70px;
+  right: 14px;
+  width: 300px;
+  max-height: 68vh;
+  pointer-events: auto;
+  background: var(--wg-panel-bg);
+  border: 1px solid var(--wg-border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wg-panel[hidden] {
+  display: none;
+}
+
+.wg-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.22);
+  border-bottom: 1px solid var(--wg-border);
+}
+
+.wg-panel-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--wg-accent);
+  letter-spacing: 0.5px;
+}
+
+.wg-panel-close {
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--wg-border);
+  color: var(--wg-text-dim);
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.wg-panel-close:hover {
+  color: var(--wg-text);
+  border-color: var(--wg-accent-dim);
+}
+
+.wg-panel-body {
+  padding: 10px 12px;
+  overflow-y: auto;
+}
+
+/* --- Inventory grid ------------------------------------------------------- */
+.wg-inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.wg-inv-cell {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  border: 2px solid var(--wg-border);
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wg-inv-cell:hover:not(.wg-slot-empty) {
+  border-color: var(--wg-accent-dim);
+}
+
+.wg-inv-cell.wg-slot-empty {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.wg-inv-cell.wg-active {
+  border-color: var(--wg-accent);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Drag-and-drop feedback (shared: hotbar slots + inventory cells) ----- */
+.wg-hotbar-slot.wg-dragging,
+.wg-inv-cell.wg-dragging {
+  opacity: 0.4;
+}
+
+.wg-hotbar-slot.wg-drop-target,
+.wg-inv-cell.wg-drop-target {
+  border-color: var(--wg-accent);
+  background: rgba(212, 175, 55, 0.18);
+}
+
+.wg-inv-cell .wg-slot-swatch {
+  width: 70%;
+  height: 70%;
+}
+
+.wg-inv-cell .wg-slot-qty {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+}
+
+/* --- Recipe / building lists (crafting, cooking, build palette) --------- */
+.wg-recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wg-cooking-hint {
+  font-size: 12px;
+  color: var(--wg-danger);
+  margin-bottom: 8px;
+}
+
+.wg-cooking-hint[hidden] {
+  display: none;
+}
+
+.wg-recipe-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--wg-border);
+  border-radius: 7px;
+  padding: 6px 8px;
+}
+
+/* Without this, setting the `hidden` attribute (used to gate the build
+   palette by quest progress) does nothing: [hidden]'s default display:none
+   from the UA stylesheet loses to the .wg-recipe-row rule above at equal
+   specificity, since author styles always come after UA styles in the
+   cascade - confirmed live (a locked building stayed visible until this was
+   added). */
+.wg-recipe-row[hidden] {
+  display: none;
+}
+
+.wg-recipe-row:hover:not(:disabled) {
+  border-color: var(--wg-accent);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.wg-recipe-row:disabled {
+  cursor: not-allowed;
+}
+
+.wg-recipe-row.wg-unaffordable {
+  opacity: 0.45;
+}
+
+.wg-recipe-row.wg-locked {
+  opacity: 0.35;
+}
+
+.wg-recipe-row.wg-active {
+  border-color: var(--wg-accent);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.5);
+}
+
+.wg-swatch {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.wg-recipe-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.wg-recipe-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--wg-text);
+}
+
+.wg-recipe-cost {
+  font-size: 11px;
+  color: var(--wg-text-dim);
+}
+
+.wg-recipe-payoff {
+  font-size: 11px;
+  color: var(--wg-accent);
+  margin-top: 2px;
+}
+
+.wg-recipe-station {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--wg-text-dim);
+  margin-top: 2px;
+}
+
+/* --- Tool-tier HUD readout (inside the stamina box) ----------------------- */
+.wg-tool-tiers {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.wg-tool-tier-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--wg-text-dim);
+}
+
+.wg-tool-tier-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.wg-tool-tier-name {
+  text-transform: capitalize;
+}
+
+/* --- Demolish toggle (Build panel) ----------------------------------------- */
+.wg-demolish-btn {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.wg-demolish-btn.wg-active {
+  background: var(--wg-danger, #8a3a2c);
+  color: var(--wg-text);
+  border-color: var(--wg-danger, #8a3a2c);
+}
+
+/* --- Quest log ------------------------------------------------------------ */
+.wg-quest-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--wg-text-dim);
+  margin: 10px 0 6px;
+}
+
+.wg-quest-section-title:first-child {
+  margin-top: 0;
+}
+
+.wg-quest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wg-quest-empty {
+  font-size: 12px;
+  color: var(--wg-text-dim);
+  font-style: italic;
+}
+
+.wg-quest-row {
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--wg-border);
+  border-radius: 7px;
+  padding: 8px 10px;
+}
+
+.wg-quest-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--wg-accent);
+  margin-bottom: 3px;
+}
+
+.wg-quest-desc {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--wg-text);
+  margin-bottom: 5px;
+}
+
+.wg-quest-progress {
+  font-size: 11px;
+  color: var(--wg-text-dim);
+  font-weight: bold;
+}
+
+.wg-quest-row.wg-quest-complete {
+  opacity: 0.7;
+}
+
+.wg-quest-row.wg-quest-complete .wg-quest-title::before {
+  content: '✓ ';
+  color: #8a9a3f;
+}
+
+.wg-quest-list-completed {
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+/* --- NPC dialog box -------------------------------------------------------
+   Classic bottom-center RPG textbox, deliberately separate from the hotbar
+   (sits above it) so both can be visible without overlapping. */
+.wg-dialog {
+  position: absolute;
+  left: 50%;
+  bottom: 78px;
+  transform: translateX(-50%);
+  width: min(560px, 86vw);
+  pointer-events: auto;
+  cursor: pointer;
+  background: var(--wg-panel-bg);
+  border: 2px solid var(--wg-accent-dim);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 12px 16px;
+}
+
+.wg-dialog[hidden] {
+  display: none;
+}
+
+.wg-dialog-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--wg-accent);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.wg-dialog-line {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--wg-text);
+  min-height: 2.6em;
+}
+
+.wg-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.wg-dialog-hint {
+  font-size: 11px;
+  color: var(--wg-text-dim);
+  font-style: italic;
+}
+
+/* --- Toast (soft-block / info messages) ------------------------------ */
+.wg-toast {
+  position: absolute;
+  top: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 14, 10, 0.92);
+  border: 1px solid var(--wg-accent-dim);
+  color: var(--wg-text);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.wg-toast[hidden] {
+  display: none;
+}
+
+/* --- Placement-mode banner ------------------------------------------------ */
+/* Deliberately distinct from .wg-toast: persistent (no fade), gold-tinted
+   (an active mode, not a one-off message), and sits above it so a
+   soft-block toast ("Can't build that there") can still be read at the same
+   time as the reminder that you're still placing something. */
+.wg-placement-banner {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(58, 43, 34, 0.92);
+  border: 1px solid var(--wg-accent);
+  color: var(--wg-accent);
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.wg-placement-banner[hidden] {
+  display: none;
+}
+
+/* --- First-time "How to Play" overlay ------------------------------------- */
+.wg-howto-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 7, 5, 0.72);
+  cursor: pointer;
+  z-index: 20;
+}
+
+.wg-howto-overlay[hidden] {
+  display: none;
+}
+
+.wg-howto-card {
+  width: min(480px, 90vw);
+  max-height: 82vh;
+  overflow-y: auto;
+  background: var(--wg-panel-bg);
+  border: 2px solid var(--wg-accent-dim);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  padding: 22px 24px;
+  cursor: default;
+}
+
+.wg-howto-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--wg-accent);
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.wg-howto-goal {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--wg-text);
+  text-align: center;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--wg-border);
+}
+
+.wg-howto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.wg-howto-row {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.wg-howto-key {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--wg-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wg-howto-desc {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--wg-text);
+}
+
+.wg-howto-hint {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--wg-text-dim);
+}
+
+@media (max-width: 720px) {
+  .wg-topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+  .wg-stamina-box {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+  .wg-menu-buttons {
+    margin-left: 0;
+  }
+  .wg-panel {
+    top: 96px;
+    right: 6px;
+    left: 6px;
+    width: auto;
+    max-height: 60vh;
+  }
+  .wg-hotbar-slot {
+    width: 38px;
+    height: 38px;
+  }
+  .wg-dialog {
+    bottom: 64px;
+    width: 92vw;
+  }
+}

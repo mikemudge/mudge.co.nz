@@ -17,6 +17,7 @@ const modulePatterns = [
   "static/shared/**/*.js",
   "static/delve/**/*.js",
   "static/overrun/**/*.js",
+  "static/wildergrove/**/*.js",
 ];
 
 // Vendored third-party code and known legacy plain scripts that live inside

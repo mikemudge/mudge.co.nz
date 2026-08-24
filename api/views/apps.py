@@ -241,6 +241,11 @@ p5_apps['delve'] = {
     'title': 'Delve',
     'path': 'delve/main',
 }
+p5_apps['wildergrove'] = {
+    'img': 'wildergrove.png',
+    'title': 'Wildergrove',
+    'path': 'wildergrove/main',
+}
 
 # These were only linked from the old static/p5/p5.tpl.html index page and
 # had no entry here, so they never showed up on /games, /projects or

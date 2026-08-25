@@ -278,6 +278,13 @@ jobs:
   # N untagged" case to worry about losing. Needs GHCR_TOKEN's PAT to also
   # carry the delete:packages scope (read/write:packages alone, as used for
   # docker_login, isn't enough to call the delete endpoint below).
+  #
+  # Wired into both deploy workflows below (after deploy/deploy_staging, so
+  # it only runs once this run's own retags are done) rather than relying
+  # solely on a calendar schedule - confirmed push cadence is bursty, so a
+  # fixed-interval trigger would either run mid-burst for no reason or miss
+  # a long quiet stretch entirely. The garbage_collect workflow further down
+  # still exists as a backup for a long gap with zero deploys at all.
   prune_ghcr_untagged:
     docker:
       - image: cimg/base:2021.04
@@ -303,10 +310,16 @@ jobs:
                 | while read -r version; do
                     id=$(echo "$version" | jq -r '.id')
                     created=$(echo "$version" | jq -r '.created_at')
-                    # Skip anything from the last 6 hours in case a push/retag
-                    # for this exact version is still in flight elsewhere.
+                    # 30 minutes, not the many hours you'd want for a
+                    # calendar-scheduled GC run: this job now runs at the
+                    # tail of the same pipeline that did the retagging
+                    # (build_and_push/deploy), so anything it's about to
+                    # prune already stopped being referenced minutes ago,
+                    # not hours - this margin only needs to cover a second,
+                    # genuinely-concurrent pipeline still mid-retag, which a
+                    # bursty-but-serial push pattern shouldn't produce often.
                     age=$(( $(date +%s) - $(date -d "$created" +%s) ))
-                    if [ "$age" -lt 21600 ]; then
+                    if [ "$age" -lt 1800 ]; then
                       echo "Skipping version $id (created $created, too recent)"
                       continue
                     fi
@@ -356,6 +369,14 @@ workflows:
             branches:
               only:
                 - main
+      - prune_ghcr_untagged:
+          context: Build
+          requires:
+            - deploy
+          filters:
+            branches:
+              only:
+                - main
 
   # Triggered manually (CircleCI web UI "Trigger Pipeline", or the API) with
   # the deploy_stage parameter set true, on whatever branch you pick - lets
@@ -377,6 +398,10 @@ workflows:
       - deploy_staging:
           requires:
             - build_and_push
+      - prune_ghcr_untagged:
+          context: Build
+          requires:
+            - deploy_staging
 
   # Not triggered by pushes at all - set up a CircleCI Scheduled Trigger
   # (Project Settings -> Triggers) on whatever cadence you want (e.g.

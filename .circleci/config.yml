@@ -8,6 +8,9 @@ parameters:
   deploy_stage:
     type: boolean
     default: false
+  run_gc:
+    type: boolean
+    default: false
 
 commands:
   docker_login:
@@ -26,9 +29,13 @@ commands:
           name: "Push << parameters.image >>"
           command: |
             # Generic resilience against a transient registry hiccup - not
-            # tied to any specific known failure mode the way this used to
-            # be for DOCR's GC-causes-brief-read-only behavior (see the
-            # migration-to-GHCR commit that removed that job entirely).
+            # tied to a specific known failure mode the way this used to be
+            # for DOCR's GC-causes-brief-read-only behavior. GHCR's own
+            # cleanup (prune_ghcr_untagged below) is push-independent - it
+            # only ever deletes already-untagged versions via the API, it
+            # doesn't touch the registry's ability to accept a push - so
+            # there's no GHCR equivalent of that DOCR failure mode to retry
+            # around here.
             for i in $(seq 1 5); do
               docker push "<< parameters.image >>" && exit 0
               echo "Push failed (attempt $i/5), retrying in 15s..."
@@ -261,10 +268,64 @@ jobs:
           command:
             ssh mudge@mudge.co.nz "cd projects/stage-mudge && flock /tmp/stage-mudge-git.lock -c 'git fetch origin $CIRCLE_BRANCH && git checkout -B $CIRCLE_BRANCH origin/$CIRCLE_BRANCH' && ./deploy-staging.sh"
 
+  # GHCR has no built-in garbage collection (unlike DOCR, which had a
+  # doctl-triggerable GC job) - an untagged image version (the manifest a
+  # mutable tag like staging/prod/prev_prod used to point at, before the
+  # next retag replaced it) just sits there taking up storage forever unless
+  # something explicitly deletes it via the API. Every version this job sees
+  # with an empty `tags` list is genuinely orphaned - our tag set is fixed
+  # (staging/prod/prev_prod), never per-commit, so there's no "keep the last
+  # N untagged" case to worry about losing. Needs GHCR_TOKEN's PAT to also
+  # carry the delete:packages scope (read/write:packages alone, as used for
+  # docker_login, isn't enough to call the delete endpoint below).
+  prune_ghcr_untagged:
+    docker:
+      - image: cimg/base:2021.04
+
+    working_directory: ~/repo
+
+    steps:
+      - run:
+          name: Delete untagged mudgeconz-app versions from GHCR
+          command: |
+            PACKAGE=mudgeconz-app
+            API="https://api.github.com/user/packages/container/$PACKAGE/versions"
+            AUTH_HEADER="Authorization: Bearer $GHCR_TOKEN"
+
+            page=1
+            while :; do
+              resp=$(curl -s -H "$AUTH_HEADER" -H "Accept: application/vnd.github+json" \
+                -H "X-GitHub-Api-Version: 2022-11-28" "$API?per_page=100&page=$page")
+              count=$(echo "$resp" | jq 'length')
+              [ "$count" -eq 0 ] && break
+
+              echo "$resp" | jq -c '.[] | select(.metadata.container.tags | length == 0)' \
+                | while read -r version; do
+                    id=$(echo "$version" | jq -r '.id')
+                    created=$(echo "$version" | jq -r '.created_at')
+                    # Skip anything from the last 6 hours in case a push/retag
+                    # for this exact version is still in flight elsewhere.
+                    age=$(( $(date +%s) - $(date -d "$created" +%s) ))
+                    if [ "$age" -lt 21600 ]; then
+                      echo "Skipping version $id (created $created, too recent)"
+                      continue
+                    fi
+                    echo "Deleting untagged version $id (created $created)"
+                    curl -s -X DELETE -H "$AUTH_HEADER" -H "Accept: application/vnd.github+json" \
+                      -H "X-GitHub-Api-Version: 2022-11-28" "$API/$id"
+                  done
+
+              page=$((page + 1))
+            done
+
+            echo "Done."
+
 workflows:
   build_and_deploy:
     when:
-      not: << pipeline.parameters.deploy_stage >>
+      and:
+        - not: << pipeline.parameters.deploy_stage >>
+        - not: << pipeline.parameters.run_gc >>
     jobs:
       - install_deps
       - test:
@@ -316,3 +377,15 @@ workflows:
       - deploy_staging:
           requires:
             - build_and_push
+
+  # Not triggered by pushes at all - set up a CircleCI Scheduled Trigger
+  # (Project Settings -> Triggers) on whatever cadence you want (e.g.
+  # weekly), targeting any branch, with the run_gc parameter set to true.
+  # Kept separate from build_and_push since there's no reason a normal
+  # deploy should wait on this.
+  garbage_collect:
+    when:
+      << pipeline.parameters.run_gc >>
+    jobs:
+      - prune_ghcr_untagged:
+          context: Build

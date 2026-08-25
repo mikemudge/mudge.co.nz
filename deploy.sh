@@ -2,7 +2,7 @@
 
 set -e
 
-IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:prod"
+IMAGE="ghcr.io/mikemudge/mudgeconz-app:prod"
 
 cd ~/projects/pyauto
 

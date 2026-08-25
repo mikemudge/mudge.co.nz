@@ -6,7 +6,7 @@
 
 set -e
 
-IMAGE="registry.digitalocean.com/mikemudge/mudgeconz-app:staging"
+IMAGE="ghcr.io/mikemudge/mudgeconz-app:staging"
 
 echo 'Pulling the app image.'
 docker pull "$IMAGE"

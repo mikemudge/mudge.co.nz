@@ -252,6 +252,16 @@ p5_apps['wildergrove'] = {
     'title': 'Wildergrove',
     'path': 'wildergrove/main',
 }
+p5_apps['railwright'] = {
+    'title': 'Railwright',
+    'path': 'railwright/main',
+    'status': 'wip',
+}
+p5_apps['hearthmere'] = {
+    'title': 'Hearthmere',
+    'path': 'hearthmere/main',
+    'status': 'wip',
+}
 
 # These were only linked from the old static/p5/p5.tpl.html index page and
 # had no entry here, so they never showed up on /games, /projects or

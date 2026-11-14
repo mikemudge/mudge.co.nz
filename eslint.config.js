@@ -19,6 +19,8 @@ const modulePatterns = [
   "static/overrun/**/*.js",
   "static/driftworks/**/*.js",
   "static/wildergrove/**/*.js",
+  "static/railwright/**/*.js",
+  "static/hearthmere/**/*.js",
 ];
 
 // Vendored third-party code and known legacy plain scripts that live inside

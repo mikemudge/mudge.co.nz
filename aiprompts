@@ -1,5 +1,6 @@
 
-I would like you to make a new game. Everything is up to you to decide, don't consult me for anything.
+I would like you to make a new game. You can ask questions up front, but after that everything is up to you to decide.
+I don't want to be asked anything after the initial round.
 I want you to focus on the games vision and delegate tasks like coding to sub agents.
 If agents build something which doesn't match your vision consider whether the vision can pivot, or whether the vision
   should be enforced.
@@ -7,10 +8,13 @@ I'd like to see several agents being used, in parallel when it makes sense, and
   several iterations of improvements to the game as you flesh out all the parts of it.
 This should be the most ambitious project we have done so far.
 
-The constraints for this game are, its an RPG with at least mining, farming, crafting, cooking and building.
-There should be a map, built with the potential to grow more.
-Some starting quests should be available and early quests should be the guide for a new player.
-
-
-
+This game will be a town builder, houses provide population, other buildings have jobs which the population can be assigned to
+resources will need to be gathered, stored and delivered to building sites.
+Food will be a separate category of resource, there should be many types of food and population will need food to eat.
+A larger population requires more food, and their healthiness will be determined by the variety of food available.
+The game map should be a grid, buildings can take up multiple tiles on that grid.
+The population will need to walk on paths connecting buildings to get around the map, deliver resources etc.
+The goal of the game is to grow the town, population, number of buildings, types of buildings.
+The game should have an enemy which invades the town periodically, the town needs to maintain some amount of military.
+The military population can be equipped with varying technology as the town grows and get access to higher tier buildings.
 

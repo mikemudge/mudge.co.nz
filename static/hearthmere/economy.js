@@ -1085,7 +1085,7 @@ class Economy {
     // wrong end of the map.
     if (this._anchor(b) < 0) return;
     this._regionBlind = true;
-    let src = null;
+    let src;
     try {
       src = this._findSource(item, b, buffers);
     } finally {

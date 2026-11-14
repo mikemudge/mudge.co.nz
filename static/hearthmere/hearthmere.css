@@ -1,0 +1,2521 @@
+/* Hearthmere — DOM overlay styling (DESIGN §13).
+ *
+ * The served shell has an empty <body> and no styling of its own (ADDENDUM B),
+ * so this file resets what it needs and assumes nothing. Everything here sits
+ * over the canvas; the canvas itself is painted by render.js.
+ *
+ * Look: warm parchment and ink, to sit with the painted-dusk gouache map —
+ * a steward's ledger laid over the valley, not a dark-mode dashboard. System
+ * fonts only; no webfonts (the loader does not fetch them and the page must
+ * work offline).
+ */
+
+:root {
+  --hm-ink: #2b2219;
+  --hm-ink-2: #584a3a;
+  --hm-ink-3: #8b7a61;
+  --hm-parch: #ece1c6;
+  --hm-parch-hi: #f6efdc;
+  --hm-parch-lo: #ddd0b0;
+  --hm-rule: #c5b389;
+  --hm-rule-2: #a8926a;
+  --hm-gold: #9a6f2e;
+  --hm-good: #4f7a45;
+  --hm-warn: #b0762a;
+  --hm-bad: #a23c2c;
+  --hm-blue: #456780;
+  --hm-shadow: 0 1px 0 rgba(255, 250, 235, .5) inset,
+               0 2px 3px rgba(28, 18, 8, .22),
+               0 10px 28px rgba(22, 14, 6, .30);
+  --hm-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+             Arial, "Noto Sans", sans-serif;
+  --hm-serif: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", Palatino,
+              "Times New Roman", serif;
+  --hm-r: 5px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #1d222a;
+}
+
+body {
+  font-family: var(--hm-sans);
+  color: var(--hm-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas {
+  display: block;
+}
+
+/* ---------------------------------------------------------------- root */
+
+.hm-ui,
+.hm-ui *,
+.hm-ui *::before,
+.hm-ui *::after {
+  box-sizing: border-box;
+}
+
+.hm-ui {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  font-family: var(--hm-sans);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--hm-ink);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hm-ui :where(button) {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+.hm-panel,
+.hm-top,
+.hm-banner,
+.hm-overlays,
+.hm-toast,
+.hm-tip {
+  pointer-events: auto;
+}
+
+/* Shared parchment surface. */
+.hm-surface,
+.hm-panel,
+.hm-top,
+.hm-tip,
+.hm-modal {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 242, .55), rgba(255, 252, 242, 0) 38%),
+    var(--hm-parch);
+  border: 1px solid var(--hm-rule-2);
+  box-shadow: var(--hm-shadow);
+}
+
+/* ================================================================ TOP BAR */
+
+.hm-top {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: var(--hm-r);
+}
+
+.hm-top-left,
+.hm-top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.hm-top-mid {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
+  justify-content: safe center;
+}
+
+.hm-brand {
+  min-width: 92px;
+}
+
+/* The permanent goal line: where the town is, where it is going, how much of
+ * the way it has come. Sits with the tier name because that is where a player
+ * already looks to ask "what am I now?". */
+.hm-goal {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-top: 1px;
+  max-width: 100%;
+}
+
+.hm-goal-sep,
+.hm-goal-next {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+  white-space: nowrap;
+}
+
+.hm-goal-sep { letter-spacing: 0; }
+
+.hm-goal-count {
+  font-size: 9.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+  padding: 0 4px;
+  border-radius: 7px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+  color: var(--hm-ink-2);
+}
+
+.hm-goal:hover .hm-goal-next,
+.hm-goal:hover .hm-brand-tier { color: var(--hm-ink); }
+
+.hm-goal.ready .hm-goal-next { color: var(--hm-good); }
+.hm-goal.ready .hm-goal-count {
+  background: var(--hm-good);
+  border-color: #3d6135;
+  color: #f2f7ec;
+}
+
+.hm-goal.won .hm-goal-next { color: var(--hm-gold); }
+
+.hm-goal-track {
+  height: 2px;
+  margin-top: 3px;
+  border-radius: 2px;
+  background: var(--hm-parch-lo);
+  overflow: hidden;
+}
+
+.hm-goal-fill {
+  display: block;
+  height: 100%;
+  background: var(--hm-gold);
+  transition: width .3s ease;
+}
+
+.hm-brand-name {
+  font-family: var(--hm-serif);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1.1;
+  color: var(--hm-ink);
+}
+
+.hm-brand-tier {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--hm-gold);
+}
+
+/* --- clock dial --- */
+
+.hm-clock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hm-dial {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex: 0 0 34px;
+  /* Midnight at 12 o'clock, running clockwise through dawn, noon, dusk. */
+  background: conic-gradient(
+    #33404f 0deg 79deg,
+    #a9713f 79deg 108deg,
+    #e0c98f 108deg 252deg,
+    #a9713f 252deg 317deg,
+    #33404f 317deg 360deg);
+  border: 1px solid var(--hm-rule-2);
+  box-shadow: inset 0 0 0 2px rgba(255, 250, 235, .35), 0 1px 2px rgba(30, 20, 10, .3);
+}
+
+.hm-dial-hand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 15px;
+  margin-left: -1px;
+  margin-top: -15px;
+  background: #241c14;
+  border-radius: 1px;
+  transform-origin: 50% 100%;
+  box-shadow: 0 0 2px rgba(255, 255, 255, .5);
+}
+
+.hm-dial-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: #241c14;
+}
+
+.hm-clock-text {
+  min-width: 84px;
+}
+
+.hm-clock-day {
+  font-family: var(--hm-serif);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-clock-season {
+  font-size: 11px;
+  color: var(--hm-ink-3);
+  font-weight: 600;
+}
+
+.hm-clock-season.hm-s-spring { color: #5d7f47; }
+.hm-clock-season.hm-s-summer { color: #a07a24; }
+.hm-clock-season.hm-s-autumn { color: #a2592c; }
+.hm-clock-season.hm-s-winter { color: #536d85; }
+
+/* --- speed --- */
+
+.hm-speeds {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 4px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+}
+
+.hm-speed {
+  min-width: 26px;
+  height: 24px;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--hm-ink-2);
+  font-variant-numeric: tabular-nums;
+  transition: background .12s, color .12s;
+}
+
+.hm-speed:hover { background: rgba(255, 252, 240, .7); }
+
+.hm-speed.on {
+  background: var(--hm-ink);
+  color: var(--hm-parch-hi);
+  box-shadow: 0 1px 2px rgba(20, 12, 4, .35);
+}
+
+/* --- meters --- */
+
+.hm-meter {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 84px;
+  max-width: 168px;
+  padding: 3px 9px 5px;
+  border-left: 1px solid var(--hm-rule);
+}
+
+.hm-meter:first-child { border-left: 0; }
+
+/* Days-of-food is the number players act on, so it never gets ellipsised. */
+.hm-meter-food { flex-grow: 1.45; min-width: 96px; }
+
+.hm-meter-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.hm-meter-icon {
+  font-size: 10px;
+  opacity: .65;
+  filter: grayscale(.35);
+}
+
+.hm-meter-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+}
+
+.hm-meter-val {
+  font-family: var(--hm-serif);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hm-meter-val.good { color: var(--hm-ink); }
+.hm-meter-val.warn { color: var(--hm-warn); }
+.hm-meter-val.bad  { color: var(--hm-bad); }
+
+.hm-meter-sub {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.hm-meter-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(70, 55, 35, .16);
+  overflow: hidden;
+}
+
+.hm-meter-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  background: var(--hm-blue);
+  transition: width .25s ease-out;
+}
+
+.hm-meter-fill.good { background: var(--hm-good); }
+.hm-meter-fill.warn { background: var(--hm-warn); }
+.hm-meter-fill.bad  { background: var(--hm-bad); }
+
+@keyframes hm-alarm {
+  0%, 100% { background: rgba(162, 60, 44, 0); }
+  50%      { background: rgba(162, 60, 44, .14); }
+}
+
+.hm-meter.alarm {
+  animation: hm-alarm 1.6s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* --- hover popovers on the meters --- */
+
+.hm-has-pop { cursor: help; }
+
+.hm-variety {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  width: 336px;
+  padding: 11px 13px 12px;
+  border-radius: var(--hm-r);
+  background: var(--hm-parch-hi);
+  border: 1px solid var(--hm-rule-2);
+  box-shadow: 0 12px 30px rgba(22, 14, 6, .38);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .13s, transform .13s, visibility .13s;
+  z-index: 40;
+}
+
+.hm-variety-sm { width: 268px; }
+
+.hm-has-pop:hover .hm-variety,
+.hm-meter.hm-peek .hm-variety {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Held open from the milestone panel: ring the meter so the eye makes the
+ * trip from the goal row up to the breakdown. */
+.hm-meter.hm-peek {
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--hm-gold), 0 0 14px rgba(154, 111, 46, .35);
+}
+
+.hm-variety::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  transform: rotate(45deg);
+  background: var(--hm-parch-hi);
+  border-left: 1px solid var(--hm-rule-2);
+  border-top: 1px solid var(--hm-rule-2);
+}
+
+.hm-variety-title {
+  font-family: var(--hm-serif);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.hm-variety-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 12px;
+  margin-bottom: 8px;
+}
+
+.hm-vgroup {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 11.5px;
+  opacity: .45;
+}
+
+.hm-vgroup.on { opacity: 1; }
+
+.hm-vdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  flex: 0 0 8px;
+}
+
+.hm-vname {
+  font-weight: 700;
+  min-width: 48px;
+}
+
+.hm-vlist {
+  color: var(--hm-ink-3);
+  font-size: 10.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-vgroup:not(.on) .hm-vlist {
+  font-style: italic;
+  color: var(--hm-bad);
+  opacity: .8;
+}
+
+/* A food the town ate rather than stored still counts (L2) — the dots say
+   which half of the rule it qualified under. */
+.hm-vitem.eaten {
+  border-bottom: 1px dotted var(--hm-rule-2);
+  cursor: help;
+}
+
+.hm-variety-note {
+  font-size: 11.5px;
+  color: var(--hm-ink-2);
+  padding-top: 7px;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-variety-ate {
+  font-size: 11.5px;
+  color: var(--hm-ink);
+  margin-top: 5px;
+}
+
+.hm-variety-miss {
+  font-size: 11px;
+  color: var(--hm-ink-2);
+  margin-top: 3px;
+}
+
+/* --- happiness breakdown (§17.1) --- */
+
+.hm-variety-happy { width: 320px; }
+
+.hm-hsum {
+  font-size: 11.5px;
+  color: var(--hm-ink-2);
+  margin-bottom: 7px;
+}
+
+.hm-hrows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hm-hrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+}
+
+.hm-hrow.nil { opacity: .42; }
+
+.hm-hname {
+  flex: 0 0 122px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-htrack {
+  flex: 1 1 auto;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--hm-rule);
+  overflow: hidden;
+}
+
+.hm-hfill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  background: var(--hm-ink-3);
+  transition: width .18s;
+}
+
+.hm-hrow.up .hm-hfill { background: var(--hm-good); }
+.hm-hrow.down .hm-hfill { background: var(--hm-bad); }
+
+.hm-hval {
+  flex: 0 0 34px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--hm-ink-3);
+}
+
+.hm-hrow.up .hm-hval { color: var(--hm-good); }
+.hm-hrow.down .hm-hval { color: var(--hm-bad); }
+
+.hm-variety-foot {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hm-rule);
+  line-height: 1.4;
+}
+
+/* --- key goods --- */
+
+.hm-good {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+}
+
+/* A good the town cannot reach yet reads as shut, not as spent (AK2). */
+.hm-good.locked {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--hm-rule);
+  opacity: .72;
+}
+
+.hm-good.locked .hm-good-icon { filter: grayscale(1); opacity: .6; }
+.hm-good.locked .hm-good-val { font-size: 10px; min-width: 24px; }
+
+/* Hangs from the right edge: these sit in the last 300px of the top bar, so a
+ * centred popover would run off the screen. */
+.hm-good-pop {
+  left: auto;
+  right: -1px;
+  transform: translateY(-4px);
+}
+
+.hm-has-pop:hover .hm-good-pop { transform: translateY(0); }
+
+.hm-good-pop::before { left: auto; right: 14px; margin-left: 0; }
+
+.hm-good-lock {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--hm-gold);
+  margin-bottom: 3px;
+}
+
+.hm-good-lock:empty { display: none; }
+
+.hm-good-pop .hm-variety-note:empty { display: none; }
+
+.hm-good-icon { font-size: 11px; }
+
+/* The committed part rides beside the spendable one: the big number is what
+ * placement will honour, and this says where the rest of it went. */
+.hm-good-res {
+  font-size: 9.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--hm-ink-3);
+  align-self: flex-start;
+  margin-top: 1px;
+}
+
+.hm-good-res:empty { display: none; }
+
+.hm-good.committed { border-style: dashed; }
+
+.hm-good-have {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--hm-ink-2);
+  margin-bottom: 4px;
+}
+
+.hm-good-val {
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 24px;
+  text-align: right;
+}
+
+/* ================================================================ BANNER */
+
+.hm-banner {
+  position: absolute;
+  top: calc(var(--hm-top-h, 92px) + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Kept inside the channel between the alerts and inspector panels. */
+  max-width: min(620px, calc(100vw - 600px));
+  padding: 7px 16px 7px 13px;
+  border-radius: var(--hm-r);
+  background: linear-gradient(180deg, #a8402f, #8c3324);
+  border: 1px solid #6d2419;
+  color: #fbeee2;
+  box-shadow: 0 6px 22px rgba(90, 20, 10, .45);
+  /* Above the toast stack: an after-action report naming what burned is the
+     one thing on screen a transient toast must never cover. */
+  z-index: 31;
+}
+
+.hm-banner-icon { font-size: 15px; }
+
+/* The after-action list drops onto its own line under the report sentence. */
+.hm-banner { flex-wrap: wrap; }
+
+.hm-banner-lost {
+  flex: 1 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1px;
+}
+
+.hm-lost-lab {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: rgba(255, 238, 224, .62);
+  margin-right: 1px;
+}
+
+.hm-lost {
+  padding: 2px 8px 3px;
+  border-radius: 9px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fbeee2;
+  background: rgba(255, 240, 225, .13);
+  border: 1px solid rgba(255, 230, 210, .32);
+}
+
+.hm-lost:hover {
+  background: rgba(255, 244, 232, .26);
+  border-color: rgba(255, 240, 225, .6);
+}
+
+/* AO3. The other half of the after-action question: what is still standing and
+   hurt, and the one click that puts it right. Its own line under the losses,
+   because it is an action and the chips above are navigation. */
+.hm-banner-fix {
+  flex: 1 0 100%;
+  display: flex;
+  margin-top: 4px;
+}
+
+.hm-fixall {
+  padding: 4px 11px 5px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #22321d;
+  background: #cfe0bc;
+  border: 1px solid #9bb587;
+  cursor: pointer;
+  transition: background .1s, border-color .1s;
+}
+
+.hm-fixall:hover { background: #e2eed4; border-color: #c8dcb4; }
+.hm-fixall:active { transform: translateY(1px); }
+
+/* Unaffordable still shows its price — the player needs to know what to save
+   for, and the toast says exactly what it managed if they press it anyway. */
+.hm-fixall.poor {
+  background: rgba(255, 240, 225, .13);
+  border-color: rgba(255, 230, 210, .32);
+  color: rgba(255, 238, 224, .72);
+}
+
+.hm-banner-main {
+  font-family: var(--hm-serif);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hm-banner-sub {
+  font-size: 11.5px;
+  color: rgba(255, 238, 224, .8);
+  border-left: 1px solid rgba(255, 220, 200, .3);
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes hm-throb {
+  0%, 100% { box-shadow: 0 6px 22px rgba(90, 20, 10, .45); }
+  50%      { box-shadow: 0 6px 30px rgba(200, 60, 30, .75); }
+}
+
+.hm-banner-soon,
+.hm-banner-now {
+  animation: hm-throb 1.3s ease-in-out infinite;
+}
+
+/* The after-action line takes the banner slot once the raid is over — a held
+   raid is not an emergency, so it drops the alarm red. It also wraps rather
+   than clipping: the wall clause is the whole point of the sentence. */
+.hm-banner-after {
+  background: linear-gradient(180deg, #6a5a44, #544733);
+  border-color: #3f3526;
+  box-shadow: 0 6px 18px rgba(40, 28, 12, .34);
+  max-width: min(800px, calc(100vw - 620px));
+  flex-wrap: wrap;
+}
+
+.hm-banner-after .hm-banner-sub {
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.35;
+}
+
+.hm-banner-after.held {
+  background: linear-gradient(180deg, #547a4a, #40603a);
+  border-color: #2f4a2a;
+}
+
+.hm-banner-now {
+  background: linear-gradient(180deg, #8d2b1f, #6d1d14);
+}
+
+/* ================================================================ PANELS */
+
+.hm-panel {
+  position: absolute;
+  border-radius: var(--hm-r);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hm-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px 6px 11px;
+  border-bottom: 1px solid var(--hm-rule);
+  background: linear-gradient(180deg, rgba(255, 253, 245, .7), rgba(255, 253, 245, 0));
+  flex: 0 0 auto;
+}
+
+.hm-panel-title {
+  font-family: var(--hm-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-pill {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: 2px 7px;
+  border-radius: 9px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+  color: var(--hm-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-pill.hot {
+  background: var(--hm-bad);
+  border-color: #7d2c20;
+  color: #fff3ec;
+}
+
+.hm-fold {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--hm-ink-3);
+  flex: 0 0 auto;
+}
+
+.hm-fold:hover {
+  background: var(--hm-parch-lo);
+  color: var(--hm-ink);
+}
+
+.hm-panel-foot {
+  flex: 0 0 auto;
+  padding: 5px 11px 6px;
+  font-size: 10px;
+  color: var(--hm-ink-3);
+  border-top: 1px solid var(--hm-rule);
+  letter-spacing: .01em;
+}
+
+.hm-panel.hm-collapsed > *:not(.hm-panel-head) { display: none !important; }
+
+/* The build menu keeps its tab strip when collapsed — the overlay toggles and
+ * the reopen button live there. */
+.hm-build.hm-collapsed > .hm-tabs { display: flex !important; }
+
+/* ---------------------------------------------------------- alerts */
+
+/* The left column: alerts, then the milestone beneath them. Only the alerts
+ * list scrolls, so a long alert list shortens itself instead of pushing the
+ * goal off screen, and the goal never steals rows from the alerts. */
+.hm-left {
+  position: absolute;
+  left: 8px;
+  top: calc(var(--hm-top-h, 92px) + 14px);
+  width: 292px;
+  max-height: calc(100vh - var(--hm-top-h, 92px) - 186px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.hm-left > .hm-panel {
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Shrink weights, not a fixed cap: when the column runs out of room the
+ * milestone gives up space roughly six times faster than the alerts do, so the
+ * alerts panel — the best thing in the game, per the playtester — is the last
+ * thing to lose a row. Neither is capped when both simply fit. */
+.hm-alerts {
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+.hm-alert-list {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  flex: 1 1 auto;
+}
+
+/* Scroll shadows: a clipped row should read as "there is more", not as a
+ * layout mistake. `local` layers ride the content, `scroll` layers stay put. */
+.hm-alert-list,
+.hm-insp-body,
+.hm-grid {
+  background-image:
+    linear-gradient(var(--hm-parch), rgba(236, 225, 198, 0)),
+    linear-gradient(rgba(236, 225, 198, 0), var(--hm-parch)),
+    radial-gradient(farthest-side at 50% 0, rgba(60, 45, 25, .17), rgba(60, 45, 25, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(60, 45, 25, .17), rgba(60, 45, 25, 0));
+  background-position: 0 0, 0 100%, 0 0, 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 22px, 100% 22px, 100% 7px, 100% 7px;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.hm-grid {
+  background-image:
+    linear-gradient(var(--hm-parch-hi), rgba(246, 239, 220, 0)),
+    linear-gradient(rgba(246, 239, 220, 0), var(--hm-parch-hi)),
+    radial-gradient(farthest-side at 50% 0, rgba(60, 45, 25, .15), rgba(60, 45, 25, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(60, 45, 25, .15), rgba(60, 45, 25, 0));
+}
+
+.hm-alert {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 9px 7px 0;
+  text-align: left;
+  border-bottom: 1px solid rgba(168, 146, 106, .35);
+  transition: background .1s;
+}
+
+.hm-alert:hover { background: rgba(255, 253, 244, .8); }
+.hm-alert.cur   { background: rgba(255, 248, 225, .95); }
+
+.hm-alert-bar {
+  flex: 0 0 4px;
+  border-radius: 0 2px 2px 0;
+  background: var(--hm-ink-3);
+}
+
+.hm-alert.sev3 .hm-alert-bar { background: var(--hm-bad); }
+.hm-alert.sev2 .hm-alert-bar { background: var(--hm-warn); }
+.hm-alert.sev1 .hm-alert-bar { background: var(--hm-blue); }
+
+.hm-alert-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hm-alert-title {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--hm-ink);
+  line-height: 1.25;
+}
+
+.hm-alert.sev3 .hm-alert-title { color: #8c2f21; }
+
+.hm-alert-where {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--hm-ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hm-alert-where:empty { display: none; }
+
+/* AO3. The one alert row that carries its own action. The banner offers Repair
+   All too, but that is gone sixteen seconds after the raid and this is not. */
+.hm-alert-act {
+  display: block;
+  margin-top: 5px;
+  padding: 3px 9px 4px;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #8a5a1c;
+  background: var(--hm-parch-hi);
+  border: 1px solid var(--hm-warn);
+  cursor: pointer;
+}
+
+.hm-alert-act:hover { background: #fffaea; }
+.hm-alert-act.poor { opacity: .55; }
+
+.hm-alert-fix {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  line-height: 1.35;
+  margin-top: 2px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.hm-alert-count {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 10.5px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--hm-ink-2);
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+  border-radius: 9px;
+  padding: 1px 6px;
+}
+
+.hm-alert-count:empty { display: none; }
+
+.hm-alert-empty {
+  padding: 14px 12px 16px;
+  font-size: 11.5px;
+  color: var(--hm-ink-3);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------- milestone */
+
+.hm-milestone {
+  flex: 0 6 auto;
+  min-height: 92px;
+}
+
+/* Opened from the top-bar goal line: say so, briefly. */
+.hm-milestone.flash {
+  animation: hm-msflash 1.2s ease-out;
+}
+
+@keyframes hm-msflash {
+  0%, 60% { border-color: var(--hm-gold); box-shadow: var(--hm-shadow), 0 0 0 2px rgba(154, 111, 46, .45); }
+  100% { border-color: var(--hm-rule-2); box-shadow: var(--hm-shadow); }
+}
+
+.hm-ms-body {
+  padding: 8px 11px 9px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.hm-ms-lede {
+  font-family: var(--hm-serif);
+  font-size: 13px;
+  letter-spacing: .01em;
+  color: var(--hm-ink-2);
+}
+
+.hm-milestone.won .hm-ms-lede {
+  color: var(--hm-gold);
+  font-size: 14px;
+}
+
+.hm-ms-prog {
+  display: block;
+  height: 4px;
+  margin: 6px 0 4px;
+  border-radius: 3px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+  overflow: hidden;
+}
+
+.hm-ms-prog-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #6f9150, var(--hm-good));
+  transition: width .3s ease;
+}
+
+.hm-ms-count {
+  font-size: 10.5px;
+  letter-spacing: .02em;
+  color: var(--hm-ink-3);
+}
+
+.hm-ms-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.hm-ms-row {
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  padding: 4px 6px 5px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.hm-ms-row:hover,
+.hm-ms-row:focus-visible {
+  background: var(--hm-parch-hi);
+  border-color: var(--hm-rule);
+}
+
+.hm-ms-row.pin {
+  background: var(--hm-parch-hi);
+  border-color: var(--hm-rule-2);
+}
+
+.hm-ms-tick {
+  flex: 0 0 auto;
+  width: 12px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--hm-ink-3);
+}
+
+.hm-ms-row.met .hm-ms-tick {
+  color: var(--hm-good);
+}
+
+.hm-ms-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hm-ms-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.hm-ms-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-ms-val {
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--hm-ink-2);
+}
+
+.hm-ms-row.met .hm-ms-label { color: var(--hm-ink-3); }
+.hm-ms-row.met .hm-ms-val { color: var(--hm-good); }
+
+.hm-ms-track {
+  display: block;
+  height: 3px;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+  overflow: hidden;
+}
+
+.hm-ms-fill {
+  display: block;
+  height: 100%;
+  background: var(--hm-warn);
+  transition: width .3s ease;
+}
+
+.hm-ms-row.met .hm-ms-fill { background: var(--hm-good); }
+
+.hm-ms-sub {
+  display: block;
+  margin-top: 3px;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--hm-ink-3);
+}
+
+.hm-ms-sub:empty { display: none; }
+
+/* The health row is the one a player cannot act on from the number alone: it
+ * carries the variety sentence and points at the meter that breaks it down. */
+.hm-ms-health .hm-ms-sub { color: var(--hm-ink-2); }
+.hm-ms-health:not(.met) .hm-ms-sub::after {
+  content: " \25b8";
+  color: var(--hm-gold);
+  font-weight: 700;
+}
+
+/* A busy alerts list wins the column: the goal keeps its rows but drops to
+ * one line each, apart from the health row. */
+.hm-milestone.tight .hm-ms-track,
+.hm-milestone.tight .hm-ms-row:not(.hm-ms-health) .hm-ms-sub { display: none; }
+.hm-milestone.tight .hm-ms-row { padding: 2px 6px 3px; }
+.hm-milestone.tight .hm-panel-foot { display: none; }
+.hm-milestone.tight .hm-ms-body { padding-bottom: 7px; }
+
+/* ------------------------------------------------------- inspector */
+
+.hm-inspector {
+  right: 8px;
+  top: calc(var(--hm-top-h, 92px) + 14px);
+  width: 306px;
+  max-height: calc(100vh - var(--hm-top-h, 92px) - 186px);
+}
+
+.hm-insp-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 10px 11px 12px;
+  flex: 1 1 auto;
+}
+
+.hm-insp-top {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.hm-art {
+  flex: 0 0 auto;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #d9cead, #c9bc97);
+  border: 1px solid var(--hm-rule-2);
+}
+
+.hm-insp-meta { flex: 1 1 auto; min-width: 0; }
+
+.hm-insp-desc {
+  font-size: 11.5px;
+  color: var(--hm-ink-2);
+  line-height: 1.45;
+}
+
+.hm-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 12px;
+  margin-top: 6px;
+}
+
+.hm-facts-wide { margin-top: 10px; }
+
+.hm-fact {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+  font-size: 11px;
+}
+
+.hm-fact-k {
+  color: var(--hm-ink-3);
+  font-weight: 600;
+}
+
+.hm-fact-v {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* the ten-second answer */
+.hm-status {
+  margin: 10px 0 4px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border-left: 4px solid var(--hm-ink-3);
+  background: rgba(120, 100, 70, .1);
+}
+
+.hm-status.ok   { border-left-color: var(--hm-good); background: rgba(79, 122, 69, .12); }
+.hm-status.sev1 { border-left-color: var(--hm-blue); background: rgba(69, 103, 128, .12); }
+.hm-status.sev2 { border-left-color: var(--hm-warn); background: rgba(176, 118, 42, .14); }
+.hm-status.sev3 { border-left-color: var(--hm-bad);  background: rgba(162, 60, 44, .14); }
+
+.hm-status-main {
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.hm-status-fix {
+  font-size: 11px;
+  color: var(--hm-ink-2);
+  line-height: 1.45;
+  margin-top: 3px;
+}
+
+.hm-status-fix:empty { display: none; }
+
+/* The one fix that lives at another building: 'cut off' names a sealer that
+ * may be well off-screen, so the status block carries a way to go and look. */
+.hm-status-go {
+  margin-top: 7px;
+  padding: 4px 9px;
+  border-radius: 3px;
+  border: 1px solid var(--hm-rule-2);
+  background: var(--hm-parch);
+  font: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--hm-ink);
+  cursor: pointer;
+  transition: background .1s, border-color .1s;
+}
+
+.hm-status-go:hover {
+  background: #fffaea;
+  border-color: var(--hm-gold);
+}
+
+.hm-status-go:active { transform: translateY(1px); }
+
+.hm-sub-h {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+  margin: 13px 0 5px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--hm-rule);
+}
+
+.hm-workers { display: flex; flex-direction: column; gap: 1px; }
+
+.hm-worker {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 4px 5px;
+  border-radius: 3px;
+  text-align: left;
+}
+
+.hm-worker:hover { background: var(--hm-parch-lo); }
+
+.hm-role-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(40, 30, 18, .35);
+  flex: 0 0 9px;
+}
+
+.hm-worker-name {
+  flex: 1 1 auto;
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-worker-role {
+  font-size: 10px;
+  color: var(--hm-ink-3);
+}
+
+.hm-workers-none {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--hm-ink-3);
+  padding: 3px 2px;
+}
+
+.hm-recipe {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.hm-arrow { color: var(--hm-ink-3); font-weight: 700; }
+
+.hm-recipe-time {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-recipe-note {
+  font-size: 11.5px;
+  color: var(--hm-ink-2);
+  line-height: 1.45;
+}
+
+.hm-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+
+.hm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px 2px 5px;
+  border-radius: 10px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.hm-chip.done {
+  background: rgba(79, 122, 69, .18);
+  border-color: #87a377;
+}
+
+.hm-chip-icon { font-size: 10px; }
+.hm-chip-text { font-variant-numeric: tabular-nums; }
+
+.hm-recipes { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+
+.hm-rbtn {
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+}
+
+.hm-rbtn:hover { background: var(--hm-parch-hi); }
+
+.hm-rbtn.on {
+  background: var(--hm-ink);
+  color: var(--hm-parch-hi);
+  border-color: var(--hm-ink);
+}
+
+.hm-rbtn.locked {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+.hm-invs { display: flex; flex-direction: column; gap: 6px; }
+
+.hm-inv-lab {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.hm-inv-icon { font-size: 10px; }
+.hm-inv-name { flex: 1 1 auto; font-weight: 600; }
+
+.hm-inv-qty {
+  font-variant-numeric: tabular-nums;
+  color: var(--hm-ink-3);
+  font-weight: 700;
+}
+
+/* The discard control: present but never inviting — it destroys goods. */
+.hm-inv-drop {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  margin-left: 2px;
+  padding: 0;
+  line-height: 1;
+  font-size: 9px;
+  color: var(--hm-ink-3);
+  background: transparent;
+  border: 1px solid var(--hm-rule);
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .12s, color .12s, background .12s;
+}
+
+.hm-inv:hover .hm-inv-drop { opacity: 1; }
+
+.hm-inv-drop:hover {
+  color: var(--hm-bad);
+  border-color: var(--hm-bad);
+  background: rgba(162, 60, 44, .1);
+}
+
+.hm-bar {
+  height: 7px;
+  border-radius: 3px;
+  background: rgba(70, 55, 35, .16);
+  overflow: hidden;
+}
+
+.hm-bar-sm { height: 6px; }
+
+.hm-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  background: var(--hm-blue);
+  transition: width .3s ease-out;
+}
+
+.hm-bar-fill.good { background: var(--hm-good); }
+.hm-bar-fill.warn { background: var(--hm-warn); }
+.hm-bar-fill.bad  { background: var(--hm-bad); }
+
+.hm-bar-fill.full {
+  background-image: repeating-linear-gradient(
+    45deg, rgba(255, 255, 255, .35) 0 3px, rgba(255, 255, 255, 0) 3px 6px);
+}
+
+.hm-bar-label {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-made {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  margin-top: 9px;
+}
+
+.hm-made:empty { display: none; }
+
+/* Pinned to the foot of the scrolling body: at 1024x700 the stores list is
+ * taller than the panel, and Priority/Pause/Demolish must not be the part that
+ * falls below the fold. The shadow says the list keeps going underneath. */
+.hm-controls {
+  position: sticky;
+  bottom: -12px;
+  z-index: 1;
+  margin: 13px -11px -12px;
+  padding: 10px 11px 12px;
+  border-top: 1px solid var(--hm-rule);
+  background: var(--hm-parch);
+  box-shadow: 0 -7px 10px -6px rgba(60, 45, 25, .35);
+}
+
+.hm-prio {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.hm-prio-lab {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+  margin-right: 3px;
+}
+
+.hm-prio-btn {
+  flex: 1 1 0;
+  padding: 4px 0;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 3px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+}
+
+.hm-prio-btn:hover { background: var(--hm-parch-hi); }
+
+.hm-prio-btn.on {
+  background: var(--hm-gold);
+  border-color: #7b5620;
+  color: #fdf6e6;
+}
+
+.hm-btnrow { display: flex; gap: 6px; }
+
+.hm-btnrow-modal {
+  margin-top: 18px;
+  justify-content: flex-end;
+}
+
+.hm-btn {
+  flex: 1 1 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule-2);
+  box-shadow: 0 1px 0 rgba(255, 252, 240, .6) inset;
+}
+
+.hm-btn:hover { background: var(--hm-parch-hi); }
+.hm-btn:active { transform: translateY(1px); }
+
+.hm-btn.on {
+  background: var(--hm-ink);
+  color: var(--hm-parch-hi);
+  border-color: var(--hm-ink);
+}
+
+.hm-upgrade {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-btn-up {
+  width: 100%;
+  border-color: var(--hm-gold);
+  color: var(--hm-gold);
+  font-weight: 700;
+}
+
+.hm-btn-up:hover { background: rgba(154, 111, 46, .13); }
+.hm-btn-up.poor { opacity: .6; }
+
+.hm-upgrade-sub {
+  margin-top: 4px;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--hm-ink-3);
+}
+
+/* --- damage and repair (ADDENDUM AO3) --- */
+
+/* Its own tinted block rather than a row in the body: a hurt building is
+   usually why the panel is open, and the offer and the refusal must not read
+   as the same weight of information as Stores. */
+.hm-repair {
+  margin: 11px 0 2px;
+  padding: 8px 10px 10px;
+  border-radius: 4px;
+  border-left: 4px solid var(--hm-warn);
+  background: rgba(176, 118, 42, .13);
+}
+
+/* A repair that can never be delivered is a refusal, not an offer. */
+.hm-repair.blocked {
+  border-left-color: var(--hm-bad);
+  background: rgba(162, 60, 44, .13);
+}
+
+.hm-repair-h {
+  margin: 0 0 6px;
+  border-bottom-color: rgba(120, 95, 55, .3);
+}
+
+.hm-repair-hp {
+  font-size: 11px;
+  color: var(--hm-ink-2);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-repair-main {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.hm-repair-sub {
+  font-size: 11px;
+  color: var(--hm-ink-2);
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+.hm-repair .hm-bar { margin-top: 2px; }
+.hm-repair .hm-chips { margin-top: 7px; }
+
+.hm-btn-rep {
+  width: 100%;
+  margin-top: 9px;
+  border-color: var(--hm-warn);
+  color: #8a5a1c;
+}
+
+.hm-btn-rep:hover { background: rgba(176, 118, 42, .16); }
+
+/* Unaffordable, not broken: it still reads, and the line under it says which
+   material is short — priced in `available`, the same number placement uses. */
+.hm-btn-rep.poor {
+  opacity: .58;
+  cursor: default;
+}
+
+.hm-btn-repcancel {
+  width: 100%;
+  margin-top: 9px;
+  flex: none;
+}
+
+.hm-btn-bad {
+  color: #8c2f21;
+  border-color: #c39383;
+}
+
+.hm-btn-bad:hover { background: rgba(162, 60, 44, .13); }
+
+/* Demolish is irreversible, so it must not read as Pause's equal twin. */
+.hm-btn-dem {
+  flex: 0 0 auto;
+  margin-left: 14px;
+  padding: 6px 12px;
+  background: transparent;
+  box-shadow: none;
+  border-style: dashed;
+}
+
+/* --- villager view --- */
+
+.hm-vill-top { display: flex; gap: 11px; align-items: flex-start; }
+
+.hm-vill-disc {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hm-serif);
+  font-size: 19px;
+  font-weight: 600;
+  color: rgba(255, 252, 242, .95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+  border: 2px solid rgba(255, 250, 235, .55);
+  box-shadow: 0 2px 5px rgba(30, 20, 10, .3);
+}
+
+.hm-vill-meta { flex: 1 1 auto; min-width: 0; }
+
+.hm-activity {
+  font-family: var(--hm-serif);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--hm-ink);
+}
+
+.hm-vill-where {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+/* A soldier's kit — the armour line is spelled out because a partial kit
+   still takes its name from the weapon (K6). */
+.hm-kit {
+  padding: 8px 10px;
+  border-radius: var(--hm-r);
+  background: var(--hm-parch);
+  border: 1px solid var(--hm-rule);
+}
+
+.hm-kit-name {
+  font-family: var(--hm-serif);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hm-kit-gear {
+  font-size: 11px;
+  color: var(--hm-ink-2);
+  margin-top: 2px;
+}
+
+.hm-kit-stats {
+  font-size: 11px;
+  color: var(--hm-ink-3);
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-carry {
+  margin-top: 11px;
+  padding: 7px 10px;
+  border-radius: 4px;
+  background: rgba(154, 111, 46, .14);
+  border: 1px dashed var(--hm-rule-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ============================================================ BUILD MENU */
+
+.hm-build {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8px;
+  /* Sized to sit *between* the alerts and inspector panels, never under them. */
+  width: min(940px, calc(100vw - 640px));
+  min-width: 460px;
+}
+
+.hm-tabs {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1px;
+  padding: 4px 5px 0;
+  border-bottom: 1px solid var(--hm-rule);
+  flex: 0 0 auto;
+}
+
+.hm-tab {
+  padding: 6px 11px 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--hm-ink-3);
+  border-radius: 4px 4px 0 0;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.hm-tab:hover { color: var(--hm-ink); background: rgba(255, 253, 244, .6); }
+
+.hm-tab.on {
+  color: var(--hm-ink);
+  background: var(--hm-parch-hi);
+  border-color: var(--hm-rule-2);
+  box-shadow: 0 -1px 0 rgba(255, 252, 240, .8) inset;
+}
+
+.hm-tab-fold {
+  color: var(--hm-ink-2);
+  font-weight: 600;
+}
+
+.hm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 5px;
+  padding: 7px;
+  max-height: min(208px, 27vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: var(--hm-parch-hi);
+}
+
+.hm-entry {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--hm-rule);
+  background: var(--hm-parch);
+  text-align: left;
+  min-height: 40px;
+  transition: background .1s, border-color .1s, transform .07s;
+}
+
+.hm-entry:hover {
+  background: #fffaea;
+  border-color: var(--hm-rule-2);
+}
+
+.hm-entry:active { transform: translateY(1px); }
+
+.hm-entry.on {
+  border-color: var(--hm-gold);
+  background: #fff4d8;
+  box-shadow: 0 0 0 1px var(--hm-gold);
+}
+
+.hm-entry-swatch {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid;
+  box-shadow: 0 1px 2px rgba(30, 20, 10, .22);
+}
+
+.hm-entry-main { flex: 1 1 auto; min-width: 0; }
+
+.hm-entry-title {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.hm-entry-jobs {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--hm-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-entry-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hm-entry-costs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  gap: 2px 7px;
+  margin-top: 2px;
+}
+
+.hm-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10.5px;
+  color: var(--hm-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-cost-icon { font-size: 9px; }
+.hm-cost-n { font-weight: 700; }
+
+.hm-cost.short { color: var(--hm-bad); }
+
+/* U3's patch floor, read as a cost paid in map rather than in timber. */
+.hm-need {
+  margin-left: auto;
+  padding-left: 6px;
+  color: var(--hm-ink-3);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* Locked entries are greyed, never hidden — seeing the future is the point —
+ * and the unlock tier rides beside the name rather than covering it. */
+.hm-entry-lock {
+  display: none;
+  align-self: flex-start;
+  margin-top: 3px;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: rgba(90, 74, 48, .14);
+  border: 1px solid rgba(120, 100, 66, .3);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--hm-ink-2);
+  white-space: nowrap;
+}
+
+.hm-entry.locked {
+  filter: saturate(.2);
+  opacity: .72;
+  border-style: dashed;
+  cursor: not-allowed;
+}
+
+.hm-entry.locked .hm-entry-lock { display: inline-flex; }
+.hm-entry.locked .hm-entry-costs { display: none; }
+.hm-lock-glyph { font-size: 8px; opacity: .75; }
+
+.hm-entry.poor .hm-entry-swatch { opacity: .5; }
+.hm-entry.poor .hm-entry-name { color: var(--hm-ink-2); }
+
+/* ============================================================== OVERLAYS */
+
+.hm-overlays {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 4px 5px;
+  margin-left: auto;   /* right-aligns whether or not the tab row wraps */
+}
+
+.hm-overlays-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+  padding-right: 4px;
+}
+
+.hm-ov {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--hm-rule);
+  background: var(--hm-parch-lo);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hm-ov:hover { background: var(--hm-parch-hi); }
+
+.hm-ov.on {
+  background: var(--hm-blue);
+  border-color: #2f4d63;
+  color: #f2f7fb;
+}
+
+.hm-ov-key {
+  font-size: 9px;
+  font-weight: 800;
+  opacity: .6;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ================================================================ TOASTS */
+
+.hm-toasts {
+  position: absolute;
+  /* Clears a one-line raid banner. A two-line after-action report is taller
+     still and simply wins the stacking order. */
+  top: calc(var(--hm-top-h, 92px) + 76px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+@keyframes hm-toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hm-toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 460px;
+  padding: 6px 13px 6px 11px;
+  border-radius: 14px;
+  background: rgba(38, 30, 21, .93);
+  color: #f2e8d4;
+  border: 1px solid rgba(255, 240, 210, .18);
+  box-shadow: 0 6px 20px rgba(15, 10, 4, .45);
+  font-size: 12px;
+  animation: hm-toast-in .18s ease-out;
+  transition: opacity .5s, transform .5s;
+}
+
+.hm-toast.out { opacity: 0; transform: translateY(-6px); }
+
+.hm-toast-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: 0 0 7px;
+  background: #8fa7bb;
+}
+
+.hm-toast-good .hm-toast-dot { background: #7fbb6d; }
+.hm-toast-warn .hm-toast-dot { background: #e0a23f; }
+.hm-toast-bad  .hm-toast-dot { background: #e06044; }
+
+.hm-toast-good { border-color: rgba(127, 187, 109, .45); }
+.hm-toast-warn { border-color: rgba(224, 162, 63, .45); }
+.hm-toast-bad  { border-color: rgba(224, 96, 68, .5); }
+
+.hm-toast-text { flex: 1 1 auto; }
+
+.hm-toast-n {
+  font-size: 10.5px;
+  font-weight: 800;
+  opacity: .6;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =============================================================== TOOLTIP */
+
+.hm-tip {
+  position: fixed;
+  z-index: 60;
+  width: 276px;
+  padding: 9px 11px 10px;
+  border-radius: var(--hm-r);
+  pointer-events: none;
+}
+
+.hm-tip-name {
+  font-family: var(--hm-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.hm-tip-lock {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8c2f21;
+  background: rgba(162, 60, 44, .12);
+  border-radius: 3px;
+  padding: 3px 6px;
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+
+.hm-tip-desc {
+  font-size: 11.5px;
+  color: var(--hm-ink-2);
+  line-height: 1.45;
+}
+
+.hm-tip-facts,
+.hm-tip-cost,
+.hm-tip-req {
+  font-size: 10.5px;
+  color: var(--hm-ink-3);
+  margin-top: 5px;
+}
+
+.hm-tip-cost { font-weight: 700; color: var(--hm-ink-2); }
+.hm-tip-req { font-style: italic; }
+
+/* ================================================================ MODALS */
+
+.hm-modal-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  background: rgba(18, 14, 9, .62);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  padding: 16px;
+}
+
+.hm-modal {
+  width: min(560px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  border-radius: 7px;
+  padding: 24px 28px 22px;
+}
+
+.hm-modal-confirm { width: min(460px, 100%); }
+
+.hm-qty {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 11px 13px;
+  border-radius: var(--hm-r);
+  background: var(--hm-parch);
+  border: 1px solid var(--hm-rule);
+}
+
+.hm-qty-range { flex: 1 1 auto; accent-color: var(--hm-bad); }
+
+.hm-qty-val {
+  flex: 0 0 auto;
+  min-width: 108px;
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+
+.hm-modal-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--hm-gold);
+}
+
+.hm-modal-title {
+  font-family: var(--hm-serif);
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 5px 0 12px;
+  letter-spacing: -.01em;
+}
+
+.hm-modal-lede {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--hm-ink-2);
+  margin: 0 0 4px;
+}
+
+.hm-modal-h {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+  margin: 18px 0 7px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--hm-rule);
+}
+
+.hm-steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--hm-ink-2);
+}
+
+.hm-steps b { color: var(--hm-ink); }
+
+.hm-keys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+}
+
+.hm-key {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--hm-ink-2);
+}
+
+.hm-key kbd {
+  font-family: var(--hm-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  min-width: 44px;
+  text-align: center;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule-2);
+  box-shadow: 0 1px 0 var(--hm-rule-2);
+  color: var(--hm-ink);
+}
+
+.hm-modal-note {
+  font-size: 12px;
+  color: var(--hm-ink-3);
+  line-height: 1.5;
+  margin: 16px 0 0;
+  font-style: italic;
+}
+
+.hm-btn-big {
+  margin-top: 18px;
+  width: 100%;
+  padding: 11px;
+  font-size: 14px;
+  font-family: var(--hm-serif);
+  background: var(--hm-ink);
+  color: var(--hm-parch-hi);
+  border-color: var(--hm-ink);
+}
+
+.hm-btn-ghost {
+  margin-top: 8px;
+  background: transparent;
+  color: var(--hm-ink-2);
+  border-color: var(--hm-rule-2);
+}
+
+.hm-btn-ghost:hover { background: var(--hm-parch-lo); }
+
+.hm-btn-big:hover { background: #3c3024; }
+
+.hm-over-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.hm-over-cell {
+  text-align: center;
+  padding: 12px 4px;
+  border-radius: 4px;
+  background: var(--hm-parch-lo);
+  border: 1px solid var(--hm-rule);
+}
+
+.hm-over-v {
+  font-family: var(--hm-serif);
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-over-k {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--hm-ink-3);
+  margin-top: 2px;
+}
+
+/* ========================================================== TIER-UP MOMENT */
+
+.hm-tierup {
+  position: absolute;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.hm-tierup.in { opacity: 1; }
+
+.hm-tierup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(255, 216, 140, .30) 0%, rgba(255, 200, 110, .08) 42%, rgba(0, 0, 0, 0) 68%);
+}
+
+@keyframes hm-tier-rise {
+  from { transform: translateY(16px) scale(.97); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.hm-tierup-inner {
+  position: relative;
+  text-align: center;
+  padding: 26px 44px;
+  animation: hm-tier-rise .7s cubic-bezier(.16, .9, .3, 1) both;
+}
+
+.hm-tierup-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: #f3dda8;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .8);
+}
+
+.hm-tierup-name {
+  font-family: var(--hm-serif);
+  font-size: 68px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: .03em;
+  margin-top: 6px;
+  color: #fff3d6;
+  text-shadow: 0 0 40px rgba(255, 200, 110, .7), 0 4px 22px rgba(0, 0, 0, .85);
+}
+
+@keyframes hm-rule-grow {
+  from { width: 0; }
+  to   { width: 190px; }
+}
+
+.hm-tierup-rule {
+  height: 2px;
+  margin: 14px auto;
+  background: linear-gradient(90deg,
+    rgba(255, 214, 140, 0), rgba(255, 214, 140, .95), rgba(255, 214, 140, 0));
+  animation: hm-rule-grow .8s ease-out both .2s;
+}
+
+.hm-tierup-sub {
+  font-family: var(--hm-serif);
+  font-size: 16px;
+  color: #f6e7c6;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.5;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .85);
+}
+
+.hm-tierup-list {
+  font-size: 12px;
+  color: rgba(255, 235, 200, .85);
+  margin-top: 12px;
+  max-width: 520px;
+  line-height: 1.5;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+/* ============================================================== RESPONSIVE
+ * Must stay usable down to 1024x700 without panels overlapping (brief).
+ */
+
+@media (max-width: 1340px) {
+  .hm-meter { min-width: 76px; padding: 3px 7px 5px; }
+}
+
+@media (max-width: 1180px) {
+  .hm-top { gap: 5px; padding: 6px 7px; }
+  .hm-top-left, .hm-top-right { gap: 6px; }
+  .hm-brand { min-width: 66px; }
+  .hm-brand-name { font-size: 15px; }
+  .hm-meter-val { font-size: 16px; }
+  .hm-meter { min-width: 60px; padding: 3px 5px 5px; }
+  .hm-speed { min-width: 22px; padding: 0 3px; }
+  .hm-clock-text { min-width: 66px; }
+  .hm-good { padding: 2px 4px; gap: 3px; }
+  .hm-good-val { min-width: 18px; font-size: 12px; }
+  .hm-left { width: 258px; }
+  .hm-inspector { width: 274px; }
+  /* Full width apart from a gutter for the minimap, which render.js pins to
+   * the bottom-right corner of the canvas — the DOM panel sits above it. */
+  .hm-build {
+    left: 8px;
+    right: 160px;
+    transform: none;
+    width: auto;
+    min-width: 0;
+  }
+  .hm-ov { padding: 4px 6px; }
+  .hm-banner { max-width: calc(100vw - 570px); padding: 6px 12px 6px 10px; }
+  .hm-banner-main { font-size: 14px; }
+}
+
+@media (max-width: 1024px) {
+  .hm-meter-sub { display: none; }
+  .hm-meter-val { font-size: 15px; }
+  .hm-meter-icon { display: none; }
+  .hm-top-right { gap: 3px; }
+  .hm-clock-text { min-width: 60px; }
+  .hm-dial { width: 28px; height: 28px; flex-basis: 28px; }
+  .hm-dial-hand { height: 12px; margin-top: -12px; }
+}
+
+/* Short viewports: give the map back its vertical room. */
+@media (max-height: 760px) {
+  .hm-grid { max-height: 150px; }
+  .hm-left,
+  .hm-inspector { max-height: calc(100vh - var(--hm-top-h, 92px) - 160px); }
+  .hm-tierup-name { font-size: 54px; }
+}
+
+@media (max-height: 680px) {
+  .hm-grid { max-height: 116px; }
+}
